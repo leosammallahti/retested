@@ -60,7 +60,7 @@ export interface Candidate {
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
   type: string | null; field?: string | null; group: 'replication' | 'other_behavioural' | 'registration';
-  evidence_tier?: string; found_by?: string[]; screen_reason?: string | null;
+  evidence_tier?: string; search_tier?: 'high' | 'medium'; rule_score?: number; found_by?: string[]; screen_reason?: string | null;
   rep_already_known: boolean; original_in_wiki: boolean; effect: { slug: string; name: string } | null;
   abstract: string | null; models: string[]; origin: 'forrt_flora_extractor' | 'retested_discovery'; review_state: string;
 }

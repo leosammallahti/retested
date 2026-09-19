@@ -109,7 +109,19 @@ def band(best: dict, runner: dict | None) -> str:
     return "low"
 
 
+def is_self(named: dict, cand: dict) -> bool:
+    """The record we found can be an abstracting-service entry for the replication itself, in which case the best
+    same-surname, same-year match is that very paper. "Attitude Dimensions of Leisure: A Replication Study" was
+    linked to itself this way. A paper is not its own original."""
+    a, b = named.get("title_r"), cand.get("title")
+    if not a or not b:
+        return False
+    wa, wb = words(a), words(b)
+    return bool(wa) and len(wa & wb) / len(wa) >= 0.8
+
+
 def choose(named: dict, cands: list[dict], method: str, min_sim: float = 0.0) -> dict | None:
+    cands = [c for c in cands if not is_self(named, c)]
     scored = sorted(filter(None, (score_candidate(named, c, min_sim) for c in cands)), key=lambda x: -x["score"])
     if not scored or scored[0]["score"] < FLOOR:
         return None
@@ -167,7 +179,12 @@ def from_openalex(named: dict, cid: str) -> dict | None:
 # ---------------------------------------------------------------- run
 
 def named_unlinked(triaged: list[dict]) -> list[dict]:
-    """Psychology replications whose original is named by the model but has no DOI yet."""
+    """Psychology replications whose original is named by the model but has no DOI yet.
+
+    High-tier finds come first. The library pass is free and reaches all of them, but OpenAlex lookups are metered,
+    and a high-tier find is worth resolving: its screen is right about 96% of the time against 39% for the medium
+    tier. Ordering here means a spending cap spends what there is on the candidates most likely to be real.
+    """
     out = []
     for r in triaged:
         t = r["triage"]
@@ -175,7 +192,9 @@ def named_unlinked(triaged: list[dict]) -> list[dict]:
         if t.get("kind") != "replication" or t.get("field") != "psychology" or t.get("original_doi"):
             continue
         if o.get("authors") and o.get("year"):
-            out.append({"cid": r["cid"], "authors": o["authors"], "year": int(o["year"]), "description": o.get("description")})
+            out.append({"cid": r["cid"], "tier": r.get("tier"), "authors": o["authors"], "year": int(o["year"]),
+                        "description": o.get("description"), "title_r": r.get("title_r")})
+    out.sort(key=lambda n: n["tier"] != "high")
     return out
 
 
@@ -192,7 +211,8 @@ def run(use_openalex: bool, max_usd: float, check: bool) -> int:
         return report_check(triaged, idx, recs, use_openalex, max_usd)
 
     todo = named_unlinked(triaged)
-    print(f"  {len(todo)} psychology replications name an original without a DOI")
+    n_high = sum(1 for n in todo if n["tier"] == "high")
+    print(f"  {len(todo)} psychology replications name an original without a DOI ({n_high} high tier)")
     links, stuck = {}, []
     for n in todo:
         hit = from_library(n, idx, recs)
@@ -221,8 +241,9 @@ def run(use_openalex: bool, max_usd: float, check: bool) -> int:
         print(f"  openalex: {len(links)} resolved in total · {_spent['calls']} calls · ${_spent['usd']:.3f}")
 
     bands = {b: sum(1 for v in links.values() if v["confidence"] == b) for b in ("high", "medium", "low")}
+    by_tier = {t: sum(1 for v in links.values() if v["named"].get("tier") == t) for t in ("high", "medium")}
     in_wiki = sum(1 for v in links.values() if v["doi_o"] in g["findings"])
-    out = {"summary": {"named_unlinked": len(todo), "resolved": len(links), "stopped_early": stopped, "by_confidence": bands,
+    out = {"summary": {"named_unlinked": len(todo), "resolved": len(links), "stopped_early": stopped, "by_confidence": bands, "by_search_tier": by_tier,
                        "by_method": {m: sum(1 for v in links.values() if v["method"] == m) for m in
                                      ("library_author_year", "openalex_author_year")},
                        "original_already_in_wiki": in_wiki, "api_calls": _spent["calls"], "cost_usd": round(_spent["usd"], 3)},

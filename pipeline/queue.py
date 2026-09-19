@@ -94,8 +94,10 @@ def build_retested(triaged: list[dict], links: dict, g: dict) -> list[dict]:
             "outcome": t.get("outcome") if t.get("outcome") != "not_reported" else None,
             "outcome_quote": t.get("outcome_quote"),
             "outcome_confidence": t.get("confidence"),
-            # a DOI read out of the replication's own reference list is as good as a link gets
-            "link_confidence": ("high" if t.get("original_doi") else (link or {}).get("confidence")),
+            # A DOI the model picked out of the citation list is NOT a strong link: read one by one, 6 of 11 were
+            # right (docs/LINK_AUDIT_20260919.md). It cannot be scored either, because the model writes its account
+            # of the original after choosing it. So it says "unchecked" rather than borrowing a band it never earned.
+            "link_confidence": ("unchecked" if t.get("original_doi") else (link or {}).get("confidence")),
             "link_method": "cited by this paper" if t.get("original_doi") else (link or {}).get("method"),
             "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta", "runner_up")}
                              if link and not t.get("original_doi") else None,
@@ -105,6 +107,7 @@ def build_retested(triaged: list[dict], links: dict, g: dict) -> list[dict]:
             "field": t.get("field"),
             "group": group,
             "evidence_tier": "preprint" if r.get("type") == "preprint" else ("published" if doi_r else "no doi"),
+            "search_tier": r.get("tier"), "rule_score": r.get("score"),
             "found_by": r.get("found_by") or [],
             "rep_already_known": bool(doi_r and doi_r in known_reps),
             "original_in_wiki": in_wiki,
@@ -122,22 +125,40 @@ def build_retested(triaged: list[dict], links: dict, g: dict) -> list[dict]:
 def pending(candidates: list[dict], g: dict) -> dict:
     """Our linked finds, grouped for the pages that show them as unverified, pending review.
 
-    Only rows whose original already has a page, and only replications: a registered protocol has no result yet,
-    and an economics experiment is not part of a psychology effect's record. FORRT's own extractor candidates stay
-    in the queue alone — putting someone else's unreviewed list on a page is their editorial call, not ours."""
+    A page gets a row only when every step behind it has been measured and held up. Screening: high tier only, whose
+    screen was right 86% of the time against the owner's 70 hand labels, against 50% for the medium tier. Linking:
+    only the two sources that survived reading 65 links one by one — a library match at high or medium confidence
+    (24/25 right) and an OpenAlex match at high confidence (10/11). Citation-derived links (6/11), medium OpenAlex
+    (2/4) and low library matches (5/14) do not qualify; before this rule 53% of what pages showed pointed at the
+    wrong original. See docs/LINK_AUDIT_20260919.md.
+
+    Everything that does not qualify stays in the review queue, which is the right home for a claim that needs a
+    person. Also queue-only: registered protocols, which have no result to put beside a record, other behavioural
+    sciences, which are not part of a psychology effect's record, and FORRT's own extractor candidates, because
+    publishing someone else's unreviewed list on a page is their editorial call, not ours."""
     by_finding: dict[str, list[dict]] = {}
     by_effect: dict[str, list[dict]] = {}
     for c in candidates:
-        if c["origin"] == "retested_discovery" and c["original_in_wiki"] and c["group"] == "replication":
+        if (c["origin"] == "retested_discovery" and c["original_in_wiki"] and c["group"] == "replication"
+                and c["search_tier"] == "high" and _link_trusted(c)):
             by_finding.setdefault(c["doi_o"], []).append(c)
     for doi_o, rows in by_finding.items():
         for eid in g["findings"][doi_o].get("effects") or []:
             by_effect.setdefault(eid, []).extend(rows)
     order = {"high": 0, "medium": 1, "low": 2}
+
     for d in (by_finding, by_effect):
         for rows in d.values():
             rows.sort(key=lambda c: (order.get(c.get("link_confidence"), 3), -(c["year_r"] or 0)))
     return {"by_finding": by_finding, "by_effect": by_effect}
+
+
+# (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed
+TRUSTED_LINKS = {("library_author_year", "high"), ("library_author_year", "medium"), ("openalex_author_year", "high")}
+
+
+def _link_trusted(c: dict) -> bool:
+    return (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
 
 
 def _effect_of(g: dict) -> dict:

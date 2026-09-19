@@ -40,8 +40,12 @@ def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
         if doi_o not in g["findings"]:
             problems.append(f"pending rows attached to {doi_o}, which has no finding")
         for c in rows:
-            if c["group"] != "replication" or not c["original_in_wiki"] or c["origin"] != "retested_discovery":
-                problems.append(f"pending row {c['id']} is not one of our linked replications")
+            from .queue import _link_trusted
+            if (c["group"] != "replication" or not c["original_in_wiki"]
+                    or c["origin"] != "retested_discovery" or c["search_tier"] != "high"):
+                problems.append(f"pending row {c['id']} is not one of our high-tier linked replications")
+            if not _link_trusted(c):
+                problems.append(f"pending row {c['id']} has an unaudited link ({c['link_method']}/{c['link_confidence']})")
             seen.add(c["id"])
     for eid, rows in pending["by_effect"].items():
         for c in rows:

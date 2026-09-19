@@ -75,15 +75,49 @@ wipes first — that is how `discovered-*.json` and `triaged.json` were lost; th
 were rebuilt from cache for $0. And `pipeline link` now writes its results when OpenAlex's daily budget runs out
 instead of exiting with nothing.
 
+## 2c. Medium tier screened, prompt rewritten, links audited (2026-09-19)
+
+**The screening prompt was the bottleneck, not DeepSeek.** t1 was written for papers that announce themselves as
+replications, and on the medium tier it called anything adjacent a replication: a study replicating its own Study 1,
+a new moderator on an old effect, a bare theory test, a paper that merely cited one of the originals we fed it.
+Naming those four traps and fixing what counts as a "registration" (t3) beat t1 on the owner's 70 hand labels —
+86% precision at the same recall — and lifted the medium tier from 39% to 50%. `pipeline/triage.py` carries the
+version-by-version table. A new prompt version costs a full pass; the cache is keyed by model and version.
+
+**Full run, t3, 12,462 candidates: real spend $2.13** (the $8.51 printed is worst-case pricing; prompt caching makes
+the real figure much lower). 5,120 replications + 48 reproductions, of which **4,199 are psychology** — against
+2,004 from the high tier alone under t1. 6,284 were rejected as not replications.
+
+**Linking.** 1,748 psychology replications named an original with no DOI; 1,002 resolved (452 free against the wiki,
+550 via OpenAlex), high tier first. The run stopped at its $0.20 cap with 364 candidates not yet attempted — finish
+them after the daily OpenAlex allowance resets; cached pages make the re-run nearly free.
+
+**A 65-link hand audit changed what the site shows: [`LINK_AUDIT_20260919.md`](LINK_AUDIT_20260919.md).** 53% of the
+links being shown on effect pages pointed at the wrong original — a replication of Carlson et al. (2020) on climate
+attention linked to "Good deeds gone bad: lay theories of altruism", a Jones et al. (2002) pitch-perception
+replication linked to a paper on treating stuttering in children. `link --check` had said 92% because it only
+measures papers whose original the citation graph had already found: the easy half, where the true original is in
+the library. On the real population it usually is not, and a surname-and-year match returns an impostor instead of
+nothing. Accuracy by source, read one by one: library high/medium 24/25, OpenAlex high 10/11, citation-list picks
+6/11, OpenAlex medium 2/4, library low 5/14. Pages now take only the first two; everything else waits in the queue.
+**Treat any `--check` number as an upper bound and sample the shipped rows instead.**
+
+**Where that leaves the site.** Queue 7,569 candidates: FORRT's extractor 2,425, ours 5,144 (4,217 psychology
+replications, 739 other behavioural, 188 registered protocols; 2,483 high tier, 2,661 medium; 1,288 preprints).
+1,460 have an original, 912 of them one with a page here. 155 rows appear on 85 finding pages and their effect
+pages, down from 453 before the audit, and the build now refuses to put an unaudited link on a page.
+
 ## 3. Next steps, in order
 
-1. **Medium tier** (~9,100 more candidates across both searches): worth triaging now that credits are topped up
-   (expect ~$4 worst case). Pilot first on a hand-labelled sample of 40, as was done for the high tier.
-2. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
-   Economics, Business: ~49k titles) — only after the medium tier, and with rule scoring + DeepSeek triage.
-3. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
+1. **Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit, and 746 named originals
+   stayed unresolved. `python -m pipeline link --openalex --max-usd 1.0` after the daily reset.
+2. **Audit what the audit could not reach**: the OpenAlex-high stratum rests on 11 reads and library-high/medium on
+   25. Both look good; neither is settled. Medium-tier screening rests on 40 labels made by Claude, not a person.
+3. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
+   Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
+4. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
    (`npm run preview`); the GitHub Pages workflow stays in `.github/workflows/site.yml` for later.
-4. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
+5. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
    offer the finds and the recall harness back to them.
 
 ## 4. Owner decisions and open questions

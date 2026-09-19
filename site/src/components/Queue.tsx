@@ -10,7 +10,7 @@ interface Cand {
   effect: { slug: string; name: string } | null; abstract: string | null; models: string[];
   origin: 'forrt_flora_extractor' | 'retested_discovery';
   group: 'replication' | 'other_behavioural' | 'registration';
-  link_method?: string | null; evidence_tier?: string; found_by?: string[]; screen_reason?: string | null;
+  link_method?: string | null; evidence_tier?: string; search_tier?: 'high' | 'medium'; found_by?: string[]; screen_reason?: string | null;
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
@@ -24,7 +24,7 @@ const GROUP: Record<string, string> = {
   registration: 'registered protocol, no results yet',
 };
 const HOW: Record<string, string> = {
-  'cited by this paper': 'original is cited by this paper',
+  'cited by this paper': 'the model picked this original from the papers cited here — about half such links are wrong',
   library_author_year: 'author + year matched in this wiki',
   openalex_author_year: 'author + year searched in OpenAlex',
 };
@@ -42,6 +42,7 @@ export default function Queue({ base }: { base: string }) {
   const [scope, setScope] = useState<'known' | 'all'>('known');
   const [origin, setOrigin] = useState<'all' | 'forrt_flora_extractor' | 'retested_discovery'>('all');
   const [group, setGroup] = useState<'replication' | 'other_behavioural' | 'registration' | 'all'>('replication');
+  const [tier, setTier] = useState<'all' | 'high' | 'medium'>('all');
   const [show, setShow] = useState<'open' | 'decided'>('open');
   const [page, setPage] = useState(0);
 
@@ -54,9 +55,10 @@ export default function Queue({ base }: { base: string }) {
       (scope === 'all' || c.original_in_wiki) &&
       (origin === 'all' || c.origin === origin) &&
       (group === 'all' || c.group === group) &&
+      (tier === 'all' || c.search_tier === tier) &&   // FORRT's rows carry no tier of ours, so a tier filter hides them
       (show === 'open' ? !dec[c.id] : !!dec[c.id]) &&
       (!qq || [c.title_r, c.title_o, c.doi_r, c.doi_o, c.effect?.name].join(' ').toLowerCase().includes(qq)));
-  }, [all, dec, q, scope, show, origin, group]);
+  }, [all, dec, q, scope, show, origin, group, tier]);
 
   const decide = (c: Cand, v: Decision['v'], outcome?: string) => {
     const d = { ...dec, [c.id]: { v, outcome: outcome ?? c.outcome ?? undefined, at: new Date().toISOString() } };
@@ -100,6 +102,11 @@ export default function Queue({ base }: { base: string }) {
           <option value="registration">Registered protocols</option>
           <option value="all">All kinds</option>
         </select>
+        <select value={tier} onChange={(e) => { setTier((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Search tier">
+          <option value="all">Any search tier</option>
+          <option value="high">Strong title/abstract signal</option>
+          <option value="medium">Weaker signal (more false positives)</option>
+        </select>
         <select value={show} onChange={(e) => { setShow((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Status">
           <option value="open">Not yet reviewed</option>
           <option value="decided">My decisions</option>
@@ -117,6 +124,7 @@ export default function Queue({ base }: { base: string }) {
                 <span class="chip">{ORIGIN[c.origin]}</span>
                 {c.group !== 'replication' && <span class="chip warn">{GROUP[c.group]}</span>}
                 {c.evidence_tier === 'preprint' && <span class="chip">preprint</span>}
+                {c.search_tier === 'medium' && <span class="chip warn">weaker signal</span>}
                 {c.effect && <a class="chip" href={`${base}effect/${c.effect.slug}/`}>{c.effect.name}</a>}
                 {c.rep_already_known && <span class="chip warn">replication paper already known for another original</span>}
                 {d && <span class={`chip ${d.v === 'accept' ? '' : 'claim'}`}>you: {d.v}</span>}

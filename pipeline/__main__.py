@@ -67,13 +67,14 @@ def main() -> None:
     lp.add_argument("--check", action="store_true", help="accuracy against originals the citation graph already resolved")
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
     tp.add_argument("--tier", choices=["high", "medium"], default="high")
-    tp.add_argument("--pilot", action="store_true", help="only the 70 hand-labelled papers; report agreement")
+    tp.add_argument("--pilot", action="store_true", help="only that tier's labelled sample; report agreement")
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
+    tp.add_argument("--workers", type=int, default=8, help="parallel requests; ~8 gives 8 papers/s, higher risks 429s")
     a = ap.parse_args()
     if a.cmd == "link":
         sys.exit(link.run(a.openalex, a.max_usd, a.check))
     if a.cmd == "triage":
-        sys.exit(triage.run(a.tier, a.pilot, a.max_usd))
+        sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers))
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))
     if a.cmd == "build":

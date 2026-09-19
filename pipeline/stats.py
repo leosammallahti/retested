@@ -148,6 +148,8 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
             "retested_with_original": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c["doi_o"]),
             "retested_on_known_originals": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c["original_in_wiki"]),
             "retested_preprints": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("evidence_tier") == "preprint"),
+            "retested_high_tier": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("search_tier") == "high"),
+            "retested_medium_tier": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("search_tier") == "medium"),
         },
         "overall": _share([a["outcome"] for a in reps]),
         "by_replication_year": {y: _share(v) for y, v in sorted(by_year.items()) if 2000 <= y <= 2030},

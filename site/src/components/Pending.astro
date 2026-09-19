@@ -10,9 +10,8 @@ const { rows, subject } = Astro.props;
 const TONE: Record<string, string> = { successful: 't-ok', failed: 't-bad', mixed: 't-mix' };
 const OUT: Record<string, string> = { successful: 'says it replicated', failed: 'says it did not replicate', mixed: 'says mixed' };
 const HOW: Record<string, string> = {
-  'cited by this paper': 'the replication cites this original',
-  library_author_year: 'author and year matched against this wiki',
-  openalex_author_year: 'author and year searched in OpenAlex',
+  library_author_year: 'author, year and topic matched against this wiki',
+  openalex_author_year: 'author, year and topic found in OpenAlex',
 };
 const withOutcome = rows.filter((r) => r.outcome).length;
 ---
@@ -25,7 +24,9 @@ const withOutcome = rows.filter((r) => r.outcome).length;
       data. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
       this original; <b>no person has checked {rows.length === 1 ? 'it' : 'them'}</b>. Nothing here counts towards the verdict,
       the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.
-      Help decide in the <a href={u('queue/')}>review queue</a>.
+      Reading 65 of these links one by one, the two matching methods shown here were right 24 times in 25 and 10 in 11;
+      weaker matches are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where more of our
+      finds are waiting for someone to decide.
     </p>
     <ol class="plist">
       {rows.map((r) => (
