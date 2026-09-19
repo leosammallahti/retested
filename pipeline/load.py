@@ -29,16 +29,21 @@ SOURCES = {
 
 
 def _cached(name: str, src: Path, fn):
-    """Pickle cache keyed by source mtime+size; the raw file stays the source of truth."""
+    """Pickle cache keyed by source size+mtime and the Python/pandas versions; any read error just rebuilds it.
+    The raw file stays the source of truth."""
+    import sys
     CACHE.mkdir(parents=True, exist_ok=True)
     st = src.stat()
-    key = f"{st.st_mtime_ns}-{st.st_size}"
+    key = f"{st.st_mtime_ns}-{st.st_size}-py{sys.version_info[:2]}-pd{pd.__version__}"
     p = CACHE / f"{name}.pkl"
     if p.exists():
-        with p.open("rb") as f:
-            k, val = pickle.load(f)
-        if k == key:
-            return val
+        try:
+            with p.open("rb") as f:
+                k, val = pickle.load(f)
+            if k == key:
+                return val
+        except Exception:  # noqa: BLE001 - stale or foreign cache (other OS / pandas version): rebuild
+            pass
     val = fn()
     with p.open("wb") as f:
         pickle.dump((key, val), f)
@@ -46,8 +51,10 @@ def _cached(name: str, src: Path, fn):
 
 
 def clean(x):
-    if is_na(x):
+    if x is pd.NaT or is_na(x):
         return None
+    if isinstance(x, (pd.Timestamp,)) or hasattr(x, "isoformat"):
+        return x.isoformat()[:10]
     if isinstance(x, str):
         s = x.strip()
         return s or None
