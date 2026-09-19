@@ -58,16 +58,16 @@ median replication found 42% of the original effect size.
    (expect ~$4 worst case). Pilot first on a hand-labelled sample of 40, as was done for the high tier.
 4. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
    Economics, Business: ~49k titles) — only after steps 1–2, and with rule scoring + DeepSeek triage.
-5. **Publish**: needs a GitHub repository (the Pages workflow is in `.github/workflows/site.yml`) or serve
-   `site/dist` from the VM. Ask the owner which.
+5. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
+   (`npm run preview`); the GitHub Pages workflow stays in `.github/workflows/site.yml` for later.
 6. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
    offer the finds and the recall harness back to them.
 
-## 4. Open questions for the owner
-- Delete the laptop copy now that the VM copy is verified? (not yet done; ask first)
+## 4. Owner decisions and open questions
+- Decided 2026-09-19: keep the laptop copy (`C:\Users\OMISTAJA\PsychologyReplication`); do not delete it.
+- Decided 2026-09-19: do not host the site yet.
 - Should the old OpenRouter (`sk-or-v1-91e…`) and OpenAI (`sk-proj-vj-p…`) keys have been revoked? They were in 51
   archived scripts (now redacted in `archive/`, which is gitignored). Remind once.
-- Where to host the site.
 
 ## 5. Where the thinking is
 `docs/planning/`: `BRIEF.md` (goals), `understanding/U1–U8` (what existed, FORRT's data dictionary, landscape,
