@@ -10,7 +10,7 @@ For each named effect (ego depletion, power posing, the Macbeth effect…) the s
 
 It also includes:
 - **Did it replicate?** A calibration game. You read a real finding, give a probability, and are scored with the Brier score.
-- **A review queue** of about 2,400 machine-found replication candidates from FORRT's own extractor that no human has checked yet. Accepted ones export as CSV for submission back to FORRT.
+- **A review queue** of machine-found replication candidates that no human has checked yet, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review* — beside the record, never counted in it.
 - **The record:** base rates with denominators and intervals, and the Graveyard, Survivors and Contested lists.
 
 Retested is independent and not an official FORRT product. It links every paper to FORRT's [Replication Atlas](https://forrt.org/flora-replication-atlas/) rather than duplicating it.
@@ -27,6 +27,17 @@ cd site && npm ci && npm run build   # -> site/dist (static, ~1,800 pages)
 npm run preview                   # http://localhost:4321
 ```
 
+Finding replications FORRT has not recorded is a separate, optional chain whose results live in `data/discovery/`
+(outside `data/build/`, which every build wipes). Each step is cached, so re-runs are free:
+
+```bash
+python -m pipeline discover --mode keyword    # psychology papers with "replication" in the title
+python -m pipeline discover --mode cites      # papers citing an original already here
+python -m pipeline triage --tier high --max-usd 1.5   # DeepSeek reads each abstract
+python -m pipeline link --openalex --max-usd 1.0      # resolve the original each one names
+python -m pipeline link --check               # how often that resolution is right (free)
+```
+
 `python -m pipeline fetch --refresh` pulls FORRT's newest release (FLoRA updates several times a week) and records the new hashes. CI does this weekly and deploys to GitHub Pages (`.github/workflows/site.yml`).
 
 ## Layout
@@ -39,6 +50,7 @@ npm run preview                   # http://localhost:4321
 | `data/raw/local/` | Two inputs salvaged from earlier work: the parsed famous-effects list and an OpenAlex citation snapshot | never |
 | `data/curated/` | Human decisions: `merges.yaml`, the append-only effect-ID ledger, the count baseline | yes, via PR |
 | `data/build/`, `site/public/generated/` | Generated bundle | never (gitignored) |
+| `data/discovery/` | Discovery, triage and linking results; survives a build, rebuildable from cache | never (gitignored) |
 | `docs/planning/` | The research and design reports behind this build | reference |
 | `archive/` | Earlier attempts (harvester, taxonomy experiments, old wiki). Local only, gitignored | no |
 
@@ -50,7 +62,8 @@ The build (`python -m pipeline build`) fails instead of shipping when:
 - a game card contains an answer-revealing word, ships its answer, or the deck's base rate leaves 35–65%;
 - any headline count drops by more than 1% against `data/curated/baseline/SUMMARY.json` (accept on purpose with `--accept-baseline`);
 - a string that looks like an API key appears in code, curated data or docs;
-- an unexpected file or folder appears in the repository root.
+- an unexpected file or folder appears in the repository root;
+- a review-queue row loses its `machine` state, repeats a pair FORRT already records, or is shown on a page without being one of our linked replications.
 
 Effect IDs (`fx_…`) are issued once by `data/curated/registry/effect_ids.csv` and never reused, so renaming or merging an effect never breaks a link.
 

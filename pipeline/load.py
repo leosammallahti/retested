@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 FORRT = RAW / "forrt"
 CACHE = ROOT / "data" / "cache"
+# Discovery and triage results live outside data/build, which `build` wipes on every run.
+DISCOVERY = ROOT / "data" / "discovery"
 
 SOURCES = {
     "flora": FORRT / "fred-data" / "output_flora.csv",
@@ -204,3 +206,15 @@ def load_merges() -> list[dict]:
     if not p.exists():
         return []
     return yaml.safe_load(p.read_text(encoding="utf-8")) or []
+
+
+def load_triaged() -> list[dict]:
+    """DeepSeek's screen of the discovered candidates. Empty until `python -m pipeline triage` has run."""
+    f = DISCOVERY / "triaged.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+
+
+def load_links() -> dict[str, dict]:
+    """cid -> resolved original. Empty until `python -m pipeline link` has run."""
+    f = DISCOVERY / "links.json"
+    return json.loads(f.read_text(encoding="utf-8"))["links"] if f.exists() else {}

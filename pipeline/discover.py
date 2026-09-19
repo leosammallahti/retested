@@ -5,7 +5,7 @@ for works that (a) cite it and (b) mention replication in title or abstract, sco
 language, and keep only those absent from BOTH FORRT's curated data (FLoRA/FReD/legacy) AND FORRT's own
 machine-found candidate files. What remains is what FORRT's self-description-based pipeline missed.
 
-    python -m pipeline discover            # crawl (cached, resumable) + score + write data/build/discovered.json
+    python -m pipeline discover            # crawl (cached, resumable) + score + write data/discovery/discovered-<mode>.json
 
 Cost: roughly 1 OpenAlex call per 50 seeds for ID lookup plus 1+ call per 50 seeds for citations (~$0.001/call).
 """
@@ -24,7 +24,7 @@ import pandas as pd
 from rapidfuzz import fuzz
 
 from .ids import norm_doi
-from .load import CACHE, FORRT, ROOT
+from .load import CACHE, DISCOVERY, FORRT, ROOT
 
 API = "https://api.openalex.org/works"
 MAILTO = "leosammallahti@gmail.com"
@@ -279,7 +279,7 @@ def run(g: dict, mode: str = "cites") -> dict:
         "recall": recall, "api_calls": _spent["calls"], "cost_usd": round(_spent["usd"], 3),
     }
     new.sort(key=lambda r: (-r["score"], -(r["year_r"] or 0)))
-    out = ROOT / "data" / "build" / f"discovered-{mode}.json"
+    out = DISCOVERY / f"discovered-{mode}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"summary": summary, "candidates": new}, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(summary, indent=1))
@@ -314,7 +314,7 @@ def coverage(g: dict) -> dict:
         "fields_of_untagged": Counter(((w.get("primary_topic") or {}).get("field") or {}).get("display_name") for w in W if not is_psych(w)).most_common(10),
     }
     out["share_visible_to_keyword_search"] = round(out["visible_to_keyword_search"] / n, 3)
-    (ROOT / "data" / "build").mkdir(parents=True, exist_ok=True)
-    (ROOT / "data" / "build" / "coverage.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    DISCOVERY.mkdir(parents=True, exist_ok=True)
+    (DISCOVERY / "coverage.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
     print(json.dumps(out, indent=1))
     return out

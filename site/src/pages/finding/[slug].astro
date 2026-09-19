@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Dossier from '../../components/Dossier.astro';
-import { findings, attempts, papers, effectById, type Finding } from '../../lib/data';
+import Pending from '../../components/Pending.astro';
+import { findings, attempts, papers, effectById, pending, type Finding } from '../../lib/data';
 import { u, atlasUrl, doiUrl, cleanQuote, clip } from '../../lib/fmt';
 
 export function getStaticPaths() {
@@ -14,6 +15,7 @@ const list = f.attempts.map((id) => A[id]);
 const effs = (f.effects ?? []).map(effectById).filter(Boolean);
 const claims = [...new Set(list.flatMap((a) => a.rows).map((r) => r.description).filter((d): d is string => !!d && d.length > 30))];
 const title = p.title ?? f.doi_o;
+const unverified = pending().by_finding[f.doi_o] ?? [];
 ---
 <Base title={clip(title, 90)} description={`Replication record of ${p.authors ?? ''} ${p.year ?? ''}: ${f.lenses.record.label}.`} active="effects/">
   <article class="wrap">
@@ -30,6 +32,8 @@ const title = p.title ?? f.doi_o;
       )}
     </header>
     <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+
+    {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" />}
   </article>
 </Base>
 <style>

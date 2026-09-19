@@ -1,0 +1,63 @@
+---
+// Replications our own search found and FORRT has not recorded. They are shown next to the record, never inside it:
+// no person has checked them, so they change no count, no verdict and no figure on this page.
+import { type Candidate } from '../lib/data';
+import { u, doiUrl, cleanQuote, clip } from '../lib/fmt';
+
+interface Props { rows: Candidate[]; subject: string }
+const { rows, subject } = Astro.props;
+
+const TONE: Record<string, string> = { successful: 't-ok', failed: 't-bad', mixed: 't-mix' };
+const OUT: Record<string, string> = { successful: 'says it replicated', failed: 'says it did not replicate', mixed: 'says mixed' };
+const HOW: Record<string, string> = {
+  'cited by this paper': 'the replication cites this original',
+  library_author_year: 'author and year matched against this wiki',
+  openalex_author_year: 'author and year searched in OpenAlex',
+};
+const withOutcome = rows.filter((r) => r.outcome).length;
+---
+<section class="pending">
+  <div class="sh"><h2>Not in the record yet</h2><span class="label">Unverified · pending review</span></div>
+  <div class="card">
+    <p>
+      Our own search of OpenAlex turned up <b class="num">{rows.length}</b> paper{rows.length === 1 ? '' : 's'} that
+      appear{rows.length === 1 ? 's' : ''} to replicate {subject} and {rows.length === 1 ? 'is' : 'are'} not in FORRT's
+      data. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
+      this original; <b>no person has checked {rows.length === 1 ? 'it' : 'them'}</b>. Nothing here counts towards the verdict,
+      the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.
+      Help decide in the <a href={u('queue/')}>review queue</a>.
+    </p>
+    <ol class="plist">
+      {rows.map((r) => (
+        <li>
+          <div class="phead">
+            <span class={`stamp sm ${TONE[r.outcome ?? ''] ?? 't-na'}`}>{r.outcome ? `abstract ${OUT[r.outcome]}` : 'no outcome stated'}</span>
+            <span class="chip warn">unverified</span>
+            {r.evidence_tier === 'preprint' && <span class="chip">preprint</span>}
+            {r.type === 'reproduction' && <span class="chip">reanalysis</span>}
+          </div>
+          <div class="ptitle">
+            {r.doi_r ? <a href={doiUrl(r.doi_r)} rel="noopener">{r.title_r ?? r.doi_r}</a> : <span>{r.title_r}</span>}
+          </div>
+          <div class="faint pmeta mono">
+            {[r.authors_r, r.year_r, r.journal_r].filter(Boolean).join(' · ')}
+          </div>
+          {r.outcome_quote && <blockquote class="q">“{clip(cleanQuote(r.outcome_quote), 220)}”</blockquote>}
+          <div class="faint pmeta mono">
+            link: {HOW[r.link_method ?? ''] ?? r.link_method ?? 'unresolved'}
+            {r.link_confidence && <> · {r.link_confidence} confidence</>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+<style>
+  .pending .card { border-style: dashed; }
+  .plist { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+  .plist li { border-top: 1px solid var(--rule); padding: 1rem 0 .2rem; }
+  .phead { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin-bottom: .5rem; }
+  .ptitle { font: 500 1.02rem/1.35 var(--f-display); }
+  .pmeta { font-size: .74rem; margin-top: .3rem; }
+  .plist blockquote.q { margin: .6rem 0 .2rem; font-size: .92rem; }
+</style>

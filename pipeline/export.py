@@ -33,7 +33,7 @@ def promoted(f: dict, game_findings: set[str]) -> bool:
     return L["record"]["n_attempts"] >= 2 or L["numeric"] is not None or bool(f.get("effects")) or f["slug"] in game_findings
 
 
-def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], stats: dict, citation: str) -> dict:
+def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pending: dict, stats: dict, citation: str) -> dict:
     if BUILD.exists():
         shutil.rmtree(BUILD)
     if PUBLIC.exists():
@@ -57,6 +57,8 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], sta
         "stats.json": _dump(BUILD / "stats.json", stats, pretty=True),
         "game-items.json": _dump(BUILD / "game-items.json", items),
         "citation.json": _dump(BUILD / "citation.json", {"forrt": citation}),
+        "candidates.json": _dump(BUILD / "candidates.json", candidates),
+        "pending.json": _dump(BUILD / "pending.json", pending),
     }
 
     # --- client payloads (only what the browser needs; answers kept apart from cards)

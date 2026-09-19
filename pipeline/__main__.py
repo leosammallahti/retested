@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import discover, export, fetch, game, load, queue, registry, score, stats, triage, validate
+from . import discover, export, fetch, game, link, load, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -27,15 +27,17 @@ def build(accept_baseline: bool) -> int:
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
     items, reveals = game.build(g)
-    candidates = queue.build(load.load_extractor(), g)
+    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), load.load_links(), g)
+    pending = queue.pending(candidates, g)
     st = stats.build(g, items, candidates)
-    step(f"game {len(items)} items; queue {len(candidates)} candidates")
-    problems = validate.run(g, src["flora"], items, reveals, st, accept_baseline)
+    step(f"game {len(items)} items; queue {len(candidates)} candidates; "
+         f"{sum(len(v) for v in pending['by_finding'].values())} pending on {len(pending['by_finding'])} finding pages")
+    problems = validate.run(g, src["flora"], items, reveals, st, accept_baseline, candidates, pending)
     if problems:
         print("\nVALIDATION FAILED:", *problems[:40], sep="\n  - ")
         return 1
     ledger.save()
-    sizes = export.write(g, items, reveals, candidates, st, load.load_citation())
+    sizes = export.write(g, items, reveals, candidates, pending, st, load.load_citation())
     (ROOT / "data" / "build" / "build-log.txt").write_text("\n".join(g["log"]), encoding="utf-8")
     step("wrote " + ", ".join(f"{k} {v / 1e6:.1f}MB" for k, v in sizes.items()))
     print(json.dumps(st["counts"], indent=1))
@@ -59,11 +61,17 @@ def main() -> None:
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
     dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
+    lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
+    lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
+    lp.add_argument("--max-usd", type=float, default=1.0, help="OpenAlex spending cap")
+    lp.add_argument("--check", action="store_true", help="accuracy against originals the citation graph already resolved")
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
     tp.add_argument("--tier", choices=["high", "medium"], default="high")
     tp.add_argument("--pilot", action="store_true", help="only the 70 hand-labelled papers; report agreement")
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     a = ap.parse_args()
+    if a.cmd == "link":
+        sys.exit(link.run(a.openalex, a.max_usd, a.check))
     if a.cmd == "triage":
         sys.exit(triage.run(a.tier, a.pilot, a.max_usd))
     if a.cmd == "discover":

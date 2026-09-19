@@ -1,6 +1,7 @@
 # --- generated (rebuilt by `python -m pipeline build` and `npm run build`)
 data/build/
 data/cache/
+data/discovery/
 site/public/generated/
 site/dist/
 site/.astro/

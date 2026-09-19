@@ -23,7 +23,35 @@ class Failure(Exception):
     pass
 
 
-def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dict, accept_baseline: bool) -> list[str]:
+def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
+    """Nothing unreviewed may be presented as part of the record, and nothing may be proposed twice."""
+    problems = []
+    ids = [c["id"] for c in candidates]
+    if len(set(ids)) != len(ids):
+        problems.append(f"{len(ids) - len(set(ids))} duplicate candidate ids in the review queue")
+    known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
+    for c in candidates:
+        if c["review_state"] != "machine":
+            problems.append(f"candidate {c['id']} is not marked machine-reviewed")
+        if c["doi_o"] and c["doi_r"] and (c["doi_o"], c["doi_r"]) in known_pairs:
+            problems.append(f"candidate {c['id']} repeats a pair FORRT already records")
+    seen = set()
+    for doi_o, rows in pending["by_finding"].items():
+        if doi_o not in g["findings"]:
+            problems.append(f"pending rows attached to {doi_o}, which has no finding")
+        for c in rows:
+            if c["group"] != "replication" or not c["original_in_wiki"] or c["origin"] != "retested_discovery":
+                problems.append(f"pending row {c['id']} is not one of our linked replications")
+            seen.add(c["id"])
+    for eid, rows in pending["by_effect"].items():
+        for c in rows:
+            if c["id"] not in seen:
+                problems.append(f"effect {eid} shows pending row {c['id']} that no finding shows")
+    return problems
+
+
+def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dict, accept_baseline: bool,
+        candidates: list[dict], pending: dict) -> list[str]:
     problems: list[str] = []
     A, F, E = g["attempts"], g["findings"], g["effects"]
 
@@ -73,6 +101,8 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
         rate = sum(a == "successful" for a in study) / len(study)
         if not 0.35 <= rate <= 0.65:
             problems.append(f"game base rate {rate:.2f} outside [0.35, 0.65]")
+
+    problems += queue_checks(g, candidates, pending)
 
     # 4. no secrets anywhere outside the archive
     for d in SCAN_DIRS:

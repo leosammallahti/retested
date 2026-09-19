@@ -32,6 +32,7 @@ const records = [
         <tr><td>FORRT Replications &amp; Reversals list</td><td>A hand-curated 2021–22 list of famous effects with a verdict and critiques. Shown beside our record as "what the curated list said", never merged into it.</td></tr>
         <tr><td>OpenAlex</td><td>Citation counts and citations per year for original papers.</td></tr>
         <tr><td>FORRT flora-extractor</td><td>Machine-extracted candidate replications (AI-read abstracts). Only used in the <a href={u('queue/')}>review queue</a>, clearly marked as unverified.</td></tr>
+        <tr><td>Our own OpenAlex search</td><td>Psychology papers with "replication" in the title, plus papers citing an original already here and mentioning replication. Each abstract is screened by DeepSeek, and its original resolved against this wiki or by a further OpenAlex lookup. Only used in the <a href={u('queue/')}>review queue</a> and as "not in the record yet" boxes on effect and finding pages; never counted.</td></tr>
       </tbody>
     </table>
 
@@ -55,6 +56,7 @@ const records = [
       <li><b>Coverage.</b> Most effects have one attempt. We label single attempts as such.</li>
       <li><b>Coding.</b> Verdicts are the replicators' own, as coded by FORRT volunteers and, increasingly, AI-assisted pipelines. Sources sometimes disagree; we flag it.</li>
       <li><b>Names.</b> Effect names come from several lists and are imperfect. Every effect keeps a stable ID, so fixing a name never breaks a link.</li>
+      <li><b>Our unverified finds.</b> The papers we surface ourselves are machine-screened only. On the originals the citation graph had already resolved, matching by author, year and description picked the right original 92% of the time from this wiki and 89% of the time from an OpenAlex lookup — good enough to put in front of a reviewer, not good enough to count. They change no verdict, tally or figure anywhere on this site.</li>
     </ul>
 
     <h2 id="cite">Credit and citation</h2>

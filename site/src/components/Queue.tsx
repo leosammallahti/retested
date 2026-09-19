@@ -1,13 +1,33 @@
-// Review queue: machine-found replication candidates (FORRT flora-extractor) awaiting a human.
+// Review queue: machine-found replication candidates awaiting a human, from two sources — FORRT's own
+// flora-extractor and our keyword/citation search screened by DeepSeek.
 // Decisions are kept in this browser and exported as CSV in FLoRA's submission columns.
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
 interface Cand {
-  id: string; doi_r: string; title_r: string | null; year_r: number | null; journal_r: string | null;
+  id: string; doi_r: string; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
   doi_o: string | null; title_o: string | null; year_o: number | null; outcome: string | null; outcome_quote: string | null;
-  outcome_confidence: string | null; link_confidence: string | null; type: string | null; rep_already_known: boolean; original_in_wiki: boolean;
+  outcome_confidence: string | number | null; link_confidence: string | null; type: string | null; rep_already_known: boolean; original_in_wiki: boolean;
   effect: { slug: string; name: string } | null; abstract: string | null; models: string[];
+  origin: 'forrt_flora_extractor' | 'retested_discovery';
+  group: 'replication' | 'other_behavioural' | 'registration';
+  link_method?: string | null; evidence_tier?: string; found_by?: string[]; screen_reason?: string | null;
+  link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
+  original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
+const ORIGIN: Record<string, string> = {
+  forrt_flora_extractor: "FORRT's extractor",
+  retested_discovery: 'Found by Retested',
+};
+const GROUP: Record<string, string> = {
+  replication: 'psychology replication',
+  other_behavioural: 'other behavioural science',
+  registration: 'registered protocol, no results yet',
+};
+const HOW: Record<string, string> = {
+  'cited by this paper': 'original is cited by this paper',
+  library_author_year: 'author + year matched in this wiki',
+  openalex_author_year: 'author + year searched in OpenAlex',
+};
 type Decision = { v: 'accept' | 'reject' | 'unsure'; outcome?: string; note?: string; at: string };
 const KEY = 'retested.queue.v1';
 const PAGE = 25;
@@ -20,6 +40,8 @@ export default function Queue({ base }: { base: string }) {
   const [dec, setDec] = useState<Record<string, Decision>>({});
   const [q, setQ] = useState('');
   const [scope, setScope] = useState<'known' | 'all'>('known');
+  const [origin, setOrigin] = useState<'all' | 'forrt_flora_extractor' | 'retested_discovery'>('all');
+  const [group, setGroup] = useState<'replication' | 'other_behavioural' | 'registration' | 'all'>('replication');
   const [show, setShow] = useState<'open' | 'decided'>('open');
   const [page, setPage] = useState(0);
 
@@ -30,9 +52,11 @@ export default function Queue({ base }: { base: string }) {
     const qq = q.toLowerCase().trim();
     return all.filter((c) =>
       (scope === 'all' || c.original_in_wiki) &&
+      (origin === 'all' || c.origin === origin) &&
+      (group === 'all' || c.group === group) &&
       (show === 'open' ? !dec[c.id] : !!dec[c.id]) &&
       (!qq || [c.title_r, c.title_o, c.doi_r, c.doi_o, c.effect?.name].join(' ').toLowerCase().includes(qq)));
-  }, [all, dec, q, scope, show]);
+  }, [all, dec, q, scope, show, origin, group]);
 
   const decide = (c: Cand, v: Decision['v'], outcome?: string) => {
     const d = { ...dec, [c.id]: { v, outcome: outcome ?? c.outcome ?? undefined, at: new Date().toISOString() } };
@@ -47,7 +71,7 @@ export default function Queue({ base }: { base: string }) {
     const esc = (s: unknown) => `"${String(s ?? '').replace(/"/g, '""')}"`;
     const rows = Object.entries(dec).filter(([, d]) => d.v === 'accept').map(([id, d]) => {
       const c = byId.get(id)!;
-      return [c.doi_o, c.doi_r, c.title_o, c.title_r, d.outcome ?? c.outcome, c.outcome_quote, 'abstract', 'accepted by human reviewer', d.at, 'forrt_flora_extractor via Retested'].map(esc).join(',');
+      return [c.doi_o, c.doi_r, c.title_o, c.title_r, d.outcome ?? c.outcome, c.outcome_quote, 'abstract', 'accepted by human reviewer', d.at, `${c.origin} via Retested`].map(esc).join(',');
     });
     const blob = new Blob([[cols.join(','), ...rows].join('\n')], { type: 'text/csv' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `retested-accepted-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
@@ -65,6 +89,17 @@ export default function Queue({ base }: { base: string }) {
           <option value="known">Originals already in the wiki</option>
           <option value="all">All candidates</option>
         </select>
+        <select value={origin} onChange={(e) => { setOrigin((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Source">
+          <option value="all">Both sources</option>
+          <option value="forrt_flora_extractor">FORRT's extractor</option>
+          <option value="retested_discovery">Found by Retested</option>
+        </select>
+        <select value={group} onChange={(e) => { setGroup((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Kind">
+          <option value="replication">Psychology replications</option>
+          <option value="other_behavioural">Other behavioural science</option>
+          <option value="registration">Registered protocols</option>
+          <option value="all">All kinds</option>
+        </select>
         <select value={show} onChange={(e) => { setShow((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Status">
           <option value="open">Not yet reviewed</option>
           <option value="decided">My decisions</option>
@@ -79,13 +114,26 @@ export default function Queue({ base }: { base: string }) {
             <li key={c.id} class="qitem">
               <div class="qhead">
                 <span class={`stamp sm ${c.outcome === 'successful' ? 't-ok' : c.outcome === 'failed' ? 't-bad' : c.outcome === 'mixed' ? 't-mix' : 't-na'}`}>machine says: {c.outcome ?? 'no outcome'}</span>
+                <span class="chip">{ORIGIN[c.origin]}</span>
+                {c.group !== 'replication' && <span class="chip warn">{GROUP[c.group]}</span>}
+                {c.evidence_tier === 'preprint' && <span class="chip">preprint</span>}
                 {c.effect && <a class="chip" href={`${base}effect/${c.effect.slug}/`}>{c.effect.name}</a>}
                 {c.rep_already_known && <span class="chip warn">replication paper already known for another original</span>}
                 {d && <span class={`chip ${d.v === 'accept' ? '' : 'claim'}`}>you: {d.v}</span>}
               </div>
               <div class="qpair">
                 <div><div class="label">Replication{c.year_r ? ` · ${c.year_r}` : ''}</div><a href={`https://doi.org/${c.doi_r}`} rel="noopener">{c.title_r ?? c.doi_r}</a>{c.journal_r && <div class="faint jr">{c.journal_r}</div>}</div>
-                <div><div class="label">Claimed original{c.year_o ? ` · ${c.year_o}` : ''}</div>{c.doi_o ? <a href={`https://doi.org/${c.doi_o}`} rel="noopener">{c.title_o ?? c.doi_o}</a> : <span class="faint">not resolved</span>}</div>
+                <div>
+                  <div class="label">Claimed original{c.year_o ? ` · ${c.year_o}` : ''}</div>
+                  {c.doi_o
+                    ? <a href={`https://doi.org/${c.doi_o}`} rel="noopener">{c.title_o ?? c.doi_o}</a>
+                    : c.original_named?.authors
+                      ? <span class="faint">named only: {c.original_named.authors} {c.original_named.year ?? ''} — no DOI resolved</span>
+                      : <span class="faint">not resolved</span>}
+                  {c.original_named?.description && <div class="faint jr">“{c.original_named.description}”</div>}
+                  {c.link_method && <div class="faint jr mono">{HOW[c.link_method] ?? c.link_method}</div>}
+                  {c.link_evidence?.runner_up && <div class="faint jr mono">next best: {c.link_evidence.runner_up.title_o ?? c.link_evidence.runner_up.doi_o}</div>}
+                </div>
               </div>
               {c.outcome_quote && <blockquote class="q">“{c.outcome_quote}”</blockquote>}
               {c.abstract && <details><summary class="faint">Abstract</summary><p class="abs">{c.abstract}{c.abstract.length >= 699 ? '…' : ''}</p></details>}
@@ -100,7 +148,8 @@ export default function Queue({ base }: { base: string }) {
                     <button class="btn ghost" onClick={() => decide(c, 'unsure')}>Unsure</button>
                   </>
                 ) : <button class="btn ghost" onClick={() => undo(c)}>Undo</button>}
-                <span class="mono faint qm">{[c.link_confidence && `link: ${c.link_confidence}`, c.outcome_confidence && `outcome: ${c.outcome_confidence}`].filter(Boolean).join(' · ')}</span>
+                <span class="mono faint qm">{[c.link_confidence && `link: ${c.link_confidence}`, c.outcome_confidence && `outcome: ${c.outcome_confidence}`,
+                  c.found_by?.length && `found by ${c.found_by.join(' + ')} search`, c.screen_reason].filter(Boolean).join(' · ')}</span>
               </div>
             </li>
           );

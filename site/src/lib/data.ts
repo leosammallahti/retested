@@ -52,12 +52,28 @@ export interface Stats {
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }
 
+export interface Candidate {
+  id: string; doi_r: string | null; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
+  doi_o: string | null; title_o: string | null; year_o: number | null;
+  outcome: string | null; outcome_quote: string | null; outcome_confidence: string | number | null;
+  link_confidence: string | null; link_method?: string | null;
+  link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
+  original_named?: { authors: string | null; year: number | null; description: string | null } | null;
+  type: string | null; field?: string | null; group: 'replication' | 'other_behavioural' | 'registration';
+  evidence_tier?: string; found_by?: string[]; screen_reason?: string | null;
+  rep_already_known: boolean; original_in_wiki: boolean; effect: { slug: string; name: string } | null;
+  abstract: string | null; models: string[]; origin: 'forrt_flora_extractor' | 'retested_discovery'; review_state: string;
+}
+export interface Pending { by_finding: Record<string, Candidate[]>; by_effect: Record<string, Candidate[]> }
+
 export const effects = () => read<Effect[]>('effects.json');
 export const findings = () => read<Record<string, Finding>>('findings.json');
 export const attempts = () => read<Record<string, Attempt>>('attempts.json');
 export const papers = () => read<Record<string, Paper>>('papers.json');
 export const stats = () => read<Stats>('stats.json');
 export const citation = () => read<{ forrt: string }>('citation.json').forrt;
+export const candidates = () => read<Candidate[]>('candidates.json');
+export const pending = () => read<Pending>('pending.json');
 
 let _effById: Map<string, Effect> | undefined;
 export const effectById = (id: string) => (_effById ??= new Map(effects().map((e) => [e.id, e]))).get(id);

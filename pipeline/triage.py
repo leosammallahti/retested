@@ -21,7 +21,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from .load import CACHE, ROOT
+from .load import CACHE, DISCOVERY, ROOT
 
 URL = "https://api.deepseek.com/chat/completions"
 MODEL = "deepseek-v4-flash"
@@ -153,7 +153,7 @@ def candidates(tier: str) -> list[dict]:
     tiers = {"high": {"high"}, "medium": {"high", "medium"}}[tier]
     seen, out = {}, []
     for mode in ("keyword", "cites"):
-        p = ROOT / "data" / "build" / f"discovered-{mode}.json"
+        p = DISCOVERY / f"discovered-{mode}.json"
         if not p.exists():
             continue
         for c in json.loads(p.read_text(encoding="utf-8"))["candidates"]:
@@ -194,7 +194,7 @@ def run(tier: str = "high", pilot: bool = False, max_usd: float = 1.5, workers: 
           f"real spend ${(b0 - b1) if (b0 is not None and b1 is not None) else float('nan'):.3f}")
     if pilot:
         return report_pilot(results)
-    out = ROOT / "data" / "build" / "triaged.json"
+    out = DISCOVERY / "triaged.json"
     out.write_text(json.dumps(results, ensure_ascii=False), encoding="utf-8")
     from collections import Counter
     print("  kinds:", Counter(r["triage"].get("kind") for r in results).most_common())
@@ -215,12 +215,12 @@ _CI = "XNNNBNNNXXXYBNXNNYYYXYXXXNNXYN"
 
 def pilot_set() -> list[dict]:
     import random
-    K = [c for c in json.loads((ROOT / "data/build/discovered-keyword.json").read_text(encoding="utf-8"))["candidates"] if c["tier"] == "high"]
+    K = [c for c in json.loads((DISCOVERY / "discovered-keyword.json").read_text(encoding="utf-8"))["candidates"] if c["tier"] == "high"]
     random.seed(7)
     ks = random.sample(K, 40)
-    C = json.loads((ROOT / "data/build/discovered-cites.json").read_text(encoding="utf-8"))["candidates"]
+    C = json.loads((DISCOVERY / "discovered-cites.json").read_text(encoding="utf-8"))["candidates"]
     kall = {c.get("doi_r") or c["openalex_id"] for c in K} | {c.get("doi_r") or c["openalex_id"] for c in
-            json.loads((ROOT / "data/build/discovered-keyword.json").read_text(encoding="utf-8"))["candidates"]}
+            json.loads((DISCOVERY / "discovered-keyword.json").read_text(encoding="utf-8"))["candidates"]}
     only = [c for c in C if c["tier"] == "high" and (c.get("doi_r") or c["openalex_id"]) not in kall]
     random.seed(11)
     cs = random.sample(only, 30)

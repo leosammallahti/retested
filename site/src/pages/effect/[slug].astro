@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Dossier from '../../components/Dossier.astro';
-import { effects, attempts, papers, findings, type Effect } from '../../lib/data';
+import Pending from '../../components/Pending.astro';
+import { effects, attempts, papers, findings, pending, type Effect } from '../../lib/data';
 import { u, cleanQuote, clip, int, asClaim } from '../../lib/fmt';
 
 export function getStaticPaths() {
@@ -23,6 +24,7 @@ const byline = orig.length === 1 ? [orig[0].authors, orig[0].year].filter(Boolea
 const fam = e.famous;
 const famStatus = fam?.status ? { replicated: 'replicated', not_replicated: 'not replicated', mixed: 'mixed', reversed: 'reversed' }[fam.status] : null;
 const findingPages = e.originals.map((d) => F[d]).filter((f) => f?.page);
+const unverified = pending().by_effect[e.id] ?? [];
 const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.record.k} replication${e.lenses.record.k === 1 ? '' : 's'} with a verdict. ${claim ? clip(claim, 140) : ''}`;
 ---
 <Base title={e.name} description={desc} active="effects/">
@@ -42,6 +44,8 @@ const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.r
     </header>
 
     <Dossier attempts={own} lenses={e.lenses} originals={e.originals} shared={shared} subject="this effect" />
+
+    {unverified.length > 0 && <Pending rows={unverified} subject="this effect" />}
 
     {fam && (
       <section>
