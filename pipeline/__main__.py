@@ -58,7 +58,7 @@ def main() -> None:
     f = sub.add_parser("fetch", help="download the raw sources listed in data/raw/forrt/MANIFEST.json")
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
     dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
-    dp.add_argument("--mode", choices=["cites", "keyword"], default="cites", help="cites = citation graph of known originals; keyword = title search")
+    dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
     a = ap.parse_args()
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))

@@ -206,6 +206,8 @@ def run(g: dict, mode: str = "cites") -> dict:
     idmap = resolve_ids(seeds_doi)
     rev = {v: k for k, v in idmap.items()}
     print(f"  resolved {len(idmap)}/{len(seeds_doi)} to OpenAlex ids ({time.time() - t0:.0f}s)")
+    if mode == "coverage":
+        return coverage(g)
     works = citing_replications(sorted(rev)) if mode == "cites" else keyword_sweep()
     print(f"  {len(works)} works ({mode}) ({time.time() - t0:.0f}s, {_spent['calls']} API calls, ${_spent['usd']:.3f})")
 
@@ -256,3 +258,37 @@ def run(g: dict, mode: str = "cites") -> dict:
     out.write_text(json.dumps({"summary": summary, "candidates": new}, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(summary, indent=1))
     return summary
+
+
+# ---------------------------------------------------------------- how much can a keyword search even see?
+
+def coverage(g: dict) -> dict:
+    """Use FORRT's own replication papers as an answer key: what share are in OpenAlex, tagged Psychology,
+    and have 'replic...' in the title? That is the ceiling for a 'psychology + replication in title' search."""
+    from collections import Counter
+    reps = sorted({a["doi_r"] for a in g["attempts"].values() if a["type"] == "replication" and a["doi_r"] and "flora" in a["sources"]})
+    found = {}
+    for i in range(0, len(reps), 50):
+        chunk = reps[i:i + 50]
+        d = _get({"filter": "doi:" + "|".join(chunk), "select": "id,doi,title,topics,primary_topic,type", "per_page": 50}, f"cov-{i // 50:04d}")
+        for w in d.get("results", []):
+            found[norm_doi(w["doi"])] = w
+    is_psych = lambda w: any((t.get("field") or {}).get("id", "").endswith("/32") for t in (w.get("topics") or []))  # noqa: E731
+    is_psych_main = lambda w: ((w.get("primary_topic") or {}).get("field") or {}).get("id", "").endswith("/32")  # noqa: E731
+    in_title = lambda w: bool(re.search(r"replic", w.get("title") or "", re.I))  # noqa: E731
+    W = list(found.values())
+    n = len(reps)
+    out = {
+        "flora_replication_papers": n,
+        "in_openalex": len(W),
+        "tagged_psychology_any_topic": sum(map(is_psych, W)),
+        "tagged_psychology_main_topic": sum(map(is_psych_main, W)),
+        "replic_in_title": sum(map(in_title, W)),
+        "visible_to_keyword_search": sum(1 for w in W if is_psych(w) and in_title(w)),
+        "fields_of_untagged": Counter(((w.get("primary_topic") or {}).get("field") or {}).get("display_name") for w in W if not is_psych(w)).most_common(10),
+    }
+    out["share_visible_to_keyword_search"] = round(out["visible_to_keyword_search"] / n, 3)
+    (ROOT / "data" / "build").mkdir(parents=True, exist_ok=True)
+    (ROOT / "data" / "build" / "coverage.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print(json.dumps(out, indent=1))
+    return out
