@@ -275,6 +275,10 @@ def report_check(triaged: list[dict], idx: dict, recs: dict, use_openalex: bool,
             if hit:
                 rows["openalex"].append((hit, truth))
     print(f"  gold set: {len(gold)} pairs the citation graph resolved and the model also named")
+    print("  NOTE: these are papers whose original the citation graph already found, so the original is in the\n"
+          "  library by construction. That is the easy half, and every number below is an UPPER BOUND. Reading\n"
+          "  shipped rows by hand put low-confidence library links at 36%, not the 91% this harness reports.\n"
+          "  See docs/LINK_AUDIT_20260919.md before trusting a band on the strength of this output.")
     for src_name, rs in rows.items():
         if not rs:
             continue
