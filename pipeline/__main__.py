@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import export, fetch, game, load, queue, registry, score, stats, validate
+from . import discover, export, fetch, game, load, queue, registry, score, stats, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -42,6 +42,14 @@ def build(accept_baseline: bool) -> int:
     return 0
 
 
+def run_discover(mode: str) -> int:
+    src = {"flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
+           "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges()}
+    g = registry.build(src, EffectLedger(LEDGER))
+    discover.run(g, mode)
+    return 0
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="pipeline")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -49,7 +57,11 @@ def main() -> None:
     b.add_argument("--accept-baseline", action="store_true", help="accept count changes and rewrite the baseline")
     f = sub.add_parser("fetch", help="download the raw sources listed in data/raw/forrt/MANIFEST.json")
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
+    dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
+    dp.add_argument("--mode", choices=["cites", "keyword"], default="cites", help="cites = citation graph of known originals; keyword = title search")
     a = ap.parse_args()
+    if a.cmd == "discover":
+        sys.exit(run_discover(a.mode))
     if a.cmd == "build":
         sys.exit(build(a.accept_baseline))
     if a.cmd == "fetch":
