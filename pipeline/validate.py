@@ -13,7 +13,7 @@ BASELINE = ROOT / "data" / "curated" / "baseline" / "SUMMARY.json"
 SECRET = re.compile(r"sk-or-v1-[A-Za-z0-9]{20,}|sk-proj-[A-Za-z0-9_-]{20,}|sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{40,}")
 SCAN_DIRS = ("pipeline", "site/src", "data/curated", "docs", "tests")
 ROOT_ALLOW = {
-    ".git", ".gitignore", ".gitattributes", ".github", ".claude", ".venv", ".mypy_cache", "__pycache__",
+    ".git", ".gitignore", ".gitattributes", ".env", ".github", ".claude", ".venv", ".mypy_cache", "__pycache__",
     "README.md", "pyproject.toml", "uv.lock", "package.json", "package-lock.json", "node_modules",
     "pipeline", "site", "data", "docs", "tests", "archive",
 }

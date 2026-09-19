@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from collections import defaultdict
@@ -35,23 +36,48 @@ SELECT = "id,doi,title,publication_year,type,referenced_works,abstract_inverted_
 _spent = {"calls": 0, "usd": 0.0}
 
 
+def _api_key() -> str | None:
+    """OPENALEX_API_KEY from the environment or ROOT/.env (gitignored, chmod 600). Never logged, never cached."""
+    import os
+    if os.environ.get("OPENALEX_API_KEY"):
+        return os.environ["OPENALEX_API_KEY"].strip()
+    env = ROOT / ".env"
+    if env.exists():
+        for line in env.read_text(encoding="utf-8").splitlines():
+            if line.strip().startswith("OPENALEX_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'") or None
+    return None
+
+
 def _get(params: dict, cache_key: str) -> dict:
     OA_CACHE.mkdir(parents=True, exist_ok=True)
     f = OA_CACHE / f"{cache_key}.json"
     if f.exists():
         return json.loads(f.read_text(encoding="utf-8"))
-    q = urllib.parse.urlencode({**params, "mailto": MAILTO}, safe=":|,*")
-    for attempt in range(5):
+    key = _api_key()
+    q = urllib.parse.urlencode({**params, "mailto": MAILTO, **({"api_key": key} if key else {})}, safe=":|,*")
+    for attempt in range(6):
         try:
             req = urllib.request.Request(f"{API}?{q}", headers={"User-Agent": f"Retested/0.1 (mailto:{MAILTO})"})
             with urllib.request.urlopen(req, timeout=60) as r:
                 d = json.loads(r.read())
             break
-        except Exception as e:  # noqa: BLE001 - retry any transient network/HTTP error
-            if attempt == 4:
+        except urllib.error.HTTPError as e:
+            left = e.headers.get("X-RateLimit-Remaining-USD")
+            if e.code == 429 and left is not None and float(left) <= 0.0005:
+                reset = int(e.headers.get("X-RateLimit-Reset") or 0)
+                raise SystemExit(f"OpenAlex daily budget used up (resets in {reset // 3600} h {reset % 3600 // 60} min). "
+                                 f"{'Add OPENALEX_API_KEY to .env for a larger allowance. ' if not key else ''}Re-run to resume from cache.")
+            if attempt == 5:
+                raise
+            wait = int(e.headers.get("Retry-After") or 0) or 1.5 * 2 ** attempt
+            print(f"    retry {attempt + 1}: HTTP {e.code}, waiting {wait:.0f}s")
+            time.sleep(wait)
+        except Exception as e:  # noqa: BLE001 - transient network error
+            if attempt == 5:
                 raise
             time.sleep(1.5 * 2 ** attempt)
-            print(f"    retry {attempt + 1}: {e}")
+            print(f"    retry {attempt + 1}: {type(e).__name__}")
     _spent["calls"] += 1
     _spent["usd"] += float((d.get("meta") or {}).get("cost_usd") or 0)
     f.write_text(json.dumps(d), encoding="utf-8")
