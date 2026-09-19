@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import discover, export, fetch, game, load, queue, registry, score, stats, validate
+from . import discover, export, fetch, game, load, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -59,7 +59,13 @@ def main() -> None:
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
     dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
+    tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
+    tp.add_argument("--tier", choices=["high", "medium"], default="high")
+    tp.add_argument("--pilot", action="store_true", help="only the 70 hand-labelled papers; report agreement")
+    tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     a = ap.parse_args()
+    if a.cmd == "triage":
+        sys.exit(triage.run(a.tier, a.pilot, a.max_usd))
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))
     if a.cmd == "build":
