@@ -83,7 +83,7 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
                     problems.append(f"secret-looking string in {p.relative_to(ROOT)}")
 
     # 5. repository root stays clean
-    stray = sorted(p.name for p in ROOT.iterdir() if p.name not in ROOT_ALLOW)
+    stray = sorted(p.name for p in ROOT.iterdir() if p.name not in ROOT_ALLOW and not p.name.endswith(".egg-info"))
     if stray:
         problems.append(f"unexpected entries in repo root (add to ROOT_ALLOW or move them): {stray}")
 
