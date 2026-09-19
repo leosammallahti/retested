@@ -1,0 +1,17 @@
+{
+  "name": "retested-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "data": "cd .. && python -m pipeline build",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "all": "npm run data && npm run build"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.0.5",
+    "astro": "^7.3.3",
+    "preact": "^10.29.8"
+  }
+}

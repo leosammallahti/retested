@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/fmt';
+---
+<Base title="Not found">
+  <div class="wrap" style="padding:4rem 0 2rem">
+    <div class="label claim">404</div>
+    <h1>This page did not replicate.</h1>
+    <p>Try the search box above, or go to the <a href={u('effects/')}>effects index</a>.</p>
+  </div>
+</Base>

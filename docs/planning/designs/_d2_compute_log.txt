@@ -1,0 +1,223 @@
+archive+current cols (2164, 50)
+conv how o: {'d': 341, 'F1': 275, 'cannot:etasq (partial)': 173, 'r': 165, 'cannot:beta (std)': 151, 't': 136, 'unparsed': 135, 'cannot:b (unstd)': 123, 'eta2': 120, 'Fdf>1': 108, 'missing': 98, 'or': 72, 'chi1': 68, 'unknown:r-squared': 42, 'unknown:ser_method': 32, 'z': 26, 'f2': 19, 'unknown:partial correlation': 14, 'unknown:mean difference': 10, 'unknown:omega squared': 9}
+conv how r: {'d': 541, 'r': 217, 'cannot:etasq (partial)': 198, 'cannot:beta (std)': 149, 'unparsed': 140, 'F1': 138, 'cannot:b (unstd)': 136, 'eta2': 103, 't': 71, 'unknown:ser_method': 65, 'chi1': 64, 'or': 55, 'Fdf>1': 51, 'missing': 50, 'unknown:r-squared': 42, 'f2': 20, "cannot:cohen's h": 19, 'unknown:semipartial correlation': 14, 'unknown:mean difference': 12, 'z': 11}
+r_o: archive nonnull 839, ours 1226, both 763, |diff|>0.01: 9, max 1.020
+r_r: archive nonnull 1002, ours 1223, both 908, |diff|>0.01: 8, max 0.371
+rows with r both sides: 1108  with Ns>3: 1103
+
+=== criterion success shares (n=1103 rows with r+N both sides) ===
+significance_r {'success': 440, 'failure': 502, 'reversal': 58, 'OS_ns': 161, 'success_share_all': np.float64(0.399), 'success_share_excl_osns': np.float64(0.467)}
+significance_agg {'success': 788, 'failure': 315, 'reversal': 0, 'OS_ns': 0, 'success_share_all': np.float64(0.714), 'success_share_excl_osns': np.float64(0.714)}
+consistency_ci {'success': 393, 'failure': 710, 'reversal': 0, 'OS_ns': 0, 'success_share_all': np.float64(0.356), 'success_share_excl_osns': np.float64(0.356)}
+consistency_pi {'success': 676, 'failure': 427, 'reversal': 0, 'OS_ns': 0, 'success_share_all': np.float64(0.613), 'success_share_excl_osns': np.float64(0.613)}
+homogeneity {'success': 645, 'failure': 458, 'reversal': 0, 'OS_ns': 0, 'success_share_all': np.float64(0.585), 'success_share_excl_osns': np.float64(0.585)}
+homogeneity_significance {'success': 449, 'failure': 493, 'reversal': 0, 'OS_ns': 161, 'success_share_all': np.float64(0.407), 'success_share_excl_osns': np.float64(0.477)}
+small_telescopes {'success': 519, 'failure': 584, 'reversal': 0, 'OS_ns': 0, 'success_share_all': np.float64(0.471), 'success_share_excl_osns': np.float64(0.471)}
+rows with all 7 defined: 942  unanimous success: 207  unanimous failure: 148  disagreement: 587 share disagree: 0.623
+distribution of #criteria satisfied: {0.0: 148, 1.0: 149, 2.0: 90, 3.0: 104, 4.0: 50, 5.0: 64, 6.0: 130, 7.0: 207}
+pairwise agreement
+                           significance_r  significance_agg  consistency_ci  consistency_pi  homogeneity  homogeneity_significance  small_telescopes
+significance_r                      1.00              0.69            0.68            0.66         0.69                      0.74              0.89
+significance_agg                    0.69              1.00            0.49            0.61         0.60                      0.70              0.73
+consistency_ci                      0.68              0.49            1.00            0.74         0.77                      0.81              0.69
+consistency_pi                      0.66              0.61            0.74            1.00         0.97                      0.92              0.64
+homogeneity                         0.69              0.60            0.77            0.97         1.00                      0.95              0.66
+homogeneity_significance            0.74              0.70            0.81            0.92         0.95                      1.00              0.77
+small_telescopes                    0.89              0.73            0.69            0.64         0.66                      0.77              1.00
+
+=== reported_success vs significance_r ===
+significance_r                       OS n.s.  failure  failure (reversal)  success
+reported_success                                                                  
+failed                                    43      361                  27       54
+mixed                                     30       51                  13       62
+statistically successful but flawed        2        0                   0        5
+successful                                86       32                  18      319
+agreement reported(succ/fail) vs significance_r: 0.872 n= 811
+consistency_pi                       failure  success
+reported_success                                     
+failed                                   253      232
+mixed                                     54      102
+statistically successful but flawed        0        7
+successful                               120      335
+agree reported vs significance_r: 0.872 (n=811)
+agree reported vs significance_agg: 0.622 (n=940)
+agree reported vs consistency_ci: 0.660 (n=940)
+agree reported vs consistency_pi: 0.626 (n=940)
+agree reported vs homogeneity: 0.648 (n=940)
+agree reported vs homogeneity_significance: 0.694 (n=811)
+agree reported vs small_telescopes: 0.809 (n=940)
+archive statistical_success vs our significance_r agreement: 0.941 n= 615
+
+=== shrinkage ===
+ratio es_r/es_o quantiles: {0.1: -0.263, 0.25: 0.049, 0.5: 0.374, 0.75: 0.949, 0.9: 1.341}  mean: 0.683
+share ratio<0 (reversed sign): 0.199  <0.5: 0.547  >=1: 0.224
+median es_o: 0.307  median es_r: 0.1
+              n  med_ratio  med_es_r   succ
+es_o_bin                                   
+(0.0, 0.1]   96      0.906     0.039  0.188
+(0.1, 0.2]  188      0.282     0.045  0.266
+(0.2, 0.3]  252      0.337     0.089  0.401
+(0.3, 0.5]  328      0.336     0.121  0.430
+(0.5, 1.0]  235      0.496     0.316  0.553
+                                     count    25%    50%    75%
+reported_success                                               
+failed                               484.0 -0.053  0.089  0.299
+mixed                                156.0  0.070  0.359  0.868
+statistically successful but flawed    7.0  0.896  1.207  1.615
+successful                           452.0  0.601  0.912  1.199
+
+=== p-value of original predicts success? ===
+reported_success
+                n   succ
+p_o_bin                 
+p<=.005     512.0  0.568
+.005<p<.05  299.0  0.261
+p>=.05      129.0  0.667
+significance_r
+                n   succ
+p_o_bin                 
+p<=.005     598.0  0.572
+.005<p<.05  344.0  0.285
+p>=.05        0.0    NaN
+consistency_pi
+                n   succ
+p_o_bin                 
+p<=.005     598.0  0.488
+.005<p<.05  344.0  0.680
+p>=.05      161.0  0.932
+small_telescopes
+                n   succ
+p_o_bin                 
+p<=.005     598.0  0.617
+.005<p<.05  344.0  0.282
+p>=.05      161.0  0.329
+using REPORTED original p-values (pval_value_o):
+                n   succ
+p_rep_bin               
+p<=.005     408.0  0.571
+.005<p<.05  421.0  0.363
+p>=.05       65.0  0.585
+ALL FReD rows, reported p_o vs reported_success:
+                  n   succ
+pval_value_o              
+p<=.005       671.0  0.617
+.005<p<.05    800.0  0.454
+p>=.05        171.0  0.596
+y ~ lp {'Intercept': -0.463, 'lp': -0.076} pseudoR2 0.046 n 940
+y ~ lnratio {'Intercept': 0.103, 'lnratio': -0.239} pseudoR2 0.016 n 940
+y ~ lp + lnratio {'Intercept': -0.307, 'lp': -0.071, 'lnratio': -0.182} pseudoR2 0.055 n 940
+y ~ z_o {'Intercept': -0.233, 'z_o': 0.037} pseudoR2 0.009 n 940
+
+=== N ratio predicts success? ===
+reported:
+            n   succ
+nr_bin              
+<0.5    106.0  0.670
+0.5-1   162.0  0.519
+1-2     252.0  0.496
+2-5     211.0  0.460
+>5      209.0  0.373
+significance_r:
+            n   succ
+nr_bin              
+<0.5     99.0  0.475
+0.5-1   151.0  0.483
+1-2     249.0  0.490
+2-5     219.0  0.461
+>5      224.0  0.433
+consistency_ci (should FALL with N ratio):
+            n   succ
+nr_bin              
+<0.5    119.0  0.630
+0.5-1   189.0  0.566
+1-2     297.0  0.424
+2-5     249.0  0.233
+>5      249.0  0.108
+median n_o: 101.0  median n_r: 217.0  median ratio: 1.67
+replication power (for es_o) vs reported:
+            n   succ
+pw_bin              
+<.5     103.0  0.689
+.5-.8    78.0  0.436
+.8-.95  106.0  0.330
+>.95    653.0  0.482
+share of replications with power>=.8 for es_o: 0.801
+
+=== base rates (all FReD rows, reported_success) ===
+                                  n  successful  failed  mixed
+disc                                                          
+social psychology             643.0       0.348   0.496  0.140
+cognitive psychology          442.0       0.545   0.294  0.158
+psychology                    151.0       0.503   0.391  0.106
+marketing                     129.0       0.240   0.465  0.295
+economics                     119.0       0.218   0.202  0.580
+management                    103.0       0.971   0.029  0.000
+experimental philosophy        75.0       0.747   0.227  0.013
+education                      74.0       0.338   0.459  0.203
+differential psychology        69.0       0.710   0.000  0.275
+judgment and decision making   48.0       0.333   0.500  0.167
+linguistics                    47.0       0.319   0.553  0.000
+neuroscience                   43.0       0.512   0.209  0.279
+developmental psychology       35.0       0.829   0.143  0.029
+communication science          25.0       0.160   0.040  0.480
+political science              23.0       0.609   0.304  0.000
+political psychology           18.0       0.500   0.278  0.222
+marketing/org behavior         17.0       0.529   0.471  0.000
+medicine                       17.0       0.882   0.118  0.000
+evolutionary psychology        17.0       0.000   1.000  0.000
+sociology                      16.0       0.438   0.562  0.000
+               n  successful  failed  mixed
+decade_o                                   
+1930         1.0       1.000   0.000  0.000
+1940        17.0       0.000   0.000  1.000
+1970         8.0       0.750   0.125  0.125
+1980        17.0       0.706   0.176  0.118
+1990       229.0       0.559   0.314  0.127
+2000       627.0       0.402   0.405  0.191
+2010      1116.0       0.451   0.369  0.154
+2020       149.0       0.557   0.302  0.121
+            n  successful  failed  mixed
+year_r                                  
+2005.0   76.0       1.000   0.000  0.000
+2011.0   20.0       0.550   0.300  0.150
+2013.0   39.0       0.641   0.333  0.026
+2014.0   62.0       0.548   0.403  0.048
+2015.0  133.0       0.308   0.594  0.083
+2016.0   70.0       0.586   0.371  0.029
+2017.0   29.0       0.345   0.172  0.345
+2018.0  169.0       0.574   0.355  0.071
+2019.0  108.0       0.509   0.194  0.287
+2020.0  106.0       0.292   0.604  0.104
+2021.0  153.0       0.255   0.490  0.235
+2022.0  134.0       0.328   0.455  0.194
+2023.0  324.0       0.426   0.330  0.241
+2024.0  395.0       0.532   0.299  0.127
+2025.0  144.0       0.542   0.417  0.042
+rows per doi_r: top10 {'10.1098/rsos.231240': 280, '10.1126/science.aac4716': 94, '10.1016/j.jom.2005.11.004': 76, '10.1007/s13164-018-0400-9': 69, '10.1073/pnas.2103313118': 64, '10.1177/0956797619831612': 60, '10.18718/81781.23': 54, '10.3389/fcomm.2022.1048896': 41, '10.1177/2515245918810225': 38, '10.12688/openreseurope.17749.1': 32}  share of rows in doi_r with >=20 rows: 0.473
+entry-level (n=1004) outcome: {'failed': 0.458, 'successful': 0.405, 'mixed': 0.136}
+per original DOI (n=786): {'successful': 0.44, 'failed': 0.372, 'mixed': 0.188}
+nested_o: {'no': 1348, 'yes': 654}  nested_r: {'no': 1357, 'yes': 644}
+es types NOT convertible (o): {'cannot:etasq (partial)': 173, 'cannot:beta (std)': 151, 'cannot:b (unstd)': 123, 'unknown:r-squared': 42, 'unknown:ser_method': 32, 'unknown:partial correlation': 14, 'unknown:mean difference': 10, 'unknown:omega squared': 9, "unknown:kendall's w": 4, 'unknown:dv': 4, "cannot:cramer's v": 4, 'unknown:partial r': 4, 'unknown:be': 3, 'unknown:hazard ratio': 3, 'unknown:relative_risk_ratio': 2}
+es types NOT convertible (r): {'cannot:etasq (partial)': 198, 'cannot:beta (std)': 149, 'cannot:b (unstd)': 136, 'unknown:ser_method': 65, 'unknown:r-squared': 42, "cannot:cohen's h": 19, 'unknown:semipartial correlation': 14, 'unknown:mean difference': 12, "unknown:kendall's w": 9, 'cannot:dz': 8, 'unknown:z': 6, 'unknown:ser_method_t': 4, 'unknown:partial r': 4, 'unknown:meta-analysis': 4, "unknown:cohen's dz": 3}
+unparsed test stats sample: ['X2(2, N = 64) = 11.28', 'X2(2, N = 64) = 70.72', 'X2(2, N = 64) = 42.88', 't(84) = .27', 'X2(3, N = 2428) = 35419.8', 'X2(26, N = 2428) = 1163.1', 'X2(11, N = 2428) = 2302.6', 'X2(8, N = 54) = 104.09', 'F < 1', 'F < 1', 'F < 1.4', 'F < 1.4'] 135 108
+author_overlap mean by outcome: {'descriptive only': 0.0, 'failed': 0.063, 'mixed': 0.158, 'statistically successful but flawed': 0.0, 'successful': 0.315, 'uninformative': 0.0}
+prereg_r present by outcome: {'descriptive only': 0.0, 'failed': 0.649, 'mixed': 0.432, 'statistically successful but flawed': 0.333, 'successful': 0.509, 'uninformative': 0.4}
+success rate by author_overlap>0: {False: (np.float64(0.493), 1480), True: (np.float64(0.873), 292)}
+entries with >1 effect: 318  of those with heterogeneous outcomes: 9
+Traceback (most recent call last):
+  File "C:\Users\OMISTAJA\AppData\Local\Temp\claude\C--Users-OMISTAJA-PsychologyReplication\220afa57-c1c1-43dd-9752-8f938442a4d8\scratchpad\compute.py", line 267, in <module>
+    json.dump(OUT,open(ROOT+"_planning/designs/_d2_results_fred.json","w"),indent=1,default=str)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "C:\Python313\Lib\json\encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Python313\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Python313\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Python313\Lib\json\encoder.py", line 377, in _iterencode_dict
+    raise TypeError(f'keys must be str, int, float, bool or None, '
+                    f'not {key.__class__.__name__}')
+TypeError: keys must be str, int, float, bool or None, not Interval

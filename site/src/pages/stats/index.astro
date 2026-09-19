@@ -1,0 +1,89 @@
+---
+import Base from '../../layouts/Base.astro';
+import { stats, type Share } from '../../lib/data';
+import ShareRows from '../../components/ShareRows.astro';
+import { pct, int } from '../../lib/fmt';
+const s = stats();
+const years = Object.entries(s.by_replication_year).filter(([, v]) => v.n >= 5);
+const maxY = Math.max(...years.map(([, v]) => v.n));
+const bars = (entries: [string, Share][]) => entries.map(([k, v]) => ({ k, v }));
+const disc = bars(Object.entries(s.by_discipline));
+const jour = bars(Object.entries(s.by_journal)).slice(0, 14);
+const dec = bars(Object.entries(s.by_original_decade));
+const pr = s.predictors;
+---
+<Base title="The record" description="Replication rates across psychology, with denominators and confidence intervals." active="stats/">
+  <div class="wrap" style="padding-top:2.4rem">
+    <header class="rise">
+      <div class="label">The record in numbers</div>
+      <h1>{int(s.overall.n)} replications, counted honestly</h1>
+      <p class="lede">Every rate below is a share of replication attempts with a verdict (successful, mixed, or failed), with a 95% interval. Attempts are (original paper, replication paper) pairs from FLoRA, FReD and the legacy FReD file, so a multi-site project counts once per original it tested.</p>
+      <p class="card caveat"><b>Read this first.</b> Researchers choose what to replicate, and they pick surprising, influential or doubted results. These numbers describe <i>that</i> set of studies. They are not an estimate of how much of psychology would replicate if every study were tested.</p>
+    </header>
+
+    <div class="sh"><h2>Overall</h2><span class="label">{int(s.counts.replications)} replication attempts · {int(s.counts.reproductions)} reproductions</span></div>
+    <div class="stackbar big" role="img" aria-label={`${pct(s.overall.success_share)} replicated`}>
+      <i class="ok" style={`flex:${s.overall.successful}`}><span>{pct(s.overall.successful / s.overall.n)} replicated</span></i>
+      <i class="mix" style={`flex:${s.overall.mixed}`}><span>{pct(s.overall.mixed / s.overall.n)} mixed</span></i>
+      <i class="bad" style={`flex:${s.overall.failed}`}><span>{pct(s.overall.failed / s.overall.n)} not</span></i>
+    </div>
+    <p class="faint mono small">{int(s.overall.successful)} / {int(s.overall.mixed)} / {int(s.overall.failed)} · success share {pct(s.overall.success_share, 1)} [{pct(s.overall.success_ci?.[0], 1)}, {pct(s.overall.success_ci?.[1], 1)}] · {int(s.counts.replications - s.overall.n)} further attempts have no coded verdict yet</p>
+
+    <div class="sh"><h2>What predicts success</h2><span class="label">same data, split</span></div>
+    <table class="tbl">
+      <thead><tr><th>Split</th><th>Group</th><th class="n">n</th><th class="n">Replicated</th><th>95% interval</th></tr></thead>
+      <tbody>
+        {[
+          ['Original p-value', 'p ≤ .005', pr.p_le_005], ['', '.005 < p < .05', pr.p_005_05],
+          ['Replication team', 'shares authors with original', pr.overlapping_authors], ['', 'fully independent', pr.independent_team],
+        ].map(([a, b, v]) => { const x = v as Share; return (
+          <tr><td>{a}</td><td>{b}</td><td class="n">{x.n}</td><td class="n">{pct(x.success_share)}</td><td><span class="ci"><i style={`left:${(x.success_ci?.[0] ?? 0) * 100}%;width:${((x.success_ci?.[1] ?? 0) - (x.success_ci?.[0] ?? 0)) * 100}%`}></i><b style={`left:${(x.success_share ?? 0) * 100}%`}></b></span></td></tr>
+        ); })}
+      </tbody>
+    </table>
+    <p class="faint small">The p-value split uses one row per original study among FReD rows with a clear success or failure. The team split uses FORRT's author-overlap coding. Neither is causal: overlapping teams may also run closer replications.</p>
+
+    <div class="sh"><h2>How much effects shrink</h2><span class="label">{s.shrinkage.n_rows} effects with sizes on both sides</span></div>
+    <p class="big2">The median replication found <b class="claim">{Math.round(s.shrinkage.median_ratio * 100)}%</b> of the original effect. Half fell between {Math.round(s.shrinkage.q25 * 100)}% and {Math.round(s.shrinkage.q75 * 100)}%. {pct(s.shrinkage.share_below_half)} came in below half the original; {pct(s.shrinkage.share_sign_flip)} went the other way.</p>
+
+    <div class="sh"><h2>By field</h2><span class="label">disciplines with ≥ 25 attempts</span></div>
+    <ShareRows rows={disc} />
+
+    <div class="sh"><h2>By journal of the original</h2><span class="label">≥ 20 attempts</span></div>
+    <ShareRows rows={jour} />
+
+    <div class="sh"><h2>By decade of the original</h2></div>
+    <ShareRows rows={dec} />
+
+    <div class="sh"><h2>Replications per year</h2><span class="label">year the replication appeared</span></div>
+    <div class="yrs" role="img" aria-label="Number of replication attempts per year, split by verdict">
+      {years.map(([y, v]) => (
+        <div class="yc" title={`${y}: ${v.n} attempts, ${pct(v.success_share)} replicated`}>
+          <div class="ys" style={`height:${(v.n / maxY) * 160}px`}>
+            <i class="bad" style={`flex:${v.failed}`}></i><i class="mix" style={`flex:${v.mixed}`}></i><i class="ok" style={`flex:${v.successful}`}></i>
+          </div>
+          <span class="mono">{String(y).slice(2)}</span>
+        </div>
+      ))}
+    </div>
+    <p class="faint small">Replications per year with a verdict. The recent spike reflects FORRT's intensive coding campaigns as much as a rise in replication.</p>
+  </div>
+</Base>
+
+<style>
+  .lede { font: 400 1.15rem/1.5 var(--f-display); color: var(--ink-2); }
+  .caveat { font-size: .95rem; max-width: 80ch; border-color: var(--mix); }
+  .small { font-size: .82rem; }
+  .big2 { font: 400 1.3rem/1.5 var(--f-display); max-width: 60ch; }
+  .stackbar { display: flex; height: 44px; border-radius: 3px; overflow: hidden; margin-bottom: .6rem; }
+  .stackbar i { display: flex; align-items: center; padding: 0 .7rem; font: 500 .78rem var(--f-mono); font-style: normal; color: #fff; white-space: nowrap; overflow: hidden; }
+  .stackbar .ok { background: var(--ok); } .stackbar .mix { background: var(--mix); } .stackbar .bad { background: var(--bad); }
+  .ci { display: block; position: relative; height: 12px; background: var(--paper-2); border-radius: 2px; min-width: 120px; }
+  .ci i { position: absolute; top: 3px; height: 6px; background: var(--obs); opacity: .35; border-radius: 3px; }
+  .ci b { position: absolute; top: 0; width: 2px; height: 12px; background: var(--obs); }
+  .yrs { display: flex; align-items: flex-end; gap: 3px; overflow-x: auto; padding-bottom: .3rem; }
+  .yc { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1 0 18px; }
+  .ys { width: 100%; display: flex; flex-direction: column; border-radius: 2px 2px 0 0; overflow: hidden; }
+  .ys .ok { background: var(--ok); } .ys .mix { background: var(--mix); } .ys .bad { background: var(--bad); opacity: .85; }
+  .yc span { font-size: .62rem; color: var(--ink-3); }
+</style>

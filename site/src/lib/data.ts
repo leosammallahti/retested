@@ -1,0 +1,63 @@
+// Build-time access to the pipeline bundle (../data/build). Never imported by client islands.
+import fs from 'node:fs';
+import path from 'node:path';
+
+const BUILD = path.resolve(process.cwd(), '..', 'data', 'build');
+const cache = new Map<string, unknown>();
+
+function read<T>(name: string): T {
+  if (!cache.has(name)) {
+    const file = path.join(BUILD, name);
+    if (!fs.existsSync(file)) throw new Error(`Missing ${file}. Run \`npm run data\` (python -m pipeline build) first.`);
+    cache.set(name, JSON.parse(fs.readFileSync(file, 'utf8')));
+  }
+  return cache.get(name) as T;
+}
+
+export type Outcome = 'successful' | 'failed' | 'mixed' | 'inconclusive' | 'not_coded';
+
+export interface Record_ { code: string; label: string; k: number; n_attempts: number; successful: number; failed: number; mixed: number; inconclusive: number; not_coded: number }
+export interface Numeric { r: number; ci: [number, number]; pi: [number, number] | null; tau: number; i2: number | null; k_papers: number; k_rows: number; r_original: number | null; ratio: number | null; label: { code: string; label: string } }
+export interface Lenses {
+  record: Record_; numeric: Numeric | null; disagree: boolean;
+  criteria: Record<string, { success: number; failure: number; na: number }> | null;
+  design: { preregistered: number; independent: number; overlap_known: number; closeness: Record<string, string> | null };
+  n_reproductions: number; first_replication_year: number | null; last_replication_year: number | null; total_replication_n: number | null;
+}
+export interface FredRow {
+  row: number; study_o: string | null; study_r: string | null; description: string | null; claim_text_o: string | null; discipline: string | null;
+  r_o: number | null; r_r: number | null; n_o: number | null; n_r: number | null; p_o: number | null; p_r: number | null; es_type_o: string | null;
+  criteria: Record<string, string | null>; reported_success: Outcome; quote: string | null; prereg_r: string | null;
+}
+export interface LegacyRow { effect: string | null; r_o: number | null; r_r: number | null; n_o: number | null; n_r: number | null; outcome: Outcome; result_raw: string | null; closeness: Record<string, string>; preregistration: string | null; power: number | null; validated: unknown; osf_link: string | null }
+export interface Attempt {
+  id: string; doi_o: string; rep_key: string; doi_r: string | null; type: 'replication' | 'reproduction';
+  sources: string[]; outcomes_by_source: Record<string, Outcome>; outcome: Outcome; outcome_raw?: string; sources_disagree: boolean;
+  rows: FredRow[]; legacy_rows: LegacyRow[]; projects: string[]; legacy_only?: boolean;
+  title_r?: string; year_r?: number; journal_r?: string; authors_r?: string; url_r?: string; oa_url_r?: string;
+  quote?: string; quote_source?: string; author_overlap_pct?: number; flora_source?: string;
+}
+export interface Paper { doi: string; slug: string; title?: string; year?: number; journal?: string; authors?: string; ref?: string; oa_url?: string; openalex?: { cited_by: number; counts_by_year: Record<string, number>; is_retracted: boolean; topic: string; subfield: string; field: string } }
+export interface Finding { doi_o: string; slug: string; attempts: string[]; effects?: string[]; lenses: Lenses; page: boolean }
+export interface Famous { status: string | null; status_raw: string | null; description: string | null; original_paper: string | null; original_year: number | null; critiques: string | null; original_es: string | null; replication_es: string | null; gs_citations: number | null }
+export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
+export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
+export interface EffectCard { slug: string; name: string; discipline: string | null; record: Record_; fame: number; numeric: Pick<Numeric, 'r' | 'ci' | 'ratio' | 'r_original' | 'label'> | null; famous_status: string | null }
+export interface Stats {
+  counts: Record<string, number>; overall: Share;
+  by_replication_year: Record<string, Share>; by_original_decade: Record<string, Share>; by_discipline: Record<string, Share>; by_journal: Record<string, Share>;
+  predictors: Record<string, Share>;
+  shrinkage: { n_rows: number; median_ratio: number; q25: number; q75: number; share_below_half: number; share_sign_flip: number };
+  effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
+  lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
+}
+
+export const effects = () => read<Effect[]>('effects.json');
+export const findings = () => read<Record<string, Finding>>('findings.json');
+export const attempts = () => read<Record<string, Attempt>>('attempts.json');
+export const papers = () => read<Record<string, Paper>>('papers.json');
+export const stats = () => read<Stats>('stats.json');
+export const citation = () => read<{ forrt: string }>('citation.json').forrt;
+
+let _effById: Map<string, Effect> | undefined;
+export const effectById = (id: string) => (_effById ??= new Map(effects().map((e) => [e.id, e]))).get(id);

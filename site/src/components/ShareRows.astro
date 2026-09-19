@@ -1,0 +1,27 @@
+---
+// Horizontal stacked bars (replicated / mixed / not) with n and the success share's 95% interval.
+import type { Share } from '../lib/data';
+import { pct } from '../lib/fmt';
+interface Props { rows: { k: string; v: Share }[] }
+const { rows } = Astro.props;
+---
+<div class="srows">
+  {rows.map(({ k, v }) => (
+    <div class="srow">
+      <span class="sk">{k}</span>
+      <span class="sbar" role="img" aria-label={`${k}: ${pct(v.success_share)} replicated of ${v.n}`}>
+        <i class="ok" style={`flex:${v.successful}`}></i><i class="mix" style={`flex:${v.mixed}`}></i><i class="bad" style={`flex:${v.failed}`}></i>
+      </span>
+      <span class="sv mono"><b>{pct(v.success_share)}</b> <span class="faint">[{pct(v.success_ci?.[0])}–{pct(v.success_ci?.[1])}] · n {v.n}</span></span>
+    </div>
+  ))}
+</div>
+<style>
+  .srows { display: grid; gap: .5rem; }
+  .srow { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 11rem; gap: .9rem; align-items: center; font-size: .95rem; }
+  .sk { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sbar { display: flex; height: 14px; border-radius: 2px; overflow: hidden; background: var(--paper-2); }
+  .sbar .ok { background: var(--ok); } .sbar .mix { background: var(--mix); } .sbar .bad { background: var(--bad); opacity: .85; }
+  .sv { font-size: .76rem; white-space: nowrap; }
+  @media (max-width: 700px) { .srow { grid-template-columns: 1fr auto; } .sbar { grid-column: 1 / -1; } .sk { white-space: normal; } }
+</style>

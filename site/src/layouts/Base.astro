@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+import Search from '../components/Search.tsx';
+import { citation } from '../lib/data';
+import { u, shortCitation } from '../lib/fmt';
+
+interface Props { title: string; description?: string; active?: string }
+const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active } = Astro.props;
+const full = title === 'Retested' ? "Retested: psychology's findings, tested again" : `${title} · Retested`;
+const nav = [
+  ['effects/', 'Effects'],
+  ['stats/', 'The record'],
+  ['queue/', 'Review queue'],
+  ['methods/', 'Methods'],
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <header class="mast">
+      <div class="wrap">
+        <a class="brand" href={u('')}><b>Re<i>tested</i></b><span>psychology, tested again</span></a>
+        <Search client:idle base={u('')} />
+        <nav class="nav" aria-label="Main">
+          <a class="play" href={u('game/')} aria-current={active === 'game/' ? 'page' : undefined}>▸ Play: did it replicate?</a>
+          {nav.map(([href, label]) => <a href={u(href)} aria-current={active === href ? 'page' : undefined}>{label}</a>)}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="foot">
+      <div class="wrap grid grid-2">
+        <div class="stack">
+          <p><strong>Retested</strong> is an independent, effect-level explorer built on the open data of the <a href="https://forrt.org/replication-hub/">FORRT Replication Hub</a> (FReD and FLoRA). It is not an official FORRT product. Every paper links to FORRT's <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>. Found a mistake or a missing replication? <a href="https://forrt.org/replication-hub/submit/">Submit it to FORRT</a>, so everyone benefits.</p>
+          <p class="faint">Data CC BY 4.0. Machine-found candidates in the review queue are unverified until a human checks them.</p>
+        </div>
+        <div>
+          <div class="label">Please cite the data as</div>
+          <p class="cite">{shortCitation(citation())} <a href={u('methods/#cite')}>Full author list</a>.</p>
+          <p><button class="btn ghost" id="theme" type="button" style="padding:.5rem .7rem">Light / dark</button></p>
+        </div>
+      </div>
+    </footer>
+    <script is:inline>
+      document.getElementById('theme')?.addEventListener('click', () => {
+        const r = document.documentElement;
+        const dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        r.dataset.theme = dark ? 'light' : 'dark';
+        try { localStorage.setItem('theme', r.dataset.theme); } catch (e) {}
+      });
+    </script>
+  </body>
+</html>

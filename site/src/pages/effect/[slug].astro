@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Dossier from '../../components/Dossier.astro';
+import { effects, attempts, papers, findings, type Effect } from '../../lib/data';
+import { u, cleanQuote, clip, int, asClaim } from '../../lib/fmt';
+
+export function getStaticPaths() {
+  return effects().map((e) => ({ params: { slug: e.slug }, props: { e } }));
+}
+const { e } = Astro.props as { e: Effect };
+const A = attempts();
+const P = papers();
+const F = findings();
+const own = e.attempts.map((id) => A[id]);
+const shared = e.shared_attempts.map((id) => A[id]);
+
+const rowClaim = own.flatMap((a) => a.rows).find((r) => r.description && r.description.length > 30)?.description;
+// curated effect-level wording first; a single study's claim only as a fallback
+const claim = asClaim(e.famous?.description) ?? asClaim(e.description) ?? asClaim(rowClaim) ?? null;
+const verbatim = own.flatMap((a) => a.rows).find((r) => r.claim_text_o && r.claim_text_o.length > 30)?.claim_text_o;
+const orig = e.originals.map((d) => P[d]).filter(Boolean);
+const byline = orig.length === 1 ? [orig[0].authors, orig[0].year].filter(Boolean).join(', ') : orig.length > 1 ? `${orig.length} original papers` : e.famous?.original_year ? `original from ${e.famous.original_year}` : '';
+const fam = e.famous;
+const famStatus = fam?.status ? { replicated: 'replicated', not_replicated: 'not replicated', mixed: 'mixed', reversed: 'reversed' }[fam.status] : null;
+const findingPages = e.originals.map((d) => F[d]).filter((f) => f?.page);
+const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.record.k} replication${e.lenses.record.k === 1 ? '' : 's'} with a verdict. ${claim ? clip(claim, 140) : ''}`;
+---
+<Base title={e.name} description={desc} active="effects/">
+  <article class="wrap">
+    <header class="ehead rise">
+      <div class="label"><a href={u('effects/')}>Effects</a>{e.discipline && <> / {e.discipline}</>}</div>
+      <h1>{e.name}</h1>
+      {byline && <p class="by mono">{byline}</p>}
+      {claim && (
+        <div class="claimbox">
+          <span class="label claim">The claim</span>
+          <p class="ctext">{clip(claim, 360)}</p>
+          {verbatim && verbatim !== claim && <p class="faint vb">In the original authors' words: “{clip(cleanQuote(verbatim), 260)}”</p>}
+        </div>
+      )}
+      {e.aliases.length > 0 && <p class="faint al">Also filed as: {e.aliases.slice(0, 6).join(' · ')}</p>}
+    </header>
+
+    <Dossier attempts={own} lenses={e.lenses} originals={e.originals} shared={shared} subject="this effect" />
+
+    {fam && (
+      <section>
+        <div class="sh"><h2>What the curated list said</h2><span class="label">FORRT Replications &amp; Reversals, 2021–22</span></div>
+        <div class="card">
+          <p>A hand-curated list of famous effects filed this one as <strong>{famStatus ?? 'not rated'}</strong>{fam.gs_citations ? <>; the original had about {int(fam.gs_citations)} Google Scholar citations when it was compiled</> : ''}. It is shown beside our computed record, never merged into it.</p>
+          {fam.original_paper && <p class="muted" style="font-size:.95rem"><span class="label">Original</span><br />{clip(fam.original_paper.replace(/​/g, ''), 420)}</p>}
+          {fam.critiques && <p class="muted" style="font-size:.95rem"><span class="label">Replications and critiques</span><br />{clip(fam.critiques.replace(/^Critiques?:\s*/i, '').replace(/​/g, ''), 700)}</p>}
+          {(fam.original_es || fam.replication_es) && (
+            <p class="muted mono" style="font-size:.78rem">{fam.original_es && <>Original effect size: {clip(fam.original_es.replace(/​/g, ''), 160)}<br /></>}{fam.replication_es && <>Replication effect sizes: {clip(fam.replication_es.replace(/​/g, ''), 260)}</>}</p>
+          )}
+        </div>
+      </section>
+    )}
+
+    {findingPages.length > 0 && (
+      <p class="faint" style="margin-top:2rem">Per-paper views: {findingPages.map((f, i) => <>{i > 0 && ' · '}<a href={u(`finding/${f.slug}/`)}>{P[f.doi_o]?.authors ?? f.doi_o}{P[f.doi_o]?.year ? ` ${P[f.doi_o].year}` : ''}</a></>)}</p>
+    )}
+    <p class="faint mono" style="font-size:.72rem;margin-top:2rem">Effect ID {e.id} · stable across renames</p>
+  </article>
+</Base>
+
+<style>
+  .ehead { padding-top: 2.4rem; }
+  .ehead h1 { margin-top: .6rem; max-width: 22ch; }
+  .by { color: var(--ink-2); font-size: .85rem; margin-top: -.6rem; }
+  .claimbox { border-left: 4px solid var(--claim); padding: .3rem 0 .3rem 1.2rem; margin: 1.6rem 0 .6rem; max-width: 76ch; }
+  .ctext { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.45 var(--f-display); margin: .3rem 0 0; }
+  .vb { font-size: .92rem; margin-top: .6rem; font-style: italic; }
+  .al { font-size: .9rem; }
+</style>

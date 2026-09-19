@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import EffectRow from '../components/EffectRow.astro';
+import { stats } from '../lib/data';
+import { u, pct, int } from '../lib/fmt';
+
+const s = stats();
+const o = s.overall;
+const c = s.counts;
+const pr = s.predictors;
+// 100-cell waffle: the whole record at a glance
+const cells = (() => {
+  const ok = Math.round((o.successful / o.n) * 100), mix = Math.round((o.mixed / o.n) * 100);
+  return [...Array(ok).fill('ok'), ...Array(mix).fill('mix'), ...Array(100 - ok - mix).fill('bad')];
+})();
+---
+<Base title="Retested">
+  <section class="hero wrap">
+    <div class="hgrid">
+      <div class="htext rise">
+        <div class="label">The record, as of FORRT's latest release</div>
+        <h1>Psychology tested its famous findings <em>again.</em></h1>
+        <p class="lede">Of <b class="num">{int(o.n)}</b> replication attempts with a verdict, <b class="obs">{pct(o.success_share)}</b> found the original effect. <b class="mixc">{pct(o.mixed / o.n)}</b> were mixed. <b class="claim">{pct(o.failed / o.n)}</b> did not find it.</p>
+        <p class="sub muted">Retested follows each finding from the original claim to every attempt to repeat it: what the replicators said, what the numbers show, and how the attempts were run.</p>
+        <div class="cta">
+          <a class="btn" href={u('game/')}>Play: did it replicate? →</a>
+          <a class="btn ghost" href={u('effects/')}>Browse {c.effects} effects</a>
+        </div>
+      </div>
+      <figure class="waffle rise" aria-label={`Of every 100 replications: ${cells.filter((x) => x === 'ok').length} replicated, ${cells.filter((x) => x === 'mix').length} mixed, ${cells.filter((x) => x === 'bad').length} did not.`}>
+        <div class="cells">{cells.map((t, i) => <i class={t} style={`--d:${i * 9}ms`}></i>)}</div>
+        <figcaption class="mono"><span><i class="ok"></i>replicated</span><span><i class="mix"></i>mixed</span><span><i class="bad"></i>did not</span><span class="faint">each square = 1% of {int(o.n)} attempts</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sh"><h2>Three things the record shows</h2><span class="label">computed from FORRT data</span></div>
+    <div class="grid grid-3 facts">
+      <article>
+        <div class="fig2"><b class="obs">{pct(pr.p_le_005.success_share)}</b><span>vs</span><b class="claim">{pct(pr.p_005_05.success_share)}</b></div>
+        <h3>A strong p-value predicts survival</h3>
+        <p>Originals with p ≤ .005 replicated {pct(pr.p_le_005.success_share)} of the time; those that only just cleared p &lt; .05 did so {pct(pr.p_005_05.success_share)} of the time. <span class="faint">n = {pr.p_le_005.n} and {pr.p_005_05.n} original studies.</span></p>
+      </article>
+      <article>
+        <div class="fig2"><b class="claim">{pct(pr.overlapping_authors.success_share)}</b><span>vs</span><b class="obs">{pct(pr.independent_team.success_share)}</b></div>
+        <h3>Who replicates matters</h3>
+        <p>When a replication team shared authors with the original, it succeeded {pct(pr.overlapping_authors.success_share)} of the time. Fully independent teams: {pct(pr.independent_team.success_share)}. <span class="faint">n = {pr.overlapping_authors.n} and {pr.independent_team.n} attempts.</span></p>
+      </article>
+      <article>
+        <div class="fig2"><b class="claim">{Math.round(s.shrinkage.median_ratio * 100)}%</b></div>
+        <h3>Even survivors shrink</h3>
+        <p>The typical replication found an effect {Math.round(s.shrinkage.median_ratio * 100)}% the size of the original's. {pct(s.shrinkage.share_below_half)} came in below half; {pct(s.shrinkage.share_sign_flip)} pointed the other way. <span class="faint">{s.shrinkage.n_rows} effects with sizes on both sides.</span></p>
+      </article>
+    </div>
+    <p class="faint caveat">These are rates among studies people chose to replicate, which are often the surprising or doubted ones. They are not the replication rate of psychology as a whole. <a href={u('stats/')}>See the full record and its caveats.</a></p>
+  </section>
+
+  <section class="wrap grid grid-2 doors">
+    <div>
+      <div class="sh"><h2>The Graveyard</h2><a class="label" href={u('graveyard/')}>all →</a></div>
+      <ul class="rowlist">{s.lists.graveyard.slice(0, 7).map((e) => <EffectRow e={e} showFame />)}</ul>
+    </div>
+    <div>
+      <div class="sh"><h2>The Survivors</h2><a class="label" href={u('survivors/')}>all →</a></div>
+      <ul class="rowlist">{s.lists.survivors.filter((e) => e.record.k > 0).slice(0, 7).map((e) => <EffectRow e={e} showFame />)}</ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="band card ink">
+      <div>
+        <div class="label claim">Extending the record</div>
+        <h2>{int(c.candidates)} replications no human has checked yet</h2>
+        <p>FORRT's AI pipeline has flagged thousands of papers that look like replications but are not yet in the curated data. Read the abstract, confirm or correct the machine's call, and send the good ones back to FORRT.</p>
+      </div>
+      <a class="btn" href={u('queue/')}>Open the review queue →</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(2rem, 6vw, 5rem); padding-bottom: 2rem; }
+  .hgrid { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 960px) { .hgrid { grid-template-columns: 1.25fr 1fr; } }
+  .hero h1 { font-size: clamp(2.6rem, 6.4vw, 5.2rem); line-height: 1; margin: .7rem 0 1.4rem; }
+  .hero h1 em { color: var(--claim); font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .lede { font: 400 clamp(1.2rem, 2vw, 1.5rem)/1.45 var(--f-display); }
+  .lede b { font-weight: 600; }
+  .mixc { color: var(--mix); }
+  .sub { font-size: 1.05rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+  .waffle .cells { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; max-width: 420px; }
+  .waffle .cells i { aspect-ratio: 1; border-radius: 2px; display: block; }
+  .waffle i.ok { background: var(--ok); } .waffle i.mix { background: var(--mix); } .waffle i.bad { background: transparent; box-shadow: inset 0 0 0 2px var(--bad); }
+  @media (prefers-reduced-motion: no-preference) { .waffle .cells i { animation: pop .5s both; animation-delay: var(--d); } @keyframes pop { from { transform: scale(0); } to { transform: none; } } }
+  .waffle figcaption { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .72rem; margin-top: 1rem; color: var(--ink-2); }
+  .waffle figcaption i { display: inline-block; width: 10px; height: 10px; margin-right: .35rem; vertical-align: -1px; border-radius: 2px; }
+  .facts article { border-top: 3px solid var(--ink); padding-top: 1rem; }
+  .fig2 { display: flex; align-items: baseline; gap: .6rem; font: 500 clamp(2.4rem, 4.5vw, 3.4rem)/1 var(--f-display); margin-bottom: .8rem; }
+  .fig2 span { font: .8rem var(--f-mono); color: var(--ink-3); }
+  .caveat { font-size: .9rem; margin-top: 1.2rem; }
+  .doors .sh a { text-decoration: none; }
+  .band { display: grid; gap: 1.5rem; align-items: center; margin-top: 4rem; }
+  @media (min-width: 860px) { .band { grid-template-columns: 1fr auto; } }
+  .band h2 { margin: .4rem 0 .6rem; }
+</style>

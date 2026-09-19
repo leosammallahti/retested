@@ -1,0 +1,37 @@
+---
+// The afterlife: citations per year to the original(s), with each replication marked where it landed.
+import { int } from '../lib/fmt';
+interface Props { counts: Record<string, number>; marks: { year: number; outcome: string }[]; title?: string }
+const { counts, marks, title = 'Citations per year to the original, with replications marked' } = Astro.props;
+const years = Object.keys(counts).map(Number).filter((y) => y >= 2000).sort((a, b) => a - b);
+const W = 640, H = 150, L = 34, B = 26, T = 18;
+const y0 = years[0], y1 = years[years.length - 1];
+const maxC = Math.max(1, ...years.map((y) => counts[y]));
+const bw = years.length ? (W - L - 10) / (y1 - y0 + 1) : 0;
+const x = (y: number) => L + (y - y0) * bw;
+const h = (c: number) => ((H - B - T) * c) / maxC;
+const tone = (o: string) => (o === 'failed' ? 'var(--bad)' : o === 'mixed' ? 'var(--mix)' : o === 'successful' ? 'var(--ok)' : 'var(--na)');
+const visible = marks.filter((m) => m.year >= y0 && m.year <= y1);
+const total = years.reduce((s, y) => s + counts[y], 0);
+---
+{years.length >= 3 && (
+  <figure class="fig">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${title}. ${int(total)} citations since ${y0}.`}>
+      <text x={L} y="11">{title}</text>
+      <text x="0" y={T + 8}>{int(maxC)}</text>
+      {years.map((y) => (
+        <rect x={x(y) + 1} y={H - B - h(counts[y])} width={Math.max(1, bw - 2)} height={h(counts[y])} fill="var(--ink-3)" opacity=".35" />
+      ))}
+      {visible.map((m, i) => (
+        <g>
+          <line x1={x(m.year) + bw / 2} x2={x(m.year) + bw / 2} y1={T + 4} y2={H - B} stroke={tone(m.outcome)} stroke-width="1.6" />
+          <circle cx={x(m.year) + bw / 2} cy={T + 4 + (i % 3) * 7} r="3.4" fill={tone(m.outcome)} />
+        </g>
+      ))}
+      {years.filter((y) => (y - y0) % Math.max(1, Math.ceil(years.length / 8)) === 0).map((y) => (
+        <text x={x(y) + bw / 2} y={H - 8} text-anchor="middle">{y}</text>
+      ))}
+    </svg>
+    <figcaption>Grey bars: citations per year (OpenAlex). Vertical marks: replication attempts in the year they appeared, coloured by verdict. Did the field notice?</figcaption>
+  </figure>
+)}

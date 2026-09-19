@@ -1,0 +1,121 @@
+legacy (4659, 100)
+legacy rows with r+N both sides: 1219  with effect name: 599
+legacy result: {'nan': 3232, 'informative failure to replicate': 726, 'success': 679, 'inconclusive': 18, 'practical failure to replicate': 3, '#': 1}
+                        n_coded  success
+source                                  
+ML1                       352.0    0.582
+Individual submissions    225.0    0.324
+CORE                      191.0    0.723
+ML3                       145.0    0.069
+OSC 2015                   80.0    0.438
+Soto                       74.0    0.878
+OSF Registries             61.0    0.475
+openmkt                    50.0    0.440
+XPHI                       40.0    0.775
+ML2                        33.0    0.545
+RRR1                       29.0    0.241
+RRR10                      25.0    0.240
+RRR2                       23.0    0.478
+RRR9                       23.0    0.043
+SSRP                       21.0    0.667
+datareplicada              19.0    0.105
+RRR3                       12.0    0.500
+legacy power: n 834  quantiles {0.1: 0.595, 0.25: 0.85, 0.5: 0.976, 0.75: 0.999, 0.9: 1.0}  share>=.8 0.79
+legacy success by power bin: {Interval(-0.01, 0.5, closed='right'): (np.float64(0.29), 69), Interval(0.5, 0.8, closed='right'): (np.float64(0.313), 99), Interval(0.8, 0.95, closed='right'): (np.float64(0.311), 148), Interval(0.95, 1.01, closed='right'): (np.float64(0.434), 495)}
+closeness rows with any: 180  all 10: 157
+closeness value distributions:
+   closeness_instructions {1.0: 67, 2.0: 95, 3.0: 1, 4.0: 2}
+   closeness_measures {1.0: 104, 2.0: 50, 3.0: 21}
+   closeness_stimuli {1.0: 126, 2.0: 39, 3.0: 1, 4.0: 14}
+   closeness_procedure {1.0: 103, 2.0: 74, 3.0: 3}
+   closeness_location {1.0: 76, 2.0: 26, 3.0: 72, 4.0: 1}
+   closeness_renumeration {1.0: 45, 2.0: 91, 3.0: 29, 4.0: 7}
+   closeness_participants {1.0: 30, 2.0: 62, 3.0: 83}
+   closeness_exclusions {1.0: 117, 2.0: 28, 3.0: 5, 4.0: 1, 5.0: 12}
+   closeness_language {1.0: 74, 2.0: 17, 3.0: 82, 4.0: 2}
+   closeness_nationality {1.0: 50, 2.0: 28, 3.0: 89, 4.0: 8}
+closeness by source: {'Individual submissions': 141, 'FORRT': 18, 'RRR Inclusive Language': 12, 'datareplicada': 5, 'individual submissions': 2, 'https://osf.io/7hz3x': 1, 'openmkt': 1}
+closeness_sum n 142  success by tertile: {Interval(9.999, 17.0, closed='right'): (np.float64(0.589), 56), Interval(17.0, 20.0, closed='right'): (np.float64(0.333), 45), Interval(20.0, 30.0, closed='right'): (np.float64(0.341), 41)}
+corr closeness_sum vs er/eo ratio: -0.248
+same_design {'0': (np.float64(0.811), 37), '1': (np.float64(0.525), 257)}
+same_test {'0': (np.float64(0.605), 81), '1': (np.float64(0.5), 178)}
+original_authors {}
+published_rep {'0': (np.float64(0.545), 22), '1': (np.float64(0.5), 24)}
+preregistration present vs success: {False: (np.float64(0.468), 1152), True: (np.float64(0.553), 253)}
+effects with r+N rows: 51  with >=2 attempts: 35  >=3: 29  >=5: 23  >=10: 16
+
+Top 25 effects by k (RE meta of replications only, Fisher-z DL):
+                                     eff   k  n_unique_doi_r  orig_r_median    est     lb     ub    tau      I2  pi_lo  pi_hi                                    sources
+2                       Anchoring Effect  75               3          0.313  0.496  0.438  0.550  0.314  93.877 -0.086  0.826                         ML1,OSF Registries
+33           verbal overshadowing effect  52               1          0.345  0.176  0.110  0.240  0.214  87.546 -0.253  0.547                                  RRR1,RRR2
+15              Social value orientation  48               1          0.139 -0.008 -0.043  0.028  0.122  96.796 -0.250  0.236                     Individual submissions
+32  retroactive gambler's fallacy effect  36               1          0.326  0.293  0.262  0.323  0.048  26.177  0.196  0.385                                        ML1
+28               imagined contact effect  36               1          0.395  0.094  0.070  0.119  0.000   0.000  0.069  0.120                                        ML1
+24                          flag priming  36               1          0.243  0.049  0.025  0.074  0.000   0.000  0.024  0.075                                        ML1
+6                                Framing  35               1          0.514  0.293  0.265  0.321  0.038  18.966  0.215  0.367                                        ML1
+16                      Sunk cost effect  35               1          0.114  0.143  0.118  0.167  0.000   0.000  0.118  0.168                                        ML1
+9                          Money Priming  25               2          0.359  0.046  0.020  0.073  0.000   0.000  0.018  0.075                 Individual submissions,ML1
+27                     hostility priming  23               1          0.326  0.100  0.058  0.142  0.000   0.000  0.055  0.145                                       RRR9
+3                 Availability heuristic  21               1          0.379  0.072  0.036  0.107  0.000   0.000  0.034  0.109                                        ML3
+34              weight-importance effect  20               1          0.283  0.058  0.016  0.099  0.000   0.000  0.013  0.102                                        ML3
+30       metaphoric restructuring effect  20               1          0.300  0.133  0.079  0.187  0.000   0.000  0.075  0.190                                        ML3
+7                           Heat Priming  18               5          0.570  0.007 -0.021  0.035  0.020  11.589 -0.045  0.060      Individual submissions,OSF Registries
+29                  impression formation  14               0          0.551  0.357  0.265  0.442  0.178  85.123 -0.031  0.651                     Individual submissions
+8                         Macbeth effect  11               3          0.450 -0.005 -0.067  0.057  0.052  26.147 -0.142  0.133                     Individual submissions
+5                          Ego Depletion   8               6          0.397  0.149  0.043  0.252  0.106  50.164 -0.141  0.416                     Individual submissions
+21                         ego depletion   7               1          0.690  0.486  0.204  0.694  0.367  74.370 -0.465  0.916                                       RRR4
+23          embodiment of secrets effect   7               2          0.363  0.099  0.037  0.160  0.000   0.000  0.018  0.179                     Individual submissions
+14                    Prosocial spending   7               1          0.110  0.066  0.029  0.102  0.044  84.422 -0.058  0.187                                      FORRT
+12                          Power Posing   6               6          0.300  0.077  0.020  0.134  0.000   0.000 -0.004  0.158  CRSP special issue,Individual submissions
+22                       elderly priming   5               2          0.454  0.115 -0.001  0.227  0.000   0.000 -0.073  0.294                     Individual submissions
+10                         Money priming   5               1          0.359  0.080  0.008  0.150  0.000   0.000 -0.037  0.194                                        ML1
+26                       honesty priming   4               1          0.518  0.061 -0.020  0.141  0.000   0.000 -0.115  0.233                     Individual submissions
+25                         goal conflict   4               0          0.223  0.035 -0.020  0.090  0.047  69.894 -0.197  0.263                              datareplicada
+
+I2 distribution for effects with k>=5: {'count': 23.0, 'mean': 28.5, 'std': 37.8, 'min': 0.0, '25%': 0.0, '50%': 0.0, '75%': 62.3, 'max': 96.8}
+share of effects (k>=3) whose RE CI excludes 0: 0.69  n= 29
+share (k>=3) where original median r is inside RE prediction interval: 0.414
+share (k>=3) where RE est < half of original median: 0.724
+
+evidence status (k>=2 effects): {'robust (pooled CI>0 and PI>0)': 12, 'supported but heterogeneous (pooled CI>0, PI includes 0)': 9, 'inconclusive (pooled CI includes 0)': 9, 'null-ish (pooled CI within |r|<.1)': 4, 'reversed': 1}
+current FReD grouping by doi_o: groups 786, with >=2 distinct replications 52, >=3 11, max 4
+current FReD grouping by key1: groups 865, with >=2 distinct replications 45, >=3 8, max 3
+current FReD grouping by key2: groups 1609, with >=2 distinct replications 20, >=3 4, max 3
+current FReD grouping by key3: groups 1496, with >=2 distinct replications 22, >=3 3, max 3
+current rows gaining a legacy effect name via (doi_o,doi_r): 561  distinct names: 143
+current rows gaining effect name via doi_o only: 877  ambiguous doi_o (several names): 74
+
+FLoRA (2815, 35) {'replication': 2526, 'reproduction': 289}
+FLoRA replication outcomes: {'successful': 1042, 'failed': 901, 'mixed': 564, 'statistically successful but flawed': 7, 'descriptive only': 6, 'uninformative': 4, nan: 2}
+FLoRA reproduction outcomes: {nan: 284, 'computationally reproducible, robustness challenges': 2, 'computationally reproducible, robust': 1, 'computational issues, not checked': 1, 'computational issues, robustness challenges': 1}
+            n  successful  failed  mixed
+y                                       
+2010.0   38.0       0.447   0.184  0.368
+2011.0   61.0       0.459   0.213  0.311
+2012.0   57.0       0.439   0.263  0.298
+2013.0   56.0       0.429   0.357  0.214
+2014.0  100.0       0.380   0.370  0.240
+2015.0  176.0       0.420   0.455  0.119
+2016.0  129.0       0.488   0.372  0.140
+2017.0   90.0       0.367   0.356  0.256
+2018.0  228.0       0.465   0.338  0.193
+2019.0  135.0       0.378   0.341  0.274
+2020.0  202.0       0.381   0.351  0.262
+2021.0  164.0       0.348   0.372  0.274
+2022.0  144.0       0.368   0.306  0.312
+2023.0  275.0       0.371   0.371  0.255
+2024.0  174.0       0.443   0.345  0.190
+2025.0  234.0       0.440   0.368  0.188
+2026.0  144.0       0.438   0.396  0.153
+FLoRA per doi_o (n=2338): {'successful': 0.421, 'failed': 0.329, 'mixed': 0.25}
+FLoRA journal->discipline coverage: 0.0
+              n  successful  failed  mixed
+disc                                      
+Psychology  1.0         1.0     0.0    0.0
+FReD effect rows joined to FLoRA: 1972  agreement effect-level reported_success vs FLoRA paper outcome: 0.919
+outcome           failed  mixed  successful
+reported_success                           
+failed               641     85           1
+mixed                  0    327           0
+successful             5     66         813
+DONE2

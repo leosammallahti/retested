@@ -1,0 +1,30 @@
+---
+// FORRT's seven success criteria, computed by FORRT per effect row. Shown side by side because they disagree.
+import { CRITERIA_LABELS } from '../lib/fmt';
+interface Props { criteria: Record<string, { success: number; failure: number; na: number }> }
+const { criteria } = Astro.props;
+const rows = Object.entries(criteria).filter(([, v]) => v.success + v.failure > 0);
+const max = Math.max(1, ...rows.map(([, v]) => v.success + v.failure));
+---
+{rows.length > 0 && (
+  <div class="crit">
+    {rows.map(([k, v]) => (
+      <div class="crow">
+        <span class="cl">{CRITERIA_LABELS[k] ?? k}</span>
+        <span class="bar" aria-label={`${v.success} pass, ${v.failure} fail`}>
+          <i class="s" style={`width:${(v.success / max) * 100}%`}></i><i class="f" style={`width:${(v.failure / max) * 100}%`}></i>
+        </span>
+        <span class="cn mono"><b class="obs">{v.success}</b> / <b class="claim">{v.failure}</b></span>
+      </div>
+    ))}
+    <p class="faint" style="font-size:.82rem;margin-top:.6rem">Pass / fail counts over the FReD effect rows. Criteria answer different questions, so they can disagree on the same data — that disagreement is information, not noise.</p>
+  </div>
+)}
+<style>
+  .crit { display: grid; gap: .45rem; }
+  .crow { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(80px, 1fr) auto; gap: .8rem; align-items: center; font-size: .9rem; }
+  .bar { display: flex; height: 10px; background: var(--paper-2); border-radius: 2px; overflow: hidden; }
+  .bar .s { background: var(--obs); } .bar .f { background: var(--claim); opacity: .85; }
+  .cn { font-size: .78rem; white-space: nowrap; }
+  @media (max-width: 560px) { .crow { grid-template-columns: 1fr auto; } .bar { grid-column: 1 / -1; order: 3; } }
+</style>

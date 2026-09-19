@@ -1,0 +1,753 @@
+{
+  "retrieved_on": "2026-09-07",
+  "license": "CC-BY 4.0 (FORRT); MIT (FReD R package code)",
+  "citation_file": "fred-data/output_citation.txt",
+  "upstream": {
+    "fred_data_repo": "https://github.com/forrtproject/FReD-data",
+    "fred_r_package": "https://github.com/forrtproject/FReD",
+    "osf_project": "https://osf.io/9r62x"
+  },
+  "files": [
+    {
+      "path": "feeds/atlas_sitemap.xml",
+      "bytes": 1047328,
+      "sha256": "ea72cb5e8d77b5c9de75ef516b88f61101b2768b7eec9fa1ad861e72647968bc",
+      "source_url": "https://forrt.org/flora-replication-atlas/sitemap.xml"
+    },
+    {
+      "path": "feeds/flora-explorer_aggregate.json",
+      "bytes": 23612,
+      "sha256": "0f7db1f2a4b019f71fe6e532f05809ab1edf5712d83391824d0a1ac7cab48720",
+      "source_url": "https://forrt.org/flora-explorer/data/aggregate.json"
+    },
+    {
+      "path": "feeds/flora-explorer_author_overlap_data.json",
+      "bytes": 312,
+      "sha256": "f782aff174c8b48e5322bcfcc826fda3f7a37b2bacf2694ece67f91169972c09",
+      "source_url": "https://forrt.org/flora-explorer/data/author_overlap_data.json"
+    },
+    {
+      "path": "feeds/flora-explorer_cocit_breakdown.json",
+      "bytes": 878,
+      "sha256": "52de1cd4569bf56e39c7035edd9c3008fb824d280e9b93d1d3e1ec04bd6d8125",
+      "source_url": "https://forrt.org/flora-explorer/data/cocit_breakdown.json"
+    },
+    {
+      "path": "feeds/flora-explorer_disciplines.json",
+      "bytes": 30817,
+      "sha256": "90ed18d2b8ec4bab71c8b399c5e4c715356dd24f279affef89a2b950ed8ec254",
+      "source_url": "https://forrt.org/flora-explorer/data/disciplines.json"
+    },
+    {
+      "path": "feeds/flora-explorer_impact_factor_data.json",
+      "bytes": 32318,
+      "sha256": "d33926c41c3a765042e3a292cf8292df8b9fe6820c5e4a3af0894c629a78ebf2",
+      "source_url": "https://forrt.org/flora-explorer/data/impact_factor_data.json"
+    },
+    {
+      "path": "feeds/flora-explorer_originals.json",
+      "bytes": 6187478,
+      "sha256": "a0c26ff083f34197c6e9370a661b6d1ebb210b7282716efb53f0f978b9a9b8f3",
+      "source_url": "https://forrt.org/flora-explorer/data/originals.json"
+    },
+    {
+      "path": "feeds/flora-extractor_extracted.csv",
+      "bytes": 12449594,
+      "sha256": "448b0033c9be90b589a3dc204c3cde199b3ef522f213fde9fa71b1791b74da4a",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/extracted.csv"
+    },
+    {
+      "path": "feeds/flora-extractor_keyed_link_disputed.csv",
+      "bytes": 84360,
+      "sha256": "1105d8d9089d97ba3ed88f05c2925a17dc94552ac29d4a2a2d4ac67afe83622b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/keyed_link_disputed.csv"
+    },
+    {
+      "path": "feeds/flora-extractor_no_original_found.csv",
+      "bytes": 720497,
+      "sha256": "384cd7eef5b3b365ee4d44f0340241e6d2db6eb82a90fbf55ecf3cb40f27b140",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/no_original_found.csv"
+    },
+    {
+      "path": "feeds/flora-extractor_search_link_unconfirmed.csv",
+      "bytes": 1374126,
+      "sha256": "0366154421d04e152871b05e04257e5882020030b68f4efed5d175b6518192ba",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/search_link_unconfirmed.csv"
+    },
+    {
+      "path": "feeds/flora-extractor_target_pending.csv",
+      "bytes": 5636707,
+      "sha256": "3aff9d870d2f761f694d04a2f65e566c5a07bbee470e1c576161cd8618333159",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/target_pending.csv"
+    },
+    {
+      "path": "feeds/flora-extractor_unidentified_original.csv",
+      "bytes": 479375,
+      "sha256": "b5a3999f9c6d9632ec11c2edd6ec96a3997e288282be0fa031c80b6672be275e",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/unidentified_original.csv"
+    },
+    {
+      "path": "feeds/flora-validation_flora_entry_sheets.csv",
+      "bytes": 3138092,
+      "sha256": "8133d2182f22d3c2c14f8f3d84799a29e8bc4f525e47f4588778d882725a6d5a",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-validation/HEAD/output/flora_entry_sheets.csv"
+    },
+    {
+      "path": "feeds/flora-validation_validated_export.csv",
+      "bytes": 600732,
+      "sha256": "4d81de4300170988d6e98777d13bf3dfd056be233c3c115b102f86422cf75c05",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-validation/HEAD/data/validated_export.csv"
+    },
+    {
+      "path": "feeds/fred-apps_explorer-data.json",
+      "bytes": 4970752,
+      "sha256": "33e6f82f012ad86d2c9ad83fa05a83ef53d4a4bdfe28e13fd6e5602774f758c8",
+      "source_url": "https://forrt.org/fred-apps/data/explorer-data.json"
+    },
+    {
+      "path": "feeds/fred-apps_flora-data.json",
+      "bytes": 3469737,
+      "sha256": "0e70de403668e585ade13b1b0b4dafbc54f561df3a75107a3c7b402ee747ec43",
+      "source_url": "https://forrt.org/fred-apps/data/flora-data.json"
+    },
+    {
+      "path": "feeds/fred-apps_retraction-watch.csv.gz",
+      "bytes": 14821004,
+      "sha256": "8650c8842ae69e8df55410823a6f3bc1cc702f6ee94b41608b844c459358cb2b",
+      "source_url": "https://forrt.org/fred-apps/data/retraction-watch.csv.gz"
+    },
+    {
+      "path": "feeds/rep-api_dois.json",
+      "bytes": 124385,
+      "sha256": "346815d8e0b84679eeb3e88a5c1fe646c02a1811083d6cfdc17cddd0a8e9dc46",
+      "source_url": "https://rep-api.forrt.org/v1/dois"
+    },
+    {
+      "path": "feeds/rep-api_sample_original-lookup.json",
+      "bytes": 14563,
+      "sha256": "aec69962045188785293b1572c87c62fa8d9ae75821e11b1ee229d838d87e164",
+      "source_url": "https://rep-api.forrt.org/v1/original-lookup?dois=10.1126/science.1239918"
+    },
+    {
+      "path": "fred-data/API_Integration_Guide_build_two_tables_doi_records.py",
+      "bytes": 22942,
+      "sha256": "f458821720662284ce6119be89a7590c0b1acf94087d462834084319fdcb1664",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/API%20Integration%20Guide/build_two_tables_doi_records.py"
+    },
+    {
+      "path": "fred-data/API_Integration_Guide_README.md",
+      "bytes": 14576,
+      "sha256": "67b568945a78c1deeddb66b400bb2eb0b9ad1aba87f2e5cf2b93d58960d8d823",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/API%20Integration%20Guide/README.md"
+    },
+    {
+      "path": "fred-data/archive/2025-11-30_COSdata_validated.xlsx",
+      "bytes": 905314,
+      "sha256": "22741ebb35dcbe6014507b661a66fa2c8a764a24a9244ac21c076fb9ef1e6677",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/COS%20Reports/2025-11-30_COSdata_validated.xlsx"
+    },
+    {
+      "path": "fred-data/archive/additional_subjective_coding_with_ai.csv",
+      "bytes": 24781,
+      "sha256": "d76b521cff8a4fb1904b0092035b391a99e9b99d1a0f2125c8bb3833ba8c27a8",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/additional_subjective_coding_with_ai.csv"
+    },
+    {
+      "path": "fred-data/archive/AI_coded.xlsx",
+      "bytes": 55747,
+      "sha256": "1934677e4a40a707e6dce7c0b70a3421618b77ed009e7506929becbca72b8514",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/AI_coded.xlsx"
+    },
+    {
+      "path": "fred-data/archive/cos_codebook.xlsx",
+      "bytes": 10754,
+      "sha256": "272441dc3a9e4965e6a5de1e36a1e813443018881de050a6961791293f4f047b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/COS%20Reports/cos_codebook.xlsx"
+    },
+    {
+      "path": "fred-data/archive/cos_report.qmd",
+      "bytes": 47523,
+      "sha256": "5003a00f4943337d26ec1dcfa3153a8bd8dd5b902bfd50c2feddfedc0146b5c2",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/COS%20Reports/cos_report.qmd"
+    },
+    {
+      "path": "fred-data/archive/dataset_validation.Rmd",
+      "bytes": 38048,
+      "sha256": "856cb20ddf8d2f4ff71e719cf7752881a764e0e7767e0ae35cce124e1e28be40",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/old_scripts/dataset%20validation.Rmd"
+    },
+    {
+      "path": "fred-data/archive/doi_o_getkeywords.R",
+      "bytes": 3534,
+      "sha256": "8acb9ee8592332db14ddb957c3c063f2eb21a7e01cae0e23a43ab3e18d5340a6",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/data%20augmentation/doi_o_getkeywords.R"
+    },
+    {
+      "path": "fred-data/archive/doio_keywords.csv",
+      "bytes": 49133,
+      "sha256": "1553fc91b15b7a6ac6e91eaec1d407a4bd190980dd8af746cf99355bea1dda2b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/data%20augmentation/doio_keywords.csv"
+    },
+    {
+      "path": "fred-data/archive/hackathon_prep_flora.qmd",
+      "bytes": 55255,
+      "sha256": "b19519a936624135095bc1ecdb32a5b2abb412d9a24185516edcc925ce8814af",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/old_scripts/hackathon%20prep%20-%20flora.qmd"
+    },
+    {
+      "path": "fred-data/archive/libre2.csv",
+      "bytes": 1538214,
+      "sha256": "94c7bd5ab2e75ead9dc84362e471991a16950f956ee30463002a2d79bf63b70e",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/Replication%20List/libre2.csv"
+    },
+    {
+      "path": "fred-data/archive/list_data_creator.qmd",
+      "bytes": 14986,
+      "sha256": "cd4d34249e1f9847fba256cb2b0b7304803fdde669f388db4b565dde306bccfa",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/Replication%20List/list_data_creator.qmd"
+    },
+    {
+      "path": "fred-data/archive/subj_coding_Roksana.csv",
+      "bytes": 856734,
+      "sha256": "f36230ed9cef7e3f1802a98d0a24afb3e9858480fbbb32eb683db3b41393590d",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/subj_coding_Roksana.csv"
+    },
+    {
+      "path": "fred-data/archive_AUTHOR_OVERLAP.md",
+      "bytes": 4203,
+      "sha256": "b39062976946f9b95d4a9a93fff5d0391204ffc3ac31adb623d0557ead53522a",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/archive/AUTHOR_OVERLAP.md"
+    },
+    {
+      "path": "fred-data/CITATION.cff",
+      "bytes": 15586,
+      "sha256": "808d96cd7eb6e8331383b8b1409d495798f2e57cf23d2d8d78d24403e02b5a1b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/CITATION.cff"
+    },
+    {
+      "path": "fred-data/cos_score_integration_cos_score_references.xlsx",
+      "bytes": 14899,
+      "sha256": "fa71904e8d65404b411020e7ad866eb3326e83409c5fffdae69a6db7f1a26edd",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/cos_score_integration/cos_score_references.xlsx"
+    },
+    {
+      "path": "fred-data/cos_score_integration_cos_test_set_phase1.csv",
+      "bytes": 111591,
+      "sha256": "545b2cd68d8b2ef6f64faefcea5367e4063a9bdb586e9c82a906fd1dd7af22f1",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/cos_score_integration/cos_test_set_phase1.csv"
+    },
+    {
+      "path": "fred-data/cos_score_integration_README.md",
+      "bytes": 4675,
+      "sha256": "7968478946c407cdb1c83554eccf68826bd7e3fe6106819c211cffe7a8764a7e",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/cos_score_integration/README.md"
+    },
+    {
+      "path": "fred-data/output_citation.txt",
+      "bytes": 2871,
+      "sha256": "50501addbd976a7830de8490c49c48964fccf612c94a4dcb97b2caa88f51e826",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/citation.txt"
+    },
+    {
+      "path": "fred-data/output_dup_outcome_conflicts.csv",
+      "bytes": 212,
+      "sha256": "6e5188f00e5a6fdfdf07f48d4aab6639eae712a10e5cae25257698a1e25efa47",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/dup_outcome_conflicts.csv"
+    },
+    {
+      "path": "fred-data/output_flora.csv",
+      "bytes": 9244075,
+      "sha256": "204e66774e4bf8bce3a41e6891b4bdcd008cf21c5776ee1a2b2ee34f2a4c1434",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora.csv"
+    },
+    {
+      "path": "fred-data/output_flora_export_log.csv",
+      "bytes": 31635,
+      "sha256": "9237ff3734bbc658cfc07fc5d68e162791e4689b387513df1afd9c9e6ddd1044",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora_export_log.csv"
+    },
+    {
+      "path": "fred-data/output_flora_faq.md",
+      "bytes": 7742,
+      "sha256": "de1da5527a0774f95a0029ac8eb0711aab8031fc96cba7b1acf18b0984b718ca",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora_faq.md"
+    },
+    {
+      "path": "fred-data/output_flora_filter_log.csv",
+      "bytes": 42991,
+      "sha256": "c3757025cd6c3f84ffc3b51206e3c24641d77f3f617de9aa9329cd78ef5a7d33",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora_filter_log.csv"
+    },
+    {
+      "path": "fred-data/output_flora_filtered.csv",
+      "bytes": 8313444,
+      "sha256": "649f9921b2c929d6c5ad8fc82387f359a8adda5ce61afe87df58fca343c4ca74",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora_filtered.csv"
+    },
+    {
+      "path": "fred-data/output_FReD.xlsx",
+      "bytes": 1083820,
+      "sha256": "59545e3fc0c2979d97507097526319ec8c275aae3ac40c0d1a6d327492079e6b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/FReD.xlsx"
+    },
+    {
+      "path": "fred-data/output_preprint_dedup_candidates.csv",
+      "bytes": 5498,
+      "sha256": "d6e284d821ccada884a877d78777f8083671a57204cdd4220ca5f715113819ca",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/preprint_dedup_candidates.csv"
+    },
+    {
+      "path": "fred-data/pipelines_flora_prepare_flora.qmd",
+      "bytes": 41165,
+      "sha256": "e36f86dc9306244fd9aa7f2132f3023daea6e9748a0251a982ab086688997532",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/pipelines/flora/prepare_flora.qmd"
+    },
+    {
+      "path": "fred-data/pipelines_fred_fred_codebook.xlsx",
+      "bytes": 8863,
+      "sha256": "23ec47b828544e792a0c7c962ba2d3f1c71f066c48b5cb8554cdb609a3f1d450",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/pipelines/fred/fred_codebook.xlsx"
+    },
+    {
+      "path": "fred-data/pipelines_fred_prepare_fred.qmd",
+      "bytes": 28010,
+      "sha256": "7c62d720c5130495172b9a3877991486197798d5442a774ed178ac7b47e91cae",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/pipelines/fred/prepare_fred.qmd"
+    },
+    {
+      "path": "fred-data/README.md",
+      "bytes": 19271,
+      "sha256": "fba921ee137852366803c5025f53423b45f9d4a65cc1193ad088d99174ac4acf",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/main/README.md"
+    },
+    {
+      "path": "fred-r-package/data_management.R",
+      "bytes": 12512,
+      "sha256": "5704377d490fccefef6bb90fdd136caf1f7cf0a84cc6aa8349b4f4686934240b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/data_management.R"
+    },
+    {
+      "path": "fred-r-package/DESCRIPTION",
+      "bytes": 1435,
+      "sha256": "6ed846c99de88b887d8ad679074ca3d7d88f197dd4fa14867fca40123d11a5c2",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/DESCRIPTION"
+    },
+    {
+      "path": "fred-r-package/effect_size_transformations.R",
+      "bytes": 27341,
+      "sha256": "bfdcca4f629fee085ea2b335e54a7fb2c12d5d1688f2850641942c68a3574191",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/effect_size_transformations.R"
+    },
+    {
+      "path": "fred-r-package/fred.R",
+      "bytes": 4865,
+      "sha256": "a2e049f2b753050a78731e5910809583fbc07619d58f35a8f477ab438e76253b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/fred.R"
+    },
+    {
+      "path": "fred-r-package/helpers.R",
+      "bytes": 10918,
+      "sha256": "fdf4040df5785632bbd41aff18b6f9c18ec030da952c84828b6c77ecc2619c0d",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/helpers.R"
+    },
+    {
+      "path": "fred-r-package/README.md",
+      "bytes": 1902,
+      "sha256": "15f95338ed240d7baa7fd3392d746ed14102970a4ab42b3f122d76aa60010dde",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/README.md"
+    },
+    {
+      "path": "fred-r-package/replication_outcomes.R",
+      "bytes": 14432,
+      "sha256": "6302bc9ab3129a89c393dd9469ad4cd946fce5ed69d79c7fc3344d697367f434",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/replication_outcomes.R"
+    },
+    {
+      "path": "fred-r-package/run_apps.R",
+      "bytes": 7912,
+      "sha256": "6015456fbaf197db4668d3bac94779df19e139f1f1bbc91188797f372eee49f8",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/run_apps.R"
+    },
+    {
+      "path": "fred-r-package/zzz_parameters.R",
+      "bytes": 7595,
+      "sha256": "e1b8f65add490fde5f66fbf80a550f86e19a64f52caf54d54d196ed9c8ff0b9b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/R/zzz_parameters.R"
+    },
+    {
+      "path": "osf/change_log.md",
+      "bytes": 3478,
+      "sha256": "5f5bf1dac207a49b753dfa25ac2c6a328608e143913e9d10eddb89b186cd275d",
+      "source_url": "https://osf.io/download/fj3xc/"
+    },
+    {
+      "path": "osf/datastructure.png",
+      "bytes": 516659,
+      "sha256": "a135434c04e12ae0d7f12444bd99929ce218966a48b5baad6a63f3382838712f",
+      "source_url": "https://osf.io/download/8dh5v/"
+    },
+    {
+      "path": "osf/flora_osf_2026-03-21.csv",
+      "bytes": 5637223,
+      "sha256": "2e9b41df41e3b782e6999c6e868711423fb9fad04824abee39e3daf7364d8e10",
+      "source_url": "https://osf.io/download/t4j8f/"
+    },
+    {
+      "path": "osf/fred_explorer_app.R",
+      "bytes": 122023,
+      "sha256": "342d079eec2df5a0fff2f73459d69a091f3f7140c99674fdfa426a8690ec417d",
+      "source_url": "https://osf.io/download/2npkz/"
+    },
+    {
+      "path": "osf/FReD_osf_2tbvd.xlsx",
+      "bytes": 332,
+      "sha256": "8128514a9917b6dcdf20f7ee24d6b00a27b2a6aa0f971acb988f358f25ac4005",
+      "source_url": "https://osf.io/download/2tbvd/  (NOTE: returned an HTML stub, not the xlsx)"
+    },
+    {
+      "path": "osf/NEWS.md",
+      "bytes": 1686,
+      "sha256": "819e0a3f936686e5231642bf02bf6c46236a5ab853f478c384643592632d6da7",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/inst/NEWS.md"
+    },
+    {
+      "path": "osf/registries-subproject/220805_OSFregistries.xlsx",
+      "bytes": 143008,
+      "sha256": "5fad7d74ce5987f3d52a1c19ab8dbf0b7e58d587e40e5d3fa07f35da47e4bea7",
+      "source_url": "https://osf.io/download/qy683/"
+    },
+    {
+      "path": "osf/registries-subproject/analyses_final.R",
+      "bytes": 15547,
+      "sha256": "2625f367aa6f98a128f13228b828632aea8d1cfedfecdc86c345a5317e536921",
+      "source_url": "https://osf.io/download/9krgy/"
+    },
+    {
+      "path": "osf/registries-subproject/OSF_scraped-2022-05-31.csv",
+      "bytes": 312055,
+      "sha256": "e6cd67851b2d7a1eb1b38de59a8278af53ec0131c51ba8aa54583d7395aaafa7",
+      "source_url": "https://osf.io/download/vf4ug/"
+    },
+    {
+      "path": "osf/registries-subproject/preregistration.pdf",
+      "bytes": 144641,
+      "sha256": "b4f52ee727c93a9b32966702520b383e06ce85b8257242b5c1dab4745486c887",
+      "source_url": "https://osf.io/download/h2uky/"
+    },
+    {
+      "path": "osf/registries-subproject/RR_processeddata.csv",
+      "bytes": 263303,
+      "sha256": "9a75e7c01fe328166b8f05a00f27afb150030348d8afcc9558f59dc6ddc59da5",
+      "source_url": "https://osf.io/download/sfdq4/"
+    },
+    {
+      "path": "osf/registries-subproject/rr_scraper_links.R",
+      "bytes": 14197,
+      "sha256": "91c941f6373af0f01938be0270a44beaf002546d5afc0433f87ede4b0a258a20",
+      "source_url": "https://osf.io/download/dqtn6/"
+    },
+    {
+      "path": "osf/Replication_Project_Data_Validation.pdf",
+      "bytes": 642841,
+      "sha256": "8e6f61956956478433f8c40f9f6bf9524aaa162313bfb263644b44514a535ca6",
+      "source_url": "https://osf.io/download/5baqy/"
+    },
+    {
+      "path": "osf/sub-datasets/220621_OSFregistries.xlsx",
+      "bytes": 140892,
+      "sha256": "526b854dd68cb09cbb4699e1f7ca80eaee845de28a534eda63154950e8958b32",
+      "source_url": "https://osf.io/download/kw3nt/"
+    },
+    {
+      "path": "osf/sub-datasets/220621_red_template_feldman.xlsx",
+      "bytes": 34255,
+      "sha256": "5f65c5d074c792884876687a7b4c942c0ac260e5b084942b929e710e8db5e272",
+      "source_url": "https://osf.io/download/vfe85/"
+    },
+    {
+      "path": "osf/sub-datasets/220621_red_template_osc2015.xlsx",
+      "bytes": 40569,
+      "sha256": "ce7247e1ec0634eecf5e8b9b9a1e518bb23a0547131795dced82342573d6f35f",
+      "source_url": "https://osf.io/download/6ncfu/"
+    },
+    {
+      "path": "osf/sub-datasets/220622_red_is.xlsx",
+      "bytes": 21670,
+      "sha256": "6e96c3f8c30d6a1f579dacbbcb80cc634e35712b4c4b27c3d5b405f0829316f3",
+      "source_url": "https://osf.io/download/e58r6/"
+    },
+    {
+      "path": "osf/sub-datasets/220627_red_curatescience.xlsx",
+      "bytes": 87903,
+      "sha256": "2b698fe4d850910d3fe4363ee51730a5782fdce0ac4cb59ebf5149f3c6a8deb0",
+      "source_url": "https://osf.io/download/hcn7j/"
+    },
+    {
+      "path": "osf/sub-datasets/231026_forrt_with_journals.xlsx",
+      "bytes": 784420,
+      "sha256": "9823223c78d57b824955a7250cd6fb32089de7644d3b15ed70e832af963c0f9f",
+      "source_url": "https://osf.io/download/ujv4m/"
+    },
+    {
+      "path": "osf/sub-datasets/camereretal2018.xlsx",
+      "bytes": 13884,
+      "sha256": "bb4f90ba2e6fd53315dd226a156485924cacdc20b1a22e9bf9cf5c1e3c3c32bf",
+      "source_url": "https://osf.io/download/b4y7x/"
+    },
+    {
+      "path": "osf/sub-datasets/core_for_fred.xlsx",
+      "bytes": 70520,
+      "sha256": "2a61caadbc452348f568f17043544fef8131576f92f7fb6d48119f8f69b35b1f",
+      "source_url": "https://osf.io/download/hjcrx/"
+    },
+    {
+      "path": "osf/sub-datasets/datasubmission_template.xlsx",
+      "bytes": 21153,
+      "sha256": "434c3ef524fca0e1545a5c9e81589ba4d832d67781dbe30d4156381139c905c8",
+      "source_url": "https://osf.io/download/qv7xn/"
+    },
+    {
+      "path": "osf/sub-datasets/FReD_legacy_v1.xlsx",
+      "bytes": 5572937,
+      "sha256": "4bb8488c23fe9d3f41280ac74dd21e3448cf031add35b2f9cc1f3d5b70c22481",
+      "source_url": "https://osf.io/download/z5u9b/"
+    },
+    {
+      "path": "osf/sub-datasets/process_camereretal2018.R",
+      "bytes": 8288,
+      "sha256": "88e07860cfeb6a013ad6ed814ee161f2838a59df608d125ac468787b71bf93a9",
+      "source_url": "https://osf.io/download/hsrmz/"
+    },
+    {
+      "path": "osf/sub-datasets/process_core.R",
+      "bytes": 5058,
+      "sha256": "49838c3924204fe6c80b69af35c42f6d16026550d746da4319241ac77bab07bf",
+      "source_url": "https://osf.io/download/g54d6/"
+    },
+    {
+      "path": "osf/sub-datasets/process_experimentalphilosophy.R",
+      "bytes": 5077,
+      "sha256": "fcaf88d087d3963f908765382b9b103beafe3d3d935f7cd57cc37caa35672571",
+      "source_url": "https://osf.io/download/w8e6n/"
+    },
+    {
+      "path": "osf/sub-datasets/quiz.html",
+      "bytes": 60346,
+      "sha256": "c38e0df159baf14351790247c1e3c4c1d6bde9bc15193756d00bde9eb84f646f",
+      "source_url": "(unknown — see session log)"
+    },
+    {
+      "path": "osf/sub-datasets/readme_subdatasets.txt",
+      "bytes": 337,
+      "sha256": "21ba99ce49fd07022e28b9d79b0dd822484f31992ccfc5736aa9f06272067981",
+      "source_url": "https://osf.io/download/bg8n2/"
+    },
+    {
+      "path": "osf/sub-datasets/red_forrt_synthesis.R",
+      "bytes": 6918,
+      "sha256": "d48e363b42aa2d07d854fbac2ba6d53d6478a0afd7cf0a3011fca23b585e063f",
+      "source_url": "https://osf.io/download/rgdmk/"
+    },
+    {
+      "path": "osf/sub-datasets/red_processing.R",
+      "bytes": 4992,
+      "sha256": "f87c514304aac88e48f40cbd88909737422b87362b7d78ebca1cce38c4072a7f",
+      "source_url": "https://osf.io/download/46qph/"
+    },
+    {
+      "path": "osf/sub-datasets/xphil_for_fred.xlsx",
+      "bytes": 17450,
+      "sha256": "b3d99e80960a04751cffc293cdb4485f68acbab07508ab0e2c5faf89fc855066",
+      "source_url": "https://osf.io/download/8p3wg/"
+    },
+    {
+      "path": "osf/success_criteria.Rmd",
+      "bytes": 9429,
+      "sha256": "99a76a39d06f669fda6af4415d474609577702851e5e261781310cb21a0cd3ba",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred/main/vignettes/success_criteria.Rmd"
+    },
+    {
+      "path": "osf/version-history/FReD_1.0.0_2024-02-08.xlsx",
+      "bytes": 1841338,
+      "sha256": "cc138dda1ef7187bac34dd922574283a2fc4be95fe07cd918e5eae5c49d22e11",
+      "source_url": "https://osf.io/download/kqcz2/"
+    },
+    {
+      "path": "osf/version-history/FReD_1.5.0_2024-06-30.xlsx",
+      "bytes": 2584017,
+      "sha256": "177d35ab722fb56e05973b9a92bfad53c149c3d5519f4e52110de9a6c5c3a98f",
+      "source_url": "https://osf.io/download/wv3jh/"
+    },
+    {
+      "path": "osf/version-history/FReD_2.0.0_2024-10-18.xlsx",
+      "bytes": 3158160,
+      "sha256": "71d7f9727f56325ba548bd2059cc42112c553adfe868074d3152830991fd30f7",
+      "source_url": "https://osf.io/download/vkbew/"
+    },
+    {
+      "path": "osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+      "bytes": 5583842,
+      "sha256": "b022e9cfcedc6b452d92efd6a9ed23506d558789a8ec87a3be4387e2523f8aa6",
+      "source_url": "https://osf.io/download/9pjvy/"
+    },
+    {
+      "path": "osf/version-history/ReD_2023-03-28.xlsx",
+      "bytes": 731875,
+      "sha256": "0264f7d13d0e221a8da4021e79f81c3eacbcd4806e290abecd19951d5a18d5cf",
+      "source_url": "https://osf.io/download/fw6cv/"
+    },
+    {
+      "path": "osf/wiki_home.md",
+      "bytes": 332,
+      "sha256": "8128514a9917b6dcdf20f7ee24d6b00a27b2a6aa0f971acb988f358f25ac4005",
+      "source_url": "https://api.osf.io/v2/wikis/v47n9/content/"
+    },
+    {
+      "path": "repos/_readmes/chromium-extension.md",
+      "bytes": 15309,
+      "sha256": "ba5d5268fc0ba3d128f16757e2195f5c43375607bc504c1837ac3eed00410e73",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/chromium-extension/main/README.md"
+    },
+    {
+      "path": "repos/_readmes/flora-backend.md",
+      "bytes": 10596,
+      "sha256": "7cb3214693ff0e12d4b8a29e8cee3057cb753c93a231a7cec881c8a6c6fcb7cc",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-backend/main/README.md"
+    },
+    {
+      "path": "repos/_readmes/flora-explorer.md",
+      "bytes": 5855,
+      "sha256": "875ad3af5cd4a024bea8a719d16008a7100ef055eb1e0e35e875405f765c95ab",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-explorer/main/README.md"
+    },
+    {
+      "path": "repos/_readmes/flora-extractor.CLAUDE.md",
+      "bytes": 60723,
+      "sha256": "6297199594b79699723e6283254924e039134296da604253bba1abd17e114bf2",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/main/CLAUDE.md"
+    },
+    {
+      "path": "repos/_readmes/flora-extractor.handover.html",
+      "bytes": 41794,
+      "sha256": "0be5221e36509c9b3ae521bedd9339c582f725e9562ec828a0b12419671b1203",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/main/handover.html"
+    },
+    {
+      "path": "repos/_readmes/flora-extractor.md",
+      "bytes": 4596,
+      "sha256": "2c63774c49e8295fa05e6b715c2241223842172521048f08757a7ee4c468e275",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/main/README.md"
+    },
+    {
+      "path": "repos/_readmes/flora-preprint-notifier.md",
+      "bytes": 8130,
+      "sha256": "995e489416fdddb471b483682731dd2bc9213835ada7c821b00e7cae81d35c7a",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-preprint-notifier/main/readme.md"
+    },
+    {
+      "path": "repos/_readmes/fred-apps.md",
+      "bytes": 4620,
+      "sha256": "b905703b91f4bdb58e8c1eae7751add8559fc4446cb13caa9f658c589cf37055",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-apps/main/README.md"
+    },
+    {
+      "path": "repos/_readmes/marco.md",
+      "bytes": 85,
+      "sha256": "9ca511c066b3632322c637bb4a659d729714534c187f3cbb9161f115f963cf4b",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/marco/main/README.md"
+    }
+  ],
+  "repos": {
+    "flora-preprint-notifier-analysis": {
+      "url": "https://github.com/forrtproject/flora-preprint-notifier-analysis",
+      "commit": "?",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 0
+    },
+    "flora-pubpeer": {
+      "url": "https://github.com/forrtproject/flora-pubpeer",
+      "commit": "508808cd6c9e0a3952c8ea8e3a576103c51d833f",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 22
+    },
+    "flora-replication-atlas": {
+      "url": "https://github.com/forrtproject/flora-replication-atlas",
+      "commit": "0eaa1e6877033d2597ef4b4c00a35e757faa0439",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 93
+    },
+    "flora-validation": {
+      "url": "https://github.com/forrtproject/flora-validation",
+      "commit": "952fbfabe389e8331713f09a6dbe1d3a9cdb3c2e",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 263
+    },
+    "flora-zotero": {
+      "url": "https://github.com/forrtproject/flora-zotero",
+      "commit": "980a63a1492c8ad390b0765f913fc1348783c7ac",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 115
+    },
+    "fred-explorer": {
+      "url": "https://github.com/forrtproject/fred-explorer",
+      "commit": "18b1df3499faffe1f93e09fdcd67227dd3cd0f38",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 23
+    },
+    "fred-litsearch": {
+      "url": "https://github.com/forrtproject/fred-litsearch",
+      "commit": "224187a22e39cbb1acc5ed5ad56945e5bc2ca863",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 13
+    },
+    "fred-preprint-processor": {
+      "url": "https://github.com/forrtproject/fred-preprint-processor",
+      "commit": "8c7ff13715b7214a85e4f8a069e5657f354e3106",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 1
+    },
+    "fred-repl-extractor": {
+      "url": "https://github.com/forrtproject/fred-repl-extractor",
+      "commit": "b0e8b191981ce2ff8d3eaa3908fe4d2ef21d8eea",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 15
+    },
+    "fredAnnotator": {
+      "url": "https://github.com/forrtproject/fredAnnotator",
+      "commit": "9fc2fc213e3f9c001248d763574a36074a25ab1c",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 21
+    },
+    "journalranking": {
+      "url": "https://github.com/forrtproject/journalranking",
+      "commit": "06c1b3e8f629b728292aa984db30c88de9d7a705",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 5
+    },
+    "open-research-games-portal": {
+      "url": "https://github.com/forrtproject/open-research-games-portal",
+      "commit": "391129b33efe7c589d73ef22a7f3c83ffabac9c8",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 17
+    },
+    "replicate-this": {
+      "url": "https://github.com/forrtproject/replicate-this",
+      "commit": "0313172a3efcbe1b08904e45f229662f01698cd0",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 173
+    },
+    "replicatethis": {
+      "url": "https://github.com/forrtproject/replicatethis",
+      "commit": "8221e31171808797b9ef2ff740bb7884ce82414d",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 17
+    },
+    "rjf": {
+      "url": "https://github.com/forrtproject/rjf",
+      "commit": "84a324af05cbd0002745f47d761ddf0b74d84749",
+      "clone": "shallow --depth 1 on 2026-09-07",
+      "files": 12
+    }
+  },
+  "feeds_note": "feeds/ downloaded 2026-09-07 from FORRT live endpoints; flora-extractor outputs are MACHINE-EXTRACTED candidates, not validated data."
+}

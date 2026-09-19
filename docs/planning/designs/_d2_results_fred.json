@@ -1,0 +1,218 @@
+{
+ "rows_r_both": 1108,
+ "rows_r_both_n": 1103,
+ "criteria": {
+  "significance_r": {
+   "success": 440,
+   "failure": 502,
+   "reversal": 58,
+   "OS_ns": 161,
+   "success_share_all": 0.399,
+   "success_share_excl_osns": 0.467
+  },
+  "significance_agg": {
+   "success": 788,
+   "failure": 315,
+   "reversal": 0,
+   "OS_ns": 0,
+   "success_share_all": 0.714,
+   "success_share_excl_osns": 0.714
+  },
+  "consistency_ci": {
+   "success": 393,
+   "failure": 710,
+   "reversal": 0,
+   "OS_ns": 0,
+   "success_share_all": 0.356,
+   "success_share_excl_osns": 0.356
+  },
+  "consistency_pi": {
+   "success": 676,
+   "failure": 427,
+   "reversal": 0,
+   "OS_ns": 0,
+   "success_share_all": 0.613,
+   "success_share_excl_osns": 0.613
+  },
+  "homogeneity": {
+   "success": 645,
+   "failure": 458,
+   "reversal": 0,
+   "OS_ns": 0,
+   "success_share_all": 0.585,
+   "success_share_excl_osns": 0.585
+  },
+  "homogeneity_significance": {
+   "success": 449,
+   "failure": 493,
+   "reversal": 0,
+   "OS_ns": 161,
+   "success_share_all": 0.407,
+   "success_share_excl_osns": 0.477
+  },
+  "small_telescopes": {
+   "success": 519,
+   "failure": 584,
+   "reversal": 0,
+   "OS_ns": 0,
+   "success_share_all": 0.471,
+   "success_share_excl_osns": 0.471
+  }
+ },
+ "disagreement": {
+  "n": 942,
+  "unanimous_success": 207,
+  "unanimous_failure": 148,
+  "disagree": 587,
+  "dist": {
+   "0.0": 148,
+   "1.0": 149,
+   "2.0": 90,
+   "3.0": 104,
+   "4.0": 50,
+   "5.0": 64,
+   "6.0": 130,
+   "7.0": 207
+  }
+ },
+ "pairwise": {
+  "significance_r": {
+   "significance_r": 1.0,
+   "significance_agg": 0.69,
+   "consistency_ci": 0.68,
+   "consistency_pi": 0.66,
+   "homogeneity": 0.69,
+   "homogeneity_significance": 0.74,
+   "small_telescopes": 0.89
+  },
+  "significance_agg": {
+   "significance_r": 0.69,
+   "significance_agg": 1.0,
+   "consistency_ci": 0.49,
+   "consistency_pi": 0.61,
+   "homogeneity": 0.6,
+   "homogeneity_significance": 0.7,
+   "small_telescopes": 0.73
+  },
+  "consistency_ci": {
+   "significance_r": 0.68,
+   "significance_agg": 0.49,
+   "consistency_ci": 1.0,
+   "consistency_pi": 0.74,
+   "homogeneity": 0.77,
+   "homogeneity_significance": 0.81,
+   "small_telescopes": 0.69
+  },
+  "consistency_pi": {
+   "significance_r": 0.66,
+   "significance_agg": 0.61,
+   "consistency_ci": 0.74,
+   "consistency_pi": 1.0,
+   "homogeneity": 0.97,
+   "homogeneity_significance": 0.92,
+   "small_telescopes": 0.64
+  },
+  "homogeneity": {
+   "significance_r": 0.69,
+   "significance_agg": 0.6,
+   "consistency_ci": 0.77,
+   "consistency_pi": 0.97,
+   "homogeneity": 1.0,
+   "homogeneity_significance": 0.95,
+   "small_telescopes": 0.66
+  },
+  "homogeneity_significance": {
+   "significance_r": 0.74,
+   "significance_agg": 0.7,
+   "consistency_ci": 0.81,
+   "consistency_pi": 0.92,
+   "homogeneity": 0.95,
+   "homogeneity_significance": 1.0,
+   "small_telescopes": 0.77
+  },
+  "small_telescopes": {
+   "significance_r": 0.89,
+   "significance_agg": 0.73,
+   "consistency_ci": 0.69,
+   "consistency_pi": 0.64,
+   "homogeneity": 0.66,
+   "homogeneity_significance": 0.77,
+   "small_telescopes": 1.0
+  }
+ },
+ "reported_vs_sigr": {
+  "OS n.s.": {
+   "failed": 43,
+   "mixed": 30,
+   "statistically successful but flawed": 2,
+   "successful": 86
+  },
+  "failure": {
+   "failed": 361,
+   "mixed": 51,
+   "statistically successful but flawed": 0,
+   "successful": 32
+  },
+  "failure (reversal)": {
+   "failed": 27,
+   "mixed": 13,
+   "statistically successful but flawed": 0,
+   "successful": 18
+  },
+  "success": {
+   "failed": 54,
+   "mixed": 62,
+   "statistically successful but flawed": 5,
+   "successful": 319
+  }
+ },
+ "reported_vs_sigr_agree": 0.872,
+ "reported_vs_crit_agree": {
+  "significance_r": [
+   0.872,
+   811
+  ],
+  "significance_agg": [
+   0.622,
+   940
+  ],
+  "consistency_ci": [
+   0.66,
+   940
+  ],
+  "consistency_pi": [
+   0.626,
+   940
+  ],
+  "homogeneity": [
+   0.648,
+   940
+  ],
+  "homogeneity_significance": [
+   0.694,
+   811
+  ],
+  "small_telescopes": [
+   0.809,
+   940
+  ]
+ },
+ "shrinkage": {
+  "ratio_q": {
+   "0.1": -0.263,
+   "0.25": 0.049,
+   "0.5": 0.374,
+   "0.75": 0.949,
+   "0.9": 1.341
+  },
+  "mean_ratio": 0.683,
+  "share_neg": 0.199,
+  "share_lt_half": 0.547,
+  "share_ge1": 0.224,
+  "median_es_o": 0.307,
+  "median_es_r": 0.1,
+  "n": 1103
+ },
+ "shrink_by_es_o": {
+  "n": {
+   

@@ -1,0 +1,208 @@
+---
+// The body shared by effect and finding pages: verdict, the three lenses, figures, and the attempt ledger.
+import Stamp from './Stamp.astro';
+import Tally from './Tally.astro';
+import ForestPlot from './ForestPlot.astro';
+import CriteriaMatrix from './CriteriaMatrix.astro';
+import CitationCurve from './CitationCurve.astro';
+import { papers, type Attempt, type Lenses } from '../lib/data';
+import { OUTCOME, RECORD_BLURB, NUMERIC_TONE, DISPLAY_SOURCE, fr, int, pct, atlasUrl, doiUrl, cleanQuote, clip } from '../lib/fmt';
+
+interface Props { attempts: Attempt[]; lenses: Lenses; originals: string[]; shared?: Attempt[]; subject: string }
+const { attempts, lenses: L, originals, shared = [], subject } = Astro.props;
+const P = papers();
+const reps = attempts.filter((a) => a.type === 'replication').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
+const repros = attempts.filter((a) => a.type === 'reproduction');
+const rec = L.record;
+const num = L.numeric;
+const est = reps.filter((a) => (a as any).est);
+
+// the most informative quote: the latest attempt that disagrees with the majority, else the latest with a quote
+const majority = rec.failed + rec.mixed / 2 > rec.successful + rec.mixed / 2 ? 'failed' : 'successful';
+const quoted = [...reps].reverse().filter((a) => a.quote && cleanQuote(a.quote).length > 30);
+const keyQuote = quoted.find((a) => a.outcome === majority) ?? quoted[0];
+
+const orig0 = originals.map((d) => P[d]).filter(Boolean)[0];
+const firstEst = est.map((a) => (a as any).est).find((e: any) => e.r_o != null);
+const original = num?.r_original != null
+  ? { r: num.r_original, ci: firstEst?.ci_o ?? null, label: `Original${orig0?.year ? ' (' + orig0.year + ')' : ''}${firstEst?.n_o ? ', N=' + firstEst.n_o : ''}` }
+  : null;
+const forestRows = est.slice(0, 30).map((a) => {
+  const e = (a as any).est;
+  return { label: `${a.authors_r ?? 'Replication'} ${a.year_r ?? ''}`.trim(), r: e.r, ci: e.ci, tone: a.outcome, legacy: e.legacy };
+});
+
+const counts: Record<string, number> = {};
+for (const d of originals) for (const [y, c] of Object.entries(P[d]?.openalex?.counts_by_year ?? {})) counts[y] = (counts[y] ?? 0) + (c as number);
+const marks = reps.filter((a) => a.year_r).map((a) => ({ year: a.year_r!, outcome: a.outcome }));
+
+const ratioText = num?.ratio != null
+  ? num.ratio <= 0 ? 'no effect or the opposite direction' : `${pct(Math.min(num.ratio, 9.99))} of the original's size`
+  : null;
+const closeness = L.design.closeness ? Object.entries(L.design.closeness) : [];
+const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(', ') || 'Replication';
+---
+<section class="verdict rise">
+  <div class="vstamp"><Stamp code={rec.code} label={rec.label} /></div>
+  <div class="vbody">
+    <p class="vline">{RECORD_BLURB[rec.code]}</p>
+    <div class="vmeta">
+      <Tally outcomes={reps.map((a) => a.outcome)} />
+      <span class="mono faint">
+        {reps.length} replication{reps.length === 1 ? '' : 's'}
+        {rec.k > 0 && <> · {rec.successful} replicated · {rec.mixed} mixed · {rec.failed} not</>}
+        {L.first_replication_year && <> · {L.first_replication_year}{L.last_replication_year !== L.first_replication_year ? `–${L.last_replication_year}` : ''}</>}
+        {L.total_replication_n && <> · {int(L.total_replication_n)} participants</>}
+      </span>
+    </div>
+    {L.disagree && <p><span class="chip warn">The lenses disagree</span> <span class="muted">The authors' verdicts and the pooled numbers point in different directions. Read both below.</span></p>}
+  </div>
+</section>
+
+{reps.length > 0 && (
+  <section class="lenses grid grid-3">
+    <article class="lens">
+      <div class="label">Lens 1 · what the replicators said</div>
+      <h3>{rec.k ? `${rec.successful} of ${rec.k} found it` : 'No coded verdict yet'}</h3>
+      {keyQuote && (
+        <>
+          <blockquote class="q">“{clip(cleanQuote(keyQuote.quote), 300)}”</blockquote>
+          <p class="faint mono" style="font-size:.72rem;margin-top:.4rem">— {whoLabel(keyQuote)}</p>
+        </>
+      )}
+    </article>
+    <article class="lens">
+      <div class="label">Lens 2 · what the numbers say</div>
+      {num ? (
+        <>
+          <h3 class={`t-${NUMERIC_TONE[num.label.code]}`}>{num.label.label}</h3>
+          <p>Replications pooled: <strong class="obs num">r = {fr(num.r)}</strong> <span class="mono faint">[{fr(num.ci[0])}, {fr(num.ci[1])}]</span>
+            {num.r_original != null && <> against the original's <strong class="claim num">r = {fr(num.r_original)}</strong></>}
+            {ratioText && <>: {ratioText}</>}.</p>
+          <p class="faint" style="font-size:.85rem">{num.k_papers} paper{num.k_papers === 1 ? '' : 's'}, {num.k_rows} effect row{num.k_rows === 1 ? '' : 's'}{num.i2 != null && num.k_papers > 2 ? `, heterogeneity I² = ${pct(num.i2)}` : ''}. Random-effects pooling on Fisher z.</p>
+        </>
+      ) : (
+        <>
+          <h3 class="t-na">No effect sizes coded</h3>
+          <p class="muted">None of these replications has an effect size and sample size in FORRT's statistical database yet, so only the authors' verdicts are available.</p>
+        </>
+      )}
+    </article>
+    <article class="lens">
+      <div class="label">Lens 3 · how they were done</div>
+      <h3>{reps.length} attempt{reps.length === 1 ? '' : 's'}</h3>
+      <ul class="dl">
+        {L.design.preregistered > 0 && <li><b>{L.design.preregistered}</b> preregistered</li>}
+        {L.design.overlap_known > 0 && <li><b>{L.design.independent}</b> of {L.design.overlap_known} by teams sharing no authors with the original</li>}
+        {repros.length > 0 && <li><b>{repros.length}</b> reproduction{repros.length === 1 ? '' : 's'} (same data, re-analysed)</li>}
+        {closeness.length > 0 && <li>Closeness to the original (legacy coding): {closeness.map(([k, v]) => `${k} ${v}`).join(', ')}</li>}
+        {reps.some((a) => a.legacy_only) && <li><b>{reps.filter((a) => a.legacy_only).length}</b> known only from the legacy FReD file</li>}
+      </ul>
+      <p class="faint" style="font-size:.85rem">Design details are sparse in the source data. Where the record is thin, we say so rather than guess.</p>
+    </article>
+  </section>
+)}
+
+{forestRows.length > 0 && (
+  <section>
+    <div class="sh"><h2>The numbers, attempt by attempt</h2><span class="label">{forestRows.length} with effect sizes</span></div>
+    <ForestPlot original={original} rows={forestRows} pooled={num && num.k_papers > 1 ? { r: num.r, ci: num.ci, pi: num.pi } : null} />
+  </section>
+)}
+
+{Object.keys(counts).length >= 3 && (
+  <section>
+    <div class="sh"><h2>The afterlife</h2><span class="label">OpenAlex citations</span></div>
+    <CitationCurve counts={counts} marks={marks} />
+  </section>
+)}
+
+{L.criteria && Object.values(L.criteria).some((v) => v.success + v.failure > 0) && (
+  <section>
+    <div class="sh"><h2>Seven ways to call it</h2><span class="label">FORRT success criteria</span></div>
+    <CriteriaMatrix criteria={L.criteria} />
+  </section>
+)}
+
+<section>
+  <div class="sh"><h2>The ledger</h2><span class="label">every attempt on {subject}</span></div>
+  {attempts.length === 0 && <p class="muted">No replication or reproduction of this effect is linked in the FORRT data yet. If you know of one, <a href="https://forrt.org/replication-hub/submit/">submit it to FORRT</a>; it will appear here after their next release.</p>}
+  <ol class="ledger">
+    {[...reps, ...repros].map((a) => {
+      const o = OUTCOME[a.outcome];
+      const e = (a as any).est;
+      return (
+        <li id={a.id}>
+          <div class="lhead">
+            <span class={`stamp sm t-${o.tone}`}>{a.type === 'reproduction' ? 'Reproduction · ' : ''}{o.label}</span>
+            <span class="who">{whoLabel(a)}</span>
+            {a.journal_r && <span class="faint jr">{a.journal_r}</span>}
+          </div>
+          {a.title_r && <p class="lt">{a.title_r}</p>}
+          {a.quote && <blockquote class="q">“{clip(cleanQuote(a.quote), 420)}”</blockquote>}
+          <div class="lfoot mono">
+            {e && <span>r = {fr(e.r)} [{fr(e.ci[0])}, {fr(e.ci[1])}] · N = {int(e.n)}{e.k_rows > 1 ? ` · ${e.k_rows} rows pooled` : ''}</span>}
+            {a.sources.map((s) => <span class="chip">{DISPLAY_SOURCE[s] ?? s}</span>)}
+            {a.projects.slice(0, 3).map((p) => <span class="chip">{p}</span>)}
+            {a.sources_disagree && <span class="chip warn" title={Object.entries(a.outcomes_by_source).map(([s, v]) => `${DISPLAY_SOURCE[s]}: ${v}`).join('; ')}>sources disagree</span>}
+            {a.author_overlap_pct != null && a.author_overlap_pct > 0 && <span class="chip warn">overlapping authors</span>}
+            {a.doi_r && <a href={doiUrl(a.doi_r)} rel="noopener">doi</a>}
+            {!a.doi_r && a.url_r && <a href={a.url_r} rel="noopener">link</a>}
+            {a.oa_url_r && <a href={a.oa_url_r} rel="noopener">free pdf</a>}
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+  {shared.length > 0 && (
+    <details class="shared">
+      <summary>{shared.length} more attempt{shared.length === 1 ? '' : 's'} on the same original paper(s), testing other effects or not labelled</summary>
+      <ul>
+        {shared.map((a) => <li><span class={`t-${OUTCOME[a.outcome].tone} mono`}>{OUTCOME[a.outcome].label}</span> · {whoLabel(a)}{a.title_r ? ` — ${clip(a.title_r, 110)}` : ''}</li>)}
+      </ul>
+    </details>
+  )}
+</section>
+
+<section>
+  <div class="sh"><h2>The original{originals.length === 1 ? '' : 's'}</h2><span class="label">links to FORRT's Replication Atlas</span></div>
+  <ul class="rowlist origs">
+    {originals.map((d) => { const p = P[d]; return (
+      <li>
+        <div class="og">
+          <div>
+            <div class="nm">{p?.title ?? d}</div>
+            <div class="mono faint" style="font-size:.74rem">{[p?.authors, p?.year, p?.journal].filter(Boolean).join(' · ')}{p?.openalex?.cited_by ? ` · ${int(p.openalex.cited_by)} citations` : ''}{p?.openalex?.is_retracted ? ' · RETRACTED' : ''}</div>
+          </div>
+          <div class="ol mono"><a href={atlasUrl(d)} rel="noopener">atlas ↗</a> <a href={doiUrl(d)} rel="noopener">doi ↗</a></div>
+        </div>
+      </li>); })}
+  </ul>
+</section>
+
+<style>
+  .verdict { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; padding: 1.6rem 0 1.4rem; border-bottom: 1px solid var(--rule); }
+  .vstamp :global(.stamp) { font-size: .95rem; padding: .6rem 1rem .55rem; }
+  .vline { font: 400 1.25rem/1.4 var(--f-display); margin: 0 0 .4rem; }
+  .vmeta { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; font-size: .78rem; }
+  @media (max-width: 640px) { .verdict { grid-template-columns: 1fr; } }
+  .lenses { margin-top: 2rem; }
+  .lens { border-top: 3px solid var(--ink); padding-top: .8rem; }
+  .lens h3 { margin: .45rem 0 .6rem; }
+  .dl { margin: 0 0 .8rem; padding-left: 1.1rem; }
+  .dl li { margin-bottom: .25rem; }
+  .ledger { list-style: none; padding: 0; margin: 0; counter-reset: l; }
+  .ledger > li { padding: 1.1rem 0 1.1rem 2.4rem; border-bottom: 1px solid var(--rule); position: relative; counter-increment: l; }
+  .ledger > li::before { content: counter(l, decimal-leading-zero); position: absolute; left: 0; top: 1.25rem; font: .72rem var(--f-mono); color: var(--ink-3); }
+  .ledger > li:target { background: var(--obs-soft); }
+  .lhead { display: flex; flex-wrap: wrap; gap: .4rem .8rem; align-items: center; }
+  .who { font: 500 1.02rem var(--f-display); }
+  .jr { font-style: italic; font-size: .9rem; }
+  .lt { margin: .35rem 0 .5rem; color: var(--ink-2); font-size: .98rem; }
+  .lfoot { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; font-size: .74rem; margin-top: .6rem; color: var(--ink-2); }
+  .shared { margin-top: 1.2rem; font-size: .92rem; }
+  .shared summary { cursor: pointer; color: var(--ink-2); }
+  .origs .og { display: flex; gap: 1rem; justify-content: space-between; align-items: center; padding: .8rem 0; }
+  .origs .nm { font: 500 1.02rem/1.3 var(--f-display); }
+  .ol { white-space: nowrap; font-size: .76rem; display: flex; gap: .7rem; }
+</style>

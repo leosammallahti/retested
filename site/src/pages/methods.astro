@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import { stats, citation } from '../lib/data';
+import { u, int, CRITERIA_LABELS, RECORD_BLURB } from '../lib/fmt';
+const s = stats();
+const c = s.counts;
+const records = [
+  ['replicated', 'Replicated', 'k ≥ 2, every attempt with a verdict succeeded'],
+  ['largely_replicated', 'Largely replicated', 'k ≥ 2, (successes + ½ mixed) / k ≥ 75%'],
+  ['contested', 'Contested', 'k ≥ 2, neither side reaches 75%'],
+  ['largely_failed', 'Largely failed', 'k ≥ 2, (failures + ½ mixed) / k ≥ 75%'],
+  ['failed', 'Failed to replicate', 'k ≥ 2, every attempt with a verdict failed'],
+  ['single_success', 'Replicated once / Failed once / Mixed (one attempt)', 'k = 1: we say so instead of pretending one study settles it'],
+  ['reversed', 'Reversed', 'curated judgement only; never computed from signs, which are unreliable across coding schemes'],
+  ['unclear', 'No clear verdict', 'attempts exist but none has a coded outcome'],
+  ['untested', 'No linked attempts yet', 'a named effect with no attempt linked in the FORRT data (not a claim that none exists)'],
+];
+---
+<Base title="Methods" description="Where Retested's data comes from, how verdicts are computed, and what the numbers can and cannot tell you." active="methods/">
+  <article class="wrap prose" style="padding-top:2.4rem">
+    <div class="label">Methods</div>
+    <h1>How Retested works</h1>
+    <p class="lede">Everything here is generated from open data by a script, with a few human-curated corrections kept in version control. Nothing is typed into a page by hand. This page explains the sources, the rules, and the limits.</p>
+
+    <h2 id="sources">Sources</h2>
+    <table class="tbl">
+      <thead><tr><th>Source</th><th>What it contributes</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://forrt.org/replication-hub/flora/">FLoRA</a> (FORRT)</td><td>Paper pairs (original × replication or reproduction) with the replicating authors' own verdict and a quote from their paper. First priority for verdicts.</td></tr>
+        <tr><td><a href="https://forrt.org/fred/">FReD</a> (FORRT)</td><td>Effect-level statistics: effect sizes, sample sizes, p-values, and FORRT's seven success criteria (via FORRT's fred-apps build).</td></tr>
+        <tr><td>FReD legacy 2.4.1 (FORRT, OSF)</td><td>The older crowdsourced database. Still the only source for effect names, project labels (Many Labs, RP:P, RRRs…), closeness coding and {int(c.legacy_only_attempts)} replication pairs missing from the current files. Shown with a "legacy" badge.</td></tr>
+        <tr><td>FORRT Replications &amp; Reversals list</td><td>A hand-curated 2021–22 list of famous effects with a verdict and critiques. Shown beside our record as "what the curated list said", never merged into it.</td></tr>
+        <tr><td>OpenAlex</td><td>Citation counts and citations per year for original papers.</td></tr>
+        <tr><td>FORRT flora-extractor</td><td>Machine-extracted candidate replications (AI-read abstracts). Only used in the <a href={u('queue/')}>review queue</a>, clearly marked as unverified.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="units">Units</h2>
+    <p>An <b>attempt</b> is one (original paper, replication paper) pair; we have {int(c.attempts)} of them ({int(c.replications)} replications, {int(c.reproductions)} reproductions). A <b>finding</b> is one original paper and all its attempts ({int(c.findings)}). An <b>effect</b> is a named phenomenon, such as "Ego depletion", which may span several original papers ({int(c.effects)}, of which {int(c.effects_with_attempts)} have linked attempts). Near-identical names that point at the same original paper are merged only when they differ in spelling or word form; anything else stays separate until a person merges it.</p>
+
+    <h2 id="lenses">Three lenses, never one score</h2>
+    <p><b>1. What the replicators said.</b> Each attempt's verdict comes from FLoRA, then FReD, then the legacy file. Rolled up with explicit rules over <i>k</i>, the number of attempts with a verdict:</p>
+    <table class="tbl"><thead><tr><th>Label</th><th>Rule</th></tr></thead><tbody>{records.map(([, l, r]) => <tr><td>{l}</td><td>{r}</td></tr>)}</tbody></table>
+    <p><b>2. What the numbers say.</b> Where effect sizes are coded, both sides are converted to Pearson <i>r</i> (FORRT's conversions). Rows inside one replication paper (sites, sub-studies) are pooled first, then papers are pooled with a DerSimonian–Laird random-effects model on Fisher <i>z</i>, giving a pooled <i>r</i>, a 95% CI, a prediction interval when k ≥ 3, and the ratio to the original's <i>r</i>. We label the result "holds at similar size", "holds, but smaller", "near zero", "opposite direction" or "too imprecise to say". We also show FORRT's seven criteria, because they answer different questions:</p>
+    <ul>{Object.values(CRITERIA_LABELS).map((l) => <li>{l}</li>)}</ul>
+    <p>When the authors' verdicts and the numbers point opposite ways, the page says so ("the lenses disagree") instead of choosing one.</p>
+    <p><b>3. How they were done.</b> Preregistration, independence of the replication team (FORRT's author-overlap coding), closeness to the original's materials and procedure (legacy coding), and whether an attempt was a replication (new data) or a reproduction (same data, re-analysed). These are shown, not scored.</p>
+
+    <h2 id="game">The game</h2>
+    <p>One card per original study (not per effect row, so a 36-lab project does not become 36 identical cards), using only studies whose replication verdict is clear and consistent. Claims that mention replication, failure or robustness are removed. Answers are stored separately and fetched only after you commit. Scoring is the Brier score, rescaled so a confident right answer earns 100, a 50/50 guess 0, and a confident wrong answer −300. The deck currently holds {int(c.game_items_study)} study cards and {int(c.game_items_famous)} famous-effect cards.</p>
+
+    <h2 id="limits">Limits you should know</h2>
+    <ul>
+      <li><b>Selection.</b> Replicated studies are not a random sample of psychology. Rates here describe what people chose to test.</li>
+      <li><b>Coverage.</b> Most effects have one attempt. We label single attempts as such.</li>
+      <li><b>Coding.</b> Verdicts are the replicators' own, as coded by FORRT volunteers and, increasingly, AI-assisted pipelines. Sources sometimes disagree; we flag it.</li>
+      <li><b>Names.</b> Effect names come from several lists and are imperfect. Every effect keeps a stable ID, so fixing a name never breaks a link.</li>
+    </ul>
+
+    <h2 id="cite">Credit and citation</h2>
+    <p>All replication data comes from the FORRT Replication Hub and is used under CC BY 4.0. Please cite it as:</p>
+    <p class="card fullcite">{citation()}</p>
+    <p>Retested is independent and not an official FORRT product. Corrections to the underlying data belong with FORRT: <a href="https://forrt.org/replication-hub/submit/">submit a replication or correction</a>.</p>
+  </article>
+</Base>
+<style>
+  .prose { max-width: 860px; }
+  .prose h2 { margin-top: 2.8rem; border-bottom: 1px solid var(--ink); padding-bottom: .4rem; }
+  .lede { font: 400 1.2rem/1.5 var(--f-display); color: var(--ink-2); }
+  .prose .tbl { margin: 1rem 0 1.4rem; }
+  .fullcite { font-size: .82rem; white-space: pre-line; }
+</style>

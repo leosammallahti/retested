@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Dossier from '../../components/Dossier.astro';
+import { findings, attempts, papers, effectById, type Finding } from '../../lib/data';
+import { u, atlasUrl, doiUrl, cleanQuote, clip } from '../../lib/fmt';
+
+export function getStaticPaths() {
+  return Object.values(findings()).filter((f) => f.page).map((f) => ({ params: { slug: f.slug }, props: { f } }));
+}
+const { f } = Astro.props as { f: Finding };
+const A = attempts();
+const p = papers()[f.doi_o] ?? { doi: f.doi_o, slug: f.slug };
+const list = f.attempts.map((id) => A[id]);
+const effs = (f.effects ?? []).map(effectById).filter(Boolean);
+const claims = [...new Set(list.flatMap((a) => a.rows).map((r) => r.description).filter((d): d is string => !!d && d.length > 30))];
+const title = p.title ?? f.doi_o;
+---
+<Base title={clip(title, 90)} description={`Replication record of ${p.authors ?? ''} ${p.year ?? ''}: ${f.lenses.record.label}.`} active="effects/">
+  <article class="wrap">
+    <header class="fhead rise">
+      <div class="label">Original paper{p.journal && <> · {p.journal}</>}</div>
+      <h1>{title}</h1>
+      <p class="mono by">{[p.authors, p.year].filter(Boolean).join(', ')} · <a href={doiUrl(f.doi_o)}>doi.org/{f.doi_o}</a> · <a href={atlasUrl(f.doi_o)}>FORRT atlas ↗</a></p>
+      {effs.length > 0 && <p>Part of: {effs.map((e, i) => <>{i > 0 && ', '}<a href={u(`effect/${e!.slug}/`)}>{e!.name}</a></>)}</p>}
+      {claims.length > 0 && (
+        <div class="claimbox">
+          <span class="label claim">{claims.length === 1 ? 'The claim tested' : `${claims.length} claims tested`}</span>
+          <ul>{claims.slice(0, 6).map((c) => <li>{clip(cleanQuote(c), 260)}</li>)}</ul>
+        </div>
+      )}
+    </header>
+    <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+  </article>
+</Base>
+<style>
+  .fhead { padding-top: 2.4rem; }
+  .fhead h1 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); max-width: 30ch; margin-top: .6rem; }
+  .by { font-size: .8rem; color: var(--ink-2); }
+  .claimbox { border-left: 4px solid var(--claim); padding: .3rem 0 .3rem 1.2rem; margin: 1.4rem 0 .4rem; }
+  .claimbox ul { margin: .4rem 0 0; padding-left: 1.1rem; font: 400 1.08rem/1.45 var(--f-display); }
+</style>

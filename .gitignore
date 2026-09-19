@@ -1,0 +1,25 @@
+# --- generated (rebuilt by `python -m pipeline build` and `npm run build`)
+data/build/
+data/cache/
+site/public/generated/
+site/dist/
+site/.astro/
+site/node_modules/
+
+# --- raw upstream data: reproducible via `python -m pipeline fetch` (URLs + sha256 in MANIFEST.json)
+data/raw/forrt/*
+!data/raw/forrt/MANIFEST.json
+
+# --- the pre-2026 attempts: kept locally for reference, never published (contained API keys, now redacted)
+archive/
+
+# --- local tooling
+.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.pkl
+.env
+.claude/settings.local.json

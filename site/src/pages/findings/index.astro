@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { findings } from '../../lib/data';
+import { u } from '../../lib/fmt';
+const n = Object.keys(findings()).length;
+---
+<Base title="Original papers" description="Every original psychology paper with a known replication attempt." active="effects/">
+  <div class="wrap" style="padding-top:2.4rem">
+    <header class="rise">
+      <div class="label">By paper</div>
+      <h1>{n.toLocaleString()} original papers</h1>
+      <p class="lede">Every original paper that someone has tried to replicate. Papers with several attempts, effect sizes, or a named effect have their own page here. For the rest, the per-paper record lives in FORRT's <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>, which we link to rather than duplicate.</p>
+    </header>
+    <div class="fbar"><input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" /><span class="mono faint" id="pc"></span></div>
+    <ul class="rowlist" id="plist"></ul>
+    <p style="margin-top:1rem"><button class="btn ghost" id="more" hidden>Show more</button></p>
+  </div>
+</Base>
+<script>
+  import { u, RECORD_TONE, atlasUrl } from '../../lib/fmt';
+  type E = { t: string; s: string; n: string; doi?: string; au?: string; y?: number; c: string; k: number; pg?: boolean };
+  const LABEL: Record<string, string> = { replicated: 'Replicated', largely_replicated: 'Largely replicated', contested: 'Contested', largely_failed: 'Largely failed', failed: 'Failed to replicate', reversed: 'Reversed', single_success: 'Replicated once', single_failure: 'Failed once', single_mixed: 'Mixed (one attempt)', unclear: 'No clear verdict', untested: 'No linked attempts yet' };
+  const q = document.getElementById('pq') as HTMLInputElement, list = document.getElementById('plist')!, more = document.getElementById('more')!;
+  let all: E[] = [], shown = 60;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+  function render() {
+    const qq = q.value.toLowerCase().trim();
+    const hits = all.filter((e) => !qq || [e.n, e.au, e.y, e.doi].join(' ').toLowerCase().includes(qq));
+    document.getElementById('pc')!.textContent = `${hits.length.toLocaleString()} papers`;
+    list.innerHTML = hits.slice(0, shown).map((e) => {
+      const href = e.pg ? u(`finding/${e.s}/`) : atlasUrl(e.doi!);
+      return `<li><a class="erow" href="${href}"><span class="nm">${esc(e.n)}</span><span class="stamp sm t-${RECORD_TONE[e.c] ?? 'na'}">${LABEL[e.c] ?? e.c}</span><span class="meta"><span>${esc([e.au, e.y].filter(Boolean).join(', '))}</span><span>${e.k} with verdict</span><span>${e.pg ? 'full record here' : 'record on FORRT atlas ↗'}</span></span></a></li>`;
+    }).join('');
+    more.hidden = hits.length <= shown;
+  }
+  fetch(u('generated/search.json')).then((r) => r.json()).then((d: E[]) => {
+    all = d.filter((e) => e.t === 'finding').sort((a, b) => b.k - a.k || (b.y ?? 0) - (a.y ?? 0));
+    q.value = new URLSearchParams(location.search).get('q') ?? '';
+    render();
+  });
+  q.addEventListener('input', () => { shown = 60; render(); });
+  more.addEventListener('click', () => { shown += 120; render(); });
+</script>
+<style>
+  .lede { font: 400 1.18rem/1.5 var(--f-display); color: var(--ink-2); }
+  .fbar { display: flex; gap: .8rem; align-items: center; position: sticky; top: 0; background: var(--paper); padding: .8rem 0; border-bottom: 1px solid var(--ink); margin-top: 1.5rem; z-index: 5; }
+  .fbar input { flex: 1; font: 400 .95rem var(--f-body); padding: .5rem .7rem; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink); }
+</style>

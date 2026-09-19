@@ -1,0 +1,6 @@
+---
+import { RECORD_TONE } from '../lib/fmt';
+interface Props { code: string; label: string; small?: boolean }
+const { code, label, small } = Astro.props;
+---
+<span class:list={['stamp', `t-${RECORD_TONE[code] ?? 'na'}`, { sm: small }]}>{label}</span>

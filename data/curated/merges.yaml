@@ -1,0 +1,7 @@
+# Curated effect merges. Applied after the automatic near-duplicate merge in pipeline/registry.py.
+# Each entry folds the "from" names into the "into" name; the ledger keeps every old id, so no URL breaks.
+# Example:
+# - into: Power Posing
+#   from: [Power pose]
+#   reason: same phenomenon (Carney, Cuddy & Yap 2010); two naming sources
+[]

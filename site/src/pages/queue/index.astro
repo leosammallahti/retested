@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import Queue from '../../components/Queue.tsx';
+import { stats } from '../../lib/data';
+import { u } from '../../lib/fmt';
+const c = stats().counts;
+---
+<Base title="Review queue" description="Machine-found psychology replications that no human has checked yet. Review them and send the good ones to FORRT." active="queue/">
+  <div class="wrap qwrap">
+    <header class="rise">
+      <div class="label">Extending the record</div>
+      <h1>The review queue</h1>
+      <p class="lede">FORRT's extraction pipeline has already found <b class="num">{c.candidates.toLocaleString()}</b> likely replication papers that are not yet in its curated data. An AI model read each abstract, guessed which original study it tests and whether it replicated. No person has checked them. {c.candidates_on_known_originals.toLocaleString()} of them test an original that already has a page here.</p>
+      <p class="muted">Check a candidate against its abstract, then accept it, correct the outcome, or reject it. Your decisions stay in this browser. Export the accepted ones as a CSV in FLoRA's columns and <a href="https://forrt.org/replication-hub/submit/">submit them to FORRT</a>, so they enter the shared record.</p>
+    </header>
+    <Queue client:load base={u('')} />
+  </div>
+</Base>
+<style>
+  .qwrap { padding-top: 2.4rem; }
+  .lede { font: 400 1.18rem/1.5 var(--f-display); max-width: 68ch; }
+  :global(.qbar) { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; position: sticky; top: 0; background: var(--paper); padding: .8rem 0; z-index: 5; border-bottom: 1px solid var(--ink); margin: 1.5rem 0 0; }
+  :global(.qbar input), :global(.qbar select), :global(.qact select) { font: 400 .92rem var(--f-body); padding: .45rem .6rem; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink); max-width: 100%; }
+  :global(.qbar input) { flex: 1 1 220px; }
+  :global(.qlist) { list-style: none; margin: 0; padding: 0; }
+  :global(.qitem) { border-bottom: 1px solid var(--rule); padding: 1.2rem 0; }
+  :global(.qhead) { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .7rem; }
+  :global(.qhead .chip) { text-decoration: none; }
+  :global(.qpair) { display: grid; gap: .8rem; margin-bottom: .7rem; }
+  @media (min-width: 800px) { :global(.qpair) { grid-template-columns: 1fr 1fr; } }
+  :global(.qpair a) { font: 500 1.02rem/1.35 var(--f-display); }
+  :global(.qpair .jr) { font-style: italic; font-size: .88rem; }
+  :global(.abs) { font-size: .92rem; color: var(--ink-2); }
+  :global(.qact) { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: .8rem; }
+  :global(.qact .btn) { padding: .55rem .8rem; }
+  :global(.qm) { font-size: .72rem; margin-left: auto; }
+  :global(.qpager) { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-top: 1.5rem; }
+</style>

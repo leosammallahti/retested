@@ -1,0 +1,49 @@
+---
+// Editorial doors into the record: the Graveyard, the Survivors, the Contested.
+import Base from '../layouts/Base.astro';
+import EffectRow from '../components/EffectRow.astro';
+import { stats } from '../lib/data';
+import { u } from '../lib/fmt';
+
+const LISTS = {
+  graveyard: {
+    title: 'The Graveyard', kicker: 'Famous findings that did not survive',
+    lede: 'The most-cited effects whose replications mostly or entirely failed. Many are still taught, cited and believed. Each entry links to the full record, including any replications that did succeed.',
+  },
+  survivors: {
+    title: 'The Survivors', kicker: 'Findings that held up',
+    lede: 'Effects that replicated when tested again, or that a curated review judged solid. Where FORRT has no linked replication yet, the entry says so plainly: survival here is sometimes a curator\'s judgement, not a tally.',
+  },
+  contested: {
+    title: 'Contested', kicker: 'Where the replications disagree',
+    lede: 'Effects with several replications that point in different directions. These are the live arguments of the field — and usually the most interesting pages on the site.',
+  },
+} as const;
+
+export function getStaticPaths() {
+  // hoisted by Astro: cannot reference LISTS above
+  return ['graveyard', 'survivors', 'contested'].map((list) => ({ params: { list } }));
+}
+const { list } = Astro.params as { list: keyof typeof LISTS };
+const L = LISTS[list];
+const items = stats().lists[list];
+---
+<Base title={L.title} description={L.lede}>
+  <div class="wrap" style="padding-top:2.4rem">
+    <header class="rise">
+      <div class="label">{L.kicker}</div>
+      <h1>{L.title}</h1>
+      <p class="lede">{L.lede}</p>
+      <p class="mono faint" style="font-size:.78rem">{Object.entries(LISTS).filter(([k]) => k !== list).map(([k, v], i) => <>{i > 0 && ' · '}<a href={u(`${k}/`)}>{v.title}</a></>)} · <a href={u('effects/')}>all effects</a></p>
+    </header>
+    <ol class="rowlist ranked">
+      {items.map((e) => <EffectRow e={e} showFame />)}
+    </ol>
+  </div>
+</Base>
+<style>
+  .lede { font: 400 1.2rem/1.5 var(--f-display); color: var(--ink-2); }
+  .ranked { counter-reset: r; margin-top: 1.5rem; }
+  .ranked > :global(li) { counter-increment: r; position: relative; padding-left: 2.6rem; }
+  .ranked > :global(li)::before { content: counter(r, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font: 500 .8rem var(--f-mono); color: var(--ink-3); }
+</style>
