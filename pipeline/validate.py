@@ -14,7 +14,7 @@ SECRET = re.compile(r"sk-or-v1-[A-Za-z0-9]{20,}|sk-proj-[A-Za-z0-9_-]{20,}|sk-an
 SCAN_DIRS = ("pipeline", "site/src", "data/curated", "docs", "tests")
 ROOT_ALLOW = {
     ".git", ".gitignore", ".gitattributes", ".env", ".github", ".claude", ".venv", ".mypy_cache", "__pycache__",
-    "README.md", "pyproject.toml", "uv.lock", "package.json", "package-lock.json", "node_modules",
+    "README.md", "CLAUDE.md", "pyproject.toml", "uv.lock", "package.json", "package-lock.json", "node_modules",
     "pipeline", "site", "data", "docs", "tests", "archive",
 }
 
