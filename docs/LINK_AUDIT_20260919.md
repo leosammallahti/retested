@@ -65,3 +65,17 @@ candidates, 275 of them psychology.
 
 One caveat that cannot be closed this way: 974 of the psychology finds have no DOI, so they cannot be checked
 against FORRT by identifier at all. Their absence rests on title matching alone and is weaker.
+
+
+## Addendum, 2026-09-21: one absence check, applied once
+
+Fixing the absence check left two of them behind. `discover.known_to_forrt` kept the original narrow version —
+the curated tables, the flora-extractor feed glob, and two flora-validation exports — while the queue applied the
+comprehensive one. The shipped product was right, because the queue filtered afterwards, but discovery went on
+reporting the inflated figure, and that is the figure people quote: "8,323 new" was really 7,990, and "28,588 new"
+was 28,236. 685 papers FORRT already held were being counted as gaps in their database.
+
+`known_to_forrt` now uses the same comprehensive sets as everything else, and matches OSF tokens as well as DOIs.
+The downstream filter that used to drop 390 candidates now drops none, because nothing reaches it — which is the
+check that the two agree. Final counts are unchanged: 7,177 queue candidates, 3,897 psychology finds, 128 rows on
+pages.

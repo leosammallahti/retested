@@ -175,9 +175,21 @@ def score(w: dict, n_seeds_cited: int) -> dict:
 
 # ---------------------------------------------------------------- what FORRT already knows
 
-def known_to_forrt(g: dict) -> tuple[set[str], set[str], list[str]]:
-    """(replication DOIs, (doi_o|doi_r) pairs, titles) across FORRT curated data AND FORRT's candidate files."""
-    reps, pairs, titles = set(), set(), []
+def known_to_forrt(g: dict) -> tuple[set[str], set[str], list[str], set[str]]:
+    """(replication DOIs, (doi_o|doi_r) pairs, titles, OSF tokens) across everything FORRT holds.
+
+    This used to consult four places: the curated tables, the flora-extractor feed files, and two flora-validation
+    exports. That missed FLoRA's alt_identifier_r and url_r columns, where an OSF link stands in for a
+    replication, and the dated extractor snapshots under repos/flora-validation/data/, which carry papers before
+    they reach the feeds. Six of eighteen hand-checked "finds" turned out to be papers FORRT already had.
+
+    The build filters those out downstream, so the shipped queue was right, but this function still reported them
+    as new. One definition of "FORRT already has this" now serves both, which is also why it is the comprehensive
+    one rather than the narrow one: a discovery count that overstates the gap is the number people quote.
+    """
+    from .load import load_known_osf_ids, load_known_replication_dois
+    reps, pairs, titles = set(load_known_replication_dois()), set(), []
+    osf_tokens = load_known_osf_ids()
     for a in g["attempts"].values():
         if a["doi_r"]:
             reps.add(a["doi_r"]); pairs.add(f"{a['doi_o']}|{a['doi_r']}")
@@ -203,7 +215,7 @@ def known_to_forrt(g: dict) -> tuple[set[str], set[str], list[str]]:
                     reps.update(filter(None, (norm_doi(x) for x in df[col])))
             if "title_r" in df:
                 titles.extend(t for t in df["title_r"] if t)
-    return reps, pairs, titles
+    return reps, pairs, titles, osf_tokens
 
 
 def _tkey(t: str) -> str:
@@ -242,7 +254,7 @@ def run(g: dict, mode: str = "cites") -> dict:
     works = citing_replications(sorted(rev)) if mode == "cites" else keyword_sweep()
     print(f"  {len(works)} works ({mode}) ({time.time() - t0:.0f}s, {_spent['calls']} API calls, ${_spent['usd']:.3f})")
 
-    reps, pairs, titles = known_to_forrt(g)
+    reps, pairs, titles, osf_tokens = known_to_forrt(g)
     tset = {_tkey(t) for t in titles if t}
     tlist = [k for k in tset if len(k) > 25]
     P = g["papers"]
@@ -258,7 +270,9 @@ def run(g: dict, mode: str = "cites") -> dict:
                 found_pairs.add(f"{d}|{doi_r}")
         sc = score(w, len(cited))
         tk = _tkey(w.get("title"))
-        known_rep = bool(doi_r and doi_r in reps)
+        from .load import osf_token
+        tok = osf_token((w.get("primary_location") or {}).get("landing_page_url"))
+        known_rep = bool((doi_r and doi_r in reps) or (tok and tok in osf_tokens))
         known_title = not known_rep and tk in tset or (len(tk) > 25 and any(fuzz.ratio(tk, k) >= 92 for k in tlist if abs(len(k) - len(tk)) < 12))
         loc = w.get("primary_location") or {}
         src = loc.get("source") or {}

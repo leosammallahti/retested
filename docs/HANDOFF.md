@@ -30,7 +30,7 @@ median replication found 42% of the original effect size.
   see only **35%** of known replications. The untagged half sits in Social Sciences, Neuroscience, Medicine,
   Economics, Business, Decision Sciences.
 - **Keyword search** (`discovered-keyword.json`): 11,226 psychology-tagged works with "replication" in the title;
-  2,903 known to FORRT; **8,323 new** (3,075 high tier). Cost $0.05.
+  2,903 known to FORRT; **7,990 new** (3,075 high tier). Cost $0.05.
 - **Citation search** (`discovered-cites.json`): works citing any of our 3,395 resolvable originals and mentioning
   replication: 31,570; it rediscovered **61%** of FORRT's known pairs (2,450 / 3,988) — a recall check; 28,588 new,
   889 high tier (523 not found by the keyword search). Cost $0.21.
