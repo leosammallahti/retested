@@ -218,3 +218,42 @@ def load_links() -> dict[str, dict]:
     """cid -> resolved original. Empty until `python -m pipeline link` has run."""
     f = DISCOVERY / "links.json"
     return json.loads(f.read_text(encoding="utf-8"))["links"] if f.exists() else {}
+
+
+# Any column in any FORRT file that holds the identifier of a REPLICATION paper. A DOI appearing in one of these
+# means FORRT already has the paper, whether curated, extracted or merely queued for checking.
+_REP_COLS = {"doi_r", "doi_replication", "alt_identifier_r", "url_r", "doi_r_published", "replication_doi"}
+# a raw OpenAlex search dump is not evidence that FORRT recorded anything
+_NOT_A_RECORD = {"repos/fred-litsearch/openalex_results_10000.csv"}
+
+
+def load_known_replication_dois() -> set[str]:
+    """Every replication identifier FORRT has anywhere, not just in the four files discovery used to check.
+
+    Checking only the curated tables and two feed files let 275 papers FORRT already had reach our queue, some as
+    "new" finds: an OSF project id recorded in FLoRA's alt_identifier_r column, and papers already carried as doi_r
+    in flora-validation's dated extractor snapshots. Absence has to be proved against everything they hold.
+    """
+
+    def build():
+        out: set[str] = set()
+        for p in sorted(FORRT.rglob("*")):
+            rel = str(p.relative_to(FORRT))
+            if not p.is_file() or rel in _NOT_A_RECORD or "node_modules" in rel:
+                continue
+            try:
+                if p.suffix.lower() == ".csv":
+                    frames = [pd.read_csv(p, dtype=str, keep_default_na=False, low_memory=False)]
+                elif p.suffix.lower() == ".xlsx":
+                    frames = list(pd.read_excel(p, sheet_name=None, dtype=str).values())
+                else:
+                    continue
+            except Exception:      # a corrupt or non-tabular file proves nothing either way
+                continue
+            for df in frames:
+                for c in df.columns:
+                    if str(c).strip().lower() in _REP_COLS:
+                        out |= {d for d in (norm_doi(x) for x in df[c].astype(str)) if d}
+        return out
+
+    return _cached("forrt_known_reps", SOURCES["flora"], build)

@@ -63,20 +63,24 @@ def build(extracted: list[dict], g: dict) -> list[dict]:
     return out
 
 
-def build_retested(triaged: list[dict], links: dict, g: dict) -> list[dict]:
+def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[str] | None = None) -> list[dict]:
     """Our own finds: one row per discovered paper DeepSeek judged a replication, a reproduction or a registered
     protocol, carrying its verdict, its grounded quote, and how its original was resolved."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
     known_reps = {a["doi_r"] for a in g["attempts"].values() if a["doi_r"]}
     effect_of = _effect_of(g)
     P = g["papers"]
-    out = []
+    forrt_known = forrt_known or set()
+    out, already = [], 0
     for r in triaged:
         t = r["triage"]
         group = GROUP.get((t.get("kind"), t.get("field")))
         if not group:
             continue
         doi_r = norm_doi(r.get("doi_r"))
+        if doi_r and doi_r in forrt_known:
+            already += 1                                  # FORRT has this paper somewhere; it is not our find
+            continue
         link = links.get(r["cid"])
         doi_o = t.get("original_doi") or (link or {}).get("doi_o")
         if doi_r and doi_o and (doi_o, doi_r) in known_pairs:
@@ -119,6 +123,8 @@ def build_retested(triaged: list[dict], links: dict, g: dict) -> list[dict]:
             "review_state": "machine",
         })
     out.sort(key=lambda c: (not c["original_in_wiki"], c["group"] != "replication", -(c["year_r"] or 0)))
+    if already:
+        print(f"    dropped {already} finds FORRT already records somewhere")
     return out
 
 

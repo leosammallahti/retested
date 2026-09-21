@@ -45,3 +45,23 @@ Any accuracy figure from `--check` is an upper bound. Sample the shipped rows in
 Effect and finding pages now show only `library` high/medium and `openalex` high links — the two strata measured
 above 90%. Everything else stays in the review queue, where a person is expected to check it, and citation-derived
 links no longer claim a confidence band that was never measured.
+
+
+## Addendum, 2026-09-21: 39 of the 65 are confirmed real *and* confirmed missing
+
+Of the 65 links read, 47 were a real replication of the original they were matched to. Checking those against
+**every** FORRT file rather than our own filter, 39 are absent from all of them. Those 39 are not estimates: each
+was read by hand, and its absence from FORRT was verified against their raw data. They include CREP and class
+replications of Cameron et al. (2019) at four universities, three of Williams & Bargh (2008) including a Serbian
+and a Japanese one, two of Stellar et al. (2018), and published work going back to a 1985 replication of Gheorghiu
+and Reyher and a 1994 replication of the Baltimore infant-crying study.
+
+**The absence check was too narrow and has been fixed.** `known_to_forrt` consulted the curated tables plus two
+feed files. It missed FLoRA's `alt_identifier_r`/`url_r` columns, where an OSF project id can stand in for a
+replication, and the dated extractor snapshots under `repos/flora-validation/data/`, which carry papers as `doi_r`
+before they reach the feed. `load_known_replication_dois()` now sweeps every column in every FORRT file that names
+a replication, 9,967 identifiers in all, and the build refuses to ship a find FORRT already has. That removed 345
+candidates, 275 of them psychology.
+
+One caveat that cannot be closed this way: 974 of the psychology finds have no DOI, so they cannot be checked
+against FORRT by identifier at all. Their absence rests on title matching alone and is weaker.

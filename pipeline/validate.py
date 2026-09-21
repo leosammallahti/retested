@@ -30,6 +30,13 @@ def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
     if len(set(ids)) != len(ids):
         problems.append(f"{len(ids) - len(set(ids))} duplicate candidate ids in the review queue")
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
+    from .load import load_known_replication_dois
+    forrt = load_known_replication_dois()
+    ours_already_known = [c["id"] for c in candidates
+                          if c["origin"] == "retested_discovery" and c["doi_r"] and c["doi_r"] in forrt]
+    if ours_already_known:
+        problems.append(f"{len(ours_already_known)} of our finds are papers FORRT already records "
+                        f"(e.g. {ours_already_known[0]})")
     for c in candidates:
         if c["review_state"] != "machine":
             problems.append(f"candidate {c['id']} is not marked machine-reviewed")

@@ -102,9 +102,15 @@ nothing. Accuracy by source, read one by one: library high/medium 24/25, OpenAle
 6/11, OpenAlex medium 2/4, library low 5/14. Pages now take only the first two; everything else waits in the queue.
 **Treat any `--check` number as an upper bound and sample the shipped rows instead.**
 
-**Where that leaves the site.** Queue 7,569 candidates: FORRT's extractor 2,425, ours 5,144 (4,217 psychology
+**39 finds are confirmed real and confirmed missing**, not estimated: read by hand, then checked against every
+FORRT file. The absence check behind the headline was too narrow — it missed FLoRA's `alt_identifier_r`/`url_r`
+columns and flora-validation's dated extractor snapshots — and now sweeps all 9,967 replication identifiers FORRT
+holds, which dropped 345 candidates. 974 psychology finds have no DOI and cannot be checked this way; their
+absence rests on title matching and is weaker.
+
+**Where that leaves the site.** Queue 7,224 candidates: FORRT's extractor 2,425, ours 4,799 (3,942 psychology
 replications, 739 other behavioural, 188 registered protocols; 2,483 high tier, 2,661 medium; 1,288 preprints).
-1,460 have an original, 912 of them one with a page here. 155 rows appear on 85 finding pages and their effect
+1,460 have an original, 912 of them one with a page here. 151 rows appear on 82 finding pages and their effect
 pages, down from 453 before the audit, and the build now refuses to put an unaudited link on a page.
 
 ## 3. Next steps, in order
