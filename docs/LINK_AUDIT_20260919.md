@@ -123,3 +123,25 @@ our finds name goes to 2,317.
 Only 17 of those originals have a page here, which is the expected shape rather than a disappointment: the
 reference scan reaches originals we do not hold, and naming the replicated paper is what a FLoRA submission
 requires whether or not we have a page for it.
+
+
+### Title fallback
+
+693 finds had no description because OpenAlex holds them as a bare title: no abstract for the triage step to read.
+But 478 of those still carry a reference list, and a replication's own title usually mirrors the original's —
+"Replication of <original title>", or "<original title>: a conceptual replication of ...". Stripping the
+replication clause leaves a query that ranks the original top 55% of the time, against 78% for a description, so
+a title-derived link is capped one band below the same score from a description.
+
+That added 387 links for $0.021. **83% of psychology finds (3,233 of 3,897) now name an original**, from 1,002
+this morning, across 2,690 distinct original studies, and 1,971 carry both an original and a stated outcome.
+
+Two measurement mistakes on the way to this, both the same shape — an intermediate result computed over the wrong
+population:
+- reference containment first measured 23%, because it was run over low-confidence library links that were
+  themselves mostly wrong. Split by link quality it is 84%.
+- the title fallback's ceiling first measured 0 finds, because the reference lists were read from a temporary file
+  built earlier for a different set that never included them. It is 478.
+
+Both would have closed off a route that worked. Check which rows an intermediate was built from before believing
+what it says about a different set.

@@ -25,11 +25,32 @@ from __future__ import annotations
 import glob
 import hashlib
 import json
+import re
 
 from .discover import _get, _spent
 from .ids import norm_doi
 from .link import text_sim
 from .load import CACHE, DISCOVERY
+
+# A replication's own title usually mirrors the original's: "Replication of <original title>", or
+# "<original title>: a conceptual replication of ...". Stripping the replication clause leaves a usable query for
+# the 693 finds OpenAlex holds as a bare title with no abstract, where the triage step had nothing to describe.
+# It ranks the original top 55% of the time against 78% for a description, so a title-derived link is capped one
+# band lower than the same score from a description.
+_LEAD = re.compile(r"^.{0,60}?\b(?:replicat\w*|reproduc\w*)\s+(?:and\s+extension\s+)?(?:of|study\s+of)\s+", re.I)
+_TAIL = re.compile(r"[:;,.\-\u2013\u2014]\s*(?:a|an|the)?\s*[\w\s\-]{0,40}?\b(?:replicat\w*|reproduc\w*)\b.*$", re.I)
+_NOISE = re.compile(r"\((?:19|20)\d{2}[a-z]?\)|\bet\s+al\.?|\bstudy\s+\d+\b"
+                    r"|\bat\s+[A-Z][\w'\u2019\- ]+(?:University|College|Universit\w+)\b", re.I)
+
+
+def stem_title(title: str | None) -> str | None:
+    """The replication's title with its own replication clause removed, or None if nothing usable is left."""
+    s = title or ""
+    m = _LEAD.search(s)
+    s = s[m.end():] if m else _TAIL.sub("", s)
+    s = _NOISE.sub(" ", s).strip(" :,-\u2013\u2014\u2019'\"\u201c\u201d\u00ab\u00bb")
+    return s if len(s.split()) >= 3 else None
+
 
 HIGH = (0.50, 0.15)
 MEDIUM = (0.30, 0.05)
@@ -77,9 +98,12 @@ def resolve_titles(ids: list[str], max_usd: float) -> dict[str, dict]:
     return known
 
 
-def pick(description: str, refs: list[str], titles: dict[str, dict]) -> dict | None:
+def pick(description: str | None, refs: list[str], titles: dict[str, dict], title_r: str | None = None) -> dict | None:
     """The referenced work whose title best matches the described finding, with its margin over the runner-up."""
-    scored = sorted(((text_sim(description, t["title"]) or 0.0, t)
+    query, basis = (description, "description") if description else (stem_title(title_r), "title")
+    if not query:
+        return None
+    scored = sorted(((text_sim(query, t["title"]) or 0.0, t)
                      for r in refs if (t := titles.get(r)) and t.get("title") and t.get("doi")),
                     key=lambda x: -x[0])
     if not scored or scored[0][0] < FLOOR:
@@ -88,9 +112,11 @@ def pick(description: str, refs: list[str], titles: dict[str, dict]) -> dict | N
     margin = round(top[0] - runner[0], 3)
     band = ("high" if top[0] >= HIGH[0] and margin >= HIGH[1]
             else "medium" if top[0] >= MEDIUM[0] and margin >= MEDIUM[1] else "low")
+    if basis == "title":
+        band = {"high": "medium", "medium": "low", "low": "low"}[band]
     return {"doi_o": top[1]["doi"], "title_o": top[1]["title"], "year_o": top[1].get("year"),
             "method": "reference_scan", "confidence": band, "score": round(top[0], 3), "text_sim": round(top[0], 3),
-            "margin": margin, "n_references": len(scored),
+            "margin": margin, "n_references": len(scored), "matched_on": basis,
             "runner_up": {"doi_o": runner[1]["doi"], "title_o": runner[1]["title"],
                           "score": round(runner[0], 3)} if runner[1] else None}
 
@@ -105,16 +131,18 @@ def run(max_usd: float = 1.20) -> int:
         o = t.get("original") or {}
         if t.get("kind") not in ("replication", "reproduction") or t.get("field") != "psychology":
             continue
-        if t.get("original_doi") or r["cid"] in links or not o.get("description"):
+        if t.get("original_doi") or r["cid"] in links:
             continue
-        todo[r["cid"]] = o["description"]
-    print(f"  {len(todo):,} psychology replications still have no original but describe one")
+        todo[r["cid"]] = (o.get("description"), r.get("title_r"))
+    described = sum(1 for d, _ in todo.values() if d)
+    print(f"  {len(todo):,} psychology replications still have no original "
+          f"({described:,} describe one, {len(todo) - described:,} are a bare title)")
     refs = reference_lists(set(todo))
     print(f"  {len(refs):,} of them cite a reference list we already hold")
     titles = resolve_titles(sorted({w for v in refs.values() for w in v}), max_usd)
     out = {}
-    for cid, desc in todo.items():
-        hit = pick(desc, refs.get(cid, []), titles)
+    for cid, (desc, title_r) in todo.items():
+        hit = pick(desc, refs.get(cid, []), titles, title_r)
         if hit:
             out[cid] = {**hit, "named": {"description": desc}}
     (DISCOVERY / "reference_links.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
@@ -122,4 +150,5 @@ def run(max_usd: float = 1.20) -> int:
     print(f"  proposed an original for {len(out):,} of the {len(refs):,} with references "
           f"· {_spent['calls']} calls · ${_spent['usd']:.3f}")
     print("  by confidence:", dict(Counter(v["confidence"] for v in out.values())))
+    print("  matched on:", dict(Counter(v["matched_on"] for v in out.values())))
     return 0
