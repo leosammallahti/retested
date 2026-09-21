@@ -264,8 +264,11 @@ rather than assuming either way.
 
 ## 3. Next steps, in order
 
-1. **Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit, and 746 named originals
-   stayed unresolved. `python -m pipeline link --openalex --max-usd 1.0` after the daily reset.
+1. ~~**Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit.~~ Done, and it
+   turned out to be already done: re-running `link --openalex --max-usd 1.0` on 2026-09-21 made **0 API calls and
+   cost $0** — every lookup was cached from an earlier run. 1,416 of 1,483 named originals are resolved (170
+   high, 238 medium, 1,008 low). Note what the link audit says about that last number: a low-band link is right
+   about a third of the time, so resolving more of the remaining 67 is not where the value is.
 2. **Keep reading; both audits accumulate now.** `python -m pipeline outcomes --sample 60` and
    `python -m pipeline originals --sample 40 --pool shown` pick up exactly where this session stopped, cost
    nothing, and every band a page shows is already in `data/curated/*_audit.csv` rather than in prose. What is
