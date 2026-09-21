@@ -22,6 +22,7 @@ and he wants API spending kept lean.
 .venv/bin/python -m pipeline discover --mode keyword|cites|coverage   # OpenAlex searches, cached in data/cache/openalex
 .venv/bin/python -m pipeline triage --tier high|medium [--pilot] [--max-usd N]   # DeepSeek check, cached per paper
 .venv/bin/python -m pipeline link [--openalex] [--max-usd N] [--check]  # resolve the original each find names
+.venv/bin/python -m pipeline outcomes --sample N | --score   # hand-read audit of the verdicts (free, no model)
 cd site && npm run build && npm run preview           # static site -> site/dist (preview on :4321)
 ```
 

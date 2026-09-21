@@ -1,0 +1,145 @@
+cid,pool,recorded,label,note,labelled_by,labelled_on
+10.1002/acp.4203,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/asi.4630330204,card,failed,failed,,claude-opus-5,2026-09-21
+10.1002/bs.3830140505,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/capr.12710,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/jaba.791,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/jad.12266,card,failed,failed,,claude-opus-5,2026-09-21
+10.1002/pits.21647,card,successful,successful,five of seven primary outcomes significant,claude-opus-5,2026-09-21
+10.1007/bf03089984,card,failed,failed,,claude-opus-5,2026-09-21
+10.1007/bf03394516,card,failed,failed,,claude-opus-5,2026-09-21
+10.1007/s00429-022-02602-x,card,failed,failed,,claude-opus-5,2026-09-21
+10.1007/s11218-024-09899-y,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/0001-6918(69)90006-7,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/0005-7967(86)90033-1,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/0022-1031(92)90040-q,card,successful,successful,,claude-opus-5,2026-09-21
+10.1016/j.cogdev.2017.10.003,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/j.jad.2025.01.058,card,successful,successful,,claude-opus-5,2026-09-21
+10.1016/j.neuroimage.2023.120002,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/j.psychsport.2024.102770,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/j.sbspro.2011.10.233,card,failed,not_established,reports which group was most satisfied but never compares that with the original's finding,claude-opus-5,2026-09-21
+10.1016/s0010-9452(08)70219-3,card,failed,failed,,claude-opus-5,2026-09-21
+10.1017/s0033291711000973,card,successful,successful,,claude-opus-5,2026-09-21
+10.1017/s0261444821000197,card,successful,successful,,claude-opus-5,2026-09-21
+10.1017/s0305000900012058,card,successful,successful,,claude-opus-5,2026-09-21
+10.1017/s1041610215001970,card,successful,successful,,claude-opus-5,2026-09-21
+10.1017/s1930297500000796,card,successful,successful,,claude-opus-5,2026-09-21
+10.1017/xps.2025.7,card,failed,failed,,claude-opus-5,2026-09-21
+10.1023/a:1016347320889,card,successful,successful,,claude-opus-5,2026-09-21
+10.1037//0882-7974.9.3.464,card,successful,successful,,claude-opus-5,2026-09-21
+10.1037/0022-3514.49.2.317,card,failed,failed,,claude-opus-5,2026-09-21
+10.1037/h0030709,card,failed,failed,,claude-opus-5,2026-09-21
+10.1037/h0080795,card,failed,failed,,claude-opus-5,2026-09-21
+10.1037/pspa0000039,card,failed,failed,,claude-opus-5,2026-09-21
+10.1037/pspp0000115,card,failed,failed,,claude-opus-5,2026-09-21
+10.1038/s41598-023-48792-0,card,successful,successful,,claude-opus-5,2026-09-21
+10.1038/s41598-025-98673-x,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/02699931.2015.1053842,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/02699931.2023.2216446,card,successful,successful,,claude-opus-5,2026-09-21
+10.1080/10570314.2023.2202798,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/1357650x.2013.862257,card,successful,successful,replicates the same authors' own earlier publication rather than an independent one,claude-opus-5,2026-09-21
+10.1080/15487760802615863,card,successful,successful,"uncontrolled pilot; improvement reported, no comparison with the parent trial",claude-opus-5,2026-09-21
+10.1080/16066359.2023.2195171,card,successful,successful,,claude-opus-5,2026-09-21
+10.1080/1743727x.2019.1575352,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/17470210802034678,card,successful,successful,,claude-opus-5,2026-09-21
+10.1080/20445911.2019.1606000,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/23273798.2020.1852291,card,successful,successful,,claude-opus-5,2026-09-21
+10.1098/rsos.190068,card,failed,failed,,claude-opus-5,2026-09-21
+10.1111/desc.12887,card,successful,not_established,the human agent was replaced by a toy crane; the original condition was not re-run and the result questions the original's interpretation,claude-opus-5,2026-09-21
+10.1111/j.1365-2788.2007.01026.x,card,successful,successful,,claude-opus-5,2026-09-21
+10.1111/j.1469-7610.1989.tb00274.x,card,successful,successful,,claude-opus-5,2026-09-21
+10.1111/jcpp.13682,card,successful,successful,,claude-opus-5,2026-09-21
+10.1121/1.5036264,card,successful,successful,,claude-opus-5,2026-09-21
+10.1161/01.hyp.11.4.308,card,successful,successful,,claude-opus-5,2026-09-21
+10.1176/ajp.139.6.846a,card,failed,failed,,claude-opus-5,2026-09-21
+10.1176/foc.4.2.291,card,successful,successful,,claude-opus-5,2026-09-21
+10.1177/002216787301300210,card,failed,failed,,claude-opus-5,2026-09-21
+10.1177/00332941231169666,card,failed,failed,,claude-opus-5,2026-09-21
+10.1177/01902725231162074,card,successful,successful,"corroborated only in the high-trust environment, which is the one matching the original",claude-opus-5,2026-09-21
+10.1177/09567976261436988,card,failed,failed,,claude-opus-5,2026-09-21
+10.1177/1073191121993216,card,successful,successful,,claude-opus-5,2026-09-21
+10.1177/1079063209347724,card,successful,successful,,claude-opus-5,2026-09-21
+10.1177/10870547261457678,card,successful,not_established,uncontrolled open trial whose own abstract says efficacy conclusions cannot be drawn from it,claude-opus-5,2026-09-21
+10.1177/1747021817742079,card,failed,failed,the target three-way interaction did not replicate; a different effect did,claude-opus-5,2026-09-21
+10.1177/2158244014553587,card,failed,failed,,claude-opus-5,2026-09-21
+10.1177/23328584251364785,card,failed,failed,confirmatory main effects did not replicate; exploratory subgroup effects did,claude-opus-5,2026-09-21
+10.1184/r1/6471620,card,failed,failed,,claude-opus-5,2026-09-21
+10.12794/metadc149614,card,failed,not_established,reports only that the new event-centrality refinement was unsupported; never says whether the original result held,claude-opus-5,2026-09-21
+10.12794/metadc279247,card,failed,failed,,claude-opus-5,2026-09-21
+10.1371/journal.pone.0171793,card,failed,failed,,claude-opus-5,2026-09-21
+10.1521/bumc.2022.86.3.183,card,successful,successful,,claude-opus-5,2026-09-21
+10.1525/collabra.59,card,successful,successful,,claude-opus-5,2026-09-21
+10.15760/etd.2386,card,failed,failed,,claude-opus-5,2026-09-21
+10.18061/emr.v17i1.8446,card,failed,failed,failed overall; a post hoc subsample was consistent with the original's proposition,claude-opus-5,2026-09-21
+10.18483/ijsci.2548,card,failed,failed,,claude-opus-5,2026-09-21
+10.1901/jaba.1980.13-171,card,successful,successful,,claude-opus-5,2026-09-21
+10.21203/rs.3.rs-2943371/v1,card,successful,successful,,claude-opus-5,2026-09-21
+10.2139/ssrn.1715954,card,successful,successful,,claude-opus-5,2026-09-21
+10.2190/xhth-dh29-phtd-4wvm,card,successful,successful,,claude-opus-5,2026-09-21
+10.2224/sbp.1985.13.2.143,card,failed,failed,,claude-opus-5,2026-09-21
+10.2307/351897,card,successful,not_established,reports correlations from .09 to .51 without saying whether they match Dean (1966),claude-opus-5,2026-09-21
+10.2466/pr0.1962.11.2.355,card,failed,failed,,claude-opus-5,2026-09-21
+10.2466/pr0.1969.24.2.675,card,successful,successful,single subject,claude-opus-5,2026-09-21
+10.2466/pr0.1985.56.3.816,card,failed,failed,,claude-opus-5,2026-09-21
+10.31234/osf.io/eg2pu,card,failed,failed,,claude-opus-5,2026-09-21
+10.31234/osf.io/mz9ut,card,successful,successful,,claude-opus-5,2026-09-21
+10.31234/osf.io/nyba6,card,failed,failed,,claude-opus-5,2026-09-21
+10.31234/osf.io/x6a2u,card,successful,successful,,claude-opus-5,2026-09-21
+10.3138/ijsll-2024-0018,card,successful,successful,,claude-opus-5,2026-09-21
+10.3389/fnhum.2019.00309,card,failed,failed,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2014.00259,card,successful,successful,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2018.00874,card,failed,failed,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2019.02422,card,failed,failed,,claude-opus-5,2026-09-21
+10.3390/psych3020013,card,failed,failed,,claude-opus-5,2026-09-21
+10.36850/e12,card,failed,failed,,claude-opus-5,2026-09-21
+10.3758/bf03330518,card,failed,failed,,claude-opus-5,2026-09-21
+10.3758/s13423-018-01566-6,card,successful,successful,,claude-opus-5,2026-09-21
+10.4018/ijicst.2011070101,card,successful,successful,,claude-opus-5,2026-09-21
+10.4992/jjpsy.87.14052,card,successful,successful,,claude-opus-5,2026-09-21
+10.4992/psycholres1954.18.6,card,failed,mixed,fails to replicate one O'Connor & Hermelin finding while explicitly supporting another,claude-opus-5,2026-09-21
+10.5334/irsp.683,card,successful,successful,,claude-opus-5,2026-09-21
+10.5334/jeps.bq,card,failed,failed,,claude-opus-5,2026-09-21
+10.5334/joc.284,card,successful,successful,,claude-opus-5,2026-09-21
+10.58837/chula.the.2021.337,card,failed,not_established,"null result, but the abstract says its own manipulation checks failed and calls the result inconclusive",claude-opus-5,2026-09-21
+10.7282/t34t6jjp,card,failed,failed,,claude-opus-5,2026-09-21
+10.7287/peerj.10325v0.1/reviews/1,card,failed,failed,"outcome read correctly, but the record is a peer-review document for the replication rather than the replication itself",claude-opus-5,2026-09-21
+10.7910/dvn/qui4mw,card,successful,successful,,claude-opus-5,2026-09-21
+W1015327088,card,successful,successful,,claude-opus-5,2026-09-21
+W1909834750,card,successful,successful,,claude-opus-5,2026-09-21
+W1933675103,card,failed,failed,,claude-opus-5,2026-09-21
+W2096105143,card,successful,successful,,claude-opus-5,2026-09-21
+W2188628050,card,successful,successful,,claude-opus-5,2026-09-21
+W2385387129,card,failed,failed,,claude-opus-5,2026-09-21
+W2696723753,card,successful,successful,,claude-opus-5,2026-09-21
+W2773732469,card,failed,failed,,claude-opus-5,2026-09-21
+W2788431364,card,successful,successful,,claude-opus-5,2026-09-21
+W2805657910,card,failed,failed,,claude-opus-5,2026-09-21
+W7110641524,card,successful,successful,single-case demonstration; claims applicability rather than comparing with Hanley et al.,claude-opus-5,2026-09-21
+W7120606347,card,successful,not_established,systematic replication of Ferreira (2002) that reports its own result and never compares it with Ferreira's,claude-opus-5,2026-09-21
+W7165241472,card,successful,successful,,claude-opus-5,2026-09-21
+W7198552913,card,failed,mixed,primary analysis finds no effect; the abstract then says a different analysis suggests contradictory results,claude-opus-5,2026-09-21
+W787058522,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/(sici)1096-8628(19990416)88:2<168::aid-ajmg14>3.0.co;2-p,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1002/bin.2076,uncounted,mixed,not_established,reports its own several results and never says whether the earlier finding held,claude-opus-5,2026-09-21
+10.1002/eat.1066,uncounted,mixed,successful,both stated replication aims were confirmed; only a secondary cross-validation failed,claude-opus-5,2026-09-21
+10.1037/a0017024,uncounted,mixed,mixed,Experiment 1 replicated the congruity effect; the survival advantage disappeared once congruity was controlled,claude-opus-5,2026-09-21
+10.1037/dev0001181,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1080/00140139.2018.1426790,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1080/00140139.2020.1854352,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1080/00207146908407286,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1080/09297040500473706,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1080/23311908.2014.996316,uncounted,mixed,mixed,"the men's pattern replicated, the women's did not",claude-opus-5,2026-09-21
+10.1109/tvcg.2022.3226463,uncounted,mixed,not_established,reports the individual-differences extension; whether Cleveland and McGill's ranking itself held is not stated,claude-opus-5,2026-09-21
+10.1111/flan.12664,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1177/0146167201278007,uncounted,mixed,not_established,measures how the Princeton stereotypes changed over 60 years; there is no earlier effect to hold or not,claude-opus-5,2026-09-21
+10.1186/s41235-020-00260-3,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.1515/plc-2017-0019,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.2466/pr0.1977.40.1.70,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.26736/hs.2025.02.03,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.31234/osf.io/578us,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2023.1258359,uncounted,mixed,mixed,"literally replicated, then shown to be an artefact of the original's design",claude-opus-5,2026-09-21
+10.3758/bf03210821,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+W1592790442,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+W1607324979,uncounted,mixed,mixed,"one of the original's two findings replicated, the other did not",claude-opus-5,2026-09-21
+W2161456236,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
+W755249514,uncounted,mixed,mixed,,claude-opus-5,2026-09-21

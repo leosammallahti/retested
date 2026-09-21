@@ -43,6 +43,17 @@ Every link method that reaches a page was validated by reading links one by one,
 The medium-tier screening accuracy (50%) rests on 40 papers labelled by Claude, not by a person. The high tier's
 86% rests on the owner's 70 hand labels. More reading is the only thing that moves these.
 
+**Outcome reading is the exception: it is now measured at n=144** (successful 93%, failed 92%, mixed 82%, zero
+cases read as the opposite of what the paper says — `docs/LINK_AUDIT_20260919.md`, addendum of 2026-09-21). That
+measurement is the one piece of tooling here built to accumulate: `python -m pipeline outcomes --sample 60` draws
+what is unlabelled, and the labels go in `data/curated/outcome_audit.csv`. Doing the same for the link strata
+would mean a comparable sampler over link bands, which does not exist yet — `link --check` measures the easy half
+and is an upper bound.
+
+An earlier n=20 read of the same judgement concluded the error was one-directional, towards success, and that
+conclusion was shipped onto `/uncounted/`. It was noise at that size. Anything in this file resting on a sample
+of 20 to 40 should be read as establishing that an error exists, not which way it points.
+
 ## 3. Data quality
 
 - **95 papers in the library share a normalised title with another DOI.** A find can link to a copy that has no

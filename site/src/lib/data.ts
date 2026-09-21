@@ -42,6 +42,10 @@ export interface Finding { doi_o: string; slug: string; attempts: string[]; effe
 export interface Famous { status: string | null; status_raw: string | null; description: string | null; original_paper: string | null; original_year: number | null; critiques: string | null; original_es: string | null; replication_es: string | null; gs_citations: number | null }
 export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
 export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
+// The hand-read audit of the verdicts themselves: data/curated/outcome_audit.csv, scored by `pipeline outcomes`.
+export interface OutcomeAudit { n_read: number; n_pool: number; flipped: number; raw_success_share: number | null;
+  corrected_success_share: number | null; corrected_n?: number;
+  by_verdict: Record<string, { n: number; right: number; precision: number }> }
 export interface EffectCard { slug: string; name: string; discipline: string | null; record: Record_; fame: number; numeric: Pick<Numeric, 'r' | 'ci' | 'ratio' | 'r_original' | 'label'> | null; famous_status: string | null }
 export interface Stats {
   counts: Record<string, number>; overall: Share;
@@ -50,7 +54,7 @@ export interface Stats {
   shrinkage: { n_rows: number; median_ratio: number; q25: number; q75: number; share_below_half: number; share_sign_flip: number };
   uncounted: { finds: number; linked: number; with_verdict: number; distinct_originals: number; overall: Share;
     by_evidence: Record<string, Share>; by_independence: Record<string, Share>; by_design: Record<string, Share>;
-    preregistered: Share; by_year: Record<string, Share> };
+    preregistered: Share; by_year: Record<string, Share>; audit: OutcomeAudit | null };
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }

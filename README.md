@@ -36,7 +36,14 @@ python -m pipeline discover --mode cites      # papers citing an original alread
 python -m pipeline triage --tier high --max-usd 1.5   # DeepSeek reads each abstract
 python -m pipeline link --openalex --max-usd 1.0      # resolve the original each one names
 python -m pipeline link --check               # how often that resolution is right (free)
+python -m pipeline outcomes --sample 40       # print verdicts to read one by one (free)
+python -m pipeline outcomes --score           # how often the verdict was read right, from the labels
 ```
+
+`outcomes` is the audit of the verdicts themselves. It draws a stratified sample, a person or a session reads
+each case against the paper's own abstract, and the labels go in `data/curated/outcome_audit.csv` keyed by
+candidate id, so they survive rebuilds and accumulate. `--score` turns them into per-verdict precision with
+intervals, and names the rows in a pool that no draw has reached rather than quoting a figure over them.
 
 `python -m pipeline fetch --refresh` pulls FORRT's newest release (FLoRA updates several times a week) and records the new hashes. CI does this weekly and deploys to GitHub Pages (`.github/workflows/site.yml`).
 

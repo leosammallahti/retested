@@ -45,6 +45,7 @@ def uncounted(candidates: list[dict]) -> dict:
     replication, a machine matched it to an original, and a machine read the outcome off an abstract. The point of
     showing it is not to assert a rate but to ask whether the curated record looks like the uncurated one.
     """
+    from .outcomes import audit_summary       # local: outcomes reads wilson from here
     ours = [c for c in candidates if c["origin"] == "retested_discovery" and c["group"] == "replication"]
     linked = [c for c in ours if c["doi_o"]]
     verdict = [c for c in linked if c["outcome"]]
@@ -54,6 +55,8 @@ def uncounted(candidates: list[dict]) -> dict:
 
     return {
         "finds": len(ours), "linked": len(linked), "with_verdict": len(verdict),
+        # what reading these verdicts one by one found; None until somebody has read some
+        "audit": audit_summary("uncounted", candidates),
         "distinct_originals": len({c["doi_o"] for c in linked}),
         "overall": _share([c["outcome"] for c in verdict]),
         "by_evidence": {"published": by(lambda c: c.get("evidence_tier") == "published"),

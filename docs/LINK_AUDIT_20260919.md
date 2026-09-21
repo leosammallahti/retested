@@ -172,3 +172,62 @@ sample found, and none of the reverse. The gap should not be read as "uncounted 
 somebody has reviewed enough of them to separate the two.
 
 n = 20. Enough to establish the direction, not the size.
+
+
+## Addendum, 2026-09-21: outcome accuracy again, at n=144, and the one-directional error does not survive
+
+The n=20 read above found failures right 9/9 and successes right 9/11, concluded the error runs one way —
+towards success — and that conclusion was put on `/uncounted/` as the likely explanation of its 47.7% vs 41.7%
+gap. **144 more cases, read the same way, do not support it.**
+
+`python -m pipeline outcomes` now owns this measurement. It draws a deterministic stratified sample, prints each
+case as the replication's own **full** abstract (not the 700-character copy the queue carries for the browser,
+which usually cuts before the results sentence) plus the quote the verdict rests on, and records the labels in
+`data/curated/outcome_audit.csv` keyed by candidate id. They survive rebuilds and accumulate, which is the thing
+the n=20 read did not do: its 20 rows were never written down, so this sample could not extend it and had to
+start again. Scoring uses every label whose candidate is in the pool, and names the rows in a pool that no draw
+has reached instead of quoting a figure over them.
+
+120 cases from the game-card pool (psychology finds with a binary verdict and a linked original), 60 successful
+and 60 failed, plus 24 drawn from the `mixed` verdict that only the `/uncounted/` population contains:
+
+| the model said | right | precision | 95% interval | where the rest went |
+|---|---|---|---|---|
+| failed | 55/60 | **92%** | 82–96% | 3 not established, 2 mixed |
+| successful | 56/60 | **93%** | 84–97% | 4 not established |
+| mixed | 18/22 | 82% | 62–93% | 3 not established, 1 successful |
+
+**The two binary classes are the same within noise, and nothing in 144 cases was read as the opposite of what the
+paper reports.** Zero flips. That is the number that matters for a scored card: the failure mode is not a wrong
+answer but a missing one — an abstract that settles nothing, called either way.
+
+The nine mistakes in the card pool are all of one kind. A dissertation that replicates a study and then reports
+only whether its own new refinement worked (`10.12794/metadc149614`). A null result whose own abstract says the
+manipulation checks failed and calls it inconclusive (`10.58837/chula.the.2021.337`). A decade replication that
+prints eight correlations from .09 to .51 and never says whether they match Dean (1966) (`10.2307/351897`). A
+violation-of-expectation study that replaced the human agent with a toy crane, so the original condition was
+never re-run (`10.1111/desc.12887`). An uncontrolled open trial whose own conclusion says efficacy cannot be
+concluded from it (`10.1177/10870547261457678`). Four of the nine were called successful and five failed.
+
+Why the earlier sample pointed the other way: it did not. 9/9 and 9/11 are exactly what ~92% in both classes
+produces at that size — the chance of seeing 9/9 at 92% is .47, and of 9 or fewer out of 11 at 93% is .18. The
+pattern was read as a direction when it was the width of the interval. n=20 could establish that some verdicts
+are wrong; it could not establish which way.
+
+**What this changes.**
+
+- `/uncounted/` no longer says a model over-reading success explains its gap. Re-weighting every verdict on that
+  page by these labels moves it from 47.7% to 49.3% — slightly *further* from the curated record's 41.7%, not
+  closer. The page now prints these numbers straight from the label file through `stats.uncounted().audit`, so
+  the claim cannot drift from the measurement again.
+- The card pool's base rate is not a measurement artefact either. At the deck's own grain — one card per original
+  study, dropping originals whose finds disagree — it is 1,323 cards at **62.9% successful**, and correcting
+  every verdict by the table above gives **63.3%**. Against the existing deck's 53%, the difference survives. Keep
+  them a separate deck because the pool really is different, not because its verdicts are misread.
+- The 17 rows of this sample that fall in the page-grade link band were right 17/17. Too few to quote as a rate,
+  and recorded only so the next draw does not re-read them.
+
+Limits worth stating. One reader, one session, judging the same abstracts the model judged — this measures whether
+the verdict is a defensible reading of the abstract, not whether the abstract is a defensible reading of the paper.
+Both readers can be wrong together where an abstract oversells. And it says nothing about whether the find was
+matched to the right original; that is the separate measurement above, and a card needs both.

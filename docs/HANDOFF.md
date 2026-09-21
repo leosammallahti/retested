@@ -148,12 +148,48 @@ against 39.2% when not, against their 70/38.
 | is it a replication (high tier / medium tier) | 86% / 50% | 70 owner labels / 40 Claude labels |
 | right original: library high·med / OpenAlex high / reference_scan high | 96% / 91% / 89% | 25 / 11 / 36 |
 | right original: citation pick / OpenAlex med / library low | 55% / 50% / 36% | 11 / 4 / 14 |
-| **outcome read correctly** | **~90%, one-directional** | 20 |
+| **outcome read correctly: successful / failed / mixed** | **93% / 92% / 82%** | 60 / 60 / 22 |
 
-The outcome error runs *towards success* — failures were right 9/9, successes 9/11 — which is the direction of
-the 47.7% vs 41.7% gap on the uncounted page. That page now tells the reader not to treat the gap as real until
-enough has been reviewed to separate the two explanations. Two attempts to detect that error by pattern failed
-and are recorded in `docs/LINK_AUDIT_20260919.md` so they are not rebuilt.
+Superseded on 2026-09-21: an earlier n=20 read put outcome accuracy at ~90% and said the error runs one way,
+towards success. It does not. See section 2e.
+
+## 2e. 2026-09-21: the verdicts themselves, measured at n=144
+
+Every accuracy figure before this one was about *linking*. Whether the model read the **outcome** correctly had
+been measured once, on 20 cases, and that read said failures were right 9/9 and successes 9/11 — an error running
+one way, towards success. 144 more cases say it does not.
+
+**`python -m pipeline outcomes`** owns this measurement now. `--sample N` draws a deterministic stratified sample
+and prints each case as the replication's own full abstract plus the quote the verdict rests on; `--record` takes
+the labels back on stdin; `--score` reports per-verdict precision with Wilson intervals. Labels live in
+`data/curated/outcome_audit.csv`, keyed by candidate id, so they survive rebuilds and the next session samples
+what is unlabelled instead of starting again — which is what this session had to do, because the 20 earlier rows
+were never written down.
+
+| the model said | right | precision | where the rest went |
+|---|---|---|---|
+| failed | 55/60 | 92% | 3 not established, 2 mixed |
+| successful | 56/60 | 93% | 4 not established |
+| mixed | 18/22 | 82% | 3 not established, 1 successful |
+
+**Nothing in 144 cases was read as the opposite of what the paper reports.** The error is a missing answer, not a
+wrong one: an abstract that settles nothing, called either way, four times towards success and five towards
+failure. For a scored card that is the difference between a card that cheats the player and a card that should
+never have been dealt.
+
+Three things follow, and all three overturn something the handoff said yesterday:
+
+- **`/uncounted/` was blaming the wrong thing.** Re-weighting every verdict on that page by these labels moves it
+  from 47.7% to 49.3% — further from the curated record's 41.7%, not closer. The page no longer offers model
+  error as the explanation, and it now prints the audit numbers straight from the label file through
+  `stats.uncounted().audit`, so the prose cannot drift from the measurement again.
+- **The card pool's base rate is real.** At the deck's own grain — one card per original, dropping originals whose
+  finds disagree — 1,323 cards at 62.9% successful, 63.3% after correction, against the existing deck's 53%. Keep
+  them a separate deck because the pool differs, not because its verdicts are misread.
+- **Outcome reading is no longer a blocker on shipping these as cards.** The claim text is.
+
+`docs/LINK_AUDIT_20260919.md` has the case-by-case detail, the nine mistakes named, and why the n=20 pattern was
+noise rather than a direction.
 
 ## 3. Next steps, in order
 
@@ -161,6 +197,8 @@ and are recorded in `docs/LINK_AUDIT_20260919.md` so they are not rebuilt.
    stayed unresolved. `python -m pipeline link --openalex --max-usd 1.0` after the daily reset.
 2. **Audit what the audit could not reach**: the OpenAlex-high stratum rests on 11 reads and library-high/medium on
    25. Both look good; neither is settled. Medium-tier screening rests on 40 labels made by Claude, not a person.
+   Outcome reading is now the best-measured judgement here and the cheapest to extend:
+   `python -m pipeline outcomes --sample 60` picks up where this session left off and costs nothing but reading.
 3. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
    Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
 4. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
