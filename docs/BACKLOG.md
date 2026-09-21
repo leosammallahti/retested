@@ -43,7 +43,13 @@ Every link method that reaches a page was validated by reading links one by one,
 The medium-tier screening accuracy (50%) rests on 40 papers labelled by Claude, not by a person. The high tier's
 86% rests on the owner's 70 hand labels. More reading is the only thing that moves these.
 
-**Outcome reading is the exception: it is now measured at n=144** (successful 93%, failed 92%, mixed 82%, zero
+**Both machine judgements are now the exception, and both accumulate.** The link between a find and its
+original is measured band by band in `data/curated/original_audit.csv` — 171 read, from 100% down to 12%, with
+every band a page shows covered and the rows that actually ship sampled separately from the band they belong to
+(`pipeline originals --score`). `reference_scan` medium at 8/14 is the one band whose fate is still open; 195
+card rows turn on whether it reaches 90%.
+
+**Outcome reading is measured at n=144** (successful 93%, failed 92%, mixed 82%, zero
 cases read as the opposite of what the paper says — `docs/LINK_AUDIT_20260919.md`, addendum of 2026-09-21). That
 measurement is the one piece of tooling here built to accumulate: `python -m pipeline outcomes --sample 60` draws
 what is unlabelled, and the labels go in `data/curated/outcome_audit.csv`. Doing the same for the link strata
@@ -56,11 +62,16 @@ of 20 to 40 should be read as establishing that an error exists, not which way i
 
 ## 3. Data quality
 
-- **95 papers in the library share a normalised title with another DOI.** A find can link to a copy that has no
-  page and vanish from view. Merging them is straightforward and would recover some page rows.
+- ~~**95 papers share a normalised title with another DOI**, so a find can link to a page-less copy.~~ Checked
+  2026-09-21: **0** finds point at a page-less twin, so there is nothing to recover that way. What the check did
+  find was real — eleven DOIs cut short upstream, splitting one study's record across two pages — and that is
+  fixed (`registry._fold_doi_variants`). The 39 remaining shared titles are genuine twins (preprint and
+  published, Zenodo re-mints) or different papers that happen to share a title; neither is costing us anything
+  measurable.
 - **18 independence verdicts are stuck on a common surname** because one side has no OpenAlex author ids. Unlikely
   to move without reading the papers.
-- **15 OSF lookups failed transiently.** Re-running `pipeline osf` retries them for free.
+- ~~**15 OSF lookups failed transiently.**~~ Re-run 2026-09-21: it recovered 2 (220 → 222 registrations) and the
+  same 15 failed again, so they are persistent, not transient. Not worth another run.
 
 ## 4. Deferred by owner decision
 

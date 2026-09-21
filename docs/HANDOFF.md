@@ -198,14 +198,55 @@ Three things follow, and all three overturn something the handoff said yesterday
 `docs/LINK_AUDIT_20260919.md` has the case-by-case detail, the nine mistakes named, and why the n=20 pattern was
 noise rather than a direction.
 
+## 2f. 2026-09-21: every link band read, a route reopened, and eleven phantom papers removed
+
+**Link accuracy decides a card as much as the verdict does** — the reveal names the original, and any written
+claim would come from its abstract. The 65-case audit of 2026-09-19 had left 694 of the 1,442 card rows in bands
+nobody had read a case from. `python -m pipeline originals` is the same instrument as `outcomes`, pointed at the
+link; labels live in `data/curated/original_audit.csv`.
+
+| band | read | | rows in the card pool |
+|---|---|---|---|
+| `cited by this paper` | 34/36 | **94%** | 217 |
+| `library_author_year` high / medium | 10/10, 11/12 | **100% / 92%** | 9 |
+| `openalex_author_year` high / medium | 8/8, 7/8 | **100% / 88%** | 104 |
+| `reference_scan` high / medium | 8/10, 8/14 | 80% / 57% | 353 |
+| `openalex_author_year` low | 8/20 | 40% | 358 |
+| `reference_scan` low | 7/20 | 35% | 336 |
+| `library_author_year` low | 1/8 | 12% | 65 |
+
+**The two weakest bands are not weak, they are wrong** — Dean (1966) on marital adjustment matched to the
+absorption-edge spectrum of gallium phosphide, Nolan (1968) on smoking to a paper on protein structures. They
+hold 694 card rows and none of them can ship. A recurring near-miss is worth someone's time: the right paper is
+often the **runner-up**, so the scorer ranks better than its own top-1.
+
+**`cited by this paper` was closed on a measurement that had stopped describing the data.** It was filed
+`unchecked` and kept off pages on 6 right out of 11 — output from the retired t1 prompt. t3 added the
+mere-citation trap, and the caches show what that did: of 239 candidates t1 named a cited original for, t3
+withholds the name on 101 and keeps 137 of the other 138 identical. Read under t3 it is 34/36. Rows shown beside
+a verdict go from 111 on 65 finding pages to **168 on 115**.
+
+**Then the shipped rows were read separately, and they read lower.** Only 5 of the 57 cited-by rows that reach a
+page were in that 36. Reading 25 more: 26 of 30, **87%** — level with `library_author_year` medium on the same
+slice, and one clear error rather than four. The new `shown` pool is exactly the rows a reader sees, and the
+"not in the record yet" box now prints that figure instead of borrowing the band's.
+
+**Eleven malformed DOIs folded.** The backlog's "95 papers share a normalised title" recovers nothing — 0 finds
+point at a page-less twin — but underneath it were DOIs cut short upstream (`10.1016/j`, `10.1126/science.745568`)
+splitting one study's record across two pages. Tversky and Kahneman's framing paper held seven attempts on one
+page and a stranded eighth on the other; it now holds eight. A fold needs a strict-prefix DOI **and** the same
+normalised title, and all twelve pairs were read before the rule was written.
+
 ## 3. Next steps, in order
 
 1. **Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit, and 746 named originals
    stayed unresolved. `python -m pipeline link --openalex --max-usd 1.0` after the daily reset.
-2. **Audit what the audit could not reach**: the OpenAlex-high stratum rests on 11 reads and library-high/medium on
-   25. Both look good; neither is settled. Medium-tier screening rests on 40 labels made by Claude, not a person.
-   Outcome reading is now the best-measured judgement here and the cheapest to extend:
-   `python -m pipeline outcomes --sample 60` picks up where this session left off and costs nothing but reading.
+2. **Keep reading; both audits accumulate now.** `python -m pipeline outcomes --sample 60` and
+   `python -m pipeline originals --sample 40 --pool shown` pick up exactly where this session stopped, cost
+   nothing, and every band a page shows is already in `data/curated/*_audit.csv` rather than in prose. What is
+   still thin: medium-tier screening rests on 40 labels made by Claude rather than a person, and
+   `reference_scan` medium at 8/14 is the one band that might or might not reach the 90% line with more reading
+   — 195 card rows turn on it.
 3. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
    Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
 4. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
