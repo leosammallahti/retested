@@ -101,8 +101,17 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "doi_r": doi_r, "title_r": r.get("title_r"), "year_r": r.get("year_r"), "journal_r": r.get("venue"),
             "authors_r": r.get("authors_r"),
             "doi_o": doi_o,
-            "title_o": (P.get(doi_o) or {}).get("title") if in_wiki else (link or {}).get("title_o"),
-            "year_o": (P.get(doi_o) or {}).get("year") if in_wiki else (link or {}).get("year_o"),
+            # OpenAlex first for originals we do not hold: for 1,127 of the card candidates the wiki has nothing
+            # but a DOI, and the link's own title is whatever the matcher happened to score against
+            "title_o": ((P.get(doi_o) or {}).get("title") if in_wiki else None)
+                       or (original_authors.get(doi_o) or {}).get("title") or (link or {}).get("title_o"),
+            "year_o": ((P.get(doi_o) or {}).get("year") if in_wiki else None)
+                      or (original_authors.get(doi_o) or {}).get("year") or (link or {}).get("year_o"),
+            "authors_o": (P.get(doi_o) or {}).get("authors") or (original_authors.get(doi_o) or {}).get("authors"),
+            "journal_o": (P.get(doi_o) or {}).get("journal") or (original_authors.get(doi_o) or {}).get("journal"),
+            "cited_by_o": (original_authors.get(doi_o) or {}).get("cited_by"),
+            "retracted_o": (original_authors.get(doi_o) or {}).get("is_retracted"),
+            "abstract_o": (original_authors.get(doi_o) or {}).get("abstract"),
             "outcome": t.get("outcome") if t.get("outcome") != "not_reported" else None,
             "outcome_quote": t.get("outcome_quote"),
             "outcome_confidence": t.get("confidence"),

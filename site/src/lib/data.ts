@@ -65,6 +65,8 @@ export interface Candidate {
   type: string | null; field?: string | null; group: 'replication' | 'other_behavioural' | 'registration';
   evidence_tier?: string; search_tier?: 'high' | 'medium'; rule_score?: number; found_by?: string[]; screen_reason?: string | null;
   landing_page?: string | null; osf_id?: string | null;
+  authors_o?: string | null; journal_o?: string | null; cited_by_o?: number | null;
+  retracted_o?: boolean | null; abstract_o?: string | null;
   if_accepted?: { from: string; from_label: string; to: string; to_label: string; changes: boolean; k_before: number; k_after: number } | null;
   declared_design?: { word: string; fidelity: 'high' | 'low' | 'unclear'; said_in: string } | null;
   preregistered?: { is_registration: boolean; date: string | null; osf_kind: string; source: string } | null;

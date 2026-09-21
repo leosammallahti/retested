@@ -62,7 +62,8 @@ def run() -> int:
 
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
-    cands = queue.build_retested(load.load_triaged(), load.load_links(), g,
+    cands = queue.build_retested(load.load_triaged(),
+                                 {**load.load_reference_links(), **load.load_links()}, g,
                                  load.load_known_replication_dois(), load.load_known_osf_ids())
     tokens = sorted({c["osf_id"] for c in cands if c.get("osf_id")})
     print(f"  {len(tokens)} OSF ids among our finds")

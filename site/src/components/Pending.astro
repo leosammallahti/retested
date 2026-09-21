@@ -49,6 +49,7 @@ const withOutcome = rows.filter((r) => r.outcome).length;
             {r.declared_design && <span class={`chip${r.declared_design.fidelity === 'low' ? ' warn' : ''}`}>{r.declared_design.word} replication</span>}
             {r.independence?.verdict === 'shares_author' && <span class="chip warn">shares an author with the original</span>}
             {r.independence?.verdict === 'independent' && <span class="chip">independent team</span>}
+            {r.retracted_o && <span class="chip warn">original retracted</span>}
           </div>
           <div class="ptitle">
             {r.doi_r ? <a href={doiUrl(r.doi_r)} rel="noopener">{r.title_r ?? r.doi_r}</a> : <span>{r.title_r}</span>}
