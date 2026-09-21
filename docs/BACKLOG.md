@@ -43,14 +43,17 @@ Every link method that reaches a page was validated by reading links one by one,
 The medium-tier screening accuracy (50%) rests on 40 papers labelled by Claude, not by a person. The high tier's
 86% rests on the owner's 70 hand labels. More reading is the only thing that moves these.
 
-**Both machine judgements are now the exception, and both accumulate.** The link between a find and its
-original is measured band by band in `data/curated/original_audit.csv` — 171 read, from 100% down to 12%, with
-every band a page shows covered and the rows that actually ship sampled separately from the band they belong to
-(`pipeline originals --score`). `reference_scan` medium at 8/14 is the one band whose fate is still open; 195
-card rows turn on whether it reaches 90%.
+**Both machine judgements are now the exception, and both accumulate.** The link between a find and its original
+is measured band by band in `data/curated/original_audit.csv` — **384 read**, from 97% down to 12% — and the page
+gate is computed from that file rather than kept as a list (`queue.trusted_links`, 20+ read and 90%+ right).
+`pipeline originals --score` recomputes it; `--pool shown` scores the rows a reader actually sees rather than the
+band they belong to.
 
-**Outcome reading is measured at n=144** (successful 93%, failed 92%, mixed 82%, zero
-cases read as the opposite of what the paper says — `docs/LINK_AUDIT_20260919.md`, addendum of 2026-09-21). That
+The two bands nearest the line are where more reading changes something: `cited by this paper` at 72/84 = 86%
+(307 rows) and `reference_scan` high at 32/40 = 80% (299 rows). Both are out; either could come back.
+
+**Outcome reading is measured at n=224** (successful 94%, failed 93%, mixed 82%, one case in 200
+read as the opposite of what the paper says — `docs/LINK_AUDIT_20260919.md`, addenda of 2026-09-21). That
 measurement is the one piece of tooling here built to accumulate: `python -m pipeline outcomes --sample 60` draws
 what is unlabelled, and the labels go in `data/curated/outcome_audit.csv`. Doing the same for the link strata
 would mean a comparable sampler over link bands, which does not exist yet — `link --check` measures the easy half

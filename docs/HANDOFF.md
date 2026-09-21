@@ -166,21 +166,23 @@ the labels back on stdin; `--score` reports per-verdict precision with Wilson in
 what is unlabelled instead of starting again — which is what this session had to do, because the 20 earlier rows
 were never written down.
 
-| the model said | right | precision | where the rest went |
+| the model said | right | precision | 95% interval |
 |---|---|---|---|
-| failed | 55/60 | 92% | 3 not established, 2 mixed |
-| successful | 56/60 | 93% | 4 not established |
-| mixed | 18/22 | 82% | 3 not established, 1 successful |
+| successful | 94/100 | **94%** | 88–97% |
+| failed | 93/100 | **93%** | 86–97% |
+| mixed | 18/22 | 82% | 62–93% |
 
-**Nothing in 144 cases was read as the opposite of what the paper reports.** The error is a missing answer, not a
-wrong one: an abstract that settles nothing, called either way, four times towards success and five towards
-failure. For a scored card that is the difference between a card that cheats the player and a card that should
-never have been dealt.
+(Extended to n=224 later the same day by eleven parallel readers; the figures did not move.)
 
-**And the model's own confidence separates the unusable ones.** Five of the nine mistakes sit below
-`outcome_confidence` 0.8, a band holding 14 of the 120 rows read (Fisher two-sided p = .001). Dropping it costs
-16% of the card pool — 233 of 1,442 rows — and takes the rest from 93% sound to **96%**. That is a free quality
-gate for the deck, and `outcomes --score` re-derives it from the labels rather than hard-coding it.
+**One case in 200 was read as the opposite of what the paper reports, and twelve have no binary answer at all.**
+The error is overwhelmingly a missing answer rather than a wrong one — an abstract that settles nothing, called
+either way, and falling on both sides. For a scored card that is the difference between a card that cheats the
+player and a card that should never have been dealt.
+
+**And the model's own confidence separates the unusable ones.** Below `outcome_confidence` 0.8 a verdict is
+sound 23 times in 29 (79%); at 0.8 and above, 164 in 171 (**96%**). Dropping the low band costs 16% of the card
+pool — 233 of 1,442 rows. That is a free quality gate for the deck, and `outcomes --score` re-derives it from
+the labels rather than hard-coding it.
 
 Three things follow, and all three overturn something the handoff said yesterday:
 
@@ -189,47 +191,52 @@ Three things follow, and all three overturn something the handoff said yesterday
   error as the explanation, and it now prints the audit numbers straight from the label file through
   `stats.uncounted().audit`, so the prose cannot drift from the measurement again.
 - **The card pool's base rate is real.** At the deck's own grain — one card per original, dropping originals whose
-  finds disagree — 1,323 cards at 62.9% successful, 63.3% after correction, against the existing deck's 53%. Keep
-  them a separate deck because the pool differs, not because its verdicts are misread.
-- **Outcome reading is no longer a blocker on shipping these as cards.** The claim text is. A deck built from
-  rows at confidence 0.8 and up would be 1,209 finds, read right 96% of the time, with no case in 144 scored
-  against the player backwards.
+  finds disagree — 1,322 cards at 62.9% successful, 62.7% after correction, against the existing deck's 53%. The
+  gap is not a reading artefact.
+- **Outcome reading is no longer a blocker on shipping these as cards.** The link is, and then the claim text
+  (see 2f and 2g).
 
 `docs/LINK_AUDIT_20260919.md` has the case-by-case detail, the nine mistakes named, and why the n=20 pattern was
 noise rather than a direction.
 
-## 2f. 2026-09-21: every link band read, a route reopened, and eleven phantom papers removed
+## 2f. 2026-09-21: every link band read, the page gate handed to the measurement, eleven phantom papers removed
 
 **Link accuracy decides a card as much as the verdict does** — the reveal names the original, and any written
-claim would come from its abstract. The 65-case audit of 2026-09-19 had left 694 of the 1,442 card rows in bands
-nobody had read a case from. `python -m pipeline originals` is the same instrument as `outcomes`, pointed at the
-link; labels live in `data/curated/original_audit.csv`.
+claim would come from its abstract. `python -m pipeline originals` is the same instrument as `outcomes`, pointed
+at the link; labels live in `data/curated/original_audit.csv`. **384 links read** — 146 by one reader, then a
+band each by eleven parallel readers, with two bands read twice by independent readers who could not see the
+first labels.
 
-| band | read | | rows in the card pool |
-|---|---|---|---|
-| `cited by this paper` | 34/36 | **94%** | 217 |
-| `library_author_year` high / medium | 10/10, 11/12 | **100% / 92%** | 9 |
-| `openalex_author_year` high / medium | 8/8, 7/8 | **100% / 88%** | 104 |
-| `reference_scan` high / medium | 8/10, 8/14 | 80% / 57% | 353 |
-| `openalex_author_year` low | 8/20 | 40% | 358 |
-| `reference_scan` low | 7/20 | 35% | 336 |
-| `library_author_year` low | 1/8 | 12% | 65 |
+| band | read | | rows in the linked pool | on a page? |
+|---|---|---|---|---|
+| `library_author_year` high | 29/30 | **97%** | 45 | yes |
+| `openalex_author_year` high | 31/33 | **94%** | 117 | yes |
+| `library_author_year` medium | 30/32 | **94%** | 93 | yes |
+| `openalex_author_year` medium | 30/33 | **91%** | 122 | yes, newly |
+| `cited by this paper` | 72/84 | 86% | 307 | no |
+| `reference_scan` high | 32/40 | 80% | 299 | no, removed |
+| `reference_scan` medium | 28/44 | 64% | 463 | no |
+| `openalex_author_year` low | 14/40 | 35% | 723 | no |
+| `reference_scan` low | 10/40 | 25% | 682 | no |
+| `library_author_year` low | 1/8 | 12% | 186 | no |
 
-**The two weakest bands are not weak, they are wrong** — Dean (1966) on marital adjustment matched to the
-absorption-edge spectrum of gallium phosphide, Nolan (1968) on smoking to a paper on protein structures. They
-hold 694 card rows and none of them can ship. A recurring near-miss is worth someone's time: the right paper is
-often the **runner-up**, so the scorer ranks better than its own top-1.
+**The weak bands are not weak, they are wrong** — Dean (1966) on marital adjustment matched to the absorption-edge
+spectrum of gallium phosphide, Nolan (1968) on smoking to a paper on protein structures. A recurring near-miss
+worth someone's time: the right paper is often the **runner-up**, so the scorer ranks better than its own top-1.
 
-**`cited by this paper` was closed on a measurement that had stopped describing the data.** It was filed
-`unchecked` and kept off pages on 6 right out of 11 — output from the retired t1 prompt. t3 added the
-mere-citation trap, and the caches show what that did: of 239 candidates t1 named a cited original for, t3
-withholds the name on 101 and keeps 137 of the other 138 identical. Read under t3 it is 34/36. Rows shown beside
-a verdict go from 111 on 65 finding pages to **168 on 115**.
+**Three things the reading caught that a list had been getting wrong.** `cited by this paper` was reopened this
+morning on 34 of 36 — a route closed in September on output from the retired t1 prompt — and then **reverted**
+when 84 reads put it at 86%, short of the 90% bar. `reference_scan` high had been on pages since September on a
+quoted 32/36 that nobody re-read; forty fresh cases put it at 80%, so it came off. `openalex_author_year` medium
+had been excluded on 2 of 4; thirty-three reads put it at 91%, so it went on.
 
-**Then the shipped rows were read separately, and they read lower.** Only 5 of the 57 cited-by rows that reach a
-page were in that 36. Reading 25 more: 26 of 30, **87%** — level with `library_author_year` medium on the same
-slice, and one clear error rather than four. The new `shown` pool is exactly the rows a reader sees, and the
-"not in the record yet" box now prints that figure instead of borrowing the band's.
+**So the gate is no longer a list.** `queue.TRUSTED_LINKS` is computed on every build from the label file: a band
+qualifies at 20+ links read and 90%+ right — the rule this project stated in September, applied uniformly. Rows
+shown beside a verdict: **110 on 64 finding pages**. Expect bands to move as reading accumulates.
+
+**Reader agreement, since the reading is now the instrument.** Two blind readers of the same 25 `cited by this
+paper` cases agreed on every one including all six they called wrong (κ = 1.00). On `reference_scan` medium they
+agreed 26/30 (κ = 0.73), and every disagreement was *wrong* against *unclear*, never right against wrong.
 
 **Eleven malformed DOIs folded.** The backlog's "95 papers share a normalised title" recovers nothing — 0 finds
 point at a page-less twin — but underneath it were DOIs cut short upstream (`10.1016/j`, `10.1126/science.745568`)
@@ -237,30 +244,30 @@ splitting one study's record across two pages. Tversky and Kahneman's framing pa
 page and a stranded eighth on the other; it now holds eight. A fold needs a strict-prefix DOI **and** the same
 normalised title, and all twelve pairs were read before the rule was written.
 
-## 2g. 2026-09-21: what the deck actually is, and a decision worth taking
+## 2g. 2026-09-21: what the deck actually is
 
 `python -m pipeline outcomes --deck` applies both audits, gate by gate:
 
 | gate | finds | cards | successful |
 |---|---|---|---|
-| a binary verdict and a linked original | 1,442 | 1,323 | 63% |
-| link in a band read at 90% or better | 428 | 348 | 60% |
-| + outcome confidence 0.8 or higher | 369 | **293** | **56%** |
-| + the original's abstract held, so a claim could be written | 268 | 209 | 59% |
+| a binary verdict and a linked original | 1,442 | 1,322 | 63% |
+| link in a band read at 90% or better | 113 | 110 | 62% |
+| + outcome confidence 0.8 or higher | 110 | **107** | **62%** |
+| + the original's abstract held, so a claim could be written | 85 | 83 | 64% |
 
-**The honest deck is about 293 cards, not 1,323**, and 158 of them are originals FORRT records no replication
-for at all — genuinely new. The other 135 would change or add to a card the deck already deals, which is a
-different product decision.
+**The deck that clears both measured bars is about 107 cards, not 1,323**, and 98 of them are originals FORRT
+records no replication for at all — genuinely new. **The link gate is what costs, not the verdict gate**: 1,442
+finds to 113. And the base rate stays near 62% against the existing deck's 53%, so these still belong in a deck
+of their own; that gap is not a reading artefact.
 
-Two things follow. **The link gate is what costs, not the verdict gate**: 1,442 finds down to 428. And the base
-rate that was going to keep these in a separate deck mostly dissolves — at the quality bar the audits justify it
-is **56% against the existing deck's 53%**, so on the evidence they can be shuffled in.
+The bar is a judgement and it is expensive, so `--deck` prices the bands just beneath it: `cited by this paper`
+at 88% on the card pool would add 217 finds, `reference_scan` high at 71% would add 158. Anyone moving the bar
+should move it deliberately.
 
-**A decision for the owner.** The postponed claim-writing pass was costed at ~$3.50 for the whole site. Over the
-209 audited cards that actually have the original's abstract it is **about $0.08** at the rate measured for this
-corpus. The instruction was to postpone it until everything achievable without a model was done; a great deal
-now has been, and the thing standing between this work and a playable deck costs eight cents. Worth asking
-rather than assuming either way.
+**On the claim pass.** The costing of ~$3.50 was for the whole site. Over the 83 audited cards that hold the
+original's abstract it is about **$0.03**. The instruction was to postpone it until everything achievable
+without a model was done; a great deal now has been, and what stands between this work and a playable deck costs
+three cents. Worth asking rather than assuming either way.
 
 ## 3. Next steps, in order
 
