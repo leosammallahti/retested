@@ -237,6 +237,31 @@ splitting one study's record across two pages. Tversky and Kahneman's framing pa
 page and a stranded eighth on the other; it now holds eight. A fold needs a strict-prefix DOI **and** the same
 normalised title, and all twelve pairs were read before the rule was written.
 
+## 2g. 2026-09-21: what the deck actually is, and a decision worth taking
+
+`python -m pipeline outcomes --deck` applies both audits, gate by gate:
+
+| gate | finds | cards | successful |
+|---|---|---|---|
+| a binary verdict and a linked original | 1,442 | 1,323 | 63% |
+| link in a band read at 90% or better | 428 | 348 | 60% |
+| + outcome confidence 0.8 or higher | 369 | **293** | **56%** |
+| + the original's abstract held, so a claim could be written | 268 | 209 | 59% |
+
+**The honest deck is about 293 cards, not 1,323**, and 158 of them are originals FORRT records no replication
+for at all — genuinely new. The other 135 would change or add to a card the deck already deals, which is a
+different product decision.
+
+Two things follow. **The link gate is what costs, not the verdict gate**: 1,442 finds down to 428. And the base
+rate that was going to keep these in a separate deck mostly dissolves — at the quality bar the audits justify it
+is **56% against the existing deck's 53%**, so on the evidence they can be shuffled in.
+
+**A decision for the owner.** The postponed claim-writing pass was costed at ~$3.50 for the whole site. Over the
+209 audited cards that actually have the original's abstract it is **about $0.08** at the rate measured for this
+corpus. The instruction was to postpone it until everything achievable without a model was done; a great deal
+now has been, and the thing standing between this work and a playable deck costs eight cents. Worth asking
+rather than assuming either way.
+
 ## 3. Next steps, in order
 
 1. **Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit, and 746 named originals

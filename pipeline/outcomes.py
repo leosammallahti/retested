@@ -287,9 +287,30 @@ def deck(cut: float = 0.8) -> int:
         n = len(cards)
         share = f"{sum(1 for v in cards if v == 'successful') / n:.0%}" if n else "—"
         print(f"   {label:<58} {len(rs):>6} {n:>6} {share:>11}")
-    print("\n   for comparison, the deck built from FORRT's own data: 543 cards, 53% successful")
-    print("   a card still needs a written claim; the 9-word labels we hold are not one")
+    # A card is one original study. An original FORRT already records a replication for is not a new card —
+    # our find would change an existing card's answer or add evidence to it, which is a different product
+    # decision from dealing a new one.
+    kept = steps[-2][1]
+    by: dict[str, set] = defaultdict(set)
+    for c in kept:
+        by[c["doi_o"]].add(c["outcome"])
+    cards = {k for k, v in by.items() if len(v) == 1}
+    with_abstract = {c["doi_o"] for c in kept if c.get("abstract_o")} & cards
+    existing = _originals_forrt_records()
+    print(f"\n   of those {len(cards)} cards, {len(cards - existing)} are originals FORRT records no replication for "
+          f"at all — genuinely new cards, {len((cards - existing) & with_abstract)} of them with the abstract a claim "
+          f"needs.\n   The other {len(cards & existing)} would change or add to a card the deck already deals.")
+    print(f"\n   for comparison, the deck built from FORRT's own data: 543 cards, 53% successful")
+    print(f"   a card still needs a written claim, and the 9-word labels we hold are not one. A model pass over "
+          f"the {len(with_abstract)} cards\n   that have an abstract costs about "
+          f"${len(with_abstract) * 0.0004:.2f} at the rate measured for this corpus.")
     return 0
+
+
+def _originals_forrt_records() -> set[str]:
+    from .load import ROOT as R
+    a = json.loads((R / "data" / "build" / "attempts.json").read_text(encoding="utf-8"))
+    return {v["doi_o"] for v in a.values() if v.get("type") == "replication"}
 
 
 def run(argv: list[str] | None = None) -> int:
