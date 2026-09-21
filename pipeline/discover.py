@@ -86,7 +86,12 @@ def _get(params: dict, cache_key: str) -> dict:
 
 
 def resolve_ids(dois: list[str]) -> dict[str, str]:
-    """DOI -> OpenAlex work id (W...). 50 DOIs per call."""
+    """DOI -> OpenAlex work id (W...). 50 DOIs per call.
+
+    The cache key below is positional, which is only safe because the input is every finding's DOI, sorted: the
+    same run gives the same chunks. Do not reuse this pattern on a list that shrinks between runs — the authors
+    step did, and silently replayed one run's answers for a different set of papers.
+    """
     out: dict[str, str] = {}
     dois = sorted(set(d for d in dois if d and "|" not in d and "," not in d))
     for i in range(0, len(dois), 50):

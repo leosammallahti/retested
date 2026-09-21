@@ -14,6 +14,7 @@ Results go to data/discovery/original_authors.json, keyed by DOI. Re-runs replay
 """
 from __future__ import annotations
 
+import hashlib
 import json
 
 from .discover import _get, _spent
@@ -29,8 +30,10 @@ def fetch(dois: list[str], max_usd: float) -> dict[str, dict]:
             print(f"  stopping at the ${max_usd:.2f} cap after {i} originals")
             break
         chunk = clean[i:i + 50]
-        d = _get({"filter": "doi:" + "|".join(chunk), "select": "id,doi,authorships", "per_page": 50},
-                 f"auth-{i // 50:04d}-{len(chunk)}")
+        # key on WHICH dois were asked for, not on their position: the list of originals still needing a fetch
+        # shrinks every run, so a positional key silently replays the previous run's answers for different papers
+        key = "auth-" + hashlib.sha256("|".join(chunk).encode()).hexdigest()[:16]
+        d = _get({"filter": "doi:" + "|".join(chunk), "select": "id,doi,authorships", "per_page": 50}, key)
         for w in d.get("results", []):
             doi = norm_doi(w.get("doi"))
             if not doi:
