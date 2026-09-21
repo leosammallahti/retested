@@ -267,6 +267,8 @@ def run(g: dict, mode: str = "cites") -> dict:
             # every surname, so a replication can be checked for authors shared with the original it tests
             "author_surnames_r": [n.split()[-1].lower() for a in au
                                   if (n := ((a.get("author") or {}).get("display_name") or "").strip())],
+            # OpenAlex author ids settle what a surname only suggests: "chen" appears 832 times, A5012345678 once
+            "author_ids_r": [i.rsplit("/", 1)[-1] for a in au if (i := (a.get("author") or {}).get("id"))],
             "originals": cited, "original_titles": [P.get(d, {}).get("title") for d in cited[:5]],
             "known_to_forrt": known_rep or known_title, "known_how": "doi" if known_rep else ("title (preprint/published twin)" if known_title else None),
             **sc,

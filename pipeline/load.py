@@ -240,6 +240,12 @@ def load_osf() -> dict[str, dict]:
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
 
 
+def load_original_authors() -> dict[str, dict]:
+    """DOI -> {ids, surnames} for originals OpenAlex knows. Empty until `python -m pipeline authors` has run."""
+    f = DISCOVERY / "original_authors.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
 def load_links() -> dict[str, dict]:
     """cid -> resolved original. Empty until `python -m pipeline link` has run."""
     f = DISCOVERY / "links.json"

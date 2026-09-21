@@ -68,7 +68,8 @@ def build(extracted: list[dict], g: dict) -> list[dict]:
 
 def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[str] | None = None,
                    forrt_osf: set[str] | None = None, surname_freq: dict[str, int] | None = None,
-                   osf_records: dict[str, dict] | None = None) -> list[dict]:
+                   osf_records: dict[str, dict] | None = None,
+                   original_authors: dict[str, dict] | None = None) -> list[dict]:
     """Our own finds: one row per discovered paper DeepSeek judged a replication, a reproduction or a registered
     protocol, carrying its verdict, its grounded quote, and how its original was resolved."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
@@ -76,7 +77,7 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     effect_of = _effect_of(g)
     P = g["papers"]
     forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
-    osf_records = osf_records or {}
+    osf_records, original_authors = osf_records or {}, original_authors or {}
     out, already = [], 0
     for r in triaged:
         t = r["triage"]
@@ -125,7 +126,10 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "declared_design": declared_design(r.get("title_r"), r.get("abstract")),
             # OSF answers this outright: a registration is a registration. No inference, no reading.
             "preregistered": _prereg(osf_records.get(osf)),
-            "independence": independence(r.get("author_surnames_r"), (P.get(doi_o) or {}).get("surnames"), surname_freq),
+            "independence": independence(
+                r.get("author_surnames_r"),
+                (P.get(doi_o) or {}).get("surnames") or (original_authors.get(doi_o) or {}).get("surnames"),
+                surname_freq, r.get("author_ids_r"), (original_authors.get(doi_o) or {}).get("ids")),
             "found_by": r.get("found_by") or [],
             "rep_already_known": bool(doi_r and doi_r in known_reps),
             "original_in_wiki": in_wiki,
@@ -201,7 +205,8 @@ def _prereg(rec: dict | None) -> dict | None:
 
 
 def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None,
-                 freq: dict[str, int] | None = None) -> dict | None:
+                 freq: dict[str, int] | None = None,
+                 rep_ids: list[str] | None = None, orig_ids: list[str] | None = None) -> dict | None:
     """Does the replication team share an author with the original?
 
     This is FORRT's author_overlap, which is the strongest thing in their data: replications sharing an author with
@@ -213,14 +218,20 @@ def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None
     names only is reported as possible_shared_name, not as overlap. "dekay" matching on a DeKay replication means
     something; "kim" does not. Absent either author list it says nothing rather than guessing independence.
     """
-    if not rep_surnames or not orig_surnames:
-        return None
     from .load import COMMON_SURNAME
     freq = freq or {}
+    # OpenAlex author ids settle the question; fall back to surnames only when one side has no ids
+    if rep_ids and orig_ids:
+        shared_ids = sorted(set(rep_ids) & set(orig_ids))
+        return {"verdict": "shares_author" if shared_ids else "independent", "basis": "openalex_author_id",
+                "shared": shared_ids, "distinctive": shared_ids,
+                "n_replication_authors": len(rep_ids), "n_original_authors": len(orig_ids)}
+    if not rep_surnames or not orig_surnames:
+        return None
     shared = sorted(set(rep_surnames) & set(orig_surnames))
     distinctive = [n for n in shared if freq.get(n, 0) < COMMON_SURNAME]
     verdict = "independent" if not shared else ("shares_author" if distinctive else "possible_shared_name")
-    return {"verdict": verdict, "shared": shared, "distinctive": distinctive,
+    return {"verdict": verdict, "basis": "surname", "shared": shared, "distinctive": distinctive,
             "shared_frequency": {n: freq.get(n, 0) for n in shared},
             "n_replication_authors": len(rep_surnames), "n_original_authors": len(orig_surnames)}
 
