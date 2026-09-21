@@ -1,0 +1,104 @@
+---
+// The replications FORRT has not recorded, shown as a body of evidence rather than as a review backlog.
+// Every number here is machine-derived and unverified, and is kept apart from every counted figure on the site.
+import Base from '../../layouts/Base.astro';
+import { stats, type Share } from '../../lib/data';
+import { pct, int } from '../../lib/fmt';
+import { u } from '../../lib/fmt';
+const s = stats();
+const un = s.uncounted;
+const c = s.counts;
+const row = (label: string, v: Share) => ({ label, v });
+const evidence = [row('Published, with a DOI', un.by_evidence.published), row('Preprint or OSF deposit', un.by_evidence.preprint_or_deposit)];
+const indep = [row('Team shares an author with the original', un.by_independence.shares_author), row('Fully independent team', un.by_independence.independent)];
+const design = [row('Authors call it direct or close', un.by_design.direct_or_close), row('Authors call it conceptual', un.by_design.conceptual)];
+const years = Object.entries(un.by_year);
+const maxY = Math.max(1, ...years.map(([, v]) => v.n));
+---
+<Base title="The uncounted" description="Replication studies that exist but are not in the curated record, and what they look like as a body of evidence." active="uncounted/">
+  <div class="wrap" style="padding-top:2.4rem">
+    <header class="rise">
+      <div class="label">Outside the record</div>
+      <h1>{int(un.finds)} replications nobody counted</h1>
+      <p class="lede">The record on this site is built from FORRT's curated data. Searching OpenAlex for psychology replications it does not hold turns up <b class="num">{int(un.finds)}</b> more, <b class="num">{int(un.linked)}</b> of them matched to the specific study they re-test, across <b class="num">{int(un.distinct_originals)}</b> distinct original papers. <b class="num">{int(un.with_verdict)}</b> state an outcome.</p>
+      <p class="card caveat"><b>None of this is verified, and none of it counts.</b> A language model decided each paper is a replication, a machine matched it to an original, and the outcome was read off an abstract. No figure on this page contributes to any rate, verdict or tally anywhere else on the site. It is here to ask one question: does the record that was curated look like the record that was not? Help decide the individual cases in the <a href={u('queue/')}>review queue</a>.</p>
+    </header>
+
+    <div class="sh"><h2>The counted and the uncounted</h2><span class="label">share replicating, 95% intervals</span></div>
+    <table class="tbl">
+      <thead><tr><th>Set</th><th class="n">n</th><th class="n">Replicated</th><th>95% interval</th></tr></thead>
+      <tbody>
+        <tr><td>In the record (FLoRA, FReD, legacy)</td><td class="n mono">{int(s.overall.n)}</td><td class="n mono">{pct(s.overall.success_share, 1)}</td><td class="mono faint">{pct(s.overall.success_ci?.[0], 1)} – {pct(s.overall.success_ci?.[1], 1)}</td></tr>
+        <tr class="ours"><td>Not in the record, found here</td><td class="n mono">{int(un.overall.n)}</td><td class="n mono">{pct(un.overall.success_share, 1)}</td><td class="mono faint">{pct(un.overall.success_ci?.[0], 1)} – {pct(un.overall.success_ci?.[1], 1)}</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">The uncounted replications succeed <b>more</b> often, and the two intervals barely meet. That is a difference worth explaining rather than a result to report: curation is not random, and a database assembled around the replication crisis has every reason to hold more of the famous failures. The other candidate explanation is ours — an abstract that reports success is easier for a model to read as success than a hedged failure is. Both would produce this gap.</p>
+
+    <div class="sh"><h2>The strongest known pattern, rediscovered</h2><span class="label">independent data</span></div>
+    <table class="tbl">
+      <thead><tr><th>Replication team</th><th class="n">n</th><th class="n">Replicated</th><th>95% interval</th></tr></thead>
+      <tbody>
+        {indep.map(({ label, v }) => (
+          <tr class="ours"><td>{label}</td><td class="n mono">{int(v.n)}</td><td class="n mono">{pct(v.success_share, 1)}</td><td class="mono faint">{v.success_ci ? `${pct(v.success_ci[0], 1)} – ${pct(v.success_ci[1], 1)}` : '–'}</td></tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="muted">In FORRT's curated data, replications sharing an author with the original succeed {pct(s.predictors.overlapping_authors.success_share, 0)} of the time against {pct(s.predictors.independent_team.success_share, 0)} for independent teams. These finds were gathered by a different route, matched by a different method, and coded by a different reader — and show the same split. That is the best evidence on this page that the pipeline behind it is measuring something real.</p>
+
+    <div class="sh"><h2>Published against deposited</h2><span class="label">where the work ended up</span></div>
+    <table class="tbl">
+      <thead><tr><th>Evidence</th><th class="n">n</th><th class="n">Replicated</th><th>95% interval</th></tr></thead>
+      <tbody>
+        {evidence.map(({ label, v }) => (
+          <tr class="ours"><td>{label}</td><td class="n mono">{int(v.n)}</td><td class="n mono">{pct(v.success_share, 1)}</td><td class="mono faint">{v.success_ci ? `${pct(v.success_ci[0], 1)} – ${pct(v.success_ci[1], 1)}` : '–'}</td></tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="muted">{int(c.retested_preprints)} of these finds are preprints or OSF deposits rather than journal articles — student projects, class replications, multi-site teaching collaborations. They are most of what a catalogue built from journal metadata cannot see, which is a large part of why they were missing.</p>
+
+    {design.every((d) => d.v.n >= 25) && (
+      <>
+        <div class="sh"><h2>How close a replication the authors say it is</h2><span class="label">their words, not our coding</span></div>
+        <table class="tbl">
+          <thead><tr><th>Declared design</th><th class="n">n</th><th class="n">Replicated</th><th>95% interval</th></tr></thead>
+          <tbody>
+            {design.map(({ label, v }) => (
+              <tr class="ours"><td>{label}</td><td class="n mono">{int(v.n)}</td><td class="n mono">{pct(v.success_share, 1)}</td><td class="mono faint">{v.success_ci ? `${pct(v.success_ci[0], 1)} – ${pct(v.success_ci[1], 1)}` : '–'}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="muted">Small numbers, overlapping intervals, and the direction is the surprising one. Treat it as a question, not a finding. FORRT codes this distinction for about a tenth of its entries; here it is taken from what the authors called their own study.</p>
+      </>
+    )}
+
+    {years.length > 3 && (
+      <>
+        <div class="sh"><h2>By year of the replication</h2><span class="label">years with at least 25 coded outcomes</span></div>
+        <div class="ybars">
+          {years.map(([y, v]) => (
+            <div class="yb">
+              <div class="bar" style={`height:${Math.round(60 * (v.n / maxY)) + 6}px`} title={`${v.n} replications`}></div>
+              <div class="pctv mono">{pct(v.success_share, 0)}</div>
+              <div class="yr mono faint">{y.slice(2)}</div>
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+
+    <div class="sh"><h2>What would have to be true</h2><span class="label">before any of this counts</span></div>
+    <div class="card">
+      <p>Each of these finds rests on three machine judgements, and each was measured by reading cases one by one rather than asserted. Whether the paper is a replication at all: right {'86%'} of the time on the strong search tier against the owner's 70 hand labels, {'50%'} on the weak tier. Whether it was matched to the right original: 96% for a library match, 91% for an OpenAlex match, 89% for a match against the paper's own reference list, and lower for the weaker bands. What the outcome was: read off an abstract, with the quote kept beside it so a reader can check.</p>
+      <p class="muted">Multiply those and a given row is likelier right than wrong, which is enough to put in front of a reviewer and nowhere near enough to publish as a rate. The <a href={u('queue/')}>review queue</a> is where that gets fixed, one paper at a time, and {int(c.candidates_that_would_change_a_verdict)} of the candidates in it would change a verdict on this site if accepted.</p>
+    </div>
+  </div>
+</Base>
+<style>
+  .caveat { border-left: 4px solid var(--claim); margin-top: 1.4rem; }
+  .tbl .ours td:first-child { border-left: 3px solid var(--claim); padding-left: .6rem; }
+  .ybars { display: flex; gap: .5rem; align-items: flex-end; flex-wrap: wrap; margin-top: .4rem; }
+  .yb { display: flex; flex-direction: column; align-items: center; gap: .25rem; min-width: 2.1rem; }
+  .yb .bar { width: 100%; background: var(--claim-soft); border-top: 2px solid var(--claim); }
+  .yb .pctv { font-size: .72rem; }
+  .yb .yr { font-size: .66rem; }
+</style>

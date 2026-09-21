@@ -48,6 +48,9 @@ export interface Stats {
   by_replication_year: Record<string, Share>; by_original_decade: Record<string, Share>; by_discipline: Record<string, Share>; by_journal: Record<string, Share>;
   predictors: Record<string, Share>;
   shrinkage: { n_rows: number; median_ratio: number; q25: number; q75: number; share_below_half: number; share_sign_flip: number };
+  uncounted: { finds: number; linked: number; with_verdict: number; distinct_originals: number; overall: Share;
+    by_evidence: Record<string, Share>; by_independence: Record<string, Share>; by_design: Record<string, Share>;
+    preregistered: Share; by_year: Record<string, Share> };
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }

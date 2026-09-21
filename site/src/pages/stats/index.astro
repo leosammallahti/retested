@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { stats, type Share } from '../../lib/data';
 import ShareRows from '../../components/ShareRows.astro';
-import { pct, int } from '../../lib/fmt';
+import { pct, int, u } from '../../lib/fmt';
 const s = stats();
 const years = Object.entries(s.by_replication_year).filter(([, v]) => v.n >= 5);
 const maxY = Math.max(...years.map(([, v]) => v.n));
@@ -19,6 +19,7 @@ const pr = s.predictors;
       <h1>{int(s.overall.n)} replications, counted honestly</h1>
       <p class="lede">Every rate below is a share of replication attempts with a verdict (successful, mixed, or failed), with a 95% interval. Attempts are (original paper, replication paper) pairs from FLoRA, FReD and the legacy FReD file, so a multi-site project counts once per original it tested.</p>
       <p class="card caveat"><b>Read this first.</b> Researchers choose what to replicate, and they pick surprising, influential or doubted results. These numbers describe <i>that</i> set of studies. They are not an estimate of how much of psychology would replicate if every study were tested.</p>
+      <p class="muted">There is also a record nobody counted: {int(s.uncounted.finds)} replications that exist but are not in FORRT's data, {int(s.uncounted.with_verdict)} of them with an outcome. They are unverified and contribute nothing to the figures below, but they replicate at {pct(s.uncounted.overall.success_share, 1)} against {pct(s.overall.success_share, 1)} here — <a href={u('uncounted/')}>worth reading beside this page</a>.</p>
     </header>
 
     <div class="sh"><h2>Overall</h2><span class="label">{int(s.counts.replications)} replication attempts · {int(s.counts.reproductions)} reproductions</span></div>

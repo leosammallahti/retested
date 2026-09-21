@@ -38,6 +38,37 @@ def attempt_discipline(a: dict, g: dict) -> str | None:
     return None
 
 
+def uncounted(candidates: list[dict]) -> dict:
+    """The record our own finds would add, split the same ways the counted record is split.
+
+    Kept apart from every other number on the site. None of it is verified: a machine decided each paper is a
+    replication, a machine matched it to an original, and a machine read the outcome off an abstract. The point of
+    showing it is not to assert a rate but to ask whether the curated record looks like the uncurated one.
+    """
+    ours = [c for c in candidates if c["origin"] == "retested_discovery" and c["group"] == "replication"]
+    linked = [c for c in ours if c["doi_o"]]
+    verdict = [c for c in linked if c["outcome"]]
+
+    def by(sel):
+        return _share([c["outcome"] for c in verdict if sel(c)])
+
+    return {
+        "finds": len(ours), "linked": len(linked), "with_verdict": len(verdict),
+        "distinct_originals": len({c["doi_o"] for c in linked}),
+        "overall": _share([c["outcome"] for c in verdict]),
+        "by_evidence": {"published": by(lambda c: c.get("evidence_tier") == "published"),
+                        "preprint_or_deposit": by(lambda c: c.get("evidence_tier") != "published")},
+        "by_independence": {"independent": by(lambda c: (c.get("independence") or {}).get("verdict") == "independent"),
+                            "shares_author": by(lambda c: (c.get("independence") or {}).get("verdict") == "shares_author")},
+        "by_design": {"direct_or_close": by(lambda c: (c.get("declared_design") or {}).get("fidelity") == "high"),
+                      "conceptual": by(lambda c: (c.get("declared_design") or {}).get("fidelity") == "low")},
+        "preregistered": by(lambda c: (c.get("preregistered") or {}).get("is_registration")),
+        "by_year": {y: v for y, v in sorted(((y, _share([c["outcome"] for c in verdict if c.get("year_r") == y]))
+                                             for y in {c.get("year_r") for c in verdict if c.get("year_r")}))
+                    if v["n"] >= 25 and 2000 <= y <= 2030},
+    }
+
+
 def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     A, F, E, P = g["attempts"], g["findings"], g["effects"], g["papers"]
     g["_eff_by_id"] = {e["id"]: e for e in E.values()}
@@ -186,6 +217,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
             "share_below_half": round(sum(r < 0.5 for r in ratios) / len(ratios), 3) if ratios else None,
             "share_sign_flip": round(sum(r < 0 for r in ratios) / len(ratios), 3) if ratios else None,
         },
+        "uncounted": uncounted(candidates),
         "effect_record_counts": dict(rec_counts),
         "finding_record_counts": dict(fin_counts),
         "lists": {
