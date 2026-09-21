@@ -1,4 +1,4 @@
-# Handoff — state as of 2026-09-19 (updated after linking and site integration)
+# Handoff — state as of 2026-09-21
 
 ## 1. What exists and works
 
@@ -112,6 +112,48 @@ absence rests on title matching and is weaker.
 replications, 739 other behavioural, 188 registered protocols; 2,483 high tier, 2,661 medium; 1,288 preprints).
 1,460 have an original, 912 of them one with a page here. 151 rows appear on 82 finding pages and their effect
 pages, down from 453 before the audit, and the build now refuses to put an unaudited link on a page.
+
+## 2d. 2026-09-21: linking, rigour signals, and what the finds are allowed to claim
+
+**Linking, 1,002 → 3,037 of 3,607 psychology finds (84%).** Three routes, each measured before it was trusted:
+the library and OpenAlex author+year passes, and `pipeline references`, which scores a find's description against
+the ~35 papers it cites. Searching OpenAlex for a description finds the original 17% of the time; its own
+reference list contains it 84% of the time. A title fallback covers finds OpenAlex holds as a bare title.
+Total OpenAlex spend for all of it: about $0.45.
+
+**Rigour signals FORRT codes for 4–10% of entries, derived here instead.** `pipeline osf` asks OSF outright
+whether a find is a registration (220 are). 430 finds declare direct/close/conceptual in their own words.
+Independence is computed from both author lists — 2,385 independent, 687 sharing an author — decided by OpenAlex
+author id where possible, because the median surname in the corpus appears once and "chen" appears 832 times.
+
+**`pipeline authors` now fetches the whole original record**, not just authorships. Originals had a title 15% of
+the time; now 100%, with an abstract for 65%. Four finds replicate a RETRACTED paper, Gino's "Evil Genius" among
+them.
+
+**343 repeat deposits collapsed** — OSF version suffixes, preprint-plus-published, re-minted Zenodo. One study had
+been deposited seven times, and the CSV export would have sent FORRT all seven. 31 groups had been matched to
+different originals by different copies and carry a warning.
+
+**The queue now says what accepting a row does**: 571 candidates would change a verdict on 432 findings. The CSV
+export uses FLoRA's real column names (one was previously misnamed) plus our derived columns.
+
+**New page, `/uncounted/`**, presenting the finds as evidence rather than a backlog, walled off from every counted
+figure. FORRT's strongest pattern reproduces in it independently: 63.5% success when the team shares an author
+against 39.2% when not, against their 70/38.
+
+**Accuracy, all measured by reading, none asserted:**
+
+| judgement | accuracy | n |
+|---|---|---|
+| is it a replication (high tier / medium tier) | 86% / 50% | 70 owner labels / 40 Claude labels |
+| right original: library high·med / OpenAlex high / reference_scan high | 96% / 91% / 89% | 25 / 11 / 36 |
+| right original: citation pick / OpenAlex med / library low | 55% / 50% / 36% | 11 / 4 / 14 |
+| **outcome read correctly** | **~90%, one-directional** | 20 |
+
+The outcome error runs *towards success* — failures were right 9/9, successes 9/11 — which is the direction of
+the 47.7% vs 41.7% gap on the uncounted page. That page now tells the reader not to treat the gap as real until
+enough has been reviewed to separate the two explanations. Two attempts to detect that error by pattern failed
+and are recorded in `docs/LINK_AUDIT_20260919.md` so they are not rebuilt.
 
 ## 3. Next steps, in order
 
