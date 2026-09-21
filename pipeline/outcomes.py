@@ -183,10 +183,10 @@ def _card_safety(matrix: dict[str, Counter]) -> None:
 def _by_confidence(rows: list[dict], labels: dict[str, dict], cut: float = 0.8) -> None:
     """Whether the model's own confidence separates the verdicts worth dealing from the ones that are not.
 
-    It does, and by more than the sample's width: on the first 120 reads, 5 of the 9 mistakes sat below 0.8, a
-    band holding only 14 of the 120 rows read (Fisher two-sided p = .001). Dropping it costs 16% of the pool and
-    takes the rest from 93% sound to 96%. This is re-derived from the labels every time rather than written down,
-    because the split is only as good as the reading behind it.
+    It did when the check was written, and by more than the sample's width: on the first 120 reads (2026-09-21)
+    5 of the 9 mistakes sat below 0.8, a band holding only 14 of those 120 rows, Fisher two-sided p = .001.
+    That sentence is history, not a live claim — the table below is recomputed from the labels on every run,
+    because the split is only as good as the reading behind it and the reading keeps growing.
     """
     below = [(c, labels[c["id"]]) for c in rows if c["id"] in labels and (c.get("outcome_confidence") or 0) < cut]
     at_or_above = [(c, labels[c["id"]]) for c in rows if c["id"] in labels and (c.get("outcome_confidence") or 0) >= cut]
@@ -197,7 +197,8 @@ def _by_confidence(rows: list[dict], labels: dict[str, dict], cut: float = 0.8) 
         n = len(group)
         k = sum(1 for _, l in group if l["label"] == l["recorded"])
         lo, hi = audit.wilson(k, n)
-        in_pool = sum(1 for c in rows if ((c.get("outcome_confidence") or 0) < cut) == (group is below))
+        is_below = group is below
+        in_pool = sum(1 for c in rows if ((c.get("outcome_confidence") or 0) < cut) is is_below)
         print(f"     {name:<12} {k:>3}/{n:<3} read sound  {k / n:>4.0%}  {lo:>4.0%}–{hi:<4.0%}  {in_pool} rows in the pool")
 
 
