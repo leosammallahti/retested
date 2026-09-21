@@ -73,7 +73,21 @@ Fixing the absence check left two of them behind. `discover.known_to_forrt` kept
 the curated tables, the flora-extractor feed glob, and two flora-validation exports — while the queue applied the
 comprehensive one. The shipped product was right, because the queue filtered afterwards, but discovery went on
 reporting the inflated figure, and that is the figure people quote: "8,323 new" was really 7,990, and "28,588 new"
-was 28,236. 685 papers FORRT already held were being counted as gaps in their database.
+was 28,236.
+
+Counted directly rather than by subtracting those two summaries — which double-counts works both searches found —
+**633** surfaced DOIs are newly excluded. Where they actually live matters, and an earlier draft of this note got
+it wrong by calling them papers FORRT "already held":
+
+| appears in | count |
+|---|---|
+| `repos/flora-validation/data/extracted_*.csv`, FORRT's unreviewed extractor output | ~572 |
+| FORRT's curated FLoRA/FReD tables, via `alt_identifier_r` / `url_r` | 61 |
+
+Only 61 were in their database. The rest were in their own machine-extracted candidate pool — surfaced by their
+pipeline, reviewed by nobody, which is exactly the status our finds have. Excluding them is still correct, because
+the point is to find what FORRT has not recorded and a candidate of theirs is not our find; but the gap that was
+being overstated was mostly a gap against their unreviewed queue, not against their published record.
 
 `known_to_forrt` now uses the same comprehensive sets as everything else, and matches OSF tokens as well as DOIs.
 The downstream filter that used to drop 390 candidates now drops none, because nothing reaches it — which is the
