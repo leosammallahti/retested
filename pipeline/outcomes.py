@@ -260,6 +260,38 @@ def _corrected_rate(pool: str, matrix: dict[str, Counter]) -> None:
     print("   (the correction is only as good as the sample above; it moves as more rows are read)")
 
 
+def deck(cut: float = 0.8) -> int:
+    """How many of these finds could actually be dealt as a card, once both audits are applied.
+
+    A card needs three things and this project has now measured two of them: the verdict must be read right
+    (`pipeline outcomes`) and the original must be the right one (`pipeline originals`). The third, a claim a
+    player can read, is still a model pass nobody has run. Each gate is stated with what it costs, because the
+    interesting number is not the biggest one.
+    """
+    from .queue import TRUSTED_LINKS
+    rows = _pool("card")
+    steps = [
+        ("a binary verdict and a linked original", rows),
+        ("link in a band read at 90% or better", [c for c in rows if (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS]),
+    ]
+    steps.append((f"  + outcome confidence {cut} or higher",
+                  [c for c in steps[-1][1] if (c.get("outcome_confidence") or 0) >= cut]))
+    steps.append(("  + the original's abstract held, so a claim could be written",
+                  [c for c in steps[-1][1] if c.get("abstract_o")]))
+    print(f"   {'gate':<58} {'finds':>6} {'cards':>6} {'successful':>11}")
+    for label, rs in steps:
+        by: dict[str, set] = defaultdict(set)
+        for c in rs:
+            by[c["doi_o"]].add(c["outcome"])
+        cards = [next(iter(v)) for v in by.values() if len(v) == 1]
+        n = len(cards)
+        share = f"{sum(1 for v in cards if v == 'successful') / n:.0%}" if n else "—"
+        print(f"   {label:<58} {len(rs):>6} {n:>6} {share:>11}")
+    print("\n   for comparison, the deck built from FORRT's own data: 543 cards, 53% successful")
+    print("   a card still needs a written claim; the 9-word labels we hold are not one")
+    return 0
+
+
 def run(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="pipeline outcomes", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -272,12 +304,16 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--record", action="store_true",
                     help="read 'cid<TAB>label<TAB>note' lines from stdin and add them to the label file")
     ap.add_argument("--score", action="store_true", help="report accuracy from the labels recorded so far")
+    ap.add_argument("--deck", action="store_true",
+                    help="how many cards survive both audits, gate by gate")
     ap.add_argument("--all-pools", action="store_true", help="score every pool, not just --pool")
     a = ap.parse_args(argv if argv is not None else sys.argv[1:])
     if a.record:
         return record(a.pool, sys.stdin.read())
     if a.sample:
         return sample(a.pool, a.sample, a.seed, a.json, a.verdict)
+    if a.deck:
+        return deck()
     if a.score:
         return score(None if a.all_pools else a.pool)
     ap.print_help()

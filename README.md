@@ -38,12 +38,18 @@ python -m pipeline link --openalex --max-usd 1.0      # resolve the original eac
 python -m pipeline link --check               # how often that resolution is right (free)
 python -m pipeline outcomes --sample 40       # print verdicts to read one by one (free)
 python -m pipeline outcomes --score           # how often the verdict was read right, from the labels
+python -m pipeline originals --sample 40      # the same for whether each find was matched to the right paper
+python -m pipeline originals --score          # per-band link accuracy, from the labels
+python -m pipeline outcomes --deck            # how many game cards survive both audits, gate by gate
 ```
 
-`outcomes` is the audit of the verdicts themselves. It draws a stratified sample, a person or a session reads
-each case against the paper's own abstract, and the labels go in `data/curated/outcome_audit.csv` keyed by
-candidate id, so they survive rebuilds and accumulate. `--score` turns them into per-verdict precision with
-intervals, and names the rows in a pool that no draw has reached rather than quoting a figure over them.
+`outcomes` and `originals` are the two hand-read audits: one asks whether the verdict was read correctly, the
+other whether the find was matched to the right earlier paper. Both work the same way (`pipeline/audit.py` holds
+what they share): a deterministic stratified draw, a person or a session reads each case, and the labels go in
+`data/curated/*_audit.csv` keyed by candidate id, so they survive rebuilds and accumulate. `--score` turns them
+into precision with Wilson intervals and names the rows in a pool that no draw has reached rather than quoting a
+figure over them. The site prints these numbers through `stats`, so no page can state an accuracy the label
+files do not hold.
 
 `python -m pipeline fetch --refresh` pulls FORRT's newest release (FLoRA updates several times a week) and records the new hashes. CI does this weekly and deploys to GitHub Pages (`.github/workflows/site.yml`).
 
