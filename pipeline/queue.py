@@ -10,6 +10,7 @@ original is already in the wiki are also shown on that effect/finding page, mark
 from __future__ import annotations
 
 from .ids import norm_doi
+from .load import osf_token
 
 # which triage verdicts reach the queue at all, and which pile they go in
 GROUP = {
@@ -63,14 +64,15 @@ def build(extracted: list[dict], g: dict) -> list[dict]:
     return out
 
 
-def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[str] | None = None) -> list[dict]:
+def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[str] | None = None,
+                   forrt_osf: set[str] | None = None) -> list[dict]:
     """Our own finds: one row per discovered paper DeepSeek judged a replication, a reproduction or a registered
     protocol, carrying its verdict, its grounded quote, and how its original was resolved."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
     known_reps = {a["doi_r"] for a in g["attempts"].values() if a["doi_r"]}
     effect_of = _effect_of(g)
     P = g["papers"]
-    forrt_known = forrt_known or set()
+    forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
     out, already = [], 0
     for r in triaged:
         t = r["triage"]
@@ -78,7 +80,8 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
         if not group:
             continue
         doi_r = norm_doi(r.get("doi_r"))
-        if doi_r and doi_r in forrt_known:
+        osf = osf_token(r.get("landing_page"))
+        if (doi_r and doi_r in forrt_known) or (osf and osf in forrt_osf):
             already += 1                                  # FORRT has this paper somewhere; it is not our find
             continue
         link = links.get(r["cid"])
@@ -111,7 +114,10 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "field": t.get("field"),
             "group": group,
             "evidence_tier": "preprint" if r.get("type") == "preprint" else ("published" if doi_r else "no doi"),
+            # a DOI-less OSF deposit is identified by its page; absence from FORRT is proved on that token
+            "identifier": doi_r or (f"osf.io/{osf}" if osf else r.get("landing_page")),
             "search_tier": r.get("tier"), "rule_score": r.get("score"),
+            "landing_page": r.get("landing_page"), "osf_id": osf,
             "found_by": r.get("found_by") or [],
             "rep_already_known": bool(doi_r and doi_r in known_reps),
             "original_in_wiki": in_wiki,

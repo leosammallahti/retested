@@ -34,8 +34,8 @@ def lenses(attempts: dict, aids: list[str], curated_reversed: bool = False) -> d
         for lr in a["legacy_rows"]:
             for k, v in (lr.get("closeness") or {}).items():
                 closeness.setdefault(k, []).append(v)
-    prereg = sum(1 for a in reps if any(str(r.get("prereg_r") or "").lower() in ("1", "yes", "true") for r in a["rows"])
-                 or any(str(lr.get("preregistration") or "").lower() in ("1", "yes", "true") for lr in a["legacy_rows"]))
+    prereg = sum(1 for a in reps if any(is_prereg(r.get("prereg_r")) for r in a["rows"])
+                 or any(is_prereg(lr.get("preregistration")) for lr in a["legacy_rows"]))
     independent = sum(1 for a in reps if a.get("author_overlap_pct") in (0, 0.0))
     overlap_known = sum(1 for a in reps if a.get("author_overlap_pct") is not None)
     years = sorted(y for a in reps if (y := a.get("year_r")))
@@ -61,6 +61,20 @@ def attempt_n(a: dict) -> int | None:
     """Largest reported replication N in an attempt (rows can be several effects on one sample, so never summed)."""
     ns = [r.get("n_r") for r in a["rows"] + a["legacy_rows"] if r.get("n_r")]
     return int(max(ns)) if ns else None
+
+
+_NOT_PREREG = {"", "0", "no", "false", "na", "nan", "none", "null", "n/a", "-"}
+
+
+def is_prereg(v) -> bool:
+    """FORRT's codebook defines prereg_r as a LINK to the preregistration, not a flag.
+
+    Reading the field as a yes/no flag made the site report zero preregistered replications while 1,173 FReD rows
+    and 257 legacy rows carried an OSF link. A link counts, "embargoed" counts (the registration exists, it is just
+    not public yet), and only an explicit negative or an empty cell does not.
+    """
+    t = str(v or "").strip().lower()
+    return bool(t) and t not in _NOT_PREREG
 
 
 def _mode(vals):

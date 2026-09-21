@@ -257,3 +257,29 @@ def load_known_replication_dois() -> set[str]:
         return out
 
     return _cached("forrt_known_reps", SOURCES["flora"], build)
+
+
+def load_known_osf_ids() -> set[str]:
+    """OSF project tokens appearing anywhere in FORRT's files.
+
+    Most of our DOI-less finds are OSF student and class replications, and an OSF page can be cited as a bare
+    osf.io link, a 10.17605 DOI or a 10.31234 preprint DOI. The five-character token is the one part common to all
+    three, so absence is proved against the token rather than against a guessed DOI prefix."""
+
+    def build():
+        out: set[str] = set()
+        for p in FORRT.rglob("*"):
+            rel = str(p.relative_to(FORRT))
+            if not p.is_file() or "node_modules" in rel or p.suffix.lower() not in (".csv", ".json", ".txt"):
+                continue
+            text = p.read_text(encoding="utf-8", errors="ignore").lower()
+            out |= set(re.findall(r"osf\.io/([a-z0-9]{5})(?:[/?#\"',\s]|$)", text))
+        return out
+
+    return _cached("forrt_known_osf", SOURCES["flora"], build)
+
+
+def osf_token(url: str | None) -> str | None:
+    """'https://osf.io/fdfwc/#!' -> 'fdfwc'."""
+    m = re.search(r"osf\.io/([a-z0-9]{5})(?:[/?#]|$)", str(url or ""), re.I)
+    return m.group(1).lower() if m else None

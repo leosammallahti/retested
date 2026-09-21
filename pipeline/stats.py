@@ -86,6 +86,13 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
                 ratios.append(rr / ro)
     ratios.sort()
 
+    from .score import is_prereg
+    prereg_yes, prereg_no = [], []
+    for a in reps:
+        did = (any(is_prereg(r.get("prereg_r")) for r in a["rows"])
+               or any(is_prereg(lr.get("preregistration")) for lr in a["legacy_rows"]))
+        (prereg_yes if did else prereg_no).append(a["outcome"])
+
     indep, overlap = [], []
     for a in reps:
         pct = a.get("author_overlap_pct")
@@ -161,6 +168,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
         "predictors": {
             "p_le_005": _share(p_low), "p_005_05": _share(p_mid),
             "independent_team": _share(indep), "overlapping_authors": _share(overlap),
+            "preregistered": _share(prereg_yes), "not_preregistered": _share(prereg_no),
         },
         "shrinkage": {
             "n_rows": len(ratios),

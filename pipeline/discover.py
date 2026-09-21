@@ -255,11 +255,14 @@ def run(g: dict, mode: str = "cites") -> dict:
         tk = _tkey(w.get("title"))
         known_rep = bool(doi_r and doi_r in reps)
         known_title = not known_rep and tk in tset or (len(tk) > 25 and any(fuzz.ratio(tk, k) >= 92 for k in tlist if abs(len(k) - len(tk)) < 12))
-        src = (w.get("primary_location") or {}).get("source") or {}
+        loc = w.get("primary_location") or {}
+        src = loc.get("source") or {}
         au = w.get("authorships") or []
         rows.append({
             "openalex_id": w["id"].rsplit("/", 1)[-1], "doi_r": doi_r, "title_r": w.get("title"),
             "year_r": w.get("publication_year"), "type": w.get("type"), "venue": src.get("display_name"),
+            # an OSF project or a repository deposit often has no DOI; its landing page is the only identifier it has
+            "landing_page": loc.get("landing_page_url"),
             "authors_r": (au[0]["author"]["display_name"].split()[-1] + (" et al." if len(au) > 2 else f" & {au[1]['author']['display_name'].split()[-1]}" if len(au) == 2 else "")) if au else None,
             "originals": cited, "original_titles": [P.get(d, {}).get("title") for d in cited[:5]],
             "known_to_forrt": known_rep or known_title, "known_how": "doi" if known_rep else ("title (preprint/published twin)" if known_title else None),

@@ -36,6 +36,7 @@ const pr = s.predictors;
         {[
           ['Original p-value', 'p ≤ .005', pr.p_le_005], ['', '.005 < p < .05', pr.p_005_05],
           ['Replication team', 'shares authors with original', pr.overlapping_authors], ['', 'fully independent', pr.independent_team],
+          ['Preregistered', 'yes', pr.preregistered], ['', 'no', pr.not_preregistered],
         ].map(([a, b, v]) => { const x = v as Share; return (
           <tr><td>{a}</td><td>{b}</td><td class="n">{x.n}</td><td class="n">{pct(x.success_share)}</td><td><span class="ci"><i style={`left:${(x.success_ci?.[0] ?? 0) * 100}%;width:${((x.success_ci?.[1] ?? 0) - (x.success_ci?.[0] ?? 0)) * 100}%`}></i><b style={`left:${(x.success_share ?? 0) * 100}%`}></b></span></td></tr>
         ); })}
