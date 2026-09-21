@@ -9,6 +9,8 @@ original is already in the wiki are also shown on that effect/finding page, mark
 """
 from __future__ import annotations
 
+import re
+
 from .ids import norm_doi
 from .load import osf_token
 
@@ -118,6 +120,7 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "identifier": doi_r or (f"osf.io/{osf}" if osf else r.get("landing_page")),
             "search_tier": r.get("tier"), "rule_score": r.get("score"),
             "landing_page": r.get("landing_page"), "osf_id": osf,
+            "declared_design": declared_design(r.get("title_r"), r.get("abstract")),
             "found_by": r.get("found_by") or [],
             "rep_already_known": bool(doi_r and doi_r in known_reps),
             "original_in_wiki": in_wiki,
@@ -163,6 +166,26 @@ def pending(candidates: list[dict], g: dict) -> dict:
         for rows in d.values():
             rows.sort(key=lambda c: (order.get(c.get("link_confidence"), 3), -(c["year_r"] or 0)))
     return {"by_finding": by_finding, "by_effect": by_effect}
+
+
+# How close to the original did the authors say they were? This is FORRT's `same_design` / closeness question,
+# which they coded for 4-10% of entries. Authors state it themselves far more often than anyone codes it, and the
+# word they choose is their own claim rather than our inference. "Conceptual" is the one that matters: it means a
+# different operationalisation, so a failure is much weaker evidence against the original.
+_KIND = re.compile(r"\b(direct|close|exact|literal|conceptual|systematic|approximate|paradigmatic)[a-z]*\s+"
+                   r"(?:and\s+\w+\s+)?replicat", re.I)
+_HIGH_FIDELITY = {"direct", "close", "exact", "literal"}
+
+
+def declared_design(title: str | None, abstract: str | None) -> dict | None:
+    """The replication type the authors claim, taken verbatim from their own title or abstract."""
+    m = _KIND.search(f"{title or ''}. {abstract or ''}")
+    if not m:
+        return None
+    word = m.group(1).lower()
+    return {"word": word,
+            "fidelity": "high" if word in _HIGH_FIDELITY else "low" if word == "conceptual" else "unclear",
+            "said_in": "title" if _KIND.search(title or "") else "abstract"}
 
 
 # (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed

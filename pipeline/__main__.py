@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import discover, export, fetch, game, link, load, queue, registry, score, stats, triage, validate
+from . import discover, export, fetch, game, link, load, osf, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -61,6 +61,7 @@ def main() -> None:
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
     dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
+    sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
     lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
     lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
     lp.add_argument("--max-usd", type=float, default=1.0, help="OpenAlex spending cap")
@@ -71,6 +72,8 @@ def main() -> None:
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     tp.add_argument("--workers", type=int, default=8, help="parallel requests; ~8 gives 8 papers/s, higher risks 429s")
     a = ap.parse_args()
+    if a.cmd == "osf":
+        sys.exit(osf.run())
     if a.cmd == "link":
         sys.exit(link.run(a.openalex, a.max_usd, a.check))
     if a.cmd == "triage":
