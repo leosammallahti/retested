@@ -231,3 +231,23 @@ Limits worth stating. One reader, one session, judging the same abstracts the mo
 the verdict is a defensible reading of the abstract, not whether the abstract is a defensible reading of the paper.
 Both readers can be wrong together where an abstract oversells. And it says nothing about whether the find was
 matched to the right original; that is the separate measurement above, and a card needs both.
+
+### The model's own confidence separates the unusable ones
+
+The nine mistakes are not spread evenly. Five of them sit below `outcome_confidence` 0.8, a band holding only 14
+of the 120 rows read:
+
+| `outcome_confidence` | read sound | 95% interval | rows in the card pool |
+|---|---|---|---|
+| below 0.8 | 9/14 = 64% | 39–84% | 233 |
+| 0.8 and up | 102/106 = **96%** | 91–98% | 1,209 |
+
+Fisher two-sided p = .001, so this is wider than the sample. Dropping the low band costs 16% of the card pool and
+takes the rest from 93% sound to 96%. `pipeline outcomes --score` re-derives the split from the labels every run
+rather than quoting these numbers, because it is only as good as the reading behind it.
+
+This is not the pattern the earlier session looked for and failed to find. That search was for a signal that a
+verdict had been *over-read towards success*, and there is no such error to detect — the 2026-09-21 reading found
+none in 144 cases. This one separates verdicts with no binary answer from verdicts with one, in either direction,
+which is a different and easier question. (The two failed attempts were said to be recorded in this file so they
+would not be rebuilt. They are not in it; whatever was tried was not written down.)

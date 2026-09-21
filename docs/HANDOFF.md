@@ -177,6 +177,11 @@ wrong one: an abstract that settles nothing, called either way, four times towar
 failure. For a scored card that is the difference between a card that cheats the player and a card that should
 never have been dealt.
 
+**And the model's own confidence separates the unusable ones.** Five of the nine mistakes sit below
+`outcome_confidence` 0.8, a band holding 14 of the 120 rows read (Fisher two-sided p = .001). Dropping it costs
+16% of the card pool — 233 of 1,442 rows — and takes the rest from 93% sound to **96%**. That is a free quality
+gate for the deck, and `outcomes --score` re-derives it from the labels rather than hard-coding it.
+
 Three things follow, and all three overturn something the handoff said yesterday:
 
 - **`/uncounted/` was blaming the wrong thing.** Re-weighting every verdict on that page by these labels moves it
@@ -186,7 +191,9 @@ Three things follow, and all three overturn something the handoff said yesterday
 - **The card pool's base rate is real.** At the deck's own grain — one card per original, dropping originals whose
   finds disagree — 1,323 cards at 62.9% successful, 63.3% after correction, against the existing deck's 53%. Keep
   them a separate deck because the pool differs, not because its verdicts are misread.
-- **Outcome reading is no longer a blocker on shipping these as cards.** The claim text is.
+- **Outcome reading is no longer a blocker on shipping these as cards.** The claim text is. A deck built from
+  rows at confidence 0.8 and up would be 1,209 finds, read right 96% of the time, with no case in 144 scored
+  against the player backwards.
 
 `docs/LINK_AUDIT_20260919.md` has the case-by-case detail, the nine mistakes named, and why the n=20 pattern was
 noise rather than a direction.
