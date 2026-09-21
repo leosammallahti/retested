@@ -193,6 +193,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 if a.get(dst_k) is None and rp.get(src_k) is not None:
                     a[dst_k] = rp[src_k]
 
+    doi_folds = _fold_doi_variants(papers, attempts, log)
+
     # ---------------------------------------------------------------- findings: one per original with attempts
     by_orig: dict[str, list[str]] = defaultdict(list)
     for aid, a in attempts.items():
@@ -358,7 +360,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for doi_o, keys_ in orig_to_effects.items():
         findings[doi_o]["effects"] = sorted(effects[k]["id"] for k in keys_)
 
-    return {"papers": papers, "attempts": attempts, "findings": findings, "effects": effects, "log": log}
+    return {"papers": papers, "attempts": attempts, "findings": findings, "effects": effects,
+            "doi_folds": doi_folds, "log": log}
 
 
 def _short(raw):
@@ -438,3 +441,70 @@ def _canon_disc(d):
     if s.lower() in _DISC_FIX:
         return _DISC_FIX[s.lower()]
     return " ".join(w if w.lower() in ("and", "of", "in") else (w[0].upper() + w[1:]) for w in s.split(" "))
+
+
+_TITLE_KEY = re.compile(r"[^a-z0-9]")
+
+
+def _fold_doi_variants(papers: dict, attempts: dict, log: list) -> dict[str, str]:
+    """One study, two DOIs: fold a malformed DOI into the real one, in place.
+
+    The sources carry DOIs that were cut short somewhere upstream — "10.1016/j" for
+    "10.1016/j.obhdp.2006.10.001", "10.1126/science.745568" for "...7455683" — and APA's legacy double-slash
+    form. Each one mints a second paper with its own page and splits one study's record across the two:
+    Tversky and Kahneman's framing paper carried seven attempts on one page and a stranded eighth on the other.
+
+    A fold needs BOTH conditions. One DOI is a strict prefix of the other, or differs from it only by the
+    doubled slash; AND the two carry the same normalised title. Either test alone would be unsafe — a real DOI
+    can sit inside another real DOI, and two different papers can share a title — and together they have not
+    produced a wrong fold in the twelve cases on record, each of which was read.
+    """
+    by_title: dict[str, list[str]] = defaultdict(list)
+    for doi, p in papers.items():
+        if p.get("title"):
+            by_title[_TITLE_KEY.sub("", p["title"].lower())].append(doi)
+    fold: dict[str, str] = {}
+    for group in by_title.values():
+        for a in group:
+            for b in group:
+                if a == b:
+                    continue
+                if (b.startswith(a) and len(b) > len(a)) or ("//" in a and a.replace("//", "/") == b):
+                    fold[a] = b
+    if not fold:
+        return fold
+
+    for bad, good in fold.items():
+        p = papers.pop(bad, None)
+        if p:
+            keep = papers.setdefault(good, {"doi": good, "slug": doi_slug(good)})
+            for k, v in p.items():
+                if k not in ("doi", "slug") and v is not None and keep.get(k) is None:
+                    keep[k] = v
+
+    for aid in list(attempts):
+        a = attempts[aid]
+        doi_o, rep_key = fold.get(a["doi_o"], a["doi_o"]), fold.get(a["rep_key"], a["rep_key"])
+        if (doi_o, rep_key) == (a["doi_o"], a["rep_key"]):
+            continue
+        del attempts[aid]
+        a.update(doi_o=doi_o, rep_key=rep_key, doi_r=norm_doi(rep_key), id=_aid(doi_o, rep_key))
+        kept = attempts.get(a["id"])
+        attempts[a["id"]] = _merge_attempts(kept, a) if kept else a
+    log.append(f"folded {len(fold)} malformed DOI variants into the paper they belong to: "
+               + ", ".join(f"{b} -> {g}" for b, g in sorted(fold.items())))
+    return fold
+
+
+def _merge_attempts(keep: dict, other: dict) -> dict:
+    """Two records of the same replication, reached through two spellings of the original's DOI."""
+    for k in ("rows", "legacy_rows", "projects"):
+        keep[k] = keep.get(k, []) + other.get(k, [])
+    keep["sources"] = sorted(set(keep.get("sources", []) + other.get("sources", [])))
+    for src, out in (other.get("outcomes_by_source") or {}).items():
+        keep["outcomes_by_source"].setdefault(src, out)
+    for k, v in other.items():
+        if k not in keep or keep.get(k) is None:
+            if v is not None:
+                keep[k] = v
+    return keep

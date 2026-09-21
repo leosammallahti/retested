@@ -8,6 +8,7 @@ import unicodedata
 from pathlib import Path
 
 _DOI = re.compile(r"10\.\d{4,9}/\S+", re.I)
+_ENTITY = re.compile(r"&(?:#\d+|#x[0-9a-f]+|[a-z]+);?", re.I)
 _NA = {"", "na", "nan", "none", "null", "n/a"}
 
 
@@ -22,6 +23,9 @@ def norm_doi(x) -> str | None:
     s = str(x).strip().lower()
     s = re.sub(r"^(https?://)?(dx\.)?doi\.org/", "", s)
     s = s.removeprefix("doi:").strip()
+    # A DOI never contains an HTML entity. One arrives in the sources as "...352321&#8203" — a zero-width space
+    # that survived a copy out of a web page — and mints a second paper for a study we already hold.
+    s = _ENTITY.sub("", s)
     m = _DOI.search(s)
     return m.group(0).rstrip(".,;)") if m else None
 

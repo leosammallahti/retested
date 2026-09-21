@@ -85,7 +85,10 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
         rep = norm_doi(r.get("doi_r")) or norm_doi(r.get("alt_identifier_r")) or r.get("alt_identifier_r") or r.get("url_r")
         if doi_o and rep:
             from .registry import _aid
-            if _aid(doi_o, rep) not in reachable:
+            # the same fold the registry applied: a source row spelling the DOI the malformed way still has to
+            # reach its attempt, or this check would report a loss every time a variant is folded correctly
+            folds = g.get("doi_folds") or {}
+            if _aid(folds.get(doi_o, doi_o), folds.get(rep, rep)) not in reachable:
                 lost += 1
     if lost:
         problems.append(f"{lost} FLoRA pairs are not reachable from any finding")
