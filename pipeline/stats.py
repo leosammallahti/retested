@@ -163,6 +163,8 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
             "retested_shares_author": sum(1 for c in candidates if c["origin"] == "retested_discovery" and (c.get("independence") or {}).get("verdict") == "shares_author"),
             "retested_declared_design": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("declared_design")),
             "retested_conceptual": sum(1 for c in candidates if c["origin"] == "retested_discovery" and (c.get("declared_design") or {}).get("fidelity") == "low"),
+            "candidates_that_would_change_a_verdict": sum(1 for c in candidates if (c.get("if_accepted") or {}).get("changes")),
+            "findings_whose_verdict_could_change": len({c["doi_o"] for c in candidates if (c.get("if_accepted") or {}).get("changes")}),
         },
         "overall": _share([a["outcome"] for a in reps]),
         "by_replication_year": {y: _share(v) for y, v in sorted(by_year.items()) if 2000 <= y <= 2030},

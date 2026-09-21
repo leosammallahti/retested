@@ -62,13 +62,15 @@ export interface Candidate {
   type: string | null; field?: string | null; group: 'replication' | 'other_behavioural' | 'registration';
   evidence_tier?: string; search_tier?: 'high' | 'medium'; rule_score?: number; found_by?: string[]; screen_reason?: string | null;
   landing_page?: string | null; osf_id?: string | null;
+  if_accepted?: { from: string; from_label: string; to: string; to_label: string; changes: boolean; k_before: number; k_after: number } | null;
   declared_design?: { word: string; fidelity: 'high' | 'low' | 'unclear'; said_in: string } | null;
   preregistered?: { is_registration: boolean; date: string | null; osf_kind: string; source: string } | null;
   independence?: { verdict: 'independent' | 'shares_author' | 'possible_shared_name'; shared: string[]; distinctive: string[]; shared_frequency: Record<string, number>; n_replication_authors: number; n_original_authors: number } | null;
   rep_already_known: boolean; original_in_wiki: boolean; effect: { slug: string; name: string } | null;
   abstract: string | null; models: string[]; origin: 'forrt_flora_extractor' | 'retested_discovery'; review_state: string;
 }
-export interface Pending { by_finding: Record<string, Candidate[]>; by_effect: Record<string, Candidate[]> }
+export interface VerdictIfAccepted { from: string; from_label: string; to: string; to_label: string; changes: boolean; n_accepted: number; k_before: number; k_after: number }
+export interface Pending { by_finding: Record<string, Candidate[]>; by_effect: Record<string, Candidate[]>; verdict_if_accepted: Record<string, VerdictIfAccepted>; effect_verdict_if_accepted: Record<string, VerdictIfAccepted> }
 
 export const effects = () => read<Effect[]>('effects.json');
 export const findings = () => read<Record<string, Finding>>('findings.json');

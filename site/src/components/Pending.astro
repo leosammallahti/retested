@@ -4,8 +4,8 @@
 import { type Candidate } from '../lib/data';
 import { u, doiUrl, cleanQuote, clip } from '../lib/fmt';
 
-interface Props { rows: Candidate[]; subject: string }
-const { rows, subject } = Astro.props;
+interface Props { rows: Candidate[]; subject: string; verdict?: { from_label: string; to_label: string; changes: boolean; n_accepted: number; k_before: number; k_after: number } | null }
+const { rows, subject, verdict } = Astro.props;
 
 const TONE: Record<string, string> = { successful: 't-ok', failed: 't-bad', mixed: 't-mix' };
 const OUT: Record<string, string> = { successful: 'says it replicated', failed: 'says it did not replicate', mixed: 'says mixed' };
@@ -14,6 +14,7 @@ const HOW: Record<string, string> = {
   openalex_author_year: 'author, year and topic found in OpenAlex',
 };
 const withOutcome = rows.filter((r) => r.outcome).length;
+
 ---
 <section class="pending">
   <div class="sh"><h2>Not in the record yet</h2><span class="label">Unverified · pending review</span></div>
@@ -28,6 +29,13 @@ const withOutcome = rows.filter((r) => r.outcome).length;
       weaker matches are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where more of our
       finds are waiting for someone to decide.
     </p>
+    {verdict?.changes && (
+      <p class="wouldbe">
+        Accepting the {verdict.n_accepted === 1 ? 'one result' : `${verdict.n_accepted} results`} below would take this
+        from <b>{verdict.from_label}</b> to <b>{verdict.to_label}</b>, on {verdict.k_after} coded
+        replications rather than {verdict.k_before}. It does not, because nobody has checked {verdict.n_accepted === 1 ? 'it' : 'them'}.
+      </p>
+    )}
     <ol class="plist">
       {rows.map((r) => (
         <li>
@@ -59,6 +67,7 @@ const withOutcome = rows.filter((r) => r.outcome).length;
 </section>
 <style>
   .pending .card { border-style: dashed; }
+  .wouldbe { border-left: 3px solid var(--claim); padding: .55rem .8rem; margin: .9rem 0 0; font-size: .95rem; }
   .plist { list-style: none; margin: 1.2rem 0 0; padding: 0; }
   .plist li { border-top: 1px solid var(--rule); padding: 1rem 0 .2rem; }
   .phead { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin-bottom: .5rem; }

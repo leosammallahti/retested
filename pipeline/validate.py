@@ -54,6 +54,9 @@ def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
             if not _link_trusted(c):
                 problems.append(f"pending row {c['id']} has an unaudited link ({c['link_method']}/{c['link_confidence']})")
             seen.add(c["id"])
+    for doi in pending.get("verdict_if_accepted", {}):
+        if doi not in pending["by_finding"]:
+            problems.append(f"provisional verdict for {doi}, which shows no pending rows")
     for eid, rows in pending["by_effect"].items():
         for c in rows:
             if c["id"] not in seen:

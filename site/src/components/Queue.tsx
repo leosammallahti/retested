@@ -14,6 +14,7 @@ interface Cand {
   declared_design?: { word: string; fidelity: string } | null;
   preregistered?: { is_registration: boolean; date: string | null } | null;
   independence?: { verdict: string; shared: string[]; distinctive: string[] } | null;
+  if_accepted?: { from_label: string; to_label: string; changes: boolean; k_before: number; k_after: number } | null;
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
@@ -46,6 +47,7 @@ export default function Queue({ base }: { base: string }) {
   const [origin, setOrigin] = useState<'all' | 'forrt_flora_extractor' | 'retested_discovery'>('all');
   const [group, setGroup] = useState<'replication' | 'other_behavioural' | 'registration' | 'all'>('replication');
   const [tier, setTier] = useState<'all' | 'high' | 'medium'>('all');
+  const [impact, setImpact] = useState<'all' | 'changes'>('all');
   const [show, setShow] = useState<'open' | 'decided'>('open');
   const [page, setPage] = useState(0);
 
@@ -59,9 +61,10 @@ export default function Queue({ base }: { base: string }) {
       (origin === 'all' || c.origin === origin) &&
       (group === 'all' || c.group === group) &&
       (tier === 'all' || c.search_tier === tier) &&   // FORRT's rows carry no tier of ours, so a tier filter hides them
+      (impact === 'all' || !!c.if_accepted?.changes) &&
       (show === 'open' ? !dec[c.id] : !!dec[c.id]) &&
       (!qq || [c.title_r, c.title_o, c.doi_r, c.doi_o, c.effect?.name].join(' ').toLowerCase().includes(qq)));
-  }, [all, dec, q, scope, show, origin, group, tier]);
+  }, [all, dec, q, scope, show, origin, group, tier, impact]);
 
   const decide = (c: Cand, v: Decision['v'], outcome?: string) => {
     const d = { ...dec, [c.id]: { v, outcome: outcome ?? c.outcome ?? undefined, at: new Date().toISOString() } };
@@ -110,6 +113,10 @@ export default function Queue({ base }: { base: string }) {
           <option value="high">Strong title/abstract signal</option>
           <option value="medium">Weaker signal (more false positives)</option>
         </select>
+        <select value={impact} onChange={(e) => { setImpact((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Impact">
+          <option value="all">Any impact</option>
+          <option value="changes">Would change a verdict</option>
+        </select>
         <select value={show} onChange={(e) => { setShow((e.target as HTMLSelectElement).value as any); setPage(0); }} aria-label="Status">
           <option value="open">Not yet reviewed</option>
           <option value="decided">My decisions</option>
@@ -152,6 +159,13 @@ export default function Queue({ base }: { base: string }) {
               </div>
               {c.outcome_quote && <blockquote class="q">“{c.outcome_quote}”</blockquote>}
               {c.abstract && <details><summary class="faint">Abstract</summary><p class="abs">{c.abstract}{c.abstract.length >= 699 ? '…' : ''}</p></details>}
+              {c.if_accepted && (
+                <p class={`impact${c.if_accepted.changes ? ' moves' : ''}`}>
+                  {c.if_accepted.changes
+                    ? <>Accepting this changes the record from <b>{c.if_accepted.from_label}</b> to <b>{c.if_accepted.to_label}</b> ({c.if_accepted.k_before} coded {c.if_accepted.k_before === 1 ? 'replication' : 'replications'} &rarr; {c.if_accepted.k_after}).</>
+                    : <>Accepting this leaves the record at <b>{c.if_accepted.to_label}</b>, on {c.if_accepted.k_after} coded replications.</>}
+                </p>
+              )}
               <div class="qact">
                 {!d ? (
                   <>

@@ -146,6 +146,35 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     return out
 
 
+def consequences(candidates: list[dict], g: dict) -> None:
+    """Annotate each candidate with what accepting it would do to the record it belongs to.
+
+    A reviewer deciding on a row is not filing paperwork; they are deciding whether an effect currently labelled
+    "Replicated once" becomes "Contested". 84% of our linked finds attach to a finding with no more than one coded
+    replication, which is exactly where one more verdict moves the label, so the consequence is usually real and
+    worth showing before the decision rather than after it.
+
+    Computed one row at a time, because that is how the decision is made. Rows with no stated outcome cannot move
+    a record and get nothing.
+    """
+    from .evidence import record_status
+    A = g["attempts"]
+    current: dict[str, list[str]] = {}
+    for c in candidates:
+        if not (c.get("outcome") and c.get("original_in_wiki")):
+            continue
+        doi = c["doi_o"]
+        if doi not in current:
+            f = g["findings"][doi]
+            current[doi] = [A[a]["outcome"] for a in f["attempts"] if A[a]["type"] == "replication"]
+        before = record_status(current[doi])
+        after = record_status(current[doi] + [c["outcome"]])
+        c["if_accepted"] = {"from": before["code"], "from_label": before["label"],
+                            "to": after["code"], "to_label": after["label"],
+                            "changes": before["code"] != after["code"],
+                            "k_before": before["k"], "k_after": after["k"]}
+
+
 def pending(candidates: list[dict], g: dict) -> dict:
     """Our linked finds, grouped for the pages that show them as unverified, pending review.
 
@@ -174,7 +203,35 @@ def pending(candidates: list[dict], g: dict) -> dict:
     for d in (by_finding, by_effect):
         for rows in d.values():
             rows.sort(key=lambda c: (order.get(c.get("link_confidence"), 3), -(c["year_r"] or 0)))
-    return {"by_finding": by_finding, "by_effect": by_effect}
+    # what the record would say if every row shown on that page were accepted -- the per-candidate if_accepted
+    # answers a different question (this row alone), and taking one of them would misreport a page with several
+    from .evidence import record_status
+    A = g["attempts"]
+    verdicts = {}
+    for doi, rows in by_finding.items():
+        outs = [r["outcome"] for r in rows if r.get("outcome")]
+        if not outs:
+            continue
+        cur = [A[a]["outcome"] for a in g["findings"][doi]["attempts"] if A[a]["type"] == "replication"]
+        before, after = record_status(cur), record_status(cur + outs)
+        verdicts[doi] = {"from": before["code"], "from_label": before["label"], "to": after["code"],
+                         "to_label": after["label"], "changes": before["code"] != after["code"],
+                         "n_accepted": len(outs), "k_before": before["k"], "k_after": after["k"]}
+    eff_verdicts = {}
+    for eid, rows in by_effect.items():
+        outs = [r["outcome"] for r in rows if r.get("outcome")]
+        if not outs:
+            continue
+        e = next((x for x in g["effects"].values() if x["id"] == eid), None)
+        if not e:
+            continue
+        cur = [A[a]["outcome"] for a in e["attempts"] if A[a]["type"] == "replication"]
+        before, after = record_status(cur), record_status(cur + outs)
+        eff_verdicts[eid] = {"from": before["code"], "from_label": before["label"], "to": after["code"],
+                             "to_label": after["label"], "changes": before["code"] != after["code"],
+                             "n_accepted": len(outs), "k_before": before["k"], "k_after": after["k"]}
+    return {"by_finding": by_finding, "by_effect": by_effect, "verdict_if_accepted": verdicts,
+            "effect_verdict_if_accepted": eff_verdicts}
 
 
 # How close to the original did the authors say they were? This is FORRT's `same_design` / closeness question,
