@@ -193,6 +193,8 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
             "retested_independent": sum(1 for c in candidates if c["origin"] == "retested_discovery" and (c.get("independence") or {}).get("verdict") == "independent"),
             "retested_shares_author": sum(1 for c in candidates if c["origin"] == "retested_discovery" and (c.get("independence") or {}).get("verdict") == "shares_author"),
             "retested_declared_design": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("declared_design")),
+            "retested_deduped": sum(len(c.get("duplicates") or []) for c in candidates),
+            "retested_duplicates_disagreed": sum(1 for c in candidates if c.get("duplicate_originals_disagree")),
             "retested_original_retracted": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("retracted_o")),
             "retested_original_named": sum(1 for c in candidates if c["origin"] == "retested_discovery" and c.get("title_o")),
             "retested_conceptual": sum(1 for c in candidates if c["origin"] == "retested_discovery" and (c.get("declared_design") or {}).get("fidelity") == "low"),

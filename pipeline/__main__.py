@@ -30,6 +30,10 @@ def build(accept_baseline: bool) -> int:
     candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), {**load.load_reference_links(), **load.load_links()}, g, load.load_known_replication_dois(), load.load_known_osf_ids(),
                                       load.load_surname_frequency(), load.load_osf(),
                                       load.load_original_authors())
+    before = len(candidates)
+    candidates = queue.dedupe(candidates)
+    if before != len(candidates):
+        step(f"deduped {before - len(candidates)} repeat deposits of work already in the queue")
     queue.consequences(candidates, g)
     pending = queue.pending(candidates, g)
     st = stats.build(g, items, candidates)

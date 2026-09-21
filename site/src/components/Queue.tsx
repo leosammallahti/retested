@@ -17,6 +17,7 @@ interface Cand {
   if_accepted?: { from_label: string; to_label: string; changes: boolean; k_before: number; k_after: number } | null;
   authors_r?: string | null; osf_id?: string | null; landing_page?: string | null; year_o?: number | null;
   authors_o?: string | null; journal_o?: string | null; cited_by_o?: number | null; retracted_o?: boolean | null;
+  duplicates?: string[]; duplicate_originals_disagree?: boolean;
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
@@ -172,6 +173,8 @@ export default function Queue({ base }: { base: string }) {
                       : <span class="faint">not resolved</span>}
                   {(c.authors_o || c.journal_o) && <div class="faint jr">{[c.authors_o, c.journal_o].filter(Boolean).join(' · ')}{c.cited_by_o ? ` · cited ${c.cited_by_o.toLocaleString()}×` : ''}</div>}
                   {c.retracted_o && <div><span class="chip warn">the original has been RETRACTED</span></div>}
+                  {c.duplicates?.length ? <div class="faint jr mono">also deposited {c.duplicates.length} other time{c.duplicates.length === 1 ? '' : 's'} — versions or mirrors, collapsed into this row</div> : null}
+                  {c.duplicate_originals_disagree && <div><span class="chip warn">those copies were matched to different originals — check this one</span></div>}
                   {c.original_named?.description && <div class="faint jr">“{c.original_named.description}”</div>}
                   {c.link_method && <div class="faint jr mono">{HOW[c.link_method] ?? c.link_method}</div>}
                   {c.link_evidence?.runner_up && <div class="faint jr mono">next best: {c.link_evidence.runner_up.title_o ?? c.link_evidence.runner_up.doi_o}</div>}

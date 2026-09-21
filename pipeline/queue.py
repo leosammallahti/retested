@@ -185,6 +185,53 @@ def consequences(candidates: list[dict], g: dict) -> None:
                             "k_before": before["k"], "k_after": after["k"]}
 
 
+_TITLEKEY = re.compile(r"[^a-z0-9]")
+_OSF_VERSION = re.compile(r"^([a-z0-9]{5})(?:_v\d+)?$", re.I)
+
+
+def _dedupe_key(c: dict) -> str | None:
+    """What makes two records the same piece of work.
+
+    One replication reaches us several times: an OSF preprint and its own later versions (ck4st, ck4st_v2,
+    ck4st_v5), a preprint DOI and the published DOI, a Zenodo deposit re-minted, or a DOI record and a bare
+    OpenAlex record for the same paper. 286 of 3,897 finds were redundant this way. It matters most at the export:
+    FORRT would have received seven rows for one study.
+    """
+    t = _TITLEKEY.sub("", (c.get("title_r") or "").lower())[:70]
+    if len(t) > 25:
+        return "t:" + t
+    if c.get("osf_id") and (m := _OSF_VERSION.match(c["osf_id"])):
+        return "o:" + m.group(1).lower()
+    return None
+
+
+def _completeness(c: dict) -> tuple:
+    """Prefer the published record, then one with a DOI, then whichever carries the most."""
+    return (c.get("evidence_tier") == "published", bool(c.get("doi_r")), bool(c.get("outcome")),
+            bool(c.get("outcome_quote")), bool(c.get("doi_o")), sum(1 for v in c.values() if v not in (None, "", [], {})))
+
+
+def dedupe(candidates: list[dict]) -> list[dict]:
+    """Collapse repeats of one piece of work, keeping the fullest record and noting what it absorbed."""
+    groups: dict[str, list[dict]] = {}
+    out: list[dict] = []
+    for c in candidates:
+        k = _dedupe_key(c) if c["origin"] == "retested_discovery" else None
+        if k is None:
+            out.append(c)
+        else:
+            groups.setdefault(k, []).append(c)
+    for k, rows in groups.items():
+        rows.sort(key=_completeness, reverse=True)
+        best, rest = rows[0], rows[1:]
+        if rest:
+            best = {**best, "duplicates": [r["id"] for r in rest],
+                    # when the copies were linked to different originals they disagree with themselves; say so
+                    "duplicate_originals_disagree": len({r["doi_o"] for r in rows if r["doi_o"]}) > 1}
+        out.append(best)
+    return out
+
+
 def pending(candidates: list[dict], g: dict) -> dict:
     """Our linked finds, grouped for the pages that show them as unverified, pending review.
 
