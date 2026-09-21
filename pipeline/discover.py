@@ -264,6 +264,9 @@ def run(g: dict, mode: str = "cites") -> dict:
             # an OSF project or a repository deposit often has no DOI; its landing page is the only identifier it has
             "landing_page": loc.get("landing_page_url"),
             "authors_r": (au[0]["author"]["display_name"].split()[-1] + (" et al." if len(au) > 2 else f" & {au[1]['author']['display_name'].split()[-1]}" if len(au) == 2 else "")) if au else None,
+            # every surname, so a replication can be checked for authors shared with the original it tests
+            "author_surnames_r": [n.split()[-1].lower() for a in au
+                                  if (n := ((a.get("author") or {}).get("display_name") or "").strip())],
             "originals": cited, "original_titles": [P.get(d, {}).get("title") for d in cited[:5]],
             "known_to_forrt": known_rep or known_title, "known_how": "doi" if known_rep else ("title (preprint/published twin)" if known_title else None),
             **sc,

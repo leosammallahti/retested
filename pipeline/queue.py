@@ -67,7 +67,8 @@ def build(extracted: list[dict], g: dict) -> list[dict]:
 
 
 def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[str] | None = None,
-                   forrt_osf: set[str] | None = None) -> list[dict]:
+                   forrt_osf: set[str] | None = None, surname_freq: dict[str, int] | None = None,
+                   osf_records: dict[str, dict] | None = None) -> list[dict]:
     """Our own finds: one row per discovered paper DeepSeek judged a replication, a reproduction or a registered
     protocol, carrying its verdict, its grounded quote, and how its original was resolved."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
@@ -75,6 +76,7 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     effect_of = _effect_of(g)
     P = g["papers"]
     forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
+    osf_records = osf_records or {}
     out, already = [], 0
     for r in triaged:
         t = r["triage"]
@@ -121,6 +123,9 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "search_tier": r.get("tier"), "rule_score": r.get("score"),
             "landing_page": r.get("landing_page"), "osf_id": osf,
             "declared_design": declared_design(r.get("title_r"), r.get("abstract")),
+            # OSF answers this outright: a registration is a registration. No inference, no reading.
+            "preregistered": _prereg(osf_records.get(osf)),
+            "independence": independence(r.get("author_surnames_r"), (P.get(doi_o) or {}).get("surnames"), surname_freq),
             "found_by": r.get("found_by") or [],
             "rep_already_known": bool(doi_r and doi_r in known_reps),
             "original_in_wiki": in_wiki,
@@ -186,6 +191,38 @@ def declared_design(title: str | None, abstract: str | None) -> dict | None:
     return {"word": word,
             "fidelity": "high" if word in _HIGH_FIDELITY else "low" if word == "conceptual" else "unclear",
             "said_in": "title" if _KIND.search(title or "") else "abstract"}
+
+
+def _prereg(rec: dict | None) -> dict | None:
+    if not rec or rec.get("kind") is None:
+        return None
+    return {"is_registration": bool(rec.get("registration")), "date": rec.get("date_registered"),
+            "osf_kind": rec.get("kind"), "source": "osf_api"}
+
+
+def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None,
+                 freq: dict[str, int] | None = None) -> dict | None:
+    """Does the replication team share an author with the original?
+
+    This is FORRT's author_overlap, which is the strongest thing in their data: replications sharing an author with
+    the original report success 70% of the time, independent ones 38%. FORRT has it coded for 20% of findings and
+    for none of ours, but both author lists are already here, so it can simply be computed.
+
+    A shared surname is not proof of a shared person, and the base rate says so loudly: across 171,000 author slots
+    the median surname appears once, the 99th percentile is 30, and "chen" appears 832 times. So a match on common
+    names only is reported as possible_shared_name, not as overlap. "dekay" matching on a DeKay replication means
+    something; "kim" does not. Absent either author list it says nothing rather than guessing independence.
+    """
+    if not rep_surnames or not orig_surnames:
+        return None
+    from .load import COMMON_SURNAME
+    freq = freq or {}
+    shared = sorted(set(rep_surnames) & set(orig_surnames))
+    distinctive = [n for n in shared if freq.get(n, 0) < COMMON_SURNAME]
+    verdict = "independent" if not shared else ("shares_author" if distinctive else "possible_shared_name")
+    return {"verdict": verdict, "shared": shared, "distinctive": distinctive,
+            "shared_frequency": {n: freq.get(n, 0) for n in shared},
+            "n_replication_authors": len(rep_surnames), "n_original_authors": len(orig_surnames)}
 
 
 # (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed

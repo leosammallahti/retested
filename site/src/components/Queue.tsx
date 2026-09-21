@@ -11,6 +11,9 @@ interface Cand {
   origin: 'forrt_flora_extractor' | 'retested_discovery';
   group: 'replication' | 'other_behavioural' | 'registration';
   link_method?: string | null; evidence_tier?: string; search_tier?: 'high' | 'medium'; found_by?: string[]; screen_reason?: string | null;
+  declared_design?: { word: string; fidelity: string } | null;
+  preregistered?: { is_registration: boolean; date: string | null } | null;
+  independence?: { verdict: string; shared: string[]; distinctive: string[] } | null;
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
@@ -125,6 +128,10 @@ export default function Queue({ base }: { base: string }) {
                 {c.group !== 'replication' && <span class="chip warn">{GROUP[c.group]}</span>}
                 {c.evidence_tier === 'preprint' && <span class="chip">preprint</span>}
                 {c.search_tier === 'medium' && <span class="chip warn">weaker signal</span>}
+                {c.preregistered?.is_registration && <span class="chip">preregistered</span>}
+                {c.declared_design && <span class={`chip${c.declared_design.fidelity === 'low' ? ' warn' : ''}`}>{c.declared_design.word} replication</span>}
+                {c.independence?.verdict === 'shares_author' && <span class="chip warn">shares an author: {c.independence.distinctive.join(', ')}</span>}
+                {c.independence?.verdict === 'independent' && <span class="chip">independent team</span>}
                 {c.effect && <a class="chip" href={`${base}effect/${c.effect.slug}/`}>{c.effect.name}</a>}
                 {c.rep_already_known && <span class="chip warn">replication paper already known for another original</span>}
                 {d && <span class={`chip ${d.v === 'accept' ? '' : 'claim'}`}>you: {d.v}</span>}

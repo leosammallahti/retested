@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import pickle
 import re
+import unicodedata
 from pathlib import Path
 
 import pandas as pd
@@ -77,6 +78,25 @@ def short_authors(raw) -> str | None:
     if len(fams) == 2:
         return f"{fams[0]} & {fams[1]}"
     return f"{fams[0]} et al."
+
+
+def all_surnames(raw) -> list[str]:
+    """Every family name in FLoRA's JSON-ish author field, lower-cased, for author-overlap checks.
+
+    FLoRA already carries author_overlap_pct, but only for the pairs FORRT coded (20% of findings). Our finds have
+    no such coding, and overlap is the strongest predictor in the whole dataset — 70% of replications sharing an
+    author with the original succeed against 38% of independent ones — so it is worth deriving ourselves.
+    """
+    if is_na(raw):
+        return []
+    fams = re.findall(r"['\"]family['\"]\s*:\s*['\"]([^'\"]+)['\"]", str(raw))
+    out, seen = [], set()
+    for f in fams:
+        t = unicodedata.normalize("NFKD", f).encode("ascii", "ignore").decode().lower().strip()
+        t = re.sub(r"[^a-z' -]", "", t)
+        if len(t) > 1 and t not in seen:
+            seen.add(t); out.append(t)
+    return out
 
 
 def to_int(x):
@@ -214,6 +234,12 @@ def load_triaged() -> list[dict]:
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
 
 
+def load_osf() -> dict[str, dict]:
+    """OSF token -> what OSF says the object is. Empty until `python -m pipeline osf` has run."""
+    f = DISCOVERY / "osf.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
 def load_links() -> dict[str, dict]:
     """cid -> resolved original. Empty until `python -m pipeline link` has run."""
     f = DISCOVERY / "links.json"
@@ -283,3 +309,25 @@ def osf_token(url: str | None) -> str | None:
     """'https://osf.io/fdfwc/#!' -> 'fdfwc'."""
     m = re.search(r"osf\.io/([a-z0-9]{5})(?:[/?#]|$)", str(url or ""), re.I)
     return m.group(1).lower() if m else None
+
+
+# a surname this common carries almost no evidence that two papers share a person (top ~1%: median is 1, p99 is 30)
+COMMON_SURNAME = 25
+
+
+def load_surname_frequency() -> dict[str, int]:
+    """How many discovered papers carry each author surname, as a base rate for author-overlap claims."""
+
+    def build():
+        from collections import Counter
+        f: Counter[str] = Counter()
+        for mode in ("keyword", "cites"):
+            p = DISCOVERY / f"discovered-{mode}.json"
+            if not p.exists():
+                continue
+            for c in json.loads(p.read_text(encoding="utf-8"))["candidates"]:
+                for sn in set(c.get("author_surnames_r") or []):
+                    f[sn] += 1
+        return dict(f)
+
+    return _cached("surname_freq", SOURCES["flora"], build)

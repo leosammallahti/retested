@@ -85,10 +85,12 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             log.append(f"flora row skipped (no doi_o or replication id): {r.get('title_r')}")
             continue
         paper(doi_o, title=r.get("title_o"), year=_num(r.get("year_o")), journal=r.get("journal_o"),
-              authors=_short(r.get("author_o")), ref=r.get("apa_ref_o"), oa_url=r.get("oa_url_o"))
+              authors=_short(r.get("author_o")), surnames=_surnames(r.get("author_o")) or None,
+              ref=r.get("apa_ref_o"), oa_url=r.get("oa_url_o"))
         if norm_doi(rep_key):
             paper(norm_doi(rep_key), title=r.get("title_r"), year=_num(r.get("year_r")), journal=r.get("journal_r"),
-                  authors=_short(r.get("author_r")), ref=r.get("apa_ref_r"), oa_url=r.get("oa_url_r"))
+                  authors=_short(r.get("author_r")), surnames=_surnames(r.get("author_r")) or None,
+                  ref=r.get("apa_ref_r"), oa_url=r.get("oa_url_r"))
         a = attempt(doi_o, rep_key, title_r=r.get("title_r"),
                     year_r=_num(r.get("year_r")), journal_r=r.get("journal_r"), authors_r=_short(r.get("author_r")),
                     url_r=r.get("url_r") if not norm_doi(rep_key) else None, oa_url_r=r.get("oa_url_r"),
@@ -362,6 +364,11 @@ def build(src: dict, ledger: EffectLedger) -> dict:
 def _short(raw):
     from .load import short_authors
     return short_authors(raw)
+
+
+def _surnames(raw):
+    from .load import all_surnames
+    return all_surnames(raw)
 
 
 _STATUS = {

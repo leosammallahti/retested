@@ -27,7 +27,8 @@ def build(accept_baseline: bool) -> int:
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
     items, reveals = game.build(g)
-    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), load.load_links(), g, load.load_known_replication_dois(), load.load_known_osf_ids())
+    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), load.load_links(), g, load.load_known_replication_dois(), load.load_known_osf_ids(),
+                                      load.load_surname_frequency(), load.load_osf())
     pending = queue.pending(candidates, g)
     st = stats.build(g, items, candidates)
     step(f"game {len(items)} items; queue {len(candidates)} candidates; "
