@@ -15,9 +15,9 @@ const HOW: Record<string, string> = {
   reference_scan: 'matched against the papers this replication cites',
   'cited by this paper': 'picked out of this paper\u2019s own reference list',
 };
-// Never state an accuracy the label file does not hold: this is the hand-read audit of exactly the bands
-// allowed into this box, recomputed by every build from data/curated/original_audit.csv.
-const la = stats().uncounted.link_audit?.page;
+// Never state an accuracy the label file does not hold. This is the audit of the rows that actually appear in
+// a box like this one — not of the bands they belong to, which read higher over the wider pool.
+const la = stats().uncounted.link_audit?.shown;
 const withOutcome = rows.filter((r) => r.outcome).length;
 
 ---
@@ -29,10 +29,10 @@ const withOutcome = rows.filter((r) => r.outcome).length;
       appear{rows.length === 1 ? 's' : ''} to replicate {subject} and {rows.length === 1 ? 'is' : 'are'} not in FORRT's
       data. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
       this original; <b>no person has checked {rows.length === 1 ? 'it' : 'them'}</b>. Nothing here counts towards the verdict,
-      the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.
+      the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.{' '}
       {la && la.n_read > 0 && (
-        <>Reading <b class="num">{la.n_read}</b> links of the kind shown here one by one, <b class="num">{la.right}</b> pointed
-        at the right original. </>
+        <>Reading <b class="num">{la.n_read}</b> of the <b class="num">{la.n_pool}</b> links that appear in a box like
+        this one, one at a time, <b class="num">{la.right}</b> pointed at the right original. </>
       )}Weaker matching methods are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where
       more of our finds are waiting for someone to decide.
     </p>

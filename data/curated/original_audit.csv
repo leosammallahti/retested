@@ -145,3 +145,28 @@ W7160477742,page,library_author_year/medium,wrong,score 0.505 with 1 of 3 author
 W7165241472,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
 W7166967444,page,library_author_year/high,right,,claude-opus-5,2026-09-21
 W7208866790,page,library_author_year/high,right,,claude-opus-5,2026-09-21
+10.1002/jaba.70012,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1002/jaba.775,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1007/bf00447071,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1007/s11292-019-09374-1,shown,cited by this paper/high,unclear,no abstract held at all; a 2019 theft-modelling trial matched to Bandura 1961 on imitation of aggression,claude-opus-5,2026-09-21
+10.1016/j.actpsy.2021.103331,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1016/j.bodyim.2019.12.003,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1016/j.cogdev.2021.101054,shown,cited by this paper/high,unclear,"the communication-intervention effect is not in Onishi & Baillargeon 2005, though the paradigm is",claude-opus-5,2026-09-21
+10.1016/j.cortex.2020.09.007,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1016/j.jrp.2017.04.001,shown,cited by this paper/high,wrong,"the title names Murray, Rose, Bellavia, Holmes & Kusche (2002) Study 3; matched to a 2008 Murray paper",claude-opus-5,2026-09-21
+10.1080/00223989709603522,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1080/00224545.1973.9923041,shown,cited by this paper/high,unclear,"Katz & Braly gave the checklist method, but the replicated claim is the unitary dimensionality of stereotypes",claude-opus-5,2026-09-21
+10.1093/arclin/acag044,shown,cited by this paper/high,right,"the abstract says ""a direct replication of a 2008 prescribed optimism study"", which is the matched paper",claude-opus-5,2026-09-21
+10.1093/schbul/8.2.425,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1098/rsos.190327,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1098/rsos.210550,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1111/j.1467-9280.1997.tb00449.x,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1177/008124631204200403,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1177/10298649231167488,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.1521/ijct_2016_09_03,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.2139/ssrn.1699970,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.2466/pms.1997.85.1.112,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.31234/osf.io/jnqu4,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.31234/osf.io/phb9r,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21
+10.3758/bf03328756,shown,cited by this paper/high,right,"the reversed Stroop effect traces to Stroop 1935; no abstract held, judged from the title",claude-opus-5,2026-09-21
+10.5178/lebs.2016.47,shown,cited by this paper/high,right,,claude-opus-5,2026-09-21

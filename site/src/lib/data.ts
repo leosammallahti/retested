@@ -59,7 +59,7 @@ export interface Stats {
   uncounted: { finds: number; linked: number; with_verdict: number; distinct_originals: number; overall: Share;
     by_evidence: Record<string, Share>; by_independence: Record<string, Share>; by_design: Record<string, Share>;
     preregistered: Share; by_year: Record<string, Share>; audit: OutcomeAudit | null;
-    link_audit: { page: LinkAudit | null; linked: LinkAudit | null } };
+    link_audit: { shown: LinkAudit | null; page: LinkAudit | null; linked: LinkAudit | null } };
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }

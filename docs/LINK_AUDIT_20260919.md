@@ -251,3 +251,69 @@ verdict had been *over-read towards success*, and there is no such error to dete
 none in 144 cases. This one separates verdicts with no binary answer from verdicts with one, in either direction,
 which is a different and easier question. (The two failed attempts were said to be recorded in this file so they
 would not be rebuilt. They are not in it; whatever was tried was not written down.)
+
+
+## Addendum, 2026-09-21: every link band read, and a route reopened
+
+The 65 cases at the top of this file read five bands. They left most of the pool unmeasured: of the 1,442 rows
+that could become a game card, **694 sat in bands nobody had read a single case from**. A card needs the right
+original twice over — the reveal names it, and any written claim would come from its abstract — so this is as
+decisive for the deck as the verdict is.
+
+`python -m pipeline originals` is the same instrument as `pipeline outcomes`, pointed at the link: a
+deterministic stratified draw, one case at a time, labels accumulating in `data/curated/original_audit.csv`.
+146 read, band by band:
+
+| band | right | | rows in the card pool |
+|---|---|---|---|
+| `cited by this paper` | 34/36 | **94%** | 217 |
+| `library_author_year` high | 10/10 | **100%** | 7 |
+| `library_author_year` medium | 11/12 | **92%** | 2 |
+| `openalex_author_year` high | 8/8 | **100%** | 44 |
+| `openalex_author_year` medium | 7/8 | 88% | 60 |
+| `reference_scan` high | 8/10 | 80% | 158 |
+| `reference_scan` medium | 8/14 | 57% | 195 |
+| `openalex_author_year` low | 8/20 | 40% | 358 |
+| `reference_scan` low | 7/20 | 35% | 336 |
+| `library_author_year` low | 1/8 | 12% | 65 |
+
+**The two weakest bands are not weak, they are wrong.** Dean (1966) on marital adjustment matched to the
+intrinsic absorption-edge spectrum of gallium phosphide. Nolan (1968) on smoking matched to Nolan & Margoliash
+on protein structures. Briggs (2018) on resurgence of problem behaviour matched to a paper on machine
+translation in Korean students' academic writing. Stone (1966) on prognostic judgements matched to Stone (1966)
+on non-geostrophic baroclinic stability. A surname and a year with nothing behind them, exactly as the first
+audit found for `library_author_year` low — and those two bands hold 694 of the card rows.
+
+A second, quieter failure appears throughout: the right paper is often the **runner-up**. Ermisch and Gambetta's
+"Do strong family ties inhibit trust?" sits second while the pick is someone else's review; Tversky's
+"Intransitivity of preferences" sits second while the pick is a different Tversky 1969; Krosch and Amodio's
+scarcity study sits second while the pick is a different scarcity paper. The scorer is ordering candidates
+better than its own top-1 suggests, which is a lead for anyone who wants to improve the matcher rather than
+gate it.
+
+### A route that was closed on a measurement that had stopped describing the data
+
+`cited by this paper` — the model picking the original out of the paper's own reference list — was filed as
+`unchecked`, kept off every page, and described here as "right only 6 times in 11". **Read again, it is 34 right
+out of 36.** That is better than any other band, and better than the 32/36 that admitted `reference_scan` high.
+
+The two readings are not in conflict, because they are not of the same data. The 6/11 was of output from prompt
+t1. t3 added the mere-citation trap — *"Citing a study is not replicating it. Use original_index only when this
+paper actually re-tests that study's finding"* — and the two caches show exactly what that did. Of 239
+candidates t1 named a cited original for, **t3 withholds the name on 101 and keeps 137 of the remaining 138
+picks identical**. It did not pick better; it stopped picking when it should not have picked at all, and the
+doubtful half is precisely what the 6/11 was measuring.
+
+The band is now trusted. Rows shown beside a verdict on a finding page go from 111 on 65 pages to **168 on 115**.
+The pipeline's own rule caught this one: *when a measurement says a route is dead, verify the measurement before
+closing the route.*
+
+### And the bands that were quoted but never written down
+
+`library_author_year` high/medium has been quoted at 24/25 since 2026-09-19, and it carries more rows onto pages
+than any other band. Those 25 reads were never recorded row by row, so nobody could check them, extend them, or
+find out which cases they were — the same hole that made the outcome audit start over rather than build on n=20.
+They are now 10/10 and 11/12 **in a file**. Every band a page shows has been read, and the queue explainer and
+the "not in the record yet" box print these numbers straight from `data/curated/original_audit.csv` through
+`stats`, so no page can state an accuracy the label file does not hold. Until today the queue page was still
+quoting the superseded 6 in 11.

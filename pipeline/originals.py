@@ -43,6 +43,12 @@ POOLS = {
              lambda c: c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed") and c.get("doi_o")),
     "page": ("the bands effect and finding pages are allowed to show",
              lambda c: c.get("doi_o") and (c.get("link_method"), c.get("link_confidence")) in _trusted()),
+    # What a reader actually sees. `page` is the set of bands allowed through; this is the rows that get through
+    # them, which is a narrower and different population — the original has to be one the wiki already holds and
+    # the find has to come from the high search tier. Measure the shipped rows, not the band they belong to.
+    "shown": ("the rows that actually appear in a 'not in the record yet' box on a page",
+              lambda c: c.get("doi_o") and c.get("original_in_wiki") and c.get("search_tier") == "high"
+              and (c.get("link_method"), c.get("link_confidence")) in _trusted()),
     "linked": ("every psychology find matched to an original, verdict or not",
                lambda c: c.get("field") == "psychology" and c.get("doi_o")),
 }

@@ -59,7 +59,11 @@ def uncounted(candidates: list[dict]) -> dict:
         # what reading these verdicts one by one found; None until somebody has read some
         "audit": audit_summary("uncounted", candidates),
         # the same, for whether each find was matched to the right original
-        "link_audit": {"page": link_audit_summary("page", candidates),
+        # "shown" is the rows a reader actually sees in a pending box; "page" is the bands allowed through.
+        # The box must quote the first, because a band's accuracy over the whole pool is not its accuracy over
+        # the narrower slice that reaches a page — for `cited by this paper` those are 94% and 87%.
+        "link_audit": {"shown": link_audit_summary("shown", candidates),
+                       "page": link_audit_summary("page", candidates),
                        "linked": link_audit_summary("linked", candidates)},
         "distinct_originals": len({c["doi_o"] for c in linked}),
         "overall": _share([c["outcome"] for c in verdict]),
