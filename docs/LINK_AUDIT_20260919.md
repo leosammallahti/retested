@@ -317,3 +317,81 @@ They are now 10/10 and 11/12 **in a file**. Every band a page shows has been rea
 the "not in the record yet" box print these numbers straight from `data/curated/original_audit.csv` through
 `stats`, so no page can state an accuracy the label file does not hold. Until today the queue page was still
 quoting the superseded 6 in 11.
+
+
+## Addendum, 2026-09-21 (later): 384 links read, and the page gate now follows the reading
+
+The 146 reads above were extended to **384** by eleven readers working a band each, with two bands read twice by
+independent readers who could not see the first labels. **Three of the figures above moved, including one this
+same session had acted on.**
+
+| band | read | | rows in the linked pool | on a page? |
+|---|---|---|---|---|
+| `library_author_year` high | 29/30 | **97%** | 45 | yes |
+| `openalex_author_year` high | 31/33 | **94%** | 117 | yes |
+| `library_author_year` medium | 30/32 | **94%** | 93 | yes |
+| `openalex_author_year` medium | 30/33 | **91%** | 122 | yes, newly |
+| `cited by this paper` | 72/84 | 86% | 307 | no, reverted |
+| `reference_scan` high | 32/40 | 80% | 299 | no, removed |
+| `reference_scan` medium | 28/44 | 64% | 463 | no |
+| `openalex_author_year` low | 14/40 | 35% | 723 | no |
+| `reference_scan` low | 10/40 | 25% | 682 | no |
+| `library_author_year` low | 1/8 | 12% | 186 | no |
+
+**The promotion of `cited by this paper` earlier today was made on too small a sample and is reverted.** 34 of 36
+became 72 of 84 — 86%, short of the 90% the project set when it first gated pages. The reading was not sloppy so
+much as shallower: the readers who took the band to 84 checked full texts where the record was ambiguous, and
+found, for instance, a warmth study whose own text says *"Replicating previous work (Inagaki & Eisenberger,
+2013)"* while the match was Williams & Bargh (2008), cited only as background. Two blind readers of the same 25
+cases agreed on **every one, including all six they called wrong** (Cohen's κ = 1.00), so the lower figure is not
+one reader being harsh.
+
+**`reference_scan` high was also below the line and nobody had noticed**, because its 32/36 = 89% had been quoted
+since September and never re-read. Forty fresh cases put it at 80%. It had been shown on pages the whole time.
+
+**And `openalex_author_year` medium was excluded on 2 of 4.** Thirty-three reads put it at 91%, so it is in.
+
+### The gate is no longer a list
+
+`queue.TRUSTED_LINKS` was a hand-maintained set of pairs. It is now computed on every build from
+`data/curated/original_audit.csv`: a band qualifies when at least 20 of its links have been read and at least 90%
+were right. That rule is the one this file stated in September — "the strata measured above 90%" — finally
+applied uniformly instead of case by case, and it went stale in both directions while it was a list.
+
+Rows shown beside a verdict: 111 → 168 when the band was promoted this morning, and **110 on 64 finding pages**
+now that the measurement is in charge. A point estimate near the line at n≈30 is not stable, so bands will move
+as reading accumulates. That is the mechanism working.
+
+`cited by this paper` also stops calling itself "high". It has no per-row score — the model writes its account of
+the original after choosing it — so it is `unscored`, and how often it is right is a question for the audit
+rather than a band label.
+
+### Reader agreement, since the reading is now the instrument
+
+| band | same cases | agreement | κ |
+|---|---|---|---|
+| `cited by this paper` | 23 | 23/23 = **100%** | 1.00 |
+| `reference_scan` medium | 30 | 26/30 = 87% | 0.73 |
+
+Every disagreement in the second band was *wrong* against *unclear* — never right against wrong. Two readers
+looking at the same records reach the same verdict on which links are real; what they differ on is how much
+benefit of the doubt an unconfirmable record gets.
+
+
+## Addendum, 2026-09-21 (later): outcome reading at n=200
+
+The outcome audit was extended from 144 to **224 labels** the same way. It did not move:
+
+| the model said | right | precision | 95% interval |
+|---|---|---|---|
+| successful | 94/100 | **94%** | 88–97% |
+| failed | 93/100 | **93%** | 86–97% |
+| mixed | 18/22 | 82% | 62–93% |
+
+Still symmetric, still no sign of the one-directional error the n=20 sample suggested. One correction to the
+earlier claim that nothing had been read as the opposite of what the paper reports: at n=200 there is **one**
+such case, a "successful" whose paper reports a failure. One card in two hundred would score a player backwards;
+twelve in two hundred have no binary answer at all.
+
+The confidence split holds and sharpens: below `outcome_confidence` 0.8 the verdict is sound 23 times in 29
+(79%); at 0.8 and above, 164 in 171 (**96%**).

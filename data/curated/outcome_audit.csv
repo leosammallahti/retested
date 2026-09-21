@@ -1,20 +1,30 @@
 cid,pool,recorded,label,note,labelled_by,labelled_on
 10.1002/acp.4203,card,successful,successful,,claude-opus-5,2026-09-21
 10.1002/asi.4630330204,card,failed,failed,,claude-opus-5,2026-09-21
+10.1002/bem.20014,card,failed,failed,"Explicit ""could not replicate our previous results""; the sensitivity-threshold sentence is interpretive hedging, not a disclaimer of the null.",workflow-reader,2026-09-21
 10.1002/bs.3830140505,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/bsl.2232,card,successful,successful,,workflow-reader,2026-09-21
 10.1002/capr.12710,card,successful,successful,,claude-opus-5,2026-09-21
+10.1002/jaba.568,card,successful,successful,,workflow-reader,2026-09-21
 10.1002/jaba.791,card,successful,successful,,claude-opus-5,2026-09-21
 10.1002/jad.12266,card,failed,failed,,claude-opus-5,2026-09-21
 10.1002/pits.21647,card,successful,successful,five of seven primary outcomes significant,claude-opus-5,2026-09-21
+10.1006/jrpe.2000.2284,card,failed,failed,No abstract; title declares failure to replicate.,workflow-reader,2026-09-21
 10.1007/bf03089984,card,failed,failed,,claude-opus-5,2026-09-21
 10.1007/bf03394516,card,failed,failed,,claude-opus-5,2026-09-21
 10.1007/s00429-022-02602-x,card,failed,failed,,claude-opus-5,2026-09-21
+10.1007/s10979-007-9091-y,card,successful,successful,,workflow-reader,2026-09-21
 10.1007/s11218-024-09899-y,card,failed,failed,,claude-opus-5,2026-09-21
 10.1016/0001-6918(69)90006-7,card,failed,failed,,claude-opus-5,2026-09-21
 10.1016/0005-7967(86)90033-1,card,failed,failed,,claude-opus-5,2026-09-21
 10.1016/0022-1031(92)90040-q,card,successful,successful,,claude-opus-5,2026-09-21
 10.1016/j.cogdev.2017.10.003,card,failed,failed,,claude-opus-5,2026-09-21
+10.1016/j.heliyon.2020.e04033,card,successful,successful,,workflow-reader,2026-09-21
+10.1016/j.ijpsycho.2022.07.001,card,failed,failed,"IU subfactors did not predict ERN or PES ""in contrast to previous findings""; the CRN variance is a different, non-target measure.",workflow-reader,2026-09-21
 10.1016/j.jad.2025.01.058,card,successful,successful,,claude-opus-5,2026-09-21
+10.1016/j.jbtep.2014.10.010,card,failed,failed,"No abstract; title itself declares ""Failure to replicate"".",workflow-reader,2026-09-21
+10.1016/j.jecp.2024.105881,card,successful,successful,"The stated replication target (verb-learning deficit in children with LD) held; the orthographic-facilitation null is against the broader literature, not the target original.",workflow-reader,2026-09-21
+10.1016/j.jecp.2026.106666,card,successful,successful,,workflow-reader,2026-09-21
 10.1016/j.neuroimage.2023.120002,card,failed,failed,,claude-opus-5,2026-09-21
 10.1016/j.psychsport.2024.102770,card,failed,failed,,claude-opus-5,2026-09-21
 10.1016/j.sbspro.2011.10.233,card,failed,not_established,reports which group was most satisfied but never compares that with the original's finding,claude-opus-5,2026-09-21
@@ -26,98 +36,168 @@ cid,pool,recorded,label,note,labelled_by,labelled_on
 10.1017/s1930297500000796,card,successful,successful,,claude-opus-5,2026-09-21
 10.1017/xps.2025.7,card,failed,failed,,claude-opus-5,2026-09-21
 10.1023/a:1016347320889,card,successful,successful,,claude-opus-5,2026-09-21
+10.1037//0278-7393.21.1.255,card,successful,successful,"'Similar to N. Moray, only 34.6%' is an explicit match to the original's rate, so it is a comparison rather than bare own-numbers reporting.",workflow-reader,2026-09-21
 10.1037//0882-7974.9.3.464,card,successful,successful,,claude-opus-5,2026-09-21
+10.1037/0012-1649.30.1.67,card,failed,failed,,workflow-reader,2026-09-21
 10.1037/0022-3514.49.2.317,card,failed,failed,,claude-opus-5,2026-09-21
+10.1037/a0035467,card,successful,successful,'Replicate seminal observations on NEM in psychopathy by Hicks and Patrick (2006)'; the suppressor-adjustment caveat matches the original's own analytic approach.,workflow-reader,2026-09-21
+10.1037/abn0000230,card,successful,successful,,workflow-reader,2026-09-21
+10.1037/apl0001415,card,failed,mixed,"Disagree with the model. This is the rubric's artefact case: MacKenzie et al.'s bias in unstandardized path coefficients is reproduced in simulation, then shown to be a scaling difference rather than misspecification bias, and it ""nearly disappears"" once scaling is handled. Effect replicated, explanation shown to be an artefact.",workflow-reader,2026-09-21
 10.1037/h0030709,card,failed,failed,,claude-opus-5,2026-09-21
 10.1037/h0080795,card,failed,failed,,claude-opus-5,2026-09-21
 10.1037/pspa0000039,card,failed,failed,,claude-opus-5,2026-09-21
 10.1037/pspp0000115,card,failed,failed,,claude-opus-5,2026-09-21
 10.1038/s41598-023-48792-0,card,successful,successful,,claude-opus-5,2026-09-21
 10.1038/s41598-025-98673-x,card,failed,failed,,claude-opus-5,2026-09-21
+10.1044/2017_jslhr-l-16-0327,card,successful,successful,,workflow-reader,2026-09-21
 10.1080/02699931.2015.1053842,card,failed,failed,,claude-opus-5,2026-09-21
 10.1080/02699931.2023.2216446,card,successful,successful,,claude-opus-5,2026-09-21
+10.1080/03004430500147540,card,failed,failed,,workflow-reader,2026-09-21
+10.1080/09658211.2020.1758726,card,failed,failed,,workflow-reader,2026-09-21
+10.1080/10508619.2025.2487726,card,successful,successful,"Target (Christian religious priming reduces ambiguity tolerance) explicitly replicated; the new Taoist reversal is a separate population, not the original's finding splitting.",workflow-reader,2026-09-21
 10.1080/10570314.2023.2202798,card,failed,failed,,claude-opus-5,2026-09-21
 10.1080/1357650x.2013.862257,card,successful,successful,replicates the same authors' own earlier publication rather than an independent one,claude-opus-5,2026-09-21
 10.1080/15487760802615863,card,successful,successful,"uncontrolled pilot; improvement reported, no comparison with the parent trial",claude-opus-5,2026-09-21
 10.1080/16066359.2023.2195171,card,successful,successful,,claude-opus-5,2026-09-21
 10.1080/1743727x.2019.1575352,card,failed,failed,,claude-opus-5,2026-09-21
 10.1080/17470210802034678,card,successful,successful,,claude-opus-5,2026-09-21
+10.1080/17470218.2015.1130069,card,successful,successful,The happily-expressed speech-in-noise advantage was found again and persisted across the new acoustic and visual constraints.,workflow-reader,2026-09-21
+10.1080/17524032.2019.1617763,card,failed,failed,"The reproduced piece is the original's own NULL main effect; the original's actual finding (reactance moderated by party/prior views) did not hold, so failed rather than mixed.",workflow-reader,2026-09-21
 10.1080/20445911.2019.1606000,card,failed,failed,,claude-opus-5,2026-09-21
+10.1080/2153599x.2015.1014061,card,successful,successful,,workflow-reader,2026-09-21
 10.1080/23273798.2020.1852291,card,successful,successful,,claude-opus-5,2026-09-21
+10.1093/jole/lzw007,card,successful,successful,,workflow-reader,2026-09-21
 10.1098/rsos.190068,card,failed,failed,,claude-opus-5,2026-09-21
 10.1111/desc.12887,card,successful,not_established,the human agent was replaced by a toy crane; the original condition was not re-run and the result questions the original's interpretation,claude-opus-5,2026-09-21
+10.1111/desc.13208,card,successful,successful,,workflow-reader,2026-09-21
+10.1111/j.0956-7976.2004.01503005.x,card,successful,mixed,"Disagree with the model. The own-name slowing did replicate on scattered trials, but the paper then shows it vanishes when the name repeats or is embedded among distractors, concluding high-priority stimuli are subject to ordinary capacity limits - i.e. the original's automatic-capture claim is undercut by the same abstract.",workflow-reader,2026-09-21
 10.1111/j.1365-2788.2007.01026.x,card,successful,successful,,claude-opus-5,2026-09-21
 10.1111/j.1469-7610.1989.tb00274.x,card,successful,successful,,claude-opus-5,2026-09-21
 10.1111/jcpp.13682,card,successful,successful,,claude-opus-5,2026-09-21
+10.1111/jora.12201,card,successful,successful,,workflow-reader,2026-09-21
+10.1111/jsr.12749,card,successful,successful,,workflow-reader,2026-09-21
+10.1111/psyp.14083,card,failed,failed,,workflow-reader,2026-09-21
 10.1121/1.5036264,card,successful,successful,,claude-opus-5,2026-09-21
+10.1159/000521344,card,failed,failed,,workflow-reader,2026-09-21
 10.1161/01.hyp.11.4.308,card,successful,successful,,claude-opus-5,2026-09-21
+10.1163/17455243-4681013,card,failed,failed,,workflow-reader,2026-09-21
 10.1176/ajp.139.6.846a,card,failed,failed,,claude-opus-5,2026-09-21
+10.1176/ajp.1979.136.4b.548,card,failed,failed,"Considered mixed: affective imagery did produce corrugator EMG change in both groups. But that is the method working, not the original's claim; the original's depressed/nondepressed patterning is the target and it was absent, and the authors reinterpret prior differences as general stress.",workflow-reader,2026-09-21
 10.1176/foc.4.2.291,card,successful,successful,,claude-opus-5,2026-09-21
 10.1177/002216787301300210,card,failed,failed,,claude-opus-5,2026-09-21
 10.1177/00332941231169666,card,failed,failed,,claude-opus-5,2026-09-21
+10.1177/01461672221074113,card,failed,failed,,workflow-reader,2026-09-21
+10.1177/01461672251384355,card,successful,successful,Close call: the abstract asserts 'This research worked as a replication of the previous study' but never states which Jackson et al. result was reproduced; kept successful only because that explicit paper-level claim settles it.,workflow-reader,2026-09-21
 10.1177/01902725231162074,card,successful,successful,"corroborated only in the high-trust environment, which is the one matching the original",claude-opus-5,2026-09-21
 10.1177/09567976261436988,card,failed,failed,,claude-opus-5,2026-09-21
 10.1177/1073191121993216,card,successful,successful,,claude-opus-5,2026-09-21
 10.1177/1079063209347724,card,successful,successful,,claude-opus-5,2026-09-21
 10.1177/10870547261457678,card,successful,not_established,uncontrolled open trial whose own abstract says efficacy conclusions cannot be drawn from it,claude-opus-5,2026-09-21
+10.1177/10983007241275695,card,successful,successful,On-task behaviour and teacher praise (the primary CW-FIT outcomes) replicated and the paper concludes effectiveness; the null on teacher reprimands is a secondary measure and does not overturn the headline.,workflow-reader,2026-09-21
 10.1177/1747021817742079,card,failed,failed,the target three-way interaction did not replicate; a different effect did,claude-opus-5,2026-09-21
 10.1177/2158244014553587,card,failed,failed,,claude-opus-5,2026-09-21
 10.1177/23328584251364785,card,failed,failed,confirmatory main effects did not replicate; exploratory subgroup effects did,claude-opus-5,2026-09-21
 10.1184/r1/6471620,card,failed,failed,,claude-opus-5,2026-09-21
+10.1186/s13293-017-0132-z,card,successful,successful,"Stated aim was to replicate the only prior CAIS digit-ratio study, and CAIS women showed the significant female-typical right-hand ratio; CEOAE was only a trend but that was the new biomarker question, not the replication target.",workflow-reader,2026-09-21
+10.1192/bjp.134.2.178,card,successful,successful,"Male patients showed the raised parental age and later birth order and the abstract says results confirm previous studies; the female null is a group the earlier work did not establish, so not a split of the original finding.",workflow-reader,2026-09-21
+10.1207/s15327752jpa4605_1,card,successful,successful,Thin but adequate: the single target validity correlation (MOA scores vs independent clinical ratings) was significant under the excerpted-response method the paper set out to test.,workflow-reader,2026-09-21
 10.12794/metadc149614,card,failed,not_established,reports only that the new event-centrality refinement was unsupported; never says whether the original result held,claude-opus-5,2026-09-21
 10.12794/metadc279247,card,failed,failed,,claude-opus-5,2026-09-21
+10.12794/metadc9921,card,successful,successful,,workflow-reader,2026-09-21
 10.1371/journal.pone.0171793,card,failed,failed,,claude-opus-5,2026-09-21
+10.1371/journal.pone.0177857,card,successful,successful,Publication-bias quantification concerns the literature's effect size; the paper's own prospective close replication detected the WIT priming effect.,workflow-reader,2026-09-21
+10.1371/journal.pone.0233968,card,successful,successful,"Target was the adult word-over-sound advantage, which replicated; the infant nulls are the extension to a new population, not a failed target.",workflow-reader,2026-09-21
+10.1371/journal.pone.0322930,card,failed,failed,"Bem's backward priming not replicated; the successful forward-priming replication is a different, classical effect, not the target.",workflow-reader,2026-09-21
+10.1371/journal.pone.0356728,card,failed,failed,,workflow-reader,2026-09-21
 10.1521/bumc.2022.86.3.183,card,successful,successful,,claude-opus-5,2026-09-21
 10.1525/collabra.59,card,successful,successful,,claude-opus-5,2026-09-21
 10.15760/etd.2386,card,failed,failed,,claude-opus-5,2026-09-21
 10.18061/emr.v17i1.8446,card,failed,failed,failed overall; a post hoc subsample was consistent with the original's proposition,claude-opus-5,2026-09-21
+10.18409/urjiit.v1i1.41,card,successful,successful,,workflow-reader,2026-09-21
 10.18483/ijsci.2548,card,failed,failed,,claude-opus-5,2026-09-21
 10.1901/jaba.1980.13-171,card,successful,successful,,claude-opus-5,2026-09-21
+10.1901/jaba.2009.42-827,card,failed,failed,,workflow-reader,2026-09-21
 10.21203/rs.3.rs-2943371/v1,card,successful,successful,,claude-opus-5,2026-09-21
+10.21203/rs.3.rs-949989/v1,card,successful,successful,,workflow-reader,2026-09-21
 10.2139/ssrn.1715954,card,successful,successful,,claude-opus-5,2026-09-21
 10.2190/xhth-dh29-phtd-4wvm,card,successful,successful,,claude-opus-5,2026-09-21
+10.2224/sbp.1976.4.1.109,card,failed,failed,"Nulls for P, E, N across all three samples; the stray Lie Scale correlations are never tied to the original's findings, so not mixed.",workflow-reader,2026-09-21
 10.2224/sbp.1985.13.2.143,card,failed,failed,,claude-opus-5,2026-09-21
 10.2307/351897,card,successful,not_established,reports correlations from .09 to .51 without saying whether they match Dean (1966),claude-opus-5,2026-09-21
+10.23860/diss-frost-megan-2009,card,failed,failed,,workflow-reader,2026-09-21
+10.23860/thesis-frost-megan-2007,card,failed,failed,"Borderline with not_established: headline is a clean null on both the teaching intervention and the Inzlicht & Ben-Zeev group-composition effect, but the abstract then says the math test was ""probably too difficult"" and some participants misunderstood a scale. Treated as conventional limitation hedging on an explicit null, not a disclaimer of the inference.",workflow-reader,2026-09-21
+10.2466/pms.110.1.33-47,card,successful,successful,,workflow-reader,2026-09-21
+10.2466/pms.1984.58.3.996,card,successful,successful,,workflow-reader,2026-09-21
+10.2466/pms.1985.60.3.903,card,successful,successful,"Borderline: no explicit numeric comparison with the original, but it is a single-target replication reporting the same correlation between psi reports and temporal-lobe signs and endorsing the original hypothesis.",workflow-reader,2026-09-21
+10.2466/pms.1995.81.3.723,card,successful,failed,Disagree with the model. The original found 81% of described figures were male; the 25-year replication found 53% female vs 26% male - a reversal. The quote the model rested on is precisely the result that contradicts the original.,workflow-reader,2026-09-21
+10.2466/pr0.104.2.500-508,card,successful,successful,"Anxiety>sadness risk effect found again; the personal-relevance moderator is framed by the paper as extending, not contradicting, Raghunathan & Pham.",workflow-reader,2026-09-21
 10.2466/pr0.1962.11.2.355,card,failed,failed,,claude-opus-5,2026-09-21
+10.2466/pr0.1968.23.3.743,card,failed,failed,"Took some thought: the abstract never names the original's results, but the replicated manipulation (reward/punishment modifying dominance) is flatly null and the general increase occurred in controls too, so the target claim did not hold.",workflow-reader,2026-09-21
 10.2466/pr0.1969.24.2.675,card,successful,successful,single subject,claude-opus-5,2026-09-21
+10.2466/pr0.1971.29.1.35,card,failed,failed,,workflow-reader,2026-09-21
+10.2466/pr0.1972.31.2.590,card,failed,failed,"The one significant Si difference is explicitly attributed to chance and to a construct that does not reflect distress, so Osborne's assumption is unsupported.",workflow-reader,2026-09-21
 10.2466/pr0.1985.56.3.816,card,failed,failed,,claude-opus-5,2026-09-21
+10.24839/2325-7342.jn2026.024,card,failed,failed,"Borderline with mixed: one predicted sex difference (women's preference for emotional stability) was significant, but the paper's headline is ""men and women were more similar than different"" across the tested traits and commitment levels.",workflow-reader,2026-09-21
+10.31219/osf.io/y57k9,card,failed,failed,,workflow-reader,2026-09-21
+10.31234/osf.io/c43bk,card,failed,failed,"One of eight tests was significant in the original direction, but the paper's own conclusion is that the original findings were likely sampling error, so not mixed.",workflow-reader,2026-09-21
 10.31234/osf.io/eg2pu,card,failed,failed,,claude-opus-5,2026-09-21
 10.31234/osf.io/mz9ut,card,successful,successful,,claude-opus-5,2026-09-21
 10.31234/osf.io/nyba6,card,failed,failed,,claude-opus-5,2026-09-21
 10.31234/osf.io/x6a2u,card,successful,successful,,claude-opus-5,2026-09-21
 10.3138/ijsll-2024-0018,card,successful,successful,,claude-opus-5,2026-09-21
+10.31979/etd.6s48-nvnc,card,failed,failed,,workflow-reader,2026-09-21
 10.3389/fnhum.2019.00309,card,failed,failed,,claude-opus-5,2026-09-21
 10.3389/fpsyg.2014.00259,card,successful,successful,,claude-opus-5,2026-09-21
 10.3389/fpsyg.2018.00874,card,failed,failed,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2019.00738,card,failed,failed,"The target is the paper's own Study 1 angular-gyrus association; the direct replication explicitly failed. ""Partially support"" refers to discovery-plus-failed-replication, not to a split in the original finding.",workflow-reader,2026-09-21
 10.3389/fpsyg.2019.02422,card,failed,failed,,claude-opus-5,2026-09-21
+10.3389/fpsyg.2021.635724,card,failed,failed,Aim 1 (Wampers et al.) explicitly disconfirmed; scalar diversity and working-memory results are new questions.,workflow-reader,2026-09-21
+10.3390/ijerph17186539,card,failed,failed,,workflow-reader,2026-09-21
 10.3390/psych3020013,card,failed,failed,,claude-opus-5,2026-09-21
 10.36850/e12,card,failed,failed,,claude-opus-5,2026-09-21
 10.3758/bf03330518,card,failed,failed,,claude-opus-5,2026-09-21
+10.3758/bf03330928,card,failed,failed,"No abstract; title declares ""A failure to replicate"".",workflow-reader,2026-09-21
+10.3758/bf03334046,card,failed,failed,No abstract; title declares failure to replicate in the rapid naming task.,workflow-reader,2026-09-21
 10.3758/s13423-018-01566-6,card,successful,successful,,claude-opus-5,2026-09-21
 10.4018/ijicst.2011070101,card,successful,successful,,claude-opus-5,2026-09-21
+10.4074/s0003503313002017,card,successful,successful,"French abstract states 'Nous avons reproduit cet effet' on the original dependent variable, plus a second converging measure.",workflow-reader,2026-09-21
 10.4992/jjpsy.87.14052,card,successful,successful,,claude-opus-5,2026-09-21
+10.4992/pacjpa.83.0_3c-004,card,failed,failed,No abstract; title states the replication of Tice (1992) found no self-concept change.,workflow-reader,2026-09-21
 10.4992/psycholres1954.18.6,card,failed,mixed,fails to replicate one O'Connor & Hermelin finding while explicitly supporting another,claude-opus-5,2026-09-21
 10.5334/irsp.683,card,successful,successful,,claude-opus-5,2026-09-21
 10.5334/jeps.bq,card,failed,failed,,claude-opus-5,2026-09-21
 10.5334/joc.284,card,successful,successful,,claude-opus-5,2026-09-21
 10.58837/chula.the.2021.337,card,failed,not_established,"null result, but the abstract says its own manipulation checks failed and calls the result inconclusive",claude-opus-5,2026-09-21
+10.63313/ssh.9104,card,successful,successful,,workflow-reader,2026-09-21
 10.7282/t34t6jjp,card,failed,failed,,claude-opus-5,2026-09-21
 10.7287/peerj.10325v0.1/reviews/1,card,failed,failed,"outcome read correctly, but the record is a peer-review document for the replication rather than the replication itself",claude-opus-5,2026-09-21
+10.7453/gahmj.2014.012,card,successful,successful,"Judged on what the paper reports about the prior finding ('confirm previous finding'), independent of the plausibility of the nonlocal-intuition claim.",workflow-reader,2026-09-21
 10.7910/dvn/qui4mw,card,successful,successful,,claude-opus-5,2026-09-21
 W1015327088,card,successful,successful,,claude-opus-5,2026-09-21
+W132188598,card,failed,not_established,"Disagree with the model. This is a reanalysis of Van der Lubbe et al.'s own data, and the abstract attributes the non-replication to its own participant exclusions (""did not replicate ... due to exclusion of participants""), then goes on to reject accounts FOR the N2pc difference, i.e. still treating the difference as real. The abstract does not settle whether the original finding holds.",workflow-reader,2026-09-21
 W1909834750,card,successful,successful,,claude-opus-5,2026-09-21
 W1933675103,card,failed,failed,,claude-opus-5,2026-09-21
+W1953410257,card,failed,failed,,workflow-reader,2026-09-21
 W2096105143,card,successful,successful,,claude-opus-5,2026-09-21
+W2130337136,card,failed,failed,,workflow-reader,2026-09-21
+W2183847231,card,successful,successful,'Results from this study parallel the results reported in the previous experiment' is a direct comparison with the Nelson/Krapohl/Handler validation.,workflow-reader,2026-09-21
 W2188628050,card,successful,successful,,claude-opus-5,2026-09-21
 W2385387129,card,failed,failed,,claude-opus-5,2026-09-21
+W2394694499,card,successful,successful,"The original action-compatibility effect was in written English and replicated; the BSL null is the new comparison condition, so it is not a failed target.",workflow-reader,2026-09-21
+W2619797896,card,failed,failed,"Target gratitude-diary benefits absent; the positive DCGS psychometric results are a new instrument, not part of the original.",workflow-reader,2026-09-21
 W2696723753,card,successful,successful,,claude-opus-5,2026-09-21
 W2773732469,card,failed,failed,,claude-opus-5,2026-09-21
 W2788431364,card,successful,successful,,claude-opus-5,2026-09-21
 W2805657910,card,failed,failed,,claude-opus-5,2026-09-21
+W3151281960,card,failed,failed,"Hostile priming absent; the sex-by-trait interaction on ""dislikeable"" is a new incidental effect.",workflow-reader,2026-09-21
+W3160262346,card,failed,failed,"The retested claim is Fan's TST/IRT equivalence-and-invariance conclusion, which is rejected; the high RMM invariance is the contrast used to reject it, not a surviving half of the original.",workflow-reader,2026-09-21
+W65172247,card,failed,failed,"Study 1 (the replication of Chen et al.'s power/self-serving effect) is null; Study 2's power effect is a new question, so it does not make this mixed.",workflow-reader,2026-09-21
+W70379222,card,successful,successful,"SRC effects obtained in every SCOA condition, replicating Hommel Exp. 2; the absent PCN is a new EEG measure bearing on mechanism, not a failure of the original behavioural finding.",workflow-reader,2026-09-21
 W7110641524,card,successful,successful,single-case demonstration; claims applicability rather than comparing with Hanley et al.,claude-opus-5,2026-09-21
 W7120606347,card,successful,not_established,systematic replication of Ferreira (2002) that reports its own result and never compares it with Ferreira's,claude-opus-5,2026-09-21
 W7165241472,card,successful,successful,,claude-opus-5,2026-09-21
 W7198552913,card,failed,mixed,primary analysis finds no effect; the abstract then says a different analysis suggests contradictory results,claude-opus-5,2026-09-21
+W7804379,card,successful,successful,,workflow-reader,2026-09-21
 W787058522,card,successful,successful,,claude-opus-5,2026-09-21
 10.1002/(sici)1096-8628(19990416)88:2<168::aid-ajmg14>3.0.co;2-p,uncounted,mixed,mixed,,claude-opus-5,2026-09-21
 10.1002/bin.2076,uncounted,mixed,not_established,reports its own several results and never says whether the earlier finding held,claude-opus-5,2026-09-21

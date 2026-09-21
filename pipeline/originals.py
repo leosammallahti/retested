@@ -126,8 +126,8 @@ def sample(pool: str, n: int, seed: str, as_json: bool, only: str | None) -> int
     return 0
 
 
-def record(pool: str, text: str) -> int:
-    audit.record(LABELS, _pool(pool), pool, band, text, VALID, "claude-opus-5")
+def record(pool: str, text: str, by: str = "claude-opus-5") -> int:
+    audit.record(LABELS, _pool(pool), pool, band, text, VALID, by)
     return 0
 
 
@@ -190,13 +190,14 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--band", help="draw only this link band, e.g. reference_scan/low")
     ap.add_argument("--seed", default="2026-09-21", help="the draw is deterministic given this")
     ap.add_argument("--json", action="store_true", help="print the sample as JSON instead of text")
+    ap.add_argument("--by", default="claude-opus-5", help="who read these cases; recorded with each label")
     ap.add_argument("--record", action="store_true",
                     help="read 'cid<TAB>label<TAB>note' lines from stdin and add them to the label file")
     ap.add_argument("--score", action="store_true", help="report accuracy from the labels recorded so far")
     ap.add_argument("--all-pools", action="store_true", help="score every pool, not just --pool")
     a = ap.parse_args(argv if argv is not None else sys.argv[1:])
     if a.record:
-        return record(a.pool, sys.stdin.read())
+        return record(a.pool, sys.stdin.read(), a.by)
     if a.sample:
         return sample(a.pool, a.sample, a.seed, a.json, a.band)
     if a.score:

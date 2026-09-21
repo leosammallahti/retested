@@ -118,8 +118,8 @@ def _case(c: dict, pool: str) -> dict:
             "reason": c.get("screen_reason")}
 
 
-def record(pool: str, text: str) -> int:
-    audit.record(LABELS, _pool(pool), pool, lambda c: c["outcome"], text, VALID, "claude-opus-5")
+def record(pool: str, text: str, by: str = "claude-opus-5") -> int:
+    audit.record(LABELS, _pool(pool), pool, lambda c: c["outcome"], text, VALID, by)
     return 0
 
 
@@ -302,11 +302,40 @@ def deck(cut: float = 0.8) -> int:
           f"at all — genuinely new cards, {len((cards - existing) & with_abstract)} of them with the abstract a claim "
           f"needs.\n   The other {len(cards & existing)} would change or add to a card the deck already deals.")
     _both_right(kept)
+    _what_a_looser_bar_buys(rows)
     print(f"\n   for comparison, the deck built from FORRT's own data: 543 cards, 53% successful")
     print(f"   a card still needs a written claim, and the 9-word labels we hold are not one. A model pass over "
           f"the {len(with_abstract)} cards\n   that have an abstract costs about "
           f"${len(with_abstract) * 0.0004:.2f} at the rate measured for this corpus.")
     return 0
+
+
+def _what_a_looser_bar_buys(rows: list[dict]) -> None:
+    """The bands just under the line, priced.
+
+    The 90% bar is a judgement, not a fact, and it costs most of the deck. Anyone changing it should see what
+    the next bands down are measured at and what they would add, rather than discover the trade-off afterwards.
+    """
+    from .originals import read_labels as link_labels, band
+    from .queue import TRUSTED_LINKS, MIN_RIGHT
+    labels = {r["cid"]: r for r in link_labels()}
+    excluded: dict[str, list[int]] = {}
+    for c in rows:
+        k = (c.get("link_method"), c.get("link_confidence"))
+        if k in TRUSTED_LINKS:
+            continue
+        t = excluded.setdefault(band(c), [0, 0, 0])
+        t[0] += 1
+        if c["id"] in labels:
+            t[1] += 1
+            t[2] += labels[c["id"]]["label"] == "right"
+    ranked = sorted(((b, v) for b, v in excluded.items() if v[1] >= 10),
+                    key=lambda x: -x[1][2] / x[1][1])
+    if not ranked:
+        return
+    print(f"\n   the bands just under the {MIN_RIGHT:.0%} bar, and what admitting each would add:")
+    for b, (in_pool, n, right) in ranked[:3]:
+        print(f"     {b:<32} {right}/{n} read right ({right / n:.0%})   +{in_pool} finds")
 
 
 def _both_right(kept: list[dict]) -> None:
@@ -350,6 +379,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--verdict", choices=["successful", "failed", "mixed"],
                     help="draw only rows the model gave this verdict")
     ap.add_argument("--json", action="store_true", help="print the sample as JSON instead of text")
+    ap.add_argument("--by", default="claude-opus-5", help="who read these cases; recorded with each label")
     ap.add_argument("--record", action="store_true",
                     help="read 'cid<TAB>label<TAB>note' lines from stdin and add them to the label file")
     ap.add_argument("--score", action="store_true", help="report accuracy from the labels recorded so far")
@@ -358,7 +388,7 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--all-pools", action="store_true", help="score every pool, not just --pool")
     a = ap.parse_args(argv if argv is not None else sys.argv[1:])
     if a.record:
-        return record(a.pool, sys.stdin.read())
+        return record(a.pool, sys.stdin.read(), a.by)
     if a.sample:
         return sample(a.pool, a.sample, a.seed, a.json, a.verdict)
     if a.deck:

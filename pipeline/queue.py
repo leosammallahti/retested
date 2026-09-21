@@ -116,13 +116,11 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "outcome_quote": t.get("outcome_quote"),
             "outcome_confidence": t.get("confidence"),
             # A DOI the model picked out of the citation list carries no score of its own — the model writes its
-            # account of the original AFTER choosing it, so nothing about the pair can be compared. It was filed as
-            # "unchecked" on a reading of 6 right out of 11. That reading was of output from the retired t1 prompt.
-            # t3 added the mere-citation trap, and the cache shows what that did: of 239 candidates t1 named a cited
-            # original for, t3 withholds the name on 101 and keeps 137 of the remaining 138 picks identical. Read
-            # again under t3, the band is 34 right out of 36 (docs/LINK_AUDIT_20260919.md, 2026-09-21) — better than
-            # any other band here. It says "high" because that is what it measured, on the largest sample any band has.
-            "link_confidence": ("high" if t.get("original_doi") else (link or {}).get("confidence")),
+            # account of the original AFTER choosing it, so nothing about the pair can be compared. So it says
+            # "unscored" rather than borrowing high/medium/low, which mean a score elsewhere. How often it is
+            # right is a question for the audit, not for a band: 72 of 84 read, 86%, which is the most-read band
+            # there is and still short of the 90% a page requires.
+            "link_confidence": ("unscored" if t.get("original_doi") else (link or {}).get("confidence")),
             "link_method": "cited by this paper" if t.get("original_doi") else (link or {}).get("method"),
             "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta",
                                                        "margin", "n_references", "runner_up") if k in (link or {})}
@@ -354,14 +352,33 @@ def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None
             "n_replication_authors": len(rep_surnames), "n_original_authors": len(orig_surnames)}
 
 
-# (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed.
-# Each was measured by reading links one by one, with the method's own failure mode in the denominator:
-# cited by this paper 34/36, library high/medium 24/25, openalex high 10/11 + 8/8, reference_scan high 32/36 + 8/10.
-# `pipeline originals --score` recomputes all of them from data/curated/original_audit.csv; every band NOT in this
-# set has been read too, and the reason they are out is that they measure 12% to 57%, not that nobody looked.
-TRUSTED_LINKS = {("cited by this paper", "high"),
-                 ("library_author_year", "high"), ("library_author_year", "medium"),
-                 ("openalex_author_year", "high"), ("reference_scan", "high")}
+# Which link bands may stand beside a verdict on a page, decided by the reading rather than by a list somebody
+# maintains. A band qualifies when at least MIN_READ of its links have been read one by one and at least
+# MIN_RIGHT of those pointed at the right original — the rule this project stated when it first gated pages
+# ("the strata measured above 90%"), now applied uniformly instead of case by case.
+#
+# It is applied from data/curated/original_audit.csv on every build, because a hand-kept list goes stale in both
+# directions and did: `reference_scan` high sat in the trusted set on a claimed 89% and reads 80% over 40 cases;
+# `cited by this paper` was promoted on 34 of 36 and reads 86% over 84; `openalex_author_year` medium was kept
+# out on 2 of 4 and reads 91% over 33. A point estimate near the line at n≈30 is not stable, so expect bands to
+# move as reading accumulates — that is the mechanism working, and `pipeline originals --score` shows why.
+MIN_READ, MIN_RIGHT = 20, 0.90
+
+
+def trusted_links() -> set[tuple[str, str]]:
+    from .originals import read_labels, _pool, band
+    labels = {r["cid"]: r for r in read_labels()}
+    tally: dict[tuple[str, str], list[int]] = {}
+    for c in _pool("linked"):
+        if c["id"] in labels:
+            k = (c.get("link_method"), c.get("link_confidence"))
+            t = tally.setdefault(k, [0, 0])
+            t[0] += 1
+            t[1] += labels[c["id"]]["label"] == "right"
+    return {k for k, (n, right) in tally.items() if n >= MIN_READ and right / n >= MIN_RIGHT}
+
+
+TRUSTED_LINKS = trusted_links()
 
 
 def _link_trusted(c: dict) -> bool:
