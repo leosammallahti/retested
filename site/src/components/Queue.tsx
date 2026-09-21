@@ -31,6 +31,7 @@ const HOW: Record<string, string> = {
   'cited by this paper': 'the model picked this original from the papers cited here — about half such links are wrong',
   library_author_year: 'author + year matched in this wiki',
   openalex_author_year: 'author + year searched in OpenAlex',
+  reference_scan: 'the described finding matched against the papers this replication cites',
 };
 type Decision = { v: 'accept' | 'reject' | 'unsure'; outcome?: string; note?: string; at: string };
 const KEY = 'retested.queue.v1';

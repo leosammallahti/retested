@@ -12,6 +12,7 @@ const OUT: Record<string, string> = { successful: 'says it replicated', failed: 
 const HOW: Record<string, string> = {
   library_author_year: 'author, year and topic matched against this wiki',
   openalex_author_year: 'author, year and topic found in OpenAlex',
+  reference_scan: 'matched against the papers this replication cites',
 };
 const withOutcome = rows.filter((r) => r.outcome).length;
 

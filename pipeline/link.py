@@ -25,8 +25,14 @@ from .load import DISCOVERY
 
 # a proposed link below this score is not worth a reviewer's time
 FLOOR = 0.42
-# the OpenAlex pass must see the described finding in the title; the library pass is already a curated pool
-MIN_SIM_OPENALEX = 0.15
+# The OpenAlex pass used to REJECT a candidate whose title did not share a content word with the described
+# finding, which lifted its precision from 68% to 89%. That made sense when any link could reach a page. It no
+# longer can: pages take only library high/medium and OpenAlex high (TRUSTED_LINKS in queue.py), and a weak
+# topical match never reaches those bands anyway. So the gate was protecting nothing and costing the review queue
+# 502 candidates that named an author and a year — 80% of all the author+year matches that failed. They now come
+# through banded "low", which is where a reviewer expects to do the checking: measured at 58% correct, against
+# 36% for the low library band that was already shown.
+MIN_SIM_OPENALEX = 0.0
 STOP = {"the", "a", "an", "of", "on", "in", "and", "or", "to", "for", "with", "that", "is", "are", "was", "were",
         "effect", "effects", "study", "studies", "task", "people", "more", "than", "from", "by", "their", "its"}
 

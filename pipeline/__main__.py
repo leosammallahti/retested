@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import authors, discover, export, fetch, game, link, load, osf, queue, registry, score, stats, triage, validate
+from . import authors, discover, references, export, fetch, game, link, load, osf, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -27,7 +27,7 @@ def build(accept_baseline: bool) -> int:
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
     items, reveals = game.build(g)
-    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), load.load_links(), g, load.load_known_replication_dois(), load.load_known_osf_ids(),
+    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), {**load.load_reference_links(), **load.load_links()}, g, load.load_known_replication_dois(), load.load_known_osf_ids(),
                                       load.load_surname_frequency(), load.load_osf(),
                                       load.load_original_authors())
     queue.consequences(candidates, g)
@@ -66,6 +66,8 @@ def main() -> None:
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
     ap_ = sub.add_parser("authors", help="fetch author identities for the originals our finds point at")
     ap_.add_argument("--max-usd", type=float, default=0.10, help="OpenAlex spending cap")
+    rp = sub.add_parser("references", help="find the original in the replication's own reference list")
+    rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
     lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
     lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
@@ -79,6 +81,8 @@ def main() -> None:
     a = ap.parse_args()
     if a.cmd == "authors":
         sys.exit(authors.run(a.max_usd))
+    if a.cmd == "references":
+        sys.exit(references.run(a.max_usd))
     if a.cmd == "osf":
         sys.exit(osf.run())
     if a.cmd == "link":

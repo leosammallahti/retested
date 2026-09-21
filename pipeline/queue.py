@@ -111,7 +111,8 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             # of the original after choosing it. So it says "unchecked" rather than borrowing a band it never earned.
             "link_confidence": ("unchecked" if t.get("original_doi") else (link or {}).get("confidence")),
             "link_method": "cited by this paper" if t.get("original_doi") else (link or {}).get("method"),
-            "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta", "runner_up")}
+            "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta",
+                                                       "margin", "n_references", "runner_up") if k in (link or {})}
                              if link and not t.get("original_doi") else None,
             "original_named": {"authors": named.get("authors"), "year": named.get("year"),
                                "description": named.get("description")} if named.get("authors") or named.get("description") else None,
@@ -294,7 +295,11 @@ def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None
 
 
 # (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed
-TRUSTED_LINKS = {("library_author_year", "high"), ("library_author_year", "medium"), ("openalex_author_year", "high")}
+# Each of these was measured by reading links one by one, with the method's own failure mode in the denominator:
+# library high/medium 24/25, openalex high 10/11, reference_scan high 32/36. The last is the largest sample but
+# the newest, and its 89% already prices in the 16% of papers whose reference list does not contain the original.
+TRUSTED_LINKS = {("library_author_year", "high"), ("library_author_year", "medium"),
+                 ("openalex_author_year", "high"), ("reference_scan", "high")}
 
 
 def _link_trusted(c: dict) -> bool:

@@ -93,3 +93,33 @@ being overstated was mostly a gap against their unreviewed queue, not against th
 The downstream filter that used to drop 390 candidates now drops none, because nothing reaches it — which is the
 check that the two agree. Final counts are unchanged: 7,177 queue candidates, 3,897 psychology finds, 128 rows on
 pages.
+
+
+## Addendum, 2026-09-21: the reference list is the haystack
+
+1,176 finds described what was replicated but named no author, and I wrote them off as unrecoverable because the
+authors themselves say only "a replication of a previous study". Searching OpenAlex for the description finds the
+right paper 17% of the time (2/12), and 0 of 8 OSF project descriptions name the original. Both true, and the
+conclusion drawn from them was wrong.
+
+A replication cites what it replicates. On 61 finds whose link was independently verified, the original is in the
+paper's reference list **84%** of the time — the first attempt at measuring this said 23%, because it was run over
+low-confidence library links that were mostly wrong themselves, so it measured bad links rather than missing
+references. Scoring ~35 references against the description picks the original out at the top 78% of the time,
+against 17% for searching all of OpenAlex. A haystack of 35 instead of 250 million.
+
+Banded on the same 61, with the 16% whose reference list lacks the original left in the denominator:
+
+| | correct | |
+|---|---|---|
+| score ≥ .50, margin ≥ .15 | 32/36 = **89%** | high, eligible for a page |
+| score ≥ .30, margin ≥ .05 | 34/46 = 74% | medium, queue |
+| anything proposed | 40/61 = 66% | low, queue |
+
+`pipeline references` resolves reference titles 50 per call and cost **$0.081** for 40,229 of them. It proposed an
+original for 1,104 finds: linked psychology finds go from 1,314 to **2,846**, and the number of distinct originals
+our finds name goes to 2,317.
+
+Only 17 of those originals have a page here, which is the expected shape rather than a disappointment: the
+reference scan reaches originals we do not hold, and naming the replicated paper is what a FLoRA submission
+requires whether or not we have a page for it.
