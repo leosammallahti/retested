@@ -42,6 +42,14 @@ def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
             problems.append(f"candidate {c['id']} is not marked machine-reviewed")
         if c["doi_o"] and c["doi_r"] and (c["doi_o"], c["doi_r"]) in known_pairs:
             problems.append(f"candidate {c['id']} repeats a pair FORRT already records")
+    # a row a curator cannot identify is not submittable, whatever else is right about it
+    unidentifiable = [c["id"] for c in candidates
+                      if c["origin"] == "retested_discovery" and c.get("doi_o")
+                      and not (c.get("doi_r") or c.get("osf_id") or c.get("landing_page"))]
+    if unidentifiable:
+        problems.append(f"{len(unidentifiable)} linked finds have no DOI, OSF id or URL for the replication "
+                        f"(e.g. {unidentifiable[0]}), so an export row could not be acted on")
+
     seen = set()
     for doi_o, rows in pending["by_finding"].items():
         if doi_o not in g["findings"]:

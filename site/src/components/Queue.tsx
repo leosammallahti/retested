@@ -15,6 +15,7 @@ interface Cand {
   preregistered?: { is_registration: boolean; date: string | null } | null;
   independence?: { verdict: string; shared: string[]; distinctive: string[] } | null;
   if_accepted?: { from_label: string; to_label: string; changes: boolean; k_before: number; k_after: number } | null;
+  authors_r?: string | null; osf_id?: string | null; landing_page?: string | null; year_o?: number | null;
   link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
@@ -76,13 +77,28 @@ export default function Queue({ base }: { base: string }) {
   const exportCsv = () => {
     if (!all) return;
     const byId = new Map(all.map((c) => [c.id, c]));
-    const cols = ['doi_o', 'doi_r', 'title_o', 'title_r', 'outcome', 'outcome_quote', 'out_quote_source', 'review_decision', 'reviewed_at', 'origin'];
+    // FLoRA's own column names, in its own order, so an accepted row can be submitted without rewriting it.
+    // Everything after `source` is ours: provenance a FORRT curator needs in order to judge the row, and the two
+    // fields FReD codes that we derive (prereg_r from OSF, author_overlap from both author lists).
+    const FLORA = ['doi_o', 'title_o', 'year_o', 'doi_r', 'alt_identifier_r', 'title_r', 'author_r', 'journal_r',
+                   'year_r', 'url_r', 'outcome', 'outcome_quote', 'outcome_quote_source', 'type', 'source'] as const;
+    const EXTRA = ['prereg_r', 'author_overlap', 'retested_link_method', 'retested_link_confidence',
+                   'retested_screen_tier', 'retested_found_by', 'retested_review_decision', 'retested_reviewed_at'] as const;
     const esc = (s: unknown) => `"${String(s ?? '').replace(/"/g, '""')}"`;
     const rows = Object.entries(dec).filter(([, d]) => d.v === 'accept').map(([id, d]) => {
       const c = byId.get(id)!;
-      return [c.doi_o, c.doi_r, c.title_o, c.title_r, d.outcome ?? c.outcome, c.outcome_quote, 'abstract', 'accepted by human reviewer', d.at, `${c.origin} via Retested`].map(esc).join(',');
+      const overlap = c.independence?.verdict === 'shares_author' ? 'TRUE'
+        : c.independence?.verdict === 'independent' ? 'FALSE' : '';
+      return [
+        c.doi_o, c.title_o, c.year_o, c.doi_r, c.osf_id ? `osf.io/${c.osf_id}` : '', c.title_r, c.authors_r,
+        c.journal_r, c.year_r, c.landing_page, d.outcome ?? c.outcome, c.outcome_quote,
+        c.outcome_quote ? 'abstract' : '', c.type, `${c.origin} via Retested`,
+        c.preregistered ? (c.preregistered.is_registration ? c.preregistered.date ?? 'TRUE' : 'FALSE') : '',
+        overlap, c.link_method, c.link_confidence, c.search_tier, (c.found_by ?? []).join('+'),
+        'accepted by human reviewer', d.at,
+      ].map(esc).join(',');
     });
-    const blob = new Blob([[cols.join(','), ...rows].join('\n')], { type: 'text/csv' });
+    const blob = new Blob([[[...FLORA, ...EXTRA].join(','), ...rows].join('\n')], { type: 'text/csv' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `retested-accepted-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
   };
 
