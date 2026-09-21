@@ -300,11 +300,38 @@ def deck(cut: float = 0.8) -> int:
     print(f"\n   of those {len(cards)} cards, {len(cards - existing)} are originals FORRT records no replication for "
           f"at all — genuinely new cards, {len((cards - existing) & with_abstract)} of them with the abstract a claim "
           f"needs.\n   The other {len(cards & existing)} would change or add to a card the deck already deals.")
+    _both_right(kept)
     print(f"\n   for comparison, the deck built from FORRT's own data: 543 cards, 53% successful")
     print(f"   a card still needs a written claim, and the 9-word labels we hold are not one. A model pass over "
           f"the {len(with_abstract)} cards\n   that have an abstract costs about "
           f"${len(with_abstract) * 0.0004:.2f} at the rate measured for this corpus.")
     return 0
+
+
+def _both_right(kept: list[dict]) -> None:
+    """A card is only sound if BOTH judgements are right, and the two audits overlap on enough rows to say so.
+
+    Reporting 93% verdict accuracy beside 94% link accuracy invites multiplying them, which assumes the two
+    errors are independent. On the rows carrying both labels they are not: a verdict is wrong 15% of the time
+    when the link is wrong against 4% when it is right (Fisher two-sided p = .06 at this size). Thin, vague
+    abstracts defeat both readings at once. So the joint rate is measured on the rows that have both labels
+    rather than computed from the margins.
+    """
+    from .originals import read_labels as link_labels
+    verdicts = {r["cid"]: r for r in read_labels()}
+    links = {r["cid"]: r for r in link_labels()}
+    both = [c["id"] for c in kept if c["id"] in verdicts and c["id"] in links]
+    if len(both) < 10:
+        print(f"\n   only {len(both)} of these cards carry both a verdict label and a link label — too few to give "
+              f"the rate that matters,\n   which is how often BOTH are right on the same card")
+        return
+    ok = sum(1 for c in both
+             if verdicts[c]["label"] == verdicts[c]["recorded"] and links[c]["label"] == "right")
+    lo, hi = audit.wilson(ok, len(both))
+    print(f"\n   read end to end: on {len(both)} of these cards both judgements have been checked, and "
+          f"{ok} are right on both\n   counts ({ok / len(both):.0%}, {lo:.0%}–{hi:.0%}). That is the rate a "
+          f"player meets, and it is not the two accuracies multiplied:\n   the same thin abstract defeats both "
+          f"readings, so the errors land together more often than chance.")
 
 
 def _originals_forrt_records() -> set[str]:
