@@ -75,16 +75,23 @@ def add(path: Path, cid: str, pool_name: str, recorded: str, label: str, note: s
 def record(path: Path, rows: list[dict], pool_name: str, stratum, text: str, valid, by: str) -> int:
     """Take labels in bulk: one 'cid<TAB>label<TAB>note' line each, from a session that has just read them."""
     by_id = {c["id"]: c for c in rows}
-    n = 0
+    n, missing = 0, []
     for line in text.splitlines():
         if not line.strip() or line.lstrip().startswith("#"):
             continue
         cid, label, note = (line.rstrip("\n").split("\t") + ["", ""])[:3]
         if cid not in by_id:
-            raise SystemExit(f"{cid} is not in pool {pool_name!r} — label it against the pool it was drawn from")
+            # A row can leave a pool between the draw and the label — a rebuild folds a DOI, a dedupe collapses
+            # a deposit. Named, never dropped quietly: a label with nowhere to go is a case somebody read for
+            # nothing, and the next draw will hand it to them again.
+            missing.append(cid)
+            continue
         add(path, cid, pool_name, stratum(by_id[cid]), label, note, by, valid)
         n += 1
     print(f"recorded {n} labels in {path}")
+    if missing:
+        print(f"  {len(missing)} labels had no row in pool {pool_name!r} and were NOT recorded: "
+              + ", ".join(missing[:8]) + ("…" if len(missing) > 8 else ""))
     return n
 
 
