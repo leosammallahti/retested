@@ -32,18 +32,13 @@ LABELS (what the replication itself reports about the original finding):
 from __future__ import annotations
 
 import argparse
-import csv
-import hashlib
 import json
 import sys
 from collections import Counter, defaultdict
-from datetime import date
 
-from .load import ROOT
+from . import audit
 
-LABELS = ROOT / "data" / "curated" / "outcome_audit.csv"
-BUILD = ROOT / "data" / "build" / "candidates.json"
-COLUMNS = ["cid", "pool", "recorded", "label", "note", "labelled_by", "labelled_on"]
+LABELS = audit.CURATED / "outcome_audit.csv"
 VERDICTS = ("successful", "failed", "mixed")          # what the model can say
 VALID = VERDICTS + ("not_established",)               # what a reader can say back
 
@@ -58,13 +53,9 @@ POOLS = {
     "uncounted": ("linked psychology finds carrying any verdict — the population behind /uncounted/",
                   lambda c: c.get("field") == "psychology" and c.get("outcome") and c.get("doi_o")),
 }
-PAGE_GRADE = {("library_author_year", "high"), ("library_author_year", "medium"), ("openalex_author_year", "high"),
-              ("reference_scan", "high")}
-
-
-def _wilson(k: int, n: int):
-    from .stats import wilson
-    return wilson(k, n)
+# kept in step with queue.TRUSTED_LINKS, which is the one that decides what a page shows
+PAGE_GRADE = {("cited by this paper", "high"), ("library_author_year", "high"), ("library_author_year", "medium"),
+              ("openalex_author_year", "high"), ("reference_scan", "high")}
 
 
 def _page_grade(c: dict) -> bool:
@@ -72,31 +63,11 @@ def _page_grade(c: dict) -> bool:
 
 
 def _pool(name: str, candidates: list[dict] | None = None) -> list[dict]:
-    if candidates is None:
-        if not BUILD.exists():
-            raise SystemExit(f"{BUILD} is missing — run `python -m pipeline build` first")
-        candidates = json.loads(BUILD.read_text(encoding="utf-8"))
-    keep = POOLS[name][1]
-    rows = [c for c in candidates
-            if c.get("origin") == "retested_discovery" and c.get("group") == "replication" and keep(c)]
-    rows.sort(key=lambda c: c["id"])
-    return rows
+    return audit.pool(POOLS, name, candidates)
 
 
 def read_labels() -> list[dict]:
-    if not LABELS.exists():
-        return []
-    with LABELS.open(encoding="utf-8", newline="") as fh:
-        return [r for r in csv.DictReader(fh) if r.get("label")]
-
-
-def write_labels(rows: list[dict]) -> None:
-    LABELS.parent.mkdir(parents=True, exist_ok=True)
-    with LABELS.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=COLUMNS, lineterminator="\n")
-        w.writeheader()
-        for r in sorted(rows, key=lambda r: (r["pool"], r["cid"])):
-            w.writerow({k: r.get(k, "") for k in COLUMNS})
+    return audit.read_labels(LABELS)
 
 
 def sample(pool: str, n: int, seed: str, as_json: bool, only: str | None = None) -> int:
@@ -107,15 +78,7 @@ def sample(pool: str, n: int, seed: str, as_json: bool, only: str | None = None)
     """
     rows = _pool(pool)
     done = {r["cid"] for r in read_labels()}
-    by_verdict: dict[str, list[dict]] = defaultdict(list)
-    for c in rows:
-        if c["id"] not in done and only in (None, c["outcome"]):
-            by_verdict[c["outcome"]].append(c)
-    per = max(1, n // max(1, len(by_verdict)))
-    picked = []
-    for verdict, group in sorted(by_verdict.items()):
-        group.sort(key=lambda c: hashlib.md5(f"{seed}|{c['id']}".encode()).hexdigest())
-        picked += group[:per]
+    picked = audit.draw(rows, done, n, seed, lambda c: c["outcome"], only)
     if as_json:
         print(json.dumps([_case(c, pool) for c in picked], indent=1, ensure_ascii=False))
         return 0
@@ -155,29 +118,8 @@ def _case(c: dict, pool: str) -> dict:
             "reason": c.get("screen_reason")}
 
 
-def add(cid: str, pool: str, recorded: str, label: str, note: str, by: str) -> None:
-    if label not in VALID:
-        raise SystemExit(f"label must be one of {VALID}")
-    rows = [r for r in read_labels() if r["cid"] != cid]
-    rows.append({"cid": cid, "pool": pool, "recorded": recorded, "label": label, "note": note,
-                 "labelled_by": by, "labelled_on": date.today().isoformat()})
-    write_labels(rows)
-
-
 def record(pool: str, text: str) -> int:
-    """Take labels in bulk: one 'cid<TAB>label<TAB>note' line each, from a session that has just read them."""
-    rows = {c["id"]: c for c in _pool(pool)}
-    n = 0
-    for line in text.splitlines():
-        if not line.strip() or line.lstrip().startswith("#"):
-            continue
-        parts = line.rstrip("\n").split("\t")
-        cid, label, note = (parts + ["", ""])[:3]
-        if cid not in rows:
-            raise SystemExit(f"{cid} is not in pool {pool!r} — label it against the pool it was drawn from")
-        add(cid, pool, rows[cid]["outcome"], label, note, "claude-opus-5")
-        n += 1
-    print(f"recorded {n} labels in {LABELS}")
+    audit.record(LABELS, _pool(pool), pool, lambda c: c["outcome"], text, VALID, "claude-opus-5")
     return 0
 
 
@@ -208,10 +150,10 @@ def score(pool: str | None) -> int:
         for recorded in sorted(matrix):
             c = matrix[recorded]
             n, k = sum(c.values()), c[recorded]
-            lo, hi = _wilson(k, n) or (0.0, 1.0)
+            lo, hi = audit.wilson(k, n)
             rest = ", ".join(f"{v}× {kk}" for kk, v in c.most_common() if kk != recorded) or "—"
             print(f"   {recorded:<12} {n:>4}  {k:>6}  {k / n:>8.0%}   {lo:.0%}–{hi:.0%}        {rest}")
-        _unreached(p, rows, labels, members)
+        audit.unreached(rows, labels, members, lambda c: c["outcome"])
         if p in ("card", "page"):                    # only these rows can become a card
             _card_safety(matrix)
         _corrected_rate(p, matrix)
@@ -219,25 +161,6 @@ def score(pool: str | None) -> int:
             _deck_rate(rows, matrix)
             _by_confidence(rows, labels)
     return 0
-
-
-def _unreached(pool: str, rows: list[dict], labels: dict[str, dict], members: dict[str, set]) -> None:
-    """Rows in this pool that no draw has sampled from, named by verdict.
-
-    The card-pool draw can say nothing about a find with no linked original, because it never had one in the urn.
-    Borrowing its precision for those rows would be the same error as `link --check`: a number measured on the
-    easy half and quoted over the whole.
-    """
-    drawn_from: dict[str, set[str]] = defaultdict(set)
-    for r in labels.values():
-        drawn_from[r["recorded"]].add(r["pool"])
-    gaps = Counter()
-    for c in rows:
-        pools = drawn_from.get(c["outcome"])
-        if pools and not any(c["id"] in members[q] for q in pools):
-            gaps[c["outcome"]] += 1
-    if gaps:
-        print("   not reached by any draw: " + ", ".join(f"{v} rows called '{k}'" for k, v in sorted(gaps.items())))
 
 
 def _card_safety(matrix: dict[str, Counter]) -> None:
@@ -273,7 +196,7 @@ def _by_confidence(rows: list[dict], labels: dict[str, dict], cut: float = 0.8) 
     for name, group in ((f"below {cut}", below), (f"{cut} and up", at_or_above)):
         n = len(group)
         k = sum(1 for _, l in group if l["label"] == l["recorded"])
-        lo, hi = _wilson(k, n) or (0.0, 1.0)
+        lo, hi = audit.wilson(k, n)
         in_pool = sum(1 for c in rows if ((c.get("outcome_confidence") or 0) < cut) == (group is below))
         print(f"     {name:<12} {k:>3}/{n:<3} read sound  {k / n:>4.0%}  {lo:>4.0%}–{hi:<4.0%}  {in_pool} rows in the pool")
 

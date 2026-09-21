@@ -115,10 +115,14 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "outcome": t.get("outcome") if t.get("outcome") != "not_reported" else None,
             "outcome_quote": t.get("outcome_quote"),
             "outcome_confidence": t.get("confidence"),
-            # A DOI the model picked out of the citation list is NOT a strong link: read one by one, 6 of 11 were
-            # right (docs/LINK_AUDIT_20260919.md). It cannot be scored either, because the model writes its account
-            # of the original after choosing it. So it says "unchecked" rather than borrowing a band it never earned.
-            "link_confidence": ("unchecked" if t.get("original_doi") else (link or {}).get("confidence")),
+            # A DOI the model picked out of the citation list carries no score of its own — the model writes its
+            # account of the original AFTER choosing it, so nothing about the pair can be compared. It was filed as
+            # "unchecked" on a reading of 6 right out of 11. That reading was of output from the retired t1 prompt.
+            # t3 added the mere-citation trap, and the cache shows what that did: of 239 candidates t1 named a cited
+            # original for, t3 withholds the name on 101 and keeps 137 of the remaining 138 picks identical. Read
+            # again under t3, the band is 34 right out of 36 (docs/LINK_AUDIT_20260919.md, 2026-09-21) — better than
+            # any other band here. It says "high" because that is what it measured, on the largest sample any band has.
+            "link_confidence": ("high" if t.get("original_doi") else (link or {}).get("confidence")),
             "link_method": "cited by this paper" if t.get("original_doi") else (link or {}).get("method"),
             "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta",
                                                        "margin", "n_references", "runner_up") if k in (link or {})}
@@ -350,11 +354,13 @@ def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None
             "n_replication_authors": len(rep_surnames), "n_original_authors": len(orig_surnames)}
 
 
-# (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed
-# Each of these was measured by reading links one by one, with the method's own failure mode in the denominator:
-# library high/medium 24/25, openalex high 10/11, reference_scan high 32/36. The last is the largest sample but
-# the newest, and its 89% already prices in the 16% of papers whose reference list does not contain the original.
-TRUSTED_LINKS = {("library_author_year", "high"), ("library_author_year", "medium"),
+# (link method, confidence) pairs that read correctly often enough to stand beside a verdict unreviewed.
+# Each was measured by reading links one by one, with the method's own failure mode in the denominator:
+# cited by this paper 34/36, library high/medium 24/25, openalex high 10/11 + 8/8, reference_scan high 32/36 + 8/10.
+# `pipeline originals --score` recomputes all of them from data/curated/original_audit.csv; every band NOT in this
+# set has been read too, and the reason they are out is that they measure 12% to 57%, not that nobody looked.
+TRUSTED_LINKS = {("cited by this paper", "high"),
+                 ("library_author_year", "high"), ("library_author_year", "medium"),
                  ("openalex_author_year", "high"), ("reference_scan", "high")}
 
 

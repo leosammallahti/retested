@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import authors, discover, references, export, fetch, game, link, load, osf, outcomes, queue, registry, score, stats, triage, validate
+from . import authors, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -77,6 +77,8 @@ def main() -> None:
     lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
     lp.add_argument("--max-usd", type=float, default=1.0, help="OpenAlex spending cap")
     lp.add_argument("--check", action="store_true", help="accuracy against originals the citation graph already resolved")
+    sub.add_parser("originals", add_help=False, help="hand-read audit of whether each find was matched to the "
+                                                    "right earlier paper (`python -m pipeline originals --help`)")
     sub.add_parser("outcomes", add_help=False, help="hand-read audit of whether the verdicts were read correctly "
                                                     "(its own flags: `python -m pipeline outcomes --help`)")
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
@@ -84,8 +86,10 @@ def main() -> None:
     tp.add_argument("--pilot", action="store_true", help="only that tier's labelled sample; report agreement")
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     tp.add_argument("--workers", type=int, default=8, help="parallel requests; ~8 gives 8 papers/s, higher risks 429s")
-    if sys.argv[1:2] == ["outcomes"]:      # its own flag set; keep it out of the shared parser
+    if sys.argv[1:2] == ["outcomes"]:      # these own their flag sets; keep them out of the shared parser
         sys.exit(outcomes.run(sys.argv[2:]))
+    if sys.argv[1:2] == ["originals"]:
+        sys.exit(originals.run(sys.argv[2:]))
     a = ap.parse_args()
     if a.cmd == "authors":
         sys.exit(authors.run(a.max_usd))

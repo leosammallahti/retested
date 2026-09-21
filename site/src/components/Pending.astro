@@ -1,7 +1,7 @@
 ---
 // Replications our own search found and FORRT has not recorded. They are shown next to the record, never inside it:
 // no person has checked them, so they change no count, no verdict and no figure on this page.
-import { type Candidate } from '../lib/data';
+import { type Candidate, stats } from '../lib/data';
 import { u, doiUrl, cleanQuote, clip } from '../lib/fmt';
 
 interface Props { rows: Candidate[]; subject: string; verdict?: { from_label: string; to_label: string; changes: boolean; n_accepted: number; k_before: number; k_after: number } | null }
@@ -13,7 +13,11 @@ const HOW: Record<string, string> = {
   library_author_year: 'author, year and topic matched against this wiki',
   openalex_author_year: 'author, year and topic found in OpenAlex',
   reference_scan: 'matched against the papers this replication cites',
+  'cited by this paper': 'picked out of this paper\u2019s own reference list',
 };
+// Never state an accuracy the label file does not hold: this is the hand-read audit of exactly the bands
+// allowed into this box, recomputed by every build from data/curated/original_audit.csv.
+const la = stats().uncounted.link_audit?.page;
 const withOutcome = rows.filter((r) => r.outcome).length;
 
 ---
@@ -26,9 +30,11 @@ const withOutcome = rows.filter((r) => r.outcome).length;
       data. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
       this original; <b>no person has checked {rows.length === 1 ? 'it' : 'them'}</b>. Nothing here counts towards the verdict,
       the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.
-      Reading 65 of these links one by one, the two matching methods shown here were right 24 times in 25 and 10 in 11;
-      weaker matches are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where more of our
-      finds are waiting for someone to decide.
+      {la && la.n_read > 0 && (
+        <>Reading <b class="num">{la.n_read}</b> links of the kind shown here one by one, <b class="num">{la.right}</b> pointed
+        at the right original. </>
+      )}Weaker matching methods are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where
+      more of our finds are waiting for someone to decide.
     </p>
     {verdict?.changes && (
       <p class="wouldbe">

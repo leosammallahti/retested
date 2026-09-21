@@ -43,6 +43,10 @@ export interface Famous { status: string | null; status_raw: string | null; desc
 export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
 export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
 // The hand-read audit of the verdicts themselves: data/curated/outcome_audit.csv, scored by `pipeline outcomes`.
+// Per-band accuracy of the link between a find and the original it re-tests: data/curated/original_audit.csv,
+// scored by `pipeline originals`. `unclear` reads stay in the denominator.
+export interface LinkAudit { n_read: number; right: number; n_pool: number; share: number | null;
+  unread_bands: string[]; by_band: Record<string, { n: number; right: number; in_pool: number; precision: number }> }
 export interface OutcomeAudit { n_read: number; n_pool: number; flipped: number; raw_success_share: number | null;
   corrected_success_share: number | null; corrected_n?: number;
   by_verdict: Record<string, { n: number; right: number; precision: number }> }
@@ -54,7 +58,8 @@ export interface Stats {
   shrinkage: { n_rows: number; median_ratio: number; q25: number; q75: number; share_below_half: number; share_sign_flip: number };
   uncounted: { finds: number; linked: number; with_verdict: number; distinct_originals: number; overall: Share;
     by_evidence: Record<string, Share>; by_independence: Record<string, Share>; by_design: Record<string, Share>;
-    preregistered: Share; by_year: Record<string, Share>; audit: OutcomeAudit | null };
+    preregistered: Share; by_year: Record<string, Share>; audit: OutcomeAudit | null;
+    link_audit: { page: LinkAudit | null; linked: LinkAudit | null } };
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }
