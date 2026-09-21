@@ -145,3 +145,30 @@ population:
 
 Both would have closed off a route that worked. Check which rows an intermediate was built from before believing
 what it says about a different set.
+
+
+## Addendum, 2026-09-21: outcome accuracy, measured at last
+
+Every accuracy figure above is about *linking* — whether a find was matched to the right original. Whether the
+model read the outcome correctly had never been measured, and for a scored game card that is the error that
+matters most.
+
+20 finds read against their own quotes, stratified 11 successful / 9 failed:
+
+| the model said | clearly right | note |
+|---|---|---|
+| failed | **9 / 9** | unambiguous every time: "we did not replicate", "a failure to replicate" |
+| successful | **9 / 11** | two do not establish a replication at all |
+
+So roughly **90% overall, and the error is one-directional**: "failed" is never wrong in this sample, "successful"
+is sometimes a quote that describes a result without saying the original effect held. One reported "substantial
+within-gender variation and recurring directional discrepancy patterns"; another's own title says "a disconfirmed
+hypothesis".
+
+**This bears directly on the 47.4% vs 41.7% gap** on the uncounted page. That page offers two explanations —
+curation favouring famous failures, or a model finding success easier to read than a hedged failure — and says
+both would produce the gap. The second now has evidence behind it: over-calling success is exactly the error this
+sample found, and none of the reverse. The gap should not be read as "uncounted replications succeed more" until
+somebody has reviewed enough of them to separate the two.
+
+n = 20. Enough to establish the direction, not the size.
