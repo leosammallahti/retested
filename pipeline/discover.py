@@ -224,22 +224,54 @@ def _tkey(t: str) -> str:
 
 # ---------------------------------------------------------------- run
 
-def keyword_sweep() -> list[dict]:
-    """Every OpenAlex work with a Psychology topic and 'replication' (stemmed) in the title, all years."""
+# Which OpenAlex fields the title sweep covers, and why these and not others.
+#
+# The sweep started at Psychology alone (field 32). `discover --mode coverage` measured what that can see: of
+# FORRT's 1,850 known replication papers, 1,815 are in OpenAlex and only **951 carry a Psychology topic at all**.
+# The other 864 are psychology by any ordinary reading and tagged somewhere else. Where they sit, and what each
+# field costs to crawl:
+#
+#   field                     works titled "replication"   known replications sitting there
+#   Social Sciences (33)                       23,363                                   213
+#   Neuroscience (28)                           6,489                                   126
+#   Economics & Finance (20)                    9,626                                    82
+#   Business & Management (14)                  4,742                                    71
+#   Decision Sciences (18)                      8,827                                    46
+#   Medicine (27)                              53,937                                   118
+#
+# Medicine is left out: twice the crawl of all five others together for a fifth of the yield, and the word there
+# means DNA and viral replication. Physics returns 4,807 works titled "replication" and no psychology at all,
+# which is the control that makes the point — the word is generic, so the field filter is doing real work and
+# cannot simply be dropped. Biochemistry (56 known) is the same case as Medicine and is left out for the same
+# reason. What is kept covers 538 of the 864 untagged, and the rule scoring downstream is what removes the
+# molecular biology that still comes through.
+SWEEP_FIELDS = {32: "Psychology", 33: "Social Sciences", 28: "Neuroscience",
+                20: "Economics & Finance", 14: "Business & Management", 18: "Decision Sciences"}
+
+
+def keyword_sweep(fields: dict[int, str] | None = None) -> list[dict]:
+    """Every OpenAlex work titled 'replication' (stemmed) in the swept fields, all years."""
     works: dict[str, dict] = {}
+    for fid, name in sorted((fields if fields is not None else SWEEP_FIELDS).items()):
+        before = len(works)
+        _sweep_field(fid, works)
+        print(f"    {name}: {len(works) - before} new ({len(works)} total)")
+    return list(works.values())
+
+
+def _sweep_field(fid: int, works: dict[str, dict]) -> None:
     cursor, page = "*", 0
     while cursor:
-        d = _get({"filter": "topics.field.id:32,title.search:replication", "select": SELECT, "per_page": 200, "cursor": cursor},
-                 f"kw-{page:03d}")
+        d = _get({"filter": f"topics.field.id:{fid},title.search:replication", "select": SELECT, "per_page": 200, "cursor": cursor},
+                 f"kw-f{fid}-{page:03d}" if fid != 32 else f"kw-{page:03d}")
         for w in d.get("results", []):
             works[w["id"]] = w
         cursor = (d.get("meta") or {}).get("next_cursor")
         page += 1
         if not d.get("results"):
             break
-        if page % 10 == 0:
-            print(f"    page {page}: {len(works)} works")
-    return list(works.values())
+        if page % 20 == 0:
+            print(f"      page {page}: {len(works)} works so far")
 
 
 def run(g: dict, mode: str = "cites") -> dict:
