@@ -97,6 +97,37 @@ def _overlap(asked: str, got: str | None) -> float:
 _QUOTED = re.compile(r"[\u2018'\"\u201c]\s*([^\u2019'\"\u201d]{12,200})[\u2019'\"\u201d]")
 
 
+def run_finds(max_usd: float = 0.40) -> int:
+    """Fetch the abstract of every original a well-matched find points at.
+
+    `--deck` only covered originals already behind a game card, which is circular: a find cannot become a card
+    without its original's abstract, so the originals that need fetching are exactly the ones it skipped. 149
+    finds with a link from a band measured at 90%+ were being dropped for want of an abstract nobody had asked
+    OpenAlex for.
+    """
+    from . import claims as C, load, registry, score
+    from .ids import EffectLedger
+    from .load import ROOT
+    from .queue import TRUSTED_LINKS
+
+    src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
+    score.score(g)
+    want = sorted({c["doi_o"] for c in C._queue_candidates(g)
+                   if c.get("group") == "replication" and c.get("field") == "psychology"
+                   and c.get("outcome") in ("successful", "failed") and c.get("doi_o")
+                   and (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS})
+    existing = load.load_original_authors()
+    todo = [d for d in want if not (existing.get(d) or {}).get("abstract")]
+    print(f"  {len(want)} originals behind well-matched finds · {len(todo)} without an abstract yet")
+    out = {**existing, **fetch(todo, max_usd)}
+    DISCOVERY.mkdir(parents=True, exist_ok=True)
+    (DISCOVERY / "original_authors.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    got = sum(1 for d in want if (out.get(d) or {}).get("abstract"))
+    print(f"  {got} of {len(want)} now have one · {_spent['calls']} calls · ${_spent['usd']:.3f}")
+    return 0
+
+
 def run_famous(max_usd: float = 0.30) -> int:
     """Give the famous tier a real source, by finding each effect's original paper in OpenAlex by title.
 

@@ -124,6 +124,7 @@ W7120606347,card,openalex_author_year/low,unclear,named original is Ferreira 200
 W7198552913,card,openalex_author_year/medium,wrong,matched to a Kobasa questionnaire record; the paper is the runner-up,claude-opus-5,2026-09-21
 W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1002/(sici)1099-0720(199910)13:5<485::aid-acp627>3.0.co;2-#,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
+10.1002/acp.924,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1002/ejsp.2273,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1002/ejsp.2420250402,linked,reference_scan/medium,wrong,"Martin says he replicates 'the original experiment', i.e. Moscovici & Personnaz (1980). The pick, Doms & Van Avermaet (1980), is itself titled 'A replication' of that original.",workflow-reader,2026-09-21
 10.1002/ejsp.646,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
@@ -145,6 +146,7 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1016/0887-6185(96)00009-6,linked,reference_scan/high,right,"No replication abstract, but Nolen-Hoeksema & Morrow 1993 is the induced rumination-vs-distraction mood paradigm this 'pilot replication with anxious mood' re-tests.",workflow-reader,2026-09-21
 10.1016/j.actpsy.2020.103140,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1016/j.cognition.2019.104069,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1016/j.cortex.2020.04.011,linked,reference_author/medium,wrong,Inzlicht 2009 is the ACC/religiosity study; matched to a 2011 review by the same author,claude-opus-5,2026-09-22
 10.1016/j.dib.2021.107595,linked,reference_scan/low,wrong,"Abstract names the original outright - study 1 of 'The taste of compassion: Influencing meat attitudes with interhuman and interspecies moral appeals'. Match is Rosenfeld 2019 on gender differences in vegetarian identity, a different paper.",workflow-reader,2026-09-21
 10.1016/j.heliyon.2020.e04033,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1016/j.humov.2023.103074,linked,reference_scan/low,unclear,"Replication side is a bare title with no abstract, authors, or screening description. Stevanovic et al. 2017 (motion capture of body sway during joint decision making) is a plausible fit, but 'joint search' also fits the postural-coordination-during-cooperative-puzzle literature; cannot be confirmed from what is shown.",workflow-reader,2026-09-21
@@ -162,8 +164,10 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1016/j.neuropsychologia.2018.12.007,linked,reference_scan/medium,wrong,"Right authors, wrong paper: the empirical original for identity-specific action-effect prediction is Hughes, Desantis & Waszak (2013, Eur J Neurosci, auditory N1 attenuation). The pick is their same-year Psychological Bulletin review, which reports no data to replicate.",workflow-reader,2026-09-21
 10.1016/j.paid.2017.08.021,linked,reference_scan/medium,right,"Confirmed: Wilbraham et al. extend Mikolajczak, Roy, Luminet, Fillee & de Timary (2007) lab cortisol finding to classrooms.",workflow-reader,2026-09-21
 10.1016/j.psyneuen.2015.06.006,linked,reference_scan/low,right,"Matched to Domes et al. 'Oxytocin Improves Mind-Reading in Humans' (Biological Psychiatry), the canonical original; 2006 online vs 2007 print is the routine one-year gap.",workflow-reader,2026-09-21
+10.1016/j.sbspro.2012.10.103,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1016/j.ssaho.2023.100713,linked,cited by this paper/unscored,wrong,"The re-tested finding (minimal interactions with strangers raise well-being, mediated by belonging, in a small sample) is Sandstrom & Dunn (2014); matched to Mehl et al. (2010) 'Eavesdropping on Happiness', which is about small talk vs substantive conversation and tests no belonging mediation.",workflow-reader,2026-09-21
 10.1016/j.ssci.2020.104740,linked,reference_scan/high,right,Confirmed: Morgenstern et al. 2020 explicitly replicate Schneidereit et al. 2017 SHRP 2 speed-choice findings with UDRIVE data.,workflow-reader,2026-09-21
+10.1016/j.ynirp.2023.100163,linked,reference_author/medium,unclear,Dadi is on both; the matched 2019 benchmarking paper is not the trait-prediction one named,claude-opus-5,2026-09-22
 10.1016/s0005-7894(80)80047-5,linked,cited by this paper/unscored,wrong,"Jannoun et al. (1980) 'A home-based treatment program for agoraphobia: Replication and controlled evaluation' replicates Mathews, Teasdale, Munby, Johnston & Shaw (1977), the identically titled home-based program study; matched instead to Hand et al. (1974) group in-vivo flooding, a different treatment and paper.",workflow-reader,2026-09-21
 10.1016/s0005-7916(96)00023-7,linked,reference_scan/high,right,"Runner-up 'The prescriptive treatment of school refusal' is Burke & Silverman 1987, a review; the picked Kearney & Silverman 1990 is the empirical functional-analysis-based prescriptive treatment study Chorpita et al. systematically replicate.",workflow-reader,2026-09-21
 10.1016/s0891-4222(96)00039-x,linked,reference_scan/medium,right,Green & Reid 1996 JABA happiness-indices study is the named original; runner-up is a different Green & Reid topic.,workflow-reader,2026-09-21
@@ -185,8 +189,10 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1037/0012-1649.27.3.516,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037/0021-843x.89.2.250,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1037/0022-006x.52.6.1020,linked,reference_scan/low,right,"Extended replication of Orbach et al.'s life/death attraction-repulsion study in suicidal vs normal children; match is Orbach et al. 1983, same group, same instrument, year before, with the replication adding chronically ill children.",workflow-reader,2026-09-21
+10.1037/0022-006x.76.2.347,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1037/0022-3514.82.2.180,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037/1053-0797.14.4.234,linked,reference_scan/medium,wrong,Patrick & Durndell (2004) replicate Blagrove & Hartnell (2000) - locus of control and need for cognition. Gruber et al. 1995 is a 16PF/cognitive-development study; different measures and findings.,workflow-reader,2026-09-21
+10.1037/a0037397,linked,reference_author/medium,wrong,"Ellis & Tucker 2000 micro-affordance, not Tucker & Ellis 1998 on seen objects and actions",claude-opus-5,2026-09-22
 10.1037/arc0000007.supp,linked,library_author_year/medium,right,Loneliness/physical warmth is Studies 1-2 of the matched Emotion paper.,workflow-reader,2026-09-21
 10.1037/bar0000245,linked,openalex_author_year/medium,right,"Deci 1971 JPSP 'Effects of externally mediated rewards on intrinsic motivation' (10.1037/h0030644) is the overjustification original; note the stored abstract on the matched record is unrelated Spanish thesis text, but title/authors/year/journal/DOI are correct.",workflow-reader,2026-09-21
 10.1037/emo0000088,linked,cited by this paper/unscored,wrong,"Paper's own text says 'Replicating previous work (Inagaki & Eisenberger, 2013)' for warm-object-induced feelings of social connection; Williams & Bargh (2008) is cited only as background and measured judgements of another person, not the replicated effect.",workflow-reader,2026-09-21
@@ -207,13 +213,17 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1080/00049539808257537,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/00207148008409852,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/00221325.1986.9914516,linked,reference_scan/high,right,"Bare title on the replication side, but Smith & Krantz 1986 cites only two works, and Dion & Berscheid 1974 is the attractiveness-and-popularity sociometric study its title and 'methodological refinement' point at (the other, Lerner & Lerner 1977, is about school adjustment/academic performance).",workflow-reader,2026-09-21
+10.1080/00223980.1992.10543362,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1080/00224545.1976.9711926,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1080/00224549709595485,linked,reference_author/medium,unclear,"same instrument and author, but a factor analysis rather than the sex-differences paper",claude-opus-5,2026-09-22
 10.1080/02699930050117693,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/02791072.2024.2346130,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
+10.1080/03610730252800184,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1080/07317107.2011.623091,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/09541448908403072,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1080/09658211.2024.2412025,linked,openalex_author_year/high,right,,workflow-reader,2026-09-21
 10.1080/10489223.2023.2260792,linked,reference_scan/high,wrong,"Abstract says it is a partial replication of Rastle et al. (masked morpho-orthographic priming in L1 English); matched paper is Diependaele et al. 2005 on masked cross-modal priming in Dutch/French - different authors, different paper.",workflow-reader,2026-09-21
+10.1080/15250000802188800,linked,reference_author/medium,unclear,"Brannon & Van de Walle 2001 on young children, not the 2002 infant ordinal-reversal study",claude-opus-5,2026-09-22
 10.1080/17439760.2020.1818811,linked,reference_scan/low,unclear,"Replication never names the original; match is Eid & Diener's global-SWB situational-variability paper with no abstract shown. Topically adjacent and possibly correct, but the specific 'affect interchangeable with state well-being assessments' finding cannot be confirmed from a bare title.",workflow-reader,2026-09-21
 10.1080/17470218.2011.604787,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/17470218.2014.923922,linked,openalex_author_year/low,right,Match DOI 10.1037/0278-7393.33.3.503 is the Mahon et al. (2007) paper cited verbatim in the replication abstract.,workflow-reader,2026-09-21
@@ -230,8 +240,10 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1101/2020.05.18.101238,linked,cited by this paper/unscored,right,Two Rütgen et al. 2015 papers exist; the abstract's 'reduced pain empathy and decreased activation in shared neural networks' is the PNAS fMRI paper that was matched.,workflow-reader,2026-09-21
 10.1101/376350,linked,openalex_author_year/medium,right,Marcinkowska et al. 2018 Hormones and Behavior 'Average ovarian hormone levels...' is the N=102 study reporting the partnership-status x average-progesterone interaction named in the replication abstract.,workflow-reader,2026-09-21
 10.1108/eb028781,linked,reference_author/high,right,"Golembiewski, ""A Note on Leiter's Study"", which is the phase-model burnout exchange",claude-opus-5,2026-09-22
+10.1111/1556-4029.14630,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1111/bjep.12156,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
 10.1111/bjhp.12556,linked,openalex_author_year/medium,right,"Replication abstract cites Betsch et al. 2017 Nat. Hum. Behav. 0056; matched DOI is 10.1038/s41562-017-0056, the exact article.",workflow-reader,2026-09-21
+10.1111/j.1365-2648.1996.tb02937.x,linked,reference_author/medium,unclear,"Hicks on nurses, but a gender-and-status paper rather than the research-deterrent one",claude-opus-5,2026-09-22
 10.1111/j.1467-7687.2007.00607.x,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1111/j.1467-7687.2010.01003.x,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1111/j.1467-8624.1979.tb02427.x,linked,reference_scan/low,wrong,"Replication explicitly re-analyses 'the 1973 study' (the authors' own 1973 mother-child monograph); match is Reichle et al. 1976 'Verbal interaction in mother-child dyads' - different authors, different year, different finding.",workflow-reader,2026-09-21
@@ -243,7 +255,9 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1177/001316447203200232,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1177/0033294118790908,linked,cited by this paper/unscored,right,"Nash, Imuta & Nielsen target purely behavioural sunk costs, i.e. Cunha & Caldieraro (2009); confirmed as the replication target.",workflow-reader,2026-09-21
 10.1177/009164719802600404,linked,openalex_author_year/medium,right,"Sorenson 1997a JSSR paper explicitly uses attachment theory for doctoral students' integration, matching the described faculty-attachment finding.",workflow-reader,2026-09-21
+10.1177/0146167287134009,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1177/0308575914553543,linked,reference_scan/high,right,,workflow-reader,2026-09-21
+10.1177/088626001016008002,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1177/0956797611432179,linked,reference_scan/low,wrong,"The replicated effect is projection of one's own cold/thirst onto other people (Van Boven & Loewenstein-style transient drive-state projection); match is Risen & Critcher's 'visceral fit', about judging states of the world (global warming, drought) as more likely, not judgements of others' feelings.",workflow-reader,2026-09-21
 10.1177/09567976261458325,linked,reference_scan/medium,wrong,"The impaired-CRT finding is Nave, Nadler, Zava & Camerer (2017) - named in the matched paper's own subtitle. Knight et al. 2020 is the follow-up null commentary, i.e. a prior failed replication, not the original.",workflow-reader,2026-09-21
 10.1177/10298649231167488,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
@@ -251,8 +265,10 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1177/1948550619869613,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
 10.1177/21582440211008897,linked,openalex_author_year/high,right,,workflow-reader,2026-09-21
 10.1177/2332858419839707,linked,reference_scan/low,wrong,"Screening names Gehlbach's high-school instructor-student commonalities intervention; match is Cornelius-White's 2007 meta-analysis of learner-centred relationships - different author, a meta-analysis rather than the replicated experiment.",workflow-reader,2026-09-21
+10.1207/s15328023top2402_12,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.1371/journal.pone.0137499,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1371/journal.pone.0237771,linked,cited by this paper/unscored,wrong,Full text uses Whitson & Galinsky's (2008) control manipulation as the replicated paradigm; Kay et al. (2008) 'God and the government' is cited only as compensatory-control background and never measured conspiracy beliefs.,workflow-reader,2026-09-21
+10.1371/journal.pone.0312088,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.14264/uql.2015.784,linked,reference_scan/low,wrong,"The direct replication attempt targets research showing video game content influences prosocial behaviour; match is Adachi & Willoughby 2011 on violence vs competition and aggressive behaviour, a different outcome and different finding.",workflow-reader,2026-09-21
 10.1525/mp.2024.42.2.124,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.17605/osf.io/3brm2,linked,library_author_year/high,right,,workflow-reader,2026-09-21
@@ -275,10 +291,13 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.2139/ssrn.4616321,linked,library_author_year/high,wrong,"Original is Gino, Ayal & Ariely (2009) 'Contagion and differentiation in unethical behavior' (Psych Science), named verbatim in the replication title; matched instead to Gino & Bazerman (2009) 'When misconduct goes unnoticed' (JESP) - same author, same year, different paper. Runner-up ('Nameless+harmless=blameless') is also not the original.",workflow-reader,2026-09-21
 10.21849/cacd.2019.00101,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.2190/llxl-d4db-9cp5-brgt,linked,reference_scan/high,right,,workflow-reader,2026-09-21
+10.2218/resmedica.v0i0.1007,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.2307/1128582,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
 10.2307/1494405,linked,openalex_author_year/high,right,Abstract names Clifford and Walster (1973); pick is their 'Effect of Physical Attractiveness on Teacher Expectations' with the photograph/report-card paradigm the replication reuses.,workflow-reader,2026-09-21
 10.24191/ijmal.v7i1.20816,linked,library_author_year/high,right,,workflow-reader,2026-09-21
 10.2466/pms.109.2.577-580,linked,openalex_author_year/low,wrong,Original is V. A. Lefebvre's algebraic model of self-reflexion (golden-section .618 binary judgment); match is a 1990 Lefebvre et al. biochemistry paper on collagenase in chondrocytes. Surname+year only.,workflow-reader,2026-09-21
+10.2466/pms.1972.34.2.635,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
+10.2466/pms.1979.48.3c.1199,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.2466/pms.1995.81.3.723,linked,reference_scan/high,right,"Replication says 'the author's 1969 study' but its own reference list contains only one Koenig paper - the identically titled 1972 Perceptual and Motor Skills article, same design (4 masculine/4 feminine/4 neutral/2+2 traits). Study year vs publication year, so the match holds.",workflow-reader,2026-09-21
 10.2466/pr0.101.7.685-696,linked,reference_scan/medium,right,"Staats replicating her own Psychological Reports college-student stress/happiness survey ~20 years on; same author, journal and instruments.",workflow-reader,2026-09-21
 10.2466/pr0.1962.11.1.274,linked,reference_author/high,right,,claude-opus-5,2026-09-22
@@ -290,9 +309,14 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.3102/00028312010003203,linked,cited by this paper/unscored,right,"Matched record's author field shows only 'Jacobsen', but The Urban Review 1968 'Pygmalion in the classroom' is the Rosenthal & Jacobson paper the abstract names.",workflow-reader,2026-09-21
 10.3102/1440078,linked,cited by this paper/unscored,right,"Only a title on the replication side, but it names shifting as moderator of the worked-example effect on statistical reasoning, which is exactly Schwaighofer et al. (2016).",workflow-reader,2026-09-21
 10.3109/00207459609070838,linked,reference_scan/medium,wrong,"Matched paper is about magnetic fields changing affective properties of narratives, not suggestibility. The enhanced-hypnotizability original is Tiller & Persinger (1994); same lab, different finding.",workflow-reader,2026-09-21
+10.3109/13682829109012002,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
+10.31234/osf.io/4m65p,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
+10.31234/osf.io/8r4wu,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.31234/osf.io/8wu4g,linked,library_author_year/high,right,"Matched record is a PsycEXTRA stub DOI rather than the JPSP article, but title, authors and year are those of Clark et al. (2014) 'Free to punish', which the abstract names as the target; same work, poor index record.",workflow-reader,2026-09-21
 10.31234/osf.io/9hkbq,linked,reference_scan/high,wrong,"Matched to itself: the pick is the preregistration of this same preprint (same title, same abstract, same authors). The named original is Bech-Sorensen & Pollet 2016.",workflow-reader,2026-09-21
+10.31234/osf.io/9vmzr,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.31234/osf.io/rzdvt,linked,reference_scan/low,wrong,"Replication re-tests mindfulness and the sunk-cost bias; match is Anicha et al. 2011 on cognitive skills underlying mindfulness facets (visual working memory, temporal order) - no sunk-cost finding. Runner-up (autobiographical memory specificity) is not it either.",workflow-reader,2026-09-21
+10.31274/etd-180810-1214,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.31390/gradschool_theses.4362,linked,openalex_author_year/high,right,"Thesis cites 'Gresham, Dart, & Collins (2017)'; matched School Psychology Review paper has the same six-teacher generalizability design and the direct-observation > self-report ordering the thesis re-tests.",workflow-reader,2026-09-21
 10.3200/jrlp.140.6.591-602,linked,openalex_author_year/high,right,"Matched record has no abstract, but Neto & Furnham's replication says its instrument comes from Furnham (2001), and the pick is Furnham's 2001 PAID paper on self and OTHER estimates of multiple intelligences - the self/partner design being replicated.",workflow-reader,2026-09-21
 10.3389/fpsyg.2016.00811,linked,reference_author/high,right,"2003 vs the named 2004: same 2D:4D and Big Five work, online-first versus print",claude-opus-5,2026-09-22
@@ -307,6 +331,7 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.53841/bpsptr.2016.22.1.49,linked,library_author_year/high,right,Gailliot et al. (2007) JPSP Study 8 is the glucose plus mortality-salience self-control experiment described by the student replication teams.,workflow-reader,2026-09-21
 10.5964/jnc.6053,linked,openalex_author_year/low,right,Replication abstract cites DOI 10.3758/PBR.17.1.106 outright and the match is that exact DOI.,workflow-reader,2026-09-21
 10.6018/analesps.34.2.266611,linked,reference_scan/medium,wrong,"Paper replicates Kraus, Piff & Keltner (2009) on subjective social class and sense of control/self-efficacy. Han et al. 2014 is an applied-economics study of objective family SES and social capital - different construct and field.",workflow-reader,2026-09-21
+10.7282/t3n0157k,linked,reference_author/medium,right,,claude-opus-5,2026-09-22
 10.7490/f1000research.1096084.1,linked,reference_scan/low,wrong,"A strictly confirmatory replication re-tests empirical structure-behaviour correlations, but the match is Kanai & Rees's Nature Reviews Neuroscience review article, which reports no original finding. The runner-up (Kanai et al., social network size reflected in brain structure) is one of the actual replicated studies.",workflow-reader,2026-09-21
 10.7910/dvn/eqdyrl,linked,library_author_year/high,right,Foster & Skehan (1996) SSLA planning-time study is exactly the task-planning finding the replication data describe.,workflow-reader,2026-09-21
 W105824851,linked,openalex_author_year/low,wrong,"Original is Keenan, Olson & Marini (1998) on working memory and false belief; match is a 1998 Ward et al. paper in the journal Sexual Abuse (no title shown). Only the surname Keenan overlaps (1/3) - a sexual-offending paper, not the developmental study.",workflow-reader,2026-09-21
@@ -317,6 +342,7 @@ W1757145862,linked,reference_scan/high,right,"Thesis replicates a mothers-of-chi
 W1888203522,linked,openalex_author_year/low,wrong,"Replication names Diamond & Huang (2005) on children's attitudes toward peers with disabilities; match is Adele Diamond's 2005 Development and Psychopathology paper on inattentive-type ADHD. Same surname and year, different field.",workflow-reader,2026-09-21
 W1953410257,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W2128142981,linked,openalex_author_year/low,wrong,"Original is De Houwer & Hermans (1994) on affective word/picture processing; match is Hermans et al. (1994) on the affective priming effect. The runner-up, 'Differences in the affective processing of words and pictures', is the actual De Houwer & Hermans paper.",workflow-reader,2026-09-21
+W2171485567,linked,reference_author/medium,wrong,"matched to Lange et al. on the Transliminality Scale, not the Storm & Thalbourne I Ching study",claude-opus-5,2026-09-22
 W2184512324,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W2279287232,linked,library_author_year/medium,right,"Full published title is 'an approximate replication of Milton's (2007) study on lexical profiles and learning style', and the matched chapter is 'Lexical profiles, learning styles and the construct validity of lexical size tests' - memory/analysis aptitude is that chapter's content.",workflow-reader,2026-09-21
 W2394694499,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
