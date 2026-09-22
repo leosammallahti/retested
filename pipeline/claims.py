@@ -39,53 +39,98 @@ from .load import CACHE, DISCOVERY
 from .triage import URL, Meter, _key, balance
 
 MODEL = "deepseek-v4-flash"
-PROMPT_VERSION = "c1"
+PROMPT_VERSION = "c4"
 OUT = DISCOVERY / "claims.json"
 
 # The same test game.py applies to a claim before it will deal it, kept here so a leak is caught when it is
 # written rather than silently dropped at build time.
 LEAK = re.compile(r"replicat|reproduc|fail|robust|did not hold|null effect|not significant|no effect|debunk|retract", re.I)
 
-SYSTEM = """You write cards for a game in which players read one psychology finding and guess whether a later study
-found the same thing again. You are writing the card, never the answer. Reply with one JSON object, nothing else.
+SYSTEM = """You write cards for a game in which players read one psychology finding and guess whether a later
+study found the same thing again. You are writing the card, never the answer. Reply with one JSON object, nothing
+else.
 
-You are given ONE original study: its title, the sentence in which it reported its result, its sample size, its
-field, and its topic tags. Write two things about it for a curious adult who has no training in psychology.
+You are given ONE original study. If an abstract is given, that is your source and the other fields are context.
+If there is no abstract, the sentence the study reported its result in is your source.
 
-"claim" — what this study found, stated as its own authors would state it, in the present tense, at most 30 words.
-  It is a finding about people, not about an experiment: say what is true of whom, not which condition differed
+BEFORE YOU WRITE ANYTHING, fill this sentence from the study's own words:
+
+    "<who or what>, compared with <what else>, showed <more / less / none> <of what>."
+
+If you cannot fill every slot from the source — because the only result given is an omnibus F, chi-square or
+MANOVA with no direction in it, a table caption, a model-fit comparison, or a line saying results were
+"generally supportive" — set "insufficient" to true and leave claim and method null. Do NOT take the direction
+from the title, the topic tags, or a summary the input marks as terse or a hint.
+
+ONE EXCEPTION, and the input will tell you when it applies: a summary marked CURATED AND HUMAN-WRITTEN was
+written by a person who read the paper. It is an authoritative statement of the finding and you may fill the
+slot sentence and the claim from it directly. When that is all you have, write the claim and leave "method"
+null rather than refusing — a card with no method line is thinner, but it is still a card. A card asserting a direction the study never reported
+is the worst thing you can produce, because the direction is exactly what the player is being asked about.
+
+TWO MORE REFUSALS.
+- A CARD THAT ANSWERS ITSELF is not a card. If the claim you are about to write would be true by construction
+  given the method you are about to write — a manipulation check ("participants rated the high-expertise source
+  as more expert"), a definition restated, or the condition labels repeated back — set insufficient. The claim
+  must be something a reader could have bet against.
+- Do not add an outcome, a mechanism or a population the source never mentions. If the database summary
+  speculates ("presumably because variety lowers perceived quantity") and the result does not show it, leave it
+  out.
+
+AN ABSENCE IS A FINDING. If the study reports that something did not happen, that two groups did not differ, or
+that an animal does not do a thing, say so plainly. The rule against revealing how a later study turned out is
+NOT a rule against negative findings, and turning an absence into a positive claim misstates the original study.
+
+Then write:
+
+"claim" — what this study found, as its own authors would state it, present tense, at most 30 words. A finding
+  about people (or animals), not about an experiment: say what is true of whom, not which condition differed
   from which. A reader who knows nothing about the study must be able to agree or disagree with it.
     good: "Holding a warm drink makes people judge a stranger as friendlier."
     bad:  "Main effect of condition on the applicability of the insanity defense."
-    bad:  "Belief that the communicator would support democratic policies was bigger in the favorable LIB condition."
+    bad:  "Participants rated the high-expertise source as more expert."
 
-"method" — how it was tested, in one or two sentences, including the number of participants written as a numeral
-  and the key thing that was manipulated or measured. No statistics, no test names, no p-values.
-    good: "Forty-one students held a cup of hot or iced coffee for a moment, then rated the personality of a
-    person described to them."
+"method" — how it was tested, one or two sentences, self-contained. Someone who cannot see the paper must be
+  able to picture it: describe what was actually varied in plain words rather than naming a task or construct
+  ("a scrambled-sentence task", "reference points", "bifactor structure") and leaving it unexplained.
+  Give the sample size in DIGITS, always, inside the sentence — "54 adults", "2,428 people" — never spelled out
+  and never appended as a separate sentence. One card in the pilot spelled it, one wrote "There were 338
+  participants." at the end, and a reader who notices which cards do which is reading the writer, not the study.
+  The sample size given to you may count something other than people — networks, countries, dogs, sessions, or
+  one experiment out of several. Say what it counts. If the number cannot plausibly support the design you are
+  describing, leave it out rather than printing a figure that makes the study look impossible.
+  Describe people as a paper written today would; do not carry forward outdated clinical or racial terms.
+  No statistics, no test names, no p-values.
+    good: "41 students held a cup of hot or iced coffee for a moment, then rated the personality of a person
+    described to them."
 
 "effect_label" — three to five words naming the phenomenon, for the reveal screen. Title case. No author names.
 
 HARD RULES.
 - NEVER mention replication, reproduction, whether anything held up, controversy, fame, or the passage of time.
-  The words "replicate", "fail", "robust", "null" and their relatives must not appear anywhere in your output.
-- NEVER mention authors, years, journals, or the study's reputation.
-- Hedge identically whether the finding sounds obvious or absurd. Do not soften a surprising claim and do not
-  sharpen a dull one; a player who could tell which is which from your wording is playing a different game.
+  The words "replicate", "fail", "robust", "null" and their relatives must not appear in the claim or method.
+- NEVER mention authors, years, journals, or how well known the study is.
+- NO HEDGES, on any card. Not "tend to", "partly", "somewhat", "may", "often", "generally", "most", "can".
+  State the finding flat. A writer hedges more when it doubts the finding, and a player who notices that is
+  reading your confidence instead of the study — which is a different game, and an unfair one. If a finding is
+  genuinely conditional, put the condition in the claim as a fact ("among children under four"), not as a hedge.
+- Do not argue for the finding. State it and stop. No "even though", "even when", "surprisingly", and no clause
+  whose only work is to tell the player the result is remarkable.
 - Write what the study claimed, not what is true. If the finding is now doubted, that is not yours to signal.
-- Use the study's own numbers only for the sample size. No effect sizes, no test statistics.
-- Do not invent. If the material you are given does not say what was found or how, leave "claim" or "method"
-  null and set "insufficient" to true with a one-line reason. A guessed card is worse than a missing one.
+- Do not invent. A guessed card is worse than a missing one.
 
 Return exactly these keys:
 {
+ "slot_sentence": "<the sentence above, filled in, or empty if you could not fill it>",
  "claim": "<= 30 words, present tense, or null>",
- "method": "one or two sentences, or null>",
+ "method": "<one or two sentences, or null>",
  "effect_label": "<3-5 words, Title Case>",
  "design": "main_effect" | "interaction" | "correlation" | "other",
  "iv_kind": "manipulation" | "measured" | "natural",
  "dv_kind": "behaviour" | "self_report" | "physiological" | "judgment" | "performance",
  "n_participants": <integer or null>,
+ "n_counts": "<what that number counts: people, networks, countries, dogs, sessions...>",
+ "finding_is_absence": <true|false>,
  "insufficient": <true|false>,
  "notes": "<= 15 words, or empty>"
 }"""
@@ -102,12 +147,27 @@ def _user_msg(card: dict) -> str:
     if card.get("n_o"):
         bits.append(f"SAMPLE SIZE: {card['n_o']}")
     if card.get("description"):
-        bits.append(f"HOW THE DATABASE SUMMARISES THE FINDING (often terse or garbled, treat as a hint):\n  {card['description']}")
+        label = ("A CURATED, HUMAN-WRITTEN STATEMENT OF THE FINDING (authoritative: it was written by a person "
+                 "who read the paper, and you may take the direction from it)" if card.get("tier") == "famous"
+                 else "HOW THE DATABASE SUMMARISES THE FINDING (a terse, often garbled field; treat as a hint only)")
+        bits.append(f"{label}:\n  {card['description']}")
     if card.get("claim_text_o"):
-        bits.append(f"THE SENTENCE THE STUDY REPORTED ITS RESULT IN:\n  {card['claim_text_o']}")
+        label = ("THE PAPER, ITS DESIGN AND ITS SAMPLE SIZES" if card.get("tier") == "famous"
+                 else "THE SENTENCE THE STUDY REPORTED ITS RESULT IN")
+        bits.append(f"{label}:\n  {_strip_fame(card['claim_text_o'])}")
     if card.get("abstract_o"):
-        bits.append(f"ABSTRACT OF THE STUDY:\n  {card['abstract_o'][:2500]}")
+        bits.append(f"THE STUDY'S OWN ABSTRACT (your best source; prefer it over everything above):\n"
+                    f"  {card['abstract_o'][:3000]}")
     return "\n".join(bits)
+
+
+_FAME = re.compile(r"\[?\s*citations?\s*=[^\]\n]*\]?", re.I)
+
+
+def _strip_fame(s: str) -> str:
+    """Citation counts out of the input. How famous a study is predicts whether it replicated, and the card is
+    not allowed to carry that; the curated famous-effects notes have it inline."""
+    return _FAME.sub("", s).strip()
 
 
 def write_one(card: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
@@ -141,12 +201,32 @@ def write_one(card: dict, key: str, meter: Meter, cache_dir: Path) -> dict | Non
     except (KeyError, json.JSONDecodeError):
         out = {"insufficient": True, "notes": "model returned no usable JSON"}
     rec = {"id": card["id"], "model": MODEL, "prompt_version": PROMPT_VERSION,
-           "usage": d.get("usage"), **out, **_flags(out)}
+           "usage": d.get("usage"), **out, **_flags(out, card.get("description") or "")}
     f.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")
     return rec
 
 
-def _flags(out: dict) -> dict:
+# A finding stated as an absence — "goats do not follow a human's gaze" — is the one thing the writer reliably
+# gets backwards, because a rule against signalling null results reads like a rule against negative sentences.
+# One reversal in the first 48 claims. These are the markers strong enough to mean the finding itself is an
+# absence, not a contrast inside a sentence ("people who do NOT expect a mug" is not an absence).
+_ABSENCE = re.compile(r"\b(?:do|does|did|was|were|is|are)\s+not\b|\bno\s+(?:effect|difference|evidence|"
+                      r"relationship|advantage|benefit|association|correlation)\b|\bfail(?:s|ed)?\s+to\b|"
+                      r"\bunable\s+to\b|\bneither\b", re.I)
+
+
+# Hedges are a leak channel of their own: a writer reaches for "tend to" when it doubts the finding, so a player
+# who notices the pattern is reading the writer's confidence rather than the study. Causal verbs are NOT on this
+# list — "makes", "increases" reveal that the study was an experiment, but so does the method line, which says
+# what was manipulated. Hiding the design in the claim while printing it underneath buys nothing.
+# Only the hedging senses. Bare "often" and "most" are ordinary words — "how often parents play", "the stimuli
+# they most prefer" — and flagging them buried the real hedges in false positives.
+_HEDGE = re.compile(r"\b(?:tend(?:s|ed)? to|partly|somewhat|may|might|generally|typically|mostly|"
+                    r"can\s+be|appears?\s+to|seems?\s+to|suggest(?:s|ed)?)\b|\bmost\s+(?:people|participants|of)\b",
+                    re.I)
+
+
+def _flags(out: dict, source: str = "") -> dict:
     """Mechanical checks applied to every claim as it is written, so nothing rests on the model obeying.
 
     A leak is the one that matters: the card is the question, so a word like "failed" in it hands over the answer.
@@ -162,19 +242,32 @@ def _flags(out: dict) -> dict:
         "label_leaks": bool(LEAK.search(out.get("effect_label") or "")),
         "claim_words": len(claim.split()) if claim else 0,
         "too_long": len(claim.split()) > 34,
-        "unterminated": bool(claim) and claim[-1] not in ".!?",
+        # a closing quote or bracket after the stop is fine: 'the range they call "big."'
+        "unterminated": bool(claim) and claim.rstrip('"\u201d\')]').rstrip()[-1:] not in ".!?",
         "has_stats": bool(re.search(r"\b[pF]\s*[<=>]|\bp\s*[<=>]\s*\.?\d|η|Cohen|\bCI\b|\bSD\b", text)),
-        "ok": bool(claim) and bool(method) and not out.get("insufficient"),
+        # a spelled-out sample size is a formatting tell, not a style choice: it has to be the same on every card
+        "spelled_n": bool(re.search(r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|"
+                                    r"thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|"
+                                    r"thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand)[\s-]"
+                                    r"(?:\w+\s+){0,3}?(?:participants|people|students|adults|children|"
+                                    r"undergraduates|volunteers|subjects|dogs|men|women)\b", method, re.I)),
+        # the source says the study found an absence and the claim does not say so: read it before dealing it
+        "polarity_check": bool(source) and bool(_ABSENCE.search(source)) and not bool(_ABSENCE.search(claim)),
+        "no_method": bool(claim) and not method,
+        "hedged": bool(_HEDGE.search(claim)),
+        # a claim with no method line is thinner but still playable; a card with no claim is not a card
+        "ok": bool(claim) and not out.get("insufficient"),
     }
 
 
-def cards(g: dict, items: list[dict]) -> list[dict]:
+def cards(g: dict, items: list[dict], abstracts: dict[str, dict] | None = None) -> list[dict]:
     """The input each card gets, gathered from the original study and nothing else.
 
     The replication's verdict quote is deliberately absent — see the module docstring. So is anything about how
     the replication turned out, including which attempt produced it.
     """
     A, P = g["attempts"], g["papers"]
+    abstracts = abstracts or {}
     rows_by_group: dict[tuple, list[dict]] = defaultdict(list)
     for a in A.values():
         if a["type"] != "replication":
@@ -185,7 +278,25 @@ def cards(g: dict, items: list[dict]) -> list[dict]:
     by_gid = {"g" + hashlib.md5(f"{doi}|{s}".encode()).hexdigest()[:9]: (doi, rs)
               for (doi, s), rs in rows_by_group.items()}
     out = []
+    # The famous tier's own material is thinner — a curated one-line description and a paragraph naming the
+    # original paper — and two of its fields, `critiques` and `replication_es`, ARE the answer. They are not in
+    # the record this reads from, and must never be added to it.
+    fam_by_gid = {"f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]: e for e in g["effects"].values()
+                  if e.get("famous")}
     for it in items:
+        if it["tier"] == "famous":
+            e = fam_by_gid.get(it["id"])
+            f = (e or {}).get("famous") or {}
+            out.append({
+                "id": it["id"], "tier": "famous", "doi_o": None,
+                "title_o": e["name"] if e else it.get("effect_name"),
+                "year_o": f.get("original_year"), "discipline": e.get("discipline") if e else None,
+                "tags": None, "n_o": None,
+                "description": f.get("description"),
+                # names the study and gives its design and sample sizes; says nothing about how it turned out
+                "claim_text_o": f.get("original_paper"),
+            })
+            continue
         if it["tier"] != "study":
             continue
         doi, rs = by_gid.get(it["id"], (None, []))
@@ -196,6 +307,9 @@ def cards(g: dict, items: list[dict]) -> list[dict]:
             "title_o": p.get("title") or it.get("claim"), "year_o": p.get("year"),
             "discipline": first("discipline"), "tags": first("tags"), "n_o": first("n_o"),
             "description": first("description"), "claim_text_o": first("claim_text_o"),
+            # the study's own abstract, where OpenAlex has one: the only source here that states a finding in
+            # sentences rather than in a test statistic
+            "abstract_o": (abstracts.get(doi) or {}).get("abstract"),
         })
     return out
 
@@ -216,7 +330,7 @@ def _pilot(cs: list[dict], n: int = 24) -> list[dict]:
     return picked[:n]
 
 
-def run(mode: str, max_usd: float, workers: int, limit: int | None) -> int:
+def run(mode: str, max_usd: float, workers: int, limit: int | None, tier: str | None = None) -> int:
     from . import game, load, registry, score
     from .ids import EffectLedger
     from .load import ROOT
@@ -225,7 +339,9 @@ def run(mode: str, max_usd: float, workers: int, limit: int | None) -> int:
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     score.score(g)
     items, _ = game.build(g)
-    cs = cards(g, items)
+    cs = cards(g, items, load.load_original_authors())
+    if tier:
+        cs = [c for c in cs if c["tier"] == tier]
     if mode == "pilot":
         cs = _pilot(cs)
     if limit:
@@ -265,12 +381,14 @@ def report(results: list[dict] | None = None) -> int:
     n = len(results)
     c = Counter()
     for r in results:
-        for k in ("ok", "leaks", "too_long", "unterminated", "has_stats"):
+        for k in ("ok", "leaks", "label_leaks", "polarity_check", "hedged", "no_method", "too_long",
+                  "unterminated", "has_stats"):
             c[k] += bool(r.get(k))
         c["insufficient"] += bool(r.get("insufficient"))
     print(f"\n   {n} claims written")
-    for k in ("ok", "insufficient", "leaks", "too_long", "unterminated", "has_stats"):
-        print(f"     {k:<14} {c[k]:>4}  {c[k] / n:>4.0%}" if n else "")
+    for k in ("ok", "insufficient", "leaks", "label_leaks", "polarity_check", "hedged", "spelled_n", "no_method",
+              "too_long", "unterminated", "has_stats"):
+        print(f"     {k:<15} {c[k]:>4}  {c[k] / n:>4.0%}" if n else "")
     lens = [r["claim_words"] for r in results if r.get("claim_words")]
     if lens:
         lens.sort()

@@ -70,6 +70,7 @@ def main() -> None:
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
     ap_ = sub.add_parser("authors", help="fetch author identities for the originals our finds point at")
     ap_.add_argument("--max-usd", type=float, default=0.10, help="OpenAlex spending cap")
+    ap_.add_argument("--deck", action="store_true", help="fetch abstracts for the originals the game deals cards about")
     rp = sub.add_parser("references", help="find the original in the replication's own reference list")
     rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
@@ -86,6 +87,7 @@ def main() -> None:
     cp.add_argument("--all", action="store_true", help="every card in the deck")
     cp.add_argument("--report", action="store_true", help="what is written, flagged or leaking, from the cache")
     cp.add_argument("--limit", type=int, help="stop after this many cards")
+    cp.add_argument("--tier", choices=["study", "famous"], help="only this tier of card")
     cp.add_argument("--max-usd", type=float, default=0.50, help="spending cap at worst-case prices")
     cp.add_argument("--workers", type=int, default=8)
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
@@ -99,7 +101,7 @@ def main() -> None:
         sys.exit(originals.run(sys.argv[2:]))
     a = ap.parse_args()
     if a.cmd == "authors":
-        sys.exit(authors.run(a.max_usd))
+        sys.exit(authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
     if a.cmd == "references":
         sys.exit(references.run(a.max_usd))
     if a.cmd == "osf":
@@ -109,7 +111,7 @@ def main() -> None:
     if a.cmd == "claims":
         if a.report:
             sys.exit(claims.report())
-        sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit))
+        sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit, a.tier))
     if a.cmd == "triage":
         sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers))
     if a.cmd == "discover":

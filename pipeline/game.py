@@ -16,12 +16,16 @@ from .ids import is_na
 LEAK = re.compile(r"replicat|reproduc|fail|robust|did not hold|null effect|not significant|no effect|debunk|retract", re.I)
 
 
-def _clean_claim(s: str | None) -> str | None:
+def _clean_claim(s: str | None, floor: int = 40) -> str | None:
+    """The 40-character floor is there to throw out FReD's fragments — "effect of velocity", "main effect of
+    condition". A written claim has already been through its own checks, so it gets a lower floor: "Oxytocin
+    increases trust in strangers." is 38 characters and a better card than anything the floor was protecting us
+    from."""
     if not s:
         return None
     t = re.sub(r"\s+", " ", str(s)).strip().strip('"“”').strip()
     t = re.sub(r"^(that|claim:)\s+", "", t, flags=re.I)
-    if len(t) < 40 or len(t) > 420 or LEAK.search(t):
+    if len(t) < floor or len(t) > 420 or LEAK.search(t):
         return None
     return t[0].upper() + t[1:]
 
@@ -71,7 +75,7 @@ def build(g: dict, written: dict[str, dict] | None = None) -> tuple[list[dict], 
         # A written claim where one exists, the database's own description where it does not. FReD's descriptions
         # are what the deck dealt until now and most of them cannot be played — see pipeline/claims.py.
         w = written.get(gid) or {}
-        claim = _clean_claim(w.get("claim")) or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
+        claim = _clean_claim(w.get("claim"), 30) or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
         if not claim:
             continue
         p = P.get(doi_o, {})
@@ -120,17 +124,21 @@ def build(g: dict, written: dict[str, dict] | None = None) -> tuple[list[dict], 
         if not fam or fam["status"] not in ("replicated", "not_replicated", "reversed"):
             continue
         claim = _clean_claim(fam.get("description"))
-        if not claim:
+        if not claim and not (written.get("f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]) or {}).get("claim"):
             continue
         gid = "f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]
+        w = written.get(gid) or {}
+        claim = _clean_claim(w.get("claim"), 30) or claim
         items.append({
             "id": gid, "tier": "famous", "claim": claim, "effect_name": e["name"],
+            "method": _clean_method(w.get("method")), "written": bool(w.get("claim")),
             "year": fam.get("original_year"), "journal": None, "discipline": e.get("discipline"),
             "cues": {"gs_citations": fam.get("gs_citations")},
         })
         reveals[gid] = {
             "id": gid, "answer": "successful" if fam["status"] == "replicated" else "failed",
             "curated_status": fam["status_raw"], "critiques": fam.get("critiques"),
+            "effect_label": (written.get(gid) or {}).get("effect_label"),
             "original_paper": fam.get("original_paper"),
             "effect": {"slug": e["slug"], "name": e["name"]}, "finding": None, "replications": [],
         }

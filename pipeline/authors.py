@@ -83,6 +83,36 @@ def fetch(dois: list[str], max_usd: float) -> dict[str, dict]:
     return out
 
 
+def run_deck(max_usd: float = 0.20) -> int:
+    """Fetch the OpenAlex record — above all the abstract — for every original the game deals a card about.
+
+    The claim writer was being given a bare result sentence, and FReD's result sentences are often an omnibus
+    F or chi-square with no direction in them. Asked to write a finding from that, a model supplies the direction
+    from the title, which is how a card ends up asserting something the study never reported. The study's own
+    abstract is the material that was missing, OpenAlex serves it free, and we already hold the identifiers.
+    """
+    from . import game, load, registry, score
+    from .ids import EffectLedger
+    from .load import ROOT
+
+    src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
+    score.score(g)
+    items, _ = game.build(g, load.load_claims())
+    from .claims import cards as claim_cards
+    want = sorted({c["doi_o"] for c in claim_cards(g, items) if c.get("doi_o")})
+    existing = load.load_original_authors()
+    todo = [d for d in want if not (existing.get(d) or {}).get("abstract")]
+    print(f"  {len(want)} originals behind game cards · {len(want) - len(todo)} already have an abstract · "
+          f"{len(todo)} to fetch")
+    out = {**existing, **fetch(todo, max_usd)}
+    DISCOVERY.mkdir(parents=True, exist_ok=True)
+    (DISCOVERY / "original_authors.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    got = sum(1 for d in want if (out.get(d) or {}).get("abstract"))
+    print(f"  {got} of {len(want)} card originals now have an abstract · {_spent['calls']} calls · ${_spent['usd']:.3f}")
+    return 0
+
+
 def run(max_usd: float = 0.10) -> int:
     from . import load, queue, registry
     from .ids import EffectLedger

@@ -124,6 +124,13 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
             problems.append(f"game item {it['id']} has no reveal")
         if "answer" in it:
             problems.append(f"game item {it['id']} ships its answer in the card")
+    # the same sentence on two cards with two different answers is unfair whichever way the player guesses
+    by_claim: dict[str, list[str]] = {}
+    for it in items:
+        by_claim.setdefault(it["claim"].strip().lower(), []).append(it["id"])
+    for claim, ids in by_claim.items():
+        if len(ids) > 1 and len({reveals[i]["answer"] for i in ids if i in reveals}) > 1:
+            problems.append(f"cards {', '.join(ids)} deal the identical claim with different answers: {claim[:70]}")
     study = [reveals[i["id"]]["answer"] for i in items if i["tier"] == "study"]
     if study:
         rate = sum(a == "successful" for a in study) / len(study)
