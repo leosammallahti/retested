@@ -86,6 +86,7 @@ def main() -> None:
     cp = sub.add_parser("claims", help="write the plain-language claim each game card shows")
     cp.add_argument("--pilot", action="store_true", help="24 cards spread across disciplines, for reading before scaling")
     cp.add_argument("--all", action="store_true", help="every card in the deck")
+    cp.add_argument("--plain", action="store_true", help="re-ask, in ordinary words, the cards that read like the paper")
     cp.add_argument("--report", action="store_true", help="what is written, flagged or leaking, from the cache")
     cp.add_argument("--limit", type=int, help="stop after this many cards")
     cp.add_argument("--tier", choices=["study", "famous", "found"], help="only this tier of card")
@@ -111,6 +112,8 @@ def main() -> None:
     if a.cmd == "link":
         sys.exit(link.run(a.openalex, a.max_usd, a.check))
     if a.cmd == "claims":
+        if a.plain:
+            sys.exit(claims.run_plain(a.max_usd, a.workers, a.limit))
         if a.report:
             sys.exit(claims.report())
         sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit, a.tier))

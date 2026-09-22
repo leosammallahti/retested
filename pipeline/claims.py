@@ -503,3 +503,169 @@ def report(results: list[dict] | None = None) -> int:
         lens.sort()
         print(f"     claim length: median {lens[len(lens) // 2]} words, range {lens[0]}–{lens[-1]}")
     return 0
+
+
+# ---------------------------------------------------------------- second pass: say it in ordinary words
+
+PLAIN_VERSION = "p1"
+
+# What "written at the paper's level rather than the player's" looks like from the outside. Not a definition of
+# jargon — a net wide enough to catch the cards worth re-asking about, at 19% of the deck.
+_LONG = re.compile(r"\b\w{13,}\b")
+_JARGON = re.compile(r"\b(?:paradigm|stimuli|stimulus|valence|salien\w+|construct|dyad\w*|congruen\w+|priming|"
+                     r"primed|latency|latencies|cortex|cortical|gyrus|amygdala|cerebell\w+|neural|stereotypy|"
+                     r"prospective memory|response conflict|task[- ]switch\w*|n[- ]back|implicit association|"
+                     r"factor structure|bifactor|latent|mediat\w+|moderat\w+|self[- ]construal|affordance|"
+                     r"schema|heuristic|utilitarian|deontolog\w+|tact\w*|mand\w*|desensitiz\w+|"
+                     r"cognitive reflection|oral motor)\b", re.I)
+
+PLAIN_SYSTEM = """You are editing one card in a game. A player reads a psychology finding and guesses whether a
+later study found the same thing again. The card below is accurate but reads like the paper it came from, and the
+player has no training in psychology. Say the same thing in ordinary words.
+
+RULES.
+- Do NOT change what is claimed. Not the direction, not who it is about, not how strong it is. You are changing
+  the words, nothing else.
+- Explain a technical term inside the sentence or drop it for what it means: "vocal stereotypy" is repetitive
+  noises a child makes; "tacts and mands" are naming things and asking for things; "cognitive reflection" is
+  overriding a first instinct.
+- Keep it under 30 words, present tense, flat and unhedged. No "tend to", "may", "can", "is associated with".
+- Never mention replication, a later study, fame, controversy, authors or years.
+- If the finding genuinely cannot be said in ordinary words without changing what it claims, return the claim
+  UNCHANGED and set "changed" to false. An accurate hard card beats a readable wrong one.
+
+Return one JSON object: {"claim": "<the plain version, or the original unchanged>",
+                         "method": "<the method line in ordinary words, or unchanged, or null>",
+                         "changed": <true|false>, "note": "<= 12 words"}"""
+
+
+def _plain_user(card: dict, rec: dict) -> str:
+    bits = [f"CLAIM AS IT STANDS: {rec.get('claim')}"]
+    if rec.get("method"):
+        bits.append(f"METHOD AS IT STANDS: {rec['method']}")
+    if card.get("abstract_o"):
+        bits.append(f"THE STUDY'S ABSTRACT, so you can tell what the terms mean:\n  {card['abstract_o'][:2000]}")
+    elif card.get("claim_text_o"):
+        bits.append(f"WHAT THE STUDY REPORTED:\n  {card['claim_text_o'][:1200]}")
+    return "\n".join(bits)
+
+
+def needs_plain(claim: str) -> bool:
+    return bool(_JARGON.search(claim)) or bool(_LONG.search(claim)) or len(claim.split()) > 28
+
+
+def _meaning_changed(old: str, new: str) -> str | None:
+    """Did the rewrite change what is claimed, rather than how it is said?
+
+    The first version of this guard rejected any content word the source did not already contain, which rejected
+    every rewrite: replacing "vocal stereotypy" with "repetitive noises a child makes" introduces new words by
+    definition, and that is the entire point of the pass. What must not change is the CLAIM — its polarity, the
+    direction of its comparison, and its numbers. Those are checkable; vocabulary is not.
+    """
+    # Both tests are ASYMMETRIC on purpose. A paraphrase legitimately drops the word that carried the direction
+    # — "reduces postoperative pain" becomes "lowers their pain", "reduces the false fame effect" becomes "stops
+    # repeated names from feeling famous" — and an earlier symmetric version rejected every one of those. Only a
+    # genuine reversal is a meaning change: an increase written as a decrease, or an absence written as a
+    # presence. Gaining a negation ("no longer makes the noises" for "reduces the noises") is fine.
+    neg = lambda t: bool(re.search(r"\bno\b|\bnot\b|\bnone\b|\bneither\b|\bnever\b|\bwithout\b", t, re.I))  # noqa: E731
+    if neg(old) and not neg(new):
+        return "polarity"
+    up = r"\b(?:more|higher|greater|larger|better|faster|increase\w*|raises?|improves?)\b"
+    dn = r"\b(?:less|fewer|lower|smaller|shorter|worse|slower|decrease\w*|reduces?|impairs?)\b"
+    o_up, o_dn = bool(re.search(up, old, re.I)), bool(re.search(dn, old, re.I))
+    n_up, n_dn = bool(re.search(up, new, re.I)), bool(re.search(dn, new, re.I))
+    if (o_up and not o_dn and n_dn and not n_up) or (o_dn and not o_up and n_up and not n_dn):
+        return "direction"
+    nums = lambda t: set(re.findall(r"\d+(?:\.\d+)?", t))  # noqa: E731
+    if nums(new) - nums(old):
+        return "new numbers"
+    return None
+
+
+def plain_one(card: dict, rec: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
+    gid = re.sub(r"[^A-Za-z0-9._-]+", "_", rec["id"])[:120]
+    f = cache_dir / f"{gid}.json"
+    if f.exists():
+        return json.loads(f.read_text(encoding="utf-8"))
+    if meter.over:
+        return None
+    body = json.dumps({
+        "model": MODEL, "temperature": 0, "max_tokens": 500, "thinking": {"type": "disabled"},
+        "response_format": {"type": "json_object"},
+        "messages": [{"role": "system", "content": PLAIN_SYSTEM},
+                     {"role": "user", "content": _plain_user(card, rec)}],
+    }).encode()
+    d = None
+    for attempt in range(5):
+        try:
+            req = urllib.request.Request(URL, data=body, headers={"Authorization": f"Bearer {key}",
+                                                                  "Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=120) as r:
+                d = json.loads(r.read())
+            break
+        except (urllib.error.URLError, TimeoutError):
+            if attempt == 4:
+                return None
+            time.sleep(2 * 2 ** attempt)
+    meter.add(d.get("usage") or {})
+    try:
+        out = json.loads(d["choices"][0]["message"]["content"])
+    except (KeyError, json.JSONDecodeError):
+        out = {"changed": False}
+    new = (out.get("claim") or "").strip()
+    flags = _flags({**rec, "claim": new or rec.get("claim"), "method": out.get("method") or rec.get("method")},
+                   card.get("description") or "")
+    changed = _meaning_changed(rec.get("claim") or "", new) if new else None
+    rec2 = {"id": rec["id"], "plain_version": PLAIN_VERSION, **out, "drifted": changed,
+            "accepted": bool(new) and out.get("changed") and flags["ok"] and not flags["leaks"]
+                        and not changed and len(new.split()) <= 34}
+    f.write_text(json.dumps(rec2, ensure_ascii=False), encoding="utf-8")
+    return rec2
+
+
+def run_plain(max_usd: float, workers: int, limit: int | None) -> int:
+    """Re-ask, in ordinary words, only the cards that read like the paper."""
+    from . import game, load, registry, score
+    from .ids import EffectLedger
+    from .load import ROOT
+    src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
+    score.score(g)
+    items, _ = game.build(g, load.load_claims())
+    cards_by_id = {c["id"]: c for c in cards(g, items, load.load_original_authors())}
+    cards_by_id.update({c["id"]: c for c in found_cards(_queue_candidates(g))})
+    written = {r["id"]: r for r in json.loads(OUT.read_text(encoding="utf-8"))} if OUT.exists() else {}
+    todo = [r for gid, r in sorted(written.items())
+            if r.get("ok") and r.get("claim") and needs_plain(r["claim"]) and gid in cards_by_id]
+    if limit:
+        todo = todo[:limit]
+    key = _key()
+    b0 = balance(key)
+    cache_dir = CACHE / "claims" / MODEL / f"plain-{PLAIN_VERSION}"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    meter = Meter(max_usd)
+    print(f"  {len(todo)} of {sum(1 for r in written.values() if r.get('ok'))} claims read like the paper · "
+          f"cap ${max_usd:.2f} · balance ${b0}")
+    done = []
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = [ex.submit(plain_one, cards_by_id[r["id"]], r, key, meter, cache_dir) for r in todo]
+        for fu in as_completed(futs):
+            if (r := fu.result()):
+                done.append(r)
+    acc = [r for r in done if r.get("accepted")]
+    for r in acc:
+        w = written[r["id"]]
+        w["claim_before_plain"], w["claim"] = w["claim"], r["claim"]
+        if r.get("method"):
+            w["method_before_plain"], w["method"] = w.get("method"), r["method"]
+        w.update(_flags(w, (cards_by_id[r["id"]].get("description") or "")))
+        w["plain"] = True
+    OUT.write_text(json.dumps(sorted(written.values(), key=lambda r: r["id"]), ensure_ascii=False), encoding="utf-8")
+    b1 = balance(key)
+    real = (b0 - b1) if (b0 is not None and b1 is not None) else float("nan")
+    print(f"  {len(acc)} rewrites accepted, {sum(1 for r in done if r.get('drifted'))} rejected for drifting from "
+          f"the source, {sum(1 for r in done if not r.get('changed'))} left alone by the editor · "
+          f"est ${meter.usd:.3f} · real ${real:.3f}")
+    left = sum(1 for r in written.values() if r.get("ok") and needs_plain(r.get("claim") or ""))
+    print(f"  claims still reading like the paper: {left}")
+    return 0
