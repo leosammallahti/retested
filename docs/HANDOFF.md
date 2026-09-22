@@ -294,12 +294,23 @@ original's abstract. They are a fourth mode rather than mixed in: they succeed m
 record, so shuffling them in would move the base rate a player calibrates against, and nobody has reviewed one.
 The stamp says "unreviewed" and the reveal carries the whole provenance with a link into the queue.
 
-**The fairness test, which is the open question.** D3 §7 asks whether a model can guess the answer from the card
+**Then the deck was reviewed at scale and fixed again.** Six readers over 80 shipped cards put the previous
+version at 15–20% serious fidelity errors and 29% would-not-deal on playability. Prompt c5 turns each named
+defect into a rule (a prediction is not a result, a null is not an equivalence, a definition is not a finding, a
+mismatched source is a refusal…), five of them as mechanical checks. Two of the defects were bugs here, not in
+the writing: the leak filter matched bare "fail" and was killing clean claims while leaving garbled database
+sentences in their place, and the `written` flag recorded whether a claim existed rather than whether it was
+used, so the daily set was dealing fallbacks. **827 cards, 757 written**, and a hand-read of 16 fresh cards finds
+14 clean. Roughly one in eight still reads like the paper rather than the player.
+
+**The fairness test, which is now settled.** D3 §7 asks whether a model can guess the answer from the card
 alone. Four blind guessers on a balanced 22-card pilot: 75% where they did not recognise the study (95% CI
 62–85%), against 50% chance. All four explained it the same way — failures cluster at small samples — and **that
 explanation is false**: successful cards have the larger median N, 132 against 112 in the pilot and 94 against 79
-across the deck. The leak is real and its stated cause is wrong. The same test has not been run against the old
-descriptions, so nobody yet knows whether rewriting made it better or worse.
+across the deck. The leak is real and its stated cause is wrong. **The control settles what it means**: the same
+80 cards worded as the deck worded them *before* the rewrite leak at 69% (CI 62–75%) against 75% after. Heavily
+overlapping — the deck already leaked at this rate, so the leak is the cards' design and content cues, which is
+what a player is meant to reason from, and not the writing.
 
 ## 3. Next steps, in order
 
@@ -314,10 +325,10 @@ descriptions, so nobody yet knows whether rewriting made it better or worse.
    still thin: medium-tier screening rests on 40 labels made by Claude rather than a person, and
    `reference_scan` medium at 8/14 is the one band that might or might not reach the 90% line with more reading
    — 195 card rows turn on it.
-3. **Settle the fairness test.** The model-guess test reads 75% from the card alone and the explanation every
-   guesser offered is false (see 2h). Two things would settle it, both free: run the same test against the OLD
-   descriptions as a control, and run it on a larger balanced sample. If the rewrite did not move the number,
-   the leak is the deck's design cues — which is the game — and nothing needs fixing.
+3. ~~**Settle the fairness test.**~~ Done — the control says the old descriptions leaked at 69% against the new
+   claims' 75%, on overlapping intervals, so rewriting did not make the game less fair and more prose work will
+   not change it. What is left on the deck is playability: about one card in eight still reads like the paper
+   rather than the player, and the remaining fix is per-card editing, not another pass.
 4. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
    Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
 5. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
