@@ -63,9 +63,11 @@ def _p_bucket(p) -> str | None:
 
 
 def build(g: dict, written: dict[str, dict] | None = None,
-          found: list[dict] | None = None) -> tuple[list[dict], dict[str, dict]]:
+          found: list[dict] | None = None,
+          refused: set[str] | None = None) -> tuple[list[dict], dict[str, dict]]:
     A, F, P, E = g["attempts"], g["findings"], g["papers"], g["effects"]
     written = written or {}
+    refused = refused or set()
     eff_by_id = {e["id"]: e for e in E.values()}
     groups: dict[tuple, list[tuple[dict, dict]]] = defaultdict(list)
     for a in A.values():
@@ -83,6 +85,8 @@ def build(g: dict, written: dict[str, dict] | None = None,
         gid = "g" + hashlib.md5(f"{doi_o}|{study}".encode()).hexdigest()[:9]
         # A written claim where one exists, the database's own description where it does not. FReD's descriptions
         # are what the deck dealt until now and most of them cannot be played — see pipeline/claims.py.
+        if gid in refused:
+            continue              # the writer read this one and said it is not a finding; see load_refused_claims
         w = written.get(gid) or {}
         written_claim = _clean_claim(w.get("claim"), 30)
         claim = written_claim or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
@@ -137,6 +141,8 @@ def build(g: dict, written: dict[str, dict] | None = None,
         if not claim and not (written.get("f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]) or {}).get("claim"):
             continue
         gid = "f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]
+        if gid in refused:
+            continue
         w = written.get(gid) or {}
         written_claim = _clean_claim(w.get("claim"), 30)
         claim = written_claim or claim

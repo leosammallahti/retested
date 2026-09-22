@@ -268,6 +268,23 @@ def load_claims() -> dict[str, dict]:
     return {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8")) if r.get("ok")}
 
 
+def load_refused_claims() -> set[str]:
+    """Cards the claim writer looked at and said could not be made into a card.
+
+    Its refusals are reasoned and mostly right: "The inability of individuals to account for inflation" is a
+    definition of money illusion rather than a finding, "poor self-esteem results in a decrease in
+    self-appreciation" is true by what the words mean, "Dyslexia). Adults who stutter show similar scores…" is a
+    fragment of a database field. The deck used to fall back to that same database text whenever a claim was
+    missing, which put all 58 of them back in front of players — the deck's fallback silently overruling the
+    only check that had read them. A refusal now stands.
+    """
+    p = DISCOVERY / "claims.json"
+    if not p.exists():
+        return set()
+    return {r["id"] for r in json.loads(p.read_text(encoding="utf-8"))
+            if r.get("insufficient") or r.get("absence_written_positive")}
+
+
 def load_verified_links() -> dict[str, str]:
     """The model's per-link verdict, keyed by find id: "right", "wrong" or "unclear".
 

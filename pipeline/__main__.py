@@ -31,7 +31,7 @@ def build(accept_baseline: bool) -> int:
                                       load.load_original_authors())
     before = len(candidates)
     candidates = queue.dedupe(candidates)
-    items, reveals = game.build(g, load.load_claims(), candidates)
+    items, reveals = game.build(g, load.load_claims(), candidates, load.load_refused_claims())
     if before != len(candidates):
         step(f"deduped {before - len(candidates)} repeat deposits of work already in the queue")
     queue.consequences(candidates, g)
