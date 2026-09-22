@@ -117,6 +117,9 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
     for it in items:
         if LEAK.search(it["claim"]):
             problems.append(f"game item {it['id']} leaks the answer: {it['claim'][:80]}")
+        # the method line is on the card too, so it is held to the same test as the claim
+        if it.get("method") and LEAK.search(it["method"]):
+            problems.append(f"game item {it['id']} leaks the answer in its method line: {it['method'][:80]}")
         if it["id"] not in reveals:
             problems.append(f"game item {it['id']} has no reveal")
         if "answer" in it:

@@ -228,6 +228,14 @@ def load_merges() -> list[dict]:
     return yaml.safe_load(p.read_text(encoding="utf-8")) or []
 
 
+def load_claims() -> dict[str, dict]:
+    """The written game-card claims, keyed by card id. Empty until `python -m pipeline claims --all` has run."""
+    p = DISCOVERY / "claims.json"
+    if not p.exists():
+        return {}
+    return {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8")) if r.get("ok")}
+
+
 def load_triaged() -> list[dict]:
     """DeepSeek's screen of the discovered candidates. Empty until `python -m pipeline triage` has run."""
     f = DISCOVERY / "triaged.json"

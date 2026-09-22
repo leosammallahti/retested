@@ -2,13 +2,15 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
 interface Item {
-  id: string; tier: 'study' | 'famous'; claim: string; year: number | null; journal: string | null; discipline: string | null; effect_name?: string;
+  id: string; tier: 'study' | 'famous'; claim: string; method?: string | null; written?: boolean;
+  year: number | null; journal: string | null; discipline: string | null; effect_name?: string;
   cues: { n?: number | null; p?: string | null; r?: number | null; cited_by?: number | null; gs_citations?: number | null };
 }
 interface Rep { authors: string | null; year: number | null; journal: string | null; doi: string | null; n: number | null; r: number | null; quote: string | null }
 interface Reveal {
   id: string; answer: 'successful' | 'failed'; title_o?: string; authors_o?: string; replications: Rep[];
   finding: string | null; effect: { slug: string; name: string } | null; curated_status?: string; critiques?: string; original_paper?: string;
+  effect_label?: string | null;
 }
 interface Played { id: string; p: number; y: 0 | 1; hit: 0 | 1; brier: number; cues: number; day?: string }
 
@@ -108,6 +110,7 @@ export default function Game({ base }: { base: string }) {
         <div class="label">{card.tier === 'famous' ? 'Famous effect' : 'Original study'}{card.discipline && ` · ${card.discipline}`}{card.year && ` · ${card.year}`}</div>
         {card.effect_name && <h3 class="gname">{card.effect_name}</h3>}
         <p class="gclaim">{card.claim}</p>
+        {card.method && <p class="gmethod">{card.method}</p>}
         {card.journal && <p class="faint gj">Published in <i>{card.journal}</i></p>}
         <div class="gcues">
           {card.tier === 'study' && !reveal && cues === 0 && (card.cues.n || card.cues.p || card.cues.r != null) && (

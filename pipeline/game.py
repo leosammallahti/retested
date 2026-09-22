@@ -26,6 +26,14 @@ def _clean_claim(s: str | None) -> str | None:
     return t[0].upper() + t[1:]
 
 
+def _clean_method(s: str | None) -> str | None:
+    """How the study was run, shown under the claim. Held to the same leak test: it is on the card."""
+    if not s:
+        return None
+    t = re.sub(r"\s+", " ", str(s)).strip()
+    return None if len(t) < 20 or len(t) > 500 or LEAK.search(t) else t
+
+
 def _p_bucket(p) -> str | None:
     try:
         p = float(p)
@@ -42,8 +50,9 @@ def _p_bucket(p) -> str | None:
     return "p > .05"
 
 
-def build(g: dict) -> tuple[list[dict], dict[str, dict]]:
+def build(g: dict, written: dict[str, dict] | None = None) -> tuple[list[dict], dict[str, dict]]:
     A, F, P, E = g["attempts"], g["findings"], g["papers"], g["effects"]
+    written = written or {}
     eff_by_id = {e["id"]: e for e in E.values()}
     groups: dict[tuple, list[tuple[dict, dict]]] = defaultdict(list)
     for a in A.values():
@@ -58,7 +67,11 @@ def build(g: dict) -> tuple[list[dict], dict[str, dict]]:
         outs = {r["reported_success"] for _, r in pairs}
         if len(outs) != 1 or next(iter(outs)) not in ("successful", "failed"):
             continue
-        claim = next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
+        gid = "g" + hashlib.md5(f"{doi_o}|{study}".encode()).hexdigest()[:9]
+        # A written claim where one exists, the database's own description where it does not. FReD's descriptions
+        # are what the deck dealt until now and most of them cannot be played — see pipeline/claims.py.
+        w = written.get(gid) or {}
+        claim = _clean_claim(w.get("claim")) or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
         if not claim:
             continue
         p = P.get(doi_o, {})
@@ -66,13 +79,14 @@ def build(g: dict) -> tuple[list[dict], dict[str, dict]]:
         if not year:
             continue
         r0 = pairs[0][1]
-        gid = "g" + hashlib.md5(f"{doi_o}|{study}".encode()).hexdigest()[:9]
         f = F[doi_o]
         effect = eff_by_id.get((f.get("effects") or [None])[0]) if f.get("effects") else None
         items.append({
             "id": gid,
             "tier": "study",
             "claim": claim,
+            "method": _clean_method(w.get("method")),
+            "written": bool(w.get("claim")),
             "year": int(year),
             "journal": p.get("journal"),
             "discipline": r0.get("discipline"),
@@ -96,6 +110,8 @@ def build(g: dict) -> tuple[list[dict], dict[str, dict]]:
             } for a in reps[:4]],
             "finding": f["slug"],
             "effect": {"slug": effect["slug"], "name": effect["name"]} if effect else None,
+            # the writer's own name for the phenomenon, shown only here — it may contain words the card may not
+            "effect_label": w.get("effect_label"),
         }
 
     # famous-effects tier: curated verdicts (2021-22 list), clearly labelled as such in the reveal

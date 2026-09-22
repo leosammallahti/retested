@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import authors, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate
+from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -26,7 +26,7 @@ def build(accept_baseline: bool) -> int:
     g = registry.build(src, ledger)
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
-    items, reveals = game.build(g)
+    items, reveals = game.build(g, load.load_claims())
     candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), {**load.load_reference_links(), **load.load_links()}, g, load.load_known_replication_dois(), load.load_known_osf_ids(),
                                       load.load_surname_frequency(), load.load_osf(),
                                       load.load_original_authors())
@@ -81,6 +81,13 @@ def main() -> None:
                                                     "right earlier paper (`python -m pipeline originals --help`)")
     sub.add_parser("outcomes", add_help=False, help="hand-read audit of whether the verdicts were read correctly "
                                                     "(its own flags: `python -m pipeline outcomes --help`)")
+    cp = sub.add_parser("claims", help="write the plain-language claim each game card shows")
+    cp.add_argument("--pilot", action="store_true", help="24 cards spread across disciplines, for reading before scaling")
+    cp.add_argument("--all", action="store_true", help="every card in the deck")
+    cp.add_argument("--report", action="store_true", help="what is written, flagged or leaking, from the cache")
+    cp.add_argument("--limit", type=int, help="stop after this many cards")
+    cp.add_argument("--max-usd", type=float, default=0.50, help="spending cap at worst-case prices")
+    cp.add_argument("--workers", type=int, default=8)
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
     tp.add_argument("--tier", choices=["high", "medium"], default="high")
     tp.add_argument("--pilot", action="store_true", help="only that tier's labelled sample; report agreement")
@@ -99,6 +106,10 @@ def main() -> None:
         sys.exit(osf.run())
     if a.cmd == "link":
         sys.exit(link.run(a.openalex, a.max_usd, a.check))
+    if a.cmd == "claims":
+        if a.report:
+            sys.exit(claims.report())
+        sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit))
     if a.cmd == "triage":
         sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers))
     if a.cmd == "discover":
