@@ -35,7 +35,7 @@ import re
 import time
 import urllib.error
 import urllib.request
-from collections import defaultdict
+from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -45,6 +45,14 @@ from .triage import URL, Meter, _key, balance
 
 MODEL = "deepseek-v4-flash"
 PROMPT_VERSION = "v1"
+# A second prompt for the cases v1 could not settle. 663 links came back "unclear" and 80% of them are cases
+# where nobody holds a summary of the earlier paper, so the judge was handed a bare title and told that a shared
+# topic is not evidence. That rule is right for modern papers and wrong for these: a 1966 paper called "The
+# determinants of Rorschach card rejection: A replication" matched to a 1954 paper called "Rorschach card
+# rejection in psychodiagnosis" is not two papers that happen to share a topic, it is the same finding named the
+# same way, because mid-century psychology put the finding in the title. v2 says what to do when both records
+# are bare, and is run ONLY over the rows v1 called unclear.
+SECOND_VERSION = "v2"
 OUT = DISCOVERY / "verified_links.json"
 VERDICTS = ("right", "wrong", "unclear")
 
@@ -76,6 +84,25 @@ comparison; the later abstract quoting a result the earlier abstract reports.
 CHECK THE DIRECTION OF TIME. The earlier paper must have come out before the later one. Same year is possible;
 the earlier paper published after the later one is "wrong"."""
 
+SECOND_SYSTEM = SYSTEM + """
+
+WHEN NEITHER RECORD HAS AN ABSTRACT. You are judging older papers, where the title often names the finding
+outright. "A shared topic is not evidence" above is a rule about modern papers with broad titles; do not let it
+make you refuse a title that names the same specific thing.
+
+Say "right" when the two titles name the SAME SPECIFIC construct, measure, scale, task or effect — not the same
+broad field. "Rorschach card rejection" and "Rorschach card rejection"; "effects of ward change on patients'
+behaviour" and "effects of environmental change on behaviour of hospitalised patients"; a named scale, test or
+paradigm appearing in both. The later paper calling itself a replication, a failure to replicate, a
+cross-validation or "Part II" of the earlier title is strong support.
+
+Keep saying "wrong" when the specific things named differ, even within one field — "social intelligence" and
+"MMPI social introversion on WAIS performance" are not the same measure. Keep saying "wrong" when the later
+paper names an author or year the matched record does not fit. Keep saying "unclear" when a title is too general
+to name anything specific ("A study of personality factors"), or when the later paper names a different paper
+than this one and this one merely works on the topic — a cross-validation BY someone else is not the original
+unless the later paper names them."""
+
 
 def _user_msg(k: dict) -> str:
     m = k["matched_to"]
@@ -104,7 +131,8 @@ def _cases(pool: str, limit: int | None = None, only_cids: set[str] | None = Non
     return cases[:limit] if limit else cases
 
 
-def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
+def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path,
+               system: str = SYSTEM, version: str = PROMPT_VERSION) -> dict | None:
     gid = re.sub(r"[^A-Za-z0-9._-]+", "_", k["cid"])[:120]
     f = cache_dir / f"{gid}.json"
     if f.exists():
@@ -114,7 +142,7 @@ def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
     body = json.dumps({
         "model": MODEL, "temperature": 0, "max_tokens": 200, "thinking": {"type": "disabled"},
         "response_format": {"type": "json_object"},
-        "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": _user_msg(k)}],
+        "messages": [{"role": "system", "content": system}, {"role": "user", "content": _user_msg(k)}],
     }).encode()
     d = None
     for attempt in range(5):
@@ -135,23 +163,24 @@ def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
     except (KeyError, json.JSONDecodeError):
         out = {"verdict": "unclear", "why": "model returned no usable JSON"}
     v = out.get("verdict")
-    rec = {"id": k["cid"], "band": k["band"], "model": MODEL, "prompt_version": PROMPT_VERSION,
+    rec = {"id": k["cid"], "band": k["band"], "model": MODEL, "prompt_version": version,
            "verdict": v if v in VERDICTS else "unclear", "why": (out.get("why") or "")[:300],
            "usage": d.get("usage")}
     f.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")
     return rec
 
 
-def _run_cases(cases: list[dict], max_usd: float, workers: int, label: str) -> list[dict]:
+def _run_cases(cases: list[dict], max_usd: float, workers: int, label: str,
+               system: str = SYSTEM, version: str = PROMPT_VERSION) -> list[dict]:
     key = _key()
-    cache_dir = CACHE / "verify" / MODEL / PROMPT_VERSION
+    cache_dir = CACHE / "verify" / MODEL / version
     cache_dir.mkdir(parents=True, exist_ok=True)
     meter = Meter(max_usd)
-    print(f"  {len(cases)} {label} · model {MODEL} · prompt {PROMPT_VERSION} · cap ${max_usd:.2f} "
+    print(f"  {len(cases)} {label} · model {MODEL} · prompt {version} · cap ${max_usd:.2f} "
           f"· balance ${balance(key)}")
     got, t0 = [], time.time()
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        futs = [ex.submit(verify_one, k, key, meter, cache_dir) for k in cases]
+        futs = [ex.submit(verify_one, k, key, meter, cache_dir, system, version) for k in cases]
         for i, fut in enumerate(as_completed(futs), 1):
             r = fut.result()
             if r:
@@ -236,6 +265,73 @@ def _by_band(pairs: list[tuple[dict, str]]) -> None:
         print(f"   {b:<34} {d['n']:>5} {d['agree'] / d['n']:>6.0%}   {d['conf']:>9} {rate:>15}")
 
 
+def _unclear_ids() -> set[str]:
+    if not OUT.exists():
+        return set()
+    return {r["id"] for r in json.loads(OUT.read_text()) if r["verdict"] == "unclear"}
+
+
+def second_calibrate(max_usd: float, workers: int) -> int:
+    """Does the second prompt settle the cases the first could not, without settling them wrongly?
+
+    Run over exactly the hand-read links v1 called unclear. Two things have to be true for v2 to be worth
+    running: it must turn a decent share of them into "right" where the reader said right, and the combined
+    set of confirmations — v1's plus v2's — must still clear the 90% bar. The second condition is the one that
+    matters, because promoting rows is only safe while the whole confirmed pool stays accurate.
+    """
+    labels = {r["cid"]: r for r in originals.read_labels()}
+    rows = {c["id"]: c for c in originals._pool("linked")}
+    usable = {cid: l for cid, l in labels.items() if cid in rows and not originals.stale(rows[cid], l)}
+    v1 = {r["id"]: r for r in json.loads(OUT.read_text())} if OUT.exists() else {}
+    todo = [cid for cid in usable if v1.get(cid, {}).get("verdict") == "unclear"]
+    if not todo:
+        print("no hand-read links were left unclear by the first pass")
+        return 0
+    got = _run_cases(_cases("linked", None, set(todo)), max_usd, workers,
+                     "hand-read links the first pass could not settle", SECOND_SYSTEM, SECOND_VERSION)
+    _score(got, usable)
+    # The number that decides it: v1's confirmations plus v2's, scored together against the reader.
+    combined = {cid: r["verdict"] for cid, r in v1.items() if r["verdict"] == "right"}
+    combined.update({r["id"]: r["verdict"] for r in got if r["verdict"] == "right"})
+    ok = sum(1 for cid, v in combined.items() if usable.get(cid, {}).get("label") == "right")
+    bad = sum(1 for cid, v in combined.items() if usable.get(cid, {}).get("label") == "wrong")
+    if ok + bad:
+        lo, hi = audit.wilson(ok, ok + bad)
+        print(f"\n   BOTH PASSES TOGETHER: of {ok + bad} confirmed links the reader had settled, {ok} were right"
+              f" — {ok / (ok + bad):.0%} (95%: {lo:.0%}–{hi:.0%})")
+        print(f"   {'CLEARS' if lo >= 0.90 else 'DOES NOT CLEAR'} the 90% bar")
+    return 0
+
+
+def second(max_usd: float, workers: int, limit: int | None) -> int:
+    """Re-judge every link the first pass left unclear, and keep whichever verdict is decisive."""
+    todo = _unclear_ids()
+    if not todo:
+        print("nothing left unclear — run --all first")
+        return 1
+    cases = _cases("linked", limit, todo)
+    got = _run_cases(cases, max_usd, workers, "links the first pass could not settle",
+                     SECOND_SYSTEM, SECOND_VERSION)
+    merged = {r["id"]: r for r in json.loads(OUT.read_text())}
+    changed = Counter()
+    for r in got:
+        # PROMOTE ONLY. Scored on the 64 hand-read links the first pass left unclear, the second prompt's
+        # confirmations were 29 right of 33 — 88%, which is under the bar alone but leaves the pool it joins at
+        # 97% (289 of 297). Its rejections were not: 2 of the 3 rows it called wrong the reader had called right.
+        # So a "right" is kept and anything else leaves the row unclear, falling back to the band rule. Using a
+        # judgement only where it was measured to work is the whole discipline here.
+        if r["verdict"] != "right":
+            changed["left unclear"] += 1
+            continue
+        changed[f"{merged[r['id']]['verdict']} -> right"] += 1
+        merged[r["id"]] = r
+    OUT.write_text(json.dumps(sorted(merged.values(), key=lambda r: r["id"]), ensure_ascii=False, indent=0),
+                   encoding="utf-8")
+    print("  " + " · ".join(f"{k}: {v}" for k, v in sorted(changed.items())))
+    report()
+    return 0
+
+
 def run(max_usd: float, workers: int, limit: int | None, pool: str) -> int:
     cases = _cases(pool, limit)
     got = _run_cases(cases, max_usd, workers, f"matched finds in pool '{pool}'")
@@ -272,6 +368,9 @@ def report() -> int:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="pipeline verify", description=__doc__.split("\n")[0])
     p.add_argument("--calibrate", action="store_true", help="score the model against the hand-read links")
+    p.add_argument("--second-calibrate", action="store_true",
+                   help="score the second prompt on the hand-read links the first left unclear")
+    p.add_argument("--second", action="store_true", help="re-judge every link the first pass left unclear")
     p.add_argument("--all", action="store_true", help="judge every matched find")
     p.add_argument("--report", action="store_true", help="what has been confirmed, by band")
     p.add_argument("--pool", default="linked", choices=sorted(originals.POOLS))
@@ -281,6 +380,10 @@ def main(argv: list[str] | None = None) -> int:
     a = p.parse_args(argv)
     if a.calibrate:
         return calibrate(a.max_usd, a.workers, a.limit)
+    if a.second_calibrate:
+        return second_calibrate(a.max_usd, a.workers)
+    if a.second:
+        return second(a.max_usd, a.workers, a.limit)
     if a.all:
         return run(a.max_usd, a.workers, a.limit, a.pool)
     if a.report:

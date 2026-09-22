@@ -548,3 +548,58 @@ For links whose method is `cited by this paper`, the model wrote `original_named
 cited work it meant. Handing that description back to the judge would be asking it whether it agrees with its own
 earlier answer. Those cases are judged from the replication's own abstract against the original's title and
 abstract, and nothing else — the same warning `originals.py` has always printed to human readers.
+
+### A second prompt for the cases the first could not settle
+
+663 links came back `unclear`, and **80% of those are rows where nobody holds a summary of the earlier paper** —
+the judge was handed a bare title and the instruction that a shared topic is not evidence. That instruction is
+right for modern papers and wrong for these. Read by hand, the refusals include:
+
+- *"The determinants of Rorschach card rejection: A replication"* (1966) → *"Rorschach card rejection in
+  psychodiagnosis"* (1954)
+- *"The effects of ward change on patients' psychopathology and behavior: A failure to replicate"* (1973) →
+  *"Effects of environmental change upon behavior of hospitalized schizophrenic patients"* (1968)
+
+Mid-century psychology puts the finding in the title, so a near-verbatim title match is not a coincidence of
+topic. It also includes refusals that are correct and must stay refused: *"Introversion, extraversion and social
+intelligence: A replication"* matched to *"the effects of MMPI social introversion on WAIS PA performance"* is
+not the same measure, and *"The MacAndrew alcoholism scale: A replication"* names MacAndrew while the matched
+record is Whisler & Cantor's cross-validation of that scale — a different paper.
+
+`SECOND_SYSTEM` (`v2`) says what to do when both records are bare, and runs only over the rows `v1` left unclear.
+
+Scored on the 64 hand-read links `v1` could not settle:
+
+| the model says | person: right | wrong | unclear |
+|---|---|---|---|
+| right | **29** | 4 | 1 |
+| wrong | 2 | 1 | 5 |
+| unclear | 8 | 10 | 4 |
+
+- On its own the second pass confirms at **88% (95%: 73–95%)** — under the bar, and it is recorded as under it.
+- **Both passes together: 289 of 297 confirmed links the reader had settled were right — 97% (95%: 95–99%).**
+  That is the pool that actually ships, and it clears.
+- Its rejections are not usable: of the 3 rows it called wrong, the reader had called 2 of them right.
+
+So the second pass **promotes only**. `right` is kept; anything else leaves the row unclear and falling back to
+the band rule. Using a judgement only where it was measured to work is the point of the whole file.
+
+Over all 663: **328 promoted, 335 left unclear, $0.305.** Confirmed links 1,500 → **1,828**.
+
+One weak spot is visible and is deliberately not acted on: in `reference_scan/medium` the second pass confirmed
+10 and the reader had called 6 of them right. n=10 is not a measurement, and promoting or demoting a band on a
+sample that size is the mistake this project made with `cited by this paper` (34 of 36, reverted the same day).
+It stays in, and more reading of that band is the thing that would settle it.
+
+### The route that was checked and closed
+
+1,721 psychology finds are recorded as not saying how the replication turned out, and they are the largest single
+loss in the funnel. **Only 573 of them have a summary at all**, and of those 573 exactly **14 contain a sentence
+that looks like a result** — all of which, read, report the ORIGINAL study's finding ("Previous research has
+shown that pictures of cognates are more easily named…"), not the replication's. The rest are study plans written
+before the data ("we expect perceivers to rate relatively quicker targets higher"), registered reports, teaching
+projects and OSF folder descriptions. The screen was right. Reaching these needs the documents themselves, and no
+prompt gets there.
+
+Crossref holds an abstract for **0 of 20** of the missing earlier papers; Semantic Scholar for **3 of 50**. These
+are mostly pre-1995 papers for which no abstract was ever deposited anywhere.
