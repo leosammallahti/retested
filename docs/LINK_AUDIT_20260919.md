@@ -809,3 +809,167 @@ which is correct and is the kind of case a careless reader gets backwards.
 else, which is roughly 300 papers behind a PDF rather than an API. Given Europe PMC's 61% yield, that is worth
 perhaps 180 more outcomes and needs a PDF parser, which this project does not have. The rest are paywalled and
 are not reachable at all.
+
+---
+
+## 2026-09-22 (later) · Reading the rows the verifier admits, and what a second pairing did to the label file
+
+`pipeline verify` took the shipped pool from 600 rows to 1,565 by judging rows instead of bands, and the price
+of that was stated at the time: its 98% is an average over every band, and an average that clears a bar does
+not license every part of it. **By this morning 1,858 of the 1,866 rows a page could show were admitted by the
+verifier rather than by any band rule**, and in the two bands with the worst priors nobody had read a single
+shipped row — `openalex_author_year` low, measured at 17–35% as a band, had 2 of its 136 shipped rows read, and
+`library_author_year` low, measured at 12–33%, had 1 of 70. `queue._overruled` exists to catch exactly this and
+could not fire, because it needs 20 reads of a band's own shipped rows and had nowhere near that.
+
+205 links read, five batches in parallel, each reader given the band's known failure shapes and told that
+`unclear` is an answer rather than a hedge:
+
+| band, shipped rows only | right | wrong | unclear | precision |
+|---|---|---|---|---|
+| `openalex_author_year` low | 37 | 1 | 2 | **97%** |
+| `library_author_year` low | 38 | 2 | 0 | **95%** |
+| `reference_scan` high | 37 | 2 | 1 | **95%** |
+| `reference_scan` low | 36 | 4 | 0 | 90% |
+
+**The verifier holds where it was least likely to.** In the two bands this project has called "not weak, wrong"
+— gallium phosphide matched to marital adjustment, protein structures to smoking — the rows it confirms read
+97% and 95%. That is the open risk of the whole per-row design, and it is now measured rather than assumed.
+
+**And the guard fired on its own — then fired the other way.** Pooled with earlier reads, `reference_scan`
+low's shipped rows first stood at 51 right and 6 wrong: **89.5%**, a hair under the bar, so `_overruled` named
+it and its 282 rows came off the pages. 89.5% against 90% at n=57 is not a real difference, so 40 more were
+read rather than argued about, and **they cleared it: 89 right of 97, 92% (85–96)**, and the rows are back.
+
+**The same 40-read treatment condemned the band next door.** `reference_scan` medium had been the safer of the
+two all day, and it is not: **78 right of 89, 88% (79–93)**, so it is overruled and **339 rows left the
+pages**. Both bands sat at "exactly 90%" in the previous session's reading, and the only thing that separated
+them was reading eighty more. `reference_scan` high moved up too, to 65 right of 68.
+
+Which is the argument for the whole mechanism rather than for any of these numbers: two bands that looked
+identical at n≈50 are 92% and 88% at n≈95, the gate moved twice in one evening without anybody editing a list,
+and the band a reader would have bet on was the one that failed.
+
+### The paper the matcher ranked second, settled
+
+The 180 confirmed runner-ups were left "held back, ~36 cards turn on it, read more of them". **45 more read: 32
+right, 8 wrong, 5 unclear.** With the 18 from 2026-09-21 that is **46 right of 58 — 79% (95%: 67–88%)**. The
+top of the interval is below the bar, so this is no longer an open question: the second choices do not ship,
+and `load.merged_links` should not merge them. All four failure shapes named in September turned up again in
+the new reads — the companion paper on women when the replication is of the one on men, a theoretical critique
+of an instrument instead of the study that used it, a review of a concept instead of its source study, and the
+wrong paper by the right author.
+
+### A judgement about a pairing has to record the pairing — including in the KEY
+
+This file has said three times that a label must record which paper it judged, and `matched_to` was added as a
+column to say so. The column was not enough. `audit.add` still replaced labels **by find id**, and a find has
+two pairings worth judging: the paper the matcher chose and the paper it ranked second. Recording the 45
+runner-up labels therefore **deleted six band labels**, five of them `wrong` verdicts that were holding weak
+bands down, and the gate moved with nothing in the file to say why. The key is now `(find, paper)`, the
+displaced labels are restored, and `audit.index`/`audit.label_for` pick the label that judged the pairing in
+force, falling back to an older label that never recorded one.
+
+This is the same failure as the verdict cache keyed on the find alone, one layer up. It was invisible while
+every find had exactly one pairing, and appeared the moment one had two.
+
+### Two places the gate had quietly been copied instead of asked
+
+- `outcomes.PAGE_GRADE` was a hand-maintained set of five bands with a comment saying it was "kept in step with
+  `queue.TRUSTED_LINKS`". It was not: it still named `cited by this paper/high`, a band renamed in September; it
+  never gained `openalex_author_year/medium`; and it predated `pipeline verify` entirely, so it judged by band
+  while the build judged by row. `outcomes --pool page` was scoring a population no page had shown for a day.
+  It now asks `queue._link_trusted`, as `originals._shows` already did.
+- **The link gate is computed from the PREVIOUS build's `candidates.json`.** So the first build after new
+  labels gates on the bands as they stood before them and the next build disagrees with it. That reported a
+  deck of 1,151 which the following build, with nothing changed in between, put at 1,096. Worse, a build that
+  fails the count-drop check writes nothing, so every measurement taken from `candidates.json` afterwards
+  describes a state that predates the work. `audit.candidates()` now prints one line on stderr when the label
+  files are newer than the build it is reading. Build twice after recording labels, or read the second number.
+
+### What a page shows, all of it
+
+| | |
+|---|---|
+| rows a page shows | **1,550** |
+| read by hand | 461 |
+| right | **427** |
+| wrong | 21 |
+| unclear (set aside) | 13 |
+| **precision** | **95%** (95%: 93–97) |
+
+The deck is **1,060 cards** — 493 from the record, 370 from our own finds, 197 famous. Down from 1,132 at the
+start of the day, and the whole of that fall is `reference_scan` medium leaving the pages on its own
+measurement. 285 links were read to get here and every one of them is in `original_audit.csv`.
+
+## 2026-09-22 (later) · The PDF route, built and measured
+
+1,135 silent finds had a DOI and no full text in Europe PMC, about 300 of them open access as PDFs, worth
+"perhaps 180 more outcomes" against Europe PMC's 61% yield. That estimate was too generous, and the route is
+still worth having.
+
+Nothing new had to be fetched to find the candidates: discovery cached each work's whole OpenAlex record, and
+`primary_location` carries `is_oa` and `pdf_url`, so `fulltext.oa_pdf_urls()` answers "which of these can we
+read" from disk at no cost. 144 silent finds had a PDF and no text.
+
+| | finds | |
+|---|---|---|
+| open-access PDF available | 144 | |
+| a Results section extracted | **83** | 58% |
+| publisher refused the request (HTTP error) | 43 | 30% |
+| a landing page served instead of the file | 8 | |
+| no Results section and too long to take whole | 6 | |
+| no text layer at all | 1 | |
+
+**The 30% refusal rate is the route's real limit, not the scanning.** Only one PDF in 144 had no text layer.
+
+Reading the 83 cost **$0.054** and produced **39 usable yes/no outcomes — 47%**, against Europe PMC's 61% and
+OSF's 6%. 37 reach a candidate, 25 reach the card pool, and 4 clear every gate a card has to clear.
+
+Two design decisions were made by measurement rather than by taste, and both went against the obvious choice:
+
+- **The garbled-scan guard was wrong and was deleted.** Counting common English words separates prose from OCR
+  debris in principle; measured on the 1971 *Psychonomic Science* scan that motivated it, the guard scored it
+  identically to a clean modern PDF — and that paper's Results section extracts perfectly readable prose
+  reporting `F = 2.72, df = 5/110`. The check would have thrown away a usable result to protect against a
+  header nobody reads. What actually protects the answer is the quote check that already exists: unreadable
+  text yields no answer rather than a wrong one.
+- **A short note has no headings, and the fallback has to be measured in pages.** "Effects of irrelevant colors
+  on reading of color names: A controlled replication" never writes the word "Results" and yielded nothing
+  until a whole-note fallback existed. A character budget generous enough to admit it — it extracts 17,600
+  characters from three pages — would also admit half the theses in the pile, so the test is `pages <= 4`. Both
+  papers that forced these decisions ended up producing usable outcomes.
+
+A third of the PDF fetches were spent on finds that already carried a `mixed` verdict from their abstract:
+`fulltext._silent()` takes anything without a binary outcome, but the queue never lets a reread override the
+screen, so those reads could not be used. Cheap here, worth narrowing before the route is widened.
+
+### Reading a Results section is not reading an abstract, and it fails differently
+
+The 94% outcome figure was measured on abstracts and does not carry here, so 25 of the PDF-derived outcomes
+were read. **22 of 25 agreed** — too few to quote as a rate, and the three disagreements are worth more than
+the ratio:
+
+- a replication reporting the **same null as the original** ("in accord with those reported by Pechacek et
+  al.: the males studied were incapable of recognizing their mirrored images") was called `failed`. It is a
+  successful replication. This is the one trap the project already knew about, and full text walks into it more
+  readily than an abstract does, because the discussion dwells on the negative finding before drawing the
+  comparison;
+- an **editor's note explaining that the article is satirical** was read as a failed replication, with the
+  paper's own title quoted as the evidence;
+- and one Results section **belonged to a different paper altogether**.
+
+That last one is a defect in the route, not in the reading. Mid-century journals printed several one-page
+papers per sheet, so a publisher's PDF for one DOI can contain the next article too, and the extractor returned
+a fluent, quotable Results section about alternating-case letters for a paper on reward magnitude and reaction
+time. **The quote check cannot catch this**: the quote really is in the text it was given. The guard that does
+is weak on purpose — at least one content word of the paper's own title must appear somewhere in the extracted
+text. A stronger test was tried and rejected on the evidence: "The intermittent punishment effect: A
+replication with improved controls" shares 20% of its title with a section reading "IP Ss showed a marked
+increase in latency", and a maternal-rations paper 22% with one about "pups reared by Purina-fed dams". Both
+are correct and both would have been thrown away.
+
+A second defect fell out of the same reading: the heading branch had no minimum length, so one journal's PDF
+extracted to the eighteen characters "Results Discussion" — its own table of contents — and that was carried
+forward as text a model was asked to read. Both branches now take the same 500-character floor. The two
+affected answers have been retracted along with their text.

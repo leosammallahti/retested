@@ -147,11 +147,15 @@ def run(max_usd: float, workers: int, limit: int | None) -> int:
     from . import load
     titles = {r["cid"]: r.get("title_r") for r in load.load_triaged()}
     todo = [(cid, titles.get(cid), rec) for cid, rec in have.items() if rec.get("chars")]
-    if limit:
-        todo = todo[:limit]
     key = _key()
     cache_dir = CACHE / "reread" / MODEL / PROMPT_VERSION
     cache_dir.mkdir(parents=True, exist_ok=True)
+    # Unread rows first, so `--limit` pilots on work that has not been done. It used to take the file's first
+    # N, which after a new source is fetched are all cached: a 20-row pilot over 83 fresh PDFs made no calls,
+    # cost nothing, and reported the previous run's totals as though they were its own.
+    todo.sort(key=lambda t: (cache_dir / f"{re.sub(r'[^A-Za-z0-9._-]+', '_', t[0])[:110]}.json").exists())
+    if limit:
+        todo = todo[:limit]
     meter = Meter(max_usd)
     print(f"  {len(todo)} finds with text · model {MODEL} · prompt {PROMPT_VERSION} · cap ${max_usd:.2f} "
           f"· balance ${balance(key)}")

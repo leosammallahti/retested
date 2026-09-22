@@ -389,8 +389,11 @@ def rate(right: int, wrong: int) -> float | None:
 
 
 def trusted_links() -> set[tuple[str, str]]:
+    from . import audit
     from .originals import read_labels, _pool, band, stale
-    labels = {r["cid"]: r for r in read_labels()}
+    idx = audit.index(read_labels())
+    labels = {c["id"]: l for c in _pool("linked")
+              if (l := audit.label_for(idx, c["id"], c.get("doi_o")))}
     tally: dict[tuple[str, str], list[int]] = {}
     for c in _pool("linked"):
         # A label whose row has since been rematched describes a different paper, so it says nothing about the
@@ -455,9 +458,12 @@ def _overruled() -> set[str]:
     """
     global _OVERRULED
     if _OVERRULED is None:
+        from . import audit
         from .originals import read_labels, stale
         from .audit import candidates
-        labels = {r["cid"]: r for r in read_labels()}
+        idx = audit.index(read_labels())
+        labels = {c["id"]: l for c in candidates()
+                  if (l := audit.label_for(idx, c["id"], c.get("doi_o")))}
         tally: dict[str, list[int]] = {}
         for c in candidates():
             l = labels.get(c["id"])

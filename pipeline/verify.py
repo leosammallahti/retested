@@ -213,8 +213,10 @@ def calibrate(max_usd: float, workers: int, limit: int | None) -> int:
     only reason anything here can be believed. A label whose link has since changed is set aside — it describes a
     match nobody is making any more, the same rule `originals.score` applies.
     """
-    labels = {r["cid"]: r for r in originals.read_labels()}
+    idx = originals.audit.index(originals.read_labels())
     rows = {c["id"]: c for c in originals._pool("linked")}
+    labels = {cid: l for cid, c in rows.items()
+              if (l := originals.audit.label_for(idx, cid, c.get("doi_o")))}
     usable = {cid: l for cid, l in labels.items()
               if cid in rows and not originals.stale(rows[cid], l)}
     stale_n = len(labels) - len(usable)
@@ -308,8 +310,10 @@ def second_calibrate(max_usd: float, workers: int) -> int:
     set of confirmations — v1's plus v2's — must still clear the 90% bar. The second condition is the one that
     matters, because promoting rows is only safe while the whole confirmed pool stays accurate.
     """
-    labels = {r["cid"]: r for r in originals.read_labels()}
+    idx = originals.audit.index(originals.read_labels())
     rows = {c["id"]: c for c in originals._pool("linked")}
+    labels = {cid: l for cid, c in rows.items()
+              if (l := originals.audit.label_for(idx, cid, c.get("doi_o")))}
     usable = {cid: l for cid, l in labels.items() if cid in rows and not originals.stale(rows[cid], l)}
     v1 = {r["id"]: r for r in _read_out().values()}
     todo = [cid for cid in usable if v1.get(cid, {}).get("verdict") == "unclear"]

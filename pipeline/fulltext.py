@@ -19,11 +19,19 @@ WHERE IT IS, MEASURED RATHER THAN ASSUMED:
                      paper. It also carries an abstract for roughly 30%, and 1,261 of these finds have no
                      abstract anywhere else.
 
-What this does NOT reach: articles behind a paywall, and OSF projects whose result is inside an attached .docx
-or .pdf. Those are a later job needing document parsing, and the file listings say they exist.
+  Open-access PDFs   1,053 silent finds have a DOI and no full text in Europe PMC, and OpenAlex already tells
+                     us, in records we cached during discovery, which of them are open access and where the
+                     PDF is. Fetching and parsing those is free; only reading them costs. The yield is lower
+                     than Europe PMC's because a PDF is a picture of a paper rather than a structured one:
+                     publishers refuse a third of the requests outright, some of what comes back is a
+                     supplement rather than the article, and the mid-century psychology journals that make up
+                     much of this pile were scanned without a usable text layer.
+
+What this does NOT reach: articles behind a paywall, and OSF projects whose result is inside an attached .docx.
 
     python -m pipeline fulltext --osf        # wikis and descriptions, free
     python -m pipeline fulltext --pmc        # Europe PMC abstracts and Results sections, free
+    python -m pipeline fulltext --pdf        # open-access PDFs, parsed locally, free
     python -m pipeline fulltext --report
 
 Nothing here calls a language model. It collects text; `pipeline outcomes` is what reads it.
@@ -31,12 +39,15 @@ Nothing here calls a language model. It collects text; `pipeline outcomes` is wh
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import re
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
+
+from collections import Counter
 
 from .load import CACHE, DISCOVERY, osf_token
 
@@ -45,6 +56,8 @@ UA = {"User-Agent": "Retested/0.1 (mailto:leosammallahti@gmail.com)"}
 OSF_API = "https://api.osf.io/v2"
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest"
 MAX_CHARS = 6000          # enough for a Results section; a whole paper is not needed and is not free to read
+MAX_PDF_BYTES = 40_000_000
+PDF_PAGES = 30            # a Results section is never on page 31; a thesis appendix often is
 
 
 def _get(url: str, raw: bool = False, tries: int = 4):
@@ -175,6 +188,143 @@ def pmc_text(pmcid: str) -> dict:
     return _cached("epmc", pmcid, build)
 
 
+# ---------------------------------------------------------------- open-access PDFs
+
+# A Results section is what this is after. The headings are matched on their own line, because "results" appears
+# in running prose constantly and a heading is the only reliable signal that the numbers start here.
+_PDF_HEAD = re.compile(
+    r"^[ \t]*(?:\d+(?:\.\d+)*\.?[ \t]*)?"
+    r"(results?(?:[ \t]+and[ \t]+discussion)?|findings|general[ \t]+discussion|discussion|conclusions?)"
+    r"[ \t]*:?[ \t]*$", re.I | re.M)
+_PDF_END = re.compile(r"^[ \t]*(references|bibliography|acknowledge?ments?|author[ \t]note|"
+                      r"supplementary|appendix)\b", re.I | re.M)
+
+# A short mid-century note has no headings at all. "Effects of irrelevant colors on reading of color names: A
+# controlled replication" (Psychonomic Science, 1971) runs title, prose, table, references over two pages and
+# never writes the word "Results" — it yielded nothing until this fallback existed. Taking the whole of a short
+# note is safe in a way that taking the whole of a modern paper is not: there is no ten-paragraph introduction
+# restating the ORIGINAL study's finding for a reader to mistake for this one's. It is recorded as `whole-note`
+# rather than `results` so its yield can be scored on its own instead of hiding inside the section figure.
+# Measured in PAGES rather than characters: that paper extracts 17,600 characters from three pages, so a
+# character budget generous enough to admit it would also admit half the theses in this pile.
+SHORT_NOTE_PAGES = 4
+MIN_SECTION = 500         # a heading with nothing under it is not a Results section
+
+# Mid-century journals printed several one-page papers per sheet, and a publisher's PDF for one DOI can hold the
+# next article too. `pipeline fulltext --pdf` then returns a real, fluent, quotable Results section belonging to
+# a DIFFERENT study, which the quote check cannot catch — the quote is genuinely in the text it was given. A
+# reader found one in 25: "Noncontingent reward magnitude effects on reaction time: A replication" came back
+# with the results of a study on alternating-case letters and word identification.
+#
+# The test is deliberately weak. Requiring a decent overlap between the paper's own title and the extracted text
+# would be wrong: "The intermittent punishment effect: A replication with improved controls" shares 20% of its
+# title with a section that says "IP Ss showed a marked increase in latency", and the maternal-rations paper
+# 22% with one about "pups reared by Purina-fed dams" — both correct, both would have been thrown away. What
+# separates the bad case is that NONE of the title's content words appear anywhere in the text.
+_TITLE_STOP = frozenset("the of and to in a an for on with by from is are as at we our this that study "
+                        "effects effect replication replicating report".split())
+
+
+def _about_this_paper(title: str | None, text: str) -> bool:
+    want = {w for w in re.findall(r"[a-z]{4,}", (title or "").lower()) if w not in _TITLE_STOP}
+    return not want or bool(want & set(re.findall(r"[a-z]{4,}", text.lower())))
+
+
+def pdf_sections(text: str, pages: int | None = None) -> tuple[str, list[str]]:
+    """The Results section if the paper has one, else its Discussion or Conclusion, else a short note whole.
+
+    Taking the whole of a long paper would work and is the wrong thing to do: the introduction of a replication
+    restates the ORIGINAL study's finding, at length and in the past tense, and that is precisely the sentence a
+    reader mistakes for the replication's own result. Europe PMC gets this for free from structured XML; here
+    the headings have to be found in running text.
+
+    There is deliberately no check for whether the text layer is any good. The obvious one — counting common
+    English words — was written, and then measured on the 1971 Psychonomic Science scan that motivated it: the
+    scan's front matter is debris ('"mi I. Thi ... ,tud: i ~uppurtcd in part hy J pO\\ldol.:toral'), it scores
+    the same as a clean modern PDF, and its Results section extracts perfectly readable prose reporting
+    F = 2.72, df = 5/110. The guard would have thrown away a usable result to protect against a header nobody
+    reads. What actually protects the answer is downstream and already exists: `reread` must quote a verbatim
+    sentence from this text and the quote is checked against it, so unreadable text yields no answer rather
+    than a wrong one.
+    """
+    heads = [(m.start(), m.end(), m.group(1).lower()) for m in _PDF_HEAD.finditer(text)]
+    def pick(pred):
+        return next((h for h in heads if pred(h[2])), None)
+    h = (pick(lambda t: t.startswith("result") or t == "findings")
+         or pick(lambda t: "discussion" in t) or pick(lambda t: t.startswith("conclusion")))
+    if h:
+        end = _PDF_END.search(text, h[1])
+        body = re.sub(r"\s+", " ", text[h[0]:end.start() if end else len(text)]).strip()[:MAX_CHARS]
+        # The same floor the whole-note branch has always had. Without it a heading with nothing under it is a
+        # Results section: one journal's PDF extracted to the eighteen characters "Results Discussion" — its
+        # own table of contents — and that was carried forward as text a model was asked to read.
+        if len(body) >= MIN_SECTION:
+            return body, [h[2].split()[0]]
+        return "", []
+    if pages is not None and pages <= SHORT_NOTE_PAGES:
+        end = _PDF_END.search(text)
+        body = text[:end.start()] if end else text
+        body = re.sub(r"\s+", " ", body).strip()[:MAX_CHARS]
+        if len(body) >= MIN_SECTION:
+            return body, ["whole-note"]
+    return "", []
+
+
+def pdf_text(doi: str, url: str, title: str | None = None) -> dict:
+    """One open-access PDF, fetched, parsed locally and cut down to its Results section.
+
+    Every failure is recorded rather than dropped, because the reason a PDF yields nothing is the whole
+    question here: a publisher refusing the request, a landing page served in place of the file, a scan with no
+    text layer and a paper with no Results heading are four different problems with four different answers.
+    """
+    def build() -> dict:
+        blank = {"source": "pdf", "got": [], "chars": 0, "text": "", "url": url}
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=60) as r:
+                raw = r.read(MAX_PDF_BYTES)
+        except Exception as e:
+            return dict(blank, why=f"fetch:{type(e).__name__}")
+        if not raw.startswith(b"%PDF"):
+            return dict(blank, why="not-a-pdf")          # usually a landing page or a paywall interstitial
+        try:
+            import pypdf
+            pages = list(pypdf.PdfReader(io.BytesIO(raw)).pages)
+            text = "\n".join((pg.extract_text() or "") for pg in pages[:PDF_PAGES])
+        except Exception as e:
+            return dict(blank, why=f"parse:{type(e).__name__}")
+        if len(text.strip()) < 500:
+            return dict(blank, why="no-text-layer")      # a scan of the page images, nothing to read
+        body, got = pdf_sections(text, len(pages))
+        if not body:
+            return dict(blank, why="no-results-section")
+        if not _about_this_paper(title, body):
+            return dict(blank, why="another-article-on-the-page")
+        return {"source": "pdf", "got": got, "chars": len(body), "text": body, "url": url}
+    return _cached("pdf", doi, build)
+
+
+def oa_pdf_urls() -> dict[str, str]:
+    """Normalised DOI -> a PDF we are allowed to fetch, taken from OpenAlex records already on disk.
+
+    Discovery cached the whole work record for every candidate it searched, and `primary_location` carries
+    `is_oa` and `pdf_url`. So the question "which of these can we read" was already answered months ago and
+    costs no API call to ask again.
+    """
+    from .load import norm_doi
+    out: dict[str, str] = {}
+    for f in sorted((CACHE / "openalex").glob("*.json")):
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for r in (d.get("results") or []) if isinstance(d, dict) else []:
+            loc = r.get("primary_location") or {}
+            if r.get("doi") and loc.get("pdf_url"):
+                out.setdefault(norm_doi(r["doi"]), loc["pdf_url"])
+    return out
+
+
 # ---------------------------------------------------------------- drivers
 
 def _silent() -> list[dict]:
@@ -240,6 +390,32 @@ def run_pmc(limit: int | None) -> int:
     return 0
 
 
+def run_pdf(limit: int | None) -> int:
+    from .load import norm_doi
+    rows = _silent()
+    have = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
+    urls = oa_pdf_urls()
+    dois = sorted({norm_doi(c["doi_r"]) for c in rows if c.get("doi_r")})
+    in_pmc = {d for d, v in pmc_lookup(dois).items() if v.get("pmcid")}
+    todo = [c for c in rows if c.get("doi_r") and c["id"] not in have
+            and norm_doi(c["doi_r"]) not in in_pmc and norm_doi(c["doi_r"]) in urls]
+    print(f"  {len(rows)} silent finds · {len(todo)} have an open-access PDF and no text yet")
+    if limit:
+        todo = todo[:limit]
+    found, why, t0 = {}, Counter(), time.time()
+    for i, c in enumerate(todo, 1):
+        d = norm_doi(c["doi_r"])
+        rec = pdf_text(d, urls[d], c.get("title_r"))
+        found[c["id"]] = rec
+        why[rec.get("why") or "ok"] += 1
+        if i % 25 == 0:
+            print(f"    {i}/{len(todo)} · {why['ok']} with a Results section · {time.time() - t0:.0f}s")
+        time.sleep(0.2)
+    print(f"  outcome of {len(todo)} fetches: {dict(why.most_common())}")
+    _merge(found)
+    return 0
+
+
 def report() -> int:
     if not OUT.exists():
         print("nothing fetched yet")
@@ -261,6 +437,7 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="pipeline fulltext", description=__doc__.split("\n")[0])
     p.add_argument("--osf", action="store_true", help="OSF project descriptions and wiki pages")
     p.add_argument("--pmc", action="store_true", help="Europe PMC Results sections and abstracts")
+    p.add_argument("--pdf", action="store_true", help="open-access PDFs, fetched and parsed locally")
     p.add_argument("--report", action="store_true")
     p.add_argument("--limit", type=int)
     a = p.parse_args(argv)
@@ -268,6 +445,8 @@ def main(argv: list[str] | None = None) -> int:
         return run_osf(a.limit)
     if a.pmc:
         return run_pmc(a.limit)
+    if a.pdf:
+        return run_pdf(a.limit)
     if a.report:
         return report()
     p.print_help()

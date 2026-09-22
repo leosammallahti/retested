@@ -161,7 +161,9 @@ def record(pool: str, text: str, by: str = "claude-opus-5") -> int:
 
 
 def score(pool: str | None) -> int:
-    labels = {r["cid"]: r for r in read_labels()}
+    idx = audit.index(read_labels())
+    labels = {c["id"]: l for c in audit.candidates()
+              if (l := audit.label_for(idx, c["id"], c.get("doi_o")))}
     if not labels:
         print("no labels yet — run --sample, read the cases, and record them")
         return 0
@@ -244,8 +246,9 @@ def audit_summary(pool: str, candidates: list[dict]) -> dict | None:
     has been read. `unclear` labels stay in the denominator: a link a careful reader cannot confirm is not a link
     a reader should be told is right.
     """
-    labels = {r["cid"]: r for r in read_labels()}
+    idx = audit.index(read_labels())
     rows = _pool(pool, candidates)
+    labels = {c["id"]: l for c in rows if (l := audit.label_for(idx, c["id"], c.get("doi_o")))}
     read = [(c, labels[c["id"]]) for c in rows if c["id"] in labels and not stale(c, labels[c["id"]])]
     if not read:
         return None

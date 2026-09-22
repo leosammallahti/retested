@@ -4,7 +4,7 @@
 
 **Pipeline (`pipeline/`)** turns FORRT's data into a site bundle in ~2 s on the VM:
 906 named effects · 3,424 findings (one per original paper) · 3,879 attempts (3,590 replications, 289 reproductions;
-1,024 known only from the legacy FReD 2.4.1 file) · 749 game cards · 2,425 review-queue candidates from FORRT's own
+1,024 known only from the legacy FReD 2.4.1 file) · 1,060 game cards · 2,425 review-queue candidates from FORRT's own
 flora-extractor. Validation fails the build on unreachable FLoRA pairs, ID collisions, game-answer leakage,
 count drops > 1%, secrets, and stray root files. Output is identical on the laptop and the VM.
 
@@ -312,29 +312,71 @@ across the deck. The leak is real and its stated cause is wrong. **The control s
 overlapping — the deck already leaked at this rate, so the leak is the cards' design and content cues, which is
 what a player is meant to reason from, and not the writing.
 
+## 2i. 2026-09-22 (later): the verifier read where it was least likely to hold, and a PDF route
+
+**285 links read by hand, and the open risk of the per-row design is closed.** `pipeline verify` had taken the
+shipped pool from 600 rows to 1,565 by judging rows rather than bands, on a calibration of 98% averaged over
+every band. By this morning **1,858 of the 1,866 rows a page could show were admitted by the verifier rather
+than by any band rule**, and the two bands with the worst priors had 3 shipped rows read between them. Read
+now: `openalex_author_year` low **97%** (37/38), `library_author_year` low **95%** (38/40), `reference_scan`
+high **95%** (37/39), `reference_scan` low 90% (36/40). The verifier holds in the bands this project called
+"not weak, wrong".
+
+**The gate moved twice in one evening, and the band that failed is not the one anyone would have bet on.**
+`reference_scan` low first fell to 89.5% and was overruled; 40 more reads cleared it at **92% (89/97)** and its
+282 rows came back. The same treatment condemned `reference_scan` **medium — 88% (78/89)** — so it is overruled
+and **339 rows left the pages**. Both bands sat at "exactly 90%" in the previous session; eighty more reads
+separated them. `reference_scan` high rose to 96% and is trusted again. Nobody edited a list to make any of
+this happen.
+
+**The runner-ups are settled and they do not ship.** 45 more read (32 right, 8 wrong, 5 unclear); with the
+earlier 18 that is **46 of 58 — 79%, 95% CI 67–88%**. The top of the interval is under the bar, so the ~36
+cards that turned on this are decided: `load.merged_links` should not merge second choices.
+
+**Deck 1,132 → 1,060** (493 record, 370 found, 197 famous). The whole fall is `reference_scan` medium leaving
+the pages on its own measurement. What a page shows: **1,550 rows, 461 read, 95% right**.
+
+**A PDF route exists.** `pipeline fulltext --pdf` finds open-access PDFs from OpenAlex records already cached,
+fetches them, and extracts the Results section with `pypdf`. 144 silent finds had a PDF; **83 yielded a Results
+section (58%)**; reading them cost **$0.054** and produced **39 usable outcomes (47%)**, against Europe PMC's
+61%. **The limit is publishers refusing the request — 30% HTTP errors — not scanning: one PDF in 144 had no
+text layer.** 4 finds cleared every card gate.
+
+**The PDF route's own failure mode, found by reading 25 of its outcomes (22 agreed).** A mid-century journal
+printed several papers per sheet, so one PDF can hold the next article too, and the extractor returned a
+fluent, quotable Results section belonging to a different study. **The verbatim-quote check cannot catch this**
+— the quote really is in the text it was given — so a weak guard was added: one content word of the paper's own
+title must appear in the extracted text. A stronger version was tried and rejected because it threw away two
+correct papers. Separately the heading branch had no minimum length, so one PDF extracted to the eighteen
+characters "Results Discussion". Both answers retracted.
+
+**Five defects found and fixed, all of the same family.** A label was keyed by find id, so recording the 45
+runner-up labels **deleted six band labels** — a find has two pairings worth judging and the file could hold
+only one; the key is now `(find, paper)`. `outcomes.PAGE_GRADE` was a stale hand-copy of the page gate naming a
+band renamed in September, so `outcomes --pool page` scored a population no page had shown. And **the link gate
+is computed from the previous build's `candidates.json`**, so the first build after new labels disagrees with
+the next one — that reported a deck of 1,151 which the following build put at 1,096. `audit.candidates()` now
+warns on stderr; build twice after recording labels.
+
+**Spend: $0.06** — $0.054 reading PDFs, $0.006 writing 4 new claims. Balance $8.19. All hand-reading was free.
+
 ## 3. Next steps, in order
 
-1. ~~**Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit.~~ Done, and it
-   turned out to be already done: re-running `link --openalex --max-usd 1.0` on 2026-09-21 made **0 API calls and
-   cost $0** — every lookup was cached from an earlier run. 1,416 of 1,483 named originals are resolved (170
-   high, 238 medium, 1,008 low). Note what the link audit says about that last number: a low-band link is right
-   about a third of the time, so resolving more of the remaining 67 is not where the value is.
-2. **Keep reading; both audits accumulate now.** `python -m pipeline outcomes --sample 60` and
-   `python -m pipeline originals --sample 40 --pool shown` pick up exactly where this session stopped, cost
-   nothing, and every band a page shows is already in `data/curated/*_audit.csv` rather than in prose. What is
-   still thin: medium-tier screening rests on 40 labels made by Claude rather than a person, and
-   `reference_scan` medium at 8/14 is the one band that might or might not reach the 90% line with more reading
-   — 195 card rows turn on it.
-3. ~~**Settle the fairness test.**~~ Done — the control says the old descriptions leaked at 69% against the new
-   claims' 75%, on overlapping intervals, so rewriting did not make the game less fair and more prose work will
-   not change it. What is left on the deck is playability: about one card in eight still reads like the paper
-   rather than the player, and the remaining fix is per-card editing, not another pass.
-4. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
-   Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
-5. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
-   (`npm run preview`); the GitHub Pages workflow stays in `.github/workflows/site.yml` for later.
-6. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
-   offer the finds and the recall harness back to them.
+1. **Settle `reference_scan` medium.** It is overruled at 88% (78/89) and that costs 339 page rows and ~40
+   cards. It is the single biggest block still turning on reading, and nothing but reading moves it. Free.
+2. **Keep reading the PDF-derived outcomes.** 22 of 25 agreed, which establishes that the population is usable
+   and is too small to be a rate. Free.
+3. **Widen the PDF route.** Only `primary_location.pdf_url` was used; `best_oa_location` would add the
+   repository copies (270 of these finds are open access but only 154 had a publisher PDF), and OpenAlex
+   lookups are free and cached. Narrow `fulltext._silent()` first: a third of this run's fetches went to finds
+   that already had a `mixed` verdict, which the queue will never let a reread override.
+4. **Screen Social Sciences and Neuroscience** — already crawled and cached, ~$0.60 to screen.
+   `pipeline triage --tier high --fields "Social Sciences,Neuroscience"`.
+5. **Re-measure `pipeline choose` on finds that have abstracts.** Its 74% was measured where neither side had
+   one, so it is a floor rather than a verdict. `pipeline choose --check`, ~$0.15 per 500.
+6. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM.
+7. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor /
+   flora-validation; offer the finds and the recall harness back to them.
 
 ## 4. Owner decisions and open questions
 - Decided 2026-09-19: keep the laptop copy (`C:\Users\OMISTAJA\PsychologyReplication`); do not delete it.

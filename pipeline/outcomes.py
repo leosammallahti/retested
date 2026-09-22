@@ -53,13 +53,18 @@ POOLS = {
     "uncounted": ("linked psychology finds carrying any verdict — the population behind /uncounted/",
                   lambda c: c.get("field") == "psychology" and c.get("outcome") and c.get("doi_o")),
 }
-# kept in step with queue.TRUSTED_LINKS, which is the one that decides what a page shows
-PAGE_GRADE = {("cited by this paper", "high"), ("library_author_year", "high"), ("library_author_year", "medium"),
-              ("openalex_author_year", "high"), ("reference_scan", "high")}
-
-
 def _page_grade(c: dict) -> bool:
-    return (c.get("link_method"), c.get("link_confidence")) in PAGE_GRADE
+    """Whether a page may show this link — asked of queue.py, never copied.
+
+    This used to be a hand-maintained set of five bands "kept in step with queue.TRUSTED_LINKS", and by
+    2026-09-22 it was not: it still named `cited by this paper/high`, a band renamed to `/unscored` in
+    September, it had never gained `openalex_author_year/medium`, and it predated `pipeline verify` entirely —
+    so it judged rows by band while the build judged them one at a time. A pool defined one way and a gate
+    defined another are different sets of rows, and `outcomes --pool page` was measuring a population no page
+    had shown for a day. The same drift is why `queue.TRUSTED_LINKS` stopped being a list.
+    """
+    from .queue import _link_trusted
+    return _link_trusted(c)
 
 
 def _pool(name: str, candidates: list[dict] | None = None) -> list[dict]:

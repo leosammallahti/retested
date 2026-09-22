@@ -18,6 +18,7 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.1007/s10979-007-9091-y,card,successful,,successful,,workflow-reader,2026-09-21
 10.1007/s11218-024-09899-y,card,failed,,failed,,claude-opus-5,2026-09-21
 10.1007/s40617-022-00731-7,card,successful,10.1177/0145445520982552,successful,quote states the replication own result plainly; read 2026-09-22 from epmc text,claude-opus-5,2026-09-22
+10.1007/s40617-025-01117-1,card,failed,10.1007/s40617-018-00290-w,not_established,"Model said failed, but the shown text is an Editor's Note explaining the paper is satirical, not a Results section; no actual data or outcome is reported here.",sonnet-reader,2026-09-22
 10.1016/0001-6918(69)90006-7,card,failed,,failed,,claude-opus-5,2026-09-21
 10.1016/0005-7967(86)90033-1,card,failed,,failed,,claude-opus-5,2026-09-21
 10.1016/0022-1031(92)90040-q,card,successful,,successful,,claude-opus-5,2026-09-21
@@ -125,6 +126,7 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.18483/ijsci.2548,card,failed,,failed,,claude-opus-5,2026-09-21
 10.1901/jaba.1980.13-171,card,successful,,successful,,claude-opus-5,2026-09-21
 10.1901/jaba.2009.42-827,card,failed,,failed,,workflow-reader,2026-09-21
+10.20982/tqmp.12.2.r001,card,successful,10.1016/j.paid.2012.12.017,successful,"Garbled OCR but decodable: ""current results replicated the previous findings of Falkenbach et al (2013)"" despite minor subscale differences.",sonnet-reader,2026-09-22
 10.21203/rs.3.rs-2943371/v1,card,successful,,successful,,claude-opus-5,2026-09-21
 10.21203/rs.3.rs-949989/v1,card,successful,,successful,,workflow-reader,2026-09-21
 10.2139/ssrn.1715954,card,successful,,successful,,claude-opus-5,2026-09-21
@@ -146,6 +148,7 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.2466/pr0.1972.31.2.590,card,failed,,failed,"The one significant Si difference is explicitly attributed to chance and to a construct that does not reflect distress, so Osborne's assumption is unsupported.",workflow-reader,2026-09-21
 10.2466/pr0.1985.56.3.816,card,failed,,failed,,claude-opus-5,2026-09-21
 10.24839/2325-7342.jn2026.024,card,failed,,failed,"Borderline with mixed: one predicted sex difference (women's preference for emotional stability) was significant, but the paper's headline is ""men and women were more similar than different"" across the tested traits and commitment levels.",workflow-reader,2026-09-21
+10.3102/1440078,card,successful,10.1037/edu0000115,successful,"Conclusion states findings align with original (Schwaighofer et al 2016): WM capacity did not moderate WE effect, shifting did, matching original.",sonnet-reader,2026-09-22
 10.31219/osf.io/y57k9,card,failed,,failed,,workflow-reader,2026-09-21
 10.31234/osf.io/c43bk,card,failed,,failed,"One of eight tests was significant in the original direction, but the paper's own conclusion is that the original findings were likely sampling error, so not mixed.",workflow-reader,2026-09-21
 10.31234/osf.io/eg2pu,card,failed,,failed,,claude-opus-5,2026-09-21
@@ -163,11 +166,33 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.3390/ijerph17186539,card,failed,,failed,,workflow-reader,2026-09-21
 10.3390/psych3020013,card,failed,,failed,,claude-opus-5,2026-09-21
 10.36850/e12,card,failed,,failed,,claude-opus-5,2026-09-21
+10.3758/bf03214579,card,successful,10.1126/science.166.3903.399,successful,"Results: all rats kept barpressing despite free reinforcer access, the core replicated phenomenon; NOTE the ""replicate and extend"" quote is not in the shown truncated text.",sonnet-reader,2026-09-22
+10.3758/bf03328756,card,successful,10.1037/h0054651,successful,"Intro/summary states evidence obtained for bona fide reversed interference not due to legibility, replicating Gumenik & Glass with added controls; reports an outcome, not a plan.",sonnet-reader,2026-09-22
+10.3758/bf03329713,card,successful,10.1126/science.186.4165.752,successful,"Discussion: ""present findings replicate the main results of Homa et al 1976,"" pattern (faces>scrambled, best isolated) matches data shown.",sonnet-reader,2026-09-22
+10.3758/bf03330475,card,successful,10.1111/j.2044-8295.1986.tb01997.x,successful,"Text states verbatim ""These results replicate McKelvie's (1986) finding,"" with matching direction of means (random less vivid than blocked).",sonnet-reader,2026-09-22
 10.3758/bf03330518,card,failed,,failed,,claude-opus-5,2026-09-21
+10.3758/bf03330737,card,successful,10.1037/h0022334,successful,"Gradient shows a pronounced maximum/peak even with houselight on, demonstrating the generalization effect occurred, though comparison to original is only implicit.",sonnet-reader,2026-09-22
 10.3758/bf03330928,card,failed,,failed,"No abstract; title declares ""A failure to replicate"".",workflow-reader,2026-09-21
+10.3758/bf03332582,card,successful,10.2307/1418112,successful,"New data closely match earlier data (same slope .445); text: ""evidence of reproducibility of results using direct scaling for vibrotaction.""",sonnet-reader,2026-09-22
+10.3758/bf03332787,card,successful,10.1037/h0025054,successful,Opening line states results agree with the original (Bruce & Cofer 1967): influence of distractors on free recall is small in both studies.,sonnet-reader,2026-09-22
+10.3758/bf03333408,card,successful,10.3758/bf03331549,not_established,"Quote is verbatim but the text is about case-alternation/word identification (Smith 1969), unrelated to the stated topic (noncontingent reward magnitude/reaction time) - wrong text extracted.",sonnet-reader,2026-09-22
 10.3758/bf03334046,card,failed,,failed,No abstract; title declares failure to replicate in the rapid naming task.,workflow-reader,2026-09-21
+10.3758/bf03334217,card,successful,10.1037/h0045168,successful,"15-day-olds show higher/more persistent activity than 30-day-olds across blocks, matching effect; NOTE quoted sentence not present in shown (truncated) text.",sonnet-reader,2026-09-22
+10.3758/bf03334390,card,successful,10.1016/0010-0285(71)90019-3,successful,"Results opens: ""results of this replication support the predictions and conclusions of B-F""; 40/41 comparisons in predicted direction.",sonnet-reader,2026-09-22
+10.3758/bf03334410,card,successful,10.3758/bf03328952,successful,"Both experiments show visual/visual-tactual training superior to tactual, a consistent pattern; NOTE the cited quote is not present in the shown truncated text.",sonnet-reader,2026-09-22
+10.3758/bf03334720,card,successful,10.1016/0031-9384(83)90218-4,successful,"Methylscopolamine (peripheral) had no effect, scopolamine did; discussion states ""very good agreement"" with Thor and Holloway's original results.",sonnet-reader,2026-09-22
+10.3758/bf03334804,card,successful,10.3758/bf03334531,successful,Text: replicated Bradley's p-values correlate .999/.997/.992 across alpha levels with his original values - explicit strong numeric agreement.,sonnet-reader,2026-09-22
+10.3758/bf03335286,card,successful,10.1111/j.1467-8624.1968.tb04435.x,successful,"Boys show significant early-onset/fear correlation, girls do not, matching original Berkeley Growth Study pattern; text calls it a replication.",sonnet-reader,2026-09-22
+10.3758/bf03336183,card,successful,10.3758/bf03328139,successful,"Lesioned-group behavioral rhythm is now shown quantitatively to closely parallel the caloric intake rhythm, matching the prior qualitative finding.",sonnet-reader,2026-09-22
+10.3758/bf03336494,card,failed,10.1037/h0027781,failed,"Text states explicitly ""This study fails to replicate Murray-Strandberg (1965)""; no experimental effect in either massed or spaced condition.",sonnet-reader,2026-09-22
+10.3758/bf03336923,card,failed,10.3758/bf03334360,successful,"Model said failed, but text says results are ""in accord with Pechacek et al 1973"": incapable of self-recognition in both studies - same null as original, so this is a success.",sonnet-reader,2026-09-22
+10.3758/bf03337415,card,successful,10.1037/h0023016,successful,"IPE (persistence to continuous punishment) still observed with confounds controlled, matching original; quote appears verbatim in text.",sonnet-reader,2026-09-22
+10.3758/bf03337428,card,successful,10.1037/h0025848,successful,ANOVA shows a significant exposure-frequency effect and text states this is consistent with Zajonc 1968 mere-exposure findings; quote is verbatim.,sonnet-reader,2026-09-22
+10.3758/bf03342241,card,successful,10.1037/h0038532,successful,Hawk silhouette produced significantly higher activity than goose/triangles (p<.01); text explicitly says this confirms earlier reports.,sonnet-reader,2026-09-22
+10.3758/bf03343354,card,successful,10.1126/science.133.3450.382,successful,"TO frequency function replicates the Thompson 1964 pattern and recovery at FR 50 was virtually complete, per text's own words.",sonnet-reader,2026-09-22
 10.3758/s13414-021-02317-x,card,failed,10.1037/0096-1523.33.2.391,failed,quote states the replication own result plainly; read 2026-09-22 from epmc text,claude-opus-5,2026-09-22
 10.3758/s13423-018-01566-6,card,successful,,successful,,claude-opus-5,2026-09-21
+10.3758/s13423-019-01641-6,card,failed,10.1177/2167702618757658,failed,"All three t-tests were non-significant between eye-movement and control conditions, contra the original's reported effect; quote matches text.",sonnet-reader,2026-09-22
 10.4018/ijicst.2011070101,card,successful,,successful,,claude-opus-5,2026-09-21
 10.4074/s0003503313002017,card,successful,,successful,"French abstract states 'Nous avons reproduit cet effet' on the original dependent variable, plus a second converging measure.",workflow-reader,2026-09-21
 10.4992/jjpsy.87.14052,card,successful,,successful,,claude-opus-5,2026-09-21
