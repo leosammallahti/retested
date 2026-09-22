@@ -13,7 +13,15 @@ from collections import defaultdict
 from .ids import is_na
 
 # Words that give away the answer or the premise of the game.
-LEAK = re.compile(r"replicat|reproduc|fail|robust|did not hold|null effect|not significant|no effect|debunk|retract", re.I)
+# What a card may not say: language about a LATER attempt at the same study, which is the answer.
+#
+# This used to include bare "fail", "no effect" and "not significant", and that was wrong twice over. It killed
+# ordinary English — "People regret things they failed to do more than things they did" is a clean claim and the
+# filter dropped it, leaving the garbled database sentence on the card instead. And it contradicted the rule that
+# a study finding an absence must say so: "X makes no difference to Y" is the correct way to write a null result
+# and the old pattern forbade it. "fail" now counts only where it is about replication.
+LEAK = re.compile(r"replicat|reproduc|debunk|retract|\brobust\b|did not hold|holds? up|"
+                  r"fail(?:s|ed|ure)?\s+to\s+(?:replicat|reproduc)", re.I)
 
 
 def _clean_claim(s: str | None, floor: int = 40) -> str | None:
@@ -76,7 +84,8 @@ def build(g: dict, written: dict[str, dict] | None = None,
         # A written claim where one exists, the database's own description where it does not. FReD's descriptions
         # are what the deck dealt until now and most of them cannot be played — see pipeline/claims.py.
         w = written.get(gid) or {}
-        claim = _clean_claim(w.get("claim"), 30) or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
+        written_claim = _clean_claim(w.get("claim"), 30)
+        claim = written_claim or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
         if not claim:
             continue
         p = P.get(doi_o, {})
@@ -90,8 +99,8 @@ def build(g: dict, written: dict[str, dict] | None = None,
             "id": gid,
             "tier": "study",
             "claim": claim,
-            "method": _clean_method(w.get("method")),
-            "written": bool(w.get("claim")),
+            "method": _clean_method(w.get("method")) if written_claim else None,
+            "written": bool(written_claim),
             "year": int(year),
             "journal": p.get("journal"),
             "discipline": r0.get("discipline"),
@@ -129,10 +138,11 @@ def build(g: dict, written: dict[str, dict] | None = None,
             continue
         gid = "f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]
         w = written.get(gid) or {}
-        claim = _clean_claim(w.get("claim"), 30) or claim
+        written_claim = _clean_claim(w.get("claim"), 30)
+        claim = written_claim or claim
         items.append({
             "id": gid, "tier": "famous", "claim": claim, "effect_name": e["name"],
-            "method": _clean_method(w.get("method")), "written": bool(w.get("claim")),
+            "method": _clean_method(w.get("method")) if written_claim else None, "written": bool(written_claim),
             "year": fam.get("original_year"), "journal": None, "discipline": e.get("discipline"),
             "cues": {"gs_citations": fam.get("gs_citations")},
         })

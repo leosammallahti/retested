@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 
 from .discover import _get, _spent
 from .ids import norm_doi
@@ -81,6 +82,86 @@ def fetch(dois: list[str], max_usd: float) -> dict[str, dict]:
         if (i // 50) % 5 == 0:
             print(f"    {i + len(chunk)}/{len(clean)} · ${_spent['usd']:.3f}", flush=True)
     return out
+
+
+_STOP = set("the a an of and or in on for to with by is are as at from that which".split())
+
+
+def _overlap(asked: str, got: str | None) -> float:
+    """Share of the asked title's content words present in the returned one."""
+    norm = lambda s: set(re.sub(r"[^a-z0-9 ]", " ", (s or "").lower()).split()) - _STOP  # noqa: E731
+    a = norm(asked)
+    return len(a & norm(got)) / max(1, len(a))
+
+
+_QUOTED = re.compile(r"[\u2018'\"\u201c]\s*([^\u2019'\"\u201d]{12,200})[\u2019'\"\u201d]")
+
+
+def run_famous(max_usd: float = 0.30) -> int:
+    """Give the famous tier a real source, by finding each effect's original paper in OpenAlex by title.
+
+    Every famous card was written from a one-line curated gloss plus a citation string, because those entries
+    carry no DOI. That is the same starvation that made the study tier invent directions before its abstracts
+    were fetched, and the 80-card review put the famous tier's serious-error rate at 20% because of it. The
+    curated `original_paper` field quotes the paper's title for 328 of 353 entries; OpenAlex will find most of
+    them from that.
+
+    Stored under the card's own id rather than a DOI, because these entries have none.
+    """
+    from . import game, load, registry, score
+    from .ids import EffectLedger
+    from .load import ROOT
+    import hashlib
+
+    src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
+    score.score(g)
+    want = {}
+    for e in g["effects"].values():
+        f = e.get("famous")
+        if not f or not f.get("original_paper"):
+            continue
+        m = _QUOTED.search(f["original_paper"])
+        if m:
+            want["f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]] = m.group(1).strip()
+    existing = load.load_original_authors()
+    todo = {k: v for k, v in want.items() if k not in existing}
+    print(f"  {len(want)} famous effects name a paper title · {len(todo)} not yet looked up")
+    out, found = dict(existing), 0
+    for i, (gid, title) in enumerate(sorted(todo.items())):
+        if _spent["usd"] >= max_usd:
+            print(f"  stopping at the ${max_usd:.2f} cap after {i}")
+            break
+        key = "fam-" + hashlib.sha256(title.encode()).hexdigest()[:16]
+        # A comma inside an OpenAlex filter means AND, so a title with one 400s. Question marks and pipes break
+        # it too. Strip them: they carry no search signal anyway.
+        # Keep letters, digits and spaces and nothing else. A comma means AND inside an OpenAlex filter, and
+        # brackets, slashes, quotes and dashes break it in their own ways; none carries search signal.
+        q = re.sub(r"\s+", " ", re.sub(r"[^A-Za-z0-9 ]", " ", title)).strip()[:180]
+        d = _get({"filter": f"title.search:{q}", "per_page": 3,
+                  "select": "id,doi,title,publication_year,authorships,primary_location,cited_by_count,"
+                            "abstract_inverted_index,type,is_retracted"}, key)
+        # Take the best of three by content-word overlap and keep it only if it is essentially the same title.
+        # A bare title search returns an impostor as readily as the author+year matcher did — "Automaticity of
+        # social behaviour" comes back as "Automatic Visual Tracking and Social Behaviour Analysis in Mice" —
+        # and an unvalidated match here would put a card in front of a player about the wrong paper entirely.
+        w = max(d.get("results") or [], key=lambda r: _overlap(title, r.get("title")), default=None)
+        if not w or _overlap(title, w.get("title")) < 0.8:
+            out[gid] = {"title": None, "abstract": None, "asked": title,
+                        "rejected": (w or {}).get("title")}
+            continue
+        au = w.get("authorships") or []
+        out[gid] = {"title": w.get("title"), "year": w.get("publication_year"),
+                    "authors": _short(au), "abstract": _abstract(w.get("abstract_inverted_index")),
+                    "asked": title}
+        found += bool(out[gid]["abstract"])
+        if i % 40 == 0:
+            print(f"    {i}/{len(todo)} · ${_spent['usd']:.3f}", flush=True)
+    DISCOVERY.mkdir(parents=True, exist_ok=True)
+    (DISCOVERY / "original_authors.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    got = sum(1 for k in want if (out.get(k) or {}).get("abstract"))
+    print(f"  {got} of {len(want)} famous effects now have an abstract · {_spent['calls']} calls · ${_spent['usd']:.3f}")
+    return 0
 
 
 def run_deck(max_usd: float = 0.20) -> int:

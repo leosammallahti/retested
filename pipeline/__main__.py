@@ -71,6 +71,7 @@ def main() -> None:
     ap_ = sub.add_parser("authors", help="fetch author identities for the originals our finds point at")
     ap_.add_argument("--max-usd", type=float, default=0.10, help="OpenAlex spending cap")
     ap_.add_argument("--deck", action="store_true", help="fetch abstracts for the originals the game deals cards about")
+    ap_.add_argument("--famous", action="store_true", help="find the famous effects' papers by title and fetch their abstracts")
     rp = sub.add_parser("references", help="find the original in the replication's own reference list")
     rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
@@ -101,7 +102,8 @@ def main() -> None:
         sys.exit(originals.run(sys.argv[2:]))
     a = ap.parse_args()
     if a.cmd == "authors":
-        sys.exit(authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
+        sys.exit(authors.run_famous(a.max_usd) if a.famous
+                 else authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
     if a.cmd == "references":
         sys.exit(references.run(a.max_usd))
     if a.cmd == "osf":

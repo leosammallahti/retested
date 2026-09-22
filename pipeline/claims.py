@@ -39,12 +39,13 @@ from .load import CACHE, DISCOVERY
 from .triage import URL, Meter, _key, balance
 
 MODEL = "deepseek-v4-flash"
-PROMPT_VERSION = "c4"
+PROMPT_VERSION = "c5"
 OUT = DISCOVERY / "claims.json"
 
 # The same test game.py applies to a claim before it will deal it, kept here so a leak is caught when it is
 # written rather than silently dropped at build time.
-LEAK = re.compile(r"replicat|reproduc|fail|robust|did not hold|null effect|not significant|no effect|debunk|retract", re.I)
+LEAK = re.compile(r"replicat|reproduc|debunk|retract|\\brobust\\b|did not hold|holds? up|"
+                  r"fail(?:s|ed|ure)?\\s+to\\s+(?:replicat|reproduc)", re.I)  # see game.LEAK
 
 SYSTEM = """You write cards for a game in which players read one psychology finding and guess whether a later
 study found the same thing again. You are writing the card, never the answer. Reply with one JSON object, nothing
@@ -68,7 +69,7 @@ slot sentence and the claim from it directly. When that is all you have, write t
 null rather than refusing — a card with no method line is thinner, but it is still a card. A card asserting a direction the study never reported
 is the worst thing you can produce, because the direction is exactly what the player is being asked about.
 
-TWO MORE REFUSALS.
+MORE REFUSALS. Each of these produced a card the reviewers would not deal.
 - A CARD THAT ANSWERS ITSELF is not a card. If the claim you are about to write would be true by construction
   given the method you are about to write — a manipulation check ("participants rated the high-expertise source
   as more expert"), a definition restated, or the condition labels repeated back — set insufficient. The claim
@@ -76,6 +77,24 @@ TWO MORE REFUSALS.
 - Do not add an outcome, a mechanism or a population the source never mentions. If the database summary
   speculates ("presumably because variety lowers perceived quantity") and the result does not show it, leave it
   out.
+- IF THE SOURCE IS ABOUT A DIFFERENT STUDY than the summary, refuse. Sometimes the citation and the summary do
+  not match — a summary about self-esteem beside a citation for a teacher-expectancy experiment, a summary about
+  wolves beside a study of domestic dogs. You cannot write a card from two unrelated halves. Set insufficient.
+- IF THERE IS NO STUDY, refuse. A trade book, a paper the curators could not locate, a sample size recorded as
+  NA with no design anywhere in the material: there is nothing for a later study to have found again.
+- A DEFINITION IS NOT A FINDING. "Poor self-esteem lowers self-appreciation", "reinforcing a behaviour that
+  cannot occur at the same time as self-injury reduces self-injury" — the second follows from the first by
+  meaning alone. If the claim is true by what the words mean, set insufficient.
+- A CIRCULAR CLAIM IS NOT A FINDING. If the groups being compared were DEFINED by the measures the claim
+  compares them on — profiles derived by clustering on delinquency, then said to differ in delinquency — set
+  insufficient.
+- A PREDICTION IS NOT A RESULT. If the sentence you are given says what the authors expected ("we predicted
+  increased reaction times and/or reduced frequency") and never says what happened, set insufficient.
+- A NULL IS NOT AN EQUIVALENCE. "No significant difference between front and back vowels" does NOT license
+  "front and back vowels convey the same size". Write the absence as an absence, with the word "no" or "not" in
+  it: "the vowels in a brand name make no difference to the size it conveys". Never write it as an equivalence
+  ("the same", "equally", "as ... as"): a study that failed to find a difference did not find a sameness, and a
+  player asked whether "X and Y are the same" replicated is being asked a different question.
 
 AN ABSENCE IS A FINDING. If the study reports that something did not happen, that two groups did not differ, or
 that an animal does not do a thing, say so plainly. The rule against revealing how a later study turned out is
@@ -86,6 +105,13 @@ Then write:
 "claim" — what this study found, as its own authors would state it, present tense, at most 30 words. A finding
   about people (or animals), not about an experiment: say what is true of whom, not which condition differed
   from which. A reader who knows nothing about the study must be able to agree or disagree with it.
+  THE TWO SIDES OF A COMPARISON MUST BE DIFFERENT THINGS. "People respond faster to words they later judge new
+  than to words they correctly judge new" compares a set with a subset of itself. Read your own sentence back
+  and check that the two groups cannot overlap.
+  WRITE AT THE READER'S LEVEL, NOT THE PAPER'S. No construct name doing the work unexplained — not "executive
+  control", "implied wage rates", "response set", "letters that call for the opposite response", not a brain
+  region. Say what a person did or experienced. If the finding cannot be said without naming a construct,
+  explain the construct inside the claim in ordinary words or set insufficient.
     good: "Holding a warm drink makes people judge a stranger as friendlier."
     bad:  "Main effect of condition on the applicability of the insanity defense."
     bad:  "Participants rated the high-expertise source as more expert."
@@ -93,6 +119,8 @@ Then write:
 "method" — how it was tested, one or two sentences, self-contained. Someone who cannot see the paper must be
   able to picture it: describe what was actually varied in plain words rather than naming a task or construct
   ("a scrambled-sentence task", "reference points", "bifactor structure") and leaving it unexplained.
+  NEVER take a sample size from a test statistic. The 16 in "F(1, 16) = .71" is a degrees-of-freedom figure, not
+  16 people. If the material gives you no sample size, write the method without one.
   Give the sample size in DIGITS, always, inside the sentence — "54 adults", "2,428 people" — never spelled out
   and never appended as a separate sentence. One card in the pilot spelled it, one wrote "There were 338
   participants." at the end, and a reader who notices which cards do which is reading the writer, not the study.
@@ -117,6 +145,14 @@ HARD RULES.
 - Do not argue for the finding. State it and stop. No "even though", "even when", "surprisingly", and no clause
   whose only work is to tell the player the result is remarkable.
 - Write what the study claimed, not what is true. If the finding is now doubted, that is not yours to signal.
+- NO MODALS AND NO "ASSOCIATED WITH". Not "can increase", "is associated with", "is linked to", "predicts".
+  Every claim asserts flatly: "X makes Y", "people who X are more Y". One card in the deck said "CAN increase"
+  and one said "IS ASSOCIATED WITH", and both stood out from every other card.
+- NEVER carry outdated clinical or racial wording from an old paper onto the card. "A profoundly retarded adult"
+  must not reach a player. Describe the person as a paper written today would.
+- IF THE ABSTRACT COVERS SEVERAL STUDIES and the sample size you are given belongs to one of them, do not write
+  "across seven studies, 93 participants". Either give the number for the study you are describing, or leave the
+  number out.
 - Do not invent. A guessed card is worse than a missing one.
 
 Return exactly these keys:
@@ -226,6 +262,15 @@ _HEDGE = re.compile(r"\b(?:tend(?:s|ed)? to|partly|somewhat|may|might|generally|
                     re.I)
 
 
+# A claim that hedges its verb stands out from every card that asserts. Both of the deck's two instances were
+# found by a reviewer reading all 80 side by side, which is not a check that scales; this one does.
+_WEAK = re.compile(r"\bcan\s+(?:increase|reduce|make|cause|lead|improve|impair)|is\s+associated\s+with|"
+                   r"is\s+linked\s+to|\bpredicts\b", re.I)
+# Wording no card may carry to a player, however old the paper it came from.
+_DATED = re.compile(r"\bretard(?:ed|ate|ation)\b|\bmongoloid\b|\bfeeble[- ]minded\b|\bcripple[ds]?\b|"
+                    r"\bmidget\b|\bnegro(?:es)?\b|\boriental\b|\bhysteric(?:al|s)?\s+wom[ae]n\b", re.I)
+
+
 def _flags(out: dict, source: str = "") -> dict:
     """Mechanical checks applied to every claim as it is written, so nothing rests on the model obeying.
 
@@ -253,10 +298,22 @@ def _flags(out: dict, source: str = "") -> dict:
                                     r"undergraduates|volunteers|subjects|dogs|men|women)\b", method, re.I)),
         # the source says the study found an absence and the claim does not say so: read it before dealing it
         "polarity_check": bool(source) and bool(_ABSENCE.search(source)) and not bool(_ABSENCE.search(claim)),
+        # The writer itself says the finding is an absence, and then phrases the claim as an equivalence:
+        # "no significant difference between front and back vowels" becomes "front and back vowels convey the
+        # same size", which is a positive claim the study never made. Its own slot sentence gives it away.
+        "absence_written_positive": bool(out.get("finding_is_absence")) and bool(claim)
+                                    and not _ABSENCE.search(claim) and not re.search(r"\bno\b|\bnot\b|\bnone\b|"
+                                                                                     r"\bneither\b", claim, re.I),
         "no_method": bool(claim) and not method,
         "hedged": bool(_HEDGE.search(claim)),
+        "weak_verb": bool(_WEAK.search(claim)),
+        "dated_language": bool(_DATED.search(text)),
         # a claim with no method line is thinner but still playable; a card with no claim is not a card
-        "ok": bool(claim) and not out.get("insufficient"),
+        # An absence written as an equivalence is not a card we can score somebody against, so it does not
+        # reach the deck even though the sentence is otherwise fine.
+        "ok": bool(claim) and not out.get("insufficient")
+              and not (bool(out.get("finding_is_absence")) and not _ABSENCE.search(claim)
+                       and not re.search(r"\bno\b|\bnot\b|\bnone\b|\bneither\b", claim, re.I)),
     }
 
 
@@ -295,6 +352,9 @@ def cards(g: dict, items: list[dict], abstracts: dict[str, dict] | None = None) 
                 "description": f.get("description"),
                 # names the study and gives its design and sample sizes; says nothing about how it turned out
                 "claim_text_o": f.get("original_paper"),
+                # famous entries carry no DOI, so their abstract is stored under the card's own id — and only
+                # when the title matched closely enough to be the same paper (pipeline/authors.py)
+                "abstract_o": (abstracts.get(it["id"]) or {}).get("abstract"),
             })
             continue
         if it["tier"] != "study":
@@ -435,8 +495,8 @@ def report(results: list[dict] | None = None) -> int:
             c[k] += bool(r.get(k))
         c["insufficient"] += bool(r.get("insufficient"))
     print(f"\n   {n} claims written")
-    for k in ("ok", "insufficient", "leaks", "label_leaks", "polarity_check", "hedged", "spelled_n", "no_method",
-              "too_long", "unterminated", "has_stats"):
+    for k in ("ok", "insufficient", "leaks", "label_leaks", "polarity_check", "absence_written_positive",
+              "hedged", "weak_verb", "dated_language", "spelled_n", "no_method", "too_long", "unterminated", "has_stats"):
         print(f"     {k:<15} {c[k]:>4}  {c[k] / n:>4.0%}" if n else "")
     lens = [r["claim_words"] for r in results if r.get("claim_words")]
     if lens:
