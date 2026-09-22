@@ -639,3 +639,47 @@ looked free.
 The work is kept and the measurement written down: `data/discovery/runner_up_links.json` holds the 180, and 18
 of them are labelled. About **36 cards** turn on it. If more reading clears 90%, `load.merged_links` is where to
 merge them.
+
+### The reference scan was reading a third of each bibliography
+
+A question worth asking of any matcher: what would the ceiling be if it were perfect? For the reference scan
+that is "how often is the original actually cited by the replication, and where does the scorer rank it". FORRT's
+own **2,802 known (replication, original) pairs where we hold the bibliography** answer it without anyone
+labelling anything: hide the original, score the references, see where the truth lands.
+
+The first answer was that the original was findable **23%** of the time, which would have closed the route.
+
+It was an artifact. `reference_titles.json` held 68,598 titles and `references.pick` silently skips any reference
+without one, so the scan was reading about a third of each bibliography and the *measurement* was reading the
+same third. Fetching the rest cost **$0.14** and took the file to **131,794**:
+
+| | before | after |
+|---|---|---|
+| true original visible in the bibliography at all | 23% | **82%** |
+| our text-similarity scorer ranks it first | 10% | **31%** |
+| ...somewhere in its top 3 | 15% | 44% |
+| ...somewhere in its top 8 | 19% | **56%** |
+
+This is the second time here that a route measured as dead was measured through a crippled intermediate. The
+rule in the handoff — *check which rows an intermediate was built from before believing what it says* — was
+written about exactly this and still nearly cost the route.
+
+### Choosing among the citations, rather than judging one at a time (built, measured, not shipped)
+
+The gap between "ranked first 31%" and "in the top 8 56%" is the case for asking a different question. `pipeline
+choose` shows the model the eight cited papers closest by wording and asks **which one, if any** — one call per
+find rather than one per pairing, and alternatives supply the context a lone yes/no lacks.
+
+Scored on 500 known pairs with the answer hidden:
+
+- it named a paper 368 times and was right 213 — **58%** (95%: 53–63%)
+- it answered "not listed" 132 times, 115 of them correctly
+- it finds **213 right originals per 500 finds against the text-similarity scorer's 140** — half again as many
+
+Feeding its choices to the verifier, the pairing the two agree on is right **74%** (95%: 68–79%) — better than
+either alone and still short of 90%, so it does not ship. One caveat is on the record rather than argued from:
+in that test neither paper had an abstract, because FORRT's rows do not carry one and shortlisted candidates are
+titles. Production verification usually has both. The 74% is a floor, not a verdict, and re-measuring it on
+finds that do have abstracts is the next thing to do here.
+
+`pipeline choose --check` is the harness; it costs about $0.15 per 500 and needs no labelling.

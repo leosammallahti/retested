@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate, verify
+from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate, verify, choose
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -86,6 +86,8 @@ def main() -> None:
     lp.add_argument("--check", action="store_true", help="accuracy against originals the citation graph already resolved")
     sub.add_parser("originals", add_help=False, help="hand-read audit of whether each find was matched to the "
                                                     "right earlier paper (`python -m pipeline originals --help`)")
+    sub.add_parser("choose", add_help=False, help="ask which cited paper is the one being replicated "
+                                                  "(`python -m pipeline choose --help`)")
     sub.add_parser("verify", add_help=False, help="ask the model whether each find was matched to the right "
                                                   "earlier paper (`python -m pipeline verify --help`)")
     sub.add_parser("outcomes", add_help=False, help="hand-read audit of whether the verdicts were read correctly "
@@ -108,6 +110,8 @@ def main() -> None:
                                      "default is every field the title sweep covers")
     if sys.argv[1:2] == ["outcomes"]:      # these own their flag sets; keep them out of the shared parser
         sys.exit(outcomes.run(sys.argv[2:]))
+    if sys.argv[1:2] == ["choose"]:
+        sys.exit(choose.main(sys.argv[2:]))
     if sys.argv[1:2] == ["verify"]:
         sys.exit(verify.main(sys.argv[2:]))
     if sys.argv[1:2] == ["originals"]:
