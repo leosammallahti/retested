@@ -26,7 +26,7 @@ def build(accept_baseline: bool) -> int:
     g = registry.build(src, ledger)
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
-    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), {**load.load_reference_links(), **load.load_links()}, g, load.load_known_replication_dois(), load.load_known_osf_ids(),
+    candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), load.merged_links(), g, load.load_known_replication_dois(), load.load_known_osf_ids(),
                                       load.load_surname_frequency(), load.load_osf(),
                                       load.load_original_authors())
     before = len(candidates)
@@ -74,6 +74,8 @@ def main() -> None:
     ap_.add_argument("--famous", action="store_true", help="find the famous effects' papers by title and fetch their abstracts")
     rp = sub.add_parser("references", help="find the original in the replication's own reference list")
     rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
+    rp.add_argument("--relink", action="store_true",
+                    help="also reconsider finds whose author-and-year match landed in the weak band")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
     lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
     lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
@@ -106,7 +108,7 @@ def main() -> None:
         sys.exit(authors.run_famous(a.max_usd) if a.famous
                  else authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
     if a.cmd == "references":
-        sys.exit(references.run(a.max_usd))
+        sys.exit(references.run(a.max_usd, a.relink))
     if a.cmd == "osf":
         sys.exit(osf.run())
     if a.cmd == "link":

@@ -68,6 +68,22 @@ def _pool(name: str, rows: list[dict] | None = None) -> list[dict]:
     return audit.pool(POOLS, name, rows)
 
 
+def stale(c: dict, label: dict) -> bool:
+    """Does this label still describe the match that is actually in force?
+
+    A label says "this find was matched to the right earlier paper" about the link that existed when somebody
+    read it. Re-running the matchers can replace that link with a different paper, and then the label is about
+    a match nobody is making any more — counting it is the same error as measuring a band over rows it was
+    never computed on. The band recorded with the label is the tell: if the row has moved, the label has to be
+    re-read before it means anything.
+
+    Renaming a band is NOT a changed match: when `cited by this paper` stopped calling itself "high" and became
+    "unscored", 36 labels still carried the old name and were being set aside as stale though nothing about the
+    link had moved. A rename has to migrate the labels with it.
+    """
+    return label.get("recorded") not in (None, "", band(c))
+
+
 def read_labels() -> list[dict]:
     return audit.read_labels(LABELS)
 
@@ -139,11 +155,13 @@ def score(pool: str | None) -> int:
     members = {name: {c["id"] for c in _pool(name)} for name in POOLS}
     for p in (sorted(POOLS) if pool is None else [pool]):
         rows = _pool(p)
-        read = [(c, labels[c["id"]]) for c in rows if c["id"] in labels]
+        read = [(c, labels[c["id"]]) for c in rows if c["id"] in labels and not stale(c, labels[c["id"]])]
+        dropped = sum(1 for c in rows if c["id"] in labels and stale(c, labels[c["id"]]))
         if not read:
             continue
         print(f"\n## pool '{p}' — {POOLS[p][0]}")
-        print(f"   {len(read)} of {len(rows)} rows read by hand\n")
+        print(f"   {len(read)} of {len(rows)} rows read by hand"
+              + (f" ({dropped} labels set aside: the match changed since they were read)" if dropped else "") + "\n")
         matrix: dict[str, dict] = defaultdict(lambda: {"n": 0, "right": 0, "wrong": 0, "unclear": 0, "pool": 0})
         for c in rows:
             matrix[band(c)]["pool"] += 1
@@ -215,7 +233,7 @@ def audit_summary(pool: str, candidates: list[dict]) -> dict | None:
     """
     labels = {r["cid"]: r for r in read_labels()}
     rows = _pool(pool, candidates)
-    read = [(c, labels[c["id"]]) for c in rows if c["id"] in labels]
+    read = [(c, labels[c["id"]]) for c in rows if c["id"] in labels and not stale(c, labels[c["id"]])]
     if not read:
         return None
     by: dict[str, dict] = defaultdict(lambda: {"n": 0, "right": 0, "in_pool": 0})

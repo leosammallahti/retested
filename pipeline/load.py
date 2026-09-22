@@ -228,6 +228,25 @@ def load_merges() -> list[dict]:
     return yaml.safe_load(p.read_text(encoding="utf-8")) or []
 
 
+def merged_links() -> dict[str, dict]:
+    """One original per find, choosing between the two matchers by how accurate each has been measured to be.
+
+    The author-and-year matcher and the reference-list scan disagree about which paper a replication repeats, and
+    for a long time the author-and-year answer simply won because it was merged second. That is the wrong way
+    round wherever its answer is weak: read one by one, its "low" band is right 12-35% of the time and a
+    reference-list match is right 78-89% (docs/LINK_AUDIT_20260919.md). So a low-band author-and-year link now
+    yields to a reference-list link when one exists; everywhere else the earlier behaviour stands.
+    """
+    refs, auth = load_reference_links(), load_links()
+    out = dict(refs)
+    for cid, a in auth.items():
+        r = refs.get(cid)
+        if r and a.get("confidence") == "low" and r.get("confidence") in ("high", "medium"):
+            continue                                  # the better-measured method keeps the find
+        out[cid] = a
+    return out
+
+
 def load_claims() -> dict[str, dict]:
     """The written game-card claims, keyed by card id. Empty until `python -m pipeline claims --all` has run."""
     p = DISCOVERY / "claims.json"

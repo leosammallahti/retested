@@ -202,7 +202,7 @@ def run(max_usd: float = 0.10) -> int:
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     cands = queue.build_retested(load.load_triaged(),
-                                 {**load.load_reference_links(), **load.load_links()}, g,
+                                 load.merged_links(), g,
                                  load.load_known_replication_dois(), load.load_known_osf_ids())
     # only the originals our finds actually point at, and only where we do not already have a list from FLoRA
     want = sorted({c["doi_o"] for c in cands

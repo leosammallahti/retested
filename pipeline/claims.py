@@ -411,7 +411,7 @@ def _queue_candidates(g: dict) -> list[dict]:
     """The review queue exactly as the build assembles it, so a card and its queue row cannot disagree."""
     from . import load, queue
     return queue.build_retested(load.load_triaged(),
-                                {**load.load_reference_links(), **load.load_links()}, g,
+                                load.merged_links(), g,
                                 load.load_known_replication_dois(), load.load_known_osf_ids(),
                                 load.load_surname_frequency(), load.load_osf(), load.load_original_authors())
 

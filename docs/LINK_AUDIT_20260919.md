@@ -395,3 +395,41 @@ twelve in two hundred have no binary answer at all.
 
 The confidence split holds and sharpens: below `outcome_confidence` 0.8 the verdict is sound 23 times in 29
 (79%); at 0.8 and above, 164 in 171 (**96%**).
+
+
+## Addendum, 2026-09-22: a worse method was blocking a better one
+
+Of the finds this project has matched to an original, 759 sat in bands read at 12–35%. That looked like a hard
+limit — the paper says "we replicated Smith et al. (1998)", surnames repeat, and there are 250 million papers.
+
+It was not a limit. `pipeline references` — which finds the original in the replication's own reference list, and
+is measured at 78–89% — contained the line
+
+    if t.get("original_doi") or r["cid"] in links: continue
+
+so it skipped any find that already had an answer. The author-and-year matcher runs first, produces a weak
+answer, and the better method walks straight past it. The two sets never overlapped: 1,491 finds got the
+reference scan, 1,416 got author-and-year, **and not one got both**.
+
+`--relink` now reconsiders any find whose author-and-year match landed in the low band. 2,121 of them cite a
+reference list already on disk; resolving the 16,665 new cited titles cost **$0.033**. It proposed an original
+for 1,937 finds: 375 high, 601 medium, 961 low.
+
+And `load.merged_links()` now decides between the two matchers by measured accuracy rather than by which
+dictionary was merged second. A low-band author-and-year link yields to a reference-list link; everywhere else
+the earlier behaviour stands.
+
+`reference_scan` high grows from 299 rows to 363, at an unchanged 80% (32/40).
+
+### Two ways the labels nearly lied about this
+
+**A label describes the match that existed when it was read.** Re-running a matcher can replace that link with a
+different paper, and then the label is about a match nobody is making any more. 22 of the 384 hand-read labels
+are now in that position, and scoring them against their rows' new bands made `reference_scan` high look like it
+had dropped from 80% to 73% — a band's accuracy computed over rows it was never measured on, which is the
+mistake this file exists to record. `originals.stale()` now sets those aside and says how many.
+
+**But a band RENAME is not a changed match.** The first version of that check also set aside 36 labels whose
+band had merely been renamed from `cited by this paper/high` to `/unscored`, and that made the best-read band in
+the project look like 79% instead of 86%. The labels were migrated with the rename. Before trusting a drop, check
+whether the rows moved or only their label did.

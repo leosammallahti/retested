@@ -121,7 +121,7 @@ def pick(description: str | None, refs: list[str], titles: dict[str, dict], titl
                           "score": round(runner[0], 3)} if runner[1] else None}
 
 
-def run(max_usd: float = 1.20) -> int:
+def run(max_usd: float = 1.20, relink: bool = False) -> int:
     from . import load
     triaged = load.load_triaged()
     links = load.load_links()
@@ -131,7 +131,14 @@ def run(max_usd: float = 1.20) -> int:
         o = t.get("original") or {}
         if t.get("kind") not in ("replication", "reproduction") or t.get("field") != "psychology":
             continue
-        if t.get("original_doi") or r["cid"] in links:
+        if t.get("original_doi"):
+            continue
+        # Normally this pass only looks at finds with no original at all. But a find whose author-and-year match
+        # landed in the "low" band has an original that is right about a quarter of the time, and this method is
+        # right 78-89% — and it was skipping them precisely because they already had an answer. A worse method
+        # running first should not block a better one.
+        existing = links.get(r["cid"])
+        if existing and not (relink and existing.get("confidence") == "low"):
             continue
         todo[r["cid"]] = (o.get("description"), r.get("title_r"))
     described = sum(1 for d, _ in todo.values() if d)
@@ -145,6 +152,9 @@ def run(max_usd: float = 1.20) -> int:
         hit = pick(desc, refs.get(cid, []), titles, title_r)
         if hit:
             out[cid] = {**hit, "named": {"description": desc}}
+    if relink:                                    # keep what the earlier pass found; add, never replace
+        prior = load.load_reference_links()
+        out = {**prior, **out}
     (DISCOVERY / "reference_links.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     from collections import Counter
     print(f"  proposed an original for {len(out):,} of the {len(refs):,} with references "
