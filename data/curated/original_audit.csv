@@ -394,10 +394,26 @@ W7172581616,linked,library_author_year/medium,right,"Full author list Stellar, G
 W7203567012,linked,openalex_author_year/low,wrong,Original is Turner et al. (2019) on camera perspective bias in police-civilian encounters; match is Kortright et al. (2019) 'Phage Therapy' in Cell Host & Microbe (Paul Turner is a co-author). Different field.,workflow-reader,2026-09-21
 W7208163871,linked,library_author_year/high,right,,workflow-reader,2026-09-21
 W7212105814,linked,openalex_author_year/high,wrong,"Right author, right year, wrong paper. The replication names Pfattheicher, Lazarevic, Westgate & Schindler (2021) Study 1B and lists the Short Boredom Proneness Scale, CAST, Short Dark Triad and BFI battery, i.e. the JPSP 2021 paper 'On the relation of boredom and sadistic aggression' (Studies 1A-1F). The match is the separate six-author school-context paper 'I enjoy hurting my classmates' (preprint 2021, Journal of School Psychology 2022), which has only Studies 1 and 2, uses 10-18 year-old pupils with self- and peer-reports, and no such personality battery. Runner-up is the same wrong paper, so no rescue.",workflow-reader,2026-09-21
+10.1002/bsl.2232,page,runner_up/low,right,child witness demeanor -> credibility; same effect,claude-opus-5,2026-09-22
+10.1002/smi.2430,page,runner_up/low,right,"Smith 2009 chewing gum, stress and health",claude-opus-5,2026-09-22
+10.1007/bf01541894,page,runner_up/high,wrong,"the men/women pair: replication is of the men study, pick is the women one",claude-opus-5,2026-09-22
+10.1007/s10803-016-2911-5,page,runner_up/high,right,the 2013 PEERS replication and extension is what the 2016 one re-tests,claude-opus-5,2026-09-22
+10.1016/0891-4222(91)90031-m,page,runner_up/low,right,Durand & Crimmins 1988 is the Motivation Assessment Scale paper,claude-opus-5,2026-09-22
+10.1016/j.cortex.2026.04.009,page,runner_up/low,right,"Grandjean 2005 voices of wrath, angry prosody and amygdala",claude-opus-5,2026-09-22
+10.1016/j.crbeha.2023.100110,page,runner_up/high,right,"loss vs gain framing and cheating, same effect",claude-opus-5,2026-09-22
+10.1016/j.dcn.2012.11.002,page,runner_up/low,wrong,the pick measures motivational tendencies; the replication is of approach-bias RETRAINING,claude-opus-5,2026-09-22
+10.1016/j.eatbeh.2005.11.002,page,runner_up/medium,right,self-help vs therapist-led treatment for binge eating,claude-opus-5,2026-09-22
+10.1037//0021-843x.91.5.337,page,runner_up/low,right,Silverman's subliminal psychodynamic activation method,claude-opus-5,2026-09-22
 10.1037/h0080795,page,library_author_year/high,right,,claude-opus-5,2026-09-21
+10.1111/jopy.12699,page,runner_up/medium,right,"Townsend & Levy 1990, named by the replication",claude-opus-5,2026-09-22
+10.1177/00986283251339407,page,runner_up/medium,right,"Kershaw et al. 2018, named in the replication's own title",claude-opus-5,2026-09-22
+10.1371/journal.pone.0210698,page,runner_up/low,right,"Boutwell et al. 2017, named by the replication",claude-opus-5,2026-09-22
+10.1521/jscp.2023.42.3.187,page,runner_up/low,right,No More FOMO (Hunt 2018) is exactly the limiting-social-media study,claude-opus-5,2026-09-22
 10.17605/osf.io/apf57,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
 10.17605/osf.io/kfv5d,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
 10.17605/osf.io/y3ubj,page,library_author_year/high,right,,claude-opus-5,2026-09-21
+10.24124/2023/59419,page,runner_up/low,right,"Kutas & Hillyard 1984 word expectancy, the SPP semantic predictability finding",claude-opus-5,2026-09-22
+10.2466/pr0.1982.50.1.114,page,runner_up/low,wrong,"a theoretical and methodological CRITIQUE of the BSRI, not the assertiveness study",claude-opus-5,2026-09-22
 10.31234/osf.io/eg2pu,page,library_author_year/high,right,,claude-opus-5,2026-09-21
 10.35771/engdoi.2014.27.1.012,page,library_author_year/medium,right,"same author, year and topic; the matched title says working memory where the replication says phonological short-term memory",claude-opus-5,2026-09-21
 10.6084/m9.figshare.729253,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
@@ -411,6 +427,8 @@ W7111777765,page,library_author_year/high,right,,claude-opus-5,2026-09-21
 W7112947619,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
 W7113008597,page,library_author_year/high,right,,claude-opus-5,2026-09-21
 W7115807509,page,library_author_year/medium,right,,claude-opus-5,2026-09-21
+W7133172968,page,runner_up/low,wrong,"a review of concepts and definitions, not Pfattheicher et al. 2021",claude-opus-5,2026-09-22
+W7160460844,page,runner_up/low,right,"Diener et al. 2010 wealth and happiness, named by the replication",claude-opus-5,2026-09-22
 W7160467679,page,library_author_year/high,right,,claude-opus-5,2026-09-21
 W7160477742,page,library_author_year/medium,wrong,score 0.505 with 1 of 3 authors matched: an epidemiology paper on olfaction and Parkinson disease,claude-opus-5,2026-09-21
 W7165241472,page,library_author_year/medium,right,,claude-opus-5,2026-09-21

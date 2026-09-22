@@ -603,3 +603,39 @@ prompt gets there.
 
 Crossref holds an abstract for **0 of 20** of the missing earlier papers; Semantic Scholar for **3 of 50**. These
 are mostly pre-1995 papers for which no abstract was ever deposited anywhere.
+
+### The paper the matcher ranked second — built, measured, held back
+
+Every matcher scores candidate originals and records the runner-up, and nobody had ever looked at it. When the
+judge rejected a first choice the find was dropped with its second choice unread: **1,189 finds** were in that
+state. Two read by hand looked decisive —
+
+- *"Association of smoking and personality with a polymorphism of the dopamine transporter gene"* names Sabol
+  et al. 1999; the matcher chose a 1992 gene-mapping paper and ranked *"A genetic association for cigarette
+  smoking behavior"*, Health Psychology 18(1):7 — which **is** Sabol 1999 — second.
+- *"Online Moral Conformity Revisited"* → first choice *"Moral conformity in online interactions"* (a different
+  paper), second choice *"Online Moral Conformity: how powerful is a Group of Strangers"*.
+
+`verify --runners` fetches what OpenAlex holds on each runner-up and judges it with the `v2` prompt. **180 of
+1,189 confirmed, $0.617.** Of the 180, the first choice had been called wrong 130 times and unclear 50 times.
+
+**Read by hand, 18 drawn at random: 14 right — 78%** (95%: 54–92%), against a 90% bar. Labels are in
+`original_audit.csv`. The four failures have a shape the judge cannot see without an abstract:
+
+| the replication | what was picked |
+|---|---|
+| approach-bias *retraining* in alcohol dependence | a paper measuring motivational tendencies |
+| adjustment of homosexual and heterosexual *men* | the companion paper on *women* |
+| assertiveness and the Bem Sex-Role Inventory | a theoretical and methodological *critique* of the BSRI |
+| a replication of Pfattheicher et al. 2021 | *"Prosocial behavior and altruism: a review of concepts"* |
+
+**So nothing ships, and the reason matters more than the result.** The judge is allowed past the band gate at all
+because it measures **98% on first choices**. That number is about first choices. A second choice is a different
+population by construction — a paper some matcher already ranked *below* one that turned out to be wrong — and
+the same instrument reads 78% there. Carrying a calibration from the population it was measured on to a
+different one is the error this whole file exists to prevent, and it nearly happened here because the promotion
+looked free.
+
+The work is kept and the measurement written down: `data/discovery/runner_up_links.json` holds the 180, and 18
+of them are labelled. About **36 cards** turn on it. If more reading clears 90%, `load.merged_links` is where to
+merge them.

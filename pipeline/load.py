@@ -256,7 +256,27 @@ def merged_links() -> dict[str, dict]:
             cur = out.get(cid)
             if cur is None or _band_score(link) > _band_score(cur):
                 out[cid] = link
+    # The second choices are NOT merged in. `verify --runners` judges the paper each matcher ranked second for
+    # finds whose first choice failed, and the judge confirmed 180 of 1,189. Read by hand, 18 of those drawn at
+    # random are right 14 times — 78%, against a 90% bar. The failures have a shape the judge cannot see without
+    # an abstract: a review of the field instead of the study it reviews, a methodological critique of a scale
+    # instead of the paper that used it, and the wrong paper by the right author.
+    #
+    # The judge was let past the band gate at all because it measures 98% ON FIRST CHOICES. That number is about
+    # first choices. A second choice is a different population — it is, by construction, a paper some matcher
+    # already ranked below one that turned out to be wrong — and the same instrument reads 78% there. Carrying a
+    # calibration across populations is the error this file exists to prevent.
+    #
+    # So the work is kept, the measurement is written down, and nothing ships: data/discovery/runner_up_links.json
+    # and the 18 labels in original_audit.csv are what a later reader needs to settle it. Roughly 36 cards turn
+    # on this. If reading more of them clears 90%, merge them here.
     return out
+
+
+def load_confirmed_runners() -> dict[str, dict]:
+    """find id -> the second-choice paper the judge confirmed. Empty until `verify --runners` has run."""
+    p = DISCOVERY / "runner_up_links.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
 
 
 # How accurate each band has been measured to be, read off the hand labels rather than written down here, so
@@ -332,12 +352,18 @@ def load_verified_links() -> dict[str, str]:  # noqa: D401 — see load_verified
     return {r["id"]: r["verdict"] for r in json.loads(p.read_text(encoding="utf-8")) if r.get("doi_o")}
 
 
-def load_verified_matches() -> dict[str, tuple[str, str]]:
-    """find id -> (the paper the verdict was about, the verdict). See load_verified_links for why doi_o matters."""
+def load_verified_matches() -> dict[tuple[str, str], str]:
+    """(find id, paper doi) -> verdict.
+
+    Keyed by the PAIR, because the verdict is about a pairing and a find can have more than one pairing judged.
+    That is not hypothetical: every matcher records the paper it ranked second, and 1,189 finds whose first
+    choice was rejected have a second choice nobody ever looked at. Judging those means holding two verdicts for
+    one find, which a dict keyed on the find alone cannot do.
+    """
     p = DISCOVERY / "verified_links.json"
     if not p.exists():
         return {}
-    return {r["id"]: (r["doi_o"], r["verdict"])
+    return {(r["id"], r["doi_o"]): r["verdict"]
             for r in json.loads(p.read_text(encoding="utf-8")) if r.get("doi_o")}
 
 

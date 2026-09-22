@@ -280,10 +280,24 @@ def _by_band(pairs: list[tuple[dict, str]]) -> None:
         print(f"   {b:<34} {d['n']:>5} {d['agree'] / d['n']:>6.0%}   {d['conf']:>9} {rate:>15}")
 
 
-def _unclear_ids() -> set[str]:
+def _read_out() -> dict[tuple[str, str], dict]:
+    """Stored verdicts, keyed by the PAIR they are about — see load.load_verified_matches."""
     if not OUT.exists():
-        return set()
-    return {r["id"] for r in json.loads(OUT.read_text()) if r["verdict"] == "unclear"}
+        return {}
+    return {(r["id"], r.get("doi_o")): r for r in json.loads(OUT.read_text())}
+
+
+def _write_out(merged: dict[tuple[str, str], dict]) -> None:
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(sorted(merged.values(), key=lambda r: (r["id"], r.get("doi_o") or "")),
+                              ensure_ascii=False, indent=0), encoding="utf-8")
+
+
+def _unclear_ids() -> set[str]:
+    """Finds whose CURRENT match was left unclear. A stored verdict about some other paper does not count."""
+    rows = {c["id"]: (c.get("doi_o") or None) for c in originals._pool("linked")}
+    return {r["id"] for r in _read_out().values()
+            if r["verdict"] == "unclear" and rows.get(r["id"]) == r.get("doi_o")}
 
 
 def second_calibrate(max_usd: float, workers: int) -> int:
@@ -297,7 +311,7 @@ def second_calibrate(max_usd: float, workers: int) -> int:
     labels = {r["cid"]: r for r in originals.read_labels()}
     rows = {c["id"]: c for c in originals._pool("linked")}
     usable = {cid: l for cid, l in labels.items() if cid in rows and not originals.stale(rows[cid], l)}
-    v1 = {r["id"]: r for r in json.loads(OUT.read_text())} if OUT.exists() else {}
+    v1 = {r["id"]: r for r in _read_out().values()}
     todo = [cid for cid in usable if v1.get(cid, {}).get("verdict") == "unclear"]
     if not todo:
         print("no hand-read links were left unclear by the first pass")
@@ -327,7 +341,7 @@ def second(max_usd: float, workers: int, limit: int | None) -> int:
     cases = _cases("linked", limit, todo)
     got = _run_cases(cases, max_usd, workers, "links the first pass could not settle",
                      SECOND_SYSTEM, SECOND_VERSION)
-    merged = {r["id"]: r for r in json.loads(OUT.read_text())}
+    merged = _read_out()
     changed = Counter()
     for r in got:
         # PROMOTE ONLY. Scored on the 64 hand-read links the first pass left unclear, the second prompt's
@@ -338,24 +352,92 @@ def second(max_usd: float, workers: int, limit: int | None) -> int:
         if r["verdict"] != "right":
             changed["left unclear"] += 1
             continue
-        changed[f"{merged[r['id']]['verdict']} -> right"] += 1
-        merged[r["id"]] = r
-    OUT.write_text(json.dumps(sorted(merged.values(), key=lambda r: r["id"]), ensure_ascii=False, indent=0),
-                   encoding="utf-8")
+        changed["unclear -> right"] += 1
+        merged[(r["id"], r.get("doi_o"))] = r
+    _write_out(merged)
     print("  " + " · ".join(f"{k}: {v}" for k, v in sorted(changed.items())))
     report()
+    return 0
+
+
+# ---------------------------------------------------------------- the paper the matcher ranked second
+
+RUNNERS = DISCOVERY / "runner_up_links.json"
+
+
+def _runner_cases(limit: int | None = None) -> list[dict]:
+    """A case per find whose CURRENT match was not confirmed and whose matcher recorded a second choice.
+
+    Every matcher scores candidate papers and keeps the runner-up, and until now nobody looked at it: when the
+    judge said the first choice was wrong, the find was dropped with its second choice unread. The first two
+    read by hand were both right. The 1966 smoking paper names Sabol et al. 1999, the matcher chose a 1992
+    gene-mapping paper and ranked "A genetic association for cigarette smoking behavior" — Health Psychology
+    18(1):7, which IS Sabol 1999 — second.
+
+    The runner-up record holds a DOI, a title and a score and nothing else, so authors, year and abstract are
+    fetched from OpenAlex first. A runner-up with nothing but a DOI is skipped rather than judged blind.
+    """
+    from .load import load_original_authors, load_verified_matches
+    verdicts = load_verified_matches()
+    meta = load_original_authors()
+    out = []
+    for c in originals._pool("linked"):
+        if verdicts.get((c["id"], c.get("doi_o"))) == "right":
+            continue
+        ru = ((c.get("link_evidence") or {}).get("runner_up") or {})
+        doi = ru.get("doi_o")
+        if not doi or doi == c.get("doi_o"):
+            continue
+        m = meta.get(doi) or {}
+        if not (ru.get("title_o") or m.get("title")):
+            continue
+        k = originals._case(c)
+        k["matched_to"] = {"doi": doi, "title": ru.get("title_o") or m.get("title"),
+                           "year": m.get("year"), "authors": m.get("authors"),
+                           "journal": m.get("journal"), "abstract": (m.get("abstract") or "")[:900] or None}
+        k["evidence"] = {"rank": "second choice of the matcher", "score": ru.get("score")}
+        k["runner_up"] = None
+        out.append(k)
+    return out[:limit] if limit else out
+
+
+def runners(max_usd: float, workers: int, limit: int | None, fetch_usd: float = 0.40) -> int:
+    from . import authors
+    from .load import load_original_authors
+    cases = _runner_cases()
+    want = sorted({k["matched_to"]["doi"] for k in cases})
+    have = load_original_authors()
+    todo = [d for d in want if not (have.get(d) or {}).get("abstract")]
+    print(f"  {len(cases)} finds have a second choice nobody judged · {len(todo)} of those papers need looking up")
+    if todo:
+        authors.fetch(todo, fetch_usd)
+    cases = _runner_cases(limit)     # rebuilt so the freshly fetched abstracts are in the prompts
+    got = _run_cases(cases, max_usd, workers, "second choices", SECOND_SYSTEM, SECOND_VERSION)
+    merged = _read_out()
+    for r in got:
+        merged[(r["id"], r.get("doi_o"))] = r
+    _write_out(merged)
+    ok = [r for r in got if r["verdict"] == "right"]
+    print(f"  {len(ok)} of {len(got)} second choices confirmed ({len(ok) / max(len(got), 1):.0%})")
+    # Written as a link source of its own so the merge can prefer it; `merged_links` only takes one whose
+    # pairing the judge confirmed, so an unread second choice never displaces anything.
+    by_cid = {c["id"]: c for c in originals._pool("linked")}
+    links = {r["id"]: {"doi_o": r["doi_o"], "method": "runner_up",
+                       "confidence": (by_cid[r["id"]].get("link_confidence") if r["id"] in by_cid else None),
+                       "from_method": by_cid[r["id"]].get("link_method") if r["id"] in by_cid else None}
+             for r in ok}
+    RUNNERS.write_text(json.dumps(links, ensure_ascii=False, indent=0), encoding="utf-8")
+    print(f"  wrote {RUNNERS} · {len(links)} confirmed second choices")
     return 0
 
 
 def run(max_usd: float, workers: int, limit: int | None, pool: str) -> int:
     cases = _cases(pool, limit)
     got = _run_cases(cases, max_usd, workers, f"matched finds in pool '{pool}'")
-    merged = {r["id"]: r for r in (json.loads(OUT.read_text()) if OUT.exists() else [])}
+    merged = _read_out()
     for r in got:
-        merged[r["id"]] = r
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(sorted(merged.values(), key=lambda r: r["id"]), ensure_ascii=False, indent=0),
-                   encoding="utf-8")
+        merged[(r["id"], r.get("doi_o"))] = r
+    _write_out(merged)
     print(f"  wrote {OUT} · {len(merged)} verdicts in all ({len(got)} from this run)")
     report()
     return 0
@@ -386,6 +468,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--second-calibrate", action="store_true",
                    help="score the second prompt on the hand-read links the first left unclear")
     p.add_argument("--second", action="store_true", help="re-judge every link the first pass left unclear")
+    p.add_argument("--runners", action="store_true",
+                   help="judge the paper each matcher ranked second, for finds whose first choice was not confirmed")
     p.add_argument("--all", action="store_true", help="judge every matched find")
     p.add_argument("--report", action="store_true", help="what has been confirmed, by band")
     p.add_argument("--pool", default="linked", choices=sorted(originals.POOLS))
@@ -399,6 +483,8 @@ def main(argv: list[str] | None = None) -> int:
         return second_calibrate(a.max_usd, a.workers)
     if a.second:
         return second(a.max_usd, a.workers, a.limit)
+    if a.runners:
+        return runners(a.max_usd, a.workers, a.limit)
     if a.all:
         return run(a.max_usd, a.workers, a.limit, a.pool)
     if a.report:
