@@ -248,24 +248,42 @@ def _tkey(t: str) -> str:
 SWEEP_FIELDS = {32: "Psychology", 33: "Social Sciences", 28: "Neuroscience",
                 20: "Economics & Finance", 14: "Business & Management", 18: "Decision Sciences"}
 
+# Crawling a field is cheap and cached; SCREENING its candidates is paid per candidate. So the sweep takes all
+# six and the screen takes a slice, named on the command line. The owner's call on 2026-09-22 was to finish
+# Psychology and Decision Sciences before buying the rest, and the high tier divides like this:
+#
+#   Psychology 2,792 · Social Sciences 2,296 · Neuroscience 1,538 · Decision Sciences 1,093
+#   Economics & Finance 622 · Business & Management 475        (a work can sit in more than one)
+#
+# Psychology and Decision Sciences together are 3,644, of which 852 are Decision Sciences without Psychology —
+# the genuinely new ground. Social Sciences and Neuroscience are the next two and are crawled and waiting.
+SCREEN_FIELDS_DEFAULT = {"Psychology", "Decision Sciences"}
+
 
 def keyword_sweep(fields: dict[int, str] | None = None) -> list[dict]:
-    """Every OpenAlex work titled 'replication' (stemmed) in the swept fields, all years."""
+    """Every OpenAlex work titled 'replication' (stemmed) in the swept fields, all years.
+
+    Each work carries the fields it was found under, because a field is the only handle on which slice of the
+    sweep a candidate came from and the screen downstream is paid for per candidate. A work found under both
+    Psychology and Decision Sciences carries both.
+    """
     works: dict[str, dict] = {}
     for fid, name in sorted((fields if fields is not None else SWEEP_FIELDS).items()):
         before = len(works)
-        _sweep_field(fid, works)
+        _sweep_field(fid, works, name)
         print(f"    {name}: {len(works) - before} new ({len(works)} total)")
     return list(works.values())
 
 
-def _sweep_field(fid: int, works: dict[str, dict]) -> None:
+def _sweep_field(fid: int, works: dict[str, dict], name: str = "") -> None:
     cursor, page = "*", 0
     while cursor:
         d = _get({"filter": f"topics.field.id:{fid},title.search:replication", "select": SELECT, "per_page": 200, "cursor": cursor},
                  f"kw-f{fid}-{page:03d}" if fid != 32 else f"kw-{page:03d}")
         for w in d.get("results", []):
-            works[w["id"]] = w
+            works.setdefault(w["id"], {**w, "oa_fields": []})
+            if name and name not in works[w["id"]]["oa_fields"]:
+                works[w["id"]]["oa_fields"].append(name)
         cursor = (d.get("meta") or {}).get("next_cursor")
         page += 1
         if not d.get("results"):
@@ -320,6 +338,7 @@ def run(g: dict, mode: str = "cites") -> dict:
                                   if (n := ((a.get("author") or {}).get("display_name") or "").strip())],
             # OpenAlex author ids settle what a surname only suggests: "chen" appears 832 times, A5012345678 once
             "author_ids_r": [i.rsplit("/", 1)[-1] for a in au if (i := (a.get("author") or {}).get("id"))],
+            "oa_fields": w.get("oa_fields") or None,
             "originals": cited, "original_titles": [P.get(d, {}).get("title") for d in cited[:5]],
             "known_to_forrt": known_rep or known_title, "known_how": "doi" if known_rep else ("title (preprint/published twin)" if known_title else None),
             **sc,

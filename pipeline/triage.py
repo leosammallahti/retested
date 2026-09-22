@@ -191,7 +191,13 @@ def classify(c: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
     return rec
 
 
-def candidates(tier: str) -> list[dict]:
+def candidates(tier: str, fields: set[str] | None = None) -> list[dict]:
+    """Candidates to screen, optionally restricted to the OpenAlex fields they were swept from.
+
+    The title sweep covers six fields and the screen is paid for per candidate, so which slice is being bought
+    has to be sayable. A candidate found by the citation search carries no field — it was found by citing an
+    original we already hold, not by browsing a field — and is never excluded by this filter.
+    """
     tiers = {"high": {"high"}, "medium": {"high", "medium"}}[tier]
     seen, out = {}, []
     for mode in ("keyword", "cites"):
@@ -201,6 +207,8 @@ def candidates(tier: str) -> list[dict]:
         for c in json.loads(p.read_text(encoding="utf-8"))["candidates"]:
             cid = c.get("doi_r") or c["openalex_id"]
             if c["tier"] not in tiers or not c.get("title_r"):
+                continue
+            if fields is not None and c.get("oa_fields") and not (set(c["oa_fields"]) & fields):
                 continue
             if cid in seen:  # found by both searches: keep the richer record (with cited originals)
                 if c.get("originals") and not seen[cid].get("originals"):
@@ -213,12 +221,13 @@ def candidates(tier: str) -> list[dict]:
     return out
 
 
-def run(tier: str = "high", pilot: bool = False, max_usd: float = 1.5, workers: int = 8) -> int:
+def run(tier: str = "high", pilot: bool = False, max_usd: float = 1.5, workers: int = 8,
+        fields: set[str] | None = None) -> int:
     key = _key()
     b0 = balance(key)
     cache_dir = CACHE / "triage" / MODEL / PROMPT_VERSION
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cands = pilot_set(tier) if pilot else candidates(tier)
+    cands = pilot_set(tier) if pilot else candidates(tier, fields)
     meter = Meter(max_usd)
     print(f"  {len(cands)} candidates · model {MODEL} · cap ${max_usd:.2f} (worst-case pricing) · balance ${b0}")
     results, t0 = [], time.time()
@@ -236,9 +245,18 @@ def run(tier: str = "high", pilot: bool = False, max_usd: float = 1.5, workers: 
           f"real spend ${(b0 - b1) if (b0 is not None and b1 is not None) else float('nan'):.3f}")
     if pilot:
         return report_pilot(results)
+    # MERGE, never replace. A run screens the slice it was asked for — one tier, or one set of fields — and
+    # this file is the accumulated screen of every slice ever run. Writing `results` over it on 2026-09-22 took
+    # 11,979 screened candidates down to the 4,003 of that run. Nothing was lost because every verdict is cached
+    # per candidate, but the build read the short file first. `claims.json` had the identical bug three hours
+    # earlier: a run scoped to one tier silently deleted the rest.
     out = DISCOVERY / "triaged.json"
-    out.write_text(json.dumps(results, ensure_ascii=False), encoding="utf-8")
+    merged = {r["cid"]: r for r in (json.loads(out.read_text(encoding="utf-8")) if out.exists() else [])}
+    merged.update({r["cid"]: r for r in results})
+    everything = sorted(merged.values(), key=lambda r: r["cid"])
+    out.write_text(json.dumps(everything, ensure_ascii=False), encoding="utf-8")
     from collections import Counter
+    print(f"  wrote {out} · {len(everything)} screened in all ({len(results)} from this run)")
     print("  kinds:", Counter(r["triage"].get("kind") for r in results).most_common())
     print("  fields of replications:", Counter(r["triage"].get("field") for r in results if r["triage"].get("kind") == "replication").most_common())
     print("  outcomes of psychology replications:", Counter(r["triage"].get("outcome") for r in results

@@ -104,6 +104,8 @@ def main() -> None:
     tp.add_argument("--pilot", action="store_true", help="only that tier's labelled sample; report agreement")
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     tp.add_argument("--workers", type=int, default=8, help="parallel requests; ~8 gives 8 papers/s, higher risks 429s")
+    tp.add_argument("--fields", help="comma-separated OpenAlex fields to screen, e.g. 'Psychology,Decision Sciences'; "
+                                     "default is every field the title sweep covers")
     if sys.argv[1:2] == ["outcomes"]:      # these own their flag sets; keep them out of the shared parser
         sys.exit(outcomes.run(sys.argv[2:]))
     if sys.argv[1:2] == ["verify"]:
@@ -128,7 +130,8 @@ def main() -> None:
             sys.exit(claims.report())
         sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit, a.tier))
     if a.cmd == "triage":
-        sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers))
+        sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers,
+                            {f.strip() for f in a.fields.split(",")} if a.fields else None))
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))
     if a.cmd == "build":
