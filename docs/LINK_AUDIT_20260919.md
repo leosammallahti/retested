@@ -706,3 +706,54 @@ This is the third instance today of one pattern: **a judgement about a pairing h
 model's verdicts had it (fixed by keying on `doi_o`), the verdict cache had it (fixed by keying the file on
 (find, paper)), and the hand labels had it. In each case the failure was invisible while nothing moved and
 appeared the moment re-matching moved something.
+
+### One rule for what a reader's "can't tell" means
+
+Re-reading the two weak bands raised a question the codebase had two answers to. `queue.trusted_links` computed
+a band's accuracy as `right / everything read`, counting `unclear` as a miss. The verifier's calibration
+computed `right / (right + wrong)`, setting `unclear` aside. **On the same labels the two differed by 146
+cards**, entirely in how a handful of "can't tell" reads were treated.
+
+`right` and `wrong` are findings. `unclear` is the reader declining to judge — a bare title on one side, a
+plausible match nothing confirms — and it is not evidence that the match is wrong. The harm this bar exists to
+prevent is a **wrong** original sitting under a card. So the rate is `right / (right + wrong)`, unclear rows are
+set aside and counted in their own column, and `queue.rate` is the one place it is written.
+
+### Both weak bands, read out
+
+`reference_scan/medium` was at 26 of 32 (81%) on labels written before the reference titles were completed.
+Twenty fresh reads came out 18 of 19. Re-reading all 35 of the old ones against the matches actually in force —
+several of which had changed, including a Briggs 2018 resurgence paper that had been matched to a study of
+machine translation in Korean students and now points at the right Briggs paper — gave 29 right, 4 wrong, 2
+unclear.
+
+| band | rows | right | wrong | unclear | precision |
+|---|---|---|---|---|---|
+| reference_scan/medium | 343 | 47 | 5 | 3 | **90%** (79–96) |
+| reference_scan/low | 282 | 19 | 2 | 3 | **90%** (71–97) |
+
+Both sit exactly on the line rather than under it, which is not what either was thought to be. `reference_scan`
+low had been the project's worst band at 29%; completing the bibliographies and filtering per row is what moved
+it, and it is the same 282 rows.
+
+### What a page shows, all of it
+
+| | |
+|---|---|
+| rows a page shows | **1,867** |
+| read by hand | 304 |
+| right | **290** |
+| wrong | 14 |
+| **precision** | **95%** (95%: 92–97) |
+
+Every band in the shipped set is at or above 90%. The deck is **1,091 cards** — 493 from the record, 401 from
+our own finds, 197 famous — and every one of them is written rather than lifted from a database field.
+
+### A guard that can now fire in both directions
+
+`queue._overruled` exists because the verifier is let past the band gate on a 98% average, and an average that
+clears a bar does not license every part of it. A band is overruled once at least 20 of ITS OWN SHIPPED rows
+have been read and fewer than 90% hold. It is computed from the labels, so it switches itself off when reading
+clears a band and on when a shipping band starts failing. Under the settled rule it currently names nothing —
+but it named `reference_scan/medium` for the twenty minutes when the convention was the other one, which is the
+demonstration that it works.

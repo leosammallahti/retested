@@ -5,17 +5,14 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.1002/bs.3830140505,card,openalex_author_year/low,,wrong,Stone 1966 on prognostic judgements matched to Stone 1966 on baroclinic stability,claude-opus-5,2026-09-21
 10.1002/capr.12710,card,reference_scan/low,,wrong,,claude-opus-5,2026-09-21
 10.1002/jaba.789,card,library_author_year/low,,wrong,Hall et al. 2020 on functional-analysis software matched to Hall et al. 2020 on how laypeople define empathy,claude-opus-5,2026-09-21
-10.1002/jaba.791,card,library_author_year/low,,wrong,Briggs 2018 on resurgence matched to a paper on machine translation in Korean student writing,claude-opus-5,2026-09-21
 10.1002/jad.12266,card,reference_scan/low,,wrong,the replication follows the authors' own earlier cohort; matched to a different group entirely,claude-opus-5,2026-09-21
 10.1002/jeab.769,card,openalex_author_year/high,,right,,claude-opus-5,2026-09-21
 10.1002/pits.21647,card,reference_scan/low,,right,,claude-opus-5,2026-09-21
 10.1007/s11218-024-09899-y,card,reference_scan/low,,right,,claude-opus-5,2026-09-21
 10.1016/0005-7967(86)90033-1,card,reference_scan/high,,unclear,preparedness resistance-to-extinction is not what the matched McNally paper reports,claude-opus-5,2026-09-21
 10.1016/0022-1031(92)90040-q,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
-10.1016/j.jad.2025.01.058,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 10.1016/j.psychsport.2024.102770,card,reference_scan/low,,right,,claude-opus-5,2026-09-21
 10.1016/j.sbspro.2011.10.233,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
-10.1017/s0033291711000973,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 10.1017/s0261444821000197,card,openalex_author_year/low,,wrong,,claude-opus-5,2026-09-21
 10.1017/s0305000900012058,card,openalex_author_year/low,,wrong,,claude-opus-5,2026-09-21
 10.1017/s1041610215001970,card,reference_scan/low,,wrong,a vignette study matched to a retrospective radiotherapy review; the runner-up is the right kind of paper,claude-opus-5,2026-09-21
@@ -25,14 +22,11 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.1027/1864-9335/a000245,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1037//0882-7974.9.3.464,card,reference_scan/high,,right,,claude-opus-5,2026-09-21
 10.1037//1064-1297.7.3.234,card,openalex_author_year/high,,right,,claude-opus-5,2026-09-21
-10.1037/a0019089,card,library_author_year/low,,wrong,,claude-opus-5,2026-09-21
 10.1037/a0027805,card,cited by this paper/unscored,,wrong,"the glucose-and-slant study replicated is Schnall, Zadra & Proffitt; matched to Gailliot et al. on self-control instead",claude-opus-5,2026-09-21
 10.1037/a0035467,card,openalex_author_year/high,,right,"exact title and author match, score 1.0",claude-opus-5,2026-09-21
 10.1037/arc0000031,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
-10.1037/h0030709,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 10.1038/s41598-023-48792-0,card,reference_scan/low,,wrong,,claude-opus-5,2026-09-21
 10.1038/s41598-025-27622-5,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
-10.1038/s41598-025-98673-x,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 10.1080/01608061.2023.2219466,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1080/02699931.2016.1180280,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1080/02699931.2023.2216446,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
@@ -52,14 +46,11 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.1111/bjc.12169,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1111/bjep.12466,card,openalex_author_year/high,,right,,claude-opus-5,2026-09-21
 10.1111/desc.12887,card,cited by this paper/unscored,,right,"circular band, judged from the abstract: the crane study replicates Onishi & Baillargeon's procedure",claude-opus-5,2026-09-21
-10.1111/j.1365-2788.2007.01026.x,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 10.1111/j.1469-7610.1989.tb00274.x,card,openalex_author_year/medium,,right,,claude-opus-5,2026-09-21
 10.1111/jcpp.13682,card,reference_scan/medium,,wrong,,claude-opus-5,2026-09-21
 10.1121/1.5036264,card,openalex_author_year/medium,,right,,claude-opus-5,2026-09-21
 10.1155/2014/240125,card,openalex_author_year/medium,,right,,claude-opus-5,2026-09-21
-10.1161/01.hyp.11.4.308,card,reference_scan/medium,,unclear,"same group and year, but the matched paper is normative data rather than the race-difference finding",claude-opus-5,2026-09-21
 10.1176/foc.4.2.291,card,reference_scan/high,,right,,claude-opus-5,2026-09-21
-10.1177/00332941231169666,card,reference_scan/medium,,wrong,"subliminal priming and categorisation threshold is Krosch & Amodio, which is the runner-up",claude-opus-5,2026-09-21
 10.1177/0146167296221008,card,cited by this paper/unscored,,right,"the model named Rosenblatt 1989 but the design in the abstract is Greenberg et al. 1990, which is what it got",claude-opus-5,2026-09-21
 10.1177/01902725231162074,card,reference_scan/low,,wrong,"Ermisch & Gambetta ""Do strong family ties inhibit trust?"" is the runner-up",claude-opus-5,2026-09-21
 10.1177/09567976261436988,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
@@ -75,7 +66,6 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.1518/001872000779698169,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1521/bumc.2022.86.3.183,card,reference_scan/low,,wrong,,claude-opus-5,2026-09-21
 10.1525/collabra.59,card,reference_scan/low,,right,,claude-opus-5,2026-09-21
-10.15760/etd.2386,card,openalex_author_year/low,,wrong,,claude-opus-5,2026-09-21
 10.15763/issn.1936-9298.2025.2.1.1-10,card,reference_scan/high,,right,,claude-opus-5,2026-09-21
 10.18483/ijsci.2548,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.18542/rebac.v14i2.7532,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
@@ -107,7 +97,6 @@ cid,pool,recorded,matched_to,label,note,labelled_by,labelled_on
 10.7282/t34t6jjp,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.7287/peerj.10325v0.1/reviews/1,card,cited by this paper/unscored,,right,"the record is a peer-review document for the replication, but the original it points at is right",claude-opus-5,2026-09-21
 10.7910/dvn/qui4mw,card,openalex_author_year/medium,,right,,claude-opus-5,2026-09-21
-W1015327088,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 W1909834750,card,reference_scan/low,,right,,claude-opus-5,2026-09-21
 W2096105143,card,library_author_year/low,,wrong,Li 2002 on mate preferences matched to a Huntington disease genome scan,claude-opus-5,2026-09-21
 W2188628050,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
@@ -115,7 +104,6 @@ W2385387129,card,reference_scan/low,,wrong,,claude-opus-5,2026-09-21
 W2607020998,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 W2696723753,card,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 W2773732469,card,openalex_author_year/high,,right,,claude-opus-5,2026-09-21
-W2788431364,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 W2805657910,card,reference_scan/medium,,right,,claude-opus-5,2026-09-21
 W2891618352,card,library_author_year/low,,wrong,,claude-opus-5,2026-09-21
 W7110641524,card,library_author_year/low,,right,,claude-opus-5,2026-09-21
@@ -126,19 +114,16 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1002/(sici)1099-0720(199910)13:5<485::aid-acp627>3.0.co;2-#,linked,openalex_author_year/medium,,right,,workflow-reader,2026-09-21
 10.1002/acp.924,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
 10.1002/ejsp.2273,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
-10.1002/ejsp.2420250402,linked,reference_scan/medium,,wrong,"Martin says he replicates 'the original experiment', i.e. Moscovici & Personnaz (1980). The pick, Doms & Van Avermaet (1980), is itself titled 'A replication' of that original.",workflow-reader,2026-09-21
 10.1002/ejsp.646,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
 10.1002/hbm.70592,linked,reference_scan/medium,,unclear,"The study tests two decades of dyslexia GMV literature and names no single original; the pick is an ALE meta-analysis (not a source study) and one of many equally plausible candidates, including the runner-up.",workflow-reader,2026-09-21
 10.1002/jaba.678,linked,reference_scan/medium,,right,Rey et al.'s DRO vs yoked variable-time comparison mirrors Davis & Bitterman's 1971 yoked-control design and its adventitious-reinforcement conclusion.,workflow-reader,2026-09-21
 10.1002/jaba.964,linked,reference_scan/low,,wrong,Systematic replication of an escalating-incentive physical-activity study; match is Roll et al. 2006 comparing reinforcement schedules for methamphetamine abstinence - different population and outcome. Runner-up (prize-based contingency management to increase activity in healthy adults) is the far closer original.,workflow-reader,2026-09-21
 10.1007/bf01000754,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
-10.1007/bf03325004,linked,reference_scan/medium,,right,"Reference list confirms de Zwaan et al. 1994 as the BED-vs-overeating psychopathology comparison being re-tested (cited first); the runner-up Striegel-Moore 1998 is also cited, but the matched paper does report the finding.",workflow-reader,2026-09-21
 10.1007/s00221-023-06688-5,linked,openalex_author_year/medium,,wrong,"Replication abstract cites Kilteni et al. eLife 8:e42888 (2019) on temporal recalibration of self-touch; the pick is a different Kilteni 2019 paper (J. Neurosci. cerebellar functional connectivity). The runner-up, 'Rapid learning and unlearning of predicted sensory delays in self-generated touch', is the actual eLife original.",workflow-reader,2026-09-21
 10.1007/s10508-023-02612-8,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
 10.1007/s10802-023-01096-3,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
 10.1007/s10882-014-9370-8,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
 10.1007/s11229-022-03917-2,linked,reference_author/high,,right,"2018 vs the named 2019, same Group Knobe Effect paper",claude-opus-5,2026-09-22
-10.1007/s12671-026-02956-x,linked,reference_scan/medium,,right,Whitmarsh et al. 2013 is the n=18 artificial-grammar preference study the replication describes.,workflow-reader,2026-09-21
 10.1007/s40732-015-0134-3,linked,openalex_author_year/medium,,right,"Canovas, Debert & Pilgrim simple-discrimination-training paper in The Psychological Record; online-first 2014 as cited.",workflow-reader,2026-09-21
 10.1007/s42822-024-00181-6,linked,openalex_author_year/medium,,right,Mizael et al. 2016 Psychological Record equivalence/transfer-of-function racial-bias study is the paper the conflicting-relations replication re-tests.,workflow-reader,2026-09-21
 10.1016/0005-7916(89)90023-2,linked,reference_scan/low,,wrong,"1989 replication matched to a 2024 Brewer chapter arguing conditioning does not exist in humans - later than the replication and a critique, not a re-tested finding. Runner-up (the companion Part I paper) is far closer.",workflow-reader,2026-09-21
@@ -151,18 +136,12 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1016/j.heliyon.2020.e04033,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
 10.1016/j.humov.2023.103074,linked,reference_scan/low,,unclear,"Replication side is a bare title with no abstract, authors, or screening description. Stevanovic et al. 2017 (motion capture of body sway during joint decision making) is a plausible fit, but 'joint search' also fits the postural-coordination-during-cooperative-puzzle literature; cannot be confirmed from what is shown.",workflow-reader,2026-09-21
 10.1016/j.ijpsycho.2020.10.005,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
-10.1016/j.jad.2013.04.006,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
-10.1016/j.jbtep.2015.12.006,linked,reference_scan/medium,,wrong,"Oglesby et al. replicate an intolerance-of-uncertainty finding (Hedayati, Dugas, Buhr & Francis, 2003). Eysenck et al. 1991 is a trait/clinical-anxiety ambiguous-sentence recognition study that never measures IU.",workflow-reader,2026-09-21
 10.1016/j.jenvp.2023.102070,linked,openalex_author_year/medium,,right,van der Werff et al. 2014 JEP 'Follow the signal' is the past-behaviour-signals-self-identity paper; runner-up is their 2013 moral-issue paper.,workflow-reader,2026-09-21
 10.1016/j.jml.2022.104354,linked,openalex_author_year/low,,right,"Bock, Loebell & Morey (1992) 'From conceptual roles to structural relations' (Psychological Review) is the animacy/structural-priming original; all three authors match.",workflow-reader,2026-09-21
-10.1016/j.jrp.2016.06.023,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
-10.1016/j.jrp.2020.103912,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
-10.1016/j.jsams.2017.10.036,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 10.1016/j.lindif.2010.03.010,linked,reference_scan/low,,wrong,"Title names Lynn's estimate as the target; match is Wicherts et al. 2009, the replicating authors' own earlier review. The runner-up, Lynn & Meisenberg's 'The average IQ of sub-Saharan Africans: Comments on Wicherts, Dolan, and van der Maas', is the obvious real original.",workflow-reader,2026-09-21
 10.1016/j.lindif.2010.09.005,linked,reference_scan/high,,unclear,"No abstract on the replication side. The Spanish study has parents estimate their own, their children's AND their own parents' (grandparents') multiple intelligences, which fits the Furnham 'own and one's relatives' multiple intelligence' line (Argentina 2005 / East Timor-Portugal 2009, both cited) at least as well as the picked Kirkcaldy et al. 2007 parents-and-children study. Records do not settle which one it replicates.",workflow-reader,2026-09-21
 10.1016/j.lindif.2025.102806,linked,cited by this paper/unscored,,wrong,"The replicated finding is WMC moderating the perceptual disfluency effect, i.e. Lehmann, Goussios & Seufert (2016); Diemand-Yauman et al. (2011) never tested working memory capacity as moderator.",workflow-reader,2026-09-21
 10.1016/j.neuropsychologia.2018.12.007,linked,reference_scan/medium,,wrong,"Right authors, wrong paper: the empirical original for identity-specific action-effect prediction is Hughes, Desantis & Waszak (2013, Eur J Neurosci, auditory N1 attenuation). The pick is their same-year Psychological Bulletin review, which reports no data to replicate.",workflow-reader,2026-09-21
-10.1016/j.paid.2017.08.021,linked,reference_scan/medium,,right,"Confirmed: Wilbraham et al. extend Mikolajczak, Roy, Luminet, Fillee & de Timary (2007) lab cortisol finding to classrooms.",workflow-reader,2026-09-21
 10.1016/j.psyneuen.2015.06.006,linked,reference_scan/low,,right,"Matched to Domes et al. 'Oxytocin Improves Mind-Reading in Humans' (Biological Psychiatry), the canonical original; 2006 online vs 2007 print is the routine one-year gap.",workflow-reader,2026-09-21
 10.1016/j.sbspro.2012.10.103,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
 10.1016/j.ssaho.2023.100713,linked,cited by this paper/unscored,,wrong,"The re-tested finding (minimal interactions with strangers raise well-being, mediated by belonging, in a small sample) is Sandstrom & Dunn (2014); matched to Mehl et al. (2010) 'Eavesdropping on Happiness', which is about small talk vs substantive conversation and tests no belonging mediation.",workflow-reader,2026-09-21
@@ -170,7 +149,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1016/j.ynirp.2023.100163,linked,reference_author/medium,10.1093/gigascience/giab071,unclear,Dadi is on both; the matched 2019 benchmarking paper is not the trait-prediction one named,claude-opus-5,2026-09-22
 10.1016/s0005-7894(80)80047-5,linked,cited by this paper/unscored,,wrong,"Jannoun et al. (1980) 'A home-based treatment program for agoraphobia: Replication and controlled evaluation' replicates Mathews, Teasdale, Munby, Johnston & Shaw (1977), the identically titled home-based program study; matched instead to Hand et al. (1974) group in-vivo flooding, a different treatment and paper.",workflow-reader,2026-09-21
 10.1016/s0005-7916(96)00023-7,linked,reference_scan/high,,right,"Runner-up 'The prescriptive treatment of school refusal' is Burke & Silverman 1987, a review; the picked Kearney & Silverman 1990 is the empirical functional-analysis-based prescriptive treatment study Chorpita et al. systematically replicate.",workflow-reader,2026-09-21
-10.1016/s0891-4222(96)00039-x,linked,reference_scan/medium,,right,Green & Reid 1996 JABA happiness-indices study is the named original; runner-up is a different Green & Reid topic.,workflow-reader,2026-09-21
 10.1016/s0920-9964(00)00040-2,linked,reference_scan/high,,wrong,"Matched to Oades et al. 2000, a one-page conference abstract (Schizophr Res 41:291-291) on neuropsychological signs, published the same year as the replication. The runner-up, Oades, Zimmermann & Eggers 1996 conditioned blocking with symptom/personality associations, is the study this 'replication and study of the role of symptoms, age, onset-age and illness-duration' actually re-tests (Jones, Gray & Hemsley 1992 is the other candidate); both are in its reference list.",workflow-reader,2026-09-21
 10.1016/s2007-4719(16)30010-2,linked,openalex_author_year/high,,right,,workflow-reader,2026-09-21
 10.1017/langcog.2013.4,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
@@ -191,7 +169,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1037/0022-006x.52.6.1020,linked,reference_scan/low,,right,"Extended replication of Orbach et al.'s life/death attraction-repulsion study in suicidal vs normal children; match is Orbach et al. 1983, same group, same instrument, year before, with the replication adding chronically ill children.",workflow-reader,2026-09-21
 10.1037/0022-006x.76.2.347,linked,reference_author/medium,10.1037/0022-0167.53.4.550,right,,claude-opus-5,2026-09-22
 10.1037/0022-3514.82.2.180,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
-10.1037/1053-0797.14.4.234,linked,reference_scan/medium,,wrong,Patrick & Durndell (2004) replicate Blagrove & Hartnell (2000) - locus of control and need for cognition. Gruber et al. 1995 is a 16PF/cognitive-development study; different measures and findings.,workflow-reader,2026-09-21
 10.1037/a0037397,linked,reference_author/medium,10.1037//0096-1523.24.3.830,wrong,"Ellis & Tucker 2000 micro-affordance, not Tucker & Ellis 1998 on seen objects and actions",claude-opus-5,2026-09-22
 10.1037/arc0000007.supp,linked,library_author_year/medium,,right,Loneliness/physical warmth is Studies 1-2 of the matched Emotion paper.,workflow-reader,2026-09-21
 10.1037/bar0000245,linked,openalex_author_year/medium,,right,"Deci 1971 JPSP 'Effects of externally mediated rewards on intrinsic motivation' (10.1037/h0030644) is the overjustification original; note the stored abstract on the matched record is unrelated Spanish thesis text, but title/authors/year/journal/DOI are correct.",workflow-reader,2026-09-21
@@ -199,7 +176,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1037/emo0001389.supp,linked,library_author_year/high,,right,,workflow-reader,2026-09-21
 10.1037/h0024297,linked,openalex_author_year/high,,right,"Runner-up is Osler's 'Concept attainment: I' (Osler & Fivel); the pick is 'Concept attainment: II' by Osler & Trautman on stimulus complexity at two intelligence levels, which is exactly what the replication title names.",workflow-reader,2026-09-21
 10.1037/h0025835,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
-10.1037/h0032682,linked,reference_scan/medium,,right,Abstract names Parrish et al.; matched paper is the Parrish Ponzo/Poggendorff age-regression study.,workflow-reader,2026-09-21
 10.1037/h0032805,linked,reference_author/high,10.1037/h0028575,right,,claude-opus-5,2026-09-22
 10.1037/h0087468,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
 10.1037/pag0000548,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
@@ -207,7 +183,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1037/pspp0000440,linked,reference_scan/low,,right,"Abstract names 'Lyubomirsky, Nolen-Hoeksema, and colleagues' classic quasi-experiments on rumination vs distraction in dysphoria; the match is one paper of exactly that series (1995 JPSP), right authors, right manipulation, right outcome.",workflow-reader,2026-09-21
 10.1037/pst0000581,linked,openalex_author_year/low,,wrong,"Cited original is Cowden et al. (2022) 'Religious/spiritual struggles and psychological distress: A test of three models in a longitudinal study of adults with chronic health conditions' (J Clin Psychol), the cross-lagged finding being replicated. Match is Captari et al. (2022) on R/S struggles and depression during COVID lockdowns in the global south, where Cowden is only a co-author and the design is moderation, not temporal precedence.",workflow-reader,2026-09-21
 10.1038/sdata.2016.82,linked,reference_scan/low,,wrong,"Matched to Schweinsberg et al. 2016 'The pipeline project', the same consortium's own main report of these very replications - effectively a self-match. The re-tested effects were unpublished lab findings, not findings from that article.",workflow-reader,2026-09-21
-10.1055/a-1322-3592,linked,reference_scan/medium,,right,"Two Ciechanowski specialty-choice papers exist (2004 Medical Education, 2006 BMC Med Educ); the 2004 one is the original reporting the RSQ primary vs non-primary care contrast the German study reproduces.",workflow-reader,2026-09-21
 10.1073/pnas.2217551120,linked,cited by this paper/unscored,,right,"Screening named Meyer et al. 2019, but the abstract states the replications also target Heck, Chabris, Watts & Meyer (2020), the matched paper, so its finding is genuinely re-tested.",workflow-reader,2026-09-21
 10.1080/00049537008254585,linked,reference_scan/low,,wrong,"Screening names Inhelder and Piaget; match is Lovell 1961, itself a follow-up study of their work. The runner-up, Inhelder & Piaget's 'The growth of logical thinking: From childhood to adolescence', is the real original.",workflow-reader,2026-09-21
 10.1080/00049539808257537,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
@@ -217,7 +192,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1080/00224545.1976.9711926,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
 10.1080/00224549709595485,linked,reference_author/medium,,unclear,"same instrument and author, but a factor analysis rather than the sex-differences paper",claude-opus-5,2026-09-22
 10.1080/02699930050117693,linked,reference_author/high,10.1037/0021-843x.105.2.286,right,,claude-opus-5,2026-09-22
-10.1080/02791072.2024.2346130,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 10.1080/03610730252800184,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
 10.1080/07317107.2011.623091,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
 10.1080/09541448908403072,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
@@ -229,7 +203,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1080/17470218.2014.923922,linked,openalex_author_year/low,,right,Match DOI 10.1037/0278-7393.33.3.503 is the Mahon et al. (2007) paper cited verbatim in the replication abstract.,workflow-reader,2026-09-21
 10.1080/17524032.2019.1617763,linked,reference_author/high,,wrong,"matched a different 2017 climate-message paper, not Ma, Dixon & Hmielowski 2019 on reactance",claude-opus-5,2026-09-22
 10.1080/23273798.2022.2144917,linked,reference_author/high,,wrong,"the matched paper is on auditory selective adaptation, not the production-and-learning finding named",claude-opus-5,2026-09-22
-10.1080/23322705.2024.2327950,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 10.1080/23808985.2018.1425100,linked,openalex_author_year/medium,,right,,workflow-reader,2026-09-21
 10.1080/25742442.2025.2562771,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
 10.1089/acm.2005.11.955,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
@@ -241,7 +214,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1101/376350,linked,openalex_author_year/medium,,right,Marcinkowska et al. 2018 Hormones and Behavior 'Average ovarian hormone levels...' is the N=102 study reporting the partnership-status x average-progesterone interaction named in the replication abstract.,workflow-reader,2026-09-21
 10.1108/eb028781,linked,reference_author/high,,right,"Golembiewski, ""A Note on Leiter's Study"", which is the phase-model burnout exchange",claude-opus-5,2026-09-22
 10.1111/1556-4029.14630,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
-10.1111/bjep.12156,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 10.1111/bjhp.12556,linked,openalex_author_year/medium,,right,"Replication abstract cites Betsch et al. 2017 Nat. Hum. Behav. 0056; matched DOI is 10.1038/s41562-017-0056, the exact article.",workflow-reader,2026-09-21
 10.1111/j.1365-2648.1996.tb02937.x,linked,reference_author/medium,,unclear,"Hicks on nurses, but a gender-and-status paper rather than the research-deterrent one",claude-opus-5,2026-09-22
 10.1111/j.1467-7687.2007.00607.x,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
@@ -261,8 +233,6 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.1177/0956797611432179,linked,reference_scan/low,,wrong,"The replicated effect is projection of one's own cold/thirst onto other people (Van Boven & Loewenstein-style transient drive-state projection); match is Risen & Critcher's 'visceral fit', about judging states of the world (global warming, drought) as more likely, not judgements of others' feelings.",workflow-reader,2026-09-21
 10.1177/09567976261458325,linked,reference_scan/medium,,wrong,"The impaired-CRT finding is Nave, Nadler, Zava & Camerer (2017) - named in the matched paper's own subtitle. Knight et al. 2020 is the follow-up null commentary, i.e. a prior failed replication, not the original.",workflow-reader,2026-09-21
 10.1177/10298649231167488,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
-10.1177/1049731503262132,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
-10.1177/1948550619869613,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 10.1177/21582440211008897,linked,openalex_author_year/high,,right,,workflow-reader,2026-09-21
 10.1177/2332858419839707,linked,reference_scan/low,,wrong,"Screening names Gehlbach's high-school instructor-student commonalities intervention; match is Cornelius-White's 2007 meta-analysis of learner-centred relationships - different author, a meta-analysis rather than the replicated experiment.",workflow-reader,2026-09-21
 10.1207/s15328023top2402_12,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
@@ -299,9 +269,7 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.2466/pms.1972.34.2.635,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
 10.2466/pms.1979.48.3c.1199,linked,reference_author/medium,,right,,claude-opus-5,2026-09-22
 10.2466/pms.1995.81.3.723,linked,reference_scan/high,,right,"Replication says 'the author's 1969 study' but its own reference list contains only one Koenig paper - the identically titled 1972 Perceptual and Motor Skills article, same design (4 masculine/4 feminine/4 neutral/2+2 traits). Study year vs publication year, so the match holds.",workflow-reader,2026-09-21
-10.2466/pr0.101.7.685-696,linked,reference_scan/medium,,right,"Staats replicating her own Psychological Reports college-student stress/happiness survey ~20 years on; same author, journal and instruments.",workflow-reader,2026-09-21
 10.2466/pr0.1962.11.1.274,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
-10.2466/pr0.1965.17.2.590,linked,reference_scan/medium,,right,"Identical title, Hare 1964 in the same journal.",workflow-reader,2026-09-21
 10.2466/pr0.1977.41.1.291,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
 10.2466/pr0.1979.45.3.880,linked,cited by this paper/unscored,,right,"Borderline: the paradigm and title copy Turner, Layton & Simons (1975), but the abstract's own account is a field test of the weapons effect, i.e. Berkowitz & LePage's finding that weapon presence elicits aggression, so the matched paper's finding is genuinely re-tested.",workflow-reader,2026-09-21
 10.2466/pr0.2002.90.1.173,linked,openalex_author_year/low,,wrong,"Original is Cameron and Cameron (1998) on newspaper-reported teacher-pupil molestations; match is Cameron & Trivedi (1998) 'Regression Analysis of Count Data'. An econometrics textbook, not the study.",workflow-reader,2026-09-21
@@ -322,12 +290,10 @@ W787058522,card,openalex_author_year/low,,right,,claude-opus-5,2026-09-21
 10.3389/fpsyg.2016.00811,linked,reference_author/high,,right,"2003 vs the named 2004: same 2D:4D and Big Five work, online-first versus print",claude-opus-5,2026-09-22
 10.3390/ijerph20010188,linked,reference_scan/low,,wrong,"Replicated claim is that viewing (digital) nature restores adults' working-memory capacity more than urban scenes; match is Schutte et al. 2015 on children's executive functioning after nature/urban walks, whose own abstract states walk type did not affect working memory.",workflow-reader,2026-09-21
 10.3390/su141710527,linked,reference_scan/high,,right,,workflow-reader,2026-09-21
-10.3758/bf03329495,linked,reference_scan/medium,,right,"Same-year Anderson et al. paper, but its title states the identical claim (behaviour during shock determines later shuttle interference).",workflow-reader,2026-09-21
 10.3758/s13414-012-0282-3,linked,openalex_author_year/high,,right,"Bare titles on both sides, but Kristofferson 1980 'A quantal step function in duration discrimination' is unambiguously the quantal-timing duration-discrimination paper named in the replication title.",workflow-reader,2026-09-21
 10.3758/s13415-024-01185-w,linked,openalex_author_year/high,,wrong,"Matched to the erratum/corrigendum record 'Erratum: Corrigendum: Amygdala volume and social network size in humans' (10.1038/nn0911-1217e), not the article. The runner-up is the actual Bickart et al. 2011 Nature Neuroscience paper the replication targets, so the obvious real original was passed over for a correction notice that carries none of the finding.",workflow-reader,2026-09-21
 10.3758/s13423-019-01641-6,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-21
 10.3758/s13428-021-01629-y,linked,reference_scan/low,,unclear,"Replication reproduces five effects 'successfully replicated by the Many Labs projects' (plural); Many Labs 2 is one candidate among ML1/ML2/ML3, and the underlying originals are the classic experiments. Which is intended cannot be settled from what is shown.",workflow-reader,2026-09-21
-10.5178/lebs.2022.95,linked,reference_scan/medium,,wrong,Ohtsubo & Higuchi replicate the sincerity-yes/forgiveness-no pattern from Ohtsubo & Watanabe (2009) 'Do sincere apologies need to be costly?' - which is the runner-up. The pick (Ohtsubo et al. 2012 seven-country study) tested only perceived sincerity cross-culturally.,workflow-reader,2026-09-21
 10.53841/bpsptr.2016.22.1.49,linked,library_author_year/high,,right,Gailliot et al. (2007) JPSP Study 8 is the glucose plus mortality-salience self-control experiment described by the student replication teams.,workflow-reader,2026-09-21
 10.5964/jnc.6053,linked,openalex_author_year/low,,right,Replication abstract cites DOI 10.3758/PBR.17.1.106 outright and the match is that exact DOI.,workflow-reader,2026-09-21
 10.6018/analesps.34.2.266611,linked,reference_scan/medium,,wrong,"Paper replicates Kraus, Piff & Keltner (2009) on subjective social class and sense of control/self-efficacy. Han et al. 2014 is an applied-economics study of objective family SES and social capital - different construct and field.",workflow-reader,2026-09-21
@@ -349,7 +315,6 @@ W2394694499,linked,cited by this paper/unscored,,right,,workflow-reader,2026-09-
 W2408593553,linked,reference_author/high,,right,,claude-opus-5,2026-09-22
 W2586614742,linked,library_author_year/high,,right,,workflow-reader,2026-09-21
 W2600878702,linked,openalex_author_year/low,,right,"Identical title and authors (Forehand & Yoder, 'The effects of modeling and verbal cues on learning of retardates'); cited as 1972 versus the 1973 print year - a one-year gap, which counts as right.",workflow-reader,2026-09-21
-W2607534407,linked,reference_scan/medium,,right,,workflow-reader,2026-09-21
 W2776796741,linked,library_author_year/medium,,right,,workflow-reader,2026-09-21
 W2776931752,linked,library_author_year/medium,,right,Same Wolsko et al. 2016 paper; low author score is a metadata artifact.,workflow-reader,2026-09-21
 W2783431997,linked,openalex_author_year/high,,right,,workflow-reader,2026-09-21
@@ -396,46 +361,91 @@ W7208163871,linked,library_author_year/high,,right,,workflow-reader,2026-09-21
 W7212105814,linked,openalex_author_year/high,,wrong,"Right author, right year, wrong paper. The replication names Pfattheicher, Lazarevic, Westgate & Schindler (2021) Study 1B and lists the Short Boredom Proneness Scale, CAST, Short Dark Triad and BFI battery, i.e. the JPSP 2021 paper 'On the relation of boredom and sadistic aggression' (Studies 1A-1F). The match is the separate six-author school-context paper 'I enjoy hurting my classmates' (preprint 2021, Journal of School Psychology 2022), which has only Studies 1 and 2, uses 10-18 year-old pupils with self- and peer-reports, and no such personality battery. Runner-up is the same wrong paper, so no rescue.",workflow-reader,2026-09-21
 10.1002/bin.2076,page,reference_scan/medium,10.1002/jaba.595,right,Retzlaff 2019 is the translational FA vs SCA comparison it names,claude-opus-5,2026-09-22
 10.1002/bsl.2232,page,runner_up/low,10.1023/a:1022845724226,right,child witness demeanor -> credibility; same effect,claude-opus-5,2026-09-22
+10.1002/ejsp.2420250402,page,reference_scan/medium,10.1016/0022-1031(80)90071-2,wrong,"Martin replicates Moscovici & Personnaz, not Doms & Van Avermaet's own replication",claude-opus-5,2026-09-22
+10.1002/jaba.791,page,reference_scan/medium,10.1002/jaba.472,right,"now Briggs et al. 2018 on resurgence during thinning, which it names",claude-opus-5,2026-09-22
 10.1002/smi.2430,page,runner_up/low,10.1002/smi.1272,right,"Smith 2009 chewing gum, stress and health",claude-opus-5,2026-09-22
 10.1007/bf01541894,page,runner_up/high,10.1080/08853126.1957.10380742,wrong,"the men/women pair: replication is of the men study, pick is the women one",claude-opus-5,2026-09-22
 10.1007/bf03001813,page,reference_scan/medium,10.1007/bf03000219,right,the 1972 classical conditioning of human systolic blood pressure paper,claude-opus-5,2026-09-22
+10.1007/bf03325004,page,reference_scan/medium,10.1002/1098-108x(199401)15:1<43::aid-eat2260150106>3.0.co;2-6,right,de Zwaan 1994 is the binge-eating vs overeating psychopathology study,claude-opus-5,2026-09-22
 10.1007/s10803-016-2911-5,page,runner_up/high,10.1007/s10803-015-2504-8,right,the 2013 PEERS replication and extension is what the 2016 one re-tests,claude-opus-5,2026-09-22
 10.1007/s12144-020-00685-5,page,reference_scan/medium,10.1016/j.paid.2014.04.022,right,"Jiang & Tiliopoulos 2014, attachment and reinforcement sensitivity",claude-opus-5,2026-09-22
+10.1007/s12671-026-02956-x,page,reference_scan/medium,10.1016/j.concog.2013.05.007,right,Whitmarsh 2013 artificial-grammar preference study,claude-opus-5,2026-09-22
+10.1007/s40732-018-0296-x,page,reference_scan/low,10.1016/j.socscimed.2012.09.033,right,"Promberger 2012, discrete choice experiments on financial incentives",claude-opus-5,2026-09-22
 10.1007/s40732-023-00541-5,page,reference_scan/medium,10.1002/jeab.684,unclear,Klapes 2021 is the PRESS-B method paper; the punishment finding may be from another,claude-opus-5,2026-09-22
 10.1016/0165-0327(87)90003-6,page,reference_scan/medium,10.1017/s0033291700010394,right,"Harris 1986, loss of parent and lack of adequate parental care",claude-opus-5,2026-09-22
 10.1016/0891-4222(91)90031-m,page,runner_up/low,10.1007/bf02211821,right,Durand & Crimmins 1988 is the Motivation Assessment Scale paper,claude-opus-5,2026-09-22
+10.1016/j.appet.2019.104523,page,reference_scan/low,10.1037/a0031110,right,"Haycraft 2013, maternal depression and controlling feeding practices",claude-opus-5,2026-09-22
+10.1016/j.chb.2010.03.026,page,reference_scan/low,10.1016/j.chb.2007.02.007,unclear,the runner-up names interteaching as well as programmed instruction; zero margin between them,claude-opus-5,2026-09-22
 10.1016/j.childyouth.2015.05.019,page,reference_scan/medium,10.1016/j.childyouth.2013.07.001,right,"Cherry & Orme 2013, vital few foster mothers",claude-opus-5,2026-09-22
 10.1016/j.cortex.2026.04.009,page,runner_up/low,10.1038/nn1392,right,"Grandjean 2005 voices of wrath, angry prosody and amygdala",claude-opus-5,2026-09-22
 10.1016/j.crbeha.2023.100110,page,runner_up/high,10.1287/mnsc.2015.2313,right,"loss vs gain framing and cheating, same effect",claude-opus-5,2026-09-22
 10.1016/j.dcn.2012.11.002,page,runner_up/low,10.1016/j.drugalcdep.2009.11.022,wrong,the pick measures motivational tendencies; the replication is of approach-bias RETRAINING,claude-opus-5,2026-09-22
 10.1016/j.eatbeh.2005.11.002,page,runner_up/medium,10.1348/01446650360703375,right,self-help vs therapist-led treatment for binge eating,claude-opus-5,2026-09-22
+10.1016/j.jad.2013.04.006,page,reference_scan/medium,10.1111/acps.12017,right,"Parker 2012, same title",claude-opus-5,2026-09-22
+10.1016/j.jad.2025.01.058,page,reference_scan/medium,10.1016/j.jbtep.2014.09.005,right,Duque & Vazquez 2014 double attention bias in clinical depression,claude-opus-5,2026-09-22
+10.1016/j.jbtep.2015.12.006,page,reference_scan/medium,10.1037/0021-843x.100.2.144,wrong,"the intolerance-of-uncertainty finding is Hedayati/Dugas, not Eysenck 1991",claude-opus-5,2026-09-22
+10.1016/j.jrp.2016.06.023,page,reference_scan/medium,10.1111/j.1467-9280.2008.02099.x,right,"Zaki 2008 ""It takes two"", same title",claude-opus-5,2026-09-22
+10.1016/j.jrp.2020.103912,page,reference_scan/medium,10.1016/j.jrp.2015.08.002,right,Robinson 2015 goals and plans for Big Five change,claude-opus-5,2026-09-22
+10.1016/j.jsams.2017.10.036,page,reference_scan/medium,10.1016/j.jsams.2014.12.005,right,Gucciardi 2014 mental toughness and behavioural perseverance,claude-opus-5,2026-09-22
+10.1016/j.paid.2013.02.024,page,reference_scan/low,10.1016/j.paid.2012.07.031,right,"Segal 2012, personality similarity in unrelated look-alike pairs",claude-opus-5,2026-09-22
+10.1016/j.paid.2017.08.021,page,reference_scan/medium,10.1016/j.psyneuen.2007.07.009,right,Mikolajczak 2007 emotional intelligence and cortisol,claude-opus-5,2026-09-22
 10.1016/j.ridd.2016.05.020,page,reference_scan/medium,10.3109/13668250.2013.865718,right,"Deveau & McGill 2013, practice leadership and staff experience",claude-opus-5,2026-09-22
 10.1016/s0005-7967(01)00062-6,page,reference_scan/medium,10.1016/0005-7967(96)00040-x,right,"Wilhelm 1996, directed forgetting in OCD",claude-opus-5,2026-09-22
+10.1016/s0093-934x(03)00300-6,page,reference_scan/low,10.1006/jmla.2000.2731,right,"Hanten & Martin 2000, semantic short-term memory and sentence processing",claude-opus-5,2026-09-22
 10.1016/s0191-8869(00)00121-5,page,reference_scan/medium,10.1016/0191-8869(95)00037-7,right,"Goma-i-Freixanet 1995, same title, women sample is the extension",claude-opus-5,2026-09-22
+10.1016/s0891-4222(96)00039-x,page,reference_scan/medium,10.1901/jaba.1996.29-67,right,Green & Reid 1996 happiness indices,claude-opus-5,2026-09-22
+10.1017/s0033291711000973,page,reference_scan/medium,10.1017/s0033291709991966,right,Harley 2009 cannabis x childhood trauma and psychotic symptoms,claude-opus-5,2026-09-22
 10.1023/b:jobe.0000011260.12674.a3,page,reference_scan/medium,10.1023/a:1022871230565,right,"Morton 1998, when to self-correct spelling",claude-opus-5,2026-09-22
 10.1037//0021-843x.91.5.337,page,runner_up/low,10.1037/h0086477,right,Silverman's subliminal psychodynamic activation method,claude-opus-5,2026-09-22
 10.1037/0022-0167.23.1.60,page,reference_scan/medium,10.1037/h0086508,right,"Foulds & Hannigan, Gestalt marathon and self-actualization",claude-opus-5,2026-09-22
 10.1037/0022-0167.35.2.175,page,reference_scan/medium,10.1037/0022-0167.33.3.326,right,"Atkinson 1986, same title without ""a replication and extension""",claude-opus-5,2026-09-22
+10.1037/1053-0797.14.4.234,page,reference_scan/medium,10.1037/h0094419,wrong,"Patrick & Durndell replicate Blagrove & Hartnell 2000, not Gruber 1995",claude-opus-5,2026-09-22
+10.1037/a0019089,page,reference_scan/medium,10.1037/0022-0167.54.2.118,right,now the Miller 2007 bilinear acculturation measurement model it names,claude-opus-5,2026-09-22
+10.1037/h0022632,page,reference_scan/low,10.1037/h0043145,wrong,"the pick is itself ""a partial replication""; the runner-up is the base paper this re-tests",claude-opus-5,2026-09-22
 10.1037/h0024207,page,reference_scan/medium,10.1037/h0044547,right,"Loehlin 1961, same title",claude-opus-5,2026-09-22
 10.1037/h0030109,page,reference_scan/medium,10.1037/h0024435,right,"Moos & Clemes 1967, same title",claude-opus-5,2026-09-22
+10.1037/h0030709,page,reference_scan/medium,10.1037/h0047311,right,Jones 1959 reactions to unfavourable personal evaluations,claude-opus-5,2026-09-22
+10.1037/h0032682,page,reference_scan/medium,10.1037/h0028350,right,Parrish 1969 hypnotic age regression and the Ponzo illusion,claude-opus-5,2026-09-22
 10.1037/h0080795,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
+10.1037/vio0000024,page,reference_scan/low,10.1037/0022-006x.72.1.3,right,"Kubany 2004, cognitive trauma therapy for battered women with PTSD",claude-opus-5,2026-09-22
+10.1038/s41598-025-98673-x,page,reference_scan/medium,10.1016/j.neuropsychologia.2020.107667,right,Kronke 2020 triple-network connectivity and real-life self-control,claude-opus-5,2026-09-22
+10.1055/a-1322-3592,page,reference_scan/medium,10.1046/j.1365-2923.2004.01767.x,right,Ciechanowski 2004 attachment and medical students' specialty choice,claude-opus-5,2026-09-22
 10.1080/00223980.1965.10544798,page,reference_scan/medium,10.1080/00221309.1951.9918266,right,"Weisgerber 1951, same title",claude-opus-5,2026-09-22
+10.1080/02791072.2024.2346130,page,reference_scan/medium,10.3389/fpsyg.2022.852248,right,Nayak & Griffiths 2022 psychedelics and attribution of consciousness,claude-opus-5,2026-09-22
 10.1080/09658211.2020.1868525,page,reference_scan/medium,10.1002/acp.1502,wrong,"""Replicating remembering remembering"" means Arnold & Lindsay, not Abenavoli & Henkel on age",claude-opus-5,2026-09-22
+10.1080/23322705.2024.2327950,page,reference_scan/medium,10.1080/23322705.2023.2259263,right,"Basra 2023 predatory helpfulness framework, which it names",claude-opus-5,2026-09-22
+10.1111/bjep.12156,page,reference_scan/medium,10.1521/soco.2016.34.1.1,right,Axt 2016 unintentional pro-Black bias in social judgment,claude-opus-5,2026-09-22
+10.1111/j.1365-2788.2007.01026.x,page,reference_scan/medium,10.1111/j.1468-3148.1998.tb00056.x,right,"Kroese 1998, same title, people with intellectual disabilities",claude-opus-5,2026-09-22
 10.1111/jopy.12699,page,runner_up/medium,10.1007/bf01542229,right,"Townsend & Levy 1990, named by the replication",claude-opus-5,2026-09-22
+10.1161/01.hyp.11.4.308,page,reference_scan/medium,10.1111/j.1469-8986.1988.tb00977.x,unclear,same group and year but normative data rather than the race comparison,claude-opus-5,2026-09-22
+10.1177/00332941231169666,page,reference_scan/medium,10.1177/0956797612450892,wrong,"the categorisation-threshold finding is Krosch & Amodio, not Rodeheffer on biracial faces",claude-opus-5,2026-09-22
 10.1177/00986283251339407,page,runner_up/medium,10.1007/s11251-018-9456-2,right,"Kershaw et al. 2018, named in the replication's own title",claude-opus-5,2026-09-22
+10.1177/1049731503262132,page,reference_scan/medium,10.1177/1049731503013004005,right,"Nugent & Williams-Hayes 2003, which it names",claude-opus-5,2026-09-22
 10.1177/105960118300800404,page,reference_scan/medium,10.5465/ambpp.1980.4976190,right,"the 1980 audience/task-familiarity paper is Ferris and Rowland, whom it names",claude-opus-5,2026-09-22
+10.1177/1948550619869613,page,reference_scan/medium,10.1177/1948550617691098,right,"McPhetres & Zuckerman 2017, which it names",claude-opus-5,2026-09-22
 10.1371/journal.pone.0210698,page,runner_up/low,10.1371/journal.pone.0183356,right,"Boutwell et al. 2017, named by the replication",claude-opus-5,2026-09-22
 10.1521/jscp.2023.42.3.187,page,runner_up/low,10.1521/jscp.2018.37.10.751,right,No More FOMO (Hunt 2018) is exactly the limiting-social-media study,claude-opus-5,2026-09-22
+10.15760/etd.2386,page,reference_scan/medium,10.1037/h0034954,right,"now Miller & Seligman 1973, which the replication names",claude-opus-5,2026-09-22
 10.17605/osf.io/apf57,page,library_author_year/medium,,right,,claude-opus-5,2026-09-21
 10.17605/osf.io/kfv5d,page,library_author_year/medium,,right,,claude-opus-5,2026-09-21
 10.17605/osf.io/y3ubj,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
 10.24124/2023/59419,page,runner_up/low,10.1038/307161a0,right,"Kutas & Hillyard 1984 word expectancy, the SPP semantic predictability finding",claude-opus-5,2026-09-22
+10.2466/pr0.101.7.685-696,page,reference_scan/medium,10.2466/pr0.1983.52.1.179,right,"Staats 1983, the author replicating her own study 20 years on",claude-opus-5,2026-09-22
+10.2466/pr0.1965.17.2.590,page,reference_scan/medium,10.2466/pr0.1964.15.1.199,right,"Hare 1964, identical title, same journal",claude-opus-5,2026-09-22
 10.2466/pr0.1969.24.2.563,page,reference_scan/medium,10.2466/pr0.1968.22.2.451,right,"Spiegler 1968 temporal factors, which is what this re-tests",claude-opus-5,2026-09-22
 10.2466/pr0.1982.50.1.114,page,runner_up/low,10.2466/pr0.1980.47.3f.1239,wrong,"a theoretical and methodological CRITIQUE of the BSRI, not the assertiveness study",claude-opus-5,2026-09-22
 10.31234/osf.io/eg2pu,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
 10.3389/fnins.2020.00342,page,reference_scan/medium,10.3758/s13415-011-0046-x,right,Neo 2011 is the goal-conflict specific rhythmicity work it replicates,claude-opus-5,2026-09-22
 10.35771/engdoi.2014.27.1.012,page,library_author_year/medium,,right,"same author, year and topic; the matched title says working memory where the replication says phonological short-term memory",claude-opus-5,2026-09-21
+10.3758/bf03329495,page,reference_scan/medium,10.1037/0097-7403.5.3.243,right,Anderson 1979 states the identical claim about activity during prior shock,claude-opus-5,2026-09-22
+10.3758/s13421-020-01014-8,page,reference_scan/low,10.1002/acp.727,right,"Klein & Boals 2001, life event stress and working memory capacity",claude-opus-5,2026-09-22
+10.46569/76537814s,page,reference_scan/low,10.1080/01973533.2013.823616,right,"Riek 2013 reverse subtyping, which the replication names",claude-opus-5,2026-09-22
+10.5178/lebs.2022.95,page,reference_scan/medium,10.1556/jep.10.2012.4.3,unclear,Ohtsubo 2012 is the cross-cultural paper; the sincerity/forgiveness split may be Ohtsubo & Watanabe 2009,claude-opus-5,2026-09-22
 10.6084/m9.figshare.729253,page,library_author_year/medium,,right,,claude-opus-5,2026-09-21
+W1015327088,page,reference_scan/medium,10.1007/bf03395294,right,Duarte 1998 can't-answer response option and stimulus equivalence,claude-opus-5,2026-09-22
+W2603836150,page,reference_scan/low,10.1111/j.1746-1561.1973.tb01867.x,right,"Braxton & Yonker 1973, youth drug knowledge and attitudes",claude-opus-5,2026-09-22
+W2607534407,page,reference_scan/medium,10.1371/journal.pone.0077661,right,Fine 2013 rapid expectation adaptation in syntactic comprehension,claude-opus-5,2026-09-22
+W2788431364,page,reference_scan/medium,10.1002/per.2410080203,right,Szirmak & De Raad 1994 Hungarian trait taxonomy,claude-opus-5,2026-09-22
 W2891833933,page,library_author_year/medium,,right,,claude-opus-5,2026-09-21
 W2901418338,page,reference_scan/medium,10.1002/bin.1384,right,"Taylor-Santa 2014, discrimination training to establish conditioned reinforcers",claude-opus-5,2026-09-22
 W3044114615,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
@@ -454,6 +464,7 @@ W7160477742,page,library_author_year/medium,,wrong,score 0.505 with 1 of 3 autho
 W7165241472,page,library_author_year/medium,,right,,claude-opus-5,2026-09-21
 W7166967444,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
 W7208866790,page,library_author_year/high,,right,,claude-opus-5,2026-09-21
+W755249514,page,reference_scan/low,10.1901/jaba.1980.13-91,right,"Koegel 1980, intertrial interval duration and learning in autistic children",claude-opus-5,2026-09-22
 10.1002/jaba.70012,shown,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1002/jaba.775,shown,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21
 10.1007/bf00447071,shown,cited by this paper/unscored,,right,,claude-opus-5,2026-09-21

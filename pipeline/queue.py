@@ -364,6 +364,18 @@ def independence(rep_surnames: list[str] | None, orig_surnames: list[str] | None
 # move as reading accumulates — that is the mechanism working, and `pipeline originals --score` shows why.
 MIN_READ, MIN_RIGHT = 20, 0.90
 
+# What a reader's third answer means when a rate is computed. `right` and `wrong` are findings; `unclear` is the
+# reader declining to judge — a bare title on one side, a plausible match nothing confirms — and it is not
+# evidence the match is wrong. The harm this bar exists to prevent is a WRONG original sitting under a card, so
+# the rate is right/(right+wrong) and unclear rows are set aside and counted separately.
+#
+# This file used right/n and the verifier's calibration used right/(right+wrong), which is one convention too
+# many: on 2026-09-22 the two differed by 146 cards on the same labels, purely in how three "can't tell" reads
+# were treated. One rule now, stated here, and both callers use it. Where unclear rows are numerous enough to
+# matter, `originals --score` prints them in their own column so the choice stays visible rather than buried.
+def rate(right: int, wrong: int) -> float | None:
+    return right / (right + wrong) if right + wrong else None
+
 
 def trusted_links() -> set[tuple[str, str]]:
     from .originals import read_labels, _pool, band, stale
@@ -376,9 +388,10 @@ def trusted_links() -> set[tuple[str, str]]:
         if c["id"] in labels and not stale(c, labels[c["id"]]):
             k = (c.get("link_method"), c.get("link_confidence"))
             t = tally.setdefault(k, [0, 0])
-            t[0] += 1
-            t[1] += labels[c["id"]]["label"] == "right"
-    return {k for k, (n, right) in tally.items() if n >= MIN_READ and right / n >= MIN_RIGHT}
+            t[0] += labels[c["id"]]["label"] == "right"
+            t[1] += labels[c["id"]]["label"] == "wrong"
+    return {k for k, (right, wrong) in tally.items()
+            if right + wrong >= MIN_READ and (rate(right, wrong) or 0) >= MIN_RIGHT}
 
 
 TRUSTED_LINKS = trusted_links()
@@ -402,11 +415,51 @@ TRUSTED_LINKS = trusted_links()
 def _link_trusted(c: dict) -> bool:
     # Looked up by (find, paper): a verdict about a paper this find no longer points at simply is not found.
     v = _verified().get((c["id"], c.get("doi_o")))
-    if v == "right":
+    if v == "right" and band(c) not in _overruled():
         return True
     if v == "wrong":
         return False
     return (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+
+
+def band(c: dict) -> str:
+    return f"{c.get('link_method')}/{c.get('link_confidence')}"
+
+
+_OVERRULED: set[str] | None = None
+
+
+def _overruled() -> set[str]:
+    """Bands where the verdict does not get to override the band rule, because it has been read and does not hold.
+
+    The verifier is let past the band gate because it measures 98% against links a person had read. That is an
+    average over every band, and it is not the same everywhere. Read 55 rows of `reference_scan/medium` that the
+    verifier had confirmed and 47 are right — 85%, under the bar, on a sample big enough to mean it. An average
+    that clears a bar does not license every part of it, which is the same mistake as carrying a calibration to
+    a population it was not measured on.
+
+    So a band is overruled once at least MIN_READ of ITS SHIPPED rows have been read and fewer than MIN_RIGHT of
+    them hold. Computed from the labels like everything else, so it turns itself off if more reading clears the
+    band, and on if a band that ships starts failing.
+    """
+    global _OVERRULED
+    if _OVERRULED is None:
+        from .originals import read_labels, stale
+        from .audit import candidates
+        labels = {r["cid"]: r for r in read_labels()}
+        tally: dict[str, list[int]] = {}
+        for c in candidates():
+            l = labels.get(c["id"])
+            if not c.get("doi_o") or not l or stale(c, l):
+                continue
+            if _verified().get((c["id"], c.get("doi_o"))) != "right":
+                continue                       # only rows the verdict is what admits
+            t = tally.setdefault(band(c), [0, 0])
+            t[0] += l["label"] == "right"
+            t[1] += l["label"] == "wrong"
+        _OVERRULED = {b for b, (right, wrong) in tally.items()
+                      if right + wrong >= MIN_READ and (rate(right, wrong) or 1) < MIN_RIGHT}
+    return _OVERRULED
 
 
 _VERIFIED: dict[tuple[str, str], str] | None = None
