@@ -124,6 +124,7 @@ W7120606347,card,openalex_author_year/low,unclear,named original is Ferreira 200
 W7198552913,card,openalex_author_year/medium,wrong,matched to a Kobasa questionnaire record; the paper is the runner-up,claude-opus-5,2026-09-21
 W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1002/(sici)1099-0720(199910)13:5<485::aid-acp627>3.0.co;2-#,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
+10.1002/ejsp.2273,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1002/ejsp.2420250402,linked,reference_scan/medium,wrong,"Martin says he replicates 'the original experiment', i.e. Moscovici & Personnaz (1980). The pick, Doms & Van Avermaet (1980), is itself titled 'A replication' of that original.",workflow-reader,2026-09-21
 10.1002/ejsp.646,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1002/hbm.70592,linked,reference_scan/medium,unclear,"The study tests two decades of dyslexia GMV literature and names no single original; the pick is an ALE meta-analysis (not a source study) and one of many equally plausible candidates, including the runner-up.",workflow-reader,2026-09-21
@@ -135,12 +136,15 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1007/s10508-023-02612-8,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1007/s10802-023-01096-3,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1007/s10882-014-9370-8,linked,reference_scan/high,right,,workflow-reader,2026-09-21
+10.1007/s11229-022-03917-2,linked,reference_author/high,right,"2018 vs the named 2019, same Group Knobe Effect paper",claude-opus-5,2026-09-22
 10.1007/s12671-026-02956-x,linked,reference_scan/medium,right,Whitmarsh et al. 2013 is the n=18 artificial-grammar preference study the replication describes.,workflow-reader,2026-09-21
 10.1007/s40732-015-0134-3,linked,openalex_author_year/medium,right,"Canovas, Debert & Pilgrim simple-discrimination-training paper in The Psychological Record; online-first 2014 as cited.",workflow-reader,2026-09-21
 10.1007/s42822-024-00181-6,linked,openalex_author_year/medium,right,Mizael et al. 2016 Psychological Record equivalence/transfer-of-function racial-bias study is the paper the conflicting-relations replication re-tests.,workflow-reader,2026-09-21
 10.1016/0005-7916(89)90023-2,linked,reference_scan/low,wrong,"1989 replication matched to a 2024 Brewer chapter arguing conditioning does not exist in humans - later than the replication and a critique, not a re-tested finding. Runner-up (the companion Part I paper) is far closer.",workflow-reader,2026-09-21
 10.1016/0005-7967(73)90096-x,linked,reference_scan/medium,wrong,"Patterson & Reid replicate their own earlier family-intervention program (Patterson, Cobb & Ray). Walter & Gilmore is an independent placebo-controlled study, cited in their reference list as in press the same year, so it cannot be what they replicated.",workflow-reader,2026-09-21
 10.1016/0887-6185(96)00009-6,linked,reference_scan/high,right,"No replication abstract, but Nolen-Hoeksema & Morrow 1993 is the induced rumination-vs-distraction mood paradigm this 'pilot replication with anxious mood' re-tests.",workflow-reader,2026-09-21
+10.1016/j.actpsy.2020.103140,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1016/j.cognition.2019.104069,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1016/j.dib.2021.107595,linked,reference_scan/low,wrong,"Abstract names the original outright - study 1 of 'The taste of compassion: Influencing meat attitudes with interhuman and interspecies moral appeals'. Match is Rosenfeld 2019 on gender differences in vegetarian identity, a different paper.",workflow-reader,2026-09-21
 10.1016/j.heliyon.2020.e04033,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1016/j.humov.2023.103074,linked,reference_scan/low,unclear,"Replication side is a bare title with no abstract, authors, or screening description. Stevanovic et al. 2017 (motion capture of body sway during joint decision making) is a plausible fit, but 'joint search' also fits the postural-coordination-during-cooperative-puzzle literature; cannot be confirmed from what is shown.",workflow-reader,2026-09-21
@@ -172,11 +176,16 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1017/thg.2012.23,linked,cited by this paper/unscored,wrong,"The Australian twins paper replicates the UK twin study (Vernon, Martin, Schermer, Cherkas & Spector 2008, Twin Research and Human Genetics); the match is the North American-sample PAID 2008 paper, which is the study it says produced DIFFERENT results (shared environment for the negative humour styles).",workflow-reader,2026-09-21
 10.1027/1618-3169/a000466,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1027/1618-3169/a000558,linked,openalex_author_year/medium,right,"Took thought: the matched title reads as a proposal paper, but Schoenegger (2021, Rev. Phil. Psych.) is the single 2021 BTS paper that applied the serum to Likert self-reports, which is what the replication abstract describes; runner-up is an unrelated Schoenegger essay.",workflow-reader,2026-09-21
+10.1027/1618-3169/a000588,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1027/1864-9335/a000597,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037//0021-843x.104.1.26,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
 10.1037//0021-843x.93.2.231,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1037//0022-3514.47.5.1091,linked,openalex_author_year/high,right,"Matched record has no abstract, but Toder & Marcia 1973 'Ego identity status and response to conformity pressure in college women' is the identity-status/Asch-conformity finding the 1984 paper says it failed to replicate.",workflow-reader,2026-09-21
+10.1037//0278-7393.28.1.138,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1037/0012-1649.27.3.516,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037/0021-843x.89.2.250,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1037/0022-006x.52.6.1020,linked,reference_scan/low,right,"Extended replication of Orbach et al.'s life/death attraction-repulsion study in suicidal vs normal children; match is Orbach et al. 1983, same group, same instrument, year before, with the replication adding chronically ill children.",workflow-reader,2026-09-21
+10.1037/0022-3514.82.2.180,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037/1053-0797.14.4.234,linked,reference_scan/medium,wrong,Patrick & Durndell (2004) replicate Blagrove & Hartnell (2000) - locus of control and need for cognition. Gruber et al. 1995 is a 16PF/cognitive-development study; different measures and findings.,workflow-reader,2026-09-21
 10.1037/arc0000007.supp,linked,library_author_year/medium,right,Loneliness/physical warmth is Studies 1-2 of the matched Emotion paper.,workflow-reader,2026-09-21
 10.1037/bar0000245,linked,openalex_author_year/medium,right,"Deci 1971 JPSP 'Effects of externally mediated rewards on intrinsic motivation' (10.1037/h0030644) is the overjustification original; note the stored abstract on the matched record is unrelated Spanish thesis text, but title/authors/year/journal/DOI are correct.",workflow-reader,2026-09-21
@@ -185,6 +194,9 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1037/h0024297,linked,openalex_author_year/high,right,"Runner-up is Osler's 'Concept attainment: I' (Osler & Fivel); the pick is 'Concept attainment: II' by Osler & Trautman on stimulus complexity at two intelligence levels, which is exactly what the replication title names.",workflow-reader,2026-09-21
 10.1037/h0025835,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.1037/h0032682,linked,reference_scan/medium,right,Abstract names Parrish et al.; matched paper is the Parrish Ponzo/Poggendorff age-regression study.,workflow-reader,2026-09-21
+10.1037/h0032805,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1037/h0087468,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1037/pag0000548,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1037/pspa0000067,linked,library_author_year/high,right,"The record is the correction notice to Panero et al. (2016); that paper is the replication attempt of Kidd & Castano (2013), which is the matched paper - not a self-match.",workflow-reader,2026-09-21
 10.1037/pspp0000440,linked,reference_scan/low,right,"Abstract names 'Lyubomirsky, Nolen-Hoeksema, and colleagues' classic quasi-experiments on rumination vs distraction in dysphoria; the match is one paper of exactly that series (1995 JPSP), right authors, right manipulation, right outcome.",workflow-reader,2026-09-21
 10.1037/pst0000581,linked,openalex_author_year/low,wrong,"Cited original is Cowden et al. (2022) 'Religious/spiritual struggles and psychological distress: A test of three models in a longitudinal study of adults with chronic health conditions' (J Clin Psychol), the cross-lagged finding being replicated. Match is Captari et al. (2022) on R/S struggles and depression during COVID lockdowns in the global south, where Cowden is only a co-author and the design is moderation, not temporal precedence.",workflow-reader,2026-09-21
@@ -192,28 +204,40 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.1055/a-1322-3592,linked,reference_scan/medium,right,"Two Ciechanowski specialty-choice papers exist (2004 Medical Education, 2006 BMC Med Educ); the 2004 one is the original reporting the RSQ primary vs non-primary care contrast the German study reproduces.",workflow-reader,2026-09-21
 10.1073/pnas.2217551120,linked,cited by this paper/unscored,right,"Screening named Meyer et al. 2019, but the abstract states the replications also target Heck, Chabris, Watts & Meyer (2020), the matched paper, so its finding is genuinely re-tested.",workflow-reader,2026-09-21
 10.1080/00049537008254585,linked,reference_scan/low,wrong,"Screening names Inhelder and Piaget; match is Lovell 1961, itself a follow-up study of their work. The runner-up, Inhelder & Piaget's 'The growth of logical thinking: From childhood to adolescence', is the real original.",workflow-reader,2026-09-21
+10.1080/00049539808257537,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1080/00207148008409852,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/00221325.1986.9914516,linked,reference_scan/high,right,"Bare title on the replication side, but Smith & Krantz 1986 cites only two works, and Dion & Berscheid 1974 is the attractiveness-and-popularity sociometric study its title and 'methodological refinement' point at (the other, Lerner & Lerner 1977, is about school adjustment/academic performance).",workflow-reader,2026-09-21
+10.1080/00224545.1976.9711926,linked,reference_author/high,right,,claude-opus-5,2026-09-22
+10.1080/02699930050117693,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/02791072.2024.2346130,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
+10.1080/07317107.2011.623091,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/09541448908403072,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1080/09658211.2024.2412025,linked,openalex_author_year/high,right,,workflow-reader,2026-09-21
 10.1080/10489223.2023.2260792,linked,reference_scan/high,wrong,"Abstract says it is a partial replication of Rastle et al. (masked morpho-orthographic priming in L1 English); matched paper is Diependaele et al. 2005 on masked cross-modal priming in Dutch/French - different authors, different paper.",workflow-reader,2026-09-21
 10.1080/17439760.2020.1818811,linked,reference_scan/low,unclear,"Replication never names the original; match is Eid & Diener's global-SWB situational-variability paper with no abstract shown. Topically adjacent and possibly correct, but the specific 'affect interchangeable with state well-being assessments' finding cannot be confirmed from a bare title.",workflow-reader,2026-09-21
+10.1080/17470218.2011.604787,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1080/17470218.2014.923922,linked,openalex_author_year/low,right,Match DOI 10.1037/0278-7393.33.3.503 is the Mahon et al. (2007) paper cited verbatim in the replication abstract.,workflow-reader,2026-09-21
+10.1080/17524032.2019.1617763,linked,reference_author/high,wrong,"matched a different 2017 climate-message paper, not Ma, Dixon & Hmielowski 2019 on reactance",claude-opus-5,2026-09-22
+10.1080/23273798.2022.2144917,linked,reference_author/high,wrong,"the matched paper is on auditory selective adaptation, not the production-and-learning finding named",claude-opus-5,2026-09-22
 10.1080/23322705.2024.2327950,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
 10.1080/23808985.2018.1425100,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
 10.1080/25742442.2025.2562771,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1089/acm.2005.11.955,linked,reference_scan/high,right,,workflow-reader,2026-09-21
+10.1093/geronb/gby034,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1093/jole/lzw007,linked,reference_scan/low,wrong,Screening and abstract both name Moreno and Baggio's signalling-game result; match is Skyrms 2008 theory paper on multiple senders/receivers. Runner-up 'Role Asymmetry and Code Transmission in Signaling Games' is the Moreno & Baggio study.,workflow-reader,2026-09-21
 10.1093/psyrad/kkaf009,linked,openalex_author_year/high,right,,workflow-reader,2026-09-21
 10.1098/rsos.231575,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
 10.1101/2020.05.18.101238,linked,cited by this paper/unscored,right,Two Rütgen et al. 2015 papers exist; the abstract's 'reduced pain empathy and decreased activation in shared neural networks' is the PNAS fMRI paper that was matched.,workflow-reader,2026-09-21
 10.1101/376350,linked,openalex_author_year/medium,right,Marcinkowska et al. 2018 Hormones and Behavior 'Average ovarian hormone levels...' is the N=102 study reporting the partnership-status x average-progesterone interaction named in the replication abstract.,workflow-reader,2026-09-21
+10.1108/eb028781,linked,reference_author/high,right,"Golembiewski, ""A Note on Leiter's Study"", which is the phase-model burnout exchange",claude-opus-5,2026-09-22
 10.1111/bjep.12156,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
 10.1111/bjhp.12556,linked,openalex_author_year/medium,right,"Replication abstract cites Betsch et al. 2017 Nat. Hum. Behav. 0056; matched DOI is 10.1038/s41562-017-0056, the exact article.",workflow-reader,2026-09-21
 10.1111/j.1467-7687.2007.00607.x,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
+10.1111/j.1467-7687.2010.01003.x,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1111/j.1467-8624.1979.tb02427.x,linked,reference_scan/low,wrong,"Replication explicitly re-analyses 'the 1973 study' (the authors' own 1973 mother-child monograph); match is Reichle et al. 1976 'Verbal interaction in mother-child dyads' - different authors, different year, different finding.",workflow-reader,2026-09-21
 10.1111/j.2044-8279.1973.tb00755.x,linked,openalex_author_year/high,right,"No abstract on the matched side, but Flugel's 1947 BJEP 'An inquiry as to popular views on intelligence and related topics' is the questionnaire study the 1973 replication explicitly re-administers 25 years on.",workflow-reader,2026-09-21
 10.1111/jora.12201,linked,reference_scan/high,unclear,"Replication names no single original, only 'smaller, more specialized samples'. Its key claim - sexual abuse distinct from OTHER maltreatment types - is not testable in the picked Turner et al. 1999 (22 abused vs 22 non-abused, no maltreatment-type contrast); the same authors' Mendle et al. 2011 foster-care study, also cited, fits that account better. Plausible but unconfirmable.",workflow-reader,2026-09-21
+10.1162/jocn_a_00767,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.1162/opmi_a_00038,linked,openalex_author_year/low,right,"Koenig & Woodward (2010), Developmental Psychology, 24-month-olds' sensitivity to prior inaccuracy of the source - exactly the speaker-reliability word-learning finding Experiment 1 replicated.",workflow-reader,2026-09-21
 10.1176/jnp.7.2.272,linked,reference_scan/high,right,"Same authors (Locatelli, Bellodi, Perna, Scarone) and same journal as the 1993 temporolimbic EEG study; a self-replication.",workflow-reader,2026-09-21
 10.1177/001316447203200232,linked,reference_scan/high,right,,workflow-reader,2026-09-21
@@ -257,6 +281,7 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.2466/pms.109.2.577-580,linked,openalex_author_year/low,wrong,Original is V. A. Lefebvre's algebraic model of self-reflexion (golden-section .618 binary judgment); match is a 1990 Lefebvre et al. biochemistry paper on collagenase in chondrocytes. Surname+year only.,workflow-reader,2026-09-21
 10.2466/pms.1995.81.3.723,linked,reference_scan/high,right,"Replication says 'the author's 1969 study' but its own reference list contains only one Koenig paper - the identically titled 1972 Perceptual and Motor Skills article, same design (4 masculine/4 feminine/4 neutral/2+2 traits). Study year vs publication year, so the match holds.",workflow-reader,2026-09-21
 10.2466/pr0.101.7.685-696,linked,reference_scan/medium,right,"Staats replicating her own Psychological Reports college-student stress/happiness survey ~20 years on; same author, journal and instruments.",workflow-reader,2026-09-21
+10.2466/pr0.1962.11.1.274,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 10.2466/pr0.1965.17.2.590,linked,reference_scan/medium,right,"Identical title, Hare 1964 in the same journal.",workflow-reader,2026-09-21
 10.2466/pr0.1977.41.1.291,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.2466/pr0.1979.45.3.880,linked,cited by this paper/unscored,right,"Borderline: the paradigm and title copy Turner, Layton & Simons (1975), but the abstract's own account is a field test of the weapons effect, i.e. Berkowitz & LePage's finding that weapon presence elicits aggression, so the matched paper's finding is genuinely re-tested.",workflow-reader,2026-09-21
@@ -270,6 +295,7 @@ W787058522,card,openalex_author_year/low,right,,claude-opus-5,2026-09-21
 10.31234/osf.io/rzdvt,linked,reference_scan/low,wrong,"Replication re-tests mindfulness and the sunk-cost bias; match is Anicha et al. 2011 on cognitive skills underlying mindfulness facets (visual working memory, temporal order) - no sunk-cost finding. Runner-up (autobiographical memory specificity) is not it either.",workflow-reader,2026-09-21
 10.31390/gradschool_theses.4362,linked,openalex_author_year/high,right,"Thesis cites 'Gresham, Dart, & Collins (2017)'; matched School Psychology Review paper has the same six-teacher generalizability design and the direct-observation > self-report ordering the thesis re-tests.",workflow-reader,2026-09-21
 10.3200/jrlp.140.6.591-602,linked,openalex_author_year/high,right,"Matched record has no abstract, but Neto & Furnham's replication says its instrument comes from Furnham (2001), and the pick is Furnham's 2001 PAID paper on self and OTHER estimates of multiple intelligences - the self/partner design being replicated.",workflow-reader,2026-09-21
+10.3389/fpsyg.2016.00811,linked,reference_author/high,right,"2003 vs the named 2004: same 2D:4D and Big Five work, online-first versus print",claude-opus-5,2026-09-22
 10.3390/ijerph20010188,linked,reference_scan/low,wrong,"Replicated claim is that viewing (digital) nature restores adults' working-memory capacity more than urban scenes; match is Schutte et al. 2015 on children's executive functioning after nature/urban walks, whose own abstract states walk type did not affect working memory.",workflow-reader,2026-09-21
 10.3390/su141710527,linked,reference_scan/high,right,,workflow-reader,2026-09-21
 10.3758/bf03329495,linked,reference_scan/medium,right,"Same-year Anderson et al. paper, but its title states the identical claim (behaviour during shock determines later shuttle interference).",workflow-reader,2026-09-21
@@ -289,9 +315,12 @@ W154705369,linked,openalex_author_year/medium,right,,workflow-reader,2026-09-21
 W1607324979,linked,openalex_author_year/low,wrong,"Original is the Tarnowski, Rasnake, Mulick & Kelly (1989) treatment-acceptability study for self-injurious behavior; match is a Springer book chapter titled 'Behavioral Assessment' (Linscheid et al., 1989). Overlapping author names but a different work.",workflow-reader,2026-09-21
 W1757145862,linked,reference_scan/high,right,"Thesis replicates a mothers-of-children-with-autism self-efficacy study; Kuhn & Carter 2006 matches exactly on the reported predictors (depression, stress, agency, guilt; autism knowledge null).",workflow-reader,2026-09-21
 W1888203522,linked,openalex_author_year/low,wrong,"Replication names Diamond & Huang (2005) on children's attitudes toward peers with disabilities; match is Adele Diamond's 2005 Development and Psychopathology paper on inattentive-type ADHD. Same surname and year, different field.",workflow-reader,2026-09-21
+W1953410257,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W2128142981,linked,openalex_author_year/low,wrong,"Original is De Houwer & Hermans (1994) on affective word/picture processing; match is Hermans et al. (1994) on the affective priming effect. The runner-up, 'Differences in the affective processing of words and pictures', is the actual De Houwer & Hermans paper.",workflow-reader,2026-09-21
+W2184512324,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W2279287232,linked,library_author_year/medium,right,"Full published title is 'an approximate replication of Milton's (2007) study on lexical profiles and learning style', and the matched chapter is 'Lexical profiles, learning styles and the construct validity of lexical size tests' - memory/analysis aptitude is that chapter's content.",workflow-reader,2026-09-21
 W2394694499,linked,cited by this paper/unscored,right,,workflow-reader,2026-09-21
+W2408593553,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W2586614742,linked,library_author_year/high,right,,workflow-reader,2026-09-21
 W2600878702,linked,openalex_author_year/low,right,"Identical title and authors (Forehand & Yoder, 'The effects of modeling and verbal cues on learning of retardates'); cited as 1972 versus the 1973 print year - a one-year gap, which counts as right.",workflow-reader,2026-09-21
 W2607534407,linked,reference_scan/medium,right,,workflow-reader,2026-09-21
@@ -300,6 +329,7 @@ W2776931752,linked,library_author_year/medium,right,Same Wolsko et al. 2016 pape
 W2783431997,linked,openalex_author_year/high,right,,workflow-reader,2026-09-21
 W2899296703,linked,openalex_author_year/medium,right,"No description or replication abstract, but Bailey/Madden/Krashen 1974 Language Learning 'natural sequence' paper is uniquely identified and matches the replication's classroom-SLA topic.",workflow-reader,2026-09-21
 W3125032370,linked,openalex_author_year/high,right,"Replication mis-cites the author list as 'Snyder, Decker and Bercheid' (actually Snyder, Tanke & Berscheid), but the matched JPSP 1977 paper is the self-fulfilling-stereotypes study it describes, title for title.",workflow-reader,2026-09-21
+W3127743416,linked,reference_author/high,right,,claude-opus-5,2026-09-22
 W58483286,linked,openalex_author_year/low,wrong,"Original is Porritt (2007) on rate-building and retention in conditional discrimination (precision teaching); match is a 2007 Porritt et al. pharmacology paper on cocaine and automaintained responding in pigeons. Same surname and year, different study.",workflow-reader,2026-09-21
 W7110483475,linked,library_author_year/medium,right,,workflow-reader,2026-09-21
 W7110487041,linked,library_author_year/high,right,"Correct Eskine et al. (2011) 'A Bad Taste in the Mouth' paper, though the record has a truncated DOI and null journal and the runner-up looks like a duplicate of the same paper.",workflow-reader,2026-09-21

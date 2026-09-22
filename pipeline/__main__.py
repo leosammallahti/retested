@@ -74,6 +74,8 @@ def main() -> None:
     ap_.add_argument("--famous", action="store_true", help="find the famous effects' papers by title and fetch their abstracts")
     rp = sub.add_parser("references", help="find the original in the replication's own reference list")
     rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
+    rp.add_argument("--by-author", action="store_true",
+                    help="match the author and year the abstract names against the paper's own reference list")
     rp.add_argument("--relink", action="store_true",
                     help="also reconsider finds whose author-and-year match landed in the weak band")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
@@ -108,7 +110,7 @@ def main() -> None:
         sys.exit(authors.run_famous(a.max_usd) if a.famous
                  else authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
     if a.cmd == "references":
-        sys.exit(references.run(a.max_usd, a.relink))
+        sys.exit(references.run_author(a.max_usd) if a.by_author else references.run(a.max_usd, a.relink))
     if a.cmd == "osf":
         sys.exit(osf.run())
     if a.cmd == "link":

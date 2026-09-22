@@ -366,11 +366,14 @@ MIN_READ, MIN_RIGHT = 20, 0.90
 
 
 def trusted_links() -> set[tuple[str, str]]:
-    from .originals import read_labels, _pool, band
+    from .originals import read_labels, _pool, band, stale
     labels = {r["cid"]: r for r in read_labels()}
     tally: dict[tuple[str, str], list[int]] = {}
     for c in _pool("linked"):
-        if c["id"] in labels:
+        # A label whose row has since been rematched describes a different paper, so it says nothing about the
+        # band the row is in now. The scorer already knew this; the gate that decides what ships did not, and
+        # was reading reference_author/high as 31 right of 42 where the live labels say 28 of 30.
+        if c["id"] in labels and not stale(c, labels[c["id"]]):
             k = (c.get("link_method"), c.get("link_confidence"))
             t = tally.setdefault(k, [0, 0])
             t[0] += 1

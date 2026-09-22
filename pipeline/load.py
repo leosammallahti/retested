@@ -228,6 +228,12 @@ def load_merges() -> list[dict]:
     return yaml.safe_load(p.read_text(encoding="utf-8")) or []
 
 
+def load_reference_author_links() -> dict[str, dict]:
+    """Matches made by finding the named author and year inside the paper's own reference list."""
+    p = DISCOVERY / "reference_author_links.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
 def merged_links() -> dict[str, dict]:
     """One original per find, choosing between the two matchers by how accurate each has been measured to be.
 
@@ -237,13 +243,20 @@ def merged_links() -> dict[str, dict]:
     reference-list match is right 78-89% (docs/LINK_AUDIT_20260919.md). So a low-band author-and-year link now
     yields to a reference-list link when one exists; everywhere else the earlier behaviour stands.
     """
-    refs, auth = load_reference_links(), load_links()
+    refs, auth, byauth = load_reference_links(), load_links(), load_reference_author_links()
     out = dict(refs)
     for cid, a in auth.items():
         r = refs.get(cid)
         if r and a.get("confidence") == "low" and r.get("confidence") in ("high", "medium"):
             continue                                  # the better-measured method keeps the find
         out[cid] = a
+    # An author-and-year match found inside the paper's own bibliography only displaces a link from a band the
+    # reading has already put at 12-35%. It has not been read yet itself, so it does not get to displace
+    # anything better than that until it has been.
+    for cid, b in byauth.items():
+        cur = out.get(cid)
+        if b.get("confidence") in ("high", "medium") and (not cur or cur.get("confidence") == "low"):
+            out[cid] = b
     return out
 
 

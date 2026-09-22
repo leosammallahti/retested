@@ -433,3 +433,38 @@ mistake this file exists to record. `originals.stale()` now sets those aside and
 band had merely been renamed from `cited by this paper/high` to `/unscored`, and that made the best-read band in
 the project look like 79% instead of 86%. The labels were migrated with the rename. Before trusting a drop, check
 whether the rows moved or only their label did.
+
+
+## Addendum, 2026-09-22: the author is in the bibliography
+
+Web search was tried first, on two finds whose match was obviously wrong, and it worked: it identified Kang et
+al. (2011) and Thomson, Besner & Smilek (2016) correctly from the replication's own description. But ~900 finds
+need this, and a search per find is an expensive way to buy an answer.
+
+Checking whether the right paper was already on disk changed the plan. For the vigilance case it was: *"A
+critical examination of the evidence for sensitivity loss in modern vigilance tasks"*, Thomson, Besner & Smilek,
+sitting in the replication's own reference list. The reference scan had missed it because it matches the find's
+DESCRIPTION against reference TITLES, and "online semantic vigilance task results replicated in laboratory
+setting" shares almost no words with that title. **An author and a year find it immediately.**
+
+The author names were the one thing never fetched — `resolve_titles` asked OpenAlex for `id, doi, title,
+publication_year` and nothing else.
+
+`pipeline references --by-author` matches the surnames a find's abstract names against its own bibliography,
+within a **±2 year window**. The window is not slack: OpenAlex lists that Thomson paper as 2015 and the citing
+paper calls it 2016, one being the print year and the other online-first. An exact match would have missed it.
+
+1,583 finds name an author and had no strong link; 995 of them cite a reference list already held. **894
+matched** — 586 high, 210 medium, 98 low — for **$0.080**.
+
+**Read by hand, 30 of the high band: 28 right, 93%** (95% CI 79–98%), the second-best band in the project. The
+two misses both put a different paper by the right author in the right window. It is now a trusted band, which
+took the finds eligible to be a game card from **83 to 119**.
+
+### The gate was counting labels it should have set aside
+
+`originals.stale()` had been taught that a label describes the match in force when it was read, and that
+re-matching a find invalidates it. `queue.trusted_links()` — the function that actually decides what a page and
+a card may show — had not. It read `reference_author/high` as 31 right of 42 where the live labels say 28 of 30,
+because 12 labels written about the weak match the row used to have were being counted against the band it moved
+to. Same rule, applied in the scorer and not in the gate. Both now share it.
