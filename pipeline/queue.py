@@ -424,16 +424,33 @@ TRUSTED_LINKS = trusted_links()
 #
 # So the verdict is used where it is strong and not where it is weak. "right" admits the row whatever band it
 # came from; "wrong" excludes it whatever band it came from, which costs 13 good rows per 65 and removes 52 bad
-# ones; "unclear" is the model saying it cannot tell, and falls back to the band rule rather than pretending the
-# absence of a judgement is one. A row nobody has sent to the verifier falls back to the band rule too.
+# ones.
+#
+# "unclear" used to fall back to the band rule, and on 2026-09-22 that fallback was measured and removed. It
+# was the worst thing on the site. A band's 90% is an average dominated by rows the verifier confirmed, and the
+# rows inside it that the verifier DECLINED to confirm are a different population: read out, a verifier-unclear
+# link is right 18 times in 44, and within `reference_scan/high` — a trusted band — 6 times in 24. The band
+# score was being carried to a population it was never measured on, which is the error this project keeps
+# finding in new clothes. A row nobody sent to the verifier was admitted the same way and was right 0 of 3.
+#
+# So a link now appears beside a verdict only if a reader confirmed it or the verifier confirmed it. The band
+# rule keeps the two jobs it is genuinely good at: ordering the matchers in `load.merged_links`, and standing
+# in for unread rows when `originals --score` estimates how much of the pool is still a guess.
+# Above all of that sits the reading. A hand label is a careful judgement about THIS pairing, and it is the
+# evidence every other instrument here is calibrated against — the verifier's 98% is 98% agreement with these
+# labels. Using it only to score a band, and then letting the band score overrule it on the very row it was
+# made about, is backwards: until now a row a reader had read and called `right` was dropped whenever its band
+# was overruled, and a row read as `wrong` stayed on the page if its band held up. A label now decides its own
+# row, and the band rule keeps the job it is actually good for — standing in for rows nobody has read.
+#
+# `unclear` decides nothing, for the reason it never has: a reader declining to judge is not a finding.
 def _link_trusted(c: dict) -> bool:
+    l = _read_label(c)
+    if l in ("right", "wrong"):
+        return l == "right"
     # Looked up by (find, paper): a verdict about a paper this find no longer points at simply is not found.
     v = _verified().get((c["id"], c.get("doi_o")))
-    if v == "right" and band(c) not in _overruled():
-        return True
-    if v == "wrong":
-        return False
-    return (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+    return v == "right" and band(c) not in _overruled()
 
 
 def band(c: dict) -> str:
@@ -477,6 +494,24 @@ def _overruled() -> set[str]:
         _OVERRULED = {b for b, (right, wrong) in tally.items()
                       if right + wrong >= MIN_READ and (rate(right, wrong) or 1) < MIN_RIGHT}
     return _OVERRULED
+
+
+_LABELS: dict | None = None
+
+
+def _read_label(c: dict) -> str | None:
+    """What a reader said about this exact pairing, or None if nobody has read it."""
+    global _LABELS
+    if _LABELS is None:
+        from . import audit
+        from .originals import read_labels
+        _LABELS = audit.index(read_labels())
+    from . import audit
+    l = audit.label_for(_LABELS, c["id"], c.get("doi_o"))
+    if not l:
+        return None
+    from .originals import stale
+    return None if stale(c, l) else l.get("label")
 
 
 _VERIFIED: dict[tuple[str, str], str] | None = None

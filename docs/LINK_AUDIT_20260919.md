@@ -973,3 +973,146 @@ A second defect fell out of the same reading: the heading branch had no minimum 
 extracted to the eighteen characters "Results Discussion" — its own table of contents — and that was carried
 forward as text a model was asked to read. Both branches now take the same 500-character floor. The two
 affected answers have been retracted along with their text.
+
+---
+
+## 2026-09-22 (later still) · Reading stopped being the audit and became the decision
+
+Every number in this file above was produced the same way: read a sample of a band, and if the band clears 90%,
+every row in it ships. That design assumes reading is scarce. It was, when a person did it. It is not now — six
+readers did 285 careful reads in about half an hour for no API spend at all — and the project had not noticed
+that its central constraint had gone.
+
+The consequence was visible and unargued. `reference_scan/medium` is 88% right, so gating it by band threw away
+roughly 298 good rows in order to exclude roughly 40 bad ones. Nobody chose that trade; it fell out of an
+instrument built for a scarcer world.
+
+**So a label now decides its own row.** `queue._link_trusted` asks, in order: what did a reader say about this
+exact pairing, then what did `pipeline verify` say, then what does the band average say. Until now the reading
+was used only to score bands, and the band score was then allowed to overrule the reading on the very row it
+was made about — a row read as `right` was dropped whenever its band was overruled, and a row read as `wrong`
+stayed on the page whenever its band held up. 621 rows carry such a label today.
+
+### But first, is the reader an instrument?
+
+Asserting that would be the exact mistake this file exists to record, so it was measured the way `pipeline
+verify` was measured: against labels made earlier, by different readers, for a different purpose.
+
+90 links that already carried a label from a previous session were drawn **45 known-right and 45 known-wrong**,
+interleaved so the order leaked nothing, and given to two fresh readers who could see neither the prior labels
+nor each other.
+
+| | reader A | reader B |
+|---|---|---|
+| calls a **good** link right | 44/45 = 98% | 44/45 = 98% |
+| calls a **bad** link right | 4/44 = 9% | 8/45 = 18% |
+| of the links it **rejects**, the prior reader agreed | 38/39 = 97% | 36/37 = 97% |
+| of the links it **confirms**, the prior reader agreed | 44/48 = 92% | 44/52 = 85% |
+
+Two readers on the same 90 cases agreed on 84 — **94%, Cohen's κ = 0.89** — and every disagreement was one
+reader being more permissive than the other, never right against wrong.
+
+**And then the sample balance had to be undone, because it is not the population.** A 50/50 draw was chosen so
+that the bad links would be numerous enough to measure; it also makes confirmation look far worse than it is,
+because a confirmation on a balanced sample is competing against 45 bad links rather than the 5 it would meet
+in the real pool. The per-class rates are the transferable quantities, and the unread rows on pages are about
+95% right:
+
+| base rate of the population read | a confirmation is right | a rejection is right |
+|---|---|---|
+| 50% (the calibration sample) | 85–92% | 98% |
+| 82% (all linked finds) | 96–98% | 90–91% |
+| **95% (the unread rows on pages)** | **99%** | **68–70%** |
+
+So on the rows that actually need reading, a confirmation is right about 99 times in 100 — comfortably past the
+90% bar the pages use — and a rejection is right about 7 times in 10, which means each rejection removes about
+0.7 wrong rows and 0.3 right ones. That is the same trade `pipeline verify`'s rejections already make, and it
+raises precision at a small cost in recall.
+
+The number that would have been quoted without this correction is 85%, and it would have closed a route that
+works. It is the third time in this file that a measurement taken on the wrong population nearly did that.
+
+### The scoreboard had to change too
+
+"Precision of the rows a page shows" is now a tautology: a read row ships only if it was read as `right`, so the
+answer is 100% and means nothing. `originals --score --pool page` no longer prints it. What it prints instead is
+the honest question — how much of what ships has actually been read, and how wrong the rest is likely to be:
+
+```
+792 of 1572 rows were read one at a time and are decided by that reading; 780 still rest on their band
+expected wrong rows among them: about 18, so roughly 99% of this pool is right
+```
+
+That estimate has to be conditioned on **both** the band and the route that admitted the row. Estimating an
+unread verifier-confirmed row from every read row in its band mixes in rows the verifier rejected — which never
+ship and are disproportionately wrong — and puts the figure at 8.4% where the matched populations put it at
+3.3%. Same error, one more time, in a number I had just written.
+
+Conditioning that way also surfaced the weakest thing on the site: rows admitted by the **band rule alone**,
+where the verifier did not confirm them, read 4 right of 7 in two separate bands. They are 2% of what ships and
+about a quarter of its expected error.
+
+### Reading is now a command, and the rubric is one file
+
+Six readers on 2026-09-22 each got a hand-written variant of the rubric, which is a reliability problem the
+moment a label decides a row rather than contributing to an average. [`docs/READING_RUBRIC.md`](READING_RUBRIC.md)
+is now the one copy, and `pipeline originals --batches N --size M` writes batch files with it at the top.
+
+The draw changed with the purpose. A stratified sample spreads effort evenly so every band gets measured;
+batches are ordered by **expected error instead** — an unread row's chance of being wrong, estimated from the
+read rows sharing its band *and* its admission route — so the worst rows are read first. Measuring a band
+evenly is what you do when the sample is the product. It is not what you do when the reading is.
+
+### 320 rows read worst-first, and what the ordering found
+
+The first eight batches went out ordered by expected error. The ordering is the result: **batches 1–5 found 46
+wrong links; batches 7 and 8 found none at all in 80 rows.** A stratified sample of the same 320 rows would
+have found roughly a third as many.
+
+| batch | mostly | right | wrong | unclear |
+|---|---|---|---|---|
+| page-01 | `reference_scan/high`, admitted by band trust alone | 19 | **20** | 1 |
+| page-02 | `reference_scan/low` | 34 | 5 | 1 |
+| page-03 | `reference_scan/low` | 32 | 7 | 1 |
+| page-04 | `reference_scan/low` | 32 | 7 | 1 |
+| page-05 | `reference_scan/low` | 30 | 7 | 3 |
+| page-06 | `library_author_year/medium` | 38 | 2 | 0 |
+| page-07 | `openalex_author_year/high` | 40 | 0 | 0 |
+| page-08 | `openalex_author_year/high` | 40 | 0 | 0 |
+
+### The worst thing on the site was a fallback nobody had measured
+
+Batch 01 was half wrong, and it was not a band that failed. It was a **route**: rows whose band is trusted but
+which `pipeline verify` had declined to confirm. `_link_trusted` fell back to the band rule for those, and the
+band rule said yes.
+
+Read out across the whole pool, that fallback is indefensible:
+
+| what the verifier said | a reader agrees | n |
+|---|---|---|
+| `right` | **93%** | 814 |
+| `unclear` | 41% | 44 |
+| `wrong` | 29% | 69 |
+| never judged | 0% | 3 |
+
+And inside `reference_scan/high` — a band measured at 96% and trusted — the verifier-declined rows read **6
+right of 24**. A band's 90% is an average dominated by the rows the verifier confirmed; the rows it declined
+are a different population, and the band score was being carried across to them. That is the same error as
+`link --check`, as the reference scan measured through a third of each bibliography, and as the runner-ups
+judged by a calibration built on first choices. It keeps arriving in new clothes.
+
+**So the band rule is no longer an admission route.** A link appears beside a verdict only if a reader
+confirmed it or the verifier confirmed it. It cost 2 rows to remove, because the prioritised reading had
+already found and dropped almost all of them. The band rule keeps the two jobs it is good at: ordering the
+matchers in `load.merged_links`, and standing in for unread rows when the scorer estimates how much of the pool
+is still a guess.
+
+### Where the pages stand at the end of the day
+
+| | morning | evening |
+|---|---|---|
+| rows a page shows | 1,866 | 1,572 |
+| of those, read one at a time | 3 | **792** |
+| expected wrong rows | ~93 (5%) | **~18 (1%)** |
+
+The pool is smaller and four times cleaner. 605 links were read today, all of them free.

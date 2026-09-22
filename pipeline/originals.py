@@ -130,6 +130,72 @@ def _case(c: dict) -> dict:
     }
 
 
+RUBRIC = audit.ROOT / "docs" / "READING_RUBRIC.md"
+BATCH_DIR = audit.ROOT / "data" / "cache" / "reading"
+
+
+def batches(pool: str, n_batches: int, size: int, only: str | None) -> int:
+    """Write N batch files of unread links, worst first, each carrying the rubric.
+
+    Reading is no longer an audit that samples a band to judge it; it is the decision procedure, because a
+    label decides its own row and a reader costs nothing. That changes what a draw should optimise for. A
+    stratified sample spreads effort evenly so that every band gets measured; this spends it where the wrong
+    rows actually are, which is a different thing — an unread row's chance of being wrong is estimated from the
+    read rows that share BOTH its band and the route that admitted it, and the worst cells go out first.
+    """
+    from collections import Counter, defaultdict
+    from .queue import _read_label, _verified, rate
+    ver = _verified()
+    def route(c):
+        return "verifier" if ver.get((c["id"], c.get("doi_o"))) == "right" else "band rule"
+    idx = audit.index(read_labels())
+    tal: dict = defaultdict(lambda: [0, 0])
+    for c in _pool("linked"):
+        l = audit.label_for(idx, c["id"], c.get("doi_o"))
+        if l and not stale(c, l) and l["label"] in ("right", "wrong"):
+            t = tal[(band(c), route(c))]
+            t[0] += l["label"] == "right"
+            t[1] += l["label"] == "wrong"
+    rows = [c for c in _pool(pool)
+            if _read_label(c) not in ("right", "wrong") and only in (None, band(c))]
+    def risk(c):
+        pr = rate(*tal.get((band(c), route(c)), [0, 0]))
+        return 1.0 if pr is None else 1 - pr          # never read: worth reading most of all
+    rows.sort(key=lambda c: (-risk(c), c["id"]))
+    picked = rows[:n_batches * size]
+    BATCH_DIR.mkdir(parents=True, exist_ok=True)
+    rubric = RUBRIC.read_text(encoding="utf-8") if RUBRIC.exists() else ""
+    for i in range(n_batches):
+        chunk = picked[i * size:(i + 1) * size]
+        if not chunk:
+            break
+        f = BATCH_DIR / f"{pool}-{i + 1:02d}.txt"
+        body = "\n".join(_render(j, c) for j, c in enumerate(chunk, 1))
+        f.write_text(f"{rubric}\n\n---\n\n# {len(chunk)} link cases, pool {pool!r}\n\n{body}",
+                     encoding="utf-8")
+        print(f"  wrote {f} · {len(chunk)} cases · "
+              f"{Counter(band(c) for c in chunk).most_common(1)[0][0]} and others")
+    print(f"  {len(rows)} unread rows in pool {pool!r}; {len(picked)} written, worst-estimated first")
+    print(f"  give each reader {RUBRIC} and one batch file; record with "
+          f"`originals --record --pool {pool}`")
+    return 0
+
+
+def _render(i: int, c: dict) -> str:
+    k = _case(c)
+    m = k["matched_to"]
+    out = [f"--- {i}. {k['cid']}   BAND: {k['band']}",
+           f"    replication: {k['title_r']} ({k['year_r']})",
+           f"    abstract:    {k['abstract_r']}"]
+    if k["circular"]:
+        out.append("    !! the model wrote the description below AFTER picking the paper - it is not evidence")
+    out += [f"    says it replicated: {k['says_it_replicated']}",
+            f"    matched to:  {m['authors']} ({m['year']}) {m['title']!r} - {m['journal']}",
+            f"    its abstract: {m['abstract']}",
+            f"    evidence: {k['evidence']}   runner-up: {k['runner_up']!r}", ""]
+    return "\n".join(out)
+
+
 def sample(pool: str, n: int, seed: str, as_json: bool, only: str | None) -> int:
     rows = _pool(pool)
     done = {r["cid"] for r in read_labels()}
@@ -195,8 +261,51 @@ def score(pool: str | None) -> int:
             print(f"   {b:<34} {m['pool']:>7} {m['n']:>5} {m['right']:>6}  {m['right'] / m['n']:>8.0%}   "
                   f"{lo:.0%}–{hi:.0%}   {m['unclear']}")
         audit.unreached(rows, labels, members, band)
-        _shippable(matrix)
+        # For a pool defined by what ships, "rows in a band read at 90% or better" is now trivially all of them:
+        # a read row ships only if it was read as `right`. `residual` asks the question that is still open.
+        if p in ("page", "shown"):
+            residual(rows)
+        else:
+            _shippable(matrix)
     return 0
+
+
+def residual(rows: list[dict]) -> None:
+    """How much of this pool is still a guess, and how wrong that guess is likely to be.
+
+    Since a hand label decides its own row, "precision of the rows a page shows" is no longer a question worth
+    asking: every read row that ships was read as `right`, so the answer is 100% by construction and means
+    nothing. The live question is about the rows nobody has read, and it has to be asked of the population they
+    are actually in — same band AND same admission route. Estimating an unread verifier-confirmed row from all
+    reads in its band mixes in rows the verifier rejected, which never ship and are disproportionately wrong;
+    that put the estimate at 8.4% where the matched populations put it at 3.3%.
+    """
+    from collections import Counter, defaultdict
+    from .queue import _read_label, _verified, rate
+    ver = _verified()
+    def route(c):
+        return "verifier" if ver.get((c["id"], c.get("doi_o"))) == "right" else "band rule"
+    idx = audit.index(read_labels())
+    tal: dict = defaultdict(lambda: [0, 0])
+    for c in _pool("linked"):
+        l = audit.label_for(idx, c["id"], c.get("doi_o"))
+        if l and not stale(c, l) and l["label"] in ("right", "wrong"):
+            t = tal[(band(c), route(c))]
+            t[0] += l["label"] == "right"
+            t[1] += l["label"] == "wrong"
+    unread = [c for c in rows if _read_label(c) not in ("right", "wrong")]
+    exp, unknown = 0.0, 0
+    for (b, rt), n in Counter((band(c), route(c)) for c in unread).items():
+        pr = rate(*tal.get((b, rt), [0, 0]))
+        if pr is None:
+            unknown += n
+        else:
+            exp += n * (1 - pr)
+    print()
+    print(f"   {len(rows) - len(unread)} of {len(rows)} rows were read one at a time and are decided by that"
+          f" reading; {len(unread)} still rest on their band")
+    print(f"   expected wrong rows among them: about {exp:.0f}, so roughly {1 - exp / max(len(rows), 1):.0%}"
+          f" of this pool is right" + (f" ({unknown} rows have nothing comparable to estimate from)" if unknown else ""))
 
 
 def _shippable(matrix: dict[str, dict]) -> None:
@@ -226,11 +335,16 @@ def run(argv: list[str] | None = None) -> int:
     ap.add_argument("--by", default="claude-opus-5", help="who read these cases; recorded with each label")
     ap.add_argument("--record", action="store_true",
                     help="read 'cid<TAB>label<TAB>note' lines from stdin and add them to the label file")
+    ap.add_argument("--batches", type=int, metavar="N",
+                    help="write N batch files of unread links, worst-estimated first, each with the rubric")
+    ap.add_argument("--size", type=int, default=40, help="cases per batch file")
     ap.add_argument("--score", action="store_true", help="report accuracy from the labels recorded so far")
     ap.add_argument("--all-pools", action="store_true", help="score every pool, not just --pool")
     a = ap.parse_args(argv if argv is not None else sys.argv[1:])
     if a.record:
         return record(a.pool, sys.stdin.read(), a.by)
+    if a.batches:
+        return batches(a.pool, a.batches, a.size, a.band)
     if a.sample:
         return sample(a.pool, a.sample, a.seed, a.json, a.band)
     if a.score:

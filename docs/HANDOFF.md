@@ -360,11 +360,65 @@ warns on stderr; build twice after recording labels.
 
 **Spend: $0.06** — $0.054 reading PDFs, $0.006 writing 4 new claims. Balance $8.19. All hand-reading was free.
 
+## 2j. 2026-09-22 (later still): reading became the decision procedure, not the audit
+
+**The central instrument was built for a constraint that no longer exists.** Every accuracy number in this
+project comes from reading a sample of a band and letting the band's score decide all its rows. That is what
+you do when reading is scarce, and it was when a person did it. Six readers now do 285 careful reads in half an
+hour for no API spend. Gating `reference_scan/medium` by its 88% band score discarded roughly 298 good rows to
+exclude roughly 40 bad ones — a trade nobody chose, inherited from the scarcer world.
+
+**So a hand label now decides its own row.** `queue._link_trusted` asks in order: what did a reader say about
+this exact pairing, then `pipeline verify`, then the band average. Previously the reading was used only to score
+bands and the band score then overruled the reading on the very row it was made about — a row read as `right`
+was dropped if its band was overruled, and one read as `wrong` stayed on the page if its band held up. 621 rows
+carry such a label. **Deck 1,060 → 1,073, page rows 229 → 235**, and more importantly 532 shipped rows are now
+decided individually rather than by their band's average.
+
+**The reader was calibrated before being trusted with that**, the same way `verify` was: 90 links already
+carrying labels from earlier sessions, drawn 45 known-right and 45 known-wrong, given blind to two fresh
+readers. They call a good link right 98% of the time and a bad link right 9–18% of the time; their rejections
+matched the prior reader 97%; and two readers on the same 90 cases agreed 94%, **κ = 0.89**.
+
+**The 50/50 balance then had to be undone, and this is the part worth remembering.** On that sample a
+confirmation looks 85–92% right. Re-derived at the base rate of the rows that actually need reading (~95%
+right), **a confirmation is 99% right and a rejection about 70% right**. The uncorrected 85% would have closed
+a route that works — the third time in this project that a measurement taken on the wrong population nearly
+did. A rejection removing ~0.7 bad rows per 0.3 good ones is the same trade `verify`'s rejections already make.
+
+**The scoreboard changed with it.** "Precision of the rows a page shows" is now a tautology — a read row ships
+only if it was read `right`. `originals --score --pool page` prints instead how much of what ships has been
+read and how wrong the remainder is likely to be: currently **792 of 1,572 read, ~18 expected wrong, ~99%
+right**. That estimate must be conditioned on the band *and* the admission route; conditioning on band alone
+mixes in verifier-rejected rows that never ship and inflates it from 3.3% to 8.4%.
+
+**320 rows were then read worst-first, and the ordering was the result**: batches 1–5 found 46 wrong links,
+batches 7–8 found none in 80 rows. Batch 1 was half wrong — and it was not a band that failed but a **route**.
+Rows whose band is trusted but which `verify` had DECLINED to confirm were admitted by the band-rule fallback.
+Read out: a verifier-`right` link is right 93% (n=814), a verifier-`unclear` one 41% (n=44), and inside
+`reference_scan/high` — trusted at 96% — the declined rows read 6 right of 24. **The band rule is no longer an
+admission route**; a link ships only if a reader or the verifier confirmed it. Removing it cost 2 rows, because
+the reading had already found the rest.
+
+**Where the pages stand: 1,866 rows at ~95% this morning, 1,572 rows at ~99% tonight**, 792 of them read one at
+a time. 605 links read today, all free.
+
+**Reading is now a command.** [`docs/READING_RUBRIC.md`](READING_RUBRIC.md) is the single copy of the rubric —
+six readers had each been given a hand-written variant, which is a reliability problem once a label decides a
+row — and `pipeline originals --batches N --size M` writes batch files with it at the top, **ordered by
+expected error** rather than stratified evenly. Measuring a band evenly is what you do when the sample is the
+product; it is not what you do when the reading is.
+
 ## 3. Next steps, in order
 
-1. **Settle `reference_scan` medium.** It is overruled at 88% (78/89) and that costs 339 page rows and ~40
-   cards. It is the single biggest block still turning on reading, and nothing but reading moves it. Free.
-2. **Keep reading the PDF-derived outcomes.** 22 of 25 agreed, which establishes that the population is usable
+1. **Read the remaining 1,102 unread rows on pages.** This is now the main line of work rather than an audit
+   chore: every row read is a row decided, confirmations are ~99% right at this base rate, and the ~54 expected
+   wrong rows come off as they are found. `pipeline originals --batches 8 --size 40 --pool page` writes the
+   next wave worst-first; hand each batch to a reader with the rubric. Free, and about 28 batches to finish.
+2. **Read the 29 band-rule-only rows first** — rows shipping because their band is trusted although the
+   verifier did not confirm them. They read 4 right of 7 in two bands: 2% of what ships, a quarter of its
+   expected error.
+3. **Keep reading the PDF-derived outcomes.** 22 of 25 agreed, which establishes that the population is usable
    and is too small to be a rate. Free.
 3. **Widen the PDF route.** Only `primary_location.pdf_url` was used; `best_oa_location` would add the
    repository copies (270 of these finds are open access but only 154 had a publisher PDF), and OpenAlex
