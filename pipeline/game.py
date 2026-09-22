@@ -154,8 +154,46 @@ def build(g: dict, written: dict[str, dict] | None = None,
             "effect": {"slug": e["slug"], "name": e["name"]}, "finding": None, "replications": [],
         }
     _found_tier(items, reveals, written or {}, found or [])
+    _dedupe_claims(items, reveals)
     items.sort(key=lambda x: x["id"])
     return items, reveals
+
+
+# Tiers in the order a duplicate should be kept. `study` and `famous` come from a curated record; `found` is
+# this project's own unreviewed discovery, so where the same sentence exists in both, the record's copy is the
+# one to deal.
+_TIER_RANK = {"study": 0, "famous": 1, "found": 2}
+
+
+def _dedupe_claims(items: list[dict], reveals: dict) -> None:
+    """One sentence, one card — and no sentence that is dealt with two different answers.
+
+    Writing claims from abstracts made this possible where the database's own descriptions never did: two
+    records of the same study, one in FORRT's data and one among our finds, now get the same sentence written
+    about them. Three cards collided on "reminders of god make people more willing to take risks" as soon as
+    the found tier grew, two saying it replicated and one saying it did not.
+
+    A player who meets the same claim twice and is marked right once and wrong once is being scored on a coin
+    flip, so a group that disagrees is dropped entirely rather than resolved — the disagreement is real
+    evidence about the finding and picking a winner would hide it. A group that agrees keeps one card.
+    """
+    by_claim: dict[str, list[dict]] = defaultdict(list)
+    for it in items:
+        by_claim[it["claim"].strip().lower()].append(it)
+    drop: set[str] = set()
+    for group in by_claim.values():
+        if len(group) < 2:
+            continue
+        answers = {reveals[it["id"]]["answer"] for it in group if it["id"] in reveals}
+        if len(answers) > 1:
+            drop |= {it["id"] for it in group}
+            continue
+        keep = min(group, key=lambda it: (_TIER_RANK.get(it["tier"], 9), it["id"]))
+        drop |= {it["id"] for it in group if it["id"] != keep["id"]}
+    if drop:
+        items[:] = [it for it in items if it["id"] not in drop]
+        for gid in drop:
+            reveals.pop(gid, None)
 
 
 def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: list[dict]) -> None:
@@ -167,13 +205,13 @@ def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: lis
     own abstract. That is what makes it a fair thing to score somebody against; the nine-word label these
     carried before was not.
     """
-    from .queue import TRUSTED_LINKS
+    from .queue import _link_trusted
     by_original: dict[str, list[dict]] = defaultdict(list)
     for c in candidates:
         if (c.get("origin") == "retested_discovery" and c.get("group") == "replication"
                 and c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed")
                 and c.get("doi_o") and c.get("abstract_o")
-                and (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+                and _link_trusted(c)
                 and (c.get("outcome_confidence") or 0) >= 0.8):
             by_original[c["doi_o"]].append(c)
     for doi, cs in sorted(by_original.items()):

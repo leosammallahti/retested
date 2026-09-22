@@ -382,12 +382,12 @@ def found_cards(candidates: list[dict]) -> list[dict]:
     from the ORIGINAL's abstract, which is why this exists at all: the nine-word label we hold for these
     ("Physical warmth promotes interpersonal warmth") is what the owner rejected.
     """
-    from .queue import TRUSTED_LINKS
+    from .queue import _link_trusted
     keep = [c for c in candidates
             if c.get("origin") == "retested_discovery" and c.get("group") == "replication"
             and c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed")
             and c.get("doi_o") and c.get("abstract_o")
-            and (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+            and _link_trusted(c)
             and (c.get("outcome_confidence") or 0) >= 0.8]
     by_original: dict[str, list[dict]] = defaultdict(list)
     for c in keep:

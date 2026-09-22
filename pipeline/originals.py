@@ -41,23 +41,28 @@ CIRCULAR = "cited by this paper"      # the model's description of the original 
 POOLS = {
     "card": ("psychology finds with a binary verdict and a linked original — the game-card pool",
              lambda c: c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed") and c.get("doi_o")),
-    "page": ("the bands effect and finding pages are allowed to show",
-             lambda c: c.get("doi_o") and (c.get("link_method"), c.get("link_confidence")) in _trusted()),
+    "page": ("the links effect and finding pages are allowed to show",
+             lambda c: c.get("doi_o") and _shows(c)),
     # What a reader actually sees. `page` is the set of bands allowed through; this is the rows that get through
     # them, which is a narrower and different population — the original has to be one the wiki already holds and
     # the find has to come from the high search tier. Measure the shipped rows, not the band they belong to.
     "shown": ("the rows that actually appear in a 'not in the record yet' box on a page",
               lambda c: c.get("doi_o") and c.get("original_in_wiki") and c.get("search_tier") == "high"
-              and (c.get("link_method"), c.get("link_confidence")) in _trusted()),
+              and _shows(c)),
     "linked": ("every psychology find matched to an original, verdict or not",
                lambda c: c.get("field") == "psychology" and c.get("doi_o")),
 }
 
 
-def _trusted():
-    """The bands a page may show — asked of queue.py rather than copied, so the two cannot drift apart."""
-    from .queue import TRUSTED_LINKS
-    return TRUSTED_LINKS
+def _shows(c: dict) -> bool:
+    """Whether a page may show this link — asked of queue.py rather than copied, so the two cannot drift apart.
+
+    This used to be a set of bands. It is now a question about the row, because `pipeline verify` judges rows.
+    That matters to the audit and not only to the build: a pool defined by band and a pool defined per row are
+    different sets of rows, and a measurement made on one says nothing about the other.
+    """
+    from .queue import _link_trusted
+    return _link_trusted(c)
 
 
 def band(c: dict) -> str:

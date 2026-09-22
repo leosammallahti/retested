@@ -211,6 +211,7 @@ def run_author(max_usd: float = 0.50) -> int:
     from . import load
     from .queue import TRUSTED_LINKS
     triaged, links = load.load_triaged(), load.merged_links()
+    verified = load.load_verified_links()
     todo = {}
     for r in triaged:
         t = r["triage"]
@@ -220,6 +221,8 @@ def run_author(max_usd: float = 0.50) -> int:
         if not o.get("authors"):
             continue
         cur = links.get(r["cid"]) or {}
+        if verified.get(r["cid"]) == "right":
+            continue                                   # this exact match was checked and confirmed
         if cur and (cur.get("method"), cur.get("confidence")) in TRUSTED_LINKS:
             continue                                   # already matched by a method measured at 90%+
         todo[r["cid"]] = (o.get("authors"), o.get("year"), o.get("description"))

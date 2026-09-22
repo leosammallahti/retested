@@ -384,8 +384,39 @@ def trusted_links() -> set[tuple[str, str]]:
 TRUSTED_LINKS = trusted_links()
 
 
+# Whether ONE link may stand beside a verdict on a page, which is not the same question as whether its band may.
+#
+# A band score judges a row by the company it keeps, and that is its limit: inside `reference_scan` low, measured
+# at 29% over 34 reads, sit links that are plainly right and links that are plainly wrong, and the band cannot
+# tell them apart. `pipeline verify` asks about the row instead - here is the replication, here is the paper we
+# matched it to, is this the one it re-tested - and was scored against 401 links a person had already read:
+#
+#   of the links it confirms, 260 of 264 were confirmed by the reader too - 98% (95%: 96-99%)
+#   of the links it rejects outright, 52 of 65 the reader also called wrong - 80%
+#   of the links it calls unclear, the reader called 39 of 54 right - about the average of the pool
+#
+# So the verdict is used where it is strong and not where it is weak. "right" admits the row whatever band it
+# came from; "wrong" excludes it whatever band it came from, which costs 13 good rows per 65 and removes 52 bad
+# ones; "unclear" is the model saying it cannot tell, and falls back to the band rule rather than pretending the
+# absence of a judgement is one. A row nobody has sent to the verifier falls back to the band rule too.
 def _link_trusted(c: dict) -> bool:
+    v = _verified().get(c["id"])
+    if v == "right":
+        return True
+    if v == "wrong":
+        return False
     return (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+
+
+_VERIFIED: dict[str, str] | None = None
+
+
+def _verified() -> dict[str, str]:
+    global _VERIFIED
+    if _VERIFIED is None:
+        from .load import load_verified_links
+        _VERIFIED = load_verified_links()
+    return _VERIFIED
 
 
 def _effect_of(g: dict) -> dict:

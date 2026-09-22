@@ -468,3 +468,83 @@ re-matching a find invalidates it. `queue.trusted_links()` — the function that
 a card may show — had not. It read `reference_author/high` as 31 right of 42 where the live labels say 28 of 30,
 because 12 labels written about the weak match the row used to have were being counted against the band it moved
 to. Same rule, applied in the scorer and not in the gate. Both now share it.
+
+---
+
+## 2026-09-22 · Asking about the row instead of the band
+
+Every number above scores a link METHOD. Read forty cases from a band, and if the band comes out at 90% or
+better, every row in it ships. That is the only instrument this project had, and it judges a row by the company
+it keeps. 1,259 psychology finds were matched to an original and excluded — not because anyone looked at them and
+disagreed, but because the method that found them averages 86% or 80%. Inside a band measured at 29% there are
+links that are plainly right and links that are plainly wrong, and a band score cannot tell them apart.
+
+`pipeline verify` asks about the row. One call per find: here is the replication, here is the paper we matched it
+to, is this the paper it re-tested? `right` / `wrong` / `unclear`, with a reason.
+
+**It was scored against the 401 hand-read links that survive `stale()`** — labels made before this module existed,
+for a different purpose, which is what makes them a fair test.
+
+| the model says | person: right | wrong | unclear |
+|---|---|---|---|
+| right | **260** | 4 | 3 |
+| wrong | 13 | 52 | 5 |
+| unclear | 39 | 15 | 10 |
+
+- **Of the links it confirms, 260 of 264 a person had settled were right — 98% (95%: 96–99%).** Clears the 90%
+  bar the pages already use, on the low end of the interval.
+- Of the links it rejects outright, 52 of 65 the person also called wrong — 80%.
+- Of the links it calls unclear, the person called 39 of 54 right — about the average of the pool.
+
+So the verdict is used where it is strong and not where it is weak (`queue._link_trusted`): **right** admits the
+row whatever band it came from; **wrong** excludes it whatever band it came from, costing 13 good rows per 65 and
+removing 52 bad ones; **unclear** falls back to the band rule, because the absence of a judgement is not one. It
+turns down 17% of rows a person called right — the price of the 98%.
+
+**The whole pool, 3,047 links, cost $1.105.** 1,500 confirmed.
+
+| band | judged | confirmed | rejected | unclear | band's own measured accuracy |
+|---|---|---|---|---|---|
+| cited by this paper/unscored | 307 | 241 | 35 | 31 | 86% |
+| reference_scan/high | 363 | 230 | 68 | 65 | 80% |
+| reference_scan/medium | 572 | 224 | 154 | 194 | 64% |
+| reference_scan/low | 625 | 142 | 240 | 243 | **29%** |
+| reference_author/high | 223 | 140 | 37 | 46 | 93% |
+| openalex_author_year/high | 117 | 110 | 5 | 2 | 94% |
+| openalex_author_year/low | 364 | 103 | 241 | 20 | **17%** |
+| openalex_author_year/medium | 122 | 98 | 15 | 9 | 91% |
+| library_author_year/medium | 93 | 83 | 2 | 8 | 94% |
+| library_author_year/low | 135 | 58 | 65 | 12 | 33% |
+| library_author_year/high | 45 | 44 | 1 | 0 | 97% |
+| reference_author/medium | 81 | 27 | 21 | 33 | 73% |
+
+The two bottom bands are the point. `reference_scan` low reads 29% over 34 hand-read cases, and in the calibration
+the model confirmed 9 of its links and a person had called all 9 right. Three of the 133 newly confirmed rows in
+that band, read by hand afterwards: a paper titled *"Disguise and the structured self-report assessment of
+psychopathology: II. A clinical replication"* matched to *"…: I. An analogue investigation"*; a 2018 *"systematic
+replication"* of a 2015 preference-assessment study; a 2018 *"partial replication of laboratory findings"* matched
+to Nevin 1990. Obviously-right rows that a band average had buried.
+
+### What it changed
+
+Rows a page may show: **600 → 1,565**. Scored per band against the 285 hand labels that survive the new pool
+definition, every band in the shipped set now reads 90% or better (277 right of 285, 97%). That is the same
+evidence as the calibration seen band by band, not a second independent check — but it confirms the filter is not
+leaving a weak band behind.
+
+Game deck: **912 → 1,149 cards**, the found tier 155 → 397. Base rate 54% successful (found tier 58%, down from
+the 63% skew that a smaller and more selected pool had).
+
+### The measurement this invalidates
+
+`originals.POOLS["page"]` and `["shown"]` were defined by band membership and are now defined per row. **They are
+different sets of rows, so every page-pool figure above this addendum was measured on a population that no longer
+exists.** `pipeline originals --score --pool page` recomputes it; the `linked` and `card` pools are unchanged and
+their numbers still stand.
+
+### One thing the judge is not shown
+
+For links whose method is `cited by this paper`, the model wrote `original_named.description` AFTER choosing which
+cited work it meant. Handing that description back to the judge would be asking it whether it agrees with its own
+earlier answer. Those cases are judged from the replication's own abstract against the original's title and
+abstract, and nothing else — the same warning `originals.py` has always printed to human readers.

@@ -268,6 +268,19 @@ def load_claims() -> dict[str, dict]:
     return {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8")) if r.get("ok")}
 
 
+def load_verified_links() -> dict[str, str]:
+    """The model's per-link verdict, keyed by find id: "right", "wrong" or "unclear".
+
+    Empty until `python -m pipeline verify --all` has run. Measured against 401 links a person had already read
+    one at a time: of the links it confirms, 98% (96-99%) were confirmed by the reader too. That is what lets a
+    single row stand on its own evidence instead of on the average accuracy of the method that found it.
+    """
+    p = DISCOVERY / "verified_links.json"
+    if not p.exists():
+        return {}
+    return {r["id"]: r["verdict"] for r in json.loads(p.read_text(encoding="utf-8"))}
+
+
 def load_triaged() -> list[dict]:
     """DeepSeek's screen of the discovered candidates. Empty until `python -m pipeline triage` has run."""
     f = DISCOVERY / "triaged.json"

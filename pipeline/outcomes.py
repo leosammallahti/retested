@@ -269,11 +269,14 @@ def deck(cut: float = 0.8) -> int:
     player can read, is still a model pass nobody has run. Each gate is stated with what it costs, because the
     interesting number is not the biggest one.
     """
-    from .queue import TRUSTED_LINKS
+    from .queue import TRUSTED_LINKS, _link_trusted as _shipped
     rows = _pool("card")
     steps = [
         ("a binary verdict and a linked original", rows),
         ("link in a band read at 90% or better", [c for c in rows if (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS]),
+        # The band set is no longer what ships; `queue._link_trusted` is, because `pipeline verify` judges one
+        # row at a time. Both are printed so the difference the per-row check makes stays visible here.
+        ("link a page will actually show", [c for c in rows if _shipped(c)]),
     ]
     steps.append((f"  + outcome confidence {cut} or higher",
                   [c for c in steps[-1][1] if (c.get("outcome_confidence") or 0) >= cut]))
