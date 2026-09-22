@@ -314,6 +314,48 @@ def cards(g: dict, items: list[dict], abstracts: dict[str, dict] | None = None) 
     return out
 
 
+def found_cards(candidates: list[dict]) -> list[dict]:
+    """Cards from our own finds: one per original study, as the game deals them.
+
+    Only finds that clear both hand-read audits — a link band read at 90% or better and an outcome the model was
+    confident about — and only originals whose finds agree, because a card is one answer. The claim is written
+    from the ORIGINAL's abstract, which is why this exists at all: the nine-word label we hold for these
+    ("Physical warmth promotes interpersonal warmth") is what the owner rejected.
+    """
+    from .queue import TRUSTED_LINKS
+    keep = [c for c in candidates
+            if c.get("origin") == "retested_discovery" and c.get("group") == "replication"
+            and c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed")
+            and c.get("doi_o") and c.get("abstract_o")
+            and (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+            and (c.get("outcome_confidence") or 0) >= 0.8]
+    by_original: dict[str, list[dict]] = defaultdict(list)
+    for c in keep:
+        by_original[c["doi_o"]].append(c)
+    out = []
+    for doi, cs in sorted(by_original.items()):
+        if len({c["outcome"] for c in cs}) != 1:
+            continue                                   # finds disagree: no single answer to score against
+        c0 = cs[0]
+        out.append({
+            "id": "d" + hashlib.md5(doi.encode()).hexdigest()[:9], "tier": "found", "doi_o": doi,
+            "title_o": c0.get("title_o"), "year_o": c0.get("year_o"),
+            "discipline": None, "tags": None, "n_o": None,
+            "description": None, "claim_text_o": None,
+            "abstract_o": c0.get("abstract_o"),
+        })
+    return out
+
+
+def _queue_candidates(g: dict) -> list[dict]:
+    """The review queue exactly as the build assembles it, so a card and its queue row cannot disagree."""
+    from . import load, queue
+    return queue.build_retested(load.load_triaged(),
+                                {**load.load_reference_links(), **load.load_links()}, g,
+                                load.load_known_replication_dois(), load.load_known_osf_ids(),
+                                load.load_surname_frequency(), load.load_osf(), load.load_original_authors())
+
+
 def _pilot(cs: list[dict], n: int = 24) -> list[dict]:
     """A spread, not a random draw: the point of a pilot is to meet the awkward cases early.
 
@@ -340,6 +382,8 @@ def run(mode: str, max_usd: float, workers: int, limit: int | None, tier: str | 
     score.score(g)
     items, _ = game.build(g)
     cs = cards(g, items, load.load_original_authors())
+    if tier in (None, "found"):
+        cs += found_cards(_queue_candidates(g))
     if tier:
         cs = [c for c in cs if c["tier"] == tier]
     if mode == "pilot":
@@ -366,8 +410,13 @@ def run(mode: str, max_usd: float, workers: int, limit: int | None, tier: str | 
     print(f"  done: {len(results)} written, {len(cs) - len(results)} not (cap or errors) · "
           f"est ${meter.usd:.3f} · real spend ${real:.3f}")
     if mode == "all":
-        OUT.write_text(json.dumps(results, ensure_ascii=False), encoding="utf-8")
-        print(f"  wrote {OUT}")
+        # merge, never replace: a run restricted to one tier would otherwise drop every other tier's claims out
+        # of the file, and the build reads this file to decide what the deck says.
+        existing = {r["id"]: r for r in json.loads(OUT.read_text(encoding="utf-8"))} if OUT.exists() else {}
+        merged = {**existing, **{r["id"]: r for r in results}}
+        OUT.write_text(json.dumps(sorted(merged.values(), key=lambda r: r["id"]), ensure_ascii=False),
+                       encoding="utf-8")
+        print(f"  wrote {OUT} · {len(merged)} claims in all ({len(results)} from this run)")
     report(results)
     return 0
 

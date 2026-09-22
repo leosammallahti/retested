@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
 interface Item {
-  id: string; tier: 'study' | 'famous'; claim: string; method?: string | null; written?: boolean;
+  id: string; tier: 'study' | 'famous' | 'found'; claim: string; method?: string | null; written?: boolean;
   year: number | null; journal: string | null; discipline: string | null; effect_name?: string;
   cues: { n?: number | null; p?: string | null; r?: number | null; cited_by?: number | null; gs_citations?: number | null };
 }
@@ -10,7 +10,7 @@ interface Rep { authors: string | null; year: number | null; journal: string | n
 interface Reveal {
   id: string; answer: 'successful' | 'failed'; title_o?: string; authors_o?: string; replications: Rep[];
   finding: string | null; effect: { slug: string; name: string } | null; curated_status?: string; critiques?: string; original_paper?: string;
-  effect_label?: string | null;
+  effect_label?: string | null; unverified?: boolean; how_found?: string;
 }
 interface Played { id: string; p: number; y: 0 | 1; hit: 0 | 1; brier: number; cues: number; day?: string }
 
@@ -31,7 +31,7 @@ function save(x: Played[]) { try { localStorage.setItem(KEY, JSON.stringify(x.sl
 
 export default function Game({ base }: { base: string }) {
   const [items, setItems] = useState<Item[] | null>(null);
-  const [mode, setMode] = useState<'daily' | 'endless' | 'famous' | null>(null);
+  const [mode, setMode] = useState<'daily' | 'endless' | 'famous' | 'found' | null>(null);
   const [deck, setDeck] = useState<Item[]>([]);
   const [i, setI] = useState(0);
   const [p, setP] = useState(50);
@@ -43,11 +43,15 @@ export default function Game({ base }: { base: string }) {
 
   useEffect(() => { fetch(base + 'generated/game/items.json').then((r) => r.json()).then(setItems); setHistory(load()); }, []);
 
-  const start = (m: 'daily' | 'endless' | 'famous') => {
+  const start = (m: 'daily' | 'endless' | 'famous' | 'found') => {
     if (!items) return;
     const seed = m === 'daily' ? hash(today()) : hash(String(Date.now()));
     const r = rng(seed);
-    let pool = items.filter((x) => (m === 'famous' ? x.tier === 'famous' : x.tier === 'study'));
+    // 'found' is a deck of its own on purpose. These replications are not in the curated record, nobody has
+    // reviewed them, and they succeed more often than the counted ones — mixing them in would quietly move the
+    // base rate a player is calibrating against.
+    const want = m === 'famous' ? 'famous' : m === 'found' ? 'found' : 'study';
+    let pool = items.filter((x) => x.tier === want);
     if (m === 'daily') {
       // daily = 8 study cards + 2 famous, same for every player, and only cards whose claim was written for
       // the game. The 60 that still carry their source database's own description are the ones a claim could
@@ -101,6 +105,9 @@ export default function Game({ base }: { base: string }) {
           <button class="gm" onClick={() => start('daily')}><b>Today's ten</b><span>The same ten cards for everyone, today. Eight real studies, two famous effects.</span></button>
           <button class="gm" onClick={() => start('endless')}><b>Ten more studies</b><span>Random original studies you haven't seen, from {items.filter((x) => x.tier === 'study').length} with a clear replication verdict.</span></button>
           <button class="gm" onClick={() => start('famous')}><b>Famous effects</b><span>{items.filter((x) => x.tier === 'famous').length} textbook-grade effects, judged by a curated list.</span></button>
+          {items.some((x) => x.tier === 'found') && (
+            <button class="gm" onClick={() => start('found')}><b>Not in the record</b><span>{items.filter((x) => x.tier === 'found').length} replications our own search found and FORRT does not hold. Nobody has reviewed them — a deck of its own, and the scores are not comparable.</span></button>
+          )}
         </div>
         {stats.n >= 10 && <Calibration s={stats} />}
       </div>
@@ -111,7 +118,7 @@ export default function Game({ base }: { base: string }) {
     <div class="gplay">
       <div class="gtop mono"><span>Card {i + 1} / {deck.length}</span><span>{total > 0 ? '+' : ''}{total} pts</span></div>
       <article class="gcard card ink">
-        <div class="label">{card.tier === 'famous' ? 'Famous effect' : 'Original study'}{card.discipline && ` · ${card.discipline}`}{card.year && ` · ${card.year}`}</div>
+        <div class="label">{card.tier === 'famous' ? 'Famous effect' : card.tier === 'found' ? 'Original study · replication not in the record' : 'Original study'}{card.discipline && ` · ${card.discipline}`}{card.year && ` · ${card.year}`}</div>
         {card.effect_name && <h3 class="gname">{card.effect_name}</h3>}
         <p class="gclaim">{card.claim}</p>
         {card.method && <p class="gmethod">{card.method}</p>}
@@ -156,7 +163,8 @@ function RevealView({ rv, rec, base, onNext, last }: { rv: Reveal; rec: Played; 
   const pts = points(rec.brier);
   return (
     <div class="greveal">
-      <div class={`stamp ${ok ? 't-ok' : 't-bad'}`}>{ok ? 'Replicated' : 'Did not replicate'}</div>
+      <div class={`stamp ${ok ? 't-ok' : 't-bad'}`}>{ok ? 'Replicated' : 'Did not replicate'}{rv.unverified && ' · unreviewed'}</div>
+      {rv.how_found && <p class="gunver">{rv.how_found}</p>}
       <p class="gpts num">{pts > 0 ? '+' : ''}{pts} <span class="faint">you said {Math.round(rec.p * 100)}%</span></p>
       {rv.replications.slice(0, 2).map((r) => (
         <div class="grep">
@@ -169,6 +177,7 @@ function RevealView({ rv, rec, base, onNext, last }: { rv: Reveal; rec: Played; 
         {rv.title_o && <span class="faint">Original: {rv.authors_o ? rv.authors_o + ', ' : ''}<i>{rv.title_o}</i>. </span>}
         {rv.effect && <a href={`${base}effect/${rv.effect.slug}/`} target="_blank">Full record: {rv.effect.name} ↗</a>}
         {!rv.effect && rv.finding && <a href={`${base}finding/${rv.finding}/`} target="_blank">Full record ↗</a>}
+        {rv.unverified && <a href={`${base}queue/`} target="_blank">See it in the review queue ↗</a>}
       </p>
       <button class="btn" onClick={onNext} autofocus>{last ? 'See my score' : 'Next card →'}</button>
     </div>

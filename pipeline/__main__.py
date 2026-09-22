@@ -26,12 +26,12 @@ def build(accept_baseline: bool) -> int:
     g = registry.build(src, ledger)
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
     score.score(g)
-    items, reveals = game.build(g, load.load_claims())
     candidates = queue.build(load.load_extractor(), g) + queue.build_retested(load.load_triaged(), {**load.load_reference_links(), **load.load_links()}, g, load.load_known_replication_dois(), load.load_known_osf_ids(),
                                       load.load_surname_frequency(), load.load_osf(),
                                       load.load_original_authors())
     before = len(candidates)
     candidates = queue.dedupe(candidates)
+    items, reveals = game.build(g, load.load_claims(), candidates)
     if before != len(candidates):
         step(f"deduped {before - len(candidates)} repeat deposits of work already in the queue")
     queue.consequences(candidates, g)
@@ -87,7 +87,7 @@ def main() -> None:
     cp.add_argument("--all", action="store_true", help="every card in the deck")
     cp.add_argument("--report", action="store_true", help="what is written, flagged or leaking, from the cache")
     cp.add_argument("--limit", type=int, help="stop after this many cards")
-    cp.add_argument("--tier", choices=["study", "famous"], help="only this tier of card")
+    cp.add_argument("--tier", choices=["study", "famous", "found"], help="only this tier of card")
     cp.add_argument("--max-usd", type=float, default=0.50, help="spending cap at worst-case prices")
     cp.add_argument("--workers", type=int, default=8)
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")

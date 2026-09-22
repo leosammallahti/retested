@@ -54,7 +54,8 @@ def _p_bucket(p) -> str | None:
     return "p > .05"
 
 
-def build(g: dict, written: dict[str, dict] | None = None) -> tuple[list[dict], dict[str, dict]]:
+def build(g: dict, written: dict[str, dict] | None = None,
+          found: list[dict] | None = None) -> tuple[list[dict], dict[str, dict]]:
     A, F, P, E = g["attempts"], g["findings"], g["papers"], g["effects"]
     written = written or {}
     eff_by_id = {e["id"]: e for e in E.values()}
@@ -142,8 +143,59 @@ def build(g: dict, written: dict[str, dict] | None = None) -> tuple[list[dict], 
             "original_paper": fam.get("original_paper"),
             "effect": {"slug": e["slug"], "name": e["name"]}, "finding": None, "replications": [],
         }
+    _found_tier(items, reveals, written or {}, found or [])
     items.sort(key=lambda x: x["id"])
     return items, reveals
+
+
+def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: list[dict]) -> None:
+    """Cards from replications this project found and FORRT does not record.
+
+    These are not the record and the reveal says so. A card is dealt only when the find clears both hand-read
+    audits — a link band measured at 90% or better and an outcome the model was confident about — when every
+    find pointing at that original agrees on the answer, and when a claim could be written from the original's
+    own abstract. That is what makes it a fair thing to score somebody against; the nine-word label these
+    carried before was not.
+    """
+    from .queue import TRUSTED_LINKS
+    by_original: dict[str, list[dict]] = defaultdict(list)
+    for c in candidates:
+        if (c.get("origin") == "retested_discovery" and c.get("group") == "replication"
+                and c.get("field") == "psychology" and c.get("outcome") in ("successful", "failed")
+                and c.get("doi_o") and c.get("abstract_o")
+                and (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
+                and (c.get("outcome_confidence") or 0) >= 0.8):
+            by_original[c["doi_o"]].append(c)
+    for doi, cs in sorted(by_original.items()):
+        outs = {c["outcome"] for c in cs}
+        if len(outs) != 1:
+            continue
+        gid = "d" + hashlib.md5(doi.encode()).hexdigest()[:9]
+        w = written.get(gid) or {}
+        claim = _clean_claim(w.get("claim"), 30)
+        if not claim:
+            continue
+        c0 = cs[0]
+        items.append({
+            "id": gid, "tier": "found", "claim": claim, "method": _clean_method(w.get("method")),
+            "written": True, "year": _int(c0.get("year_o")), "journal": c0.get("journal_o"),
+            "discipline": None,
+            "cues": {"n": None, "p": None, "r": None, "cited_by": c0.get("cited_by_o")},
+        })
+        reveals[gid] = {
+            "id": gid, "answer": next(iter(outs)),
+            "title_o": c0.get("title_o"), "authors_o": c0.get("authors_o"),
+            "replications": [{"authors": c.get("authors_r"), "year": _int(c.get("year_r")),
+                              "journal": c.get("journal_r"), "doi": c.get("doi_r"), "n": None, "r": None,
+                              "quote": c.get("outcome_quote")} for c in cs[:4]],
+            "finding": None, "effect": None, "effect_label": w.get("effect_label"),
+            # the card's whole provenance, in the reveal, because none of it is in FORRT's record
+            "unverified": True,
+            "how_found": "This replication is not in FORRT's curated record. Our own search of OpenAlex found it, "
+                         "a language model read its abstract for the outcome, and its link to the original was "
+                         "checked by hand for its matching method but not for this paper. Nobody has reviewed "
+                         "this pair.",
+        }
 
 
 def _int(x):
