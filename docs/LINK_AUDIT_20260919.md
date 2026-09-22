@@ -683,3 +683,26 @@ titles. Production verification usually has both. The 74% is a floor, not a verd
 finds that do have abstracts is the next thing to do here.
 
 `pipeline choose --check` is the harness; it costs about $0.15 per 500 and needs no labelling.
+
+### A label has to say which paper it judged
+
+Completing the reference titles moved many rows to a different paper **inside the same band**. `stale()` compares
+the band recorded with the label against the band the row is in now, and a band is too coarse to catch that: 32
+labels on `reference_scan/medium` went on being counted though they were read against papers that had since been
+replaced. The tell was reading twenty fresh cases of that same band and getting a different answer.
+
+| `reference_scan/medium` | read | right | |
+|---|---|---|---|
+| 32 labels from 2026-09-21, before the titles were completed | 32 | 26 | 81% |
+| 20 read today, after | 19 | 18 | **95%** |
+| together, which is what the scorer prints | 52 | 44 | 85% |
+
+`original_audit.csv` now carries a `matched_to` column and `stale()` checks it. Labels written before today have
+it empty and are taken at their word, because nothing better can be said about them — which is why that band
+still prints 85% rather than the 95% the current matcher probably deserves. Re-reading those 32 is the cheapest
+way to settle 343 rows.
+
+This is the third instance today of one pattern: **a judgement about a pairing has to record the pairing.** The
+model's verdicts had it (fixed by keying on `doi_o`), the verdict cache had it (fixed by keying the file on
+(find, paper)), and the hand labels had it. In each case the failure was invisible while nothing moved and
+appeared the moment re-matching moved something.

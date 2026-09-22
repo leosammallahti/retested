@@ -29,7 +29,7 @@ from .load import ROOT
 
 BUILD = ROOT / "data" / "build" / "candidates.json"
 CURATED = ROOT / "data" / "curated"
-COLUMNS = ["cid", "pool", "recorded", "label", "note", "labelled_by", "labelled_on"]
+COLUMNS = ("cid", "pool", "recorded", "matched_to", "label", "note", "labelled_by", "labelled_on")
 
 
 def candidates() -> list[dict]:
@@ -63,16 +63,26 @@ def write_labels(path: Path, rows: list[dict]) -> None:
             w.writerow({k: r.get(k, "") for k in COLUMNS})
 
 
-def add(path: Path, cid: str, pool_name: str, recorded: str, label: str, note: str, by: str, valid) -> None:
+def add(path: Path, cid: str, pool_name: str, recorded: str, label: str, note: str, by: str, valid,
+        matched_to: str = "") -> None:
+    """One label. `matched_to` is the paper the row pointed at when it was read.
+
+    Without it a label cannot be checked against the match in force. `recorded` holds the BAND, and a band is
+    too coarse: after the reference titles were completed on 2026-09-22, many rows kept the band
+    `reference_scan/medium` while moving to a different paper inside it, so 32 labels about superseded matches
+    went on being counted — the band read 81% on those and 95% on twenty fresh reads of the same band. Labels
+    written before that date have this column empty and cannot be checked, which is itself worth seeing.
+    """
     if label not in valid:
         raise SystemExit(f"label must be one of {tuple(valid)}")
     rows = [r for r in read_labels(path) if r["cid"] != cid]
-    rows.append({"cid": cid, "pool": pool_name, "recorded": recorded, "label": label, "note": note,
-                 "labelled_by": by, "labelled_on": date.today().isoformat()})
+    rows.append({"cid": cid, "pool": pool_name, "recorded": recorded, "matched_to": matched_to, "label": label,
+                 "note": note, "labelled_by": by, "labelled_on": date.today().isoformat()})
     write_labels(path, rows)
 
 
-def record(path: Path, rows: list[dict], pool_name: str, stratum, text: str, valid, by: str) -> int:
+def record(path: Path, rows: list[dict], pool_name: str, stratum, text: str, valid, by: str,
+           matched=lambda c: c.get("doi_o") or "") -> int:
     """Take labels in bulk: one 'cid<TAB>label<TAB>note' line each, from a session that has just read them."""
     by_id = {c["id"]: c for c in rows}
     n, missing = 0, []
@@ -86,7 +96,7 @@ def record(path: Path, rows: list[dict], pool_name: str, stratum, text: str, val
             # nothing, and the next draw will hand it to them again.
             missing.append(cid)
             continue
-        add(path, cid, pool_name, stratum(by_id[cid]), label, note, by, valid)
+        add(path, cid, pool_name, stratum(by_id[cid]), label, note, by, valid, matched(by_id[cid]))
         n += 1
     print(f"recorded {n} labels in {path}")
     if missing:

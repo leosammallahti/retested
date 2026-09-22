@@ -85,7 +85,15 @@ def stale(c: dict, label: dict) -> bool:
     Renaming a band is NOT a changed match: when `cited by this paper` stopped calling itself "high" and became
     "unscored", 36 labels still carried the old name and were being set aside as stale though nothing about the
     link had moved. A rename has to migrate the labels with it.
+
+    The band is too coarse to be the only test, which took until 2026-09-22 to show. Completing the reference
+    titles moved many rows to a different paper WITHIN `reference_scan/medium`, so their labels stayed live and
+    described matches nobody was making: the band read 81% on them and 95% on twenty fresh reads. Labels now
+    record the paper as well, and one written before that date has the column empty and is taken at its word —
+    it is the best that can be said about it.
     """
+    if label.get("matched_to") and label["matched_to"] != (c.get("doi_o") or ""):
+        return True       # read against a different paper; the band it sat in is beside the point
     return label.get("recorded") not in (None, "", band(c))
 
 
