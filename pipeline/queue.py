@@ -400,7 +400,9 @@ TRUSTED_LINKS = trusted_links()
 # ones; "unclear" is the model saying it cannot tell, and falls back to the band rule rather than pretending the
 # absence of a judgement is one. A row nobody has sent to the verifier falls back to the band rule too.
 def _link_trusted(c: dict) -> bool:
-    v = _verified().get(c["id"])
+    doi, v = _verified().get(c["id"], (None, None))
+    if doi != c.get("doi_o"):
+        v = None          # the verdict is about a paper this find no longer points at; see load_verified_links
     if v == "right":
         return True
     if v == "wrong":
@@ -408,14 +410,14 @@ def _link_trusted(c: dict) -> bool:
     return (c.get("link_method"), c.get("link_confidence")) in TRUSTED_LINKS
 
 
-_VERIFIED: dict[str, str] | None = None
+_VERIFIED: dict[str, tuple[str, str]] | None = None
 
 
-def _verified() -> dict[str, str]:
+def _verified() -> dict[str, tuple[str, str]]:
     global _VERIFIED
     if _VERIFIED is None:
-        from .load import load_verified_links
-        _VERIFIED = load_verified_links()
+        from .load import load_verified_matches
+        _VERIFIED = load_verified_matches()
     return _VERIFIED
 
 

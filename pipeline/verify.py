@@ -30,6 +30,7 @@ title and abstract, and nothing else. `originals.py` prints the same warning to 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import time
@@ -131,10 +132,23 @@ def _cases(pool: str, limit: int | None = None, only_cids: set[str] | None = Non
     return cases[:limit] if limit else cases
 
 
+def _cache_name(k: dict) -> str:
+    """Keyed by the find AND the paper it is matched to, because that pair is what the verdict is about.
+
+    Keying on the find alone is wrong in a way that only shows up after re-matching: `references --relink` can
+    move a find to a different earlier paper, and a cache keyed on the find then hands back a verdict about the
+    paper it used to point at. `originals.stale()` has always applied this rule to the hand-read labels; the
+    model's verdicts need it for the same reason and did not have it.
+    """
+    gid = re.sub(r"[^A-Za-z0-9._-]+", "_", k["cid"])[:100]
+    doi = (k.get("matched_to") or {}).get("doi") or ""
+    return f"{gid}-{hashlib.md5(doi.encode()).hexdigest()[:8]}"
+
+
 def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path,
                system: str = SYSTEM, version: str = PROMPT_VERSION) -> dict | None:
-    gid = re.sub(r"[^A-Za-z0-9._-]+", "_", k["cid"])[:120]
-    f = cache_dir / f"{gid}.json"
+    gid = k["cid"]
+    f = cache_dir / f"{_cache_name(k)}.json"
     if f.exists():
         return json.loads(f.read_text(encoding="utf-8"))
     if meter.over:
@@ -163,7 +177,8 @@ def verify_one(k: dict, key: str, meter: Meter, cache_dir: Path,
     except (KeyError, json.JSONDecodeError):
         out = {"verdict": "unclear", "why": "model returned no usable JSON"}
     v = out.get("verdict")
-    rec = {"id": k["cid"], "band": k["band"], "model": MODEL, "prompt_version": version,
+    rec = {"id": k["cid"], "band": k["band"], "doi_o": (k.get("matched_to") or {}).get("doi"),
+           "model": MODEL, "prompt_version": version,
            "verdict": v if v in VERDICTS else "unclear", "why": (out.get("why") or "")[:300],
            "usage": d.get("usage")}
     f.write_text(json.dumps(rec, ensure_ascii=False), encoding="utf-8")

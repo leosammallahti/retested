@@ -237,27 +237,56 @@ def load_reference_author_links() -> dict[str, dict]:
 def merged_links() -> dict[str, dict]:
     """One original per find, choosing between the two matchers by how accurate each has been measured to be.
 
-    The author-and-year matcher and the reference-list scan disagree about which paper a replication repeats, and
-    for a long time the author-and-year answer simply won because it was merged second. That is the wrong way
-    round wherever its answer is weak: read one by one, its "low" band is right 12-35% of the time and a
-    reference-list match is right 78-89% (docs/LINK_AUDIT_20260919.md). So a low-band author-and-year link now
-    yields to a reference-list link when one exists; everywhere else the earlier behaviour stands.
+    Three matchers propose an original and they disagree. For a long time the author-and-year answer simply won
+    because it was merged last; that was replaced by two pairwise rules about which band may displace which,
+    and on 2026-09-22 those rules broke under their own weight. Adding 1,169 fresh author-and-year links let an
+    `openalex_author_year/medium` link (measured 91%) displace a `reference_author/high` one (measured 93%),
+    and let `openalex_author_year/low` (17-33%) win every find where nothing better already sat — the
+    reference_author/high band fell from 225 links to 20 and the deck lost 48 cards.
+
+    So the choice is made the way the docstring always claimed it was: **by how accurate each band has been
+    measured to be**, read off data/curated/original_audit.csv rather than written into a rule here. A band with
+    fewer than 20 reads is treated as unknown and loses to every band that has been read, ordered high above
+    medium above low among themselves. Adding a matcher can no longer quietly demote a better-measured one.
     """
     refs, auth, byauth = load_reference_links(), load_links(), load_reference_author_links()
-    out = dict(refs)
-    for cid, a in auth.items():
-        r = refs.get(cid)
-        if r and a.get("confidence") == "low" and r.get("confidence") in ("high", "medium"):
-            continue                                  # the better-measured method keeps the find
-        out[cid] = a
-    # An author-and-year match found inside the paper's own bibliography only displaces a link from a band the
-    # reading has already put at 12-35%. It has not been read yet itself, so it does not get to displace
-    # anything better than that until it has been.
-    for cid, b in byauth.items():
-        cur = out.get(cid)
-        if b.get("confidence") in ("high", "medium") and (not cur or cur.get("confidence") == "low"):
-            out[cid] = b
+    out: dict[str, dict] = {}
+    for src in (refs, auth, byauth):
+        for cid, link in src.items():
+            cur = out.get(cid)
+            if cur is None or _band_score(link) > _band_score(cur):
+                out[cid] = link
     return out
+
+
+# How accurate each band has been measured to be, read off the hand labels rather than written down here, so
+# the merge and the page gate cannot drift apart. A band nobody has read enough of scores below every band that
+# has been read, which is the conservative reading of "we do not know".
+_BAND_SCORES: dict[tuple[str, str], float] | None = None
+_UNREAD = {"high": 0.05, "medium": 0.03, "low": 0.01}      # ordered among themselves, below anything measured
+
+
+def _band_score(link: dict) -> float:
+    global _BAND_SCORES
+    if _BAND_SCORES is None:
+        # Tallied by the band RECORDED WITH THE LABEL, not the band the row sits in now. A reader who judged a
+        # `reference_author/high` link and called it right measured that band, and the measurement holds whether
+        # or not re-matching later moved that row somewhere else. Keying on the current band instead makes a
+        # band eat itself: re-matching invalidates its labels, it falls below 20 reads, it counts as unmeasured,
+        # it loses the merge, and fewer rows remain in it. That is what took reference_author/high from 225
+        # links to 17 within one run. (`originals.score` correctly uses the current band and the stale check —
+        # it answers a different question, namely how good the rows in a band are RIGHT NOW.)
+        from .originals import read_labels
+        tally: dict[str, list[int]] = {}
+        for r in read_labels():
+            if not r.get("recorded") or r.get("label") not in ("right", "wrong"):
+                continue
+            t = tally.setdefault(r["recorded"], [0, 0])
+            t[0] += 1
+            t[1] += r["label"] == "right"
+        _BAND_SCORES = {k: right / n for k, (n, right) in tally.items() if n >= 20}
+    key = f"{link.get('method')}/{link.get('confidence')}"
+    return _BAND_SCORES.get(key, _UNREAD.get(link.get("confidence"), 0.0))
 
 
 def load_claims() -> dict[str, dict]:
@@ -285,17 +314,31 @@ def load_refused_claims() -> set[str]:
             if r.get("insufficient") or r.get("absence_written_positive")}
 
 
-def load_verified_links() -> dict[str, str]:
+def load_verified_links() -> dict[str, str]:  # noqa: D401 — see load_verified_matches for the paper-aware form
     """The model's per-link verdict, keyed by find id: "right", "wrong" or "unclear".
 
     Empty until `python -m pipeline verify --all` has run. Measured against 401 links a person had already read
     one at a time: of the links it confirms, 98% (96-99%) were confirmed by the reader too. That is what lets a
     single row stand on its own evidence instead of on the average accuracy of the method that found it.
+
+    A verdict without a `doi_o` is dropped. It was written before the file recorded WHICH paper the verdict was
+    about, so there is no way to tell whether the find has since been re-matched to a different one — and a
+    verdict about a match nobody is making any more is the same error as measuring a band over rows it was never
+    computed on. `queue._link_trusted` checks the recorded paper against the current one.
     """
     p = DISCOVERY / "verified_links.json"
     if not p.exists():
         return {}
-    return {r["id"]: r["verdict"] for r in json.loads(p.read_text(encoding="utf-8"))}
+    return {r["id"]: r["verdict"] for r in json.loads(p.read_text(encoding="utf-8")) if r.get("doi_o")}
+
+
+def load_verified_matches() -> dict[str, tuple[str, str]]:
+    """find id -> (the paper the verdict was about, the verdict). See load_verified_links for why doi_o matters."""
+    p = DISCOVERY / "verified_links.json"
+    if not p.exists():
+        return {}
+    return {r["id"]: (r["doi_o"], r["verdict"])
+            for r in json.loads(p.read_text(encoding="utf-8")) if r.get("doi_o")}
 
 
 def load_triaged() -> list[dict]:
