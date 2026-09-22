@@ -1,4 +1,4 @@
-# Handoff — state as of 2026-09-21
+# Handoff — state as of 2026-09-22
 
 ## 1. What exists and works
 
@@ -269,6 +269,38 @@ original's abstract it is about **$0.03**. The instruction was to postpone it un
 without a model was done; a great deal now has been, and what stands between this work and a playable deck costs
 three cents. Worth asking rather than assuming either way.
 
+## 2h. 2026-09-22: the deck has real claims, and the finds are playable
+
+The owner topped up DeepSeek, which answered the open question in 2g. Total spend for everything below: **$0.31**
+against the ~$3.50 this work had been costed at.
+
+**Every card in the deck was rewritten.** The deck had been dealing FReD's `description` column — "Main effect of
+condition on the applicability of the insanity defense", a 400-character methods paragraph about conjugate
+reinforcement schedules, one claim that ends in a comma because the comma is in the data. **689 of 749 cards now
+carry a written claim and 685 a method line.** `pipeline/claims.py`, following D3 §8;
+[`docs/CLAIMS_20260922.md`](CLAIMS_20260922.md) has the detail.
+
+Four prompt versions, because reading the pilot myself was not enough: four reviewers each took one lens and the
+fidelity lens called 14 of 24 non-ok. They found the writer inventing directions when FReD's result sentence was
+an omnibus F, writing manipulation checks up as findings, reversing absences ("goats do not follow a human's
+gaze" came back as "goats follow"), and hedging unevenly — which is a leak channel of its own, since a writer
+hedges more when it doubts. **The root fix was not a prompt**: nobody had ever fetched the originals' abstracts.
+OpenAlex serves them free and we held the identifiers — 387 of 501 for $0.001 and nine calls, and most of the
+invention went with it.
+
+**68 of our own finds are now playable cards, in a deck of their own.** A card is dealt only when the find clears
+both hand-read audits, when every find on that original agrees, and when a claim could be written from the
+original's abstract. They are a fourth mode rather than mixed in: they succeed more often than the counted
+record, so shuffling them in would move the base rate a player calibrates against, and nobody has reviewed one.
+The stamp says "unreviewed" and the reveal carries the whole provenance with a link into the queue.
+
+**The fairness test, which is the open question.** D3 §7 asks whether a model can guess the answer from the card
+alone. Four blind guessers on a balanced 22-card pilot: 75% where they did not recognise the study (95% CI
+62–85%), against 50% chance. All four explained it the same way — failures cluster at small samples — and **that
+explanation is false**: successful cards have the larger median N, 132 against 112 in the pilot and 94 against 79
+across the deck. The leak is real and its stated cause is wrong. The same test has not been run against the old
+descriptions, so nobody yet knows whether rewriting made it better or worse.
+
 ## 3. Next steps, in order
 
 1. ~~**Finish the linking**: 364 candidates never got their OpenAlex lookup when the cap hit.~~ Done, and it
@@ -282,11 +314,15 @@ three cents. Worth asking rather than assuming either way.
    still thin: medium-tier screening rests on 40 labels made by Claude rather than a person, and
    `reference_scan` medium at 8/14 is the one band that might or might not reach the 90% line with more reading
    — 195 card rows turn on it.
-3. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
+3. **Settle the fairness test.** The model-guess test reads 75% from the card alone and the explanation every
+   guesser offered is false (see 2h). Two things would settle it, both free: run the same test against the OLD
+   descriptions as a control, and run it on a larger balanced sample. If the rewrite did not move the number,
+   the leak is the deck's design cues — which is the game — and nothing needs fixing.
+4. **Widen the keyword search** beyond psychology-tagged works (Social Sciences, Neuroscience, Decision Sciences,
    Economics, Business: ~49k titles) — with rule scoring and t3 triage. The medium tier is now done.
-4. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
+5. **Publish**: NOT for now (owner decision 2026-09-19). Keep building and previewing on the VM
    (`npm run preview`); the GitHub Pages workflow stays in `.github/workflows/site.yml` for later.
-5. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
+6. **Contact FORRT** (Wallrich / Röseler) before reusing unlicensed code from flora-extractor / flora-validation;
    offer the finds and the recall harness back to them.
 
 ## 4. Owner decisions and open questions
