@@ -367,6 +367,21 @@ def load_verified_matches() -> dict[tuple[str, str], str]:
             for r in json.loads(p.read_text(encoding="utf-8")) if r.get("doi_o")}
 
 
+def load_reread() -> dict[str, dict]:
+    """Outcomes read out of text the abstract never carried — OSF wikis, Europe PMC Results sections.
+
+    Empty until `python -m pipeline fulltext` and `python -m pipeline reread` have run. Only answers whose
+    verbatim quote was found in the source they were read from are kept; `reread` drops the rest at the point of
+    reading, and this is a second refusal in case that ever changes. See pipeline/reread.py for why the quote
+    check is not optional on this population: "the text does not say" is the correct answer 72% of the time.
+    """
+    p = DISCOVERY / "reread.json"
+    if not p.exists():
+        return {}
+    return {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8"))
+            if r.get("outcome") in ("successful", "failed", "mixed") and r.get("quote_checked")}
+
+
 def load_triaged() -> list[dict]:
     """DeepSeek's screen of the discovered candidates. Empty until `python -m pipeline triage` has run."""
     f = DISCOVERY / "triaged.json"

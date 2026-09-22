@@ -757,3 +757,55 @@ have been read and fewer than 90% hold. It is computed from the labels, so it sw
 clears a band and on when a shipping band starts failing. Under the settled rule it currently names nothing —
 but it named `reference_scan/medium` for the twenty minutes when the convention was the other one, which is the
 demonstration that it works.
+
+## 2026-09-22 · Going to get the result where the abstract does not report it
+
+2,448 psychology finds — nearly 60% — could not become a card because nothing we held said how the replication
+turned out. It was the largest loss in the funnel by a wide margin and had been written off twice, correctly
+both times: reading the abstract harder does not work, because the abstract describes what the study DID.
+
+The result exists. It is somewhere else. `pipeline fulltext` goes and gets it and `pipeline reread` reads it.
+
+| where | finds with text | usable yes/no outcome | rate |
+|---|---|---|---|
+| OSF wikis and descriptions | 867 | 49 | **6%** |
+| Europe PMC Results sections and abstracts | 236 | 143 | **61%** |
+| | **1,103** | **192** | 17% |
+
+OSF was the source I expected to carry this and it barely does. 11 of 12 plain OSF projects have a wiki and 98%
+of the deposits yielded some text, but the text is a materials list, an ethics statement, a folder description,
+or a plan written before the data existed — 525 of these are project folders and 141 are registrations. Europe
+PMC is a tenth the size and produced three times as many answers, because a Results section is a result.
+
+Europe PMC also filled a second gap: 183 of the finds it covered had **no abstract anywhere else**, and an
+abstract that states the outcome makes a find usable without any full text at all.
+
+### The quote check, which is not optional here
+
+Every answer must carry a verbatim sentence from the text it was read from, and the sentence is checked against
+that text before the answer is kept. On this population "the text does not say" is the right answer **72%** of
+the time, which is exactly the situation where a model produces something plausible instead. 3 answers of 1,103
+were thrown away for a quote that was not in the source.
+
+### Read by hand
+
+Fifteen of the new outcomes drawn at random, each checked against its quote: **15 right**. Labels are in
+`outcome_audit.csv`. Two are indirect and worth naming — a replication reporting the same NULL as the original
+("as in the previous study, there were no significant differences") is recorded as a successful replication,
+which is correct and is the kind of case a careless reader gets backwards.
+
+| | |
+|---|---|
+| finds with a yes/no outcome | 1,746 → **1,923** |
+| read from the abstract | 1,746 |
+| read from an OSF wiki | 48 |
+| read from Europe PMC | 129 |
+| clearing every gate to be a card | 522 → **583** |
+| deck | 1,091 → **1,132** cards |
+
+### What is left in that pile
+
+1,135 of the silent finds have a DOI and are not in Europe PMC. About 27% of those are open access somewhere
+else, which is roughly 300 papers behind a PDF rather than an API. Given Europe PMC's 61% yield, that is worth
+perhaps 180 more outcomes and needs a PDF parser, which this project does not have. The rest are paywalled and
+are not reachable at all.

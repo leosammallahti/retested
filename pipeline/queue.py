@@ -78,6 +78,8 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     P = g["papers"]
     forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
     osf_records, original_authors = osf_records or {}, original_authors or {}
+    from .load import load_reread
+    reread = load_reread()
     out, already = [], 0
     for r in triaged:
         t = r["triage"]
@@ -112,9 +114,18 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "cited_by_o": (original_authors.get(doi_o) or {}).get("cited_by"),
             "retracted_o": (original_authors.get(doi_o) or {}).get("is_retracted"),
             "abstract_o": (original_authors.get(doi_o) or {}).get("abstract"),
-            "outcome": t.get("outcome") if t.get("outcome") != "not_reported" else None,
-            "outcome_quote": t.get("outcome_quote"),
-            "outcome_confidence": t.get("confidence"),
+            # The screen reads the abstract. Where the abstract does not say how the replication turned out,
+            # `pipeline reread` reads the text that does — the OSF wiki the team wrote, the Results section of
+            # the open-access paper — and that answer is used ONLY where the screen had none. It never overrides
+            # the screen: two readings of different sources disagreeing is a thing to measure, not to silently
+            # resolve, and the screen's reading is the one with 224 hand labels behind it.
+            "outcome": (t.get("outcome") if t.get("outcome") != "not_reported" else None)
+                       or (reread.get(r["cid"]) or {}).get("outcome"),
+            "outcome_quote": t.get("outcome_quote") or (reread.get(r["cid"]) or {}).get("quote"),
+            "outcome_confidence": t.get("confidence") if t.get("outcome") != "not_reported"
+                                  else (reread.get(r["cid"]) or {}).get("confidence"),
+            "outcome_source": "abstract" if t.get("outcome") not in (None, "not_reported")
+                              else ((reread.get(r["cid"]) or {}).get("source") if reread.get(r["cid"]) else None),
             # A DOI the model picked out of the citation list carries no score of its own — the model writes its
             # account of the original AFTER choosing it, so nothing about the pair can be compared. So it says
             # "unscored" rather than borrowing high/medium/low, which mean a score elsewhere. How often it is
