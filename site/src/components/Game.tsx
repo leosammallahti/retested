@@ -49,8 +49,12 @@ export default function Game({ base }: { base: string }) {
     const r = rng(seed);
     let pool = items.filter((x) => (m === 'famous' ? x.tier === 'famous' : x.tier === 'study'));
     if (m === 'daily') {
-      // daily = 8 study cards + 2 famous, same for every player
-      const st = items.filter((x) => x.tier === 'study'), fa = items.filter((x) => x.tier === 'famous');
+      // daily = 8 study cards + 2 famous, same for every player, and only cards whose claim was written for
+      // the game. The 60 that still carry their source database's own description are the ones a claim could
+      // not be written from, and they read like it ("Main Effect of Verb Type at Word 15"); endless still
+      // deals them rather than losing the studies altogether.
+      const st = items.filter((x) => x.tier === 'study' && x.written),
+            fa = items.filter((x) => x.tier === 'famous' && x.written);
       pool = [...shuffle(st, r).slice(0, 8), ...shuffle(fa, r).slice(0, 2)];
       pool = shuffle(pool, r);
     } else {
