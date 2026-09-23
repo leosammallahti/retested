@@ -49,6 +49,13 @@ POOLS = {
     "shown": ("the rows that actually appear in a 'not in the record yet' box on a page",
               lambda c: c.get("doi_o") and c.get("original_in_wiki") and c.get("search_tier") == "high"
               and _shows(c)),
+    # Rows that were matched to an original and then thrown away by a machine. They are not junk: the
+    # discarding was done by `pipeline verify` and by band averages, and 900 hand reads say how often each of
+    # those was wrong to discard - a verifier rejection is mistaken about 3 times in 10, a verifier `unclear`
+    # row is right about 4 times in 10, and a row it confirmed inside an overruled band is right about 9 times
+    # in 10. Reading them is the cheapest way to grow the pool, because the matching work is already done.
+    "rescue": ("finds matched to an original that nothing currently trusts - the recoverable pile",
+               lambda c: c.get("field") == "psychology" and c.get("doi_o") and not _shows(c)),
     "linked": ("every psychology find matched to an original, verdict or not",
                lambda c: c.get("field") == "psychology" and c.get("doi_o")),
 }
@@ -143,25 +150,12 @@ def batches(pool: str, n_batches: int, size: int, only: str | None) -> int:
     rows actually are, which is a different thing — an unread row's chance of being wrong is estimated from the
     read rows that share BOTH its band and the route that admitted it, and the worst cells go out first.
     """
-    from collections import Counter, defaultdict
-    from .queue import _read_label, _verified, rate
-    ver = _verified()
-    def route(c):
-        return "verifier" if ver.get((c["id"], c.get("doi_o"))) == "right" else "band rule"
-    idx = audit.index(read_labels())
-    tal: dict = defaultdict(lambda: [0, 0])
-    for c in _pool("linked"):
-        l = audit.label_for(idx, c["id"], c.get("doi_o"))
-        if l and not stale(c, l) and l["label"] in ("right", "wrong"):
-            t = tal[(band(c), route(c))]
-            t[0] += l["label"] == "right"
-            t[1] += l["label"] == "wrong"
+    from collections import Counter
+    from .queue import _read_label
     rows = [c for c in _pool(pool)
             if _read_label(c) not in ("right", "wrong") and only in (None, band(c))]
-    def risk(c):
-        pr = rate(*tal.get((band(c), route(c)), [0, 0]))
-        return 1.0 if pr is None else 1 - pr          # never read: worth reading most of all
-    rows.sort(key=lambda c: (-risk(c), c["id"]))
+    ships = {c["id"] for c in _pool("page")}
+    rows.sort(key=lambda c: (-flip_chance(c, c["id"] in ships), c["id"]))
     picked = rows[:n_batches * size]
     BATCH_DIR.mkdir(parents=True, exist_ok=True)
     rubric = RUBRIC.read_text(encoding="utf-8") if RUBRIC.exists() else ""
@@ -179,6 +173,51 @@ def batches(pool: str, n_batches: int, size: int, only: str | None) -> int:
     print(f"  give each reader {RUBRIC} and one batch file; record with "
           f"`originals --record --pool {pool}`")
     return 0
+
+
+_CELLS: dict | None = None
+
+
+def cell(c: dict) -> tuple:
+    """The population a row belongs to for estimating whether it is right: its band and its machine verdict.
+
+    Band alone is too coarse and was measured to be, badly. Inside `reference_scan/high` - a band read at 96% -
+    the rows `pipeline verify` declined to confirm read 6 right of 24, because a band's average is dominated by
+    the rows the verifier confirmed. Band and verdict together is the finest split the labels can support.
+    """
+    from .queue import _verified
+    return (band(c), _verified().get((c["id"], c.get("doi_o"))) or "never judged")
+
+
+def right_chance(c: dict) -> float | None:
+    """How often rows like this one turn out to be right, from the hand labels. None if nothing comparable."""
+    global _CELLS
+    if _CELLS is None:
+        from collections import defaultdict
+        from .queue import rate
+        idx = audit.index(read_labels())
+        tal: dict = defaultdict(lambda: [0, 0])
+        for x in _pool("linked"):
+            l = audit.label_for(idx, x["id"], x.get("doi_o"))
+            if l and not stale(x, l) and l["label"] in ("right", "wrong"):
+                t = tal[cell(x)]
+                t[0] += l["label"] == "right"
+                t[1] += l["label"] == "wrong"
+        _CELLS = {k: rate(*v) for k, v in tal.items() if sum(v) >= 8}
+    return _CELLS.get(cell(c))
+
+
+def flip_chance(c: dict, ships: bool) -> float:
+    """The chance that reading this row changes what happens to it — the only reason to read it first.
+
+    For a row on a page that is the chance it is wrong; for a row in the discard pile it is the chance it is
+    right. One rule, because they are the same question asked from opposite sides, and it replaces the even
+    stratified draw that made sense when the sample WAS the product rather than the decision.
+    """
+    pr = right_chance(c)
+    if pr is None:
+        return 1.0                      # nothing comparable has been read: worth reading most of all
+    return 1 - pr if ships else pr
 
 
 def _render(i: int, c: dict) -> str:
