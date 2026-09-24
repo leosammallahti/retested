@@ -604,9 +604,41 @@ as the main route. DeepSeek is used only to prioritize or draft; every accepted
 DOI, target, and result is checked against the source text. No site publication
 or push has occurred.
 
+## 2r. 2026-09-24 20:02 UTC: timed Psychology throughput checkpoint
+
+At the timed 15-minute checkpoint, the full data/site builds and exact-pair
+source audit passed with **676** finished Psychology pairs, up from **654** at
+19:46 UTC. That is **22 new finished pairs in 15 minutes** (1.47/minute),
+**24 short of the owner's 46-pair target**. The next completed build reached
+**683** pairs, **668** distinct curated effects, **1,573** site effects, and
+**4,550** attempts, with **zero** audit issues. These are built pairs, not
+pending candidates. The earlier 610-pair checkpoint included 12 later papers
+whose OpenAlex *primary field* was outside Psychology; they were removed before
+this interval. This interval's 654-to-676 delta therefore has no removals.
+
+Measured source-recovery steps explain the shortfall. For a 50-candidate
+missing-original tranche, exact DOI Crossref/Europe PMC retrieval took 5.2 s
+and returned only 3 usable original abstracts; later-paper OpenAlex field
+checks took 5.8 s. Ten strict pairs took the remaining reviewer work, mostly
+finding older original result text and confirming the named original. Another
+50-candidate tranche took 9m36 from frozen queue to its first four reviewed
+pairs; its first field/abstract/cache checks were about 3m, then publisher
+source review took 5m28. DeepSeek's existing bulk exact review drafted 310
+two-abstract pairs in 98 s, but its leads need original-identity, field, and
+result verification before promotion. Faster model drafting alone does not
+make a pair source-reviewed.
+
+Current tactic: prioritize published later studies whose original claim is
+already source-reviewed; retrieve source-complete abstracts; verify the exact
+later OpenAlex primary field and paper identity; merge small reviewed batches;
+run both data builds, the site build, and the exact-pair audit. The owner has
+explicitly restricted this work to later papers with primary field Psychology.
+Do **not** execute historical item 4 below (Social Sciences/Neuroscience
+screening). No push or site publication has occurred.
+
 ## 3. Next steps, in order
 
-**Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
+**Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
 
 1. **Read the remaining 1,102 unread rows on pages.** This is now the main line of work rather than an audit
    chore: every row read is a row decided, confirmations are ~99% right at this base rate, and the ~54 expected
