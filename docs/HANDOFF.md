@@ -1,5 +1,18 @@
 # Handoff — state as of 2026-09-22
 
+
+## Update: 2026-09-24 psychology search on the VM
+
+The owner scoped this run to psychology in /root/retested. Social Sciences and Neuroscience were not screened; the site was not published.
+
+- DeepSeek screened all 2,107 previously unscreened low-tier Psychology keyword finds with a 200-case pilot first. It marked 140 as psychology replications. Source review accepted 72 candidate records, rejected 34, and left 34 unclear. The accepted records yielded 58 net new review-queue entries after duplicate deposits were collapsed. The queue is 7,391 candidates; these remain review candidates, not FORRT-validated attempts.
+- Cached API usage for the 2,107 calls was 2,043,639 cached input tokens, 538,057 uncached input tokens, and 177,735 output tokens. At DeepSeek's published off-peak V4.1 Flash rates this is about $0.1935. The pipeline's older conservative cap meter showed $1.37; the run stayed within the $0.20 pilot and $1.50 remainder caps.
+- data/curated/low_tier_review.csv records all 140 decisions. The loader admits only accepted low-tier rows; future triage and link runs cannot promote unreviewed low-tier guesses automatically.
+- data/curated/original_links.csv has 52 source-backed exact find-to-original citations, 51 of which survive queue deduplication. The 51 built pairs are labelled right with source and paper recorded in original_audit.csv. Several displace wrong machine-picked originals, including sight-over-sound and the cross-norm effect.
+- Four replication articles retest multiple originals. data/curated/multi_original_links.csv records all 17 exact original papers and the queue shows them as a list instead of forcing one primary DOI. One additional two-study weight paper is among these.
+- After the labels, the data build ran twice as required by the prior-build link gate. It settled at 1,068 game cards and 232 pending candidates on 137 finding pages; the Astro site built 1,790 pages. No publication or push occurred.
+- The free pipeline osf-documents sweep covered all 159 currently unlinked OSF psychology finds. Public files existed for 91; 56 yielded extractable PDF/DOCX text, 27 had DOI mentions, and 13 rows had document errors. The source-located evidence index is cached at data/discovery/osf_document_evidence.json; it never auto-links a bibliography mention.
+
 ## 1. What exists and works
 
 **Pipeline (`pipeline/`)** turns FORRT's data into a site bundle in ~2 s on the VM:

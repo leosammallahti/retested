@@ -191,16 +191,18 @@ def classify(c: dict, key: str, meter: Meter, cache_dir: Path) -> dict | None:
     return rec
 
 
-def candidates(tier: str, fields: set[str] | None = None) -> list[dict]:
+def candidates(tier: str, fields: set[str] | None = None, source: str = "both") -> list[dict]:
     """Candidates to screen, optionally restricted to the OpenAlex fields they were swept from.
 
     The title sweep covers six fields and the screen is paid for per candidate, so which slice is being bought
-    has to be sayable. A candidate found by the citation search carries no field — it was found by citing an
-    original we already hold, not by browsing a field — and is never excluded by this filter.
+    has to be sayable. Source can restrict the screen to keyword or citation results. A candidate found by the
+    citation search carries no field — it was found by citing an original we already hold, not by browsing a
+    field — and is never excluded by the field filter.
     """
-    tiers = {"high": {"high"}, "medium": {"high", "medium"}}[tier]
+    tiers = {"high": {"high"}, "medium": {"high", "medium"}, "low": {"low"}}[tier]
+    modes = {"keyword": ("keyword",), "cites": ("cites",), "both": ("keyword", "cites")}[source]
     seen, out = {}, []
-    for mode in ("keyword", "cites"):
+    for mode in modes:
         p = DISCOVERY / f"discovered-{mode}.json"
         if not p.exists():
             continue
@@ -222,12 +224,18 @@ def candidates(tier: str, fields: set[str] | None = None) -> list[dict]:
 
 
 def run(tier: str = "high", pilot: bool = False, max_usd: float = 1.5, workers: int = 8,
-        fields: set[str] | None = None) -> int:
+        fields: set[str] | None = None, source: str = "both", limit: int | None = None) -> int:
+    if pilot and tier == "low":
+        raise SystemExit("No labelled low-tier pilot exists; use --limit for a bounded screen.")
+    if limit is not None and limit < 1:
+        raise SystemExit("--limit must be a positive integer")
     key = _key()
     b0 = balance(key)
     cache_dir = CACHE / "triage" / MODEL / PROMPT_VERSION
     cache_dir.mkdir(parents=True, exist_ok=True)
-    cands = pilot_set(tier) if pilot else candidates(tier, fields)
+    cands = pilot_set(tier) if pilot else candidates(tier, fields, source)
+    if limit is not None:
+        cands = cands[:limit]
     meter = Meter(max_usd)
     print(f"  {len(cands)} candidates · model {MODEL} · cap ${max_usd:.2f} (worst-case pricing) · balance ${b0}")
     results, t0 = [], time.time()

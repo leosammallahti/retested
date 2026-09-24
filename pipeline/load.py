@@ -1,6 +1,7 @@
 """Readers for the pinned raw sources. Every reader returns plain Python records; nothing here decides semantics."""
 from __future__ import annotations
 
+import csv
 import json
 import pickle
 import re
@@ -270,8 +271,50 @@ def merged_links() -> dict[str, dict]:
     # So the work is kept, the measurement is written down, and nothing ships: data/discovery/runner_up_links.json
     # and the 18 labels in original_audit.csv are what a later reader needs to settle it. Roughly 36 cards turn
     # on this. If reading more of them clears 90%, merge them here.
+    # A checked citation in the replication's own source text is about an exact pairing and takes precedence
+    # over machine matchers. The pairing and its source are recorded in data/curated/original_links.csv.
+    out.update(load_curated_original_links())
     return out
 
+
+def load_curated_original_links() -> dict[str, dict]:
+    """Pairing-specific original citations verified from a find's own source text."""
+    p = ROOT / "data" / "curated" / "original_links.csv"
+    if not p.exists():
+        return {}
+    out: dict[str, dict] = {}
+    with p.open(encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            cid, doi = r["cid"].strip(), norm_doi(r["doi_o"])
+            if not cid or not doi or cid in out:
+                raise ValueError(f"invalid or duplicate curated original link: {cid!r}")
+            out[cid] = {"doi_o": doi, "title_o": r["title_o"],
+                        "year_o": int(r["year_o"]) if r["year_o"] else None,
+                        "method": "source-backed citation", "confidence": "reviewed",
+                        "source_url": r["source_url"], "evidence": r["evidence"]}
+    return out
+
+
+
+def load_curated_multi_original_links() -> dict[str, list[dict]]:
+    """All explicitly identified originals when one replication retests several papers."""
+    p = ROOT / "data" / "curated" / "multi_original_links.csv"
+    if not p.exists():
+        return {}
+    out: dict[str, list[dict]] = {}
+    seen: set[tuple[str, str]] = set()
+    with p.open(encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            cid, doi = r["cid"].strip(), norm_doi(r["doi_o"])
+            if not cid or not doi or (cid, doi) in seen:
+                raise ValueError(f"invalid or duplicate multi-original link: {cid!r}, {doi!r}")
+            seen.add((cid, doi))
+            out.setdefault(cid, []).append({"doi_o": doi, "title_o": r["title_o"],
+                                              "year_o": int(r["year_o"]) if r["year_o"] else None,
+                                              "source_url": r["source_url"], "evidence": r["evidence"]})
+    if any(len(rows) < 2 for rows in out.values()):
+        raise ValueError("multi-original links require at least two originals per find")
+    return out
 
 def load_confirmed_runners() -> dict[str, dict]:
     """find id -> the second-choice paper the judge confirmed. Empty until `verify --runners` has run."""
@@ -383,9 +426,22 @@ def load_reread() -> dict[str, dict]:
 
 
 def load_triaged() -> list[dict]:
-    """DeepSeek's screen of the discovered candidates. Empty until `python -m pipeline triage` has run."""
+    """Screened finds, with low-tier rows held until a case-by-case review accepts them.
+
+    The t3 screen was measured on high and medium rule tiers. Its answers on the low tier are a different
+    population, so screening that tier fills the cache without automatically adding its guesses to the queue.
+    Reviewed decisions live outside the generated discovery file and survive another paid screen.
+    """
     f = DISCOVERY / "triaged.json"
-    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+    if not f.exists():
+        return []
+    review = ROOT / "data" / "curated" / "low_tier_review.csv"
+    accepted: set[str] = set()
+    if review.exists():
+        with review.open(encoding="utf-8", newline="") as fh:
+            accepted = {r["cid"] for r in csv.DictReader(fh) if r.get("decision") == "accept"}
+    return [r for r in json.loads(f.read_text(encoding="utf-8"))
+            if r.get("tier") != "low" or r["cid"] in accepted]
 
 
 def load_osf() -> dict[str, dict]:

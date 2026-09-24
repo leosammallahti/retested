@@ -78,8 +78,9 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     P = g["papers"]
     forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
     osf_records, original_authors = osf_records or {}, original_authors or {}
-    from .load import load_reread
+    from .load import load_reread, load_curated_multi_original_links
     reread = load_reread()
+    multi_originals = load_curated_multi_original_links()
     out, already = [], 0
     for r in triaged:
         t = r["triage"]
@@ -92,7 +93,9 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             already += 1                                  # FORRT has this paper somewhere; it is not our find
             continue
         link = links.get(r["cid"])
-        doi_o = t.get("original_doi") or (link or {}).get("doi_o")
+        source_link = bool(link and link.get("method") == "source-backed citation")
+        using_cited = bool(t.get("original_doi") and not source_link)
+        doi_o = (link or {}).get("doi_o") if source_link else (t.get("original_doi") or (link or {}).get("doi_o"))
         if doi_r and doi_o and (doi_o, doi_r) in known_pairs:
             continue                                      # FORRT already records this exact pair
         named = t.get("original") or {}
@@ -102,7 +105,7 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             "id": r["cid"],
             "doi_r": doi_r, "title_r": r.get("title_r"), "year_r": r.get("year_r"), "journal_r": r.get("venue"),
             "authors_r": r.get("authors_r"),
-            "doi_o": doi_o,
+            "doi_o": doi_o, "original_studies": multi_originals.get(r["cid"]),
             # OpenAlex first for originals we do not hold: for 1,127 of the card candidates the wiki has nothing
             # but a DOI, and the link's own title is whatever the matcher happened to score against
             "title_o": ((P.get(doi_o) or {}).get("title") if in_wiki else None)
@@ -131,11 +134,11 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
             # "unscored" rather than borrowing high/medium/low, which mean a score elsewhere. How often it is
             # right is a question for the audit, not for a band: 72 of 84 read, 86%, which is the most-read band
             # there is and still short of the 90% a page requires.
-            "link_confidence": ("unscored" if t.get("original_doi") else (link or {}).get("confidence")),
-            "link_method": "cited by this paper" if t.get("original_doi") else (link or {}).get("method"),
+            "link_confidence": ("unscored" if using_cited else (link or {}).get("confidence")),
+            "link_method": "cited by this paper" if using_cited else (link or {}).get("method"),
             "link_evidence": {k: link.get(k) for k in ("score", "text_sim", "authors_matched", "year_delta",
-                                                       "margin", "n_references", "runner_up") if k in (link or {})}
-                             if link and not t.get("original_doi") else None,
+                                                       "margin", "n_references", "runner_up", "source_url", "evidence") if k in (link or {})}
+                             if link and not using_cited else None,
             "original_named": {"authors": named.get("authors"), "year": named.get("year"),
                                "description": named.get("description")} if named.get("authors") or named.get("description") else None,
             "type": "reproduction" if t.get("kind") == "reproduction" else ("registration" if group == "registration" else "replication"),

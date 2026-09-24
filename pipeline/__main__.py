@@ -6,7 +6,7 @@ import json
 import sys
 import time
 
-from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, outcomes, queue, registry, score, stats, triage, validate, verify, choose, fulltext, reread
+from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, osf_documents, outcomes, queue, registry, score, stats, triage, validate, verify, choose, fulltext, reread
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -80,6 +80,7 @@ def main() -> None:
     rp.add_argument("--relink", action="store_true",
                     help="also reconsider finds whose author-and-year match landed in the weak band")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
+    sub.add_parser("osf-documents", add_help=False, help="collect original-study evidence from public OSF attachments (free)")
     lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
     lp.add_argument("--openalex", action="store_true", help="after the free library pass, look the rest up in OpenAlex")
     lp.add_argument("--max-usd", type=float, default=1.0, help="OpenAlex spending cap")
@@ -106,16 +107,21 @@ def main() -> None:
     cp.add_argument("--max-usd", type=float, default=0.50, help="spending cap at worst-case prices")
     cp.add_argument("--workers", type=int, default=8)
     tp = sub.add_parser("triage", help="DeepSeek check of discovered candidates")
-    tp.add_argument("--tier", choices=["high", "medium"], default="high")
+    tp.add_argument("--tier", choices=["high", "medium", "low"], default="high")
     tp.add_argument("--pilot", action="store_true", help="only that tier's labelled sample; report agreement")
     tp.add_argument("--max-usd", type=float, default=1.5, help="spending cap at worst-case prices")
     tp.add_argument("--workers", type=int, default=8, help="parallel requests; ~8 gives 8 papers/s, higher risks 429s")
+    tp.add_argument("--limit", type=int, help="screen at most this many selected candidates")
+    tp.add_argument("--source", choices=["keyword", "cites", "both"], default="both",
+                    help="select from the keyword sweep, citation search, or both (default)")
     tp.add_argument("--fields", help="comma-separated OpenAlex fields to screen, e.g. 'Psychology,Decision Sciences'; "
                                      "default is every field the title sweep covers")
     if sys.argv[1:2] == ["outcomes"]:      # these own their flag sets; keep them out of the shared parser
         sys.exit(outcomes.run(sys.argv[2:]))
     if sys.argv[1:2] == ["reread"]:
         sys.exit(reread.main(sys.argv[2:]))
+    if sys.argv[1:2] == ["osf-documents"]:
+        sys.exit(osf_documents.main(sys.argv[2:]))
     if sys.argv[1:2] == ["fulltext"]:
         sys.exit(fulltext.main(sys.argv[2:]))
     if sys.argv[1:2] == ["choose"]:
@@ -143,7 +149,7 @@ def main() -> None:
         sys.exit(claims.run("all" if a.all else "pilot", a.max_usd, a.workers, a.limit, a.tier))
     if a.cmd == "triage":
         sys.exit(triage.run(a.tier, a.pilot, a.max_usd, a.workers,
-                            {f.strip() for f in a.fields.split(",")} if a.fields else None))
+                            {f.strip() for f in a.fields.split(",")} if a.fields else None, a.source, a.limit))
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))
     if a.cmd == "build":

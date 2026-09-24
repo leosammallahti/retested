@@ -69,7 +69,8 @@ export interface Candidate {
   doi_o: string | null; title_o: string | null; year_o: number | null;
   outcome: string | null; outcome_quote: string | null; outcome_confidence: string | number | null;
   link_confidence: string | null; link_method?: string | null;
-  link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
+  link_evidence?: { score?: number; text_sim?: number | null; authors_matched?: string; year_delta?: number; runner_up?: { doi_o: string; title_o: string | null; score: number } | null; source_url?: string; evidence?: string } | null;
+  original_studies?: { doi_o: string; title_o: string; year_o: number | null; source_url: string; evidence: string }[] | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
   type: string | null; field?: string | null; group: 'replication' | 'other_behavioural' | 'registration';
   evidence_tier?: string; search_tier?: 'high' | 'medium'; rule_score?: number; found_by?: string[]; screen_reason?: string | null;

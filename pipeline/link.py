@@ -209,7 +209,7 @@ def run(use_openalex: bool, max_usd: float, check: bool) -> int:
     from .ids import EffectLedger
     from .load import ROOT
 
-    triaged = json.loads((DISCOVERY / "triaged.json").read_text(encoding="utf-8"))
+    triaged = load.load_triaged()
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     idx, recs = library_index(g)
@@ -247,7 +247,7 @@ def run(use_openalex: bool, max_usd: float, check: bool) -> int:
         print(f"  openalex: {len(links)} resolved in total · {_spent['calls']} calls · ${_spent['usd']:.3f}")
 
     bands = {b: sum(1 for v in links.values() if v["confidence"] == b) for b in ("high", "medium", "low")}
-    by_tier = {t: sum(1 for v in links.values() if v["named"].get("tier") == t) for t in ("high", "medium")}
+    by_tier = {t: sum(1 for v in links.values() if v["named"].get("tier") == t) for t in ("high", "medium", "low")}
     in_wiki = sum(1 for v in links.values() if v["doi_o"] in g["findings"])
     out = {"summary": {"named_unlinked": len(todo), "resolved": len(links), "stopped_early": stopped, "by_confidence": bands, "by_search_tier": by_tier,
                        "by_method": {m: sum(1 for v in links.values() if v["method"] == m) for m in

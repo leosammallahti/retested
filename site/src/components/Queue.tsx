@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
 interface Cand {
-  id: string; doi_r: string; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
+  id: string; doi_r: string | null; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
   doi_o: string | null; title_o: string | null; year_o: number | null; outcome: string | null; outcome_quote: string | null;
   outcome_confidence: string | number | null; link_confidence: string | null; type: string | null; rep_already_known: boolean; original_in_wiki: boolean;
   effect: { slug: string; name: string } | null; abstract: string | null; models: string[];
@@ -18,7 +18,8 @@ interface Cand {
   authors_r?: string | null; osf_id?: string | null; landing_page?: string | null; year_o?: number | null;
   authors_o?: string | null; journal_o?: string | null; cited_by_o?: number | null; retracted_o?: boolean | null;
   duplicates?: string[]; duplicate_originals_disagree?: boolean;
-  link_evidence?: { score: number; text_sim: number | null; authors_matched: string; year_delta: number; runner_up: { doi_o: string; title_o: string | null; score: number } | null } | null;
+  link_evidence?: { score?: number; text_sim?: number | null; authors_matched?: string; year_delta?: number; runner_up?: { doi_o: string; title_o: string | null; score: number } | null; source_url?: string; evidence?: string } | null;
+  original_studies?: { doi_o: string; title_o: string; year_o: number | null; source_url: string; evidence: string }[] | null;
   original_named?: { authors: string | null; year: number | null; description: string | null } | null;
 }
 const ORIGIN: Record<string, string> = {
@@ -163,7 +164,7 @@ export default function Queue({ base }: { base: string }) {
                 {d && <span class={`chip ${d.v === 'accept' ? '' : 'claim'}`}>you: {d.v}</span>}
               </div>
               <div class="qpair">
-                <div><div class="label">Replication{c.year_r ? ` · ${c.year_r}` : ''}</div><a href={`https://doi.org/${c.doi_r}`} rel="noopener">{c.title_r ?? c.doi_r}</a>{c.journal_r && <div class="faint jr">{c.journal_r}</div>}</div>
+                <div><div class="label">Replication{c.year_r ? ` · ${c.year_r}` : ''}</div><a href={c.doi_r ? "https://doi.org/" + c.doi_r : c.landing_page || (c.osf_id ? "https://osf.io/" + c.osf_id : "#")} rel="noopener">{c.title_r ?? c.doi_r ?? c.landing_page ?? c.id}</a>{c.journal_r && <div class="faint jr">{c.journal_r}</div>}</div>
                 <div>
                   <div class="label">Claimed original{c.year_o ? ` · ${c.year_o}` : ''}</div>
                   {c.doi_o
@@ -177,6 +178,8 @@ export default function Queue({ base }: { base: string }) {
                   {c.duplicate_originals_disagree && <div><span class="chip warn">those copies were matched to different originals — check this one</span></div>}
                   {c.original_named?.description && <div class="faint jr">“{c.original_named.description}”</div>}
                   {c.link_method && <div class="faint jr mono">{HOW[c.link_method] ?? c.link_method}</div>}
+                  {c.link_evidence?.source_url && <div class="faint jr"><a href={c.link_evidence.source_url} rel="noopener">Source for this original</a>{c.link_evidence.evidence && <span> | {c.link_evidence.evidence}</span>}</div>}
+                  {c.original_studies?.length ? <details><summary class="faint jr">{c.original_studies.length} original studies identified in this replication</summary><ul>{c.original_studies.map(o => <li><a href={"https://doi.org/" + o.doi_o}>{o.title_o || o.doi_o}</a>{o.year_o ? " (" + o.year_o + ")" : ""}<div class="faint jr">{o.evidence} | <a href={o.source_url} rel="noopener">source</a></div></li>)}</ul></details> : null}
                   {c.link_evidence?.runner_up && <div class="faint jr mono">next best: {c.link_evidence.runner_up.title_o ?? c.link_evidence.runner_up.doi_o}</div>}
                 </div>
               </div>
