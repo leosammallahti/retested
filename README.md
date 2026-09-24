@@ -10,10 +10,10 @@ For each named effect (ego depletion, power posing, the Macbeth effect…) the s
 
 It also includes:
 - **Did it replicate?** A calibration game. You read a real finding, give a probability, and are scored with the Brier score.
-- **A review queue** of machine-found replication candidates that no human has checked yet, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review* — beside the record, never counted in it.
+- **A review queue** of machine-found replication candidates that no human has checked yet, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review*. Individually source-checked original-and-replication pairs can be promoted into the counted record with an explicit effect claim.
 - **The record:** base rates with denominators and intervals, and the Graveyard, Survivors and Contested lists.
 
-Retested is independent and not an official FORRT product. It links every paper to FORRT's [Replication Atlas](https://forrt.org/flora-replication-atlas/) rather than duplicating it.
+Retested is independent and not an official FORRT product. It links FORRT-sourced papers to the [Replication Atlas](https://forrt.org/flora-replication-atlas/) and every paper to its DOI.
 
 ## Build it
 
@@ -61,7 +61,7 @@ files do not hold.
 | `site/` | Astro 7 static site; Preact islands for search, the game and the review queue | yes |
 | `data/raw/forrt/` | Upstream FORRT files. Only `MANIFEST.json` is committed; everything else is fetched | **never** |
 | `data/raw/local/` | Two inputs salvaged from earlier work: the parsed famous-effects list and an OpenAlex citation snapshot | never |
-| `data/curated/` | Human decisions: `merges.yaml`, the append-only effect-ID ledger, the count baseline | yes, via PR |
+| `data/curated/` | Reviewed decisions: `merges.yaml`, reviewed original-replication pairs, the append-only effect-ID ledger, the count baseline | yes, via PR |
 | `data/build/`, `site/public/generated/` | Generated bundle | never (gitignored) |
 | `data/discovery/` | Discovery, triage and linking results; survives a build, rebuildable from cache | never (gitignored) |
 | `docs/planning/` | The research and design reports behind this build | reference |
@@ -82,4 +82,4 @@ Effect IDs (`fx_…`) are issued once by `data/curated/registry/effect_ids.csv` 
 
 ## Data and credit
 
-All replication data: FORRT, CC BY 4.0. Cite as *Wallrich, Röseler, Hartmann et al. (2026). FORRT Library of Replication Attempts (FLoRA) [Data set]. OSF. https://doi.org/10.17605/OSF.IO/9R62X* (full author list in `site` → Methods). Corrections to the underlying data belong with FORRT: <https://forrt.org/replication-hub/submit/>.
+FORRT-sourced replication data: FORRT, CC BY 4.0. Cite as *Wallrich, Röseler, Hartmann et al. (2026). FORRT Library of Replication Attempts (FLoRA) [Data set]. OSF. https://doi.org/10.17605/OSF.IO/9R62X* (full author list in `site` → Methods). Corrections to FORRT's underlying data belong with FORRT: <https://forrt.org/replication-hub/submit/>.

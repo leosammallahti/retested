@@ -229,6 +229,12 @@ def load_merges() -> list[dict]:
     return yaml.safe_load(p.read_text(encoding="utf-8")) or []
 
 
+def load_promoted() -> list[dict]:
+    """Source-checked Retested pairs allowed into the counted registry."""
+    from . import promoted
+    return promoted.load()
+
+
 def load_reference_author_links() -> dict[str, dict]:
     """Matches made by finding the named author and year inside the paper's own reference list."""
     p = DISCOVERY / "reference_author_links.json"

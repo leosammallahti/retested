@@ -12,13 +12,14 @@ const rows = E.map((e) => ({ e, fame: fame(e), g: group(e.lenses.record.code), h
   .sort((a, b) => b.has - a.has || b.fame - a.fame || a.e.name.localeCompare(b.e.name));
 const disciplines = [...new Set(E.map((e) => e.discipline).filter(Boolean))].sort() as string[];
 const n = (g: string) => rows.filter((r) => r.g === g).length;
+const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attempts.length > 0).length;
 ---
-<Base title="Effects" description="Every named psychological effect in the FORRT data, with its replication record." active="effects/">
+<Base title="Effects" description="Every named psychological effect in the counted record, with its replication attempts." active="effects/">
   <div class="wrap" style="padding-top:2.4rem">
     <header class="rise">
       <div class="label">The index</div>
       <h1>{E.length} effects</h1>
-      <p class="lede">Every named psychological effect in the FORRT data. Filter by what happened when people tried again. Effects with at least one replication verdict come first, most cited at the top.</p>
+      <p class="lede">Every named psychological effect in the counted record, from FORRT and Retested-reviewed papers. Filter by what happened when people tried again. Effects with at least one replication verdict come first, most cited at the top.</p>
     </header>
     <div class="fbar" id="fbar">
       <input type="search" id="fq" placeholder="Filter effects…" aria-label="Filter effects" />
@@ -29,6 +30,7 @@ const n = (g: string) => rows.filter((r) => r.g === g).length;
         <button data-g="failed">Failed <span>{n('failed')}</span></button>
         <button data-g="open">No verdict yet <span>{n('open')}</span></button>
       </div>
+      <button id="ours-filter" type="button" aria-pressed="false">Retested additions <span>{ourCount}</span></button>
       <select id="fd" aria-label="Discipline"><option value="">All disciplines</option>{disciplines.map((d) => <option>{d}</option>)}</select>
       <select id="fs" aria-label="Sort"><option value="fame">Most cited (tested first)</option><option value="k">Most replicated</option><option value="az">A–Z</option></select>
       <span class="mono faint" id="fcount"></span>
@@ -37,7 +39,7 @@ const n = (g: string) => rows.filter((r) => r.g === g).length;
       {rows.map(({ e, fame, g }) => {
         const r = e.lenses.record;
         return (
-          <li data-g={g} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ')).toLowerCase()}>
+          <li data-g={g} data-source={e.name_sources?.includes('retested') ? 'retested' : 'forrt'} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ')).toLowerCase()}>
             <a class="erow" href={u(`effect/${e.slug}/`)}>
               <span class="nm">{e.name}</span>
               <span class={`stamp sm t-${RECORD_TONE[r.code]}`}>{r.label}</span>
@@ -63,20 +65,24 @@ const n = (g: string) => rows.filter((r) => r.g === g).length;
   const params = new URLSearchParams(location.search);
   if (params.get('g')) g = params.get('g')!;
   if (params.get('d')) d.value = params.get('d')!;
+  const oursButton = document.getElementById('ours-filter') as HTMLButtonElement;
+  let oursOnly = params.get('source') === 'retested';
   function apply() {
     const qq = q.value.toLowerCase().trim();
     let n = 0;
     for (const li of items) {
-      const ok = (!g || li.dataset.g === g) && (!d.value || li.dataset.d === d.value) && (!qq || li.dataset.n!.includes(qq));
+      const ok = (!g || li.dataset.g === g) && (!oursOnly || li.dataset.source === 'retested') && (!d.value || li.dataset.d === d.value) && (!qq || li.dataset.n!.includes(qq));
       li.hidden = !ok; if (ok) n++;
     }
     const key = s.value;
     const sorted = [...items].sort((a, b) => key === 'az' ? a.dataset.n!.localeCompare(b.dataset.n!) : key === 'k' ? +b.dataset.k! - +a.dataset.k! : (+b.dataset.h! - +a.dataset.h!) || (+b.dataset.f! - +a.dataset.f!));
     sorted.forEach((li) => list.appendChild(li));
     document.getElementById('fcount')!.textContent = `${n} shown`;
+    oursButton.setAttribute('aria-pressed', String(oursOnly));
     document.querySelectorAll<HTMLButtonElement>('.seg button').forEach((b) => b.classList.toggle('on', b.dataset.g === g));
   }
   document.querySelectorAll<HTMLButtonElement>('.seg button').forEach((b) => b.addEventListener('click', () => { g = b.dataset.g!; apply(); }));
+  oursButton.addEventListener('click', () => { oursOnly = !oursOnly; apply(); });
   [q, d, s].forEach((el) => el.addEventListener('input', apply));
   apply();
 </script>
@@ -91,5 +97,8 @@ const n = (g: string) => rows.filter((r) => r.g === g).length;
   .seg button span { color: var(--ink-3); margin-left: .2rem; }
   .seg button.on { background: var(--ink); color: var(--paper); }
   .seg button.on span { color: var(--paper); opacity: .7; }
+  #ours-filter { font: 500 .72rem var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: .5rem .65rem; border: 1px solid var(--claim); border-radius: var(--r); background: var(--card); color: var(--claim); cursor: pointer; }
+  #ours-filter span { opacity: .7; margin-left: .2rem; }
+  #ours-filter[aria-pressed="true"] { background: var(--claim); color: var(--paper); }
   #elist { margin-top: .5rem; }
 </style>

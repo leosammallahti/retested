@@ -11,6 +11,7 @@ import { OUTCOME, RECORD_BLURB, NUMERIC_TONE, DISPLAY_SOURCE, fr, int, pct, atla
 interface Props { attempts: Attempt[]; lenses: Lenses; originals: string[]; shared?: Attempt[]; subject: string }
 const { attempts, lenses: L, originals, shared = [], subject } = Astro.props;
 const P = papers();
+const forrtOriginals = new Set([...attempts, ...shared].filter((a) => a.sources.some((s) => ['flora', 'fred', 'legacy'].includes(s))).map((a) => a.doi_o));
 const reps = attempts.filter((a) => a.type === 'replication').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
 const repros = attempts.filter((a) => a.type === 'reproduction');
 const rec = L.record;
@@ -63,7 +64,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
   <section class="lenses grid grid-3">
     <article class="lens">
       <div class="label">Lens 1 · what the replicators said</div>
-      <h3>{rec.k ? `${rec.successful} of ${rec.k} found it` : 'No coded verdict yet'}</h3>
+      <h3>{rec.k === 0 ? 'No coded verdict yet' : rec.k === 1 ? (rec.mixed ? 'One paper had mixed results' : rec.successful ? 'One paper found it' : 'One paper did not find it') : `${rec.successful} found it · ${rec.mixed} mixed · ${rec.failed} did not`}</h3>
       {keyQuote && (
         <>
           <blockquote class="q">“{clip(cleanQuote(keyQuote.quote), 300)}”</blockquote>
@@ -140,6 +141,8 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
           </div>
           {a.title_r && <p class="lt">{a.title_r}</p>}
           {a.quote && <blockquote class="q">“{clip(cleanQuote(a.quote), 420)}”</blockquote>}
+          {a.retested_review?.review_note && <p class="muted" style="font-size:.88rem">{a.retested_review.review_note}</p>}
+          {a.retested_review && <p class="faint mono" style="font-size:.72rem">Retested source check: <a href={a.retested_review.original_source_url} rel="noopener">original claim</a> · <a href={a.retested_review.replication_source_url} rel="noopener">replication result</a> · {a.retested_review.reviewed_on}</p>}
           <div class="lfoot mono">
             {e && <span>r = {fr(e.r)} [{fr(e.ci[0])}, {fr(e.ci[1])}] · N = {int(e.n)}{e.k_rows > 1 ? ` · ${e.k_rows} rows pooled` : ''}</span>}
             {a.sources.map((s) => <span class="chip">{DISPLAY_SOURCE[s] ?? s}</span>)}
@@ -165,7 +168,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
 </section>
 
 <section>
-  <div class="sh"><h2>The original{originals.length === 1 ? '' : 's'}</h2><span class="label">links to FORRT's Replication Atlas</span></div>
+  <div class="sh"><h2>The original{originals.length === 1 ? '' : 's'}</h2><span class="label">{forrtOriginals.size ? 'primary DOI links and FORRT atlas links where available' : 'links to original papers'}</span></div>
   <ul class="rowlist origs">
     {originals.map((d) => { const p = P[d]; return (
       <li>
@@ -174,7 +177,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
             <div class="nm">{p?.title ?? d}</div>
             <div class="mono faint" style="font-size:.74rem">{[p?.authors, p?.year, p?.journal].filter(Boolean).join(' · ')}{p?.openalex?.cited_by ? ` · ${int(p.openalex.cited_by)} citations` : ''}{p?.openalex?.is_retracted ? ' · RETRACTED' : ''}</div>
           </div>
-          <div class="ol mono"><a href={atlasUrl(d)} rel="noopener">atlas ↗</a> <a href={doiUrl(d)} rel="noopener">doi ↗</a></div>
+          <div class="ol mono">{forrtOriginals.has(d) && <a href={atlasUrl(d)} rel="noopener">atlas ↗</a>} <a href={doiUrl(d)} rel="noopener">doi ↗</a></div>
         </div>
       </li>); })}
   </ul>

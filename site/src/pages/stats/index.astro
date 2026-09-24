@@ -17,9 +17,9 @@ const pr = s.predictors;
     <header class="rise">
       <div class="label">The record in numbers</div>
       <h1>{int(s.overall.n)} replications, counted honestly</h1>
-      <p class="lede">Every rate below is a share of replication attempts with a verdict (successful, mixed, or failed), with a 95% interval. Attempts are (original paper, replication paper) pairs from FLoRA, FReD and the legacy FReD file, so a multi-site project counts once per original it tested.</p>
+      <p class="lede">Every rate below is a share of replication attempts with a verdict (successful, mixed, or failed), with a 95% interval. Attempts are (original paper, replication paper) pairs from FLoRA, FReD, the legacy FReD file, and Retested-reviewed primary papers, so a multi-site project counts once per original it tested.</p>
       <p class="card caveat"><b>Read this first.</b> Researchers choose what to replicate, and they pick surprising, influential or doubted results. These numbers describe <i>that</i> set of studies. They are not an estimate of how much of psychology would replicate if every study were tested.</p>
-      <p class="muted">There is also a record nobody counted: {int(s.uncounted.finds)} replications that exist but are not in FORRT's data, {int(s.uncounted.with_verdict)} of them with an outcome. They are unverified and contribute nothing to the figures below, but they replicate at {pct(s.uncounted.overall.success_share, 1)} against {pct(s.overall.success_share, 1)} here — <a href={u('uncounted/')}>worth reading beside this page</a>.</p>
+      <p class="muted">There is also a record nobody counted: {int(s.uncounted.finds)} candidate replications outside the counted record, {int(s.uncounted.with_verdict)} of them with an outcome. They are unverified and contribute nothing to the figures below, but they replicate at {pct(s.uncounted.overall.success_share, 1)} against {pct(s.overall.success_share, 1)} here — <a href={u('uncounted/')}>worth reading beside this page</a>.</p>
     </header>
 
     <div class="sh"><h2>Overall</h2><span class="label">{int(s.counts.replications)} replication attempts · {int(s.counts.reproductions)} reproductions</span></div>

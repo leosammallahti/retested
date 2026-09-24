@@ -34,7 +34,7 @@ export const RECORD_BLURB: Record<string, string> = {
   single_failure: 'One replication, and it did not find the effect. One attempt is a thin record.',
   single_mixed: 'One replication, with mixed results.',
   unclear: 'Replications exist, but none has a coded verdict yet.',
-  untested: 'No replication attempt is linked to this effect in the FORRT data yet.',
+  untested: 'No replication attempt is linked to this effect in the counted record yet.',
 };
 
 export const NUMERIC_TONE: Record<string, Tone> = { robust: 'ok', smaller: 'mix', negligible: 'bad', reversed: 'bad', inconclusive: 'na' };
@@ -49,7 +49,7 @@ export const CRITERIA_LABELS: Record<string, string> = {
   small_telescopes: 'Replication rules out a tiny effect (small telescopes)',
 };
 
-export const DISPLAY_SOURCE: Record<string, string> = { flora: 'FLoRA', fred: 'FReD', legacy: 'FReD legacy 2.4.1' };
+export const DISPLAY_SOURCE: Record<string, string> = { flora: 'FLoRA', fred: 'FReD', legacy: 'FReD legacy 2.4.1', retested: 'Retested reviewed' };
 
 /** APA-style r: no leading zero, sign kept. */
 export const fr = (x: number | null | undefined, d = 2) =>

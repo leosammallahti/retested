@@ -78,11 +78,16 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
     P = g["papers"]
     forrt_known, forrt_osf = forrt_known or set(), forrt_osf or set()
     osf_records, original_authors = osf_records or {}, original_authors or {}
-    from .load import load_reread, load_curated_multi_original_links
+    from .load import load_reread, load_curated_multi_original_links, load_promoted
+    promoted = load_promoted()
+    promoted_ids = {cid for r in promoted for cid in [r["candidate_id"], *r["duplicate_candidate_ids"]]}
+    promoted_dois = {r["doi_r"] for r in promoted}
     reread = load_reread()
     multi_originals = load_curated_multi_original_links()
     out, already = [], 0
     for r in triaged:
+        if r["cid"] in promoted_ids or norm_doi(r.get("doi_r")) in promoted_dois:
+            continue  # this replication is source-checked and already counted
         t = r["triage"]
         group = GROUP.get((t.get("kind"), t.get("field")))
         if not group:

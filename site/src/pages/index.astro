@@ -18,7 +18,7 @@ const cells = (() => {
   <section class="hero wrap">
     <div class="hgrid">
       <div class="htext rise">
-        <div class="label">The record, as of FORRT's latest release</div>
+        <div class="label">The record, as of the latest build</div>
         <h1>Psychology tested its famous findings <em>again.</em></h1>
         <p class="lede">Of <b class="num">{int(o.n)}</b> replication attempts with a verdict, <b class="obs">{pct(o.success_share)}</b> found the original effect. <b class="mixc">{pct(o.mixed / o.n)}</b> were mixed. <b class="claim">{pct(o.failed / o.n)}</b> did not find it.</p>
         <p class="sub muted">Retested follows each finding from the original claim to every attempt to repeat it: what the replicators said, what the numbers show, and how the attempts were run.</p>
@@ -35,7 +35,7 @@ const cells = (() => {
   </section>
 
   <section class="wrap">
-    <div class="sh"><h2>Three things the record shows</h2><span class="label">computed from FORRT data</span></div>
+    <div class="sh"><h2>Three things the record shows</h2><span class="label">computed from coded study data</span></div>
     <div class="grid grid-3 facts">
       <article>
         <div class="fig2"><b class="obs">{pct(pr.p_le_005.success_share)}</b><span>vs</span><b class="claim">{pct(pr.p_005_05.success_share)}</b></div>
@@ -68,11 +68,22 @@ const cells = (() => {
   </section>
 
   <section class="wrap">
+    <div class="band card">
+      <div>
+        <div class="label claim">Added by Retested</div>
+        <h2>{int(c.retested_new_effects)} completed effect pages</h2>
+        <p>{int(c.retested_new_findings)} original papers and {int(c.retested_new_pairs)} source-reviewed replication pairs now count in the record. Each addition links the original claim to the later study and shows the authors' result.</p>
+      </div>
+      <a class="btn ghost" href={u('effects/?source=retested')}>Browse the additions →</a>
+    </div>
+  </section>
+
+  <section class="wrap">
     <div class="band card ink">
       <div>
         <div class="label claim">Extending the record</div>
         <h2>{int(c.candidates)} replications no human has checked yet</h2>
-        <p>FORRT's AI pipeline has flagged thousands of papers that look like replications but are not yet in the curated data. Read the abstract, confirm or correct the machine's call, and send the good ones back to FORRT.</p>
+        <p>FORRT's extractor and Retested's search have flagged papers that look like replications. The remaining queue needs review; verified original-and-replication pairs can join the counted record.</p>
       </div>
       <a class="btn" href={u('queue/')}>Open the review queue →</a>
     </div>

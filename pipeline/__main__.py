@@ -19,9 +19,10 @@ def build(accept_baseline: bool) -> int:
     src = {
         "flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
         "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
+        "promoted": load.load_promoted(),
     }
     step(f"loaded: flora {len(src['flora'])}, fred {len(src['fred'])}, legacy {len(src['legacy']['data'])}+{len(src['legacy']['rr'])}, "
-         f"famous {len(src['famous'])}, openalex {len(src['openalex'])}")
+         f"famous {len(src['famous'])}, openalex {len(src['openalex'])}, promoted {len(src['promoted'])}")
     ledger = EffectLedger(LEDGER)
     g = registry.build(src, ledger)
     step(f"registry: {len(g['effects'])} effects, {len(g['findings'])} findings, {len(g['attempts'])} attempts, {len(g['papers'])} papers")
@@ -53,7 +54,8 @@ def build(accept_baseline: bool) -> int:
 
 def run_discover(mode: str) -> int:
     src = {"flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
-           "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges()}
+           "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
+           "promoted": load.load_promoted()}
     g = registry.build(src, EffectLedger(LEDGER))
     discover.run(g, mode)
     return 0

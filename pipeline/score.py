@@ -34,7 +34,8 @@ def lenses(attempts: dict, aids: list[str], curated_reversed: bool = False) -> d
         for lr in a["legacy_rows"]:
             for k, v in (lr.get("closeness") or {}).items():
                 closeness.setdefault(k, []).append(v)
-    prereg = sum(1 for a in reps if any(is_prereg(r.get("prereg_r")) for r in a["rows"])
+    prereg = sum(1 for a in reps if a.get("preregistration_status") == "yes"
+                 or any(is_prereg(r.get("prereg_r")) for r in a["rows"])
                  or any(is_prereg(lr.get("preregistration")) for lr in a["legacy_rows"]))
     independent = sum(1 for a in reps if a.get("author_overlap_pct") in (0, 0.0))
     overlap_known = sum(1 for a in reps if a.get("author_overlap_pct") is not None)

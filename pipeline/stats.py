@@ -131,6 +131,14 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     from .score import is_prereg
     prereg_yes, prereg_no = [], []
     for a in reps:
+        # Our reviewed overlay records unknown explicitly. Do not relabel an
+        # unknown registration status as "not preregistered" in the predictor.
+        if set(a["sources"]) == {"retested"}:
+            status = a.get("preregistration_status", "unknown")
+            if status == "unknown":
+                continue
+            (prereg_yes if status == "yes" else prereg_no).append(a["outcome"])
+            continue
         did = (any(is_prereg(r.get("prereg_r")) for r in a["rows"])
                or any(is_prereg(lr.get("preregistration")) for lr in a["legacy_rows"]))
         (prereg_yes if did else prereg_no).append(a["outcome"])
@@ -175,6 +183,19 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
         "counts": {
             "effects": len(E),
             "effects_with_attempts": sum(1 for e in E.values() if e["attempts"]),
+            "retested_reviewed_pairs": sum("retested" in a["sources"] for a in A.values()),
+            "retested_new_pairs": sum(set(a["sources"]) == {"retested"} for a in A.values()),
+            "retested_named_effects": sum(bool(e["attempts"]) and "retested" in e.get("name_sources", [])
+                                          for e in E.values()),
+            "retested_new_effects": sum(bool(e["attempts"]) and e.get("name_sources") == ["retested"]
+                                        for e in E.values()),
+            "retested_findings": sum(any("retested" in A[aid]["sources"] for aid in f["attempts"])
+                                      for f in F.values()),
+            "retested_new_findings": sum(all(set(A[aid]["sources"]) == {"retested"}
+                                             for aid in f["attempts"]) for f in F.values()),
+            "retested_prereg_unknown": sum(set(a["sources"]) == {"retested"}
+                                           and a.get("preregistration_status") == "unknown"
+                                           for a in A.values()),
             "famous_effects": sum(1 for e in E.values() if e.get("famous")),
             "findings": len(F),
             "attempts": len(A),

@@ -170,13 +170,43 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             if r.get("source") and r["source"] not in a["projects"]:
                 a["projects"].append(str(r["source"]))
 
-    for a in attempts.values():
-        if a["legacy_rows"]:
-            a["outcomes_by_source"]["legacy"] = _majority([x["outcome"] for x in a["legacy_rows"]])
-        # author verdict priority: FLoRA > FReD > legacy
-        obs = a["outcomes_by_source"]
-        a["outcome"] = next((obs[s] for s in ("flora", "fred", "legacy") if obs.get(s, "not_coded") != "not_coded"), "not_coded")
-        a["sources_disagree"] = len({v for v in obs.values() if v != "not_coded"}) > 1
+    # ------------------------------------------------------------ Retested reviewed pairs
+    # Only source-checked rows in data/curated/promoted_pairs.json enter the
+    # counted graph. No discovery/triage result is promoted by a machine gate.
+    for r in src.get("promoted") or []:
+        doi_o, doi_r = r["doi_o"], r["doi_r"]
+        paper(doi_o, title=r["original_title"], year=r["original_year"],
+              journal=r.get("original_journal"), authors=r["original_authors"],
+              source_url=r["original_source_url"])
+        paper(doi_r, title=r["replication_title"], year=r["replication_year"],
+              journal=r.get("replication_journal"), authors=r["replication_authors"],
+              source_url=r["replication_source_url"])
+        a = attempt(doi_o, doi_r, title_r=r["replication_title"],
+                    year_r=r["replication_year"], journal_r=r.get("replication_journal"),
+                    authors_r=r["replication_authors"], quote=r["outcome_quote"],
+                    quote_source=r["outcome_quote_source"])
+        if "retested" not in a["sources"]:
+            a["sources"].append("retested")
+        a["outcomes_by_source"]["retested"] = r["outcome"]
+        a["preregistration_status"] = r["preregistration_status"]
+        a["retested_review"] = {
+            "candidate_id": r["candidate_id"],
+            "reviewed_by": r["reviewed_by"], "reviewed_on": r["reviewed_on"],
+            "original_source_url": r["original_source_url"],
+            "original_claim_quote": r["effect_claim_quote"],
+            "replication_source_url": r["replication_source_url"],
+            "replication_target_quote": r["replication_target_quote"],
+            "outcome_quote": r["outcome_quote"],
+            "outcome_quote_source": r["outcome_quote_source"],
+            "review_note": r.get("review_note"),
+        }
+        key = norm_name(r["effect_name"])
+        name_rows[key].append({
+            "name": r["effect_name"], "doi_o": doi_o, "doi_r": doi_r,
+            "sheet": "retested", "discipline": "Psychology",
+            "description": r["effect_claim"],
+        })
+        labels[(doi_o, doi_r)].add(key)
 
     # ---------------------------------------------------------------- fill gaps from APA reference strings (legacy rows carry only 'ref')
     for p in papers.values():
@@ -194,6 +224,28 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                     a[dst_k] = rp[src_k]
 
     doi_folds = _fold_doi_variants(papers, attempts, log)
+    if doi_folds:
+        # The paper and attempt IDs were folded; effect labels must use those
+        # same canonical DOIs or a newly accepted original loses its effect.
+        remapped: dict[tuple[str, str | None], set[str]] = defaultdict(set)
+        for (doi_o, doi_r), names in labels.items():
+            remapped[(doi_folds.get(doi_o, doi_o),
+                      doi_folds.get(doi_r, doi_r) if doi_r else None)].update(names)
+        labels = remapped
+        for rows in name_rows.values():
+            for row in rows:
+                row["doi_o"] = doi_folds.get(row["doi_o"], row["doi_o"]) if row["doi_o"] else None
+                row["doi_r"] = doi_folds.get(row["doi_r"], row["doi_r"]) if row["doi_r"] else None
+
+    # Compute outcomes after folding: two DOI spellings can merge an overlay
+    # attempt with a FORRT attempt, and FORRT's verdict must still take priority.
+    for a in attempts.values():
+        if a["legacy_rows"]:
+            a["outcomes_by_source"]["legacy"] = _majority([x["outcome"] for x in a["legacy_rows"]])
+        obs = a["outcomes_by_source"]
+        a["outcome"] = next((obs[source] for source in ("flora", "fred", "legacy", "retested")
+                             if obs.get(source, "not_coded") != "not_coded"), "not_coded")
+        a["sources_disagree"] = len({v for v in obs.values() if v != "not_coded"}) > 1
 
     # ---------------------------------------------------------------- findings: one per original with attempts
     by_orig: dict[str, list[str]] = defaultdict(list)
@@ -348,6 +400,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         effects[key] = {
             "id": ledger.get(key), "key": key, "slug": slug, "name": name,
             "aliases": sorted({r["name"] for r in rows} - {name}),
+            "name_sources": sorted(({"retested" if r["sheet"] == "retested" else "forrt" for r in rows})
+                                   | ({"forrt"} if fam else set())),
             # FORRT's own sheets first: the docx parse mislabels some disciplines (e.g. 'Parapsychology')
             "discipline": _canon_disc(disc[0][0] if disc else (fam or {}).get("discipline")),
             "description": desc,

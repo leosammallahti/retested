@@ -13,14 +13,14 @@ const records = [
   ['single_success', 'Replicated once / Failed once / Mixed (one attempt)', 'k = 1: we say so instead of pretending one study settles it'],
   ['reversed', 'Reversed', 'curated judgement only; never computed from signs, which are unreliable across coding schemes'],
   ['unclear', 'No clear verdict', 'attempts exist but none has a coded outcome'],
-  ['untested', 'No linked attempts yet', 'a named effect with no attempt linked in the FORRT data (not a claim that none exists)'],
+  ['untested', 'No linked attempts yet', 'a named effect with no attempt linked in the counted record (not a claim that none exists)'],
 ];
 ---
 <Base title="Methods" description="Where Retested's data comes from, how verdicts are computed, and what the numbers can and cannot tell you." active="methods/">
   <article class="wrap prose" style="padding-top:2.4rem">
     <div class="label">Methods</div>
     <h1>How Retested works</h1>
-    <p class="lede">Everything here is generated from open data by a script, with a few human-curated corrections kept in version control. Nothing is typed into a page by hand. This page explains the sources, the rules, and the limits.</p>
+    <p class="lede">Everything here is generated from open data by a script, with source-checked additions kept in version control. Nothing is typed into a page by hand. This page explains the sources, the rules, and the limits.</p>
 
     <h2 id="sources">Sources</h2>
     <table class="tbl">
@@ -32,7 +32,8 @@ const records = [
         <tr><td>FORRT Replications &amp; Reversals list</td><td>A hand-curated 2021–22 list of famous effects with a verdict and critiques. Shown beside our record as "what the curated list said", never merged into it.</td></tr>
         <tr><td>OpenAlex</td><td>Citation counts and citations per year for original papers.</td></tr>
         <tr><td>FORRT flora-extractor</td><td>Machine-extracted candidate replications (AI-read abstracts). Only used in the <a href={u('queue/')}>review queue</a>, clearly marked as unverified.</td></tr>
-        <tr><td>Our own OpenAlex search</td><td>Psychology papers with "replication" in the title, plus papers citing an original already here and mentioning replication. Each abstract is screened by DeepSeek, and its original resolved against this wiki or by a further OpenAlex lookup. Only used in the <a href={u('queue/')}>review queue</a> and as "not in the record yet" boxes on effect and finding pages; never counted.</td></tr>
+        <tr><td>Retested-reviewed primary papers</td><td>Specific original and replication paper pairs checked against the papers themselves, with a source-backed original claim and a reviewed outcome. These join the counted record with a distinct Retested source badge.</td></tr>
+        <tr><td>Our own OpenAlex search</td><td>Psychology papers with "replication" in the title, plus papers citing an original already here and mentioning replication. DeepSeek screens abstracts and the original is resolved against this wiki or by OpenAlex lookup. Remaining unreviewed candidates appear only in the <a href={u('queue/')}>review queue</a> and pending boxes; they are not counted.</td></tr>
       </tbody>
     </table>
 
@@ -40,7 +41,7 @@ const records = [
     <p>An <b>attempt</b> is one (original paper, replication paper) pair; we have {int(c.attempts)} of them ({int(c.replications)} replications, {int(c.reproductions)} reproductions). A <b>finding</b> is one original paper and all its attempts ({int(c.findings)}). An <b>effect</b> is a named phenomenon, such as "Ego depletion", which may span several original papers ({int(c.effects)}, of which {int(c.effects_with_attempts)} have linked attempts). Near-identical names that point at the same original paper are merged only when they differ in spelling or word form; anything else stays separate until a person merges it.</p>
 
     <h2 id="lenses">Three lenses, never one score</h2>
-    <p><b>1. What the replicators said.</b> Each attempt's verdict comes from FLoRA, then FReD, then the legacy file. Rolled up with explicit rules over <i>k</i>, the number of attempts with a verdict:</p>
+    <p><b>1. What the replicators said.</b> Each attempt's verdict comes from FLoRA, then FReD, then the legacy file, then Retested-reviewed primary papers. Rolled up with explicit rules over <i>k</i>, the number of attempts with a verdict:</p>
     <table class="tbl"><thead><tr><th>Label</th><th>Rule</th></tr></thead><tbody>{records.map(([, l, r]) => <tr><td>{l}</td><td>{r}</td></tr>)}</tbody></table>
     <p><b>2. What the numbers say.</b> Where effect sizes are coded, both sides are converted to Pearson <i>r</i> (FORRT's conversions). Rows inside one replication paper (sites, sub-studies) are pooled first, then papers are pooled with a DerSimonian–Laird random-effects model on Fisher <i>z</i>, giving a pooled <i>r</i>, a 95% CI, a prediction interval when k ≥ 3, and the ratio to the original's <i>r</i>. We label the result "holds at similar size", "holds, but smaller", "near zero", "opposite direction" or "too imprecise to say". We also show FORRT's seven criteria, because they answer different questions:</p>
     <ul>{Object.values(CRITERIA_LABELS).map((l) => <li>{l}</li>)}</ul>
@@ -54,13 +55,13 @@ const records = [
     <ul>
       <li><b>Selection.</b> Replicated studies are not a random sample of psychology. Rates here describe what people chose to test.</li>
       <li><b>Coverage.</b> Most effects have one attempt. We label single attempts as such.</li>
-      <li><b>Coding.</b> Verdicts are the replicators' own, as coded by FORRT volunteers and, increasingly, AI-assisted pipelines. Sources sometimes disagree; we flag it.</li>
+      <li><b>Coding.</b> Verdicts are the replicators' own, coded by FORRT or checked against the primary paper for Retested-reviewed pairs. Sources sometimes disagree; we flag it.</li>
       <li><b>Names.</b> Effect names come from several lists and are imperfect. Every effect keeps a stable ID, so fixing a name never breaks a link.</li>
-      <li><b>Our unverified finds.</b> The papers we surface ourselves are machine-screened only. On the originals the citation graph had already resolved, matching by author, year and description picked the right original 92% of the time from this wiki and 89% of the time from an OpenAlex lookup — good enough to put in front of a reviewer, not good enough to count. They change no verdict, tally or figure anywhere on this site. Two separate guesses sit behind each one and both were measured by reading samples by hand: whether the paper is a replication (right 86% of the time for the strong search tier, 50% for the weak one) and whether it was linked to the right original (96% and 91% for the two matching methods we trust, 55% and 36% for the two we do not). A page shows a find only when both steps come from a measured-good method; the rest wait in the <a href={u('queue/')}>queue</a> for a person. An earlier version of this site showed all of them, and 53% pointed at the wrong original.</li>
+      <li><b>Our unverified finds.</b> The remaining papers we surface ourselves are machine-screened only. On the originals the citation graph had already resolved, matching by author, year and description picked the right original 92% of the time from this wiki and 89% of the time from an OpenAlex lookup — good enough to put in front of a reviewer, not good enough to count. They change no verdict, tally or figure anywhere on this site. Two separate guesses sit behind each one and both were measured by reading samples by hand: whether the paper is a replication (right 86% of the time for the strong search tier, 50% for the weak one) and whether it was linked to the right original (96% and 91% for the two matching methods we trust, 55% and 36% for the two we do not). A page shows a find only when both steps come from a measured-good method; the rest wait in the <a href={u('queue/')}>queue</a> for a person. An earlier version of this site showed all of them, and 53% pointed at the wrong original.</li>
     </ul>
 
     <h2 id="cite">Credit and citation</h2>
-    <p>All replication data comes from the FORRT Replication Hub and is used under CC BY 4.0. Please cite it as:</p>
+    <p>FORRT-sourced replication data comes from the FORRT Replication Hub under CC BY 4.0. Retested-reviewed pairs are checked against and linked to the original and replication papers. Please cite it as:</p>
     <p class="card fullcite">{citation()}</p>
     <p>Retested is independent and not an official FORRT product. Corrections to the underlying data belong with FORRT: <a href="https://forrt.org/replication-hub/submit/">submit a replication or correction</a>.</p>
   </article>

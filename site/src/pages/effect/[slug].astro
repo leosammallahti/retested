@@ -18,7 +18,7 @@ const shared = e.shared_attempts.map((id) => A[id]);
 const rowClaim = own.flatMap((a) => a.rows).find((r) => r.description && r.description.length > 30)?.description;
 // curated effect-level wording first; a single study's claim only as a fallback
 const claim = asClaim(e.famous?.description) ?? asClaim(e.description) ?? asClaim(rowClaim) ?? null;
-const verbatim = own.flatMap((a) => a.rows).find((r) => r.claim_text_o && r.claim_text_o.length > 30)?.claim_text_o;
+const verbatim = own.flatMap((a) => a.rows).find((r) => r.claim_text_o && r.claim_text_o.length > 30)?.claim_text_o ?? own.find((a) => a.retested_review?.original_claim_quote)?.retested_review?.original_claim_quote;
 const orig = e.originals.map((d) => P[d]).filter(Boolean);
 const byline = orig.length === 1 ? [orig[0].authors, orig[0].year].filter(Boolean).join(', ') : orig.length > 1 ? `${orig.length} original papers` : e.famous?.original_year ? `original from ${e.famous.original_year}` : '';
 const fam = e.famous;

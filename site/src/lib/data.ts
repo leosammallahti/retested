@@ -36,11 +36,14 @@ export interface Attempt {
   rows: FredRow[]; legacy_rows: LegacyRow[]; projects: string[]; legacy_only?: boolean;
   title_r?: string; year_r?: number; journal_r?: string; authors_r?: string; url_r?: string; oa_url_r?: string;
   quote?: string; quote_source?: string; author_overlap_pct?: number; flora_source?: string;
+  retested_review?: { candidate_id: string; reviewed_by: string; reviewed_on: string;
+    original_source_url: string; original_claim_quote: string; replication_source_url: string;
+    replication_target_quote: string; outcome_quote: string; outcome_quote_source: string; review_note?: string | null };
 }
 export interface Paper { doi: string; slug: string; title?: string; year?: number; journal?: string; authors?: string; ref?: string; oa_url?: string; openalex?: { cited_by: number; counts_by_year: Record<string, number>; is_retracted: boolean; topic: string; subfield: string; field: string } }
 export interface Finding { doi_o: string; slug: string; attempts: string[]; effects?: string[]; lenses: Lenses; page: boolean }
 export interface Famous { status: string | null; status_raw: string | null; description: string | null; original_paper: string | null; original_year: number | null; critiques: string | null; original_es: string | null; replication_es: string | null; gs_citations: number | null }
-export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
+export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; name_sources?: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
 export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
 // The hand-read audit of the verdicts themselves: data/curated/outcome_audit.csv, scored by `pipeline outcomes`.
 // Per-band accuracy of the link between a find and the original it re-tests: data/curated/original_audit.csv,
