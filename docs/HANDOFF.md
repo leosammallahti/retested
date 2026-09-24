@@ -426,14 +426,14 @@ product; it is not what you do when the reading is.
 
 The owner's current priority is **named effect plus replication(s) pages that finish the pipeline**,
 rather than a larger pending-review queue. The reviewed overlay in
-`data/curated/promoted_pairs.json` now has **34 exact original–replication pairs and 34 named
-effects** (18 added today; 16 from the preceding pass). Each row has an original claim quote,
+`data/curated/promoted_pairs.json` now has **46 exact original–replication pairs and 46 named
+effects** (30 added today; 16 from the preceding pass). Each row has an original claim quote,
 the replication's target and result quotes, source URLs, a verdict, and scope caveats. The
 overlay creates counted attempts; machine-screened discoveries never promote themselves.
 
-After two data builds, the site build, four focused tests, and an audit of all 18 new pages,
-the local record has **940 named effects, 463 with a replication verdict, 3,444 original
-findings, 3,903 attempts, 3,614 replications, and 7,411 pending candidates**. Two of today's
+After two data builds, the site build, four tests, and an audit of all 12 pages in the latest batch,
+the local record has **952 named effects, 475 with a replication verdict, 3,456 original
+findings, 3,915 attempts, 3,626 replications, and 7,399 pending candidates**. Two of today's
 new effect pages have multiple replication verdicts. Two previously linked pending candidates
 were marked `wrong` for the *exact proposed original DOI* in `original_audit.csv`: the
 retroactive-avoidance 2020 paper targets Maier et al. 2014 Experiment 4, and the 2023
