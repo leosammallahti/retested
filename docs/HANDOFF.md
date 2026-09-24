@@ -561,6 +561,30 @@ machine-linked original is wrong, reviewers now try the paper's explicitly
 named correct original DOI instead of discarding an otherwise valid
 replication. No site publication or push was done.
 
+## 2p. 2026-09-24 18:46 UTC: 560 built pairs; corrected machine links
+
+The Psychology build has **560 exact source-reviewed pairs** across **551 named
+Retested effect pages**, **475 more pairs** than the initial 85. Overall site
+totals are **1,456 effects** and **4,428 attempts**. Every curated row maps
+to one exact DOI original/replication attempt, the chosen outcome, and a built
+static effect page; the latest full audit found **zero issues**.
+
+The last measured 15-minute interval (about 21:28–21:43 Kyiv) added **29
+fully built pairs**, below the requested **46**. Most recent additions came
+from correcting a machine-suggested original DOI to the actual study named or
+cited by the replication paper. All corrected DOI/result quotes were checked
+against the original and later paper, and competing FORRT verdicts were
+excluded. One preprint-to-published candidate ID had to be changed to its
+canonical published DOI before the build would load; that fix is included.
+
+A timed Crossref sweep of **92** untouched high-confidence Psychology leads
+made **180 DOI requests in 3.5 seconds** but produced **zero complete
+original-plus-replication abstract pairs**; that route was stopped. A separate
+batch of **50 open-PDF URLs** yielded 11 readable PDFs in 9.5 seconds; original
+source recovery is under review. The highest-yield current route is relinking
+wrong-original candidates using explicit citations in the later paper. No site
+publication or push was done.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
