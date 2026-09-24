@@ -422,7 +422,35 @@ row — and `pipeline originals --batches N --size M` writes batch files with it
 expected error** rather than stratified evenly. Measuring a band evenly is what you do when the sample is the
 product; it is not what you do when the reading is.
 
+## 2k. 2026-09-24: source-reviewed Psychology effects became finished pages
+
+The owner's current priority is **named effect plus replication(s) pages that finish the pipeline**,
+rather than a larger pending-review queue. The reviewed overlay in
+`data/curated/promoted_pairs.json` now has **34 exact original–replication pairs and 34 named
+effects** (18 added today; 16 from the preceding pass). Each row has an original claim quote,
+the replication's target and result quotes, source URLs, a verdict, and scope caveats. The
+overlay creates counted attempts; machine-screened discoveries never promote themselves.
+
+After two data builds, the site build, four focused tests, and an audit of all 18 new pages,
+the local record has **940 named effects, 463 with a replication verdict, 3,444 original
+findings, 3,903 attempts, 3,614 replications, and 7,411 pending candidates**. Two of today's
+new effect pages have multiple replication verdicts. Two previously linked pending candidates
+were marked `wrong` for the *exact proposed original DOI* in `original_audit.csv`: the
+retroactive-avoidance 2020 paper targets Maier et al. 2014 Experiment 4, and the 2023
+broken-windows experiments directly target Keuschnigg and Wolbring 2015 Study 2.
+
+For the next Psychology source-review wave, the free 200-case packets are at
+`/tmp/retested-review-top200-20260924.jsonl` and `.md`, with a scratch generator at
+`/tmp/retested_review_top200.py`; regenerate from the current discovery cache before
+using them, since promotions change eligibility. They are **leads, not finished effects**.
+Review exact target, dates, original direction, replication result, and any changed sample
+or contrast before adding a row. No paid DeepSeek calls were needed today ($0); do not
+start a paid run outside the owner's off-peak/pilot/cap rules. Nothing was pushed or
+published.
+
 ## 3. Next steps, in order
+
+**Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
 
 1. **Read the remaining 1,102 unread rows on pages.** This is now the main line of work rather than an audit
    chore: every row read is a row decided, confirmations are ~99% right at this base rate, and the ~54 expected
