@@ -636,6 +636,31 @@ explicitly restricted this work to later papers with primary field Psychology.
 Do **not** execute historical item 4 below (Social Sciences/Neuroscience
 screening). No push or site publication has occurred.
 
+## 2s. 2026-09-24 22:39 UTC: built Psychology pair checkpoint
+
+The two data builds, site build, and exact-pair audit pass at **744**
+source-reviewed Psychology effect-plus-replication pairs on **729** distinct
+curated effects. The built site has **1,633** effects and **4,611** attempts;
+the exact-pair audit reports **zero** issues. This is **90** more finished pairs
+than the 654-pair 19:46 UTC baseline. From the 704-pair 22:18 UTC checkpoint
+to 22:39 UTC, **40** finished pairs were added in about **21 minutes**,
+approximately **1.9 per minute**. The owner target of 46 in 15 minutes
+requires approximately 3.1 per minute; the measured pace remains short.
+
+The four build/audit steps take about **20 seconds** in total: the two data
+builds about 6.5 seconds each, the site build about 6.6 seconds, and the
+exact-pair audit about 0.2 seconds. A batch OpenAlex screen of 115 uncurated
+abstract-rich later papers took **9.2 seconds** and found **40** with
+Psychology as their primary field. Verifying exact original identity,
+result wording, and the later result against original abstracts or paper
+full text remains the limiting work. Three disjoint source pools are being
+reviewed in parallel: ranked missing-original links 151-483, Psychology
+papers in Psychological Reports, and a 257-case wrong-original queue.
+The root reviewer also uses the previously abstract-rich 310-pair queue.
+Small checked batches are merged, then both data builds, the site build,
+and audit run. DeepSeek/model drafts never count until exact source checks
+and the full build pass. No push or site publication has occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
