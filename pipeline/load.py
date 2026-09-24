@@ -426,22 +426,38 @@ def load_reread() -> dict[str, dict]:
 
 
 def load_triaged() -> list[dict]:
-    """Screened finds, with low-tier rows held until a case-by-case review accepts them.
+    """Screened finds, plus source-reviewed Psychology finds from the alternative search.
 
     The t3 screen was measured on high and medium rule tiers. Its answers on the low tier are a different
     population, so screening that tier fills the cache without automatically adding its guesses to the queue.
-    Reviewed decisions live outside the generated discovery file and survive another paid screen.
+    Reviewed decisions and alternative-search evidence live in curated files and survive another paid screen.
     """
     f = DISCOVERY / "triaged.json"
-    if not f.exists():
-        return []
     review = ROOT / "data" / "curated" / "low_tier_review.csv"
     accepted: set[str] = set()
     if review.exists():
         with review.open(encoding="utf-8", newline="") as fh:
             accepted = {r["cid"] for r in csv.DictReader(fh) if r.get("decision") == "accept"}
-    return [r for r in json.loads(f.read_text(encoding="utf-8"))
-            if r.get("tier") != "low" or r["cid"] in accepted]
+    generated = json.loads(f.read_text(encoding="utf-8")) if f.exists() else []
+    rows = [r for r in generated if r.get("tier") != "low" or r["cid"] in accepted]
+
+    alternative = ROOT / "data" / "curated" / "psychology_alternative_finds.json"
+    if not alternative.exists():
+        return rows
+    extra = json.loads(alternative.read_text(encoding="utf-8"))
+    if not isinstance(extra, list):
+        raise ValueError("psychology_alternative_finds.json must be a list")
+    seen = {r["cid"] for r in generated}
+    for r in extra:
+        cid = r.get("cid")
+        if (not cid or cid in seen or cid not in (r.get("doi_r"), r.get("openalex_id"))
+                or r.get("triage", {}).get("kind") != "replication"
+                or r["triage"].get("field") != "psychology"
+                or not r.get("source_url") or not r.get("source_quote")
+                or r["source_quote"] not in (r.get("abstract") or "")):
+            raise ValueError(f"Invalid or duplicate alternative Psychology find: {cid}")
+        seen.add(cid)
+    return rows + extra
 
 
 def load_osf() -> dict[str, dict]:

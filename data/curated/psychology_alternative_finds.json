@@ -1,0 +1,1812 @@
+[
+  {
+    "cid": "10.1002/jcad.12245",
+    "openalex_id": "W2921086229",
+    "doi_r": "10.1002/jcad.12245",
+    "title_r": "Reexamination of the Five‐Factor Model and College Students' Treatment‐Seeking Attitudes",
+    "year_r": 2019,
+    "type": "article",
+    "abstract": "This study was an attempt to replicate and extend the previous research by Puma ( ) and Kakhnovets ( ) on the relationships between the 5‐factor model of personality (FFM) and college students' attitudes toward seeking counseling. With a sample of 458 undergraduate students, the authors found that participant sex, prior treatment experiences, and 3 of the FFM factors (openness, agreeableness, and conscientiousness) predicted college students' attitudes toward counseling, but there was no evidence of moderator effects.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:attempt to replicate"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1002/jcad.12245",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "This study was an attempt to replicate and extend the previous research by Puma ( ) and Kakhnovets ( ) on the relationships between the 5‐factor model of personality (FFM) and college students' attitudes toward seeking counseling.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Puma and Kakhnovets (years absent in OpenAlex abstract)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New undergraduate sample explicitly replicates earlier counseling-attitude associations."
+    },
+    "landing_page": "https://doi.org/10.1002/jcad.12245",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1007/s10803-022-05599-8",
+    "openalex_id": "W4281249407",
+    "doi_r": "10.1007/s10803-022-05599-8",
+    "title_r": "Reexamining Pathways Early Autism Intervention in Children Before and After the Third Birthday: A Randomized Control Trial",
+    "year_r": 2022,
+    "type": "article",
+    "abstract": "We reexamined the efficacy of Pathways early autism intervention using generalized measures of social communication and language skills administered by an unfamiliar adult in a novel environment. Generalized measures improve on sources of measurement bias. Sixty-seven autistic children blocked on age (under versus over 3 years) were randomly assigned to 15 weeks of Pathways or services-as-usual. Age moderated the effects of Pathways for social communication. Specifically, Pathways had a significantly large effect for children under 3 and a small effect that approached significance for children over 3. Pathways also had a small effect on expressive speech/language skills. Results replicate previous findings of the efficacy of Pathways on proximal and distal skills and support the importance of early intervention.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicate previous"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamining"
+    ],
+    "source_url": "https://doi.org/10.1007/s10803-022-05599-8",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Results replicate previous findings of the efficacy of Pathways on proximal and distal skills and support the importance of early intervention.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New randomized Pathways trial reports replication of prior intervention effect."
+    },
+    "landing_page": "https://doi.org/10.1007/s10803-022-05599-8",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037//0096-1523.26.3.980",
+    "openalex_id": "W2068081048",
+    "doi_r": "10.1037//0096-1523.26.3.980",
+    "title_r": "Endogenous attention and illusory line motion reexamined.",
+    "year_r": 2000,
+    "type": "article",
+    "abstract": "P. Downing and A. Treisman's (1997) failure to replicate an effect of endogenous attention on the direction of illusory line motion (ILM) was reexamined. Four experiments with slightly modified stimulus presentation methods based on gradient theories of ILM found that endogenous attention directed to 1 of 2 similar priming objects is capable of influencing experienced motion direction within a subsequently presented line. The endogenous effect on ILM was consistent with a concomitant response-time discrimination task, was robust across naive and informed participants, occurred whether eye fixation was monitored or not, and occurred under conditions where multiple motion response categories were available to participants. The endogenous effect disappeared when participants moved their eyes to the attended item, when there was no motivation to endogenously attend, and when the presentation methods of P. Downing and A. Treisman (1997) were used.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:failure to replicate"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamining"
+    ],
+    "source_url": "https://doi.org/10.1037//0096-1523.26.3.980",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "P. Downing and A. Treisman's (1997) failure to replicate an effect of endogenous attention on the direction of illusory line motion (ILM) was reexamined. Four experiments with slightly modified stimulus presentation methods based on gradient theories of ILM found that endogenous attention directed to 1 of 2 similar priming objects is capable of influencing experienced motion direction within a subsequently presented line.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Downing and Treisman (1997)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "Four new experiments reexamine Downing and Treisman finding on illusory line motion."
+    },
+    "landing_page": "https://doi.org/10.1037//0096-1523.26.3.980",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037/cep0000195",
+    "openalex_id": "W2990001930",
+    "doi_r": "10.1037/cep0000195",
+    "title_r": "A reexamination of consonant–vowel differences in masked transposed letter priming effects in the lexical decision task.",
+    "year_r": 2019,
+    "type": "article",
+    "abstract": "Most orthographic coding models are based on the assumption that the orthographic code does not distinguish between vowels and consonants and, therefore, those models predict no difference between vowel (cisano-CASINO) and consonant (caniso-CASINO) transposed-letter (TL) effects. The available data, however, do provide some evidence for a consonant-vowel distinction at the level of the orthographic code. Most centrally, masked priming lexical decision tasks, mainly carried out in Spanish, have shown priming from consonant TL primes (e.g., caniso) but not from vowel TL primes (e.g., cisano). The present experiments were an investigation of this pattern. Experiment 1, based on Schubert, Kinoshita, and Norris' (2018) stimuli which showed no consonant-vowel differences in an unprimed same-different task, also showed no consonant-vowel differences in masked TL priming effects in lexical decision showing, for the first time, a vowel TL priming effect in that task. Experiment 2, using Lupker, Perea, and Davis' (2008) Experiment 1a stimuli, also showed a small but significant vowel TL priming effect (a nonreplication of that experiment), while replicating the consonant TL priming effect that those authors originally reported. In Experiment 3, TL priming was again essentially unaffected by the consonant-vowel status of the letters involved as well as by target frequency, a variable on which the Experiment 1 and 2 stimuli differed. These results, supported by evoked response potential (ERP) results from other labs, suggest that consonant-vowel TL differences, when they do emerge in English, are likely are not due to the nature of the orthographic code. (PsycInfo Database Record (c) 2020 APA, all rights reserved).",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1037/cep0000195",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Experiment 2, using Lupker, Perea, and Davis' (2008) Experiment 1a stimuli, also showed a small but significant vowel TL priming effect (a nonreplication of that experiment), while replicating the consonant TL priming effect that those authors originally reported.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Lupker, Perea, and Davis (2008), Experiment 1a"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New priming experiment tests Lupker et al. Experiment 1a effect."
+    },
+    "landing_page": "https://doi.org/10.1037/cep0000195",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037/lhb0000550",
+    "openalex_id": "W4391109505",
+    "doi_r": "10.1037/lhb0000550",
+    "title_r": "Reexamining predictors of trial outcomes in New York State’s sex offender civil management process.",
+    "year_r": 2024,
+    "type": "article",
+    "abstract": "OBJECTIVE: In 2007, New York enacted the Sex Offender Management and Treatment Act, empowering the state to civilly manage individuals who have committed sexual offenses (respondents) and are deemed to have a mental abnormality (MA) that predisposes them to sexually recidivate after serving their criminal sentences. We sought to replicate and extend a previous study (Lu et al., 2015) to identify factors predicting legal decisions. HYPOTHESES: We predicted, on the basis of previous research, that clinical information (e.g., diagnosis) as well as empirically supported risk factors (e.g., sexual deviance) would predict trial outcomes. METHOD: = 643). The binary outcomes of interest were as follows: For the MA consent subsample, it was whether the respondent waived their MA trial; for the MA trial subsample, it was whether the respondent was found at trial to have an MA; and for the disposition hearing, it was whether the respondent was ordered to inpatient or outpatient civil management. RESULTS: s = 2.68-7.03) diagnoses increased the likelihood of an MA finding and confinement order. CONCLUSIONS: Judges and juries give significant weight to clinical information, particularly pedophilia diagnoses, when making civil management legal decisions. (PsycInfo Database Record (c) 2024 APA, all rights reserved).",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:we sought to replicate"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamining"
+    ],
+    "source_url": "https://doi.org/10.1037/lhb0000550",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "We sought to replicate and extend a previous study (Lu et al., 2015) to identify factors predicting legal decisions.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Lu et al. (2015)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New forensic decision sample explicitly replicates Lu et al."
+    },
+    "landing_page": "https://doi.org/10.1037/lhb0000550",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037/xlm0000551",
+    "openalex_id": "W2801996353",
+    "doi_r": "10.1037/xlm0000551",
+    "title_r": "Word length, set size, and lexical factors: Re-examining what causes the word length effect.",
+    "year_r": 2018,
+    "type": "article",
+    "abstract": "The word length effect, better recall of lists of short (fewer syllables) than long (more syllables) words has been termed a benchmark effect of working memory. Despite this, experiments on the word length effect can yield quite different results depending on set size and stimulus properties. Seven experiments are reported that address these 2 issues. Experiment 1 replicated the finding of a preserved word length effect under concurrent articulation for large stimulus sets, which contrasts with the abolition of the word length effect by concurrent articulation for small stimulus sets. Experiment 2, however, demonstrated that when the short and long words are equated on more dimensions, concurrent articulation abolishes the word length effect for large stimulus sets. Experiment 3 shows a standard word length effect when output time is equated, but Experiments 4-6 show no word length effect when short and long words are equated on increasingly more dimensions that previous demonstrations have overlooked. Finally, Experiment 7 compared recall of a small and large neighborhood words that were equated on all the dimensions used in Experiment 6 (except for those directly related to neighborhood size) and a neighborhood size effect was still observed. We conclude that lexical factors, rather than word length per se, are better predictors of when the word length effect will occur. (PsycINFO Database Record (c) 2018 APA, all rights reserved).",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicated the finding"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.1037/xlm0000551",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Experiment 1 replicated the finding of a preserved word length effect under concurrent articulation for large stimulus sets, which contrasts with the abolition of the word length effect by concurrent articulation for small stimulus sets.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New word-length experiments explicitly replicate earlier concurrent-articulation finding."
+    },
+    "landing_page": "https://doi.org/10.1037/xlm0000551",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1044/jshr.2403.351",
+    "openalex_id": "W2008944000",
+    "doi_r": "10.1044/jshr.2403.351",
+    "title_r": "A Reexamination of Some Nonverbal Perceptual Abilities of Language-Impaired and Normal Children as a Function of Age and Sensory Modality",
+    "year_r": 1981,
+    "type": "article",
+    "abstract": "A battery of nonverbal perceptual and memory tests were given to 35 language-impaired (LI) and 38 control subjects. Three modalities of tests were given: auditory, visual, and cross-modal (auditory and visual). The purpose was to reexamine some nonverbal perceptual and memory abilities of LI children as a function of age and modality of stimulation. Results failed to replicate previous findings of a temporal processing deficit that is specific to the auditory modality in LI children. The LI group made significantly more errors than did controls regardless of modality of stimulation when 2-item sequences were presented rapidly, or when more than two stimuli were presented in series. However, further analyses resolved this apparent conflict between the present and earlier studies by demonstrating that age is an important variable underlying modality specificity of perceptual performance in LI children. Whereas younger LI children were equally impaired when responding to stimuli presented rapidly to the auditory and visual modality, older LI subjects made nearly twice as many errors responding to rapidly presented auditory rather than visual stimuli. This developmental difference did not occur for the control group.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:failed to replicate"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1044/jshr.2403.351",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Results failed to replicate previous findings of a temporal processing deficit that is specific to the auditory modality in LI children.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New perceptual tests explicitly retest earlier auditory-specific temporal-processing finding."
+    },
+    "landing_page": "https://doi.org/10.1044/jshr.2403.351",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1080/00220671.1988.10885857",
+    "openalex_id": "W2087703160",
+    "doi_r": "10.1080/00220671.1988.10885857",
+    "title_r": "A Reexamination of Effects of Reader- and Text-Based Factors on Priority Judgments in Expository Prose",
+    "year_r": 1988,
+    "type": "article",
+    "abstract": "The purpose of this study was to examine the effects of text-based (text structure) and reader-based (prior knowledge) factors on judgments of importance of information in expository text. The effects were measured by (a) importance ratings and (b) written summaries. The study was a partial replication of Roller’s (1985) study, controlling for confounding effects of list order in the rating task, insufficient sample size, and possible copying effects in the written summary task. Roller’s materials about imaginary insects were administered to 132 undergraduate students assigned to prior knowledge (schema trained versus schema untrained) and text structure (elaborated versus unelaborated) conditions in a 2 × 2 factorial design. Significant main effects for both variables were found on the rating task; no significant effects were found for either variable on the written summary task. The results suggest that ratings may be the more sensitive measure of importance judgments.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1080/00220671.1988.10885857",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The study was a partial replication of Roller’s (1985) study, controlling for confounding effects of list order in the rating task, insufficient sample size, and possible copying effects in the written summary task.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Roller (1985)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New student sample partially replicates Roller reading-priority experiment."
+    },
+    "landing_page": "https://doi.org/10.1080/00220671.1988.10885857",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1080/00224545.1974.9923078",
+    "openalex_id": "W1983036161",
+    "doi_r": "10.1080/00224545.1974.9923078",
+    "title_r": "A Further Reexamination of the Vigilance Hypothesis with the Use of Random Shapes as Stimuli",
+    "year_r": 1974,
+    "type": "article",
+    "abstract": "Summary The study reported in this paper presents some additional questions concerning Miller and Bieri's vigilance hypothesis. By using randomly generated shapes rather than people as stimuli, it was felt that a replication of previous findings would bring into question the assumption that person perception is necessarily the underlying process being investigated in previous research. Since disliked shapes were perceived more complexly than liked ones (replicating a phenomenon found when persons are used as stimuli), the generality of the vigilance hypothesis was questioned. These results, then, were viewed as supporting the alternative justification hypothesis.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1080/00224545.1974.9923078",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Miller and Bieri's vigilance hypothesis. By using randomly generated shapes rather than people as stimuli, it was felt that a replication of previous findings would bring into question the assumption that person perception is necessarily the underlying process being investigated in previous research. Since disliked shapes were perceived more complexly than liked ones (replicating a phenomenon found when persons are used as stimuli), the generality of the vigilance hypothesis was questioned.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Miller and Bieri (year absent in abstract)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New random-shape experiments conceptually retest Miller and Bieri person-perception finding."
+    },
+    "landing_page": "https://doi.org/10.1080/00224545.1974.9923078",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1080/00224545.1984.9922848",
+    "openalex_id": "W2140762433",
+    "doi_r": "10.1080/00224545.1984.9922848",
+    "title_r": "A Reexamination of the Empathic Observers Paradigm for the Study of Divergent Attributions",
+    "year_r": 1984,
+    "type": "article",
+    "abstract": "In previous research using an observer-only paradigm to study the role of information processing in producing divergences in attributions of actors and observers, empathy instructions have been confounded with cues regarding role playing. The present experiment (N = 82 female college students) replicated the study of Gould and Sigall of observers' attributions for an actor's successful or unsuccessful outcomes and included a purified empathy condition that removed role-playing cues. Results show that observers who were given standard empathy instructions to share the actor's feelings and reactions to the situation made dispositional attributions for the actor's successful outcomes and situational attributions for his unsuccessful ones. These differential attributions did not occur in either the nonempathy or purified empathy conditions. The results suggest that the empathie observer paradigm cannot discriminate between the information processing and motivational explanations of the self-serving bias.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicated the study"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1080/00224545.1984.9922848",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The present experiment (N = 82 female college students) replicated the study of Gould and Sigall of observers' attributions for an actor's successful or unsuccessful outcomes and included a purified empathy condition that removed role-playing cues.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Gould and Sigall (year absent in abstract)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New observer experiment explicitly replicates Gould and Sigall attribution study."
+    },
+    "landing_page": "https://doi.org/10.1080/00224545.1984.9922848",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1080/0091651x.1970.10380237",
+    "openalex_id": "W2105133254",
+    "doi_r": "10.1080/0091651x.1970.10380237",
+    "title_r": "Sentence-Completion Responses and Academic Performance Re-Examined",
+    "year_r": 1970,
+    "type": "article",
+    "abstract": "Summary On the basis of earlier research findings, certain positive and negative attitudes were assumed to be associated with academic performance. This assumption was re-examined by partial replication of a study using a sentence completion test (SCT). Although a significant correlation was found between the SCT need-for-achievement responses of college freshmen and their cumulative grade-point averages (p <.05), the expected direction of the correlation was reversed, so that affectively negative SCT responses were associated with high grades. Correlations of grades with the self-concept and learning-attitudes scales of the SCT were not significant. Further, none of the scale scores correlated significantly with composite scores on a commonly used measure of college aptitude. Results are discussed and suggestions are offered for possible refinement of the instrument used.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.1080/0091651x.1970.10380237",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "This assumption was re-examined by partial replication of a study using a sentence completion test (SCT).",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New student data partially replicate earlier sentence-completion/performance study."
+    },
+    "landing_page": "https://doi.org/10.1080/0091651x.1970.10380237",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1111/j.1559-1816.1998.tb01663.x",
+    "openalex_id": "W2026504310",
+    "doi_r": "10.1111/j.1559-1816.1998.tb01663.x",
+    "title_r": "Reexamining Bases of Power From an Attributional Perspective1",
+    "year_r": 1998,
+    "type": "article",
+    "abstract": "Four replications of Rodrigues' (1995) study on genotypical similarities of Raven's (1965) power taxonomy are reported. Rodrigues found that compliance induced by reward, informational, and referent power is perceived as more internal and controllable than compliant behavior induced by expert, legitimate, and coercive power. The replications included 4 new aspects: (a) subjects are highly ego‐involved in the hypothetical situation presented; (b) subjects are actors rather than observers; (c) subjects are from another culture; and (d) subjects are asked to play the role of a supervisor and apply sanctions to the person who complied as a result of the influence attempt, thus affording an empirical testing of Weiner's (1995) thought‐affect‐action sequence when responsibility judgments are made. The results of all 5 studies, with a total of 570 subjects, support Rodrigues' (1995) findings and confirm Weiner's (1995) hypothesis",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:our replication"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamining"
+    ],
+    "source_url": "https://doi.org/10.1111/j.1559-1816.1998.tb01663.x",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Four replications of Rodrigues' (1995) study on genotypical similarities of Raven's (1965) power taxonomy are reported.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Rodrigues (1995)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "Four new studies explicitly replicate Rodrigues power-attribution experiment."
+    },
+    "landing_page": "https://doi.org/10.1111/j.1559-1816.1998.tb01663.x",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1111/j.2044-8260.1995.tb01439.x",
+    "openalex_id": "W1966740769",
+    "doi_r": "10.1111/j.2044-8260.1995.tb01439.x",
+    "title_r": "Dependency, self‐criticism and attributional style: A reexamination",
+    "year_r": 1995,
+    "type": "article",
+    "abstract": "The relationship between dependency and self-criticism personality dimensions, as measured by the Depressive Experiences Questionnaire (DEQ), and attributions to content-specific (affiliative, achievement) hypothetical outcome domains on the Expanded Attributional Style Questionnaire (EASQ) was examined. Dependency did not correlate with either affiliative or achievement domains, whereas self-criticism correlated with both. Replicating previous findings there was also no evidence of differential causal assignment across the attributional dimensions. These results add to an accumulating literature suggesting that the DEQ might not be measuring two independent personality types.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicating previous"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1111/j.2044-8260.1995.tb01439.x",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Replicating previous findings there was also no evidence of differential causal assignment across the attributional dimensions.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New attribution data explicitly retest prior null differential-assignment finding."
+    },
+    "landing_page": "https://doi.org/10.1111/j.2044-8260.1995.tb01439.x",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1121/1.391454",
+    "openalex_id": "W2005520083",
+    "doi_r": "10.1121/1.391454",
+    "title_r": "The precedence effect: Revisited",
+    "year_r": 1984,
+    "type": "article",
+    "abstract": "The precedence effect, as investigated by Wallach et al. [Am. J. Psychol. 62, 324-336 (1949)] was studied in three experiments. Experiment I was a replication of the original work of Wallach et al. Although the first click pair appears to dominate the perception of the position of the lateral image, the effect of the first click pair does not appear to \"offset\" or \"cancel\" the effect of the second click pair in terms of producing a lateral image at midline. The data are consistent with Zurek's [J. Acoust. Soc. Am. 67, 952-964 (1980)] proposal that the binaural system is less sensitive to the interaural temporal difference of the second click pair. Experiment II indicated that the effect of the first click pair on lateral judgments still dominates that of the second click pair when the images are judged to be off midline. In all of these studies, the variability of the data is quite high. Experiment III showed that the first click pair also led to a larger change in masked thresholds (masking-level differences, MLDs) than does the second click pair. These data reconfirm the use of two-click stimuli for demonstrations of the precedence effect and they describe some of the limitations of the procedure and the generalities of the effect.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.1121/1.391454",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The precedence effect, as investigated by Wallach et al. [Am. J. Psychol. 62, 324-336 (1949)] was studied in three experiments. Experiment I was a replication of the original work of Wallach et al.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Wallach et al. (1949), Am. J. Psychol. 62:324-336"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New auditory-perception experiment explicitly replicates Wallach et al."
+    },
+    "landing_page": "https://doi.org/10.1121/1.391454",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1177/1747021820945270",
+    "openalex_id": "W3043823709",
+    "doi_r": "10.1177/1747021820945270",
+    "title_r": "Predictive person models elicit motor biases: The face-inhibition effect revisited",
+    "year_r": 2020,
+    "type": "article",
+    "abstract": "Using an established paradigm, we tested whether people derive motoric predictions about an actor's forthcoming actions from prior knowledge about them and the context in which they are seen. In two experiments, participants identified famous tennis and soccer players using either hand or foot responses. Athletes were shown either carrying out or not carrying out their associated actions (swinging, kicking), either in the context where these actions are typically seen (tennis court, soccer Pitch) or outside these contexts (beach, awards ceremony). Replicating prior work, identifying non-acting athletes revealed the negative compatibility effects: viewing tennis players led to faster responses with a foot than a hand, and vice versa for viewing soccer players. Consistent with the idea that negative compatibility effects result from the absence of a predicted action, these effects were eliminated (or reversed) when the athletes were seen carrying out actions typically associated with them. Strikingly, however, these motoric biases were not limited to In-Context trials but were, if anything, more robust in the Out-of-Context trials. This pattern held even when attention was drawn specifically to the context (Experiment 2). These results confirm that people hold motoric knowledge about the actions that others typically carry out and that these actions are part of perceptual representations that are accessed when those others are re-encountered, possibly in order to resolve uncertainty in person perception.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicating prior"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.1177/1747021820945270",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Replicating prior work, identifying non-acting athletes revealed the negative compatibility effects: viewing tennis players led to faster responses with a foot than a hand, and vice versa for viewing soccer players.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "Two new person-action experiments replicate earlier face-inhibition effect."
+    },
+    "landing_page": "https://doi.org/10.1177/1747021820945270",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.2117/psysoc.2021-b014",
+    "openalex_id": "W3185197525",
+    "doi_r": "10.2117/psysoc.2021-b014",
+    "title_r": "A REEXAMINATION OF THE EFFECTS OF CULTURE AND DOPAMINE D4 RECEPTOR GENE INTERACTION ON SOCIAL ORIENTATION",
+    "year_r": 2021,
+    "type": "article",
+    "abstract": "The dopamine D4 receptor gene (DRD4) is associated with novelty-seeking and risk-taking behaviors that have had an adaptive value in the history of human migration. It also plays a role in moderating the extent to which people adhere to cultural norms and practices. The aim of this study was to replicate previous findings about how DRD4 polymorphism interacts with cultural differences in social orientation, which revealed Westerners’ emphasis on independence and East Asians’ emphasis on interdependence. Testing Japanese and European Canadian undergraduates (n = 784), we succeeded in replicating these previous findings: the Canadian students were more independent, whereas the Japanese students were more interdependent. However, none of the interaction effects between culture and DRD4 were significant. Implications for candidate gene research investigating gene–environment and gene–culture interactions are discussed.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicate previous"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.2117/psysoc.2021-b014",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The aim of this study was to replicate previous findings about how DRD4 polymorphism interacts with cultural differences in social orientation, which revealed Westerners’ emphasis on independence and East Asians’ emphasis on interdependence.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New Japanese and Canadian sample explicitly retests prior DRD4-by-culture result."
+    },
+    "landing_page": "https://doi.org/10.2117/psysoc.2021-b014",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.2307/351226",
+    "openalex_id": "W2053201227",
+    "doi_r": "10.2307/351226",
+    "title_r": "Parental Power and Adolescents' Parental Identification: A Reexamination",
+    "year_r": 1980,
+    "type": "article",
+    "abstract": "This paper reexamines the relationship between adolescent perceptions Qf paternal and maternal power and adolescents' identification with parents. The initial research tested a social power theory of parental identification, in contrast to sex-role theories of identification, which argued that the more parental power each parent is perceived to have, the higher the degree of adolescent identification with that parent. Regression analyses supported the theory with differing degrees of strength across the power dimensions. This study is largely a replication of the earlier study, with several additional strengths, including: (1) a larger sample size (N = 296); (2) younger, high school level adolescent respondents; (3) a different region of the country; (4) a rural, rather than urban, area of residence; and (5) internal reconstruction of the questionnaire. Again, regression analysis is utilized and the major hypothesis is generally supported. However, the relationships are evidenced as weaker, in certain respects, in the replication than in the original research. These findings are systematically discussed.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.2307/351226",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "This study is largely a replication of the earlier study, with several additional strengths, including: (1) a larger sample size (N = 296); (2) younger, high school level adolescent respondents; (3) a different region of the country; (4) a rural, rather than urban, area of residence; and (5) internal reconstruction of the questionnaire.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New adolescent sample explicitly replicates earlier parental-power study."
+    },
+    "landing_page": "https://doi.org/10.2307/351226",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.2466/pr0.1999.84.3c.1111",
+    "openalex_id": "W2075249441",
+    "doi_r": "10.2466/pr0.1999.84.3c.1111",
+    "title_r": "Re-Examination of Assertiveness and Aggressiveness as Potential Moderators of Verbal Intentions",
+    "year_r": 1999,
+    "type": "article",
+    "abstract": "This research reports the results of a replication of Swanson and McIntyre's 1998 study of assertiveness and aggressiveness as potential moderators of verbal intentions. A convenience sample of 119 women and 71 men participated. Nonassertive subjects were least likely, while Resort-to-Aggressive subjects were the most likely, to talk with acquaintances and others. Nonassertive and Assertive subjects were significantly more likely than Aggressive ones to make recommendations. Finally, men and women scored equally assertive, but men were more likely to score aggressive. The findings generally support the earlier work.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examination"
+    ],
+    "source_url": "https://doi.org/10.2466/pr0.1999.84.3c.1111",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "This research reports the results of a replication of Swanson and McIntyre's 1998 study of assertiveness and aggressiveness as potential moderators of verbal intentions.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Swanson and McIntyre (1998)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New sample explicitly replicates Swanson and McIntyre study."
+    },
+    "landing_page": "https://doi.org/10.2466/pr0.1999.84.3c.1111",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.3138/cjhs.242-a6",
+    "openalex_id": "W1838280863",
+    "doi_r": "10.3138/cjhs.242-a6",
+    "title_r": "Is pornography use associated with anti-woman sexual aggression? Re-examining the Confluence Model with third variable considerations",
+    "year_r": 2015,
+    "type": "article",
+    "abstract": "The Confluence Model of sexual aggression (Malamuth, Addison, & Koss, 2000) states that pornography use, thought to promote sexual coercion of women through presentation of submissive female imagery, works in conjunction with sexual promiscuity (SP) and hostile masculinity (HM), proposed sexual aggression risk factors, to produce anti-woman sexual aggression. An Internet based survey (N=183 adult males) replicated results of previous Confluence Model research, such that men who were high in HM and SP were more likely to report sexual coercion when they frequently, rather than infrequently, used pornography. Exploring new ground, this study also found that HM and SP together were strong predictors of consumption of violent sexual media, in comparison to non-violent sexual media, which suggests that men at high risk of sexual aggression consume different types of sexual material than men at low risk. Further, individual differences in sex drive were found to account for the effects previously attributed to pornography use in statistical tests of the Confluence Model. In the light of third variable considerations, these findings warrant a careful reappraisal of the Confluence Model's assertion that pornography use is a causal determinant of anti-woman sexual aggression.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicated results"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.3138/cjhs.242-a6",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "An Internet based survey (N=183 adult males) replicated results of previous Confluence Model research, such that men who were high in HM and SP were more likely to report sexual coercion when they frequently, rather than infrequently, used pornography.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New male survey explicitly retests the prior Confluence Model empirical association."
+    },
+    "landing_page": "https://doi.org/10.3138/cjhs.242-a6",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.3758/s13414-022-02643-8",
+    "openalex_id": "W4318763919",
+    "doi_r": "10.3758/s13414-022-02643-8",
+    "title_r": "Revisiting the role of attention in the “weapon focus effect”: Do weapons draw gaze away from the perpetrator under naturalistic viewing conditions?",
+    "year_r": 2023,
+    "type": "article",
+    "abstract": "The presence of a weapon in a scene has been found to attract observers' attention and to impair their memory of the person holding the weapon. Here, we examined the role of attention in this weapon focus effect (WFE) under different viewing conditions. German participants viewed stimuli in which a man committed a robbery while holding a gun or a cell phone. The stimuli were based on material used in a recent U.S. study reporting large memory effects. Recording eye movements allowed us to test whether observers' attention in the gun condition shifted away from the perpetrator towards the gun, compared with the phone condition. When using videos (Experiment 1), weapon presence did not appear to modulate the viewing time for the perpetrator, whereas the evidence concerning the critical object remained inconclusive. When using slide shows (Experiment 2), the gun attracted more gaze than the phone, replicating previous research. However, the attentional shift towards the weapon did not come at a cost of viewing time on the perpetrator. In both experiments, observers focused their attention predominantly on the depicted people and much less on the gun or phone. The presence of a weapon did not cause participants to recall fewer details about the perpetrator's appearance in either experiment. This null effect was replicated in an online study using the original videos and testing more participants. The results seem at odds with the attention-shift explanation of the WFE. Moreover, the results indicate that the WFE is not a universal phenomenon.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicating previous"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.3758/s13414-022-02643-8",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "When using slide shows (Experiment 2), the gun attracted more gaze than the phone, replicating previous research.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New weapon-focus experiments retest prior attention and memory effects."
+    },
+    "landing_page": "https://doi.org/10.3758/s13414-022-02643-8",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.3758/s13421-025-01762-5",
+    "openalex_id": "W4414058397",
+    "doi_r": "10.3758/s13421-025-01762-5",
+    "title_r": "Word length vs. lexical factors: Re-examining what causes the word-length effect in serial recognition",
+    "year_r": 2025,
+    "type": "article",
+    "abstract": "The word-length effect refers to the finding that memory on many short-term/working memory tasks is better for words with fewer syllables than words with more syllables. The standard account attributes this result to a combination of decay offset by rehearsal: More short words can be rehearsed because they take less time to articulate. However, most studies have confounded length with lexical and other long-term memory factors that covary with length. In this paper, we reexamine word-length effects in serial recognition. Experiment 1 replicated previous findings of a word-length effect when short and long words also differed on numerous other dimensions. Experiment 2 found that when the short and long words were more fully equated, including being equated for orthographic and phonological neighborhood size, the word-length effect disappeared. Experiment 3 confirmed that memory was better for words with more orthographic and phonological neighbors than words with fewer neighbors, showing serial recognition is sensitive to at least some lexical/long-term memory factors. The results provide more evidence against the standard account of the word-length effect and instead are consistent with a growing body of work which shows that lexical and other long-term memory factors affect performance in short-term/working memory tasks.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replicated previous"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.3758/s13421-025-01762-5",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Experiment 1 replicated previous findings of a word-length effect when short and long words also differed on numerous other dimensions.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New serial-recognition experiments retest the earlier word-length effect."
+    },
+    "landing_page": "https://doi.org/10.3758/s13421-025-01762-5",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "W7112527323",
+    "openalex_id": "W7112527323",
+    "doi_r": null,
+    "title_r": "Re-examining the impact of sleep on false memories",
+    "year_r": 2025,
+    "type": "preprint",
+    "abstract": "Sleep is important for memory consolidation. By strengthening the original memory trace sleep may improve source memory, and thus the distinction between veridical and false memories. Simultaneously, sleep restructures memories and thereby may facilitate gist abstraction and thus enhance false memory generation. Here, this question is studied using the Deese–Roediger–McDermott (DRM) paradigm, where participants learn lists of semantically related words, constructed to lead to false retrieval of lure words (semantically linked to the lists, but never presented). Previous literature on sleep and false memories has been inconsistent, which might be due to variance in methodology, but can also be explained by low statistical power. In this large online study (sleep = 104, wake = 101, AM control = 99, PM control = 94), a preregistered replication of Diekelmann et al. (2010), we find no effect of sleep on false memories, nor on general memory performance. We also do not replicate the finding that sleep increases false memories when overall memory performance is low. Instead, we find that false memories increase after sleep when intrusion-adjusted memory performance is high. We interpret this as generalization process during sleep (gist), which helps to form veridical memory, but also generates false memories.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:preregistered replication"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://osf.io/z4x73",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "In this large online study (sleep = 104, wake = 101, AM control = 99, PM control = 94), a preregistered replication of Diekelmann et al. (2010), we find no effect of sleep on false memories, nor on general memory performance.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Diekelmann et al. (2010)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New large online sample explicitly replicates Diekelmann study; results reported."
+    },
+    "landing_page": "https://osf.io/z4x73",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "W844395652",
+    "openalex_id": "W844395652",
+    "doi_r": null,
+    "title_r": "A re-examination of stresses experienced by primiparous women in the first two weeks postpartum",
+    "year_r": 1989,
+    "type": "dissertation",
+    "abstract": "A replication of \"Stresses Experienced by Primiparous Women in the First Two Weeks Postpartum\" (Wolfel, 1986) was undertaken to identify stressors experienced by women in the first 2 weeks postpartum and to compare results with the original study. Because of changes in the standard of care, a study replication was desirable. The replication sample consisted of 20 primiparous women who completed the Postpartum Stress Questionnaire (PSQ), a new tool developed by Wolfel. Descriptive data displayed the existence of stress. Analysis of variance, t tests, and correlation coefficients were used to find significant correlations between demographic characteristics and PSQ responses. Age correlated positively with stress. Married women reported stress in physiological and psychological areas. Women who had a miscarriage were more likely to exhibit postpartal stress. No relationship was found between PSQ and variables of previous experience with child care, length of hospital stay, use of pain medication, or prenatal caretaker.",
+    "tier": "high",
+    "score": 6,
+    "why": [
+      "title",
+      "phrase:replication of"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examination"
+    ],
+    "source_url": "http://hdl.handle.net/10150/277161",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "A replication of \"Stresses Experienced by Primiparous Women in the First Two Weeks Postpartum\" (Wolfel, 1986) was undertaken to identify stressors experienced by women in the first 2 weeks postpartum and to compare results with the original study.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Wolfel (1986), Stresses Experienced by Primiparous Women in the First Two Weeks Postpartum"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New postpartum-stress sample directly replicates named Wolfel study."
+    },
+    "landing_page": "http://hdl.handle.net/10150/277161",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037/emo0001676",
+    "openalex_id": "W7154022753",
+    "doi_r": "10.1037/emo0001676",
+    "title_r": "Revisiting nostalgia for current and ex-romantic partners: Affective profiles and the moderating effect of relationship duration.",
+    "year_r": 2026,
+    "type": "article",
+    "abstract": "Nostalgia is a self-relevant, socially grounded emotion marked by a sentimental longing for the past. Compared to the well-documented benefits known about general personal nostalgia, most nostalgia studies in both emotion and relationship science rely heavily on Western samples, and nostalgic effects of former partners are mixed. With an Asian sample, the present research had two main aims: (a) Experimentally replicate the nostalgic effects of current and ex-partners on current relationship quality, and (b) examine the moderating role of relationship duration. Results revealed both ex- and romantic nostalgia increased relationship satisfaction, and, more interestingly, romantic nostalgia decreased relationship commitment in shorter relationships. Furthermore, exploratory analyses highlighted distinct affective patterns within romantic nostalgia. Implications and contributions are further discussed. (PsycInfo Database Record (c) 2026 APA, all rights reserved).",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.1037/emo0001676",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "With an Asian sample, the present research had two main aims: (a) Experimentally replicate the nostalgic effects of current and ex-partners on current relationship quality, and (b) examine the moderating role of relationship duration.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New Asian sample experimentally retests partner-nostalgia effects."
+    },
+    "landing_page": "https://doi.org/10.1037/emo0001676",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1177/00957984261422891",
+    "openalex_id": "W7135055329",
+    "doi_r": "10.1177/00957984261422891",
+    "title_r": "Re-Examining the Relationship Between Black Racial Identity and Self-Esteem Using Person- and Variable-Centered Approaches",
+    "year_r": 2026,
+    "type": "article",
+    "abstract": "We examined the relationship between two types of self-esteem (global self-esteem and collective self-esteem) and Black racial identity based on the expanded nigrescence theory (NT-E). Black college students ( N = 344) responded to the Cross Racial Identity Scale and measures of global and collective self-esteem. To provide a more nuanced assessment of Black racial identity using a person-centered approach, cluster analysis identified six racial cluster patterns. Using a variable-centered approach via 1-way ANOVA, individuals grouped in the self-hating cluster were found to have lower global self-esteem scores than those grouped under other racial attitude clusters. For collective self-esteem, MANOVA and descriptive discriminant analyses showed individuals in the assimilated cluster had lower scores on the salience of race compared to those grouped in other racial attitude clusters. These findings replicated the relationship between nigrescence and global self-esteem and extended the relationship between nigrescence and collective self-esteem. Using both person- and variable-centered approaches highlights the complexity of understanding and interpreting racial identity in relation to other real-world variables, such as psychological functioning.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.1177/00957984261422891",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "These findings replicated the relationship between nigrescence and global self-esteem and extended the relationship between nigrescence and collective self-esteem.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New Black college sample retests prior nigrescence–self-esteem relation."
+    },
+    "landing_page": "https://doi.org/10.1177/00957984261422891",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.5178/lebs.2026.131",
+    "openalex_id": "W7133227936",
+    "doi_r": "10.5178/lebs.2026.131",
+    "title_r": "Revisiting the Prosocial Effect of Interpersonal Synchrony in Infants: A Study Under a Pre-Post Manipulation During the COVID-19 Pandemic",
+    "year_r": 2026,
+    "type": "article",
+    "abstract": "Helping behavior emerges reliably in the second year of life. Recent evidence suggests that the experience of interpersonal synchrony may facilitate this behavior in infants. However, whether and how infants’ helping behavior changes after experiencing interpersonal synchrony remain largely unexplored. To replicate and extend previous findings, the current study employed a pre-post manipulation design to examine the effect of interpersonal movement on infants’ helping behavior. Fifteen-month-old infants participated in a helping tasks phase twice: once before and once after the manipulation of interpersonal movement (synchronous or asynchronous). Our primary analysis revealed no statistical significance in the prosocial effect of interpersonal synchrony. Methodological constraints and socio-environmental factors are discussed as potential possibilities for the current null finding. A preliminary analysis focusing on individual differences did reveal a significant relationship between infants’ temperament traits of Negative Affectivity and the effect of interpersonal synchrony. Based on these findings, we discussed necessary methodological adjustments for future study and evolutionary implications of the prosocial effect of interpersonal movement in humans.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.5178/lebs.2026.131",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "To replicate and extend previous findings, the current study employed a pre-post manipulation design to examine the effect of interpersonal movement on infants’ helping behavior.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New infant helping experiment explicitly retests interpersonal-synchrony effect."
+    },
+    "landing_page": "https://doi.org/10.5178/lebs.2026.131",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.18061/emr.v19i2.9705",
+    "openalex_id": "W4408092961",
+    "doi_r": "10.18061/emr.v19i2.9705",
+    "title_r": "Reexamining the Association between Aesthetic Sensitivity to Musical and Visual Complexity",
+    "year_r": 2025,
+    "type": "article",
+    "abstract": "In a provocative recent study, Clemente et al. (2021) found that individual differences in aesthetic sensitivity to stimulus complexity in the musical domain were uncorrelated with those in the visual domain. This ostensibly contradicts existing theory and research pointing to a link between idiographic preferences for musical and visual complexity. However, a review of their methodology reveals that Clemente et al. (2021) inadvertently introduced confounds in the temporal dynamics of their experimental stimuli as well as in their operational definitions of complexity in each domain. To address these confounds, we conceptually replicated part of their procedure using musical and visual stimuli that were either very closely matched in their temporal dynamics and/or for which complexity was operationalized more similarly. With these modifications, reliable positive correlations indeed emerged between aesthetic sensitivities to complexity across domains, providing renewed evidence for cross-modal correspondence in evaluative responses to musical sounds and visual images.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamining"
+    ],
+    "source_url": "https://doi.org/10.18061/emr.v19i2.9705",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "To address these confounds, we conceptually replicated part of their procedure using musical and visual stimuli that were either very closely matched in their temporal dynamics and/or for which complexity was operationalized more similarly.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Clemente et al. (2021)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New audio/visual experiments conceptually retest Clemente cross-modal finding."
+    },
+    "landing_page": "https://doi.org/10.18061/emr.v19i2.9705",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.5334/joc.459",
+    "openalex_id": "W4413929195",
+    "doi_r": "10.5334/joc.459",
+    "title_r": "Revisiting the Plausibility Effect in Remembering Truth and Falsity: An Analysis of Underlying Memory and Guessing Processes",
+    "year_r": 2025,
+    "type": "article",
+    "abstract": "Plausibility seems to play a key role in how well people remember the veracity of information. In a study by Vorms and colleagues (2022), an interaction pattern between statement plausibility and veracity feedback on memory performance appeared: Plausible statements were significantly more often correctly identified as true than correctly identified as false; for implausible statements, the descriptive trend was reversed. Given the importance of accurate memory for truth and falsity in real-world settings, it is crucial to understand the cognitive processes underlying this plausibility effect. For this purpose, we conducted a preregistered experiment in which participants studied four different statement types along with veracity feedback: plausible true, plausible false, implausible true, and implausible false. In a later recognition test, they indicated whether a statement was presented and, if so, what veracity feedback was displayed. We replicated the plausibility effect as an interaction between statement plausibility and veracity feedback on correct true/false attributions. Moreover, we analysed the data with a multinomial model to estimate the contribution of statement memory, feedback memory, and different guessing processes underlying the observable responses. These analyses revealed that guessing processes and statement memory accounted for the above-mentioned plausibility effect: Feedback guessing was influenced by corresponding statement plausibility, and statement memory was overall better when the veracity feedback aligned with statement plausibility. In contrast, feedback memory was enhanced in the case of a discrepancy between veracity feedback and statement plausibility. These results emphasise the importance of examining the processes driving the plausibility effect to derive correct conclusions.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.5334/joc.459",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "We replicated the plausibility effect as an interaction between statement plausibility and veracity feedback on correct true/false attributions.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Vorms et al. (2022)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New preregistered experiment retests Vorms plausibility-by-veracity memory interaction."
+    },
+    "landing_page": "https://doi.org/10.5334/joc.459",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1177/00187208221145261",
+    "openalex_id": "W4311291136",
+    "doi_r": "10.1177/00187208221145261",
+    "title_r": "The Effect of Asset Degradation on Trust in Swarms: A Reexamination of System-Wide Trust in Human-Swarm Interaction",
+    "year_r": 2022,
+    "type": "article",
+    "abstract": "OBJECTIVE: The effects of asset degradation on trust in human-swarm interaction were investigated through the lens of system-wide trust theory. BACKGROUND: Researchers have begun investigating contextual features that shape human interactions with robotic swarms-systems comprising assets that coordinate behavior based on their nearest neighbors. Recent work has begun investigating how human trust toward swarms is affected by asset degradation through the lens of system-wide trust theory, but these studies have been marked by several limitations. METHOD: In an online study, the current work manipulated asset degradation and measured trust-relevant criteria in a within-subjects design and addressed the limitations of past work. RESULTS: Controlling for swarm performance (i.e., target acquisition), asset degradation and trust (i.e., reliance intentions) in swarms were negatively related. In addition, as degradation increased, perceptions of swarm cohesion, obstacle avoidance, target acquisition, and terrain exploration efficiency decreased, the latter two of which (coupled with the reliance intentions criterion) support the tenets of system-wide trust theory as well as replicate and extend past work on the effects of asset degradation on trust in swarms. CONCLUSION: Human-swarm interaction is a context in which system-wide trust is relevant, and future work ought to investigate how to calibrate human trust toward swarm systems. APPLICATIONS: Based on these findings, design professionals should prioritize ways to depict swarm performance and system health such that humans do not abandon trust in systems that are still functional yet not over-trust those systems which are indeed performing poorly.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1177/00187208221145261",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "In addition, as degradation increased, perceptions of swarm cohesion, obstacle avoidance, target acquisition, and terrain exploration efficiency decreased, the latter two of which (coupled with the reliance intentions criterion) support the tenets of system-wide trust theory as well as replicate and extend past work on the effects of asset degradation on trust in swarms.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New human-swarm trust experiment retests prior asset-degradation effect."
+    },
+    "landing_page": "https://doi.org/10.1177/00187208221145261",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.26076/2a7f-7882",
+    "openalex_id": "W189144357",
+    "doi_r": "10.26076/2a7f-7882",
+    "title_r": "The Effect of Social Network Disapproval on Partners' Dating Relationship: The Romeo and Juliet Effect Revisited",
+    "year_r": 2021,
+    "type": "article",
+    "abstract": "By using online self-report data provided by 41 undergraduate students and their dating partner (N = 82), this study examined the potential curvilinear relationship between four social network sectors (own parents, own friends, partner's parents, and partner's friends) and romantic dating partners' relationship characteristics (perceptions of partner's agreeableness, love, satisfaction, commitment, and ambivalence). After controlling for the effects of age, relationship duration, and social network overlap, the hierarchical regression analyses provided little support for the Romeo and Juliet Effect, that is, the negative association between social network approval and characteristics of the dating relationship. Instead, the study mostly replicated the positive linear relationship of social network approval with various relationship characteristics reported in the literature on social network approval. A few curvilinear relationships between social network approval and characteristics emerging from the relationship with the dating partner were found, however. A curvilinear association existed between perceptions of the partners' agreeableness and perceived social network approval from own parents, own friends, and partner's parents.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "effect revisited"
+    ],
+    "source_url": "https://doi.org/10.26076/2a7f-7882",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Instead, the study mostly replicated the positive linear relationship of social network approval with various relationship characteristics reported in the literature on social network approval.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New couple sample retests Romeo-and-Juliet and prior social-approval findings."
+    },
+    "landing_page": "https://doi.org/10.26076/2a7f-7882",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.5353/th_b4785003",
+    "openalex_id": "W2254453745",
+    "doi_r": "10.5353/th_b4785003",
+    "title_r": "Re-examining the relationship between cognitive styles, ruminative styles, and depression",
+    "year_r": 2011,
+    "type": "dissertation",
+    "abstract": "﻿Rumination has been consistently found to be a risk factor of depression.\\n\\nHowever, few studies examined rumination and its relationship with depression,\\n\\nand the protective role of such individual positive traits as hope, in a Hong Kong\\n\\nChinese context. As opposed to western findings, a recent local study found that\\n\\nthe two components of rumination (Treynor, Gonzalez, & Nolen-Hoeksema,\\n\\n2003), namely brooding and reflective pondering, were not correlated, and the\\n\\nlatter was rather adaptive in predicting depressive symptoms (Lo, Ho, & Hollen,\\n\\n2008). Together with some psychometric issues revealed in the same study, it is\\n\\nunclear if the two-factor model of rumination is applicable in the Hong Kong\\n\\nChinese context. In addition, given that hope only buffers against negative impact\\n\\nof risk factors of depression, whether the moderating effect of hope on the\\n\\nrelationship of brooding and reflective pondering with depressive symptoms in\\n\\nGeiger and Kwon’s (2010) western sample can be replicated in Hong Kong\\n\\nChinese populations is not clear. Therefore, the present study re-examines the\\n\\ntwo-factor model of rumination and its relationship with depressive symptoms,\\n\\nand the moderating role of hope in a Hong Kong Chinese sample using a\\n\\nlongitudinal design.\\n\\nAdult Trait Hope Scale, Ruminative Response Scale, and Center for\\n\\nEpidemiologic Studies Depression Scale were administered to 189 Hong Kong\\n\\nChinese university students at lectures with a four-week interval between the two\\n\\ntime-points. Analyses using hierarchical linear regression were conducted to\\n\\nexamine the relationship of brooding and reflective pondering, and their\\n\\nrelationship with depressive symptoms and the role of hope, both concurrently\\n\\nand prospectively.\\n\\nResults confirmed the applicability of the two-factor model of rumination in\\n\\nthe Hong Kong Chinese college sample. Rumination (total) and brooding\\n\\nconsistently predicted depressive symptoms. Also, moderating effect of hope on\\n\\nthe relationship of brooding and depressive symptoms was replicated using the\\n\\ntime 1 data in the present study. Nonetheless, contrary to the recent local finding\\n\\nby Lo et al. (2008), brooding and reflective pondering were positively correlated\\n\\nas in western samples, and there was some evidence of one-way relationship from\\n\\nreflective pondering to brooding as shown by the longitudinal data. Reflective\\n\\npondering itself was neither adaptive nor maladaptive, because there was no\\n\\nsignificant relationship between reflective pondering and depressive symptoms\\n\\nafter controlling for level of brooding. Hence, hope had no interaction with\\n\\nreflective pondering in predicting depressive symptoms. For longitudinal data,\\n\\nafter controlling for baseline level of the dependent variables, the one-way\\n\\nrelationship from reflective pondering to brooding, the relationship of rumination\\n\\n(total) and brooding with depressive symptoms, and the moderating effect of hope\\n\\non the relationship between brooding and depressive symptoms, all became\\n\\nnonsignificant.\\n\\nThe findings of the present study support the use of the two-factor model of\\n\\nrumination in Hong Kong Chinese context, and suggest that the two components\\n\\nof rumination were correlated probably because reflective pondering tended to\\n\\nlead to brooding. This study also offers further empirical support for brooding\\n\\nbeing a more robust risk factor of depression than reflective pondering and the\\n\\nbuffering impact of hope on psychological well-being. Implications of the results,\\n\\nlimitations of this study and recommendations for further research were also\\n\\naddressed.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examining"
+    ],
+    "source_url": "https://doi.org/10.5353/th_b4785003",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Also, moderating effect of hope on\\n\\nthe relationship of brooding and depressive symptoms was replicated using the\\n\\ntime 1 data in the present study.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Geiger and Kwon (2010); Lo, Ho, and Hollen (2008)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New Hong Kong longitudinal sample retests prior rumination/hope relationships."
+    },
+    "landing_page": "https://doi.org/10.5353/th_b4785003",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1093/jpepsy/22.3.389",
+    "openalex_id": "W2128615223",
+    "doi_r": "10.1093/jpepsy/22.3.389",
+    "title_r": "Sleep Patterns Among Children with Attention-Deficit Hyperactivity Disorder: A Reexamination of Parent Perceptions",
+    "year_r": 1997,
+    "type": "article",
+    "abstract": "Surveyed parents of children with and without ADHD for their perceptions of their children's sleep patterns. All children had been referred for learning or behavior problems to an outpatient assessment center. Diagnoses of ADHD were based on DSM-III-R, rather than DSM-III criteria, avoiding a possible confound from diagnostic criteria that formerly included sleep disturbance as a defining characteristic of ADHD. Data replicated past findings showing that parents perceive children with ADHD to have greater sleep difficulty than normally developing children. Parents perceived few differences between sleep patterns of children with ADHD who were taking or not taking stimulant medication. Implications of these findings are discussed in the context of past literature and present clinical practice.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1093/jpepsy/22.3.389",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Data replicated past findings showing that parents perceive children with ADHD to have greater sleep difficulty than normally developing children.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New parent survey retests prior ADHD sleep-difficulty perception finding."
+    },
+    "landing_page": "https://doi.org/10.1093/jpepsy/22.3.389",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1037/0278-7393.18.4.823",
+    "openalex_id": "W1985416343",
+    "doi_r": "10.1037/0278-7393.18.4.823",
+    "title_r": "A reexamination of the roles of typicality and category dominance in verifying category membership.",
+    "year_r": 1992,
+    "type": "article",
+    "abstract": "Four partiaI replications of Chumbley's (1986) speeded category verification experiments were performed in order to test the generality of his finding that category dominance, but not typicality, uniquely accounted for highly significant amounts of category verification reaction time (RT) for both exemplar-category (E-C) and category-exemplar (C-E) orders.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.1037/0278-7393.18.4.823",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Four partiaI replications of Chumbley's (1986) speeded category verification experiments were performed in order to test the generality of his finding that category dominance, but not typicality, uniquely accounted for highly significant amounts of category verification reaction time (RT) for both exemplar-category (E-C) and category-exemplar (C-E) orders.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Chumbley (1986)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "Four new experiments partially replicate Chumbley category-verification result."
+    },
+    "landing_page": "https://doi.org/10.1037/0278-7393.18.4.823",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1080/00140138608968300",
+    "openalex_id": "W2085636960",
+    "doi_r": "10.1080/00140138608968300",
+    "title_r": "Cognitive abilities and safety on the road: a re-examination of individual differences in dichotic listening and search for embedded figures",
+    "year_r": 1986,
+    "type": "article",
+    "abstract": "Five cognitive ability tests were administered to a sample of 153 bus-driver trainees. The embedded figures test (EFT) of Witkin (1950) and the dichotic listening test (DLT) of Gopher and Kahneman (1971) were chosen on the basis of previously reported correlations with driving accident rate. The remainder were designed to cast light on what cognitive processes the EFT and DLT measure, and hence why they should relate to driving ability. The EFT correlated only marginally with success in driver training and with accident rate in a follow-up period of two years. There was no support for the hypothesis that this test measures a general ability to resist the influence of dominant stimuli. Instead a substantial correlation (0·64) was obtained with a typical ‘intelligence’ test. The DLT showed no correlations with driver performance measures, thus failing to replicate earlier findings. There was no support for the hypothesis that this test measures a general ability to switch from one task or mental set to another. We suggest that analysis of the cognitive processes of driving cannot be based on overall measures such as accident rate. Instead, the task must be studied at the level of component skills.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examination"
+    ],
+    "source_url": "https://doi.org/10.1080/00140138608968300",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The DLT showed no correlations with driver performance measures, thus failing to replicate earlier findings.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": null
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New bus-driver trainee data fail to replicate earlier dichotic-listening correlation."
+    },
+    "landing_page": "https://doi.org/10.1080/00140138608968300",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.2466/pms.1986.63.2.565",
+    "openalex_id": "W1995900129",
+    "doi_r": "10.2466/pms.1986.63.2.565",
+    "title_r": "A Re-Examination of William Stern's Classic Eyewitness Research",
+    "year_r": 1986,
+    "type": "article",
+    "abstract": "The classical work (1903–1904) on sex differences in eyewitness behavior by William Stern (1871–1938) provided evidence for a traditional view of the superior ability of males over females in this area. The present investigation replicated Stern's original research (1903–1904) with 20 male and 35 female adults. In contrast to Stern's results, no significant sex differences were found among the participants regarding accuracy of recall and resistance to false information on the short-term memory task.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examination"
+    ],
+    "source_url": "https://doi.org/10.2466/pms.1986.63.2.565",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The present investigation replicated Stern's original research (1903–1904) with 20 male and 35 female adults.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "William Stern (1903–1904)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New adult eyewitness sample directly retests Stern original finding."
+    },
+    "landing_page": "https://doi.org/10.2466/pms.1986.63.2.565",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1111/j.2044-8295.1978.tb01672.x",
+    "openalex_id": "W2008145386",
+    "doi_r": "10.1111/j.2044-8295.1978.tb01672.x",
+    "title_r": "Evidence for language recoding in autistic, retarded and normal children: A re‐examination",
+    "year_r": 1978,
+    "type": "article",
+    "abstract": "In a replication and extension of earlier studies by Hermelin & O'Connor, language recoding abilities in autistic, retarded and normal children matched for mental age and digit span, were compared in a verbal recall task. Random word lists, sentences, and anomalous sentences, eight or 12 items in length (for high and low memory span subgroups) were presented and the number of words recalled from each type of input was scored. All low span children recalled sentences better than random lists with normal children superior to retarded and autistic children and the latter group poorer than the retarded group. Autistic children showed a recency effect with both types of input. There were no group differences amongst high span children and sentences were again better recalled than random lists. In Expt II sentences were better recalled than anomalous sentences, with autistic and retarded children equivalent in performance and poorer than normal children. Although low span autistic children were clearly deficient in recall of sentence material when compared with the two control groups, the effect of conditions showed that they were able to use structure to improve recall. Since high span autistic children did not perform differently from controls it is suggested that results from this kind of study may not be generalizable, and that claims for a specific coding deficit in autistic children need further substantiation.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "phrase:replication and extension"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "re-examination"
+    ],
+    "source_url": "https://doi.org/10.1111/j.2044-8295.1978.tb01672.x",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "In a replication and extension of earlier studies by Hermelin & O'Connor, language recoding abilities in autistic, retarded and normal children matched for mental age and digit span, were compared in a verbal recall task.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Hermelin and O’Connor (years absent in abstract)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New child verbal-recall experiment replicates Hermelin and O’Connor studies."
+    },
+    "landing_page": "https://doi.org/10.1111/j.2044-8295.1978.tb01672.x",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.2307/1422078",
+    "openalex_id": "W2318878218",
+    "doi_r": "10.2307/1422078",
+    "title_r": "'Vexierversuch' Revisited: A Reexamination of Goldiamond and Hawkins' Experiment",
+    "year_r": 1973,
+    "type": "article",
+    "abstract": "Goldiamond and Hawkins' experiment was repeated with the dual-modality design of Postman and Rosenzweig. A postexperimental interview assessed the subjects' perceptions of and reactions to the task. Goldiamond and Hawkins' results were replicated and extended to auditory training and test conditions, but the results of the postexperimental interview call into question the relevance of this type of study to the debate about the source of the standard word-frequency effect. The effect of word frequency on recognition thresholds has been repeatedly demonstrated. The initial report of the word-frequency effect (Howes and Solomon, 1951) used naturally occurring English words. Solomon and Postman soon (1952) developed an experimental technique involving pretraining with artificial (nonsense) words, in an attempt to better control the frequency of the subject's experience with the experimental material, and since then most studies on the word-frequency effect have used the Solomon and Postman paradigm or a variation of it. The classic study of Goldiamond and Hawkins (1958) indicated the possible contributions of the response system ('response bias') to the wordfrequency effect in the Solomon and Postman design. In a training session, these investigators exposed their subjects to nonsense words at varying frequencies. The subjects then underwent a recognition session in which they were to respond to words flashed subliminally on a screen. In a procedure mimicking the ascending method of limits, subjects guessed until they emitted the word the experimenter considered 'correct.' In point of fact, all trials were blank. No stimulus words were ever presented. 'Accuracy' was defined as a subject's response matching the entry on the experimenter's score sheet. The familiar logarithmic function relating frequency of prior exposure to recognition threshold emerged from the data - a finding that cannot be attributed to perception, since nothing relevant could have been perceived - and hence we must assume that the training session set up a response bias that led to the observed relationship.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://doi.org/10.2307/1422078",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "Goldiamond and Hawkins' experiment was repeated with the dual-modality design of Postman and Rosenzweig.",
+    "source_review": "codex-assisted abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Goldiamond and Hawkins (1958)"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "New recognition-threshold experiment repeats Goldiamond and Hawkins study."
+    },
+    "landing_page": "https://doi.org/10.2307/1422078",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  },
+  {
+    "cid": "10.1016/0022-1031(70)90068-5",
+    "openalex_id": "W2007155246",
+    "doi_r": "10.1016/0022-1031(70)90068-5",
+    "title_r": "A reexamination of the familiarization hypothesis in group risk taking",
+    "year_r": 1970,
+    "type": "article",
+    "abstract": "A total of 226 subjects at three universities participated in five separate studies which measured the effect on individual risk taking of increased familiarity with the problem situation. The results of all five studies failed to replicate the finding that individuals will take increased risk after they are given an opportunity to become familiar with the problem. These failures to replicate cast doubt on the hypothesis that the increase in risk after a group discussion is due to increased familiarity with the problems rather than to the effect of group interaction.",
+    "tier": "medium",
+    "score": 3,
+    "why": [
+      "title",
+      "no abstract"
+    ],
+    "oa_fields": [
+      "Psychology"
+    ],
+    "query_terms": [
+      "reexamination"
+    ],
+    "source_url": "https://www.sciencedirect.com/science/article/pii/0022103170900685",
+    "found_by": [
+      "alternative"
+    ],
+    "source_quote": "The results of all five studies failed to replicate the finding that individuals will take increased risk after they are given an opportunity to become familiar with the problem.",
+    "source_review": "codex-assisted publisher abstract review 2026-09-24",
+    "triage": {
+      "kind": "replication",
+      "field": "psychology",
+      "original": {
+        "authors": null,
+        "year": null,
+        "description": "Earlier group-risk familiarization finding"
+      },
+      "original_doi": null,
+      "outcome": "not_reported",
+      "outcome_quote": null,
+      "confidence": null,
+      "reason": "Five new studies explicitly attempted and failed to replicate an earlier familiarization finding."
+    },
+    "landing_page": "https://www.sciencedirect.com/science/article/pii/0022103170900685",
+    "venue": null,
+    "authors_r": null,
+    "author_surnames_r": [],
+    "author_ids_r": [],
+    "originals": [],
+    "original_titles": []
+  }
+]
