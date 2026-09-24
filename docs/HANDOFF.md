@@ -585,6 +585,25 @@ source recovery is under review. The highest-yield current route is relinking
 wrong-original candidates using explicit citations in the later paper. No site
 publication or push was done.
 
+## 2q. Source-reviewed Psychology pairs: 24 September, 22:00 Kyiv checkpoint
+
+At **22:00 Kyiv**, the two data builds and site build showed **594** exact
+source-reviewed effect-plus-replication pairs on **585** distinct effect pages,
+with **zero** exact-pair audit issues. This was **36 new finished pairs** in the
+preceding 15 minutes (558 at 21:45), below the owner's target of 46. The
+measured throughput was therefore **2.4 finished pairs per minute**; the target
+requires about 3.1. At 22:05 Kyiv, the next two data builds and site build passed with **604**
+exact pairs on **595** distinct effect pages and **zero** audit issues.
+
+The productive route is correcting machine-linked original DOIs from explicit
+citations in later studies, then checking the original claim and replication
+outcome against primary abstracts or full text. A frozen 257-row wrong-link
+queue is split into disjoint rank ranges among four reviewers. The 50 open-PDF
+route yielded a few additional source-backed pairs but was too sparse to keep
+as the main route. DeepSeek is used only to prioritize or draft; every accepted
+DOI, target, and result is checked against the source text. No site publication
+or push has occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
