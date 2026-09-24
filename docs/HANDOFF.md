@@ -707,6 +707,26 @@ was held until a publisher-deposited record verified it. Pair outcome
 labels reflect the targeted effect, including mixed and failed results.
 No push or site publication has occurred.
 
+## 2v. 2026-09-24 23:51 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **867**
+source-reviewed Psychology effect-plus-replication pairs on **850** distinct
+curated effects. The built site has **1,754** effects and **4,734** attempts;
+the audit reports **zero** issues. This is **213** more finished pairs than
+the 654-pair 19:46 UTC baseline.
+
+The four-stage build/audit took **19.8 seconds**: 6.4 seconds for each data
+build, 6.7 seconds for the site build, and 0.3 seconds for the audit.
+From 838 built at 23:32 UTC to 867 built at 23:51 UTC, **29** pairs were
+finished in about **19 minutes**, or about **1.5 per minute**. This is below
+the requested 46 pairs per 15 minutes (3.1 per minute). Source verification
+and finding independent, exact-match studies dominate the elapsed time;
+the build itself remains fast. The team rejected same-cohort reanalyses,
+unclear original links, and conference-only abstracts rather than count
+them as new replications. The most recent batches included new empirical
+Psychology articles from the ranked missing-original and unseen queues.
+No push or site publication has occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
