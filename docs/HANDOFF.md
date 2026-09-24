@@ -426,13 +426,13 @@ product; it is not what you do when the reading is.
 
 The owner's current priority is **named effect plus replication(s) pages that finish the pipeline**,
 rather than a larger pending-review queue. The reviewed overlay in
-`data/curated/promoted_pairs.json` now has **85 exact original–replication pairs and 85 named
+`data/curated/promoted_pairs.json` had **85 exact original–replication pairs and 85 named
 effects** (69 added today; 16 from the preceding pass). Each row has an original claim quote,
 the replication's target and result quotes, source URLs, a verdict, and scope caveats. The
 overlay creates counted attempts; machine-screened discoveries never promote themselves.
 
 After two data builds, the site build, four tests, and an audit of all 39 pages in the latest batch,
-the local record has **991 named effects, 514 with a replication verdict, 3,490 original
+the local record has **991 named effects, 514 with a linked attempt (356 with a coded replication result), 3,490 original
 findings, 3,954 attempts, 3,665 replications, and 7,365 pending candidates**. Two of today's
 new effect pages have multiple replication verdicts. Two previously linked pending candidates
 were marked `wrong` for the *exact proposed original DOI* in `original_audit.csv`: the
@@ -446,6 +446,14 @@ Review exact target, dates, original direction, replication result, and any chan
 or contrast before adding a row. No paid DeepSeek calls were needed today ($0); do not
 start a paid run outside the owner's off-peak/pilot/cap rules. Nothing was pushed or
 published.
+
+## 2l. 2026-09-24 17:12 UTC: measured bulk promotion throughput
+
+The current owner metric is completed, source-reviewed **named effect + exact replication result** pages. Retested now has **306 reviewed pairs / 306 new effect pages**, up from 85 at commit `be85440`. The first 196 additions in this pass came from 310 strict source packets plus 34 broader packets; model decisions were leads only. The reviewers rejected mismatched contrasts, copied original predictions, reanalyses of the same sample, unverified result claims, and duplicate DOI versions. Each accepted row has an original result quote, replication target quote, replication outcome quote, and source URLs.
+
+The data build was run twice and the static site build passed after each promotion wave. The latest 27 pages had 0 missing or mismatched effect/attempt/outcome/page checks. Current build: **1,212 named effects**, **735 with a linked attempt**, **577 with a coded replication result**, **3,669 findings**, **4,175 attempts**, **3,886 replications**, and **7,155 pending candidates**. The earlier figure of 514 was a count of effects with a linked attempt at an earlier build, not effects with a coded verdict.
+
+Measured wall time from 16:32 to 17:12 UTC: **196 finished additions in 28 minutes** with three source readers working in parallel; two data builds take about 13 seconds and the site build about 5–6 seconds. This rate applies to pairs with available source text and must not be projected onto candidates with missing papers. The next source packet contained 54 inspectable pairs. A timed free retrieval of 365 missing original abstracts recovered 129 in 49 seconds; a separate 90-pair packet with exact result text is under review. This is the measured path into the larger missing-source pool. No site publication or push was done.
 
 ## 3. Next steps, in order
 
