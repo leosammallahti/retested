@@ -533,6 +533,34 @@ No site publication or push was done. Continue source retrieval in batches,
 require the exact original study and its directional result, and audit every
 promoted row after the two data builds and site build.
 
+## 2o. 2026-09-24 18:32 UTC: 540 fully built pairs
+
+The current Psychology site build has **540 exact, source-reviewed pairs** across
+**531 named Retested effect pages**. This is **455 additions** since the
+85-pair checkpoint. The site has **1,436 effects** overall and **4,409
+attempts**. The exact DOI/effect/attempt/outcome/static-page audit passed on
+all 540 rows with **zero issues** after two data builds and the site build.
+
+Measured interval: **506 built at 21:13 Kyiv → 540 at 21:31**, or **34
+additions in 18 minutes (~32 seconds each)**. The owner's target is 46 in 15
+minutes (~20 seconds each), so this interval was below target. The site build
+is not the bottleneck; source recovery, correct original identity, and outcome
+review are. A free Semantic Scholar lookup of **349 missing-replication DOIs**
+took **1.1 seconds**, found **322 exact DOI matches**, **37 usable abstracts**,
+and **50 open PDF URLs**. A follow-up recovered **12 primary original
+abstracts** for 22 missing-original cases in about **11 seconds**. A separate
+source-complete packet contains **100 unseen published original DOI pairs**;
+three reviewers are auditing it in nonoverlapping segments.
+
+One otherwise source-supported row was withdrawn after the build exposed a
+conflict: its reviewed outcome was `mixed`, but an older FORRT result for the
+same exact DOI pair was `failed`, and the registry intentionally gives FORRT
+precedence. The row was removed before this zero-issue checkpoint. A proposed
+Decision Sciences original was also rejected by Psychology scope. When a
+machine-linked original is wrong, reviewers now try the paper's explicitly
+named correct original DOI instead of discarding an otherwise valid
+replication. No site publication or push was done.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
