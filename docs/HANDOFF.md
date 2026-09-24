@@ -661,6 +661,30 @@ Small checked batches are merged, then both data builds, the site build,
 and audit run. DeepSeek/model drafts never count until exact source checks
 and the full build pass. No push or site publication has occurred.
 
+## 2t. 2026-09-24 23:03 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **782**
+source-reviewed Psychology effect-plus-replication pairs on **766** distinct
+curated effects. The built site has **1,670** effects and **4,649** attempts;
+the audit reports **zero** issues. This is **128** more finished pairs than
+the 654-pair 19:46 UTC baseline. From the 744-pair 22:39 UTC checkpoint to
+23:03 UTC, **38** finished pairs were added in about **24 minutes**, or
+about **1.6 per minute**. The requested 46 pairs in 15 minutes would require
+about **3.1 per minute**, so the current measured pace remains below target.
+
+The four-stage build/audit took **19.3 seconds** at this checkpoint:
+6.4 seconds for each data build, 6.2 seconds for the site build, and
+0.3 seconds for the audit. New source-reviewed pairs came from the ranked
+missing-original queue, the corrected-original queue, and the
+Psychology-primary next-tier/recovered queue. One named typist-preference
+effect now has two independently reviewed later tests with different
+outcomes; these count as two pairs and one distinct effect. The
+Psychological Reports and corrected-original bounded pools are exhausted
+under the source rule; the missing-original and abstract-rich queues are
+still being reviewed in parallel. A candidate counts only after checking
+the original result, exact later target, later outcome, field, identity,
+and a passing full build. No push or site publication has occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
