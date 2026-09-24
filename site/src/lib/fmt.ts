@@ -68,7 +68,12 @@ export function pBucket(p: number | null | undefined): string | null {
 
 export const clip = (s: string | null | undefined, n: number) => (!s ? '' : s.length <= n ? s : s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…');
 
-export const cleanQuote = (s: string | null | undefined) => (s ? s.replace(/^[\s"“”']+|[\s"“”']+$/g, '').replace(/\s+/g, ' ') : '');
+export const cleanQuote = (s: string | null | undefined) => {
+  if (!s) return '';
+  const t = s.trim().replace(/\s+/g, ' ');
+  const pairs: Record<string, string> = { '"': '"', "'": "'", '“': '”', '‘': '’' };
+  return t.length > 1 && pairs[t[0]] === t[t.length - 1] ? t.slice(1, -1).trim() : t;
+};
 
 /** Curated descriptions are often fragments ("that hearing about old age..."): make them a sentence. */
 export function asClaim(s: string | null | undefined): string | null {

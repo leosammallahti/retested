@@ -455,6 +455,51 @@ The data build was run twice and the static site build passed after each promoti
 
 Measured wall time from 16:32 to 17:12 UTC: **196 finished additions in 28 minutes** with three source readers working in parallel; two data builds take about 13 seconds and the site build about 5–6 seconds. This rate applies to pairs with available source text and must not be projected onto candidates with missing papers. The next source packet contained 54 inspectable pairs. A timed free retrieval of 365 missing original abstracts recovered 129 in 49 seconds; a separate 90-pair packet with exact result text is under review. This is the measured path into the larger missing-source pool. No site publication or push was done.
 
+## 2m. 2026-09-24 17:51 UTC: 458 checked effect/replication pairs
+
+The Psychology-only source review now has **458 exact original–replication pairs**
+across **450 named Retested effect pages** (449 newly created effects; one joins
+an existing effect). This is **373 more reviewed pairs than the 85 at commit
+`be85440`**. The built site has **1,355 named effects** overall, **878 with a
+linked attempt**, **727 with a coded replication result**, **3,796 findings**,
+**4,327 attempts**, **4,038 replications**, and **7,019 pending candidates**.
+Pending candidates are leads; their count is not a promise of valid pages.
+
+Measured built-pair checkpoints (Kyiv time): **187 at 19:52**, **298 at 20:07**,
+**374 at 20:22**, **411 at 20:37**, and **458 at 20:51**. The 20:22–20:37
+window added 37, nine below the requested 46; the following window added 47
+and met the target one minute early. The last two data builds took **6.25 s**
+and **6.36 s**; the site build took **5.73 s**. Reading and verifying the exact
+original study is the pace-setting step, especially once easy abstracts run out.
+
+Sources added after the 306-pair checkpoint: 59 of 90 original-abstract
+recovery packets; 9 from a 100-pair replication-result benchmark; 7 from
+publisher replication abstracts; 13 of 23 exact-DOI Springer/Psychonomic
+original abstracts (retrieved in 7.31 s); 6 source-ready preprints; 8 second
+replications of existing effects; 49 of 306 lower-confidence published links
+after explicit original-identity checks; and one herd-immunity Registered
+Report found through a publisher abstract. The remaining 40 Elsevier/APA DOI
+landing-page sample yielded no usable abstract and was stopped. Source-only
+packets and benchmark logs are in `/tmp/retested-*` on the VM.
+
+The reviewed overlay was validated against exact primary-source quotes and
+study identity. Both data builds and the site build passed; all 458 rows map
+to one exact original/attempt/outcome and a built effect page with **zero
+mismatches**. `site/src/lib/fmt.ts` now preserves internal closing quote
+marks in excerpts. Three tentative low-confidence links and one Physics
+Education row were withdrawn before their pages were built. No Social
+Sciences or Neuroscience field slices were screened, and no site publication
+or push was done.
+
+Next source-rich packets: `/tmp/retested-review-remaining-original-text.jsonl`
+has 131 untouched trusted published original pairs, 43 with a cached
+replication abstract; a separate 30-case untrusted Psychology preprint batch
+is under review. Keep demanding the exact original paper, directional claim,
+later-study target, and result before appending to
+`data/curated/promoted_pairs.json`. After a batch, run the data build twice
+and then `cd site && npm run build`; check every new page and update the
+baseline when the reviewed queue intentionally shrinks.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
