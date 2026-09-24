@@ -500,6 +500,39 @@ later-study target, and result before appending to
 and then `cd site && npm run build`; check every new page and update the
 baseline when the reviewed queue intentionally shrinks.
 
+## 2n. 2026-09-24 18:14 UTC: 506 built Psychology pairs and source-recovery benchmark
+
+The fully built site now has **506 source-reviewed original–replication pairs**
+across **497 named Retested effect pages** (496 newly created effects, one
+joined to an existing effect). That is **421 pairs added** beyond the 85-pair
+checkpoint at `be85440`. Current baseline totals: **1,402 effects**, **924
+with linked attempts**, **3,821 findings**, **4,375 attempts**, **4,086
+replications**, and **6,975 pending candidates**. Pending candidates are
+unverified leads. The exact DOI/effect/attempt/outcome/static-page audit passed
+on all 506 rows with **zero issues** after two data builds and the site build.
+
+Measured pace: **458 built at 20:51 Kyiv**, **480 at 21:02**, **495 by 21:08**,
+**500 at 21:10**, **504 at 21:12**, and **506 at 21:13**. The requested next
+15-minute target of 504 by 21:07 was missed by at least nine; it
+was reached at 21:12. The site/data build itself takes about 18 seconds
+combined; exact-source identification and review set the pace.
+
+A direct publisher fetch recovered usable abstracts for **73 of 75**
+Springer/Psychonomic replication DOIs in **13.08 seconds** for 60 new requests.
+Reviewers accepted 16 new pairs from that 73-paper packet and one additional
+already-curated duplicate was excluded. A separate cached-full-text packet of
+71 candidates produced four new exact pairs; two more passed review but were
+already curated. Reviewed remaining-original-text packets added 25 new pairs
+and are still under review. A 40-DOI Semantic Scholar benchmark recovered six
+exact replication abstracts and four open PDF URLs in **0.54 seconds**; those
+sources are being screened. An applied-linguistics candidate was withdrawn
+from the Psychology slice before merge. Source packets and reviewer batches
+remain in `/tmp/retested-*` on the VM.
+
+No site publication or push was done. Continue source retrieval in batches,
+require the exact original study and its directional result, and audit every
+promoted row after the two data builds and site build.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog.
