@@ -5442,6 +5442,11 @@
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
     },
+    "10.1111/j.1468-2850.2010.01204.x": {
+      "id": "https://openalex.org/W1913317993",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
     "10.1111/j.1468-2958.1996.tb00376.x": {
       "id": "https://openalex.org/W2020091081",
       "field": "Psychology",
@@ -8751,6 +8756,11 @@
       "id": "https://openalex.org/W3123437337",
       "field": "Psychology",
       "topic": "Bullying, Victimization, and Aggression"
+    },
+    "10.3389/fpsyg.2021.605059": {
+      "id": "https://openalex.org/W3162542033",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
     },
     "10.3389/fpsyg.2021.626087": {
       "id": "https://openalex.org/W3128143484",
