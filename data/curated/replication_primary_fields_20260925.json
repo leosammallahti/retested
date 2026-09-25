@@ -8701,6 +8701,136 @@
       "id": "https://openalex.org/W2075249441",
       "field": "Psychology",
       "topic": "Bullying, Victimization, and Aggression"
+    },
+    "10.1177/0956797620904154": {
+      "id": "https://openalex.org/W3011838269",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1016/0022-1031(70)90068-5": {
+      "id": "https://openalex.org/W2007155246",
+      "field": "Psychology",
+      "topic": "Team Dynamics and Performance"
+    },
+    "10.1037/adb0000999": {
+      "id": "https://openalex.org/W4396685495",
+      "field": "Psychology",
+      "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1016/s0022-5371(72)80081-1": {
+      "id": "https://openalex.org/W2085068761",
+      "field": "Psychology",
+      "topic": "Deception detection and forensic psychology"
+    },
+    "10.3758/bf03210733": {
+      "id": "https://openalex.org/W2033452789",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.26262/hjp.v16i2.7893": {
+      "id": "https://openalex.org/W2886831610",
+      "field": "Psychology",
+      "topic": "Nostalgia and Consumer Behavior"
+    },
+    "10.1007/bf03393971": {
+      "id": "https://openalex.org/W2729610329",
+      "field": "Psychology",
+      "topic": "Psychotherapy Techniques and Applications"
+    },
+    "10.1111/apps.12247": {
+      "id": "https://openalex.org/W3008410398",
+      "field": "Psychology",
+      "topic": "Perfectionism, Procrastination, Anxiety Studies"
+    },
+    "10.1016/j.paid.2021.110949": {
+      "id": "https://openalex.org/W3157035090",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1111/ssm.70059": {
+      "id": "https://openalex.org/W7212049331",
+      "field": "Psychology",
+      "topic": "Education, Achievement, and Giftedness"
+    },
+    "10.20982/tqmp.22.2.p056": {
+      "id": "https://openalex.org/W7213764344",
+      "field": "Psychology",
+      "topic": "Team Dynamics and Performance"
+    },
+    "10.1016/j.isci.2026.116880": {
+      "id": "https://openalex.org/W4415201285",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.1080/13811118.2026.2698811": {
+      "id": "https://openalex.org/W7171370120",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1080/23273798.2026.2699144": {
+      "id": "https://openalex.org/W7169668917",
+      "field": "Psychology",
+      "topic": "Phonetics and Phonology Research"
+    },
+    "10.1111/ajsp.70099": {
+      "id": "https://openalex.org/W7165188315",
+      "field": "Psychology",
+      "topic": "Emotions and Moral Behavior"
+    },
+    "10.1037/edu0000505": {
+      "id": "https://openalex.org/W3035444957",
+      "field": "Psychology",
+      "topic": "Psychology of Development and Education"
+    },
+    "10.1080/23273798.2026.2728022": {
+      "id": "https://openalex.org/W7205707932",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1037/pag0000991": {
+      "id": "https://openalex.org/W7161545867",
+      "field": "Psychology",
+      "topic": "Sport Psychology and Performance"
+    },
+    "10.1123/jsep.22.2.183": {
+      "id": "https://openalex.org/W2168545818",
+      "field": "Psychology",
+      "topic": "Sport Psychology and Performance"
+    },
+    "10.1037/men0000301": {
+      "id": "https://openalex.org/W3036578851",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1177/09388982261452122": {
+      "id": "https://openalex.org/W7161144843",
+      "field": "Psychology",
+      "topic": "Bullying, Victimization, and Aggression"
+    },
+    "10.1016/j.actpsy.2026.107619": {
+      "id": "https://openalex.org/W7202363749",
+      "field": "Psychology",
+      "topic": "Innovative Teaching and Learning Methods"
+    },
+    "10.1080/13617672.2026.2715655": {
+      "id": "https://openalex.org/W7207633912",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.1177/07319487261464167": {
+      "id": "https://openalex.org/W7171971308",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.2307/1422078": {
+      "id": "https://openalex.org/W2318878218",
+      "field": "Psychology",
+      "topic": "Deception detection and forensic psychology"
+    },
+    "10.1007/s11218-026-10258-2": {
+      "id": "https://openalex.org/W7167582755",
+      "field": "Psychology",
+      "topic": "Education, Achievement, and Giftedness"
     }
   },
   "manual_exception": [
