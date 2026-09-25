@@ -959,6 +959,26 @@ is explicit in the reviewed record. Exact original-paper relinking and
 published-versus-preprint deduplication prevented false additions. No push
 or site publication occurred.
 
+## 2ai. 2026-09-25 03:00 UTC: 1,090 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,090**
+source-reviewed Psychology effect-plus-replication pairs on **997** distinct
+curated effects. The site build has **1,901** effects and **4,922** attempts;
+the audit reports **zero** issues. This is **436** more finished pairs than
+the 654-pair 19:46 UTC baseline, and **24** more than the 1,066-pair
+checkpoint at 02:45 UTC. Elapsed wall time was about **15 minutes**,
+approximately **24 finished pairs per 15 minutes**, still below the owner's
+requested **46 per 15 minutes**. The latest four-stage build/audit took
+**18.9 seconds**.
+
+This batch adds independent retests of ego depletion, infant rule learning,
+emotion and risk choice, exercise priming, ERN reliability, peer-group
+personality effects, and in-session rumination. Several candidate links
+required correction to the actual cited original; preprint/published
+duplicates and a self-overlapping cohort were excluded. The peer-group
+replication's apparent assimilation was explained by regression to the
+mean. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
