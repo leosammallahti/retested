@@ -9186,6 +9186,21 @@
       "id": "https://openalex.org/W2891613165",
       "field": "Psychology",
       "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1111/emre.12425": {
+      "id": "https://openalex.org/W3093226030",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.31234/osf.io/gkjzs": {
+      "id": "https://openalex.org/W3162255342",
+      "field": "Psychology",
+      "topic": "Educational Strategies and Epistemologies"
+    },
+    "10.52598/jpll/6/2/1": {
+      "id": "https://openalex.org/W4407918676",
+      "field": "Psychology",
+      "topic": "Grit, Self-Efficacy, and Motivation"
     }
   },
   "manual_exception": [

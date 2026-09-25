@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -23,6 +24,10 @@ def _doi(value: str | None) -> str | None:
     return normalized.replace("//", "/") if normalized else None
 
 
+def _title(value: str | None) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", (value or "").lower()).strip()
+
+
 def inventory(dois: list[str], pairs: list[dict] | None = None) -> dict:
     if not ATTEMPTS.exists():
         raise FileNotFoundError(f"{ATTEMPTS}: build the site data first")
@@ -31,12 +36,16 @@ def inventory(dois: list[str], pairs: list[dict] | None = None) -> dict:
     attempts = json.loads(ATTEMPTS.read_text(encoding="utf-8"))
     by_rep: dict[str, list[dict]] = defaultdict(list)
     by_pair: dict[tuple[str, str], dict] = {}
+    by_title: dict[str, list[dict]] = defaultdict(list)
     for attempt in attempts.values():
         doi_o, doi_r = _doi(attempt.get("doi_o")), _doi(attempt.get("doi_r"))
         if not doi_o or not doi_r:
             continue
         by_rep[doi_r].append(attempt)
         by_pair[(doi_o, doi_r)] = attempt
+        title = _title(attempt.get("title_r"))
+        if title:
+            by_title[title].append(attempt)
     raw_known = {_doi(doi) for doi in load_known_replication_dois()}
     requested = {_doi(doi) for doi in dois}
     pair_rows = pairs or []
@@ -61,11 +70,20 @@ def inventory(dois: list[str], pairs: list[dict] | None = None) -> dict:
         if not doi_o or not doi_r:
             raise ValueError("Each pair needs doi_o and doi_r")
         existing = by_pair.get((doi_o, doi_r))
+        same_title = [
+            a for a in by_title.get(_title(row.get("replication_title")), [])
+            if _doi(a.get("doi_r")) != doi_r
+        ] if row.get("replication_title") else []
+        same_work = [
+            a for a in same_title if _doi(a.get("doi_o")) == doi_o
+        ]
         checked_pairs.append({
             "doi_o": doi_o,
             "doi_r": doi_r,
             "already_on_site": existing is not None,
             "site_sources": existing.get("sources", []) if existing else [],
+            "same_title_site_versions": sorted({_doi(a["doi_r"]) for a in same_title}),
+            "same_work_same_original_on_site": bool(same_work),
         })
     return {"papers": papers, "pairs": checked_pairs}
 

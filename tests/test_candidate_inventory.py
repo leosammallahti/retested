@@ -45,6 +45,34 @@ class CandidateInventoryTests(unittest.TestCase):
         self.assertFalse(result["pairs"][1]["already_on_site"])
 
 
+    def test_same_title_different_doi_flags_existing_version(self):
+        attempts = {
+            "preprint": {
+                "doi_o": "10.1037/original",
+                "doi_r": "10.31234/osf.io/vkarq",
+                "title_r": "Revisiting the Effect of Team Passion: A Replication",
+                "sources": ["retested"],
+            }
+        }
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "attempts.json"
+            path.write_text(json.dumps(attempts))
+            with (
+                patch.object(candidate_inventory, "ATTEMPTS", path),
+                patch.object(candidate_inventory, "PROMOTED", Path(folder) / "missing.json"),
+                patch.object(candidate_inventory, "load_known_replication_dois", return_value=set()),
+            ):
+                result = candidate_inventory.inventory([], [{
+                    "doi_o": "10.1037/original",
+                    "doi_r": "10.1177/published",
+                    "replication_title": "Revisiting the effect of team passion: a replication",
+                }])
+        pair = result["pairs"][0]
+        self.assertFalse(pair["already_on_site"])
+        self.assertTrue(pair["same_work_same_original_on_site"])
+        self.assertEqual(pair["same_title_site_versions"], ["10.31234/osf.io/vkarq"])
+
+
 if __name__ == "__main__":
     unittest.main()
 
