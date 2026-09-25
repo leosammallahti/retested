@@ -7,6 +7,7 @@ never automatically added or removed from curated data.
 from __future__ import annotations
 
 import argparse
+from difflib import SequenceMatcher
 import json
 import re
 import unicodedata
@@ -54,6 +55,7 @@ def find_aliases(
 
     exact_index: dict[str, dict[str, Any]] = {}
     title_index: dict[str, list[dict[str, Any]]] = {}
+    original_index: dict[str, list[dict[str, Any]]] = {}
     for row in curated:
         doi = normalized_doi(row.get("doi_r"))
         if doi:
@@ -61,6 +63,9 @@ def find_aliases(
         title = normalized_title(row.get("replication_title"))
         if title:
             title_index.setdefault(title, []).append(row)
+        original = normalized_doi(row.get("doi_o"))
+        if original:
+            original_index.setdefault(original, []).append(row)
 
     results = []
     for candidate in candidates:
@@ -78,13 +83,24 @@ def find_aliases(
             if _near_year(row.get("replication_year"), year)
             and normalized_doi(row.get("doi_o")) == original
         ] if title and year and original else []
-        match = exact or (aliases[0] if aliases else None)
+        title_key = normalized_title(title)
+        # Minor title edits between a preprint and journal article are common.
+        # Flag only long, nearly identical titles tied to the same original,
+        # and leave the final identity decision to source review.
+        possible = [
+            row for row in original_index.get(original, [])
+            if title_key and len(title_key) >= 50
+            and _near_year(row.get("replication_year"), year)
+            and SequenceMatcher(None, title_key, normalized_title(row.get("replication_title"))).ratio() >= .95
+        ] if original and year and not aliases else []
+        match = exact or (aliases[0] if aliases else None) or (possible[0] if possible else None)
         results.append({
             "candidate_doi": doi,
             "candidate_title": title or "",
             "status": (
                 "already_curated_exact_doi" if exact
                 else "likely_doi_alias" if aliases
+                else "possible_doi_alias" if possible
                 else "unmatched"
             ),
             "curated_doi": match.get("doi_r") if match else None,

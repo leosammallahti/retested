@@ -59,6 +59,23 @@ class DoiAliasTests(unittest.TestCase):
         self.assertEqual(found["status"], "likely_doi_alias")
         self.assertEqual(found["curated_doi"], curated[0]["doi_r"])
 
+    def test_minor_preprint_title_edit_is_flagged(self) -> None:
+        curated = [{
+            "doi_o": "10.1037/0022-3514.95.2.293",
+            "doi_r": "10.1177/2515245918785165",
+            "replication_title": "Many Labs 5: Registered Multisite Replication of the Tempting-Fate Effects in Risen and Gilovich (2008)",
+            "replication_year": 2020,
+        }]
+        candidate = {
+            "doi_o": curated[0]["doi_o"],
+            "doi_r": "10.31219/osf.io/sy4b9",
+            "replication_title": "Many Labs 5: Registered multisite replication of tempting-fate effects in Risen & Gilovich (2008)",
+            "replication_year": 2020,
+        }
+        found = find_aliases([candidate], [], curated)[0]
+        self.assertEqual(found["status"], "possible_doi_alias")
+        self.assertEqual(found["curated_doi"], curated[0]["doi_r"])
+
     def test_same_title_different_original_is_not_an_alias(self) -> None:
         curated = [{
             "doi_o": "10.1000/original-a", "doi_r": "10.1000/replica-a",
