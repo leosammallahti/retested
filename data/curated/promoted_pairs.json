@@ -41217,5 +41217,32 @@
     "preregistration_status": "yes",
     "duplicate_candidate_ids": [],
     "review_note": "Official OpenAlex W4206391469 classifies the later Journal of Scientific Exploration article as primary Psychology and article type. Publisher issue and full-paper PDF show publication December 30, 2021, although OpenAlex indexes 2022. The original 2020 APA journal abstract reports an excess of experiment-versus-control correlations in a 45×45 human-behavior/random-generator matrix (randomization p=.0177). The later paper references exact original DOI 10.1037/cns0000199 and says its two independent new-participant consensus-protocol replications (N=64 and N=40, different sites) were not significant. Harald Walach, Thilo Hinterberger, and Walter von Lucadou authored both studies; this is openly disclosed, with distinct data and additional replication investigators. The verdict records the reported anomalistic-correlation result, without endorsing a psychokinetic or quantum interpretation."
+  },
+  {
+    "doi_o": "10.1016/0010-0285(89)90003-0",
+    "doi_r": "10.7916/salt.v5i2.1571",
+    "original_title": "Critical period effects in second language learning: The influence of maturational state on the acquisition of English as a second language",
+    "original_year": 1989,
+    "original_authors": "Jacqueline S. Johnson, Elissa L. Newport",
+    "original_journal": "Cognitive Psychology",
+    "original_source_url": "https://pubmed.ncbi.nlm.nih.gov/2920538/",
+    "replication_title": "The Critical Period in the Acquisition of L2 Syntax: A Partial Replication of Johnson and Newport (1989)",
+    "replication_year": 2005,
+    "replication_authors": "Heekyung Seol",
+    "replication_journal": "Studies in Applied Linguistics and TESOL",
+    "replication_source_url": "https://journals.library.columbia.edu/index.php/SALT/article/view/1571",
+    "effect_name": "Earlier arrival predicts stronger English grammar attainment, with a critical-period boundary",
+    "effect_claim": "Earlier age of arrival in an English-speaking environment predicts better eventual English grammaticality judgments, with the original study locating a critical-period shift around puberty.",
+    "effect_claim_quote": "Test performance was linearly related to age of arrival up to puberty; after puberty, performance was low but highly variable and unrelated to age of arrival.",
+    "replication_target_quote": "The present study was conducted as an attempt to partially replicate the Johnson and Newport (1989) study (JN89).",
+    "outcome": "mixed",
+    "outcome_quote": "Another discrepancy between JN89 and the present study is found in the different cutoff points of the age function: age 15 in JN89, and age 10 in the present study.",
+    "review_note": "Published Columbia journal paper tested a new group of 34 Korean native speakers, versus original 46 Korean/Chinese speakers. Overall age-of-arrival association recurred (later r=-.848 versus original r=-.77), but the apparent boundary shifted from 15 to 10 and other age-function details differed. Full-pattern outcome mixed, matching FLoRA coding. Official canonical publisher DOI is 10.7916/salt.v5i2.1571 (OpenAlex W6977726099, primary Psychology); FLoRA uses repository DOI 10.7916/d8f76r2r for the same article, not a separate experiment. No overlapping authors.",
+    "preregistration_status": "unknown",
+    "reviewed_by": "codex_rank_484_plus",
+    "reviewed_on": "2026-09-25",
+    "duplicate_candidate_ids": [],
+    "candidate_id": "10.7916/salt.v5i2.1571",
+    "outcome_quote_source": "paper"
   }
 ]
