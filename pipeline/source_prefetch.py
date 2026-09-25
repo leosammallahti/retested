@@ -129,6 +129,20 @@ def cache_fetch(path, url, host, delay, timeout, params=None):
     text = r.text
     path.write_text(text)
     return text, "network", r.status_code
+def _jina_has_full_article(raw: str) -> bool:
+    """Do not mistake a publisher navigation page plus abstract for full text."""
+    body = raw.split("Markdown Content:", 1)[-1]
+    headings = {
+        name.casefold() for name in re.findall(
+            r"(?mi)^#{1,4}\s+(?:\d+(?:\.\d+)*[.\s]+)?"
+            r"(Introduction|Background|Materials and Methods|Methods|Results|Discussion)\b",
+            body,
+        )
+    }
+    has_setup = bool(headings & {"introduction", "background", "materials and methods", "methods"})
+    return len(body) >= 5000 and has_setup and "results" in headings
+
+
 def source_url(doi, meta):
     links = [x.get("URL", "") for x in meta.get("link", [])]
     for u in links:
@@ -380,7 +394,7 @@ def process(row, args):
             raw, origin, status = cache_fetch(folder/"jina.txt",
                 "https://r.jina.ai/" + publisher,
                 "r.jina.ai", .6, args.timeout)
-            if status == 200 and len(raw) >= 800 and not any(b.lower() in raw[:1200].lower() for b in BAD) and not ("APA PsycNet" in raw[:300] and len(raw) < 5000):
+            if status == 200 and _jina_has_full_article(raw) and not any(b.lower() in raw[:1200].lower() for b in BAD):
                 full, full_source = raw[:args.max_chars], "Jina mirror of " + publisher
             else: errors.append("jina_unusable_" + str(status))
         except Exception as e: errors.append("jina_" + type(e).__name__)

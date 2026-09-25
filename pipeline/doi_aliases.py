@@ -1,7 +1,7 @@
 """Flag candidate DOI aliases of already curated replication articles.
 
 This is a conservative pre-model screen: exact DOI, or the same later-paper
-title, year and original DOI. A title collision is flagged for human review,
+title, nearby year and original DOI. A title collision is flagged for human review,
 never automatically added or removed from curated data.
 """
 from __future__ import annotations
@@ -25,6 +25,13 @@ def normalized_doi(value: Any) -> str:
 def normalized_title(value: Any) -> str:
     text = unicodedata.normalize("NFKD", str(value or "")).casefold()
     return re.sub(r"[^a-z0-9]+", "", text)
+
+
+def _near_year(first: Any, second: Any) -> bool:
+    try:
+        return abs(int(first) - int(second)) <= 5
+    except (TypeError, ValueError):
+        return False
 
 
 def _read_jsonl(path: str | Path) -> list[dict[str, Any]]:
@@ -63,9 +70,12 @@ def find_aliases(
         year = source.get("replication_year") or candidate.get("replication_year")
         original = normalized_doi(candidate.get("doi_o") or source.get("original_doi"))
         exact = exact_index.get(doi)
+        # Preprint and journal records for the same study commonly carry
+        # different publication years. Exact title plus exact original DOI is
+        # a conservative human-review flag across a small year window.
         aliases = [
             row for row in title_index.get(normalized_title(title), [])
-            if str(row.get("replication_year")) == str(year)
+            if _near_year(row.get("replication_year"), year)
             and normalized_doi(row.get("doi_o")) == original
         ] if title and year and original else []
         match = exact or (aliases[0] if aliases else None)

@@ -42,6 +42,23 @@ class DoiAliasTests(unittest.TestCase):
             ["10.2466/pr0.1999.84.3.726", "10.2466/pr0.2002.90.2.515"],
         )
 
+    def test_preprint_and_published_years_are_aliases(self) -> None:
+        curated = [{
+            "doi_o": "10.1177/2167702619856341",
+            "doi_r": "10.1177/21677026221120426",
+            "replication_title": "Examining Blunted Initial Response to Reward and Recent Suicidal Ideation in Children and Adolescents Using Event-Related Potentials: Failure to Conceptually Replicate Across Two Independent Samples",
+            "replication_year": 2022,
+        }]
+        candidate = {
+            "doi_o": curated[0]["doi_o"],
+            "doi_r": "10.1101/2020.05.19.104208",
+            "replication_title": curated[0]["replication_title"],
+            "replication_year": 2020,
+        }
+        found = find_aliases([candidate], [], curated)[0]
+        self.assertEqual(found["status"], "likely_doi_alias")
+        self.assertEqual(found["curated_doi"], curated[0]["doi_r"])
+
     def test_same_title_different_original_is_not_an_alias(self) -> None:
         curated = [{
             "doi_o": "10.1000/original-a", "doi_r": "10.1000/replica-a",
