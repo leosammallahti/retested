@@ -1078,6 +1078,30 @@ takes about 20 seconds. Four reviewers now work on disjoint queues;
 the new direct-OpenAlex Psychology pool is being expanded.
 No push or site publication occurred.
 
+## 2an. 2026-09-25 05:03 UTC: 1,234 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,234**
+source-reviewed Psychology effect-plus-replication pairs on **1,133**
+distinct curated effects. The site has **2,037** effects and **4,961**
+attempts; the audit reports **zero** issues. Of curated material,
+**1,150** pairs and **1,131** distinct effects are additions beyond the
+preexisting collection. This is **9** more finished pairs than the
+1,225-pair 04:55 UTC checkpoint, over **8 minutes**: approximately
+**17 pairs per 15 minutes**, below the owner's **46 per 15 minutes**
+target. The latest four-stage build and audit took **20.0 seconds**.
+
+New source-reviewed independent-author pairs include the action-sentence
+motor interference test, an OXTR parenting association, girls' reading
+advantage and math-field intentions, culturally familiar reading
+comprehension, and Dark Triad health-belief mediation. The later published
+works' OpenAlex primary field is Psychology. The action-sentence
+replication found a motor response in the opposite direction and no
+significant behavioral result; the failed label refers to the original
+directional interference claim. The Dark Triad replication reproduced
+most, rather than every, finding, and the page scopes its claim to
+health-belief mediation. Exact sources, original DOIs, outcomes, and
+disjoint authors were checked. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
