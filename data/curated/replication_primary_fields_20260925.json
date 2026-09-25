@@ -1492,10 +1492,20 @@
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
     },
+    "10.1016/j.bpsc.2019.01.014": {
+      "id": "https://openalex.org/W2912800990",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
+    },
     "10.1016/j.brainres.2015.04.032": {
       "id": "https://openalex.org/W2085750658",
       "field": "Neuroscience",
       "topic": "Neuroscience and Music Perception"
+    },
+    "10.1016/j.brat.2003.12.001": {
+      "id": "https://openalex.org/W2061436301",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
     "10.1016/j.brat.2011.02.005": {
       "id": "https://openalex.org/W2068671279",
@@ -2356,6 +2366,11 @@
       "id": "https://openalex.org/W3173911214",
       "field": "Psychology",
       "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1016/j.sleh.2018.12.003": {
+      "id": "https://openalex.org/W2914664689",
+      "field": "Psychology",
+      "topic": "Sleep and related disorders"
     },
     "10.1016/j.ssci.2020.104740": {
       "id": "https://openalex.org/W3015604996",
