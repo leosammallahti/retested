@@ -9171,6 +9171,21 @@
       "id": "https://openalex.org/W2995283674",
       "field": "Psychology",
       "topic": "Optimism, Hope, and Well-being"
+    },
+    "10.1017/pds.2022.88": {
+      "id": "https://openalex.org/W4281554850",
+      "field": "Psychology",
+      "topic": "Visual and Cognitive Learning Processes"
+    },
+    "10.1177/2515245920945963": {
+      "id": "https://openalex.org/W3098973543",
+      "field": "Psychology",
+      "topic": "Mental Health Research Topics"
+    },
+    "10.1177/2167696818810268": {
+      "id": "https://openalex.org/W2891613165",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
     }
   },
   "manual_exception": [
