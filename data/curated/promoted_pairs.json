@@ -43797,5 +43797,33 @@
     "outcome": "failed",
     "outcome_quote": "the relative advantage of prosocial appeals was not observed",
     "review_note": "The earlier OSF preprint reported a prosocial-over-personal advantage in its initial March 2020 U.S. experiments, but its additional April experiments already found the three frames similarly effective. The later Japanese study recruited new participants (N=1,583 and N=1,686) and found no relative prosocial advantage. Thus the later result fails the initial-experiment claim but aligns with the earlier paper's later null experiments. The OSF source was subsequently published as Scientific Reports DOI 10.1038/s41598-021-97617-5; the later paper cites the OSF version directly. No authors overlap. The later paper has OpenAlex primary field Psychology."
+  },
+  {
+    "original_source_type": "empirical_study",
+    "preregistration_status": "unknown",
+    "reviewed_by": "Codex source review",
+    "reviewed_on": "2026-09-25",
+    "duplicate_candidate_ids": [],
+    "outcome_quote_source": "abstract",
+    "candidate_id": "10.3233/wor-2007-00613",
+    "doi_o": "10.3233/wor-2004-00373",
+    "doi_r": "10.3233/wor-2007-00613",
+    "effect_name": "Computer-related arm symptoms are common among college students",
+    "effect_claim": "A substantial share of college students reported upper-extremity pain or discomfort associated with computer use.",
+    "effect_claim_quote": "42% reported upper extremity pain or discomfort when using a computer in the preceding two weeks.",
+    "original_source_url": "https://doi.org/10.3233/wor-2004-00373",
+    "original_title": "Upper extremity musculoskeletal symptoms and functional impairment associated with computer use among college students",
+    "original_year": 2004,
+    "original_authors": "Nathaniel Hupert, Benjamin C. Amick, Anne H. Fossel, Christopher M. Coley, Michelle M. Robertson, Jeffrey Neil Katz",
+    "original_journal": "Work",
+    "replication_title": "Undergraduate college students' upper extremity symptoms and functional limitations related to computer use: A replication study",
+    "replication_year": 2007,
+    "replication_authors": "Mark Jenkins, Cammie Chaumont Menéndez, Benjamin C. Amick, Jessica M. Tullar, Nathaniel Hupert, Michelle M. Robertson, Jeffrey Neil Katz",
+    "replication_journal": "Work",
+    "replication_source_url": "https://doi.org/10.3233/wor-2007-00613",
+    "replication_target_quote": "To replicate Hupert et al.'s [5] evaluation of computer-related upper extremity musculoskeletal symptoms, functional limitations, academic performance impact, medication use and health services utilization among a college student population.",
+    "outcome": "successful",
+    "outcome_quote": "54% reported experiencing symptoms associated with computer usage.",
+    "review_note": "The original surveyed a residential college dormitory and found 42% of 194 responding students reported computer-related upper-extremity symptoms. The later study surveyed a different college student population in a private southwestern university dormitory (116 respondents) and found 54%. Several authors overlap, but the institutions and participants differ. This is a repeated prevalence observation, not an experiment showing computer use caused symptoms. The later paper cites the exact original DOI and has OpenAlex primary field Psychology."
   }
 ]

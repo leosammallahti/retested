@@ -1,6 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
 
+## One more fully checked pair — 2026-09-25 21:37:31 UTC
+
+The data build, Astro site build (4,547 pages), and exact-pair audit passed with zero issues. **1,616 built pairs carry Retested review; 1,165 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,619 raw rows. **1,493 built effects are Retested named; 1,490 are new to the site.** Added Hupert et al. 2004 versus Jenkins et al. 2007: 42% versus 54% of respondents in different college dormitory surveys reported computer-related upper-extremity symptoms. Shared authors, separate colleges/cohorts, observational scope, exact original citation, and later Psychology primary field are documented in the row. No push or publication.
+
+The previous audited checkpoint was 21:34:07, so one pair finished in **3 minutes 24 seconds**. From 21:08:55 to 21:37:31 UTC, twenty-three new pairs passed in **28 minutes 36 seconds**, about **12.1 per 15 minutes**. The measured rate remains below the owner's 46-per-15-minute target. VM free disk space remained 38 GB.
+
 ## Meta-analysis tag and another retest — 2026-09-25 21:34:07 UTC
 
 The full data build, Astro site build (4,545 pages), and exact-pair audit passed with zero issues. **1,615 built pairs carry Retested review; 1,164 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,618 raw rows. **1,492 built effects are Retested named; 1,489 are new to the site.** Added Kazantzis et al. 2000 meta-analysis versus Kazantzis et al. 2010 updated synthesis on psychotherapy homework (successful); the earlier source is labeled `meta_analysis`, and the generated effect and finding pages visibly render "Earlier source: meta-analysis". Its note explicitly says underlying trials may overlap, so it is not represented as a wholly independent participant experiment. Also added Jordan, Yoeli, and Rand's 2020 preprint initial prosocial-over-personal COVID framing result versus Miyajima and Murakami's new Japanese experiments (failed to find a relative advantage). The row notes that the original paper's own later experiments also found equality and identifies its published Scientific Reports version. No push or publication.
