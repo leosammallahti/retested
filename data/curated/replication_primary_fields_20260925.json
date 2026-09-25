@@ -1082,6 +1082,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.1007/s40616-023-00188-x": {
+      "id": "https://openalex.org/W4384665541",
+      "field": "Psychology",
+      "topic": "Language Development and Disorders"
+    },
     "10.1007/s40616-026-00233-5": {
       "id": "https://openalex.org/W7213540086",
       "field": "Psychology",
@@ -1546,6 +1551,16 @@
       "id": "https://openalex.org/W4410113845",
       "field": "Psychology",
       "topic": "Death Anxiety and Social Exclusion"
+    },
+    "10.1016/j.chiabu.2017.01.002": {
+      "id": "https://openalex.org/W2575561028",
+      "field": "Psychology",
+      "topic": "Child Abuse and Trauma"
+    },
+    "10.1016/j.chiabu.2018.03.021": {
+      "id": "https://openalex.org/W2801016122",
+      "field": "Psychology",
+      "topic": "Child Abuse and Trauma"
     },
     "10.1016/j.chiabu.2025.107400": {
       "id": "https://openalex.org/W4408519737",
@@ -2391,6 +2406,11 @@
       "id": "https://openalex.org/W2551878850",
       "field": "Psychology",
       "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1016/j.yhbeh.2025.105871": {
+      "id": "https://openalex.org/W7117244068",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
     "10.1016/j.ynstr.2023.100528": {
       "id": "https://openalex.org/W4321368068",
@@ -4757,6 +4777,11 @@
       "field": "Psychology",
       "topic": "Posttraumatic Stress Disorder Research"
     },
+    "10.1080/20008198.2022.2051334": {
+      "id": "https://openalex.org/W4225659254",
+      "field": "Psychology",
+      "topic": "Posttraumatic Stress Disorder Research"
+    },
     "10.1080/20445911.2018.1532960": {
       "id": "https://openalex.org/W2895939656",
       "field": "Psychology",
@@ -6187,6 +6212,11 @@
       "field": "Psychology",
       "topic": "Attachment and Relationship Dynamics"
     },
+    "10.1177/02654075221090494": {
+      "id": "https://openalex.org/W4224285680",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
     "10.1177/026540758900600106": {
       "id": "https://openalex.org/W2046176777",
       "field": "Psychology",
@@ -7131,6 +7161,11 @@
       "id": "https://openalex.org/W4294884334",
       "field": "Psychology",
       "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1371/journal.pone.0277082": {
+      "id": "https://openalex.org/W4307930464",
+      "field": "Psychology",
+      "topic": "Color perception and design"
     },
     "10.1371/journal.pone.0281738": {
       "id": "https://openalex.org/W4319827558",
