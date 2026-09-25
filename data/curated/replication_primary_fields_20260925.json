@@ -537,6 +537,11 @@
       "field": "Psychology",
       "topic": "Child and Adolescent Psychosocial and Emotional Development"
     },
+    "10.1002/mpr.293": {
+      "id": "https://openalex.org/W2104797673",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
     "10.1002/per.2244": {
       "id": "https://openalex.org/W3006905696",
       "field": "Psychology",
@@ -1556,6 +1561,11 @@
       "id": "https://openalex.org/W3162927471",
       "field": "Psychology",
       "topic": "Child and Animal Learning Development"
+    },
+    "10.1016/j.cogdev.2026.101690": {
+      "id": "https://openalex.org/W7132821586",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
     },
     "10.1016/j.cogdev.2026.101745": {
       "id": "https://openalex.org/W7167346036",
@@ -3967,6 +3977,11 @@
       "field": "Psychology",
       "topic": "Sexuality, Behavior, and Technology"
     },
+    "10.1080/01434632.2023.2189262": {
+      "id": "https://openalex.org/W4327731543",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
+    },
     "10.1080/0144341860060206": {
       "id": "https://openalex.org/W2006571354",
       "field": "Psychology",
@@ -4147,6 +4162,11 @@
       "field": "Psychology",
       "topic": "Psychedelics and Drug Studies"
     },
+    "10.1080/02796015.1986.12085213": {
+      "id": "https://openalex.org/W29234848",
+      "field": "Psychology",
+      "topic": "Educational and Psychological Assessments"
+    },
     "10.1080/03033910.2010.10446332": {
       "id": "https://openalex.org/W2038698218",
       "field": "Psychology",
@@ -4196,6 +4216,11 @@
       "id": "https://openalex.org/W2020932171",
       "field": "Psychology",
       "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1080/08870446.2024.2372651": {
+      "id": "https://openalex.org/W4400294331",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
     },
     "10.1080/09297040500473706": {
       "id": "https://openalex.org/W2136556448",
@@ -5422,6 +5447,11 @@
       "field": "Psychology",
       "topic": "Behavioral Health and Interventions"
     },
+    "10.1111/j.1468-3148.2004.00194.x": {
+      "id": "https://openalex.org/W2133514602",
+      "field": "Psychology",
+      "topic": "Educational and Psychological Assessments"
+    },
     "10.1111/j.1468-5884.2005.00297.x": {
       "id": "https://openalex.org/W1987889289",
       "field": "Psychology",
@@ -5697,6 +5727,11 @@
       "field": "Psychology",
       "topic": "Suicide and Self-Harm Studies"
     },
+    "10.1111/sltb.13024": {
+      "id": "https://openalex.org/W4389037127",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
     "10.1111/spc3.12900": {
       "id": "https://openalex.org/W4387129745",
       "field": "Psychology",
@@ -5842,6 +5877,11 @@
       "field": "Psychology",
       "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
+    "10.1176/ajp.153.11.1484": {
+      "id": "https://openalex.org/W176265305",
+      "field": "Psychology",
+      "topic": "Grief, Bereavement, and Mental Health"
+    },
     "10.1176/ajp.1979.136.4b.548": {
       "id": "https://openalex.org/W2419230901",
       "field": "Psychology",
@@ -5851,6 +5891,11 @@
       "id": "https://openalex.org/W2123806561",
       "field": "Medicine",
       "topic": "Fibromyalgia and Chronic Fatigue Syndrome Research"
+    },
+    "10.1176/appi.ajp.160.7.1339": {
+      "id": "https://openalex.org/W2131806234",
+      "field": "Psychology",
+      "topic": "Grief, Bereavement, and Mental Health"
     },
     "10.1176/appi.ajp.2014.14030357": {
       "id": "https://openalex.org/W2057921759",
@@ -8316,6 +8361,11 @@
       "id": "https://openalex.org/W4292844512",
       "field": "Mathematics",
       "topic": "Statistics Education and Methodologies"
+    },
+    "10.3109/0142159x.2015.1132409": {
+      "id": "https://openalex.org/W2293642254",
+      "field": "Psychology",
+      "topic": "Mentoring and Academic Development"
     },
     "10.3109/10826088809056189": {
       "id": "https://openalex.org/W2114877708",
