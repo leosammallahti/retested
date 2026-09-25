@@ -837,6 +837,25 @@ verified checkpoint, about **0.7 per minute**. The owner's requested rate is
 46 in 15 minutes, about **3.1 per minute**. Source checking and linking
 remain the rate limit. No push or site publication occurred.
 
+## 2ac. 2026-09-25 01:33 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **964**
+source-reviewed Psychology effect-plus-replication pairs on **939** distinct
+curated effects. The built site has **1,843** effects and **4,826** attempts;
+the audit reports **zero** issues. This is **310** more finished pairs than
+the 654-pair 19:46 UTC baseline and **12** more than the 952-pair checkpoint
+at 01:15 UTC.
+
+The latest four-stage build/audit took **19.9 seconds**: 6.4 and 6.5 seconds
+for the data builds, 6.7 seconds for the site build, and 0.3 seconds for the
+audit. Twelve new pairs took about 18 minutes of wall time since the previous
+verified checkpoint, about **0.7 per minute**. The owner's requested rate is
+46 in 15 minutes, about **3.1 per minute**. Source checking and linking
+remain the rate limit. The new Gable and Harmon-Jones finding has both a
+successful 2016 registered replication and a failed 2022 online replication,
+each explicitly tied to the narrowed-global-attention result. No push or site
+publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
