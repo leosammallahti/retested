@@ -42000,5 +42000,32 @@
     "original_journal": "Brain and Cognition",
     "original_source_url": "https://centaur.reading.ac.uk/14038/",
     "review_note": "Hadlington et al. 2006 itself reported a left-ear disadvantage with changing-state sequences under serial-order demands: Experiment 3b/c/d positive, steady-state 3a absent; its mental-arithmetic experiments also found the disadvantage. The 2024 study cites the 2006 original and retests changing versus steady state in visual-verbal serial recall with new Prolific adults (Experiment 1 N=80; Experiment 2 N=79). It supports the changing-state condition but does not separately retest absence under a non-serial attended task. No author overlap. Online 2024, print 2025. Official OpenAlex W4392003946 primary Psychology, type article."
+  },
+  {
+    "candidate_id": "10.1016/j.appet.2024.107728",
+    "doi_o": "10.1016/j.appet.2020.104808",
+    "doi_r": "10.1016/j.appet.2024.107728",
+    "effect_name": "Four patterns of negative emotional eating",
+    "effect_claim": "Negative emotional eating profiles include low or no emotional eating, overeating, undereating, and combined over- and undereating.",
+    "effect_claim_quote": "Overall, this study identified four distinct negative emotional eating patterns",
+    "original_source_url": "https://pubmed.ncbi.nlm.nih.gov/32712196/",
+    "original_title": "Patterns of negative emotional eating among Chinese young adults: A latent class analysis",
+    "original_year": 2020,
+    "original_authors": "He, Chen, Wu, Niu, and Fan",
+    "original_journal": "Appetite",
+    "replication_title": "Negative emotional eating patterns in Chinese adolescents: A replication and longitudinal extension with latent profile and transition analyses",
+    "replication_year": 2024,
+    "replication_authors": "Weng, Barnhart, Zickgraf, Dixit, Cheng, Chen, and He",
+    "replication_journal": "Appetite",
+    "replication_source_url": "https://www.sciencedirect.com/science/article/pii/S0195666324005324",
+    "replication_target_quote": "He, Chen, Wu, Niu, & Fan, 2020",
+    "outcome": "successful",
+    "outcome_quote": "Latent profile analysis (LPA) replicated the four patterns of negative emotional eating in each wave of assessment: low emotional eating (Low-EE), emotional overeating (EOE), emotional undereating (EUE), and emotional over- and under-eating (EOE-EUE).",
+    "outcome_quote_source": "abstract",
+    "review_note": "Fresh adolescent cohort N=1,462 aged 11–17 at baseline, followed 18 months, versus original 1,068 Chinese young adults aged 17–24. Shared authors Gui Chen and Jinbo He. Same AEBQ emotional overeating/undereating variables, but later uses continuous latent profile analysis and transition analysis rather than original dichotomized latent class analysis. The later paper explicitly identifies He et al. (2020) and reports four corresponding patterns at both waves; Low-EE corresponds to original non-EE. One later article represents one replication count despite 2 waves and multiple cited preceding studies. OpenAlex W4403681675 primary field Psychology, article, online publication 2024-10-23; journal issue January 2025.",
+    "preregistration_status": "unknown",
+    "reviewed_by": "codex_pool_483",
+    "reviewed_on": "2026-09-25",
+    "duplicate_candidate_ids": []
   }
 ]

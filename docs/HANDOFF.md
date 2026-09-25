@@ -1,7 +1,21 @@
 # Handoff — current verified state 2026-09-25
 
 
-## Current verified checkpoint — 2026-09-25 14:52 UTC
+## Current verified checkpoint — 2026-09-25 15:32 UTC
+
+On /root/retested on the VM, **1,554 effect-plus-replication pairs are fully finished** across **1,431 distinct curated effects**. Each counted pair has a later paper and a recorded result: **845 successful, 442 failed, 267 mixed**. Both data builds, the Astro site build (4,426 pages), and the exact-pair audit passed with **zero** issues. These are local built pages; no push or publication occurred. Relative to the starting 84 pairs and two effects, **1,470 pairs** and **1,429 effects** have been added or corrected.
+
+The new He 2020 to Weng 2024 pair is scoped to the four negative emotional-eating patterns. The original tested 1,068 young adults; the later study tested 1,462 adolescents and reported the four patterns in both waves. A separate stronger claim about which pattern has the highest psychopathology was not counted. The later paper's official OpenAlex primary field is Psychology.
+
+### DeepSeek checking the original, new participants, and exact result
+
+New pipeline/primary_source_review.py lets parallel DeepSeek workers read source excerpts and answer those three questions separately for a supplied named effect. Each positive answer requires a short quote that the program matches back to the correct original abstract, later citation/target, participant description, or later results. The exact earlier DOI must appear in the later references or text, and the citation passage must identify that earlier study. Missing or ambiguous evidence is held; the command writes review leads, never curated data.
+
+The first untargeted He/Weng model run picked a related but different result, and the program held it. After the target was supplied explicitly, all three source checks passed in **2.78 seconds**. A separate **four-worker, four-fresh-call** control run took **3.06 seconds**: two known true pairs passed, while two deliberately mismatched original/later pairs were held. Two further fresh challenge calls took **2.54 seconds** and correctly held a reused longitudinal cohort and an overclaimed originally nonsignificant finding, even without full text. Across these seven cases, three true pairs passed and four invalid or unsupported pairs were held. This is a small source-check pilot, not a measured full-pipeline throughput rate or general accuracy estimate. The new pair was then source-reviewed, built, and audited.
+
+Optional --oa in pipeline/source_prefetch.py now checks open-access article copies with provenance when publisher text is unavailable. In a controlled same-cache 20-paper comparison, usable later full texts increased from **8 to 9**; the extra text was a valid repository PDF. Four of eight prepared exact pairs now have both papers' full text, versus three before this fallback. A cold OA run took **55.43 seconds**. Limited full-text access remains a major constraint. The owner's target of **46 finished pairs per 15 minutes has not yet been demonstrated**; the last timed full-pipeline trial was 18 in 15 minutes.
+
+## Previous verified checkpoint — 2026-09-25 14:52 UTC
 
 On `/root/retested` on the VM, **1,553 effect-plus-replication pairs are fully finished** across **1,430 distinct curated effects**. Each counted effect has a later replication and a recorded result: **844 successful, 442 failed, 267 mixed** pair outcomes. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` passed at 14:51:56.737 UTC with **zero** exact-pair issues. These are local built pages; no push or publication occurred. Relative to the starting 84 pairs and two effects, **1,469 pairs** and **1,428 effects** have been added or corrected.
 

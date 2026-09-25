@@ -9021,6 +9021,11 @@
       "id": "https://openalex.org/W4392003946",
       "field": "Psychology",
       "topic": "Multisensory perception and integration"
+    },
+    "10.1016/j.appet.2024.107728": {
+      "id": "https://openalex.org/W4403681675",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
     }
   },
   "manual_exception": [

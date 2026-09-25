@@ -15,7 +15,7 @@ Input is a JSON array or JSONL of candidate objects. Each object needs
 Missing abstracts are skipped; callers may provide primary-source text in
 ``original_abstract_cached`` or ``replication_abstract_cached``.
 Output never implies that a citation match is a verified replication.
-The CLI uses no credentials and never edits curated or build files.
+The CLI never edits curated or build files. Optional --oa reads the existing project OpenAlex key internally when present; the key is never logged or cached.
 """
 import argparse
 import concurrent.futures as cf
@@ -29,6 +29,9 @@ from pathlib import Path
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlparse
+import logging
+import os
 
 UA = "RetestedEvidencePrefetch/0.1 (noncommercial DOI evidence review)"
 DOI_RE = re.compile(r"10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.I)
@@ -156,6 +159,136 @@ def ref_score(ref, contexts):
     if author and year and any(author in c.lower() and year in c for c in contexts): score += 4
     if author and any(author in c.lower() for c in contexts): score += 1
     return score
+def _openalex_key():
+    # Read the project's existing credential internally; never log or cache it.
+    key = os.environ.get("OPENALEX_API_KEY", "").strip()
+    if key:
+        return key
+    env = Path(__file__).resolve().parents[1] / ".env"
+    if env.exists():
+        for line in env.read_text(encoding="utf-8").splitlines():
+            if line.strip().startswith("OPENALEX_API_KEY="):
+                return line.split("=", 1)[1].strip().strip(chr(34)).strip(chr(39))
+    return ""
+
+
+def _oa_urls(meta):
+    # Repository copies usually survive publisher blocking. Skip datasets and
+    # generic DOI/ORCID landing pages; only OpenAlex-labelled OA locations qualify.
+    locations = [meta.get("best_oa_location") or {}] + (meta.get("locations") or [])
+    choices = []
+    seen = set()
+    for loc in locations:
+        if not isinstance(loc, dict) or not loc.get("is_oa"):
+            continue
+        source = loc.get("source") or {}
+        if source.get("type") == "dataset":
+            continue
+        for kind, url in (("pdf", loc.get("pdf_url")), ("html", loc.get("landing_page_url"))):
+            # Repository landing pages usually repeat the abstract and citation,
+            # not the article body; require a direct PDF for those locations.
+            if kind == "html" and source.get("type") == "repository":
+                continue
+            if not isinstance(url, str) or url in seen:
+                continue
+            parsed = urlparse(url)
+            host = (parsed.hostname or "").lower()
+            if parsed.scheme != "https" or not host or host in ("doi.org", "dx.doi.org", "orcid.org", "localhost") or host.endswith(".local"):
+                continue
+            seen.add(url)
+            priority = (0 if source.get("type") == "repository" else 1,
+                        0 if kind == "pdf" else 1)
+            choices.append((priority, url, kind, loc))
+    choices.sort(key=lambda x: x[0])
+    return choices[:6]
+
+
+def _oa_fulltext(doi, title, folder, args, errors):
+    meta = {}
+    try:
+        path = folder / "openalex.json"
+        if path.exists():
+            raw = path.read_text(encoding="utf-8")
+            status = 200
+        else:
+            params = {"select": "doi,best_oa_location,locations"}
+            key = _openalex_key()
+            if key:
+                params["api_key"] = key
+            raw, _, status = cache_fetch(
+                path,
+                "https://api.openalex.org/works/https://doi.org/" + quote(doi, safe=""),
+                "openalex", .18, args.timeout, params,
+            )
+        if status == 200 and raw:
+            meta = json.loads(raw)
+            if norm(meta.get("doi")) != doi:
+                errors.append("openalex_doi_mismatch")
+                meta = {}
+        else:
+            errors.append("openalex_http_" + str(status))
+    except Exception as exc:
+        errors.append("openalex_" + type(exc).__name__)
+    for _, url, kind, loc in _oa_urls(meta):
+        digest = hashlib.sha256(url.encode()).hexdigest()[:16]
+        body_file = folder / ("oa-" + digest + ".bytes")
+        status_file = folder / ("oa-" + digest + ".status")
+        try:
+            if body_file.exists():
+                body, status = body_file.read_bytes(), 200
+            elif status_file.exists():
+                body, status = b"", int(status_file.read_text())
+            else:
+                host = urlparse(url).hostname or "oa"
+                response = request(url, host, .3, args.timeout)
+                body, status = response.content, response.status_code
+                if status == 200 and body:
+                    body_file.write_bytes(body)
+                elif status in (403, 404, 410):
+                    status_file.write_text(str(status))
+            if status != 200 or not body:
+                errors.append("oa_http_" + str(status))
+                continue
+            if len(body) > 40_000_000:
+                errors.append("oa_too_large")
+                continue
+            if body.startswith(b"%PDF"):
+                from io import BytesIO
+                from pypdf import PdfReader
+                logging.getLogger("pypdf").setLevel(logging.ERROR)
+                pdf = PdfReader(BytesIO(body))
+                txt = " ".join((page.extract_text() or "") for page in pdf.pages[:30])
+                txt = re.sub(r"\s+", " ", txt)[:args.max_chars]
+            else:
+                if kind == "pdf":
+                    errors.append("oa_not_pdf")
+                    continue
+                txt = clean_markup(body.decode("utf-8", errors="replace"))[:args.max_chars]
+                low = txt.lower()
+                if len(txt) < 3000 or "result" not in low or not any(w in low for w in ("method", "discussion", "participant")):
+                    errors.append("oa_html_shell")
+                    continue
+            if len(txt) < 800 or any(b.lower() in txt[:1000].lower() for b in BAD):
+                errors.append("oa_unusable")
+                continue
+            from .fulltext import _about_this_paper
+            if not _about_this_paper(title, txt[:8000]):
+                errors.append("oa_title_mismatch")
+                continue
+            source = loc.get("source") or {}
+            provenance = {
+                "url": url,
+                "kind": kind,
+                "version": loc.get("version") or "",
+                "source": source.get("display_name") or "",
+                "source_type": source.get("type") or "",
+            }
+            return txt, provenance
+        except Exception as exc:
+            errors.append("oa_" + type(exc).__name__)
+    return "", {}
+
+
 def process(row, args):
     start = time.monotonic()
     doi = norm(row.get("doi_r") or row.get("replication_doi") or row.get("doi"))
@@ -251,6 +384,13 @@ def process(row, args):
                 full, full_source = raw[:args.max_chars], "Jina mirror of " + publisher
             else: errors.append("jina_unusable_" + str(status))
         except Exception as e: errors.append("jina_" + type(e).__name__)
+    oa_provenance = {}
+    if not full and args.oa:
+        full, oa_provenance = _oa_fulltext(
+            doi, row.get("title") or (cross.get("title") or [""])[0],
+            folder, args, errors)
+        if full:
+            full_source = "OpenAlex OA: " + oa_provenance["url"]
     if full:
         (folder/"primary_text.txt").write_text(full)
     elif (folder/"primary_text.txt").exists():
@@ -278,6 +418,7 @@ def process(row, args):
       "abstract": abstract, "abstract_source": abstract_source,
       "full_text_path": str(folder/"primary_text.txt") if full else "",
       "full_text_source": full_source, "full_text_chars": len(full),
+      "full_text_provenance": oa_provenance,
       "publisher_url": publisher, "reference_count": len(refs),
       "references": refs, "replication_contexts": contexts,
       "original_doi_given": known, "original_doi_in_references": bool(known and known in ref_seen),
@@ -295,6 +436,7 @@ def main():
     ap.add_argument("--timeout", type=float, default=12, help="per-request timeout in seconds")
     ap.add_argument("--max-chars", type=int, default=160000, help="maximum retained primary-source characters per DOI")
     ap.add_argument("--jina", action="store_true", help="try a public text mirror if publisher and PMC full text fail")
+    ap.add_argument("--oa", action="store_true", help="try OpenAlex OA article copies when other full text fails; uses the existing project API key internally if present")
     ap.add_argument("--emit-exact", help="Optional valid pipeline.exact_review two-abstract JSONL")
     args = ap.parse_args()
     if not (1 <= args.workers <= 4): ap.error("workers must be 1..4")
