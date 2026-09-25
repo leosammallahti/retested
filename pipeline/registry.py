@@ -196,6 +196,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             "reviewed_by": r["reviewed_by"], "reviewed_on": r["reviewed_on"],
             "original_source_url": r["original_source_url"],
             "original_claim_quote": r["effect_claim_quote"],
+            "original_source_type": r.get("original_source_type"),
             "replication_source_url": r["replication_source_url"],
             "replication_target_quote": r["replication_target_quote"],
             "outcome_quote": r["outcome_quote"],

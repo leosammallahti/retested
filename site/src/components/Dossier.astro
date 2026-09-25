@@ -142,6 +142,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
           {a.title_r && <p class="lt">{a.title_r}</p>}
           {a.quote && <blockquote class="q">“{clip(cleanQuote(a.quote), 420)}”</blockquote>}
           {a.retested_review?.review_note && <p class="muted" style="font-size:.88rem">{a.retested_review.review_note}</p>}
+          {a.retested_review?.original_source_type && a.retested_review.original_source_type !== "empirical_study" && <span class="chip warn">{a.retested_review.original_source_type === "meta_analysis" ? "Earlier source: meta-analysis" : a.retested_review.original_source_type === "review" ? "Earlier source: review" : "Earlier source: other"}</span>}
           {a.retested_review && <p class="faint mono" style="font-size:.72rem">Retested source check: <a href={a.retested_review.original_source_url} rel="noopener">original claim</a> · <a href={a.retested_review.replication_source_url} rel="noopener">replication result</a> · {a.retested_review.reviewed_on}</p>}
           <div class="lfoot mono">
             {e && <span>r = {fr(e.r)} [{fr(e.ci[0])}, {fr(e.ci[1])}] · N = {int(e.n)}{e.k_rows > 1 ? ` · ${e.k_rows} rows pooled` : ''}</span>}

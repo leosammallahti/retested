@@ -1,5 +1,15 @@
 # Handoff — current verified state 2026-09-25
 
+## Current verified checkpoint — 2026-09-25 19:33 UTC
+
+On /root/retested, **1,578 effect-plus-replication pairs are fully finished** across **1,455 distinct curated effects**: **862 successful, 447 failed, 269 mixed**. Both data builds, the local Astro site build (**4,472 pages**), and the exact-pair audit passed with **zero issues**. This adds four pairs and effects to the 19:05 checkpoint. The site was not pushed or published.
+
+The third bounded batch screened 24 older Psychology-primary later papers. Two parallel readers staged four source-supported unique pairs so far: threat and rear-positioned leader representation, daily perfectionistic self-presentation and social anxiety, loot-box spending and problem gambling, and gender moderation of attraction cues in real speed dating. The source quotes were checked and corrected centrally before the full build. The first reader's remaining fixed cases were still being closed at this checkpoint. The initial 24-paper prefetch took 34 seconds but yielded full article text for only seven papers; exact original/source/result checking remained the long stage. Four finished additions in roughly 22 minutes from the 19:12 dispatch is about 2.7 per 15 minutes, far below the owner's target of 46.
+
+The owner clarified that a prior review or meta-analysis reporting the exact earlier effect may count when a later independent test reports the same effect's result. The earlier source type must be labeled explicitly. The old reading rubric's blanket review exclusion applied to matching one source study in the link-audit workflow; it should not automatically reject these new additions. The curated schema and dossier now support a visible "Earlier source: meta-analysis/review" tag. Existing four new entries use empirical studies. No review/meta-analysis entry was added at this checkpoint.
+
+A potentially higher-yield source was found: Soto 2019 LOOPR reports 78 trait–life-outcome replication associations with an author-coded workbook mapping 121 suboutcome rows to earlier sources and exact results. Primary paper and supplement are at the author's OSF project; source workbook and local source evidence are under /tmp/retested-production-loopr-*. Those are leads until each row's earlier effect, independent later sample and specific result are checked and built. Two readers are working fixed disjoint original-source sets.
+
 ## Current verified checkpoint — 2026-09-25 19:05 UTC
 
 On /root/retested, **1,574 effect-plus-replication pairs are fully finished** across **1,451 distinct curated effects**: **858 successful, 447 failed, 269 mixed**. Both data builds, the local Astro site build (**4,465 pages**), and the exact-pair audit passed with **zero issues**. This adds **six** pairs and effects to the 18:43 checkpoint. The site was not pushed or published.

@@ -37,7 +37,7 @@ export interface Attempt {
   title_r?: string; year_r?: number; journal_r?: string; authors_r?: string; url_r?: string; oa_url_r?: string;
   quote?: string; quote_source?: string; author_overlap_pct?: number; flora_source?: string;
   retested_review?: { candidate_id: string; reviewed_by: string; reviewed_on: string;
-    original_source_url: string; original_claim_quote: string; replication_source_url: string;
+    original_source_url: string; original_claim_quote: string; original_source_type?: "empirical_study" | "meta_analysis" | "review" | "other" | null; replication_source_url: string;
     replication_target_quote: string; outcome_quote: string; outcome_quote_source: string; review_note?: string | null };
 }
 export interface Paper { doi: string; slug: string; title?: string; year?: number; journal?: string; authors?: string; ref?: string; oa_url?: string; openalex?: { cited_by: number; counts_by_year: Record<string, number>; is_retracted: boolean; topic: string; subfield: string; field: string } }
