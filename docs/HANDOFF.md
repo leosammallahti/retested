@@ -1,6 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
 
+## Six more fully checked pairs — 2026-09-25 21:08:55 UTC
+
+The latest complete local data build, site build (4,501 pages), and exact-pair audit passed with zero issues. There are **1,596 raw curated rows**, folded to **1,593 built pairs carrying Retested review**; **1,142 are new original/later pairs** and 451 overlay a FORRT pair. There are **1,470 effects named by Retested**, of which **1,467 are new to the site**. The six new built pairs since 20:55:26 are infant nap-dependent memory, prosocial spending and happiness, older-adult Lighten UP! well-being, hypnotic age regression and visual illusions, patient race and clinician judgments, and sport-psychologist consultation and athlete draft ratings. Each has original/later source quotations, a distinct later participant sample, exact outcome, an exact original DOI citation in the later OpenAlex record, and Psychology as the later paper's OpenAlex primary field. Overlapping authors and the conditional scope of two outcomes are disclosed in the rows. No push or site publication.
+
+The 20:55:26 to 21:08:55 audited checkpoints are **13 minutes 29 seconds apart for six finished new pairs**, or about **6.7 per 15 minutes**. This still misses the owner's 46-per-15-minute target. Paper-version duplicates, field exclusions, and unclear participant independence were rejected before the build. The remaining prepared leads are only leads until source review and full build/audit.
+
 ## Source-checked additions and version audit — 2026-09-25 20:48 UTC
 
 The last completed local build and exact-pair audit have **1,590 reviewed JSON rows**, folded to **1,587 built pairs carrying Retested review**. **1,136 pairs are new original/later pairs**; 451 overlap a FORRT pair. There are **1,465 effects named by Retested**, **1,462 new to the site**. The three net new pairs since the 20:04 checkpoint are D'Amato and Michaelides 2021 versus Schneider et al. 1998 on manager personality homogeneity (mixed), Frantz, Morling, and Radu 2018 versus Mueller and Oppenheimer 2014 on longhand conceptual learning (successful), and Etchart and Winke 2024 versus Teimouri et al. 2022 on two-factor L2 grit (mixed). Original and later source quotes, independent participants, exact outcome, and later-paper OpenAlex Psychology primary field were checked. The Frantz preprint's DOI metadata lists only Morling; Urry et al. 2021 cites all three authors, and the curated attribution follows that paper. There has been no push or site publication.
