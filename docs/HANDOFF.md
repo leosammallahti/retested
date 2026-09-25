@@ -1125,6 +1125,39 @@ the shared live OpenAlex API is rate-limited. The cached records give the
 work ID, article type, and primary Psychology field. No push or site
 publication occurred.
 
+## 2ap. 2026-09-25 05:18 UTC: 1,265 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,265**
+source-reviewed Psychology effect-plus-replication pairs on **1,164**
+distinct curated effects. The site has **2,068** effects and **4,961**
+attempts; the audit reports **zero** issues. Of curated material,
+**1,181** pairs and **1,162** distinct effects are additions beyond the
+preexisting collection. This is **14** more finished pairs than the
+1,251-pair 05:13 UTC checkpoint over **5 minutes**: approximately
+**42 pairs per 15 minutes**, still below the owner's **46 per 15
+minutes** target. The latest four-stage build and audit took **19.2
+seconds**.
+
+New source-reviewed independent-author pairs include the less-is-more
+liking test, social value orientation and secure attachment,
+accent-exposure veracity ratings, spousal social support gaps, helper
+intentions and gratitude, golf-putting learning under teach expectancy,
+infant arithmetic, cue blocking, and mortality-salience responses.
+Mixed labels retain the study-level distinctions where only some
+findings recur. An experimental frustration packet was held when its
+first mixed coding conflicted with an existing successful source
+verdict; a corrected page narrows the claim to replicated self-report
+outcomes and explicitly notes the unusable response-force and
+nonreplicated imaging measures. Every later article has a cached
+OpenAlex Psychology primary-field check. No push or site publication
+occurred.
+
+## 2aq. 2026-09-25 05:33 UTC: 1,300 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,300** source-reviewed Psychology effect-plus-replication pairs on **1,199** distinct curated effects. The site has **2,103** effects and **4,964** attempts; the audit reports **zero** issues. Of curated material, **1,216** pairs and **1,197** distinct effects are additions beyond the preexisting collection. This is **35** more finished pairs than the 1,265-pair 05:18 UTC checkpoint over **15 minutes**: **35 pairs per 15 minutes**, below the owner's **46 per 15 minutes** target. The four-stage build and audit took **19.9 seconds**.
+
+New reviewed pairs include the English/Croatian linguistic-framing replication (mixed), sexual overperception reports (successful), maternal sensitivity as an infant-attachment predictor (failed), cafeteria behavior game (successful but lower fidelity and acceptability), abnormal-event regret, infant goal prediction, and the first/third-letter availability bias. Two FLoRA original links were corrected to the original papers explicitly tested in the later articles. We excluded a First Step paper whose DOI did not match the later article's cited original, and an immediate-reinforcement pair whose later result pointed opposite the original finding despite a source success label. A correlational survey of rewards was also held because it does not causally retest Deci's experiment. Cached OpenAlex work records verify the later papers' primary Psychology field. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
