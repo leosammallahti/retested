@@ -8501,6 +8501,86 @@
       "id": "https://openalex.org/W2064427971",
       "field": "Psychology",
       "topic": "Identity, Memory, and Therapy"
+    },
+    "10.1016/j.brat.2020.103799": {
+      "id": "https://openalex.org/W3016862966",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1080/00913367.2015.1089426": {
+      "id": "https://openalex.org/W2296928627",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1080/1368282031000062882": {
+      "id": "https://openalex.org/W2137595489",
+      "field": "Psychology",
+      "topic": "Stuttering Research and Treatment"
+    },
+    "10.1111/jopy.12677": {
+      "id": "https://openalex.org/W3203729829",
+      "field": "Psychology",
+      "topic": "Identity, Memory, and Therapy"
+    },
+    "10.1177/0014402920953763": {
+      "id": "https://openalex.org/W3088574138",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1371/journal.pone.0237007": {
+      "id": "https://openalex.org/W3049708307",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
+    },
+    "10.1002/jeab.915": {
+      "id": "https://openalex.org/W4396811608",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1038/s41562-020-0878-x": {
+      "id": "https://openalex.org/W3033625555",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
+    },
+    "10.1016/j.evolhumbehav.2022.04.002": {
+      "id": "https://openalex.org/W4224125067",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1016/j.ijpsycho.2020.10.005": {
+      "id": "https://openalex.org/W3093477103",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1037/a0033303": {
+      "id": "https://openalex.org/W2021310836",
+      "field": "Psychology",
+      "topic": "Psychopathy, Forensic Psychiatry, Sexual Offending"
+    },
+    "10.1080/1612197x.2016.1199580": {
+      "id": "https://openalex.org/W2474488897",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1080/20445911.2020.1805453": {
+      "id": "https://openalex.org/W3048825571",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1111/psyp.12825": {
+      "id": "https://openalex.org/W2584006007",
+      "field": "Psychology",
+      "topic": "Deception detection and forensic psychology"
+    },
+    "10.1177/08902070221094216": {
+      "id": "https://openalex.org/W4281749417",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.2174/1874402800902010006": {
+      "id": "https://openalex.org/W2090721600",
+      "field": "Psychology",
+      "topic": "Deception detection and forensic psychology"
     }
   },
   "manual_exception": [

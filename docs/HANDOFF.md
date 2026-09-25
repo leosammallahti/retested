@@ -1,9 +1,9 @@
 # Handoff — current verified state 2026-09-25
 
 
-## Current verified checkpoint — 2026-09-25 11:02 UTC
+## Current verified checkpoint — 2026-09-25 11:15 UTC
 
-On `/root/retested` on the VM, **1,446 effect-plus-replication pairs are finished** across **1,329 distinct curated effects**. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` pass with **zero** exact-pair issues. These are local built pages, not merely review-queue candidates. Relative to the 84-pair, two-effect preexisting curated collection, the current set contains **1,362 added or corrected pairs** and **1,327 added or corrected effects**.
+On `/root/retested` on the VM, **1,462 effect-plus-replication pairs are finished** across **1,345 distinct curated effects**. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` pass with **zero** exact-pair issues. These are local built pages, not merely review-queue candidates. Relative to the 84-pair, two-effect preexisting curated collection, the current set contains **1,378 added or corrected pairs** and **1,343 added or corrected effects**.
 
 The earlier **1,700** checkpoint was wrong for the owner's Psychology-only scope: a complete OpenAlex primary-field audit found **275 later papers whose primary field was outside Psychology** and **one legacy DOI whose field could not be verified**. All 276 rows were removed from the counted collection and preserved in `data/curated/held_out_of_scope_primary_20260925.json`. Historical counts below are audit history and **do not supersede this corrected total**. One explicitly documented Ward 1964 Psychology-journal paper remains as a manual correction of an anomalous Agriculture/Farm Safety machine classification. The build now checks the audited primary field for every promoted later DOI and fails if evidence is missing or out of scope. No push or site publication occurred.
 
@@ -1314,6 +1314,15 @@ The net finished count fell **261** from the old 1,700 checkpoint because the 27
 Seven further exact-pair, source-reviewed Psychology-primary retests passed both data builds, the Astro site build, and `python -m pipeline.audit_promoted`: **1,446 pairs, 1,329 curated effects, 2,231 site effects, 4,881 attempts, zero audit issues**. The stages took **21.0 seconds** (6.7 + 6.6 + 7.3 + 0.3 seconds). These include new participants for fear-of-arousal running exposure, French morphological flankers, On Track reading tutoring, psychotherapy improvement paths, preschool anti-bullying, and assisted storybook reading. The Norwegian identity comparison uses a new Norwegian sample with a reused US comparison sample, explicitly disclosed. Shared original authors and outcome limits are described on the pages. The newly added later papers' official OpenAlex primary field is Psychology.
 
 This is **seven** more finished pairs than the corrected 10:58 checkpoint over about **four minutes**, approximately **26 per 15 minutes**. It is a short interval and remains below the owner's sustained **46 per 15 minutes** target. No push or site publication occurred.
+
+
+## 2bp. 2026-09-25 11:15 UTC: 1,462 fully built pairs and measured review pace
+
+Both data builds, the site build, and python -m pipeline.audit_promoted pass at **1,462** Psychology-primary, exact-source effect-plus-replication pairs across **1,345** curated effects. The built site contains **2,247** effects and **4,886** attempts; the audit reports **zero** issues. The latest four-stage run took **20.9 seconds** (6.8 + 6.4 + 7.3 + 0.3 seconds, rounded). The field-evidence guard passed for every pair.
+
+This is **16** more fully built pairs than the 11:02 checkpoint. Audit-log timestamps are 11:02:01.846 and 11:15:04.979 UTC: **13 minutes 3 seconds**, or **49 seconds of elapsed wall time per new finished pair** with three source reviewers and one integrator. The observed rate is **18.4 per 15 minutes**, still **2.5 times slower** than the owner's 46-per-15-minute target (19.6 seconds per pair). The site/data build takes about 21 seconds per batch; identifying and source-checking defensible new studies is the dominant time.
+
+The latest pairs include preregistered oxytocin/trust and fighter-face failures, a new gratitude and stress-reactivity sample, revised threat-learning data, SVO correlates, exercise-partner encouragement, classroom behavior observation, a new treatment-severity sample, and a concealed-information physiology retest. Where authors overlap, the page notes new participants and author overlap. A partial original comparator reuse in the Norwegian identity study is disclosed. The Psychology-primary field of every newly added later article was checked directly through OpenAlex. No push or site publication occurred.
 
 ## 3. Next steps, in order
 
