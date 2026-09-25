@@ -979,6 +979,28 @@ duplicates and a self-overlapping cohort were excluded. The peer-group
 replication's apparent assimilation was explained by regression to the
 mean. No push or site publication occurred.
 
+## 2aj. 2026-09-25 03:25 UTC: 1,116 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,116**
+source-reviewed Psychology effect-plus-replication pairs on **1,016** distinct
+curated effects. The site build has **1,920** effects and **4,932** attempts;
+the audit reports **zero** issues. This is **462** more finished pairs than
+the 654-pair 19:46 UTC baseline and **26** more than the 1,090-pair
+03:00 UTC checkpoint. About **25 minutes** elapsed, approximately
+**16 finished pairs per 15 minutes**, below the owner's requested **46 per
+15 minutes**. The latest four-stage build/audit took **19.6 seconds**.
+
+New independent-author records include two failed direct retests of Bem's
+retroactive recall claim, achievement-word priming, subjective likelihood
+and construal, facial feedback, commitment priming, bottomless soup bowls,
+emotion-regulation fit, and future-self letters. Several successful or
+mixed outcomes are also represented. Three overlapping-author candidate
+pairs were removed before this checkpoint, as was a duplicate candidate;
+a Bem precognition link conflicting with the existing FLoRA paper-level
+label remained excluded pending effect-specific adjudication. The current
+bottleneck is source and author verification, not the builds. No push or
+site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
