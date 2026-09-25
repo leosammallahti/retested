@@ -875,6 +875,30 @@ attention effect, an infant communication-intervention replication with a
 corrected original paper, and a Japanese psychological-flexibility profile
 replication. No push or site publication occurred.
 
+## 2ae. 2026-09-25 02:06 UTC: 1,000 built Psychology pairs
+
+Both data builds, the site build, and the exact-pair audit pass at **1,000**
+source-reviewed Psychology effect-plus-replication pairs on **965** distinct
+curated effects. The built site has **1,869** effects and **4,859** attempts;
+the audit reports **zero** issues. This is **346** more finished pairs than
+the 654-pair 19:46 UTC baseline, and **23** more than the saved 977-pair
+checkpoint at 01:43 UTC.
+
+The latest four-stage build/audit took **19.7 seconds**: data builds 6.4
+and 6.4 seconds, site build 6.6 seconds, audit 0.3 seconds. The 23 new
+pairs took about 23 minutes of wall time since the prior checkpoint,
+approximately **1.0 pair per minute**, below the owner's requested
+46 in 15 minutes (**3.1 per minute**). Searching, reading exact results,
+checking original links, and resolving an existing outcome disagreement
+account for most of the elapsed time. New pages include the original
+Song infant communication effect with later cross-language and conceptual
+replications; independent power-pose retests with scoped hormone, risk,
+and felt-power outcomes; Deci's monetary-reward effect with a failed
+direct test; and an independent PTSD treatment replication. Existing
+legacy coding for Bailey 2017 was retained as **failed** for its
+preregistered main test, with exploratory support noted. No push or site
+publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
