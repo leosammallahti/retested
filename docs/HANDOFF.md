@@ -1,5 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
+## Ten more fully checked pairs — 2026-09-25 22:24:53 UTC
+
+The data build, Astro site build (4,606 pages), exact-pair audit, and whitespace check passed. **1,646 built pairs carry Retested review, including 1,195 new original/later pairs** and 451 overlays on FORRT pairs. The curated JSON has 1,649 raw rows. **1,523 built effects are Retested named, including 1,520 new effects.** Ten new pairs passed the complete pipeline: artificial-language word order with pictographs (successful conceptual); four-domain aggression measure in a new US child cohort (successful conceptual, smaller model); selective phobia-material recall (failed); induced self-discontinuity increasing state nostalgia (failed, despite some correlational support); background-guided reading interpretation (successful); equal silent/spoken rehearsal rates (failed as a general rule); older-sibling committed compliance (successful); Rorschach predictors of Norwegian naval training completion (successful, smaller correlation); CODIP child adjustment (successful improvement with a weaker later comparison); and a college eating-disturbance psychoeducation intervention (successful). Each row gives source quotes, a new cohort or separate experiment, the exact original/later DOI, the observed result, and the later Psychology field. Several studies share authors; the rows state that and narrow conceptual or partial outcomes. No push or site publication.
+
+From the previous 22:10:03 checkpoint to the 22:24:53 completed site build, **ten new pairs passed in 14 minutes 50 seconds**, about **10.1 per 15 minutes**. This remains far below the owner's 46-per-15-minute target. VM free space was 38 GB.
+
+
 
 ## Three more fully checked pairs — 2026-09-25 22:10:03 UTC
 

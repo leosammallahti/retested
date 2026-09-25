@@ -207,6 +207,11 @@
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
     },
+    "10.1002/eat.20252": {
+      "id": "https://openalex.org/W2094278599",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
     "10.1002/eat.20444": {
       "id": "https://openalex.org/W2090726979",
       "field": "Psychology",
@@ -601,6 +606,11 @@
       "id": "https://openalex.org/W2062422334",
       "field": "Medicine",
       "topic": "Schizophrenia research and treatment"
+    },
+    "10.1007/bf00911175": {
+      "id": "https://openalex.org/W2037491196",
+      "field": "Psychology",
+      "topic": "Grief, Bereavement, and Mental Health"
     },
     "10.1007/bf00912858": {
       "id": "https://openalex.org/W2007339050",
@@ -3027,6 +3037,11 @@
       "field": "Neuroscience",
       "topic": "Neurobiology of Language and Bilingualism"
     },
+    "10.1037/0893-3200.22.3.355": {
+      "id": "https://openalex.org/W2060045680",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
     "10.1037/1089-2699.12.4.255": {
       "id": "https://openalex.org/W2044692189",
       "field": "Psychology",
@@ -3951,6 +3966,11 @@
       "id": "https://openalex.org/W2056555730",
       "field": "Psychology",
       "topic": "Action Observation and Synchronization"
+    },
+    "10.1080/00223890902794309": {
+      "id": "https://openalex.org/W2038220821",
+      "field": "Psychology",
+      "topic": "Psychological Testing and Assessment"
     },
     "10.1080/00223891.2012.730084": {
       "id": "https://openalex.org/W2003344632",
@@ -5582,6 +5602,11 @@
       "field": "Psychology",
       "topic": "Cognitive Abilities and Testing"
     },
+    "10.1111/j.2044-8260.1988.tb00788.x": {
+      "id": "https://openalex.org/W1997465924",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
     "10.1111/j.2044-8341.1993.tb01764.x": {
       "id": "https://openalex.org/W2058816106",
       "field": "Medicine",
@@ -6186,6 +6211,11 @@
       "id": "https://openalex.org/W229619513",
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1177/0165025408089273": {
+      "id": "https://openalex.org/W2126682852",
+      "field": "Psychology",
+      "topic": "Bullying, Victimization, and Aggression"
     },
     "10.1177/016502548801100204": {
       "id": "https://openalex.org/W2122540896",
@@ -8012,6 +8042,11 @@
       "field": "Psychology",
       "topic": "Academic and Historical Perspectives in Psychology"
     },
+    "10.2466/pms.1978.46.3c.1197": {
+      "id": "https://openalex.org/W2079091638",
+      "field": "Psychology",
+      "topic": "Phonetics and Phonology Research"
+    },
     "10.2466/pms.1978.46.3f.1305": {
       "id": "https://openalex.org/W2317981702",
       "field": "Psychology",
@@ -8462,6 +8497,11 @@
       "field": "Psychology",
       "topic": "Death Anxiety and Social Exclusion"
     },
+    "10.3102/00028312016004341": {
+      "id": "https://openalex.org/W2021442790",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
     "10.3102/1440078": {
       "id": "https://openalex.org/W4292844512",
       "field": "Mathematics",
@@ -8541,6 +8581,11 @@
       "id": "https://openalex.org/W4250164322",
       "field": "Social Sciences",
       "topic": "Social and Intergroup Psychology"
+    },
+    "10.31234/osf.io/e2wn3": {
+      "id": "https://openalex.org/W4380887025",
+      "field": "Psychology",
+      "topic": "Language, Metaphor, and Cognition"
     },
     "10.31234/osf.io/gkjzs": {
       "id": "https://openalex.org/W3162255342",
@@ -9261,6 +9306,11 @@
       "id": "https://openalex.org/W4407918676",
       "field": "Psychology",
       "topic": "Grit, Self-Efficacy, and Motivation"
+    },
+    "10.5265/jcogpsy.22.125": {
+      "id": "https://openalex.org/W4408818961",
+      "field": "Psychology",
+      "topic": "Nostalgia and Consumer Behavior"
     },
     "10.5281/zenodo.21030714": {
       "id": "https://openalex.org/W7166854275",
