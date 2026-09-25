@@ -1,6 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
 
+## Dissertation replication fully checked — 2026-09-25 21:39:27 UTC
+
+The data build, Astro site build (4,548 pages), and exact-pair audit passed with zero issues. **1,617 built pairs carry Retested review; 1,166 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,620 raw rows. **1,494 built effects are Retested named; 1,491 are new to the site.** Added Frampton and Shillingsburg 2019 versus Gavidia 2021, a University of North Texas dissertation repeating instructive feedback with two new autistic children. The later result is mixed: emergent responses occurred for the first stimulus set in both children but not the remaining sets for one child. The dissertation source type is stated in its source label. Exact DOI reference, distinct participants, outcome quote, and later Psychology primary field were checked. No push or publication.
+
+From the 21:08:55 audited checkpoint to this 21:39:27 checkpoint, **24 new pairs passed in 30 minutes 32 seconds**, about **11.8 per 15 minutes**. This remains below the owner's 46-per-15-minute target. VM free disk space was 38 GB.
+
 ## One more fully checked pair — 2026-09-25 21:37:31 UTC
 
 The data build, Astro site build (4,547 pages), and exact-pair audit passed with zero issues. **1,616 built pairs carry Retested review; 1,165 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,619 raw rows. **1,493 built effects are Retested named; 1,490 are new to the site.** Added Hupert et al. 2004 versus Jenkins et al. 2007: 42% versus 54% of respondents in different college dormitory surveys reported computer-related upper-extremity symptoms. Shared authors, separate colleges/cohorts, observational scope, exact original citation, and later Psychology primary field are documented in the row. No push or publication.

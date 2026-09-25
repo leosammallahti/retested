@@ -43825,5 +43825,33 @@
     "outcome": "successful",
     "outcome_quote": "54% reported experiencing symptoms associated with computer usage.",
     "review_note": "The original surveyed a residential college dormitory and found 42% of 194 responding students reported computer-related upper-extremity symptoms. The later study surveyed a different college student population in a private southwestern university dormitory (116 respondents) and found 54%. Several authors overlap, but the institutions and participants differ. This is a repeated prevalence observation, not an experiment showing computer use caused symptoms. The later paper cites the exact original DOI and has OpenAlex primary field Psychology."
+  },
+  {
+    "original_source_type": "empirical_study",
+    "preregistration_status": "unknown",
+    "reviewed_by": "Codex source review",
+    "reviewed_on": "2026-09-25",
+    "duplicate_candidate_ids": [],
+    "outcome_quote_source": "abstract",
+    "candidate_id": "10.12794/metadc1833527",
+    "doi_o": "10.1002/jaba.659",
+    "doi_r": "10.12794/metadc1833527",
+    "effect_name": "Instructive feedback elicits untrained verbal responses",
+    "effect_claim": "In children with autism spectrum disorder, instructive feedback during mastered listener trials increased correct responses on related verbal tasks that had not been directly taught.",
+    "effect_claim_quote": "We observed increased correct responses for related verbal responses; replicating Shillingsburg et al.",
+    "original_source_url": "https://doi.org/10.1002/jaba.659",
+    "original_title": "Promoting the development of verbal responses using instructive feedback",
+    "original_year": 2019,
+    "original_authors": "Sarah E. Frampton, M. Alice Shillingsburg",
+    "original_journal": "Journal of Applied Behavior Analysis",
+    "replication_title": "The Use of Instructive Feedback to Promote Emergent Verbal Responses: A Replication",
+    "replication_year": 2021,
+    "replication_authors": "Valeria Laddaga Gavidia",
+    "replication_journal": "University of North Texas dissertation",
+    "replication_source_url": "https://doi.org/10.12794/metadc1833527",
+    "replication_target_quote": "The current study replicated a previous study on IF with two children with ASD.",
+    "outcome": "mixed",
+    "outcome_quote": "We observed increased correct responding for secondary targets and emergent responses for the first set of stimuli with both participants. However, one participant did not engage in emergent responses for the two remaining sets.",
+    "review_note": "The original Journal of Applied Behavior Analysis experiment used instructive feedback with two children with autism. The later University of North Texas dissertation reports a new two-child replication: both showed emergent responses for the first stimulus set, but one did not show them in two later sets. Its participant cohort and author are distinct. The later work is a dissertation rather than a journal article; this is stated in its source label. It cites the exact original DOI and has OpenAlex primary field Psychology."
   }
 ]
