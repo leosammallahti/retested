@@ -1226,6 +1226,12 @@ Both data builds, the site build, and exact-pair audit pass at **1,565** source-
 
 New reviewed pairs include new-cohort retests of oxytocin and empathy, childhood maltreatment and postpartum stressors, emotion-regulation sequencing, therapist experience and patient outcomes, second-language learning, and several published Psychology studies. Shared original authors are included when the later paper uses a new cohort; author overlap and design limits are stated in the page notes. The earlier Vaughn motivation-fit and Chabris physical-warmth preprint versions remain linked to their published or revised studies without counting the same experiment twice. No push or site publication occurred.
 
+## 2bc. 2026-09-25 08:43 UTC: 1,584 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,584** source-reviewed Psychology effect-plus-replication pairs on **1,459** distinct curated effects. The site has **2,361** effects and **5,087** attempts; the audit reports **zero** issues. Of curated material, **1,500** pairs and **1,457** distinct effects are additions beyond the preexisting collection. The four-stage build and audit took **20.7 seconds** (6.5 + 6.4 + 7.4 + 0.4 seconds). This is **19** more finished pairs than the 1,565 checkpoint at 08:27 UTC, over about **16 minutes**: approximately **18 pairs per 15 minutes**, below the owner's **46 per 15 minutes** target.
+
+The three previously held shared-author cases are now curated: beauty/impression accuracy, face preference, and Gino/Bazerman gradual ethical erosion; each uses new participants and discloses author overlap. A separate, large women's face-preference sample is a distinct replication from the already curated men's sample. The 2020 magpie mark-test replication's accepted-manuscript version at https://zenodo.org/records/18538611 is linked in its page note and counted once. Further reviewed studies include two additional Langer/Roth illusion-of-control experiments, emotion regulation, school-counselor assignment, and speech perception. Notes keep narrower successes separate from mixed article-level outcomes and identify dissertations, preprints, and undergraduate venues. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
