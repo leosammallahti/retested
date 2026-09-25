@@ -9041,6 +9041,61 @@
       "id": "https://openalex.org/W4319827558",
       "field": "Psychology",
       "topic": "Mindfulness and Compassion Interventions"
+    },
+    "10.1080/14733140903031119": {
+      "id": "https://openalex.org/W2154037317",
+      "field": "Psychology",
+      "topic": "Counseling Practices and Supervision"
+    },
+    "10.32601/ejal.460588": {
+      "id": "https://openalex.org/W2099791892",
+      "field": "Psychology",
+      "topic": "Second Language Acquisition and Learning"
+    },
+    "10.1097/01.psy.0000058375.50240.f6": {
+      "id": "https://openalex.org/W2055356823",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1371/journal.pone.0051382": {
+      "id": "https://openalex.org/W2170014302",
+      "field": "Psychology",
+      "topic": "Language, Metaphor, and Cognition"
+    },
+    "10.1016/j.evolhumbehav.2018.02.008": {
+      "id": "https://openalex.org/W2792601298",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.3389/fresc.2025.1541059": {
+      "id": "https://openalex.org/W4410570854",
+      "field": "Psychology",
+      "topic": "Stuttering Research and Treatment"
+    },
+    "10.1007/s10826-023-02610-3": {
+      "id": "https://openalex.org/W4380684857",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1371/journal.pone.0289741": {
+      "id": "https://openalex.org/W4386767546",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1177/147470491100900306": {
+      "id": "https://openalex.org/W2249417873",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1098/rsos.191922": {
+      "id": "https://openalex.org/W3025654970",
+      "field": "Psychology",
+      "topic": "Emotions and Moral Behavior"
+    },
+    "10.3389/fpsyt.2018.00639": {
+      "id": "https://openalex.org/W2903260776",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
     }
   },
   "manual_exception": [
