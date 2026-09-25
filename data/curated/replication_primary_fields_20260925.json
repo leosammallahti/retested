@@ -8581,6 +8581,126 @@
       "id": "https://openalex.org/W2090721600",
       "field": "Psychology",
       "topic": "Deception detection and forensic psychology"
+    },
+    "10.1016/j.bandl.2021.105007": {
+      "id": "https://openalex.org/W3195304044",
+      "field": "Psychology",
+      "topic": "Language, Metaphor, and Cognition"
+    },
+    "10.1007/s40617-021-00562-y": {
+      "id": "https://openalex.org/W3138417054",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1016/j.sleep.2021.06.032": {
+      "id": "https://openalex.org/W3173911214",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1016/j.brat.2023.104436": {
+      "id": "https://openalex.org/W4388599241",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1017/s0272263111000325": {
+      "id": "https://openalex.org/W2147211638",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1037/bne0000439": {
+      "id": "https://openalex.org/W4300689328",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1371/journal.pone.0335330": {
+      "id": "https://openalex.org/W4415933807",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.31275/20211903": {
+      "id": "https://openalex.org/W3136410939",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.3389/fnbeh.2020.00128": {
+      "id": "https://openalex.org/W3020892420",
+      "field": "Psychology",
+      "topic": "Mental Health Research Topics"
+    },
+    "10.1002/smi.3035": {
+      "id": "https://openalex.org/W3131735914",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
+    },
+    "10.1080/20445911.2018.1532960": {
+      "id": "https://openalex.org/W2895939656",
+      "field": "Psychology",
+      "topic": "Identity, Memory, and Therapy"
+    },
+    "10.1007/s10648-021-09609-6": {
+      "id": "https://openalex.org/W3139712811",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1037/cep0000195": {
+      "id": "https://openalex.org/W2990001930",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1177/1747021820945270": {
+      "id": "https://openalex.org/W3043823709",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.2117/psysoc.2021-b014": {
+      "id": "https://openalex.org/W3185197525",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
+    },
+    "10.3758/s13414-022-02643-8": {
+      "id": "https://openalex.org/W4318763919",
+      "field": "Psychology",
+      "topic": "Deception detection and forensic psychology"
+    },
+    "10.5178/lebs.2026.131": {
+      "id": "https://openalex.org/W7133227936",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.1016/0022-1031(81)90049-4": {
+      "id": "https://openalex.org/W2058722003",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1016/0306-4603(84)90012-1": {
+      "id": "https://openalex.org/W2010274228",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1080/2372966x.2020.1853486": {
+      "id": "https://openalex.org/W3128592705",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1027/1015-5759.23.1.24": {
+      "id": "https://openalex.org/W2129081088",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1037/emo0001676": {
+      "id": "https://openalex.org/W7154022753",
+      "field": "Psychology",
+      "topic": "Nostalgia and Consumer Behavior"
+    },
+    "10.1177/00187208221145261": {
+      "id": "https://openalex.org/W4311291136",
+      "field": "Psychology",
+      "topic": "Human-Automation Interaction and Safety"
+    },
+    "10.2466/pr0.1999.84.3c.1111": {
+      "id": "https://openalex.org/W2075249441",
+      "field": "Psychology",
+      "topic": "Bullying, Victimization, and Aggression"
     }
   },
   "manual_exception": [
