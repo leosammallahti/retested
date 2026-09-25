@@ -1,6 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
 
+## Six more fully checked pairs — 2026-09-25 21:50:02 UTC
+
+The full data build, Astro site build (4,560 pages), and promoted-pair audit passed with zero issues. **1,623 built pairs carry Retested review; 1,172 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,626 raw rows. **1,500 built effects are Retested named; 1,497 are new to the site.** The six new pairs cover pupil dilation before insight (mixed by solution timing), AI versus human mean alternate-uses scores (successful), diaphragmatic breathing after VR biofeedback (successful pre-post observation), adolescent borderline-scale diagnostic discrimination (successful), cognitive variability and time-based prospective memory (successful conceptual replication in HIV cohorts), and original ideas in Her Story game writing (successful observational replication). Each row includes exact original/later DOI linkage, quoted original effect and later result, later Psychology primary field, and a new participant cohort. Claims are narrowed for observational designs and partial outcomes. No push or publication.
+
+From the prior 21:39:27 audited checkpoint to this one, **six new pairs passed in 10 minutes 35 seconds**, about **8.5 per 15 minutes**, below the owner's 46-per-15-minute target. Three additional leads were held because the accessible later-paper text did not establish distinct participants. VM free space was 38 GB.
+
 ## Dissertation replication fully checked — 2026-09-25 21:39:27 UTC
 
 The data build, Astro site build (4,548 pages), and exact-pair audit passed with zero issues. **1,617 built pairs carry Retested review; 1,166 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,620 raw rows. **1,494 built effects are Retested named; 1,491 are new to the site.** Added Frampton and Shillingsburg 2019 versus Gavidia 2021, a University of North Texas dissertation repeating instructive feedback with two new autistic children. The later result is mixed: emergent responses occurred for the first stimulus set in both children but not the remaining sets for one child. The dissertation source type is stated in its source label. Exact DOI reference, distinct participants, outcome quote, and later Psychology primary field were checked. No push or publication.

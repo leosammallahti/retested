@@ -712,6 +712,11 @@
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
     },
+    "10.1007/s10055-025-01235-9": {
+      "id": "https://openalex.org/W4414204322",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
+    },
     "10.1007/s10339-020-00978-4": {
       "id": "https://openalex.org/W3028187781",
       "field": "Psychology",
@@ -1456,6 +1461,11 @@
       "id": "https://openalex.org/W4404626154",
       "field": "Psychology",
       "topic": "Mental Health Research Topics"
+    },
+    "10.1016/j.biopsycho.2025.109023": {
+      "id": "https://openalex.org/W4409147324",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
     },
     "10.1016/j.bodyim.2019.12.003": {
       "id": "https://openalex.org/W2996781732",
@@ -2592,6 +2602,11 @@
       "field": "Psychology",
       "topic": "Child Abuse and Trauma"
     },
+    "10.1017/s095834402300006x": {
+      "id": "https://openalex.org/W4327947376",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
+    },
     "10.1017/s1041610210001110": {
       "id": "https://openalex.org/W2049384206",
       "field": "Psychology",
@@ -2616,6 +2631,11 @@
       "id": "https://openalex.org/W2763823712",
       "field": "Medicine",
       "topic": "Multiple Sclerosis Research Studies"
+    },
+    "10.1017/s1355617722000698": {
+      "id": "https://openalex.org/W4319460954",
+      "field": "Psychology",
+      "topic": "Cognitive Functions and Memory"
     },
     "10.1017/s136672891500067x": {
       "id": "https://openalex.org/W2583322683",
@@ -3641,6 +3661,11 @@
       "id": "https://openalex.org/W4391612526",
       "field": "Psychology",
       "topic": "Behavioral Health and Interventions"
+    },
+    "10.1038/s41598-025-05745-z": {
+      "id": "https://openalex.org/W4411494770",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
     },
     "10.1038/s41598-025-11692-6": {
       "id": "https://openalex.org/W4412496803",
@@ -6719,6 +6744,11 @@
     },
     "10.1186/s40479-019-0104-5": {
       "id": "https://openalex.org/W2942588428",
+      "field": "Psychology",
+      "topic": "Personality Disorders and Psychopathology"
+    },
+    "10.1186/s40479-024-00264-1": {
+      "id": "https://openalex.org/W4401859109",
       "field": "Psychology",
       "topic": "Personality Disorders and Psychopathology"
     },
