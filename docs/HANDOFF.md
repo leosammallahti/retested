@@ -1188,6 +1188,12 @@ Both data builds, the site build, and exact-pair audit pass at **1,410** source-
 
 New reviewed pairs include a preregistered hindsight-bias retest, multiple independent collaborative-inhibition studies, a social-approval conversation test, a preregistered subtraction-bias replication, an autobiographical memory-contagion retest, and eight independent ego-depletion studies with outcomes kept separate. Another apparent physical-warmth candidate was excluded because the same published replication was already curated under its journal DOI. Later works have cached OpenAlex primary Psychology checks. No push or site publication occurred.
 
+## 2aw. 2026-09-25 07:11 UTC: 1,426 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,426** source-reviewed Psychology effect-plus-replication pairs on **1,310** distinct curated effects. The site has **2,213** effects and **5,013** attempts; the audit reports **zero** issues. Of curated material, **1,342** pairs and **1,308** distinct effects are additions beyond the preexisting collection. The four-stage build and audit took **20.8 seconds** (6.5 + 6.6 + 7.3 + 0.4 seconds). This is **16** more finished pairs than the 1,410 checkpoint at 06:58 UTC, over **13 minutes**: approximately **18 pairs per 15 minutes**, below the owner's **46 per 15 minutes** target.
+
+New reviewed pairs include an ideomotor-knowledge pendulum test, sequential-task ego depletion and risk-taking retests, language-reading anxiety, cross-cultural risk appraisal, a narrowed successful guilt path with its failed pride and residual-guilt paths noted, offensive-remark gaze, and a preregistered red–anger test that succeeded within participants but not between participants. We excluded a physical-warmth preprint already represented by its journal DOI, a Gino/Bazerman replication that included original author Bazerman, a face-preference replication with multiple original authors, and a newer version of an already curated motivation-fit replication. Later works have cached OpenAlex primary Psychology checks. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
