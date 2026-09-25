@@ -135,5 +135,30 @@ class PromotionTests(unittest.TestCase):
         self.assertEqual(effect["attempts"], [attempt["id"]])
 
 
+    def test_reviewed_adjudication_preserves_conflicting_source_label(self):
+        row = reviewed_pair()
+        row["outcome_adjudication"] = "primary_result"
+        row["review_note"] = "FLoRA's older label disagrees with the reviewed primary result."
+        flora = [{
+            "doi_o": row["doi_o"].replace("//", "/"), "doi_r": row["doi_r"],
+            "title_o": row["original_title"], "year_o": str(row["original_year"]),
+            "title_r": row["replication_title"], "year_r": str(row["replication_year"]),
+            "outcome": "successful", "type": "replication",
+            "outcome_quote": "The effect held in this sample.",
+            "outcome_quote_source": "abstract",
+        }]
+        attempt = next(iter(graph(row, flora)["attempts"].values()))
+        self.assertEqual(attempt["outcome"], "failed")
+        self.assertEqual(attempt["outcomes_by_source"], {"flora": "successful", "retested": "failed"})
+        self.assertEqual(attempt["outcome_adjudication"], "primary_result")
+        self.assertTrue(attempt["sources_disagree"])
+        for bad_note, bad_adjudication in (("", "primary_result"), ("FLoRA conflict", "unreviewed")):
+            changed = copy.deepcopy(row)
+            changed["review_note"] = bad_note
+            changed["outcome_adjudication"] = bad_adjudication
+            with self.assertRaises(ValueError):
+                validate([changed])
+
+
 if __name__ == "__main__":
     unittest.main()

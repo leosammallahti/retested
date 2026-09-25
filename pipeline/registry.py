@@ -188,6 +188,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         if "retested" not in a["sources"]:
             a["sources"].append("retested")
         a["outcomes_by_source"]["retested"] = r["outcome"]
+        if r.get("outcome_adjudication"):
+            a["outcome_adjudication"] = r["outcome_adjudication"]
         a["preregistration_status"] = r["preregistration_status"]
         a["retested_review"] = {
             "candidate_id": r["candidate_id"],
@@ -243,7 +245,10 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         if a["legacy_rows"]:
             a["outcomes_by_source"]["legacy"] = _majority([x["outcome"] for x in a["legacy_rows"]])
         obs = a["outcomes_by_source"]
-        a["outcome"] = next((obs[source] for source in ("flora", "fred", "legacy", "retested")
+        # A source-reviewed, documented adjudication can supersede a stale
+        # paper-level label for this exact original/replication pair.
+        priority = ("retested", "flora", "fred", "legacy") if a.get("outcome_adjudication") else ("flora", "fred", "legacy", "retested")
+        a["outcome"] = next((obs[source] for source in priority
                              if obs.get(source, "not_coded") != "not_coded"), "not_coded")
         a["sources_disagree"] = len({v for v in obs.values() if v != "not_coded"}) > 1
 

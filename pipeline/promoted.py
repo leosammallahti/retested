@@ -27,11 +27,12 @@ REQUIRED_STRINGS = (
 REQUIRED_YEARS = ("original_year", "replication_year")
 OPTIONAL = {
     "original_journal", "replication_journal", "original_date",
-    "replication_date", "preregistration_status", "duplicate_candidate_ids", "review_note",
+    "replication_date", "preregistration_status", "duplicate_candidate_ids", "review_note", "outcome_adjudication",
 }
 OUTCOMES = {"successful", "failed", "mixed"}
 QUOTE_SOURCES = {"abstract", "full_text", "paper"}
 PREREG = {"yes", "no", "unknown"}
+ADJUDICATIONS = {"primary_result", "effect_scope"}
 LEAK = re.compile(r"replicat|reproduc|debunk|retract|did not hold|holds? up", re.I)
 
 
@@ -110,6 +111,11 @@ def validate(rows: object) -> list[dict]:
             raise ValueError(f"{where}: outcome_quote_source must be abstract, full_text, or paper")
         if row.get("preregistration_status", "unknown") not in PREREG:
             raise ValueError(f"{where}: preregistration_status must be yes, no, or unknown")
+        if row.get("outcome_adjudication"):
+            if row["outcome_adjudication"] not in ADJUDICATIONS:
+                raise ValueError(f"{where}: unknown outcome adjudication")
+            if "FLoRA" not in (row.get("review_note") or ""):
+                raise ValueError(f"{where}: outcome adjudication must explain the FLoRA disagreement")
         if LEAK.search(row["effect_claim"]):
             raise ValueError(f"{where}: effect_claim describes the retest rather than the original finding")
         if len(row["effect_claim"]) < 25 or len(row["effect_claim_quote"]) < 12:

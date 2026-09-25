@@ -913,6 +913,30 @@ aggression follow-up, and three new tests from a citation-linked candidate
 queue. The candidate queue is undergoing source screening; raw links do
 not count as finished pairs. No push or site publication occurred.
 
+## 2ag. 2026-09-25 02:31 UTC: 1,036 built Psychology pairs
+
+Both data builds, the site build, and the exact-pair audit pass at **1,036**
+source-reviewed Psychology effect-plus-replication pairs on **972** distinct
+curated effects. The built site has **1,876** effects and **4,881** attempts;
+the audit reports **zero** issues. This is **382** more finished pairs than
+the 654-pair 19:46 UTC baseline, **36** more than the 1,000-pair checkpoint,
+and **30** more than the 1,006-pair checkpoint at 02:15 UTC. Elapsed wall
+time since that checkpoint is about 16 minutes, or **1.9 finished pairs per
+minute** (about 28 per 15 minutes), below the owner's requested 46 per
+15 minutes. The latest four-stage build/audit took **19.8 seconds**.
+
+A citation-linked discovery queue produced new, source-checked retests
+across the Stroop/posture, mortality-salience, multimedia modality,
+infant-helper preference, Kruger-Dunning, framing, mere-exposure, and other
+effects. Machine-suggested original links were independently checked and
+corrected where needed. Two older FLoRA paper-level outcome labels conflicted
+with narrower primary results: ManyBabies' preregistered helper preference
+was null, and the suicide-IAT follow-up predicted future attempts although
+its separate baseline result failed. Their curated records now carry explicit
+adjudications; the built graph retains both the FLoRA and Retested labels and
+shows the reviewed effect-level verdict. Focused unittest suite: 5 passed.
+No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
