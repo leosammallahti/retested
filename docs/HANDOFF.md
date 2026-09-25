@@ -805,6 +805,22 @@ corrections and narrow effect claims where a later paper reproduced only
 part of the original findings. Source verification remains the rate limit.
 No push or site publication occurred.
 
+## 2aa. 2026-09-25 01:03 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **944**
+source-reviewed Psychology effect-plus-replication pairs on **925** distinct
+curated effects. The built site has **1,829** effects and **4,808** attempts;
+the audit reports **zero** issues. This is **290** more finished pairs than
+the 654-pair 19:46 UTC baseline and **7** more than the 937-pair checkpoint
+at 00:55 UTC.
+
+The latest four-stage build/audit took **19.5 seconds**: 6.1 and 6.3 seconds
+for the data builds, 6.8 seconds for the site build, and 0.3 seconds for the
+audit. Seven new pairs took about 8 minutes of wall time since the previous
+verified checkpoint, about **0.9 per minute**. The owner's requested rate is
+46 in 15 minutes, about **3.1 per minute**. Source checking and linking
+remain the rate limit. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
