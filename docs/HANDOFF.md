@@ -1102,6 +1102,29 @@ most, rather than every, finding, and the page scopes its claim to
 health-belief mediation. Exact sources, original DOIs, outcomes, and
 disjoint authors were checked. No push or site publication occurred.
 
+## 2ao. 2026-09-25 05:13 UTC: 1,251 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,251**
+source-reviewed Psychology effect-plus-replication pairs on **1,150**
+distinct curated effects. The site has **2,054** effects and **4,961**
+attempts; the audit reports **zero** issues. Of curated material,
+**1,167** pairs and **1,148** distinct effects are additions beyond the
+preexisting collection. This is **17** more finished pairs than the
+1,234-pair 05:03 UTC checkpoint over **10 minutes**: approximately
+**25 pairs per 15 minutes**, below the owner's **46 per 15 minutes**
+target. The latest four-stage build and audit took **19.7 seconds**.
+
+The new independent-author Psychology pairs include motor adaptation,
+ADORA2A and panic disorder, mathematics anxiety in elementary teachers,
+social motive correlations, self-labeling, empathy and forgiveness,
+experiential self, driving better-than-average judgments, and corporal
+punishment and dating violence. Source-reviewed later outcomes are
+qualified where they are partial or mixed. Candidate-screening now uses
+the local OpenAlex cache to verify each later paper's primary field while
+the shared live OpenAlex API is rate-limited. The cached records give the
+work ID, article type, and primary Psychology field. No push or site
+publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
