@@ -192,6 +192,11 @@
       "field": "Psychology",
       "topic": "Psychotherapy Techniques and Applications"
     },
+    "10.1002/dev.22375": {
+      "id": "https://openalex.org/W4321018476",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
     "10.1002/eat.10030": {
       "id": "https://openalex.org/W1979717782",
       "field": "Psychology",
@@ -886,6 +891,11 @@
       "id": "https://openalex.org/W2134522468",
       "field": "Psychology",
       "topic": "Deception detection and forensic psychology"
+    },
+    "10.1007/s11002-024-09746-2": {
+      "id": "https://openalex.org/W4404606919",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
     },
     "10.1007/s11031-022-09967-w": {
       "id": "https://openalex.org/W4288748898",
@@ -3116,6 +3126,11 @@
       "id": "https://openalex.org/W2527385744",
       "field": "Psychology",
       "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1037/dev0000053": {
+      "id": "https://openalex.org/W2414282395",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
     },
     "10.1037/dev0001119": {
       "id": "https://openalex.org/W4200024434",
