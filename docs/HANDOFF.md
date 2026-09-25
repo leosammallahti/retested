@@ -1023,6 +1023,33 @@ author-overlap candidates were excluded. Source and author verification
 remain the bottleneck; the full build itself takes about 20 seconds.
 No push or site publication occurred.
 
+## 2al. 2026-09-25 04:24 UTC: 1,172 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,172**
+source-reviewed Psychology effect-plus-replication pairs on **1,071**
+distinct curated effects. The site has **1,975** effects and **4,957**
+attempts; the audit reports **zero** issues. Of the curated material,
+**1,088** pairs and **1,069** distinct effects are additions beyond the
+preexisting collection. This is **22** more finished pairs than the 1,150-pair
+03:59 UTC checkpoint, over **25 minutes**: approximately **13 pairs per
+15 minutes**, below the owner's requested **46 per 15 minutes**. The latest
+four-stage build and audit took **19.3 seconds**.
+
+New independent-author pairs include two failed replications of physical
+cleanliness and political attitudes; a failed direct altruism/mating-success
+test; two failed infant helper-preference attempts; a successful registered
+status-desire/overconfidence replication; birthday-number preference;
+recognition bias for psychology pioneers; and tests of machine trust,
+shame-coping, emotional intelligence, and child pretense learning. The later
+published work's OpenAlex primary field is Psychology. Source quotes,
+original DOI, later outcome, and author separation were checked. A
+previously present malformed DOI created a duplicate of the Heider/Olivier
+to Roberson color-memory pair; the duplicate was removed and the
+source-complete canonical-DOI record retained. Existing FLoRA mixed
+outcomes were reconciled before acceptance. Source review remains the
+time bottleneck; building the site takes about 20 seconds.
+No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
