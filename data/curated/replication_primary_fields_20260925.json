@@ -4822,6 +4822,11 @@
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
     },
+    "10.1080/19424620.2015.1082011": {
+      "id": "https://openalex.org/W2279756318",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
     "10.1080/20008066.2024.2436245": {
       "id": "https://openalex.org/W4405554559",
       "field": "Psychology",
@@ -5021,6 +5026,11 @@
       "id": "https://openalex.org/W4401019660",
       "field": "Psychology",
       "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1089/trgh.2021.0080": {
+      "id": "https://openalex.org/W4221039914",
+      "field": "Psychology",
+      "topic": "LGBTQ Health, Identity, and Policy"
     },
     "10.1093/abm/kaad072": {
       "id": "https://openalex.org/W4390673901",
@@ -6712,6 +6722,11 @@
       "field": "Psychology",
       "topic": "Obsessive-Compulsive Spectrum Disorders"
     },
+    "10.1177/20551029221139679": {
+      "id": "https://openalex.org/W4309365397",
+      "field": "Psychology",
+      "topic": "Psychological Treatments and Assessments"
+    },
     "10.1177/20592043211001794": {
       "id": "https://openalex.org/W3153125973",
       "field": "Neuroscience",
@@ -6821,6 +6836,11 @@
       "id": "https://openalex.org/W4392004375",
       "field": "Psychology",
       "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1186/s40337-021-00414-8": {
+      "id": "https://openalex.org/W3132407863",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
     },
     "10.1186/s40359-018-0217-4": {
       "id": "https://openalex.org/W2801336280",
@@ -7812,6 +7832,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.19030/jabr.v20i1.2192": {
+      "id": "https://openalex.org/W1771586921",
+      "field": "Psychology",
+      "topic": "Communication in Education and Healthcare"
+    },
     "10.20299/jpi.2018.001": {
       "id": "https://openalex.org/W2792767760",
       "field": "Psychology",
@@ -8801,6 +8826,11 @@
       "id": "https://openalex.org/W2062650362",
       "field": "Psychology",
       "topic": "Innovative Teaching and Learning Methods"
+    },
+    "10.3389/fpsyg.2014.01413": {
+      "id": "https://openalex.org/W2087210034",
+      "field": "Psychology",
+      "topic": null
     },
     "10.3389/fpsyg.2014.01511": {
       "id": "https://openalex.org/W2038373993",
