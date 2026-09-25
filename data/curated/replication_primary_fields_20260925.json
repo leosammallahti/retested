@@ -9036,6 +9036,11 @@
       "id": "https://openalex.org/W4405590822",
       "field": "Psychology",
       "topic": "Behavioral Health and Interventions"
+    },
+    "10.1371/journal.pone.0281738": {
+      "id": "https://openalex.org/W4319827558",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
     }
   },
   "manual_exception": [

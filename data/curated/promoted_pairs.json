@@ -42081,5 +42081,32 @@
     "duplicate_candidate_ids": [],
     "preregistration_status": "yes",
     "review_note": "The original 2015 publisher abstract reports that removing the ability to talk about experiences, unlike material goods, diminished enjoyment. The 2024 replication full text identifies Kumar and Gilovich 2015 Study 1a, reports the original anticipated-regret contrast (N=100, d=+0.49), and independently tests that same contrast in Experiment 3 (N=383, d=+0.51). Its methods describe new online and in-person recruitment and an Experiment 3 preregistration. The exact original Study 1a estimate is quoted from the later paper’s Table 4 because the original full text was unavailable; this source distinction is recorded here."
+  },
+  {
+    "candidate_id": "10.1371/journal.pone.0281738",
+    "doi_o": "10.1037/a0032540",
+    "doi_r": "10.1371/journal.pone.0281738",
+    "effect_name": "Social mindfulness and Agreeableness",
+    "effect_claim": "Social mindfulness was positively associated with HEXACO Agreeableness.",
+    "effect_claim_quote": "Study 4 revealed that social mindfulness could be traced in personality by being positively related to Honesty-Humility and Agreeableness (HEXACO Personality Inventory-Revised) as well as to Empathy (Interpersonal Reactivity Index) and a prosocial value orientation (SVO).",
+    "original_source_url": "https://psycnet.apa.org/doi/10.1037/a0032540",
+    "original_title": "Social mindfulness: Skill and will to navigate the social world",
+    "original_year": 2013,
+    "original_authors": "Niels J. Van Doesum, Dion A. W. Van Lange, and Paul A. M. Van Lange",
+    "original_journal": "Journal of Personality and Social Psychology",
+    "replication_title": "Testing the social mindfulness paradigm: Longitudinal evidence of its unidimensionality, reliability, validity, and replicability in a sample of health care providers",
+    "replication_year": 2023,
+    "replication_authors": "Tobias Altmann and Marcus Roth",
+    "replication_journal": "PLOS ONE",
+    "replication_source_url": "https://doi.org/10.1371/journal.pone.0281738",
+    "replication_target_quote": "We expected to find positive correlations with empathy, agreeableness, and honesty/humility.",
+    "outcome": "failed",
+    "outcome_quote": "The association between the social mindfulness paradigm and agreeableness could not be replicated with either of the two measurements of agreeableness used in our study.",
+    "outcome_quote_source": "full_text",
+    "reviewed_by": "codex-gpt-6-primary-source-reader",
+    "reviewed_on": "2026-09-25",
+    "duplicate_candidate_ids": [],
+    "preregistration_status": "unknown",
+    "review_note": "The later paper explicitly cites the 2013 Van Doesum et al. paper as reference 1 with DOI 10.1037/a0032540 and compares its original 186-person results with new data from 265 recruited health-care professionals in German university hospitals. It tested the original positive HEXACO Agreeableness association and reports failure on both Agreeableness measures. Primary original abstract and later full text were checked. Other personality associations in the same papers were not counted as separate pairs."
   }
 ]
