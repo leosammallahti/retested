@@ -222,6 +222,11 @@
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
     },
+    "10.1002/eat.24043": {
+      "id": "https://openalex.org/W4386209058",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
     "10.1002/ejsp.2172": {
       "id": "https://openalex.org/W2195544861",
       "field": "Psychology",
@@ -521,6 +526,11 @@
       "id": "https://openalex.org/W1514560239",
       "field": "Psychology",
       "topic": "Posttraumatic Stress Disorder Research"
+    },
+    "10.1002/jts.22194": {
+      "id": "https://openalex.org/W2624636083",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
     },
     "10.1002/per.2244": {
       "id": "https://openalex.org/W3006905696",
@@ -3237,6 +3247,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.1037/h0100839": {
+      "id": "https://openalex.org/W2140849780",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
     "10.1037/lhb0000596": {
       "id": "https://openalex.org/W4408907568",
       "field": "Psychology",
@@ -3381,6 +3396,11 @@
       "id": "https://openalex.org/W4417327011",
       "field": "Psychology",
       "topic": "Optimism, Hope, and Well-being"
+    },
+    "10.1037/pst0000036": {
+      "id": "https://openalex.org/W2315811229",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
     },
     "10.1037/spq0000229": {
       "id": "https://openalex.org/W2777258226",
@@ -3649,6 +3669,11 @@
     },
     "10.1044/2013_jslhr-l-13-0008": {
       "id": "https://openalex.org/W2072995940",
+      "field": "Psychology",
+      "topic": "Language Development and Disorders"
+    },
+    "10.1044/2016_jslhr-l-15-0294": {
+      "id": "https://openalex.org/W2565686121",
       "field": "Psychology",
       "topic": "Language Development and Disorders"
     },
@@ -4206,6 +4231,11 @@
       "id": "https://openalex.org/W4226023204",
       "field": "Social Sciences",
       "topic": "Social and Intergroup Psychology"
+    },
+    "10.1080/09658211.2022.2154941": {
+      "id": "https://openalex.org/W4311927093",
+      "field": "Psychology",
+      "topic": "Identity, Memory, and Therapy"
     },
     "10.1080/09658211.2023.2229977": {
       "id": "https://openalex.org/W4382654233",
@@ -6701,6 +6731,11 @@
       "id": "https://openalex.org/W1994119418",
       "field": "Psychology",
       "topic": "Cultural Differences and Values"
+    },
+    "10.1207/s15374424jccp3204_10": {
+      "id": "https://openalex.org/W2039413486",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
     },
     "10.12688/f1000research.27169.2": {
       "id": "https://openalex.org/W3120782452",
