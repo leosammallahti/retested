@@ -1,7 +1,19 @@
 # Handoff — current verified state 2026-09-25
 
 
-## Current verified checkpoint — 2026-09-25 14:01 UTC
+## Current verified checkpoint — 2026-09-25 14:52 UTC
+
+On `/root/retested` on the VM, **1,553 effect-plus-replication pairs are fully finished** across **1,430 distinct curated effects**. Each counted effect has a later replication and a recorded result: **844 successful, 442 failed, 267 mixed** pair outcomes. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` passed at 14:51:56.737 UTC with **zero** exact-pair issues. These are local built pages; no push or publication occurred. Relative to the starting 84 pairs and two effects, **1,469 pairs** and **1,428 effects** have been added or corrected.
+
+### DeepSeek parallel reading and source-prefetch trial
+
+The existing `pipeline.exact_review` was run with parallel DeepSeek workers on **29 exact original/later abstract pairs** in four batches (4, 16, 8, and 1 workers respectively). It returned **12 quote-gated review leads**. Source review accepted **eight new pairs**, all built and audited; two pilot leads were already-curated articles under alternate DOI forms, and two later leads were held because one reused the original cohort and one claimed an originally nonsignificant pattern too broadly. The 16-worker and 8-worker calls each returned in about **4.5 seconds** after their source packets were ready. Model reading is therefore fast, but these results **do not show a 46-finished-pairs-per-15-minute end-to-end rate**.
+
+New `pipeline/source_prefetch.py` retrieves and caches primary abstracts, references, and accessible full text in parallel, then emits valid `pipeline.exact_review` packets for supplied original DOIs. On a frozen 20-paper check, the final helper's cold retrieval took **21.15 seconds**, finding usable abstracts for 18 papers, reference lists for 18, and usable full text for six; the warm cached run took **6.72 seconds**. Publisher blocks and missing original abstracts still limit the yield. New `pipeline/doi_aliases.py` flags exact and title/year/original-DOI collisions before model calls; it caught both alternate-DOI pilot leads. These helpers never promote a pair automatically. Primary-source checks for exact original, new participants, and the scoped outcome remain required before the full build.
+
+The eight new pairs include a separately sampled three-group sensitivity result, a partially repeated solution-focused therapy pattern, two distinct intervention results, an anhedonia/relief association in new participants, a mixed three-experiment Bem retest, and one 2024 paper retesting left-ear distraction results from two different earlier papers. Same-author overlaps and narrower results are stated in the page review notes. One preexisting original-author list was corrected against PubMed.
+
+## Previous verified checkpoint — 2026-09-25 14:01 UTC
 
 On `/root/retested` on the VM, **1,545 effect-plus-replication pairs are finished** across **1,422 distinct curated effects**. Every counted pair has a named original effect, a later replication paper, a source-backed outcome, and a locally built page. Outcomes: **839 successful, 441 failed, 265 mixed**. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` passed with **zero** exact-pair issues at 14:00:37 UTC. These are local pages; there has been no push or publication. Relative to the 84-pair, two-effect preexisting collection, there are **1,461 added or corrected pairs** and **1,420 added or corrected effects**.
 

@@ -8986,6 +8986,41 @@
       "id": "https://openalex.org/W4401019660",
       "field": "Psychology",
       "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1521/jsyt.23.2.18.36644": {
+      "id": "https://openalex.org/W2112028238",
+      "field": "Psychology",
+      "topic": "Counseling, Therapy, and Family Dynamics"
+    },
+    "10.1080/17405629.2020.1763791": {
+      "id": "https://openalex.org/W3027087017",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1080/10615806.2025.2457625": {
+      "id": "https://openalex.org/W4407408862",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
+    },
+    "10.20299/jpi.2018.001": {
+      "id": "https://openalex.org/W2792767760",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1016/j.xjmad.2024.100050": {
+      "id": "https://openalex.org/W4391065910",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.2174/1874350101306010081": {
+      "id": "https://openalex.org/W2169686764",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.1080/20445911.2024.2319268": {
+      "id": "https://openalex.org/W4392003946",
+      "field": "Psychology",
+      "topic": "Multisensory perception and integration"
     }
   },
   "manual_exception": [
