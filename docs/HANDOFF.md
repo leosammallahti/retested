@@ -1,5 +1,15 @@
 # Handoff — current verified state 2026-09-25
 
+## Current verified checkpoint — 2026-09-25 19:05 UTC
+
+On /root/retested, **1,574 effect-plus-replication pairs are fully finished** across **1,451 distinct curated effects**: **858 successful, 447 failed, 269 mixed**. Both data builds, the local Astro site build (**4,465 pages**), and the exact-pair audit passed with **zero issues**. This adds **six** pairs and effects to the 18:43 checkpoint. The site was not pushed or published.
+
+The second fixed batch comprised 17 Psychology-primary pairs for which the automated quote model said all three questions were supported but its literal source gate held the rows. Three disjoint reader assignments covered 6, 6, and 5 cases. Six source-supported unique pairs reached the full build and audit: college-athlete gratitude, effortful control and stuttering severity, cognitive style × experience on insight problems, suicide-prediction scale performance, juvenile-delinquent inkblot norms, and a failed positive-mood categorization effect. The effortful-control effect claim was narrowed to the association in the original abstract: that abstract did **not** find a significant combined predictive model. Other drafts were held for an exact-original link, subgroup mismatch, a repeated target/result quote, or insufficient source evidence. One preprint in central review was again found already curated under a published DOI.
+
+The second batch started at approximately 18:50:36 UTC and its site build finished at 19:05:33 UTC: **six fully finished pairs in about 15 minutes**, versus the owner's target of 46. Across the complete rebuilt-queue effort from about 18:06 to 19:05, 17 pairs finished in roughly 59 minutes, about **4.3 per 15 minutes** including queue construction. These are measured wall-clock delivery rates, not model-call rates. They show improvement over the preceding stalled hour but do not support a full-backlog completion ETA at the requested pace.
+
+The observed preprint/journal title-year duplicate and abstract-only Jina mirror issues were fixed in commits f7d7800 and 4c66b3b. Exact-title aliases now flag nearby years; near-identical long titles on the same original are flagged for human version review. The Jina fallback now requires article-section evidence before it labels a publisher page as full text. Focused tests passed, and a captured navigation-plus-abstract page was rejected. Remaining quote leads are staged under /tmp/retested-production-*, but they are not counted.
+
 ## Current verified checkpoint — 2026-09-25 18:43 UTC
 
 On /root/retested, **1,568 effect-plus-replication pairs are fully finished** across **1,445 distinct curated effects**: **853 successful, 446 failed, 269 mixed**. The two data builds, local Astro site build (4,453 pages), and exact-pair audit passed with **zero issues**. This adds **11** pairs and **11** effects to the 17:49 checkpoint. The site was not published or pushed.

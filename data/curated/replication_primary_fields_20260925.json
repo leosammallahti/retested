@@ -9096,6 +9096,36 @@
       "id": "https://openalex.org/W2903260776",
       "field": "Psychology",
       "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1123/jcsp.2020-0035": {
+      "id": "https://openalex.org/W3198275530",
+      "field": "Psychology",
+      "topic": "Motivation and Self-Concept in Sports"
+    },
+    "10.1044/2018_ajslp-17-0097": {
+      "id": "https://openalex.org/W2902905904",
+      "field": "Psychology",
+      "topic": "Stuttering Research and Treatment"
+    },
+    "10.1207/s15326934crj0803_8": {
+      "id": "https://openalex.org/W1980936285",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
+    },
+    "10.1207/s15327752jpa3905_8": {
+      "id": "https://openalex.org/W2054827375",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1207/s15327752jpa4702_8": {
+      "id": "https://openalex.org/W1977301998",
+      "field": "Psychology",
+      "topic": "Psychopathy, Forensic Psychiatry, Sexual Offending"
+    },
+    "10.2466/pms.2003.97.1.107": {
+      "id": "https://openalex.org/W2041962819",
+      "field": "Psychology",
+      "topic": "Emotional Intelligence and Performance"
     }
   },
   "manual_exception": [
