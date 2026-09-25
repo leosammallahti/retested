@@ -937,6 +937,28 @@ adjudications; the built graph retains both the FLoRA and Retested labels and
 shows the reviewed effect-level verdict. Focused unittest suite: 5 passed.
 No push or site publication occurred.
 
+## 2ah. 2026-09-25 02:45 UTC: 1,066 built Psychology pairs
+
+Both data builds, the site build, and the exact-pair audit pass at **1,066**
+source-reviewed Psychology effect-plus-replication pairs on **987** distinct
+curated effects. The built site has **1,891** effects and **4,900** attempts;
+the audit reports **zero** issues. This is **412** more finished pairs than
+the 654-pair 19:46 UTC baseline and **30** more than the saved 1,036-pair
+checkpoint at 02:31 UTC. Elapsed wall time is about 14 minutes, or roughly
+**2.1 finished pairs/minute** (about **32 per 15 minutes**), below the
+owner's requested **46 per 15 minutes**. The latest four-stage build/audit
+took **19.5 seconds**.
+
+The new pairs include independent infant rule-learning and bilingual-switch
+multicenter retests, a corrected original for the infant box-opening helper
+effect, multiple independent reward/motivation tests, and direct tests of
+creative movements, facial feedback, emotion-regulation choice, and
+false-belief anticipation. The 2026 box-opening article's two new 9-month
+samples were null, while its broader meta-analysis was positive; that scope
+is explicit in the reviewed record. Exact original-paper relinking and
+published-versus-preprint deduplication prevented false additions. No push
+or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
