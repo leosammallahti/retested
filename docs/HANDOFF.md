@@ -787,6 +787,24 @@ Psychology studies from source-reviewed ranked and unseen queues. The later
 replication papers have Psychology as their OpenAlex primary field. No push
 or site publication occurred.
 
+## 2z. 2026-09-25 00:55 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **937**
+source-reviewed Psychology effect-plus-replication pairs on **920** distinct
+curated effects. The built site has **1,824** effects and **4,801** attempts;
+the audit reports **zero** issues. This is **283** more finished pairs than
+the 654-pair 19:46 UTC baseline and **10** more than the 927-pair checkpoint
+at 00:44 UTC.
+
+The latest four-stage build/audit took **18.8 seconds**: 6.2 and 6.0 seconds
+for the data builds, 6.3 seconds for the site build, and 0.3 seconds for the
+audit. Ten new pairs took about 11 minutes of wall time since the previous
+verified checkpoint, about **0.9 per minute**. The owner's requested rate is
+46 in 15 minutes, about **3.1 per minute**. This batch includes exact-original
+corrections and narrow effect claims where a later paper reproduced only
+part of the original findings. Source verification remains the rate limit.
+No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
