@@ -8886,6 +8886,106 @@
       "id": "https://openalex.org/W6977726099",
       "field": "Psychology",
       "topic": "Phonetics and Phonology Research"
+    },
+    "10.1002/jaba.1009": {
+      "id": "https://openalex.org/W4384665110",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1016/j.jrp.2024.104525": {
+      "id": "https://openalex.org/W4401285051",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1002/jaba.70008": {
+      "id": "https://openalex.org/W4408724979",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1080/10508619.2025.2491901": {
+      "id": "https://openalex.org/W4409618123",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1093/scan/nsaf049": {
+      "id": "https://openalex.org/W4410192477",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
+    },
+    "10.1007/s10648-025-10005-7": {
+      "id": "https://openalex.org/W4409152009",
+      "field": "Psychology",
+      "topic": "Visual and Cognitive Learning Processes"
+    },
+    "10.1007/s10826-026-03274-5": {
+      "id": "https://openalex.org/W7128687717",
+      "field": "Psychology",
+      "topic": "Emotions and Moral Behavior"
+    },
+    "10.1080/10410236.2024.2386215": {
+      "id": "https://openalex.org/W4401371626",
+      "field": "Psychology",
+      "topic": "Sexuality, Behavior, and Technology"
+    },
+    "10.1002/jad.12404": {
+      "id": "https://openalex.org/W4402484455",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.4992/jjpsy.97.25030": {
+      "id": "https://openalex.org/W7204717363",
+      "field": "Psychology",
+      "topic": "Motivation and Self-Concept in Sports"
+    },
+    "10.1525/collabra.169365": {
+      "id": "https://openalex.org/W7213930039",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1017/s095457942400097x": {
+      "id": "https://openalex.org/W4401767076",
+      "field": "Psychology",
+      "topic": "Child Abuse and Trauma"
+    },
+    "10.1080/02646838.2024.2367499": {
+      "id": "https://openalex.org/W4399829671",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1016/j.addbeh.2025.108393": {
+      "id": "https://openalex.org/W4410736076",
+      "field": "Psychology",
+      "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1016/j.ijlp.2026.102221": {
+      "id": "https://openalex.org/W7141675566",
+      "field": "Psychology",
+      "topic": "Healthcare Decision-Making and Restraints"
+    },
+    "10.1016/j.jadr.2026.101051": {
+      "id": "https://openalex.org/W7133314391",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.32604/ijmhp.2026.080379": {
+      "id": "https://openalex.org/W4415600316",
+      "field": "Psychology",
+      "topic": "Optimism, Hope, and Well-being"
+    },
+    "10.1186/s12888-024-05601-w": {
+      "id": "https://openalex.org/W4392004375",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1038/s41562-025-02234-1": {
+      "id": "https://openalex.org/W4412421380",
+      "field": "Psychology",
+      "topic": "Optimism, Hope, and Well-being"
+    },
+    "10.1089/cyber.2024.0136": {
+      "id": "https://openalex.org/W4401019660",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
     }
   },
   "manual_exception": [

@@ -1,7 +1,17 @@
 # Handoff — current verified state 2026-09-25
 
 
-## Current verified checkpoint — 2026-09-25 13:30 UTC
+## Current verified checkpoint — 2026-09-25 14:01 UTC
+
+On `/root/retested` on the VM, **1,545 effect-plus-replication pairs are finished** across **1,422 distinct curated effects**. Every counted pair has a named original effect, a later replication paper, a source-backed outcome, and a locally built page. Outcomes: **839 successful, 441 failed, 265 mixed**. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` passed with **zero** exact-pair issues at 14:00:37 UTC. These are local pages; there has been no push or publication. Relative to the 84-pair, two-effect preexisting collection, there are **1,461 added or corrected pairs** and **1,420 added or corrected effects**.
+
+### Fresh timed throughput trial (requested 15-minute target)
+
+The fixed measurement window was **2026-09-25 13:44:09–13:59:09 UTC**, starting from 1,525 fully built pairs. At the exact cutoff, the last completed full audit was 1,543 pairs, so **18 new pairs finished the entire data/site/audit pipeline in 15 minutes**. Against the owner's target of 46, that is a **gap of 28 pairs** (39.1% of target). The next audit, for 1,544, finished at **13:59:11.677**, 2.7 seconds after the cutoff. The final 1,545-pair audit finished at **14:00:37.334** after the last source-reviewed packet arrived. The post-cutoff additions do not inflate the 15-minute result.
+
+Three parallel source-review lanes covered separate fixed pools of 20 later papers each: 2024 produced 7 validated pairs, 2025 produced 6, and 2026 produced 6; a separate 2023 review produced 1. These 20 source-validated pairs all reached the full local pipeline by 14:00:37. Each later DOI was checked against its exact official OpenAlex primary field, which was Psychology. The 2024 and 2026 lanes each source-reviewed only their accepted cases completely; the other papers were triaged or held where exact original/effect evidence was missing. The two-build/site/audit cycle took **21.6–22.4 seconds** per batch. The observed limiting step was verifying the original link, new sample, exact effect, and outcome in primary sources, not the build. Direct OpenAlex requests returned 429 during the trial; the public proxy provided records without a sustained stall.
+
+## Previous verified checkpoint — 2026-09-25 13:30 UTC
 
 On `/root/retested` on the VM, **1,525 effect-plus-replication pairs are finished** across **1,402 distinct curated effects**. Both data builds, the Astro site build, and `python -m pipeline.audit_promoted` pass with **zero** exact-pair issues. These are local built pages, not merely review-queue candidates. Relative to the 84-pair, two-effect preexisting curated collection, the current set contains **1,441 added or corrected pairs** and **1,400 added or corrected effects**.
 
