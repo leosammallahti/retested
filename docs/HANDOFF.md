@@ -1182,6 +1182,12 @@ Both data builds, the site build, and exact-pair audit pass at **1,392** source-
 
 New reviewed pairs include posture and mood, acting extraverted and positive affect, second-language vision and motivation, dyadic perfectionism, national-anthem passion and soccer results, vowel-transition learning, social contagion of memory, a bias-blind-spot test, and memory generation. Review notes distinguish mixed outcomes, conceptual tests, and preprint versions. We held a beauty and impression-accuracy retest after finding shared authors, and held a co-witness memory study with no clean no-misinformation comparison. Later works have cached OpenAlex primary Psychology checks. No push or site publication occurred.
 
+## 2av. 2026-09-25 06:58 UTC: 1,410 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,410** source-reviewed Psychology effect-plus-replication pairs on **1,297** distinct curated effects. The site has **2,200** effects and **5,001** attempts; the audit reports **zero** issues. Of curated material, **1,326** pairs and **1,295** distinct effects are additions beyond the preexisting collection. The four-stage build and audit took **20.8 seconds** (6.5 + 6.4 + 7.5 + 0.4 seconds). This is **18** more finished pairs than the 1,392 checkpoint at 06:49 UTC, over roughly **9 minutes**: about **30 pairs per 15 minutes**, below the owner's **46 per 15 minutes** target.
+
+New reviewed pairs include a preregistered hindsight-bias retest, multiple independent collaborative-inhibition studies, a social-approval conversation test, a preregistered subtraction-bias replication, an autobiographical memory-contagion retest, and eight independent ego-depletion studies with outcomes kept separate. Another apparent physical-warmth candidate was excluded because the same published replication was already curated under its journal DOI. Later works have cached OpenAlex primary Psychology checks. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
