@@ -1,5 +1,13 @@
 # Handoff — current verified state 2026-09-25
 
+## Current verified checkpoint — 2026-09-25 19:38 UTC
+
+On /root/retested, **1,584 effect-plus-replication pairs are fully finished** across **1,461 distinct curated effects**: **864 successful, 449 failed, 271 mixed**. Both data builds, the local Astro site build (**4,483 pages**), and the exact-pair audit passed with **zero issues**. This adds six pairs/effects to the 19:33 checkpoint; ten pairs/effects finished from the third bounded batch. No push or publication.
+
+The remaining reader completed six source-supported unique pairs from five later papers: PTSD and hypertension, two different candidate-gene rumination findings from one later article, failed social-class salary-negotiation truth-telling, mixed preregistered/exploratory mirror-effect results, and defensive pessimism with interpersonal intentions. The original links, independent samples, and effect-specific outcomes were checked against primary published abstracts/text. Across the third wave's fixed 24-paper assignment from about 19:12 to the 19:38 full audit, ten pairs reached the complete pipeline in roughly 26 minutes, **5.8 per 15 minutes**. This remains well below the owner target of 46.
+
+The author-coded Soto 2019 LOOPR source is now being reviewed separately. The current Retested registry has one attempt per original/later paper pair, so readers are staging the clearest effect per distinct original DOI first. Several effects in the workbook share the same original/later papers; do not bulk-add them as distinct pairs with the present model or silently reuse one verdict for different results. The owner explicitly permits a prior meta-analysis/review if it states the earlier effect; its source type must be tagged on the page. The code for that tag was built successfully at the 19:33 checkpoint, but no meta/review pair has yet passed the whole pipeline.
+
 ## Current verified checkpoint — 2026-09-25 19:33 UTC
 
 On /root/retested, **1,578 effect-plus-replication pairs are fully finished** across **1,455 distinct curated effects**: **862 successful, 447 failed, 269 mixed**. Both data builds, the local Astro site build (**4,472 pages**), and the exact-pair audit passed with **zero issues**. This adds four pairs and effects to the 19:05 checkpoint. The site was not pushed or published.

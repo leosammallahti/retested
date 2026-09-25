@@ -9146,6 +9146,31 @@
       "id": "https://openalex.org/W2202343562",
       "field": "Psychology",
       "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1037/tra0001304": {
+      "id": "https://openalex.org/W4285037655",
+      "field": "Psychology",
+      "topic": "Posttraumatic Stress Disorder Research"
+    },
+    "10.1080/02699931.2016.1168779": {
+      "id": "https://openalex.org/W2341451999",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1525/collabra.166": {
+      "id": "https://openalex.org/W2895847549",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1525/collabra.321": {
+      "id": "https://openalex.org/W3014153239",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.2130/jjesp.1904": {
+      "id": "https://openalex.org/W2995283674",
+      "field": "Psychology",
+      "topic": "Optimism, Hope, and Well-being"
     }
   },
   "manual_exception": [
