@@ -899,6 +899,20 @@ legacy coding for Bailey 2017 was retained as **failed** for its
 preregistered main test, with exploratory support noted. No push or site
 publication occurred.
 
+## 2af. 2026-09-25 02:15 UTC: 1,006 built Psychology pairs
+
+Both data builds, the site build, and the exact-pair audit pass at **1,006**
+source-reviewed Psychology effect-plus-replication pairs on **968** distinct
+curated effects. The built site has **1,872** effects and **4,865** attempts;
+the audit reports **zero** issues. This is **352** more finished pairs than
+the 654-pair 19:46 UTC baseline and **6** more than the saved 1,000-pair
+checkpoint at 02:06 UTC. The four-stage build/audit took **20.0 seconds**
+(data builds 6.5 and 6.6 seconds, site build 6.7 seconds, audit 0.3 seconds).
+New reviewed pairs include independent vertical-time concept tests, an
+aggression follow-up, and three new tests from a citation-linked candidate
+queue. The candidate queue is undergoing source screening; raw links do
+not count as finished pairs. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
