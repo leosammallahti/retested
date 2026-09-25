@@ -1,6 +1,12 @@
 # Handoff — current verified state 2026-09-25
 
 
+## Three more fully checked pairs — 2026-09-25 22:10:03 UTC
+
+The data build, Astro site build (4,586 pages), and exact-pair audit passed with zero issues. **1,636 built pairs carry Retested review; 1,185 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,639 raw rows. **1,513 built effects are Retested named; 1,510 are new to the site.** Added Capron et al. 2011 versus Capron et al. 2012 on high cognitive/low physical anxiety sensitivity and suicidal behavior in a separate Moscow cohort (successful association), Krans and Bos's earlier 2012 trauma-film experiment versus Krans, Janecko and Bos's later 2012 new trauma-film experiment on reduced intrusive images after unconscious thought (successful immediate analogue result; memory-organization mechanism unsupported), and Ettinger et al. 1971 versus Burkitt 2025 on lower perceived competence and greater conformity (successful conceptual replication). Exact original DOI links, Psychology primary fields, direct quotes and independent cohorts are documented. The two 2012 trauma-film publications have verified original and later publication dates. No push or publication.
+
+From the 22:04:03 checkpoint, three pairs passed in **six minutes**, about **7.5 per 15 minutes**. From 21:39:27 to 22:10:03, **19 new pairs passed in 30 minutes 36 seconds**, about **9.3 per 15 minutes**, still below the owner's 46-per-15-minute target. VM free space remained 38 GB.
+
 ## Three more fully checked pairs — 2026-09-25 22:04:03 UTC
 
 The full data build, Astro site build (4,580 pages), and exact-pair audit passed with zero issues. **1,633 built pairs carry Retested review; 1,182 are new original/later pairs** and 451 overlap FORRT. The curated JSON has 1,636 raw rows. **1,510 built effects are Retested named; 1,507 are new to the site.** Added Bartz et al. 2010 versus Bartz et al. 2019 on oxytocin improving empathic accuracy only for less socially proficient men (successful in a new male cohort; women were an extension with no effect), Lundh and Öst 1996 versus Coles and Heimberg 2004 on reported recognition of critical faces in social phobia (mixed: raw identification recurred, memory-accuracy bias did not), and Wahlstrom et al. 2017 versus Berger et al. 2019 on adolescent sleep duration and depression (successful association in an expressly new dataset). Exact paper links, original/later quotes, distinct samples, and later Psychology primary field are recorded. No push or publication.

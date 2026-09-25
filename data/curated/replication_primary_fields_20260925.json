@@ -1907,6 +1907,11 @@
       "field": "Psychology",
       "topic": "Identity, Memory, and Therapy"
     },
+    "10.1016/j.jbtep.2012.08.004": {
+      "id": "https://openalex.org/W1985550365",
+      "field": "Psychology",
+      "topic": "Posttraumatic Stress Disorder Research"
+    },
     "10.1016/j.jbtep.2014.10.011": {
       "id": "https://openalex.org/W2093733451",
       "field": "Psychology",
@@ -2301,6 +2306,11 @@
       "id": "https://openalex.org/W2969366665",
       "field": "Psychology",
       "topic": "Language, Metaphor, and Cognition"
+    },
+    "10.1016/j.psychres.2012.08.006": {
+      "id": "https://openalex.org/W2066508418",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
     },
     "10.1016/j.psychres.2016.12.011": {
       "id": "https://openalex.org/W2559989913",
@@ -6066,6 +6076,11 @@
       "id": "https://openalex.org/W4391784795",
       "field": "Psychology",
       "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1177/00332941251351242": {
+      "id": "https://openalex.org/W4411257268",
+      "field": "Psychology",
+      "topic": "Motivation and Self-Concept in Sports"
     },
     "10.1177/00915521231201166": {
       "id": "https://openalex.org/W4386959327",
