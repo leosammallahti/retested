@@ -1286,6 +1286,12 @@ Both data builds, the site build, and exact-pair audit pass at **1,696** curated
 
 New pairs use distinct participants for a multisyllabic-word reading randomized trial, complicated-grief group therapy, therapist-interest/helpfulness association, a coffee-consumption changing-criterion case, clinical parent-training observation, and video modeling for supervisor feedback. The reading trial is coded mixed because its main instruction benefit recurred but the motivation add-on benefit did not. Original author overlap is disclosed. Each of these six has cached official OpenAlex Psychology primary-field metadata or direct official field verification. The older entries' primary-field sweep continues; a previous six-pair correction is documented in section 2bk. No push or site publication occurred.
 
+## 2bm. 2026-09-25 10:36 UTC: 1,700 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,700** curated effect-plus-replication pairs on **1,571** distinct curated effects. The site has **2,473** effects and **5,156** attempts; the pair audit reports **zero** issues. Compared with the preexisting collection, **1,616** pairs and **1,569** distinct effects have been added or corrected. The four-stage build and audit took **25.7 seconds** (8.9 + 7.9 + 8.6 + 0.4 seconds, rounded by stage). This is **4** more built pairs than the 10:32 checkpoint over about **4 minutes**, **15 per 15 minutes**, below the owner's **46 per 15 minutes** target.
+
+The four new pairs are childhood-abuse/bipolar-comorbidity results with the cited original corrected to Leverich 2002, concept-identification stimulus variability, chemistry-attitude survey hierarchy in new cohorts, and the acquired-resilience factor after a modified group-and-individual program. All later articles have official Psychology primary-field verification; the chemistry education journal qualified on the article's primary topic, not the journal label. The resilience paper uses a Japanese original abstract and an English later abstract, with the acquired factor scoped separately from the nonsignificant innate factor. Same-author retests use new participants. Earlier entries' field audit continues. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
