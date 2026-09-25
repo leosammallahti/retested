@@ -856,6 +856,25 @@ successful 2016 registered replication and a failed 2022 online replication,
 each explicitly tied to the narrowed-global-attention result. No push or site
 publication occurred.
 
+## 2ad. 2026-09-25 01:43 UTC: built Psychology pair checkpoint
+
+Both data builds, the site build, and the exact-pair audit pass at **977**
+source-reviewed Psychology effect-plus-replication pairs on **952** distinct
+curated effects. The built site has **1,856** effects and **4,839** attempts;
+the audit reports **zero** issues. This is **323** more finished pairs than
+the 654-pair 19:46 UTC baseline and **13** more than the 964-pair checkpoint
+at 01:33 UTC.
+
+The latest four-stage build/audit took **19.6 seconds**: 6.4 and 6.3 seconds
+for the data builds, 6.6 seconds for the site build, and 0.3 seconds for the
+audit. Thirteen new pairs took about 9 minutes of wall time since the previous
+verified checkpoint, about **1.4 per minute**. The owner's requested rate is
+46 in 15 minutes, about **3.1 per minute**. The new records include two
+independent studies with differing results for the same Gable/Harmon-Jones
+attention effect, an infant communication-intervention replication with a
+corrected original paper, and a Japanese psychological-flexibility profile
+replication. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
