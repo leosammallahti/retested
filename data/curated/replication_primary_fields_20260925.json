@@ -9026,6 +9026,16 @@
       "id": "https://openalex.org/W4403681675",
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1098/rsos.220889": {
+      "id": "https://openalex.org/W4321503616",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.1177/01461672241293504": {
+      "id": "https://openalex.org/W4405590822",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
     }
   },
   "manual_exception": [

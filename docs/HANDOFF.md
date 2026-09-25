@@ -1,7 +1,14 @@
 # Handoff — current verified state 2026-09-25
 
+## Current verified checkpoint — 2026-09-25 17:40 UTC
 
-## Current verified checkpoint — 2026-09-25 15:32 UTC
+On /root/retested on the VM, **1,556 effect-plus-replication pairs are fully finished** across **1,433 distinct curated effects**. Each counted pair has a later paper and recorded result: **847 successful, 442 failed, 267 mixed**. Both data builds, the Astro site build, and the exact-pair audit passed with **zero** issues. These are local built pages; no push or publication occurred. Relative to the starting 84 pairs and two effects, **1,472 pairs** and **1,431 effects** have been added or corrected.
+
+Two source-checked pairs were added in this checkpoint. Hudson et al. 2018 → McDonough and Bach 2023 uses a new Prolific sample rather than the original Plymouth recruitment and reproduces the perceptual bias toward efficient action trajectories; both primary full texts were read. Kumar and Gilovich 2015 → Vaughan-Johnston et al. 2024 tests a new sample's anticipated regret about not sharing experiential versus material purchases and reports a successful replication. The original publisher abstract supports the broader sharing benefit; the exact original Study 1a result and sample size come from the later paper's Table 4 because the original full text was unavailable, and this source distinction is in the review note. Both later papers have official OpenAlex primary field Psychology.
+
+The parallel 2024, 2025, and 2026 chat launches spent their first windows searching low-yield local leftovers and produced **zero** additions. After redirecting them to the live OpenAlex query that supplied the earlier successful timed run, the 2024 lane staged the second pair above; the 2025 and 2026 live-page follow-ups were still running at this checkpoint. The owner requested a pace of 46 finished pairs per 15 minutes. This checkpoint does not meet it; do not report screened or staged papers as finished additions.
+
+## Previous verified checkpoint — 2026-09-25 15:32 UTC
 
 On /root/retested on the VM, **1,554 effect-plus-replication pairs are fully finished** across **1,431 distinct curated effects**. Each counted pair has a later paper and a recorded result: **845 successful, 442 failed, 267 mixed**. Both data builds, the Astro site build (4,426 pages), and the exact-pair audit passed with **zero** issues. These are local built pages; no push or publication occurred. Relative to the starting 84 pairs and two effects, **1,470 pairs** and **1,429 effects** have been added or corrected.
 
