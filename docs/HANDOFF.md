@@ -1050,6 +1050,34 @@ outcomes were reconciled before acceptance. Source review remains the
 time bottleneck; building the site takes about 20 seconds.
 No push or site publication occurred.
 
+## 2am. 2026-09-25 04:55 UTC: 1,225 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,225**
+source-reviewed Psychology effect-plus-replication pairs on **1,124**
+distinct curated effects. The site has **2,028** effects and **4,960**
+attempts; the audit reports **zero** issues. Of curated material, **1,141**
+pairs and **1,122** distinct effects are additions beyond the preexisting
+collection. This is **53** more finished pairs than the 1,172-pair 04:24
+UTC checkpoint over **31 minutes**: approximately **26 pairs per 15
+minutes**, still below the owner's requested **46 per 15 minutes**. The
+latest four-stage build and audit took **19.4 seconds**.
+
+New source-reviewed independent-author pairs cover word-learning-adjacent
+findings, anchoring mechanisms, implicit false-belief looking, academic
+self-concept, sexual trauma and eating disorders, body-image moderators,
+motor feedback, great-ape deferred exchange, Olympic medalists, smile
+intensity and mortality, and other Psychology topics. Each later published
+work's OpenAlex primary field is Psychology. The original DOI, exact
+claim, later outcome, source quotes, and author lists were checked. The
+selective-accessibility original has a canonical double-slash DOI; the
+build joins it to an existing single-slash normalized source record, and
+the exact-pair audit accounts for that equivalent spelling. A
+word-learning candidate remains unpromoted pending effect-scope review.
+Source review remains the rate-limiting step. The four-stage build itself
+takes about 20 seconds. Four reviewers now work on disjoint queues;
+the new direct-OpenAlex Psychology pool is being expanded.
+No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
