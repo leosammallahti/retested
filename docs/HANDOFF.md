@@ -1001,6 +1001,28 @@ label remained excluded pending effect-specific adjudication. The current
 bottleneck is source and author verification, not the builds. No push or
 site publication occurred.
 
+## 2ak. 2026-09-25 03:59 UTC: 1,150 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,150**
+source-reviewed Psychology effect-plus-replication pairs on **1,049** distinct
+curated effects. The site build has **1,953** effects and **4,945** attempts;
+the audit reports **zero** issues. This is **496** more finished pairs than
+the 654-pair 19:46 UTC baseline and **34** more than the 1,116-pair
+03:25 UTC checkpoint. About **34 minutes** elapsed, approximately
+**15 finished pairs per 15 minutes**, below the owner's requested **46 per
+15 minutes**. The latest four-stage build/audit took **19.8 seconds**.
+
+New independent-author records include later tests of cocktail-party own-name
+capture, inaction inertia, cross-talker accented-speech adaptation, the
+incremental validity of average personality states, oxytocin and trust,
+depressive realism, mortality salience, mirror self-recognition in magpies,
+KiVa bullying prevention, childhood verbal rehearsal, and wallet honesty.
+Published later OpenAlex primary field Psychology and exact original DOI were
+checked. A few packets were reconciled to existing FLoRA mixed outcomes and
+author-overlap candidates were excluded. Source and author verification
+remain the bottleneck; the full build itself takes about 20 seconds.
+No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
