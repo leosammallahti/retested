@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 from .ids import norm_doi, norm_name
 
 FILE = Path(__file__).resolve().parent.parent / "data" / "curated" / "promoted_pairs.json"
+PRIMARY_FIELDS_FILE = FILE.with_name("replication_primary_fields_20260925.json")
 
 REQUIRED_STRINGS = (
     "candidate_id", "doi_o", "doi_r", "effect_name", "effect_claim",
@@ -152,6 +153,25 @@ def load(path: Path = FILE) -> list[dict]:
     if not path.exists():
         return []
     rows = validate(json.loads(path.read_text(encoding="utf-8")))
+    if path.resolve() == FILE.resolve():
+        # The counted collection is limited to Psychology-primary later papers.
+        # Require an auditable classification for every paper before a build.
+        if not PRIMARY_FIELDS_FILE.exists():
+            raise ValueError(f"{PRIMARY_FIELDS_FILE}: missing primary-field audit")
+        field_audit = json.loads(PRIMARY_FIELDS_FILE.read_text(encoding="utf-8"))
+        fields = field_audit["records"]
+        manual = set(field_audit.get("manual_exception", []))
+        later_dois = {row["doi_r"] for row in rows}
+        missing = sorted(later_dois - fields.keys())
+        outside = sorted(
+            doi for doi in later_dois & fields.keys()
+            if fields[doi]["field"] != "Psychology" and doi not in manual
+        )
+        if missing or outside:
+            raise ValueError(
+                f"{PRIMARY_FIELDS_FILE.name}: missing primary-field evidence {missing}; "
+                f"outside Psychology {outside}"
+            )
     # Check the discovery identity when its source files are present. The
     # reviewed overlay remains independently rebuildable if caches vanish.
     root = path.resolve().parent.parent
