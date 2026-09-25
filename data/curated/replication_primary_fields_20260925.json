@@ -8831,6 +8831,56 @@
       "id": "https://openalex.org/W7167582755",
       "field": "Psychology",
       "topic": "Education, Achievement, and Giftedness"
+    },
+    "10.1080/00140138608968300": {
+      "id": "https://openalex.org/W2085636960",
+      "field": "Psychology",
+      "topic": "Human-Automation Interaction and Safety"
+    },
+    "10.1525/collabra.151230": {
+      "id": "https://openalex.org/W7124889867",
+      "field": "Psychology",
+      "topic": "Emotions and Moral Behavior"
+    },
+    "10.1016/j.paid.2025.113495": {
+      "id": "https://openalex.org/W4415328264",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1186/s40359-025-02766-1": {
+      "id": "https://openalex.org/W4410019340",
+      "field": "Psychology",
+      "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1016/j.jad.2025.04.023": {
+      "id": "https://openalex.org/W4409199247",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1186/s40359-026-04810-0": {
+      "id": "https://openalex.org/W7162466822",
+      "field": "Psychology",
+      "topic": "Educational Strategies and Epistemologies"
+    },
+    "10.1002/bin.70104": {
+      "id": "https://openalex.org/W7155650442",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1177/00332941241233209": {
+      "id": "https://openalex.org/W4391784795",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1371/journal.pone.0132885": {
+      "id": "https://openalex.org/W2240171675",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
+    },
+    "10.31275/20212031": {
+      "id": "https://openalex.org/W4206391469",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
     }
   },
   "manual_exception": [
