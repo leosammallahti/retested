@@ -1287,6 +1287,11 @@
       "field": "Psychology",
       "topic": "Categorization, perception, and language"
     },
+    "10.1016/j.actpsy.2019.102871": {
+      "id": "https://openalex.org/W2952640867",
+      "field": "Psychology",
+      "topic": "Categorization, perception, and language"
+    },
     "10.1016/j.actpsy.2020.103140": {
       "id": "https://openalex.org/W3046089273",
       "field": "Psychology",
@@ -3102,6 +3107,11 @@
       "field": "Psychology",
       "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
+    "10.1037/a0032455": {
+      "id": "https://openalex.org/W2109015294",
+      "field": "Psychology",
+      "topic": "Identity, Memory, and Therapy"
+    },
     "10.1037/a0033303": {
       "id": "https://openalex.org/W2021310836",
       "field": "Psychology",
@@ -4532,6 +4542,11 @@
       "field": "Psychology",
       "topic": "Behavioral Health and Interventions"
     },
+    "10.1080/13548506.2020.1867317": {
+      "id": "https://openalex.org/W3115870228",
+      "field": "Psychology",
+      "topic": "Cognitive Functions and Memory"
+    },
     "10.1080/13552600701785505": {
       "id": "https://openalex.org/W2089121013",
       "field": "Psychology",
@@ -5781,6 +5796,11 @@
       "id": "https://openalex.org/W3210557498",
       "field": "Social Sciences",
       "topic": "Social and Intergroup Psychology"
+    },
+    "10.1111/pops.12505": {
+      "id": "https://openalex.org/W2891236074",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
     },
     "10.1111/psyp.12425": {
       "id": "https://openalex.org/W1506155283",
@@ -7106,6 +7126,11 @@
       "id": "https://openalex.org/W2755626861",
       "field": "Psychology",
       "topic": "Action Observation and Synchronization"
+    },
+    "10.1371/journal.pone.0193770": {
+      "id": "https://openalex.org/W2952000344",
+      "field": "Psychology",
+      "topic": "Psychopathy, Forensic Psychiatry, Sexual Offending"
     },
     "10.1371/journal.pone.0194101": {
       "id": "https://openalex.org/W2791003207",
