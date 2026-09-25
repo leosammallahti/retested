@@ -1170,6 +1170,12 @@ Both data builds, the site build, and exact-pair audit pass at **1,370** source-
 
 New reviewed pairs include independently tested reverse-order deception detection, identifiable-victim giving with a hypothetical-versus-real-donation limitation, differential shame and guilt after public exposure, narcissism and ego-threat aggression, a relinked knowledgeable-teacher word-learning result, and a conceptual risk-framing replication. A retracted original product-size finding is marked as retracted in its effect name, title, and review note. Reviewers held source mismatches, same-author retests, duplicate DOI links, and claims that later papers did not actually test. Cached OpenAlex records confirm each later article's primary Psychology field. No push or site publication occurred.
 
+## 2at. 2026-09-25 06:37 UTC: 1,379 built Psychology pairs
+
+Both data builds, the site build, and exact-pair audit pass at **1,379** source-reviewed Psychology effect-plus-replication pairs on **1,276** distinct curated effects. The site has **2,179** effects and **4,979** attempts; the audit reports **zero** issues. Of curated material, **1,295** pairs and **1,274** distinct effects are additions beyond the preexisting collection. The four-stage build and audit took **22.3 seconds** (7.1 + 6.6 + 8.4 + 0.3 seconds). This is **9** more finished pairs than the 1,370 checkpoint at 06:24 UTC, over **13 minutes**: approximately **10 pairs per 15 minutes**, below the owner's **46 per 15 minutes** target.
+
+New reviewed pairs include body inversion in face recognition, generalized-anxiety threat attention with a nonclinical-sample limitation, grasping effects on spatial perception with a corrected original DOI, redundant category labels, smartphone proximity and cognition, glucose and self-control, a conceptual posture and risk-taking retest, and an operation-span depletion retest. Source notes distinguish conceptual tests and partial or mixed outcomes. Cached OpenAlex records confirm each later work's primary Psychology field. No push or site publication occurred.
+
 ## 3. Next steps, in order
 
 **Current owner priority (2026-09-24):** continue source-reviewed Psychology effect and replication pages through both builds. The older numbered list below records the prior backlog; its Social Sciences/Neuroscience screening item is superseded by the owner’s Psychology-only instruction.
