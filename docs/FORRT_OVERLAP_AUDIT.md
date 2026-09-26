@@ -24,6 +24,20 @@ FORRT's raw extractor already has an outcome for **234** of the 271 same-pair re
 
 The complete pair-by-pair classification and evidence row is saved in `data/curated/forrt_overlap_audit_20260926.json`. The snapshot covers local FORRT files retrieved on 2026-09-07. No changes have been sent to upstream FORRT, so Retested has not yet changed FORRT's own database.
 
+## Current official FORRT files checked — 2026-09-26 01:27 UTC
+
+The September 7 local snapshot missed records added to FORRT afterwards. We fetched the current official extractor, pending, validated, `flora.csv`, and `flora_filtered.csv` files and compared all 1,332 pairs again by exact normalized later DOI or title and original DOI. **Seventy-four** pairs that appeared absent from the local snapshot are present in those live files. This supersedes the local-only 279/69/984 split below for judging what FORRT already has.
+
+| Relation to local history **or current official files** | Pairs |
+| --- | ---: |
+| Same original and later paper already recorded | **338** |
+| Later paper recorded, same original–later link unconfirmed | **84** |
+| No exact later DOI/title match in checked sources | **910** |
+
+The last two groups total **994 candidate new pair links**. Of these, 910 appear to add a later paper absent by exact DOI/title from the checked files; 84 may add a new original-to-paper link. This is **not** a proof of absence from every FORRT source or identifier variant. FORRT's local or live raw extractor already has an outcome for **293** of the 338 same-pair records; Retested's scoped outcome label differs for **54**. Those differences require examination before calling either label wrong. The pair-by-pair JSON includes local and live evidence, file/row, matching basis, and outcome.
+
+Live source files were fetched directly from the official FORRT GitHub repositories listed in the JSON audit. FORRT's public Replication Atlas is a search layer over FLoRA and itself warns that coverage is incomplete. No Retested changes have been contributed upstream to FORRT.
+
 ## Updated completed-site checkpoint — 2026-09-26 01:22 UTC
 
 Seventeen further source-checked pairs passed the complete build and audit, giving **1,783 finished Retested-reviewed pairs**: 451 built FORRT overlays and **1,332 additions to Retested's built pages**. The updated pair-by-pair file classifies those 1,332 as **279 same-pair raw FORRT overlaps**, **69 later papers in FORRT with no confirmed same-pair link**, and **984 later papers with no exact DOI/title match in the scanned local tables**. The latter two categories total **1,053 candidate new pair links**, not proven first discoveries. The raw extractor already holds an outcome for 242 of the 279 same-pair overlaps; 33 scoped Retested outcome labels differ from the extractor label. The 17 newest pairs included eight raw extractor overlaps and nine without an exact DOI/title match.

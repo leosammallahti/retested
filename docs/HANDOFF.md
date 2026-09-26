@@ -1,5 +1,9 @@
 # Handoff — current verified state 2026-09-26
 
+## Live FORRT overlap correction — 2026-09-26 01:27 UTC
+
+A check of current official FORRT extractor, pending, validated, and FLoRA CSVs found 74 of Retested's supposedly local-unmatched papers already upstream. The combined local-plus-live per-pair audit now classifies the 1,332 new-to-site pairs as **338 same-pair FORRT records**, **84 later papers in FORRT without a confirmed same-pair link**, and **910 with no exact later DOI/title match** in the checked sources. Thus 994 are candidate new pair links, not certified first discoveries. FORRT's extractor already has an outcome for 293 same-pair records; 54 scoped labels differ and need review. Details/evidence: `data/curated/forrt_overlap_audit_20260926.json` and `docs/FORRT_OVERLAP_AUDIT.md`. The 01:22 checkpoint below is local-snapshot-only and superseded for FORRT novelty assessment.
+
 ## Seventeen more completed pairs — 2026-09-26 01:22 UTC
 
 The data build, Astro site build (4,845 pages), exact-pair audit, and whitespace check passed with zero issues. **1,783 built pairs carry Retested review**: 451 built FORRT overlays and 1,332 additions to Retested's built pages. Seventeen additional source-checked pairs passed; eight were exact raw FORRT extractor pairs and nine had no exact later DOI/title match in the scanned local FORRT tables. The queue fell by 16 IDs, all tied to newly promoted later DOIs; one new pair was not a queued record. The updated per-pair FORRT audit now reports 279 same-pair raw overlaps, 69 later-paper-only matches, and 984 without exact later DOI/title matches. FORRT's raw extractor held an outcome for 242 of the 279; 33 Retested outcome labels differ by scope. No upstream FORRT change, push, or site publication.
