@@ -10,6 +10,10 @@ The remainder cannot be declared absent from **all** FORRT material. Alternate i
 
 Sources: local `data/raw/forrt` snapshot and its `MANIFEST.json` (retrieved 2026-09-07), `data/build/attempts.json`, `/tmp/retested_forrt_overlap_audit.json`, and `/tmp/retested_forrt_title_matches.json`. FORRT upstream: https://github.com/forrtproject/FReD-data and https://github.com/forrtproject/flora-extractor. The `/tmp` match files are working audit artifacts, not committed source data.
 
+## Updated after the 21-pair batch — 2026-09-26 09:48 UTC
+
+The built Retested site has **1,864 source-reviewed pairs**, including **1,413 additions to its built pages** and 451 built FORRT overlays. The combined local-history and current-official-file audit classifies those 1,413 additions as **345 same original/later pairs already in FORRT data**, **87 later papers present without the same pair confirmed**, and **981 with no exact later DOI/title match** in the checked files. The latter two groups total **1,068 candidate new pair links**, not verified worldwide first discoveries. The official FORRT extractor already has an outcome for 300 of the 345 same-pair records; 55 Retested scoped labels differ and require inspection. The current official CSV sources and per-row evidence are in data/curated/forrt_overlap_audit_20260926.json. This update changes Retested's local built site only; no upstream FORRT contribution has been made.
+
 ## Completed-site checkpoint — 2026-09-26 01:19 UTC
 
 The latest audited Retested build has **1,766 finished source-reviewed pairs**: 451 overlay pairs in the built FORRT layer, and 1,315 pairs new to Retested's built pages. The 1,315 break down as follows; these categories are mutually exclusive:

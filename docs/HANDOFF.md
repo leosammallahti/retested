@@ -1,5 +1,9 @@
 # Handoff — current verified state 2026-09-26
 
+## Twenty-one further pairs completed in one batch — 2026-09-26 09:48 UTC
+
+A single batch added **21 source-checked pairs** and ran the data build, Astro site build, exact-pair audit, live FORRT provenance audit, and whitespace check in **24.2 seconds of pipeline time**. The built site now has **1,864 Retested-reviewed pairs**: **451** already in its built FORRT layer and **1,413** added to its built pages. Of the 1,413, the combined local-and-current FORRT file check finds **345 same pairs already recorded**, **87 later papers recorded without a confirmed same-pair link**, and **981 without an exact later DOI/title match**. The last two groups total **1,068 candidate new pair links**, subject to alternate DOI/title and source-coverage limits. FORRT itself has received no new records from this task. A clinical-disguise review note wrongly attributed a machine-screen outcome to FLoRA; it has been corrected against the primary results. The source readers continue in parallel; 24.2 seconds measures publishing a prepared batch, not source-reading throughput.
+
 ## Sixty backlog pairs completed after interruption — 2026-09-26 09:30 UTC
 
 The last previous data/site checkpoint was 01:22 UTC; reader files continued to be staged until 03:26 UTC, then no work occurred until the resumed session at 09:21 UTC. Sixty distinct source-checked rows remained unbuilt. They were bulk imported, with two duplicate drafts folded into one pair and one cross-study candidate alias removed. The queue guard found 50 disappeared IDs, all tied to promoted later papers, and four distinct candidates restored after the alias correction. The data build, Astro build (4,955 pages), promoted-pair audit, and whitespace check passed with zero issues. **1,843 built pairs carry Retested review**, including **1,392 new to the built site** and 451 built FORRT overlays.

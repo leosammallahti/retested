@@ -10431,6 +10431,86 @@
       "id": "https://openalex.org/W2121568166",
       "field": "Psychology",
       "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.31234/osf.io/qctkp_v5": {
+      "id": "https://openalex.org/W4417474538",
+      "field": "Psychology",
+      "topic": "Education, Achievement, and Giftedness"
+    },
+    "10.1016/j.jsp.2026.101590": {
+      "id": "https://openalex.org/W7213902686",
+      "field": "Psychology",
+      "topic": "Bullying, Victimization, and Aggression"
+    },
+    "10.31234/osf.io/4wjch_v2": {
+      "id": "https://openalex.org/W7203723322",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.31234/osf.io/t3vus_v4": {
+      "id": "https://openalex.org/W7204664085",
+      "field": "Psychology",
+      "topic": "Phonetics and Phonology Research"
+    },
+    "10.1037/emo0001447": {
+      "id": "https://openalex.org/W4403603379",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.31234/osf.io/mhcjw_v1": {
+      "id": "https://openalex.org/W4414077711",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
+    },
+    "10.1037/cep0000387": {
+      "id": "https://openalex.org/W4416280351",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
+    },
+    "10.31234/osf.io/9b62q_v1": {
+      "id": "https://openalex.org/W7167817894",
+      "field": "Psychology",
+      "topic": "Multisensory perception and integration"
+    },
+    "10.31234/osf.io/yk4ra_v1": {
+      "id": "https://openalex.org/W7119482664",
+      "field": "Psychology",
+      "topic": "Sexuality, Behavior, and Technology"
+    },
+    "10.31234/osf.io/4k8ey_v1": {
+      "id": "https://openalex.org/W7155167736",
+      "field": "Psychology",
+      "topic": "Psychological and Temporal Perspectives Research"
+    },
+    "10.1037/dev0001849": {
+      "id": "https://openalex.org/W4404271611",
+      "field": "Psychology",
+      "topic": "Language Development and Disorders"
+    },
+    "10.1002/1097-4679(198907)45:4<583::aid-jclp2270450413>3.0.co;2-h": {
+      "id": "https://openalex.org/W2016246193",
+      "field": "Psychology",
+      "topic": "Psychotherapy Techniques and Applications"
+    },
+    "10.1002/1097-4679(197807)34:3<686::aid-jclp2270340321>3.0.co;2-s": {
+      "id": "https://openalex.org/W1995449607",
+      "field": "Psychology",
+      "topic": "Family and Disability Support Research"
+    },
+    "10.1016/j.jrp.2013.09.001": {
+      "id": "https://openalex.org/W2100101557",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1016/j.lindif.2025.102806": {
+      "id": "https://openalex.org/W7115931264",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1037/xlm0000551": {
+      "id": "https://openalex.org/W2801996353",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
     }
   },
   "manual_exception": [

@@ -29,6 +29,8 @@ def read_packet(path: Path):
     fields = data["fields"] if isinstance(data, dict) else json.loads(path.with_name(path.stem + "_fields.json").read_text())
     if isinstance(fields, list):
         fields = {x["doi"]: {"id": x["id"], "field": x["field"], "topic": x.get("topic")} for x in fields}
+    elif isinstance(fields, dict) and "records" in fields:
+        fields = fields["records"]
     return rows, fields
 
 def main() -> int:
