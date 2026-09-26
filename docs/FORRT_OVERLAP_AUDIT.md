@@ -1,5 +1,11 @@
 # FORRT overlap audit — 2026-09-26
 
+
+## Updated after the 10:43 build — 2026-09-26
+
+The built Retested site has **1,889 source-reviewed pairs**: 451 built FORRT overlays and 1,438 additions to its built pages. The combined historical-plus-current official FORRT audit classifies the 1,438 additions as **354 exact same original/later pairs already recorded in FORRT data**, **87 later papers recorded without the same pair confirmed**, and **997 without an exact later DOI/title match** in checked sources. The latter two total **1,084 candidate new pair links**, not certified absence from every FORRT file or version. FORRT extractor outcomes exist for 309 of the 354 same-pair records; 56 scoped Retested labels differ and warrant review. Pair-level evidence and official source URLs are in data/curated/forrt_overlap_audit_20260926.json. No upstream FORRT submission was made.
+
+
 This audit corrects the meaning of “new” in Retested's progress counts. The build's `retested_new_pairs` metric counts pairs with only a `retested` source in the **built site**. It does **not** prove the pair, paper, or outcome is absent from all FORRT data. Likewise, `retested_new_effects` counts effects new to the built site, not first discoveries anywhere.
 
 At the 2026-09-26 00:59:58 UTC build, 1,736 distinct pairs carried Retested review. Of those, 451 already overlapped the built FORRT layer and 1,285 were new to the built layer. A separate comparison of those 1,285 against all local FORRT CSV/XLSX replication-identifier columns found 309 later-paper DOI matches somewhere in FORRT raw files. A row-level scan found 243 exact original-plus-later DOI pairs. An additional exact normalized-title scan found seven later papers represented under different DOI versions, four of which also named the same original DOI. Thus at least 247 pairs have strong same-original and same-later-paper evidence in the broader raw corpus. These categories overlap; do not add them together.

@@ -10546,6 +10546,18 @@
       "id": "https://openalex.org/W4399628341",
       "field": "Psychology",
       "topic": "Cultural Differences and Values"
+    },
+    "10.1080/14459795.2025.2494598": {
+      "id": "https://openalex.org/W4409974111",
+      "field": "Psychology"
+    },
+    "10.1080/20008066.2025.2586981": {
+      "id": "https://openalex.org/W4416352361",
+      "field": "Psychology"
+    },
+    "10.3758/s13428-024-02434-z": {
+      "id": "https://openalex.org/W4398248296",
+      "field": "Psychology"
     }
   },
   "manual_exception": [
