@@ -1,9 +1,16 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## Public, reproducible audit surface — 2026-09-26 16:52 UTC
+
+The validated reconciliation summary now drives the site's public `/coverage/` page, home-page overlap statement, and methods explanation. A normal data build regenerates the pair summaries and registry after validating every declared raw input; the site cannot silently retain a stale standalone registry. The complete bibliographic partition remains **1,938** Retested pairs: **872** positive same-pair relations overall, **421** among the **1,487** Retested additions, and **0** effect- or replication-level records certified new to FORRT.
+
+All 37 raw pair-summary inputs are now explicitly listed in `MANIFEST.json`. Recoverable GitHub inputs use exact commits. Six historical extractor feeds and one application-data file whose old moving endpoints no longer reproduce the recorded bytes are retained as deterministic gzip recovery assets under `data/curated/forrt_snapshots/2026-09-07/`; fetch verifies both compressed and decompressed SHA-256 values before restoring them. A missing or changed source therefore fails closed instead of silently changing the comparison corpus. The full 66-test suite, data build, registry check, promoted audit, and 5,136-page static build pass. Counts and assurance status are unchanged; nothing was sent to FORRT, pushed, or deployed.
+
+
 ## Evidence-first reconciliation registry — 2026-09-26 16:06 UTC
 
-The earlier audit's single “same pair” bucket was too coarse. The new deterministic registry separates exact DOI-expression pairs from reviewed Work/version relations and from unreviewed title or alternate-identifier candidates. It is built from commit-pinned official FORRT snapshots and the retained historical corpus; its policy, ontology, commands, and limits are documented in `docs/REPLICATION_REGISTRY.md`.
+The earlier audit's single “same pair” bucket was too coarse. The new deterministic registry separates exact DOI-expression pairs from reviewed Work/version relations and from unreviewed title or alternate-identifier candidates. It is built from commit-pinned official FORRT snapshots and content-addressed retained historical inputs; its policy, ontology, commands, and limits are documented in `docs/REPLICATION_REGISTRY.md`.
 
 The built site is unchanged at **1,938 Retested-reviewed normalized pairs**: **451** built FORRT overlays and **1,487** additions to Retested's built pages. The reproducible FORRT comparison corpus has **14,242 normalized source-summary records**: **11,168 reported original/later relations** plus **3,074 later-only status records**. The 11,168 relations comprise **9,755 distinct DOI–DOI relations**, **1,398 relations involving a URL, OpenAlex record, or record-scoped title candidate**, and **15 source-reported same-DOI anomalies requiring identity review**. These are bibliographic records, not a count of unique effects, studies, samples, or scientifically valid replications.
 

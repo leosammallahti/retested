@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import json
 import shutil
+from datetime import date, timedelta
+from hashlib import sha256
 from pathlib import Path
 
 from .load import ROOT
@@ -31,6 +33,41 @@ def promoted(f: dict, game_findings: set[str]) -> bool:
     """A finding gets its own page only when it adds something the FORRT atlas page does not."""
     L = f["lenses"]
     return L["record"]["n_attempts"] >= 2 or L["numeric"] is not None or bool(f.get("effects")) or f["slug"] in game_findings
+
+
+def _daily_decks(items: list[dict], reveals: dict) -> dict[str, list[str]]:
+    """Precompute one opaque 8-study/2-famous, 5/5 deck for each calendar day.
+
+    The browser receives only IDs in ``daily.json``. Outcome labels remain solely in each card's
+    separately fetched reveal JSON; this function is the one build-time boundary that can inspect
+    both payloads. A month/day schedule repeats annually so a date means the same deck to every
+    player, without putting answer-derived metadata on individual card records.
+    """
+    by_tier_answer: dict[tuple[str, str], list[dict]] = {}
+    for tier in ("study", "famous"):
+        for answer in ("successful", "failed"):
+            rows = [item for item in items if item["tier"] == tier and item.get("written")
+                    and reveals[item["id"]].get("answer") == answer]
+            by_tier_answer[tier, answer] = rows
+    quotas = {("study", "successful"): 4, ("study", "failed"): 4,
+              ("famous", "successful"): 1, ("famous", "failed"): 1}
+    missing = [f"{tier}/{answer}: {len(by_tier_answer[tier, answer])} < {n}"
+               for (tier, answer), n in quotas.items() if len(by_tier_answer[tier, answer]) < n]
+    if missing:
+        raise ValueError("cannot build a fair daily game deck: " + "; ".join(missing))
+
+    def ordered(rows: list[dict], key: str) -> list[dict]:
+        return sorted(rows, key=lambda item: sha256(f"{key}|{item['id']}".encode()).hexdigest())
+
+    decks: dict[str, list[str]] = {}
+    day = date(2000, 1, 1)  # leap year: includes every month/day, including February 29.
+    for _ in range(366):
+        key = day.strftime("%m-%d")
+        picked = [item for (tier, answer), n in quotas.items()
+                  for item in ordered(by_tier_answer[tier, answer], f"{key}|{tier}|{answer}")[:n]]
+        decks[key] = [item["id"] for item in ordered(picked, f"{key}|order")]
+        day += timedelta(days=1)
+    return decks
 
 
 def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pending: dict, stats: dict, citation: str) -> dict:
@@ -63,6 +100,7 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
 
     # --- client payloads (only what the browser needs; answers kept apart from cards)
     _dump(PUBLIC / "game" / "items.json", items)
+    _dump(PUBLIC / "game" / "daily.json", _daily_decks(items, reveals))
     for gid, rv in reveals.items():
         _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
     _dump(PUBLIC / "queue" / "candidates.json", candidates)

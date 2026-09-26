@@ -1,4 +1,4 @@
-"""Citation-graph discovery: find replications FORRT has not recorded.
+"""Citation-graph discovery: find candidates outside Retested's counted record.
 
 A replication almost always cites the study it replicates. So for every original in the wiki we ask OpenAlex
 for works that (a) cite it and (b) mention replication in title or abstract, score them on replication-specific

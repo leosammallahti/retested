@@ -203,7 +203,7 @@ def _dedupe_claims(items: list[dict], reveals: dict) -> None:
 
 
 def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: list[dict]) -> None:
-    """Cards from replications this project found and FORRT does not record.
+    """Cards from unreviewed candidates outside Retested's counted record.
 
     These are not the record and the reveal says so. A card is dealt only when the find clears both hand-read
     audits — a link band measured at 90% or better and an outcome the model was confident about — when every
@@ -243,12 +243,14 @@ def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: lis
                               "journal": c.get("journal_r"), "doi": c.get("doi_r"), "n": None, "r": None,
                               "quote": c.get("outcome_quote")} for c in cs[:4]],
             "finding": None, "effect": None, "effect_label": w.get("effect_label"),
-            # the card's whole provenance, in the reveal, because none of it is in FORRT's record
+            # The candidate's provenance belongs in the reveal. Its absence from the Retested count
+            # is not a claim that no FORRT source contains the same paper, pair, or effect.
             "unverified": True,
-            "how_found": "This replication is not in FORRT's curated record. Our own search of OpenAlex found it, "
-                         "a language model read its abstract for the outcome, and its link to the original was "
-                         "checked by hand for its matching method but not for this paper. Nobody has reviewed "
-                         "this pair.",
+            "how_found": "This is an unreviewed candidate outside Retested's counted record. Retested's "
+                         "OpenAlex search found it; a language model read its abstract for the outcome, and its "
+                         "link to the original was checked by hand for its matching method but not for this paper. "
+                         "It may be represented elsewhere in FORRT data: Retested has not established an exact "
+                         "pair or effect-level comparison across the full FORRT scope. Nobody has reviewed this pair.",
         }
 
 

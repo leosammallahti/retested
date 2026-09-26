@@ -67,6 +67,38 @@ export interface Stats {
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }
 
+export interface ReconciliationSummary {
+  schema_version: string;
+  scope: string;
+  counts: {
+    retested_reviewed_source_rows: number;
+    retested_normalized_pairs: number;
+    retested_built_overlays: number;
+    retested_additions: number;
+    forrt_summary_records: number;
+    forrt_pair_records: number;
+    forrt_later_status_records: number;
+    certified_new_to_forrt: number;
+    effect_relations_resolved: number;
+    studies_resolved: number;
+    samples_resolved: number;
+    bibliographic_relations: Record<string, number>;
+    retested_addition_bibliographic_relations: Record<string, number>;
+  };
+  coverage: {
+    comparison_state: string;
+    assurance_complete: boolean;
+    semantic_queries_reviewed: number;
+    semantic_decisions_incomplete_evidence: number;
+    semantic_decisions_missing_rationale: number;
+    semantic_decisions_missing_locations: number;
+    comparison_blocks: Record<string, 'complete' | 'partial' | 'not_started' | string>;
+    assurance_blockers: string[];
+  };
+  validation: { structurally_valid: boolean; assurance_complete: boolean; problems: string[] };
+  input_hashes: Record<string, string>;
+}
+
 export interface Candidate {
   id: string; doi_r: string | null; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
   doi_o: string | null; title_o: string | null; year_o: number | null;
@@ -98,6 +130,7 @@ export const stats = () => read<Stats>('stats.json');
 export const citation = () => read<{ forrt: string }>('citation.json').forrt;
 export const candidates = () => read<Candidate[]>('candidates.json');
 export const pending = () => read<Pending>('pending.json');
+export const reconciliation = () => read<ReconciliationSummary>('reconciliation_registry.summary.json');
 
 let _effById: Map<string, Effect> | undefined;
 export const effectById = (id: string) => (_effById ??= new Map(effects().map((e) => [e.id, e]))).get(id);

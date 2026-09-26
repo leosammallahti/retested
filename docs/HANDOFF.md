@@ -1,6 +1,24 @@
 # Handoff — current verified state 2026-09-26
 
 
+## Local v1 release completion — 2026-09-26 16:52 UTC
+
+The local Retested v1 product is release-ready. The ordinary data build, reconciliation build gate, promoted-pair audit, 66-test suite, static site build, sitemap, and whitespace checks pass. The site builds **5,136 static pages**; the sitemap contains **5,135 indexable URLs** because the 404 page is excluded. Nothing was pushed, deployed, published, or submitted upstream to FORRT.
+
+The release closes the main product gaps found in the final audit:
+
+- `/coverage/` now exposes the generated FORRT overlap partition, comparison progress, and assurance limits rather than leaving them in maintainer-only files.
+- The home and methods pages derive overlap numbers from the validated registry and distinguish additions to Retested from certified novelty.
+- The daily game is deterministically balanced at five successful and five failed outcomes, with eight study and two famous-effect cards. Its public card payload contains no answer or answer-derived bucket; a separate opaque ID schedule is generated at build time.
+- The findings index server-renders its first 60 records, so it remains useful without JavaScript. Canonical URLs, Open Graph URLs, a sitemap, and a base-path-aware `robots.txt` are generated for both root and GitHub Pages builds.
+- Review decisions can now carry rationale and evidence, survive as a versioned JSON packet, and be imported only when candidate identity matches. Accepted CSV exports retain those evidence fields.
+- A normal `python -m pipeline build` validates every required raw-input hash, regenerates pair summaries and the full/compact reconciliation registry, and fails on structural errors. All **37** pair-summary inputs are manifest-declared. Immutable upstream revisions are used where recoverable; seven old moving-endpoint payloads are preserved as deterministic, compressed, content-addressed recovery assets so a clean checkout can reconstruct the same corpus.
+
+The scientific counts did not change during this release-completion phase: **1,938 finished Retested-reviewed normalized pairs**, comprising **451** built FORRT overlays and **1,487** additions to Retested's built pages. Of the additions, **421** already have positive bibliographic same-pair evidence in the frozen FORRT corpus. Across all Retested pairs, **872** have positive bibliographic same-pair evidence. The comparison still certifies **0** effects or replications as new to FORRT because effect, study, sample, and outcome equivalence remain unadjudicated.
+
+From the preceding local commit at 16:08 through this 16:52 checkpoint, **0 effect/replication pages** were added, or **0 per 15 minutes**. That interval was entirely product, integrity, and clean-checkout work; it is not a discovery-throughput sample. The local v1 site is complete as a transparent, reproducible living record. The open-ended literature-assurance backlog below remains real and is now shown honestly on the site rather than treated as a launch blocker.
+
+
 ## Evidence-first registry checkpoint — 2026-09-26 16:06 UTC
 
 The site remains at **1,938 finished Retested-reviewed normalized pairs**: **451** built FORRT overlays and **1,487** additions to Retested's built pages. No effect/replication pages were added during the reconciliation work, so page completion over this interval was **0 per 15 minutes**; this was an assurance/architecture phase, not a discovery-speed trial. Nothing was sent upstream, pushed, deployed, or published.

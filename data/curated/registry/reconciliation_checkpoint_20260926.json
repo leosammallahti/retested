@@ -1,15 +1,15 @@
 {
   "schema_version": "reconciliation-checkpoint/v1",
   "registry_schema_version": "reconciliation-registry/v1",
-  "checkpointed_at_utc": "2026-09-26T16:03:00Z",
+  "checkpointed_at_utc": "2026-09-26T16:53:43Z",
   "scope": "A reproducible comparison of Retested reviewed records with the pinned FORRT corpus; it is not a claim of universal literature completeness.",
   "generator": {
     "path": "pipeline/reconciliation_registry.py",
-    "sha256": "0329ea38087ec574159895b4a48c9d6c1052adf8277dbc998eb4166f951d098a"
+    "sha256": "9044a2ca6a495ab99dcdd60f7dee7ac7d45a9f17b80819ef80b6f9235fb5bf6d"
   },
   "pair_summary_generator": {
     "path": "pipeline/pair_summaries.py",
-    "sha256": "1fc57793afdb7e36f38106fc900050073e50bbdddf48739768b523c0dabb43af"
+    "sha256": "a990ea0c1aa8e49bd8d3fb1757201844fadaf14b2161aa51851eba53de29b6c7"
   },
   "counts": {
     "retested_reviewed_source_rows": 1941,
@@ -36,6 +36,17 @@
     "certified_new_to_forrt": 0,
     "bibliographic_relations": {
       "exact_expression_pair_reported": 814,
+      "reviewed_same_work_pair_expression_unresolved": 38,
+      "reviewed_same_work_pair_versioned_expressions": 20,
+      "title_or_alternate_identifier_pair_candidate": 10,
+      "reviewed_same_later_work_different_original": 39,
+      "later_work_reported_original_relation_unresolved": 4,
+      "original_expression_reported_with_other_later": 172,
+      "reviewed_original_work_in_pending_record": 1,
+      "not_fully_compared": 840
+    },
+    "retested_addition_bibliographic_relations": {
+      "exact_expression_pair_reported": 363,
       "reviewed_same_work_pair_expression_unresolved": 38,
       "reviewed_same_work_pair_versioned_expressions": 20,
       "title_or_alternate_identifier_pair_candidate": 10,
@@ -78,8 +89,8 @@
     "data/curated/promoted_pairs.json": "80aaa3fa940cd682d89d115eddc3cf87c974ef6039723218c779e747c25bb330",
     "data/curated/registry/effect_ids.csv": "074167475f714ccdd079b5161d850d2caa236a6b0216dc241b9f0d7695bcd264",
     "data/curated/registry/reconciliation_policy_v1.json": "985fdfce1db42a58329131f1a339152a40349a800d3299f9bb4368601548ffc1",
-    "data/discovery/pair_match_summaries.json": "9fa0f3a000efe8f12183e7bdc40080d525a0d3361243b1ea63e6de4f61f02c70",
-    "data/raw/forrt/MANIFEST.json": "187cc71803d98c26ba9550443ac05d5a7ac09be7b7e90b244b77f046a165e5ef"
+    "data/discovery/pair_match_summaries.json": "9882768f34fb2e87798d5e67c019b7b19a15cab329a2aef8c48631d3ea6e6252",
+    "data/raw/forrt/MANIFEST.json": "69b7f93cd734cf2aa2a0ec6ee3424220bbb9877cd1172d3c9c3fc86fafe93092"
   },
   "validation": {
     "structurally_valid": true,

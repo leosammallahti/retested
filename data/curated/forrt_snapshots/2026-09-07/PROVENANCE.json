@@ -1,0 +1,16 @@
+{
+  "snapshot_date": "2026-09-07",
+  "kind": "frozen_public_data_recovery_assets",
+  "compression": "gzip -9 -n",
+  "policy": "Each compressed asset is content-addressed in data/raw/forrt/MANIFEST.json. Fetch verifies both its compressed SHA-256 and its decompressed raw SHA-256 before restoring a missing raw cache input. The original public source URL and retrieval date remain in that manifest; these assets are not a claim of a new upstream source.",
+  "reason": "The listed moving public endpoints no longer reproduce their recorded 2026-09-07 bytes and no reachable immutable upstream revision was found for them.",
+  "assets": [
+    "flora-extractor_extracted.csv.gz",
+    "flora-extractor_keyed_link_disputed.csv.gz",
+    "flora-extractor_no_original_found.csv.gz",
+    "flora-extractor_search_link_unconfirmed.csv.gz",
+    "flora-extractor_target_pending.csv.gz",
+    "flora-extractor_unidentified_original.csv.gz",
+    "fred-apps_explorer-data.json.gz"
+  ]
+}

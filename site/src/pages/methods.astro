@@ -1,9 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
-import { stats, citation } from '../lib/data';
+import { stats, citation, reconciliation } from '../lib/data';
 import { u, int, CRITERIA_LABELS, RECORD_BLURB } from '../lib/fmt';
 const s = stats();
 const c = s.counts;
+const rr = reconciliation();
+const rb = rr.counts.bibliographic_relations;
+const ra = rr.counts.retested_addition_bibliographic_relations;
+const positivePairs = (rb.exact_expression_pair_reported ?? 0)
+  + (rb.reviewed_same_work_pair_expression_unresolved ?? 0)
+  + (rb.reviewed_same_work_pair_versioned_expressions ?? 0);
+const positiveAdditions = (ra.exact_expression_pair_reported ?? 0)
+  + (ra.reviewed_same_work_pair_expression_unresolved ?? 0)
+  + (ra.reviewed_same_work_pair_versioned_expressions ?? 0);
+const pageLinkAudit = s.uncounted.link_audit?.page;
+const outcomeAudit = s.uncounted.audit;
+const outcomeRight = outcomeAudit
+  ? Object.values(outcomeAudit.by_verdict).reduce((total, row) => total + row.right, 0)
+  : 0;
 const records = [
   ['replicated', 'Replicated', 'k ≥ 2, every attempt with a verdict succeeded'],
   ['largely_replicated', 'Largely replicated', 'k ≥ 2, (successes + ½ mixed) / k ≥ 75%'],
@@ -40,6 +54,10 @@ const records = [
     <h2 id="units">Units</h2>
     <p>An <b>attempt</b> is one (original paper, replication paper) pair; we have {int(c.attempts)} of them ({int(c.replications)} replications, {int(c.reproductions)} reproductions). A <b>finding</b> is one original paper and all its attempts ({int(c.findings)}). An <b>effect</b> is a named phenomenon, such as "Ego depletion", which may span several original papers ({int(c.effects)}, of which {int(c.effects_with_attempts)} have linked attempts). Near-identical names that point at the same original paper are merged only when they differ in spelling or word form; anything else stays separate until a person merges it.</p>
 
+    <h2 id="reconciliation">Retested versus FORRT</h2>
+    <p>The site and FORRT overlap, so “added to Retested” is not the same as “new to FORRT.” The evidence-first reconciliation registry compares every Retested-reviewed pair with commit-pinned or content-addressed FORRT snapshots. It currently supports <b>{int(positivePairs)}</b> positive bibliographic same-pair relations, including <b>{int(positiveAdditions)}</b> of Retested's {int(rr.counts.retested_additions)} locally completed additions. Exact DOI identity is kept separate from reviewed preprint/journal-version identity.</p>
+    <p>A matching paper pair still does not prove the same effect, study, sample or outcome was assessed. Those four scientific axes remain unadjudicated, so the registry currently certifies <b>{int(rr.counts.certified_new_to_forrt)}</b> effects or replications as absent from FORRT. The remaining unmatched rows are comparison work, not novelty claims. The <a href={u('coverage/')}>coverage and overlap page</a> shows the complete partition, frozen corpus size, progress and assurance blockers directly from the validated build output.</p>
+
     <h2 id="lenses">Three lenses, never one score</h2>
     <p><b>1. What the replicators said.</b> Each attempt's verdict comes from FLoRA, then FReD, then the legacy file, then Retested-reviewed primary papers. Rolled up with explicit rules over <i>k</i>, the number of attempts with a verdict:</p>
     <table class="tbl"><thead><tr><th>Label</th><th>Rule</th></tr></thead><tbody>{records.map(([, l, r]) => <tr><td>{l}</td><td>{r}</td></tr>)}</tbody></table>
@@ -57,7 +75,7 @@ const records = [
       <li><b>Coverage.</b> Most effects have one attempt. We label single attempts as such.</li>
       <li><b>Coding.</b> Verdicts are the replicators' own, coded by FORRT or checked against the primary paper for Retested-reviewed pairs. Sources sometimes disagree; we flag it.</li>
       <li><b>Names.</b> Effect names come from several lists and are imperfect. Every effect keeps a stable ID, so fixing a name never breaks a link.</li>
-      <li><b>Our unverified finds.</b> The remaining papers we surface ourselves are machine-screened only. On the originals the citation graph had already resolved, matching by author, year and description picked the right original 92% of the time from this wiki and 89% of the time from an OpenAlex lookup — good enough to put in front of a reviewer, not good enough to count. They change no verdict, tally or figure anywhere on this site. Two separate guesses sit behind each one and both were measured by reading samples by hand: whether the paper is a replication (right 86% of the time for the strong search tier, 50% for the weak one) and whether it was linked to the right original (96% and 91% for the two matching methods we trust, 55% and 36% for the two we do not). A page shows a find only when both steps come from a measured-good method; the rest wait in the <a href={u('queue/')}>queue</a> for a person. An earlier version of this site showed all of them, and 53% pointed at the wrong original.</li>
+      <li><b>Our unverified finds.</b> Candidate papers are machine-screened and change no verdict, tally or figure. The build derives its audit figures from committed hand-read labels rather than prose typed into this page. Among the page-eligible original links read so far, <b>{int(pageLinkAudit?.right)}</b> of <b>{int(pageLinkAudit?.n_read)}</b> pointed to the intended original. Among candidate outcome labels read so far, <b>{int(outcomeRight)}</b> of <b>{int(outcomeAudit?.n_read)}</b> agreed with the source review. Those are sample results, not guarantees for unread rows. The rest wait in the <a href={u('queue/')}>queue</a> for source review.</li>
     </ul>
 
     <h2 id="cite">Credit and citation</h2>

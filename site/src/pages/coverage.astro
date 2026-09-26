@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import { reconciliation } from '../lib/data';
+import { int, u } from '../lib/fmt';
+
+const r = reconciliation();
+const c = r.counts;
+const all = c.bibliographic_relations;
+const added = c.retested_addition_bibliographic_relations;
+const exact = all.exact_expression_pair_reported ?? 0;
+const reviewedWork = (all.reviewed_same_work_pair_expression_unresolved ?? 0)
+  + (all.reviewed_same_work_pair_versioned_expressions ?? 0);
+const positive = exact + reviewedWork;
+const addedPositive = (added.exact_expression_pair_reported ?? 0)
+  + (added.reviewed_same_work_pair_expression_unresolved ?? 0)
+  + (added.reviewed_same_work_pair_versioned_expressions ?? 0);
+const notPositiveYet = c.retested_additions - addedPositive;
+
+const rows = [
+  ['Exact original and later DOI pair in a frozen FORRT source', all.exact_expression_pair_reported ?? 0, added.exact_expression_pair_reported ?? 0],
+  ['Reviewed as the same two works; FORRT expression unresolved', all.reviewed_same_work_pair_expression_unresolved ?? 0, added.reviewed_same_work_pair_expression_unresolved ?? 0],
+  ['Reviewed as the same works through another version or identifier', all.reviewed_same_work_pair_versioned_expressions ?? 0, added.reviewed_same_work_pair_versioned_expressions ?? 0],
+  ['Title or alternate-identifier candidate—not confirmed identity', all.title_or_alternate_identifier_pair_candidate ?? 0, added.title_or_alternate_identifier_pair_candidate ?? 0],
+  ['Same later work, but FORRT links another original', all.reviewed_same_later_work_different_original ?? 0, added.reviewed_same_later_work_different_original ?? 0],
+  ['Later work present; original relationship unresolved', all.later_work_reported_original_relation_unresolved ?? 0, added.later_work_reported_original_relation_unresolved ?? 0],
+  ['Original DOI present with another later record', all.original_expression_reported_with_other_later ?? 0, added.original_expression_reported_with_other_later ?? 0],
+  ['Original work appears only in a pending record', all.reviewed_original_work_in_pending_record ?? 0, added.reviewed_original_work_in_pending_record ?? 0],
+  ['Legacy overlay not reproduced in the frozen sources', all.legacy_overlay_not_reproduced_in_frozen_sources ?? 0, added.legacy_overlay_not_reproduced_in_frozen_sources ?? 0],
+  ['No positive identity relation yet; comparison incomplete', all.not_fully_compared ?? 0, added.not_fully_compared ?? 0],
+] as const;
+
+const blockLabel: Record<string, string> = {
+  direct_pair_join: 'Exact original/later DOI join',
+  one_side_identifier_joins: 'One-sided identifier joins',
+  pinned_alias_version_graph: 'Alias and publication-version graph',
+  bibliographic_fallback: 'Bibliographic fallback matching',
+  text_semantic_retrieval: 'Two-sentence semantic retrieval',
+  textless_metadata_audit: 'Records without usable comparison text',
+  source_stratum_deduplication: 'Deduplication across FORRT source layers',
+  independent_review_and_adjudication: 'Independent second review and adjudication',
+};
+---
+<Base title="Coverage and overlap" description="What Retested adds, what FORRT already records, and exactly which comparisons remain unresolved." active="coverage/">
+  <article class="wrap coverage">
+    <header class="rise">
+      <div class="label">Data status</div>
+      <h1>What is in Retested—and what is actually new?</h1>
+      <p class="lede">Paper identity, effect identity and result identity are different questions. This page keeps them separate, so a matching DOI never silently becomes a claim that two studies tested the same effect in the same population.</p>
+    </header>
+
+    <section class="scoregrid" aria-label="Current reconciliation counts">
+      <div class="card"><b>{int(c.retested_normalized_pairs)}</b><span>finished Retested-reviewed paper pairs</span></div>
+      <div class="card"><b>{int(c.retested_additions)}</b><span>pairs added to Retested's built pages</span></div>
+      <div class="card"><b>{int(addedPositive)}</b><span>of those additions already match a FORRT pair bibliographically</span></div>
+      <div class="card"><b>{int(c.certified_new_to_forrt)}</b><span>currently certified as a new effect or replication absent from FORRT</span></div>
+    </section>
+
+    <section>
+      <div class="sh"><h2>The short answer</h2><span class="label">frozen-source comparison</span></div>
+      <div class="card answer">
+        <p>Retested has <strong>{int(c.retested_built_overlays)}</strong> pairs in its built FORRT layer and <strong>{int(c.retested_additions)}</strong> locally completed additions. Among the additions, <strong>{int(addedPositive)}</strong> already have positive bibliographic same-pair evidence in the checked FORRT corpus. The remaining <strong>{int(notPositiveYet)}</strong> do not yet have a confirmed same-pair relation—but that is an unfinished comparison, <em>not</em> proof that FORRT lacks them.</p>
+        <p>Across the whole site, <strong>{int(positive)}</strong> pairs have positive bibliographic same-pair evidence: {int(exact)} exact DOI pairs and {int(reviewedWork)} reviewed Work/version matches. Effect, study, sample and outcome equivalence have not yet been adjudicated, so the defensible count of certified new-to-FORRT effects or replications is still <strong>{int(c.certified_new_to_forrt)}</strong>.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sh"><h2>The complete bibliographic partition</h2><span class="label">every Retested pair appears once</span></div>
+      <div class="scroll"><table class="tbl">
+        <thead><tr><th>Relationship to the frozen FORRT corpus</th><th class="n">All Retested pairs</th><th class="n">Retested additions</th></tr></thead>
+        <tbody>{rows.map(([label, total, additions]) => <tr><td>{label}</td><td class="n mono">{int(total)}</td><td class="n mono">{int(additions)}</td></tr>)}</tbody>
+        <tfoot><tr><th>Total</th><th class="n mono">{int(c.retested_normalized_pairs)}</th><th class="n mono">{int(c.retested_additions)}</th></tr></tfoot>
+      </table></div>
+      <p class="faint">A “Work” is the underlying report; a journal article and its preprint can be different citable expressions of the same Work. Reviewed Work matches remain distinct records rather than being collapsed automatically.</p>
+    </section>
+
+    <section>
+      <div class="sh"><h2>What the FORRT inventory number means</h2><span class="label">not 11,168 unique high-quality effects</span></div>
+      <p>The frozen comparison corpus contains <strong>{int(c.forrt_pair_records)}</strong> original/later relationship records and <strong>{int(c.forrt_later_status_records)}</strong> later-paper-only records across published, validated, extractor, pending, historical and unresolved FORRT layers. These are bibliographic source records. They are not a count of unique effects, independent samples, successful replications, or records that have all passed the same quality threshold.</p>
+    </section>
+
+    <section>
+      <div class="sh"><h2>How complete is the comparison?</h2><span class={`stamp sm ${r.coverage.assurance_complete ? 't-ok' : 't-mix'}`}>{r.coverage.assurance_complete ? 'complete' : 'in progress'}</span></div>
+      <ul class="blocks">
+        {Object.entries(r.coverage.comparison_blocks).map(([key, status]) => (
+          <li><span>{blockLabel[key] ?? key.replaceAll('_', ' ')}</span><b class={`state ${status}`}>{status.replaceAll('_', ' ')}</b></li>
+        ))}
+      </ul>
+      <p><strong>{int(r.coverage.semantic_queries_reviewed)}</strong> non-exact candidate matches have received semantic source review. <strong>{int(r.coverage.semantic_decisions_incomplete_evidence)}</strong> negative decisions still need a rationale or durable evidence location repaired. Independent second review has not started.</p>
+      <p class="card caveat"><b>What completion can mean.</b> Retested can certify that no match was found in a named, hash-pinned FORRT snapshot after declared comparison steps. It cannot prove universal absence from every database, unpublished file or future FORRT release.</p>
+    </section>
+
+    <section>
+      <div class="sh"><h2>Reproducibility</h2><span class={`label ${r.validation.structurally_valid ? 'obs' : 'claim'}`}>{r.validation.structurally_valid ? 'structural validation passed' : 'validation failed'}</span></div>
+      <p>This page is generated from the same reconciliation summary as the build gate. The registry retains the source snapshots, source observations, reviewed assertions and input hashes; embeddings retrieve candidates but never decide identity. Read the <a href={u('methods/#reconciliation')}>method</a> or inspect the project repository for the complete evidence ledger.</p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .coverage { padding-top: 2.4rem; max-width: 1040px; }
+  .coverage h1 { max-width: 20ch; }
+  .lede { font: 400 1.2rem/1.5 var(--f-display); color: var(--ink-2); max-width: 72ch; }
+  .scoregrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .8rem; margin: 2rem 0 3rem; }
+  .scoregrid .card { display: flex; flex-direction: column; gap: .35rem; }
+  .scoregrid b { font: 600 2.3rem/1 var(--f-display); }
+  .scoregrid span { color: var(--ink-2); font-size: .9rem; }
+  .answer { border-left: 4px solid var(--obs); }
+  .scroll { overflow-x: auto; }
+  .tbl tfoot th { border-top: 2px solid var(--ink); }
+  .blocks { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+  .blocks li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
+  .state { font: 500 .7rem var(--f-mono); text-transform: uppercase; letter-spacing: .06em; }
+  .state.complete { color: var(--ok); }
+  .state.partial { color: var(--mix); }
+  .state.not_started { color: var(--bad); }
+  .caveat { border-left: 4px solid var(--mix); }
+</style>

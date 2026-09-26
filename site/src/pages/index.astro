@@ -1,13 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
 import EffectRow from '../components/EffectRow.astro';
-import { stats } from '../lib/data';
+import { stats, reconciliation } from '../lib/data';
 import { u, pct, int } from '../lib/fmt';
 
 const s = stats();
 const o = s.overall;
 const c = s.counts;
 const pr = s.predictors;
+const rr = reconciliation();
+const ar = rr.counts.retested_addition_bibliographic_relations;
+const additionsAlreadyInForrt = (ar.exact_expression_pair_reported ?? 0)
+  + (ar.reviewed_same_work_pair_expression_unresolved ?? 0)
+  + (ar.reviewed_same_work_pair_versioned_expressions ?? 0);
 // 100-cell waffle: the whole record at a glance
 const cells = (() => {
   const ok = Math.round((o.successful / o.n) * 100), mix = Math.round((o.mixed / o.n) * 100);
@@ -58,11 +63,11 @@ const cells = (() => {
 
   <section class="wrap grid grid-2 doors">
     <div>
-      <div class="sh"><h2>The Graveyard</h2><a class="label" href={u('graveyard/')}>all →</a></div>
+      <div class="sh"><h2>The Graveyard</h2><a class="label" href={u('graveyard/')}>top {s.lists.graveyard.length} →</a></div>
       <ul class="rowlist">{s.lists.graveyard.slice(0, 7).map((e) => <EffectRow e={e} showFame />)}</ul>
     </div>
     <div>
-      <div class="sh"><h2>The Survivors</h2><a class="label" href={u('survivors/')}>all →</a></div>
+      <div class="sh"><h2>The Survivors</h2><a class="label" href={u('survivors/')}>top {s.lists.survivors.length} →</a></div>
       <ul class="rowlist">{s.lists.survivors.filter((e) => e.record.k > 0).slice(0, 7).map((e) => <EffectRow e={e} showFame />)}</ul>
     </div>
   </section>
@@ -72,9 +77,9 @@ const cells = (() => {
       <div>
         <div class="label claim">Source checked by Retested</div>
         <h2>{int(c.retested_new_effects)} completed effect pages added to this site</h2>
-        <p>{int(c.retested_new_findings)} original papers and {int(c.retested_new_pairs)} source-reviewed replication pairs were added to Retested's built record. Some pairs and outcomes already exist in FORRT's broader raw files; these figures measure completed Retested pages, not first discoveries. Each page links the original claim to the later study and shows the reported result.</p>
+        <p>{int(c.retested_new_findings)} original papers and {int(c.retested_new_pairs)} source-reviewed replication pairs were added to Retested's built record. Of those pairs, {int(additionsAlreadyInForrt)} already have positive bibliographic same-pair evidence in the frozen FORRT comparison. The rest are unresolved comparisons, not certified first discoveries. Each page links the original claim to the later study and shows the reported result.</p>
       </div>
-      <a class="btn ghost" href={u('effects/?source=retested')}>Browse the additions →</a>
+      <div class="band-actions"><a class="btn ghost" href={u('effects/?source=retested')}>Browse the additions →</a><a class="btn ghost" href={u('coverage/')}>Audit the overlap →</a></div>
     </div>
   </section>
 
@@ -115,4 +120,5 @@ const cells = (() => {
   .band { display: grid; gap: 1.5rem; align-items: center; margin-top: 4rem; }
   @media (min-width: 860px) { .band { grid-template-columns: 1fr auto; } }
   .band h2 { margin: .4rem 0 .6rem; }
+  .band-actions { display: flex; flex-wrap: wrap; gap: .65rem; }
 </style>

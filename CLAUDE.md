@@ -4,7 +4,7 @@
 
 ## What this is
 An effect-level wiki of psychology's replication record, built on FORRT's open data (FReD + FLoRA), plus a
-"Did it replicate?" calibration game and a discovery pipeline that finds replications FORRT has not recorded.
+"Did it replicate?" calibration game and a discovery pipeline that finds candidates outside Retested's counted record.
 Owner: Leo Sammallahti. Messages are often voice-dictated: "FORTT" means FORRT. He wants brilliant, not bare minimum,
 and he wants API spending kept lean.
 

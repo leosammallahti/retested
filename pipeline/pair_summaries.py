@@ -39,6 +39,7 @@ from .ids import is_na, norm_doi
 ROOT = Path(__file__).resolve().parent.parent
 PROMOTED = ROOT / "data" / "curated" / "promoted_pairs.json"
 FORRT_ROOT = ROOT / "data" / "raw" / "forrt"
+MANIFEST = FORRT_ROOT / "MANIFEST.json"
 OUTPUT = ROOT / "data" / "discovery" / "pair_match_summaries.json"
 LIVE_ROOT = Path("/tmp")
 SCHEMA_VERSION = 1
@@ -704,6 +705,10 @@ def _load_csv_batch(path: Path, source: str, status: str, provenance_path: str) 
 def load_csv_batches(forrt_root: Path = FORRT_ROOT) -> list[SourceBatch]:
     """Load allowlisted FORRT pair tables, never generic search outputs."""
 
+    comparison_paths: set[str] | None = None
+    if forrt_root.resolve() == FORRT_ROOT.resolve():
+        manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        comparison_paths = set(manifest.get("comparison_inputs") or [])
     batches: list[SourceBatch] = []
     paths: dict[Path, str] = {}
     for pattern, status in _CSV_SOURCE_RULES:
@@ -713,6 +718,11 @@ def load_csv_batches(forrt_root: Path = FORRT_ROOT) -> list[SourceBatch]:
                 raise ValueError(f"conflicting pair-source statuses for {path}: {previous}, {status}")
     for path, status in sorted(paths.items(), key=lambda item: item[0].as_posix()):
         relative = path.relative_to(forrt_root)
+        if comparison_paths is not None and relative.as_posix() not in comparison_paths:
+            # The raw directory can contain cloned repositories and scratch
+            # exports.  A matching filename is not enough to enter the frozen
+            # corpus; the manifest must declare and hash it first.
+            continue
         batch = _load_csv_batch(
             path,
             source="forrt_csv:" + relative.with_suffix("").as_posix(),
@@ -812,6 +822,27 @@ def write_document(document: Mapping[str, object], output: Path = OUTPUT) -> Non
     except BaseException:
         Path(temporary).unlink(missing_ok=True)
         raise
+
+
+def regenerate_default_document(output: Path = OUTPUT) -> dict:
+    """Regenerate the pinned, non-ephemeral pair-summary input.
+
+    The ordinary site build calls this after it has exported its own attempt
+    bundle.  It deliberately does *not* pass ``LIVE_ROOT``: a clean clone
+    after ``pipeline fetch`` must produce the same comparison input without
+    depending on optional ``/tmp`` audit downloads.
+    """
+
+    from .promoted import load as load_promoted
+
+    document = build_document(
+        load_promoted(PROMOTED),
+        load_default_batches(FORRT_ROOT),
+        promoted_path=_display_path(PROMOTED),
+        promoted_sha256=_file_sha256(PROMOTED),
+    )
+    write_document(document, output)
+    return document
 
 
 def main(argv: Sequence[str] | None = None) -> int:

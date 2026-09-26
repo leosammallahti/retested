@@ -1,5 +1,5 @@
 ---
-// Replications our own search found and FORRT has not recorded. They are shown next to the record, never inside it:
+// Replication candidates our own search found outside Retested's counted record. They are shown next to the record, never inside it:
 // no person has checked them, so they change no count, no verdict and no figure on this page.
 import { type Candidate, stats } from '../lib/data';
 import { u, doiUrl, cleanQuote, clip } from '../lib/fmt';
@@ -26,15 +26,16 @@ const withOutcome = rows.filter((r) => r.outcome).length;
   <div class="card">
     <p>
       Our own search of OpenAlex turned up <b class="num">{rows.length}</b> paper{rows.length === 1 ? '' : 's'} that
-      appear{rows.length === 1 ? 's' : ''} to replicate {subject} and {rows.length === 1 ? 'is' : 'are'} not in FORRT's
-      data. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
+      appear{rows.length === 1 ? 's' : ''} to replicate {subject} and {rows.length === 1 ? 'is' : 'are'} not yet in Retested's
+      counted record. A language model read the abstract{rows.length === 1 ? '' : 's'} and matched {rows.length === 1 ? 'it' : 'them'} to
       this original; <b>no person has checked {rows.length === 1 ? 'it' : 'them'}</b>. Nothing here counts towards the verdict,
       the tally or the figures above{withOutcome ? `, including the ${withOutcome} with a stated outcome` : ''}.{' '}
       {la && la.n_read > 0 && (
         <>Reading <b class="num">{la.n_read}</b> of the <b class="num">{la.n_pool}</b> links that appear in a box like
         this one, one at a time, <b class="num">{la.right}</b> pointed at the right original. </>
-      )}Weaker matching methods are kept out of this box and left in the <a href={u('queue/')}>review queue</a>, where
-      more of our finds are waiting for someone to decide.
+      )}This does not establish that FORRT lacks the paper or pair; alternate versions and broader FORRT layers require
+      separate reconciliation. Weaker matching methods are kept out of this box and left in the <a href={u('queue/')}>review queue</a>,
+      where more finds are waiting for someone to decide. See <a href={u('coverage/')}>coverage and overlap</a> for the current audit.
     </p>
     {verdict?.changes && (
       <p class="wouldbe">

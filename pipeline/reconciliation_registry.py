@@ -850,6 +850,11 @@ def build_registry(
         })
 
     relation_counts = Counter(item["bibliographic_relation"] for item in overlaps)
+    addition_relation_counts = Counter(
+        item["bibliographic_relation"]
+        for item in overlaps
+        if item["built_stratum"] == "retested_addition"
+    )
     semantic_rows = [
         row.get("semantic_adjudication") or {}
         for row in reconciled_by_pair.values()
@@ -948,6 +953,7 @@ def build_registry(
             "studies_resolved": 0,
             "samples_resolved": 0,
             "bibliographic_relations": dict(sorted(relation_counts.items())),
+            "retested_addition_bibliographic_relations": dict(sorted(addition_relation_counts.items())),
             "effect_relations_resolved": 0,
             "certified_new_to_forrt": 0,
         },
@@ -1124,6 +1130,16 @@ def validate_registry(document: Mapping[str, Any], policy: Mapping[str, Any]) ->
     relation_total = sum((counts.get("bibliographic_relations") or {}).values())
     if relation_total != len(overlaps):
         problems.append("bibliographic relation counts do not conserve the overlap partition")
+    addition_relation_total = sum((counts.get("retested_addition_bibliographic_relations") or {}).values())
+    if addition_relation_total != counts.get("retested_additions"):
+        problems.append("Retested-addition bibliographic relation counts do not conserve Retested additions")
+    observed_addition_relations = Counter(
+        overlap["bibliographic_relation"]
+        for overlap in overlaps
+        if overlap.get("built_stratum") == "retested_addition"
+    )
+    if dict(sorted(observed_addition_relations.items())) != counts.get("retested_addition_bibliographic_relations"):
+        problems.append("Retested-addition bibliographic relation counts disagree with overlap decisions")
     if counts.get("retested_built_overlays", 0) + counts.get("retested_additions", 0) != len(overlaps):
         problems.append("overlay/addition counts do not conserve the overlap partition")
     if counts.get("effect_relations_resolved") != 0 or counts.get("certified_new_to_forrt") != 0:
@@ -1210,6 +1226,43 @@ def registry_summary(document: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
+def generate_and_write(
+    summaries_path: Path = PAIR_SUMMARIES,
+    promoted_path: Path = PROMOTED,
+    attempts_path: Path = ATTEMPTS,
+    reconciled_path: Path = RECONCILED,
+    semantic_review_path: Path = SEMANTIC_REVIEW,
+    effect_ledger_path: Path = EFFECT_LEDGER,
+    policy_path: Path = POLICY,
+    raw_manifest_path: Path = RAW_MANIFEST,
+    output: Path = OUTPUT,
+    summary_output: Path = SUMMARY_OUTPUT,
+) -> tuple[dict[str, Any] | None, list[str]]:
+    """Build, structurally validate, and atomically write the two artifacts.
+
+    Incomplete *assurance* is an expected state of v1 and is carried in the
+    written document.  Structural problems are different: neither output is
+    written when one is present, so a normal site build can fail closed.
+    """
+
+    input_paths = (
+        summaries_path, promoted_path, attempts_path, reconciled_path,
+        semantic_review_path, effect_ledger_path, policy_path, raw_manifest_path,
+    )
+    path_problems = _output_path_problems(output, summary_output, input_paths)
+    if path_problems:
+        return None, path_problems
+    document, problems = build_from_paths(
+        summaries_path, promoted_path, attempts_path, reconciled_path,
+        semantic_review_path, effect_ledger_path, policy_path, raw_manifest_path,
+    )
+    if problems:
+        return document, problems
+    _write_json(document, output, compact=True)
+    _write_json(registry_summary(document), summary_output)
+    return document, []
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--summaries", type=Path, default=PAIR_SUMMARIES)
@@ -1224,26 +1277,22 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--summary-output", type=Path, default=SUMMARY_OUTPUT)
     parser.add_argument("--check", action="store_true", help="validate in memory without writing")
     args = parser.parse_args(argv)
-    input_paths = (
-        args.summaries, args.promoted, args.attempts, args.reconciled,
-        args.semantic_review, args.effect_ledger, args.policy, args.raw_manifest,
-    )
-    path_problems = (
-        [] if args.check else _output_path_problems(args.output, args.summary_output, input_paths)
-    )
-    if path_problems:
-        print("REFUSED registry write:")
-        for problem in path_problems:
-            print(f"  - {problem}")
-        return 2
-    document, problems = build_from_paths(
-        args.summaries, args.promoted, args.attempts, args.reconciled,
-        args.semantic_review, args.effect_ledger, args.policy, args.raw_manifest,
-    )
-    summary = registry_summary(document)
-    if not args.check and not problems:
-        _write_json(document, args.output, compact=True)
-        _write_json(summary, args.summary_output)
+    if args.check:
+        document, problems = build_from_paths(
+            args.summaries, args.promoted, args.attempts, args.reconciled,
+            args.semantic_review, args.effect_ledger, args.policy, args.raw_manifest,
+        )
+    else:
+        document, problems = generate_and_write(
+            args.summaries, args.promoted, args.attempts, args.reconciled,
+            args.semantic_review, args.effect_ledger, args.policy, args.raw_manifest,
+            args.output, args.summary_output,
+        )
+        if document is None:
+            print("REFUSED registry write:")
+            for problem in problems:
+                print(f"  - {problem}")
+            return 2
     counts = document["counts"]
     print(
         f"{'CHECKED' if args.check else 'WROTE' if not problems else 'REFUSED'} registry "

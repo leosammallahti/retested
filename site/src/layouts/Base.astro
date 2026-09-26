@@ -7,9 +7,11 @@ import { u, shortCitation } from '../lib/fmt';
 interface Props { title: string; description?: string; active?: string }
 const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active } = Astro.props;
 const full = title === 'Retested' ? "Retested: psychology's findings, tested again" : `${title} · Retested`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const nav = [
   ['effects/', 'Effects'],
   ['stats/', 'The record'],
+  ['coverage/', 'Coverage'],
   ['uncounted/', 'The uncounted'],
   ['queue/', 'Review queue'],
   ['methods/', 'Methods'],
@@ -25,6 +27,8 @@ const nav = [
     <meta property="og:title" content={full} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +55,7 @@ const nav = [
       <div class="wrap grid grid-2">
         <div class="stack">
           <p><strong>Retested</strong> is an independent, effect-level explorer built on the open data of the <a href="https://forrt.org/replication-hub/">FORRT Replication Hub</a> (FReD and FLoRA). It is not an official FORRT product. The counted record also includes source-reviewed Retested additions. FORRT papers link to the <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>; every paper links to its primary source. Found a mistake or a missing replication? <a href="https://forrt.org/replication-hub/submit/">Submit it to FORRT</a>, so everyone benefits.</p>
-          <p class="faint">FORRT data CC BY 4.0. Machine-found candidates still in the review queue are unverified.</p>
+          <p class="faint">FORRT data CC BY 4.0. Machine-found candidates still in the review queue are unverified. <a href={u('coverage/')}>See exactly what overlaps FORRT and what remains unresolved.</a></p>
         </div>
         <div>
           <div class="label">Please cite the data as</div>

@@ -78,6 +78,8 @@ counts{}
 validation{}
 ```
 
+`counts.retested_addition_bibliographic_relations` repeats the mutually exclusive relation partition for only the pairs added to Retested's built pages. Public copy can therefore compute the supported overlap among additions from the evidence ledger instead of hard-coding a checkpoint number.
+
 ### Source snapshots and observations
 
 `source_snapshots[]` is built from the source manifest in `pair_match_summaries.json`; each entry records source name, source status, policy-derived layer, path, SHA-256, and row counts. `source_summary_records[]` preserves the summary-record grain before source rows are connected to it, including identifiers, text components, observed-result text, every attributed source outcome label, and the upstream provenance IDs. `source_observations[]` then preserves the association between those provenance IDs/snapshot rows, summary record, expressions, and pair. Neither table is a copy of every raw source column, but the outcome labels needed to audit disagreement are retained rather than silently selecting a winner.
@@ -181,7 +183,9 @@ python -m pipeline.reconciliation_registry \
   --summary-output data/build/reconciliation_registry.summary.json
 ```
 
-`--check` builds and validates in memory without writing. The command accepts explicit paths for summaries, promoted rows, attempts, reconciled audit, semantic review, effect ledger, policy, and raw manifest. It is not currently an ordinary `python -m pipeline build` output.
+`--check` builds and validates in memory without writing. The command accepts explicit paths for summaries, promoted rows, attempts, reconciled audit, semantic review, effect ledger, policy, and raw manifest.
+
+The ordinary `python -m pipeline build` now validates every declared raw-input hash, regenerates the deterministic pair summaries from manifest-pinned inputs after exporting the current attempt graph, then structurally validates and atomically writes both registry artifacts. Inputs use immutable upstream revisions where recoverable; compressed, content-addressed recovery assets preserve historical public payloads whose moving endpoints no longer expose the recorded bytes. Structural failure fails the build; incomplete assurance remains a truthful output state rather than a build error. The Astro site reads the compact summary for its generated `/coverage/` page.
 
 Structural validation verifies, among other things:
 

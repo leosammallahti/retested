@@ -1,8 +1,20 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { findings } from '../../lib/data';
-import { u } from '../../lib/fmt';
-const n = Object.keys(findings()).length;
+import { findings, papers } from '../../lib/data';
+import { atlasUrl, RECORD_TONE, u } from '../../lib/fmt';
+
+const allFindings = Object.values(findings());
+const paperByDoi = papers();
+const n = allFindings.length;
+const initialFindings = allFindings
+  .sort((a, b) => b.lenses.record.k - a.lenses.record.k || (paperByDoi[b.doi_o]?.year ?? 0) - (paperByDoi[a.doi_o]?.year ?? 0))
+  .slice(0, 60);
+const LABEL: Record<string, string> = {
+  replicated: 'Replicated', largely_replicated: 'Largely replicated', contested: 'Contested',
+  largely_failed: 'Largely failed', failed: 'Failed to replicate', reversed: 'Reversed',
+  single_success: 'Replicated once', single_failure: 'Failed once', single_mixed: 'Mixed (one attempt)',
+  unclear: 'No clear verdict', untested: 'No linked attempts yet',
+};
 ---
 <Base title="Original papers" description="Every original psychology paper with a known replication attempt." active="effects/">
   <div class="wrap" style="padding-top:2.4rem">
@@ -11,8 +23,20 @@ const n = Object.keys(findings()).length;
       <h1>{n.toLocaleString()} original papers</h1>
       <p class="lede">Every original paper that someone has tried to replicate. Papers with several attempts, effect sizes, or a named effect have their own page here. For the rest, the per-paper record lives in FORRT's <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>, which we link to rather than duplicate.</p>
     </header>
-    <div class="fbar"><input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" /><span class="mono faint" id="pc"></span></div>
-    <ul class="rowlist" id="plist"></ul>
+    <div class="fbar"><input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" /><span class="mono faint" id="pc" aria-live="polite">{n.toLocaleString()} papers</span></div>
+    <ul class="rowlist" id="plist">
+      {initialFindings.map((f) => {
+        const record = f.lenses.record;
+        const paper = paperByDoi[f.doi_o];
+        const href = f.page ? u(`finding/${f.slug}/`) : atlasUrl(f.doi_o);
+        return <li><a class="erow" href={href}>
+          <span class="nm">{paper?.title ?? f.doi_o}</span>
+          <span class={`stamp sm t-${RECORD_TONE[record.code] ?? 'na'}`}>{LABEL[record.code] ?? record.label}</span>
+          <span class="meta"><span>{[paper?.authors, paper?.year].filter(Boolean).join(', ')}</span><span>{record.k} with verdict</span><span>{f.page ? 'full record here' : 'record on FORRT atlas ↗'}</span></span>
+        </a></li>;
+      })}
+    </ul>
+    <noscript><p class="muted">Showing the 60 most-tested papers. Enable JavaScript to search the full index.</p></noscript>
     <p style="margin-top:1rem"><button class="btn ghost" id="more" hidden>Show more</button></p>
   </div>
 </Base>

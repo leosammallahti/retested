@@ -7,6 +7,7 @@ import unittest
 from pathlib import Path
 
 from pipeline.pair_summaries import (
+    FORRT_ROOT,
     SourceBatch,
     build_document,
     canonical_dois,
@@ -32,6 +33,23 @@ def promoted_row(**changes) -> dict:
 
 
 class PairSummaryTests(unittest.TestCase):
+    def test_every_default_raw_batch_is_manifest_declared_comparison_input(self):
+        manifest = json.loads((FORRT_ROOT / "MANIFEST.json").read_text(encoding="utf-8"))
+        declared = set(manifest["comparison_inputs"])
+        actual = {
+            batch.path.removeprefix("data/raw/forrt/")
+            for batch in load_csv_batches()
+        }
+        actual.update({
+            "fred-data/output_FReD.xlsx",
+            "osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+        })
+        self.assertEqual(actual, declared)
+        entries = {entry["path"]: entry for entry in manifest["files"]}
+        self.assertTrue(all(path in entries for path in declared))
+        self.assertTrue(all(entries[path].get("sha256") for path in declared))
+        self.assertTrue(all(str(entries[path].get("source_url", "")).startswith("http") for path in declared))
+
     def test_groups_canonical_query_pairs_and_keeps_result_separate(self):
         # These are two curated rows but one canonical pair after FORRT's
         # doubled-slash DOI spelling is folded.

@@ -16,8 +16,9 @@ interface Played { id: string; p: number; y: 0 | 1; hit: 0 | 1; brier: number; c
 
 const ROUND = 10;
 const KEY = 'retested.game.v1';
+const DAILY_BASE_RATE = (ROUND / 2 / ROUND) * 100;
 
-// deterministic PRNG so the daily set is the same for everyone
+// Random modes use a small deterministic PRNG once a session seed is chosen.
 function rng(seed: number) {
   return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
@@ -29,8 +30,17 @@ const points = (brier: number) => Math.round(100 * (1 - 4 * brier)); // 100 = ce
 function load(): Played[] { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } }
 function save(x: Played[]) { try { localStorage.setItem(KEY, JSON.stringify(x.slice(-2000))); } catch { /* private mode */ } }
 
+function dailyDeck(items: Item[], schedules: Record<string, string[]>, day: string): Item[] {
+  const byId = new Map(items.map((item) => [item.id, item]));
+  const ids = schedules[day.slice(5)] ?? [];
+  const deck = ids.map((id) => byId.get(id)).filter((item): item is Item => !!item);
+  if (deck.length !== ROUND) throw new Error(`The daily deck for ${day} is incomplete.`);
+  return deck;
+}
+
 export default function Game({ base }: { base: string }) {
   const [items, setItems] = useState<Item[] | null>(null);
+  const [dailySchedules, setDailySchedules] = useState<Record<string, string[]> | null>(null);
   const [mode, setMode] = useState<'daily' | 'endless' | 'famous' | 'found' | null>(null);
   const [deck, setDeck] = useState<Item[]>([]);
   const [i, setI] = useState(0);
@@ -41,34 +51,32 @@ export default function Game({ base }: { base: string }) {
   const [history, setHistory] = useState<Played[]>([]);
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => { fetch(base + 'generated/game/items.json').then((r) => r.json()).then(setItems); setHistory(load()); }, []);
+  useEffect(() => {
+    Promise.all([
+      fetch(base + 'generated/game/items.json').then((r) => r.json()),
+      fetch(base + 'generated/game/daily.json').then((r) => r.json()),
+    ]).then(([cards, schedules]) => { setItems(cards); setDailySchedules(schedules); });
+    setHistory(load());
+  }, []);
 
   const start = (m: 'daily' | 'endless' | 'famous' | 'found') => {
-    if (!items) return;
-    const seed = m === 'daily' ? hash(today()) : hash(String(Date.now()));
-    const r = rng(seed);
-    // 'found' is a deck of its own on purpose. These replications are not in the curated record, nobody has
+    if (!items || !dailySchedules) return;
+    const r = rng(hash(String(Date.now())));
+    // 'found' is a deck of its own on purpose. These replications sit outside Retested's counted record; nobody has
     // reviewed them, and they succeed more often than the counted ones — mixing them in would quietly move the
     // base rate a player is calibrating against.
     const want = m === 'famous' ? 'famous' : m === 'found' ? 'found' : 'study';
     let pool = items.filter((x) => x.tier === want);
     if (m === 'daily') {
-      // daily = 8 study cards + 2 famous, same for every player, and only cards whose claim was written for
-      // the game. The 60 that still carry their source database's own description are the ones a claim could
-      // not be written from, and they read like it ("Main Effect of Verb Type at Word 15"); endless still
-      // deals them rather than losing the studies altogether.
-      const st = items.filter((x) => x.tier === 'study' && x.written),
-            fa = items.filter((x) => x.tier === 'famous' && x.written);
-      pool = [...shuffle(st, r).slice(0, 8), ...shuffle(fa, r).slice(0, 2)];
-      pool = shuffle(pool, r);
+      pool = dailyDeck(items, dailySchedules, today());
     } else {
       const seen = new Set(history.map((h) => h.id));
       const fresh = pool.filter((x) => !seen.has(x.id));
       pool = shuffle(fresh.length >= ROUND ? fresh : pool, r).slice(0, ROUND);
     }
-    setMode(m); setDeck(pool); setI(0); setRound([]); next();
+    setMode(m); setDeck(pool); setI(0); setRound([]); next(m === 'daily' ? DAILY_BASE_RATE : 50);
   };
-  const next = () => { setP(50); setCues(0); setReveal(null); setCopied(false); };
+  const next = (baseRate = 50) => { setP(baseRate); setCues(0); setReveal(null); setCopied(false); };
 
   const card = deck[i];
   const lock = async () => {
@@ -86,7 +94,7 @@ export default function Game({ base }: { base: string }) {
   const total = round.reduce((s, x) => s + points(x.brier), 0);
   const stats = useMemo(() => calib(history), [history]);
 
-  if (!items) return <p class="faint">Loading the deck…</p>;
+  if (!items || !dailySchedules) return <p class="faint">Loading the deck…</p>;
 
   if (!mode || done) {
     const share = done ? shareText(round, mode!, total) : '';
@@ -106,7 +114,7 @@ export default function Game({ base }: { base: string }) {
           <button class="gm" onClick={() => start('endless')}><b>Ten more studies</b><span>Random original studies you haven't seen, from {items.filter((x) => x.tier === 'study').length} with a clear replication verdict.</span></button>
           <button class="gm" onClick={() => start('famous')}><b>Famous effects</b><span>{items.filter((x) => x.tier === 'famous').length} textbook-grade effects, judged by a curated list.</span></button>
           {items.some((x) => x.tier === 'found') && (
-            <button class="gm" onClick={() => start('found')}><b>Not in the record</b><span>{items.filter((x) => x.tier === 'found').length} replications our own search found and FORRT does not hold. Nobody has reviewed them — a deck of its own, and the scores are not comparable.</span></button>
+            <button class="gm" onClick={() => start('found')}><b>Outside Retested’s record</b><span>{items.filter((x) => x.tier === 'found').length} unreviewed candidate replications from Retested’s search. They are outside Retested’s counted record; that does not establish absence from all FORRT data. This deck’s scores are not comparable.</span></button>
           )}
         </div>
         {stats.n >= 10 && <Calibration s={stats} />}
@@ -118,7 +126,7 @@ export default function Game({ base }: { base: string }) {
     <div class="gplay">
       <div class="gtop mono"><span>Card {i + 1} / {deck.length}</span><span>{total > 0 ? '+' : ''}{total} pts</span></div>
       <article class="gcard card ink">
-        <div class="label">{card.tier === 'famous' ? 'Famous effect' : card.tier === 'found' ? 'Original study · replication not in the record' : 'Original study'}{card.discipline && ` · ${card.discipline}`}{card.year && ` · ${card.year}`}</div>
+        <div class="label">{card.tier === 'famous' ? 'Famous effect' : card.tier === 'found' ? 'Original study · unreviewed candidate outside Retested’s record' : 'Original study'}{card.discipline && ` · ${card.discipline}`}{card.year && ` · ${card.year}`}</div>
         {card.effect_name && <h3 class="gname">{card.effect_name}</h3>}
         <p class="gclaim">{card.claim}</p>
         {card.method && <p class="gmethod">{card.method}</p>}
@@ -151,7 +159,7 @@ export default function Game({ base }: { base: string }) {
             <p class="faint gnote">Scored by Brier: confident and right earns up to 100, a 50/50 guess earns 0, confident and wrong costs up to 300.</p>
           </div>
         ) : (
-          <RevealView rv={reveal} rec={round[round.length - 1]} base={base} onNext={() => { setI(i + 1); next(); }} last={i + 1 >= deck.length} />
+          <RevealView rv={reveal} rec={round[round.length - 1]} base={base} onNext={() => { setI(i + 1); next(mode === 'daily' ? DAILY_BASE_RATE : 50); }} last={i + 1 >= deck.length} />
         )}
       </article>
     </div>

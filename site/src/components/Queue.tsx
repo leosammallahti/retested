@@ -1,7 +1,7 @@
 // Review queue: machine-found replication candidates awaiting a human, from two sources — FORRT's own
 // flora-extractor and our keyword/citation search screened by DeepSeek.
 // Decisions are kept in this browser and exported as CSV in FLoRA's submission columns.
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 
 interface Cand {
   id: string; doi_r: string | null; title_r: string | null; year_r: number | null; journal_r: string | null; authors_r?: string | null;
@@ -37,16 +37,88 @@ const HOW: Record<string, string> = {
   openalex_author_year: 'author + year searched in OpenAlex',
   reference_scan: 'the described finding matched against the papers this replication cites',
 };
-type Decision = { v: 'accept' | 'reject' | 'unsure'; outcome?: string; note?: string; at: string };
+type Decision = {
+  v: 'accept' | 'reject' | 'unsure'; outcome?: string; rationale?: string; evidence?: string; at: string; updated_at?: string;
+};
+type NoteDraft = { rationale: string; evidence: string };
+type CandidateSnapshot = {
+  id: string;
+  identity: { doi_r: string | null; title_r: string | null; year_r: number | null; doi_o: string | null; title_o: string | null; year_o: number | null };
+  provenance: { origin: Cand['origin']; group: Cand['group']; link_method: string | null; link_confidence: string | null; search_tier: string | null; found_by: string[] };
+  evidence: { machine_outcome: string | null; outcome_quote: string | null; abstract: string | null; link_evidence: Cand['link_evidence']; original_studies: Cand['original_studies'] };
+};
+type ReviewPacket = {
+  schema: 'retested.queue.review-packet'; version: 1; exported_at: string; source: { candidate_count: number }; reviews: { candidate: CandidateSnapshot; decision: Decision }[];
+};
 const KEY = 'retested.queue.v1';
 const PAGE = 25;
 
-const readD = (): Record<string, Decision> => { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; } };
+const decisionFrom = (value: unknown): Decision | null => {
+  if (!value || typeof value !== 'object') return null;
+  const d = value as Record<string, unknown>;
+  if (d.v !== 'accept' && d.v !== 'reject' && d.v !== 'unsure' || typeof d.at !== 'string' || Number.isNaN(Date.parse(d.at))) return null;
+  const text = (v: unknown) => typeof v === 'string' && v.length <= 12000 ? v : undefined;
+  // `note` was used by an early local-draft format. Preserve it as a rationale rather than losing a reviewer's work.
+  return { v: d.v, outcome: text(d.outcome), rationale: text(d.rationale) ?? text(d.note), evidence: text(d.evidence), at: d.at, updated_at: text(d.updated_at) };
+};
+const readD = (): Record<string, Decision> => {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
+    if (!raw || typeof raw !== 'object') return {};
+    return Object.fromEntries(Object.entries(raw).flatMap(([id, d]) => {
+      const parsed = decisionFrom(d); return parsed ? [[id, parsed]] : [];
+    }));
+  } catch { return {}; }
+};
 const saveD = (d: Record<string, Decision>) => { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch { /* ignore */ } };
+const textOrNull = (v: unknown): string | null => typeof v === 'string' ? v : null;
+const numberOrNull = (v: unknown): number | null => typeof v === 'number' && Number.isFinite(v) ? v : null;
+
+const snapshot = (c: Cand): CandidateSnapshot => ({
+  id: c.id,
+  identity: { doi_r: c.doi_r, title_r: c.title_r, year_r: c.year_r, doi_o: c.doi_o, title_o: c.title_o, year_o: c.year_o },
+  provenance: { origin: c.origin, group: c.group, link_method: c.link_method ?? null, link_confidence: c.link_confidence, search_tier: c.search_tier ?? null, found_by: c.found_by ?? [] },
+  evidence: { machine_outcome: c.outcome, outcome_quote: c.outcome_quote, abstract: c.abstract, link_evidence: c.link_evidence ?? null, original_studies: c.original_studies ?? null },
+});
+
+const samePaper = (doiA: string | null, titleA: string | null, yearA: number | null, doiB: string | null, titleB: string | null, yearB: number | null) => {
+  if (doiA || doiB) return doiA?.trim().toLowerCase() === doiB?.trim().toLowerCase();
+  return titleA?.trim().toLowerCase() === titleB?.trim().toLowerCase() && yearA === yearB;
+};
+const matchesCurrent = (c: Cand, s: CandidateSnapshot) => s.id === c.id && s.provenance.origin === c.origin
+  && samePaper(s.identity.doi_r, s.identity.title_r, s.identity.year_r, c.doi_r, c.title_r, c.year_r)
+  && samePaper(s.identity.doi_o, s.identity.title_o, s.identity.year_o, c.doi_o, c.title_o, c.year_o);
+
+const parsePacket = (raw: unknown): { packet?: ReviewPacket; error?: string } => {
+  if (!raw || typeof raw !== 'object') return { error: 'The file is not a review packet.' };
+  const p = raw as Record<string, unknown>;
+  if (p.schema !== 'retested.queue.review-packet' || p.version !== 1 || !Array.isArray(p.reviews)) return { error: 'This is not a supported Retested review packet (schema v1).' };
+  if (!p.reviews.length) return { error: 'The packet has no decisions to import.' };
+  const reviews: ReviewPacket['reviews'] = [];
+  for (const row of p.reviews) {
+    if (!row || typeof row !== 'object') return { error: 'A review row is malformed.' };
+    const r = row as Record<string, unknown>, c = r.candidate as Record<string, unknown> | null, identity = c?.identity as Record<string, unknown> | null, provenance = c?.provenance as Record<string, unknown> | null;
+    const decision = decisionFrom(r.decision);
+    if (!c || !identity || !provenance || typeof c.id !== 'string' || !decision
+      || (provenance.origin !== 'forrt_flora_extractor' && provenance.origin !== 'retested_discovery')
+      || typeof identity.doi_r !== 'string' && identity.doi_r !== null || typeof identity.title_r !== 'string' && identity.title_r !== null || numberOrNull(identity.year_r) !== identity.year_r
+      || typeof identity.doi_o !== 'string' && identity.doi_o !== null || typeof identity.title_o !== 'string' && identity.title_o !== null || numberOrNull(identity.year_o) !== identity.year_o) return { error: 'A review row is missing a valid candidate identity or decision.' };
+    reviews.push({ candidate: {
+      id: c.id,
+      identity: { doi_r: textOrNull(identity.doi_r), title_r: textOrNull(identity.title_r), year_r: numberOrNull(identity.year_r), doi_o: textOrNull(identity.doi_o), title_o: textOrNull(identity.title_o), year_o: numberOrNull(identity.year_o) },
+      provenance: { origin: provenance.origin, group: provenance.group === 'other_behavioural' || provenance.group === 'registration' ? provenance.group : 'replication', link_method: textOrNull(provenance.link_method), link_confidence: textOrNull(provenance.link_confidence), search_tier: textOrNull(provenance.search_tier), found_by: Array.isArray(provenance.found_by) && provenance.found_by.every((x) => typeof x === 'string') ? provenance.found_by : [] },
+      evidence: (c.evidence && typeof c.evidence === 'object') ? c.evidence as CandidateSnapshot['evidence'] : { machine_outcome: null, outcome_quote: null, abstract: null, link_evidence: null, original_studies: null },
+    }, decision });
+  }
+  return { packet: { schema: 'retested.queue.review-packet', version: 1, exported_at: typeof p.exported_at === 'string' ? p.exported_at : '', source: { candidate_count: numberOrNull((p.source as Record<string, unknown> | null)?.candidate_count) ?? 0 }, reviews } };
+};
 
 export default function Queue({ base }: { base: string }) {
   const [all, setAll] = useState<Cand[] | null>(null);
   const [dec, setDec] = useState<Record<string, Decision>>({});
+  const [drafts, setDrafts] = useState<Record<string, NoteDraft>>({});
+  const [packetStatus, setPacketStatus] = useState('');
+  const importInput = useRef<HTMLInputElement>(null);
   const [q, setQ] = useState('');
   const [scope, setScope] = useState<'known' | 'all'>('known');
   const [origin, setOrigin] = useState<'all' | 'forrt_flora_extractor' | 'retested_discovery'>('all');
@@ -71,11 +143,67 @@ export default function Queue({ base }: { base: string }) {
       (!qq || [c.title_r, c.title_o, c.doi_r, c.doi_o, c.effect?.name].join(' ').toLowerCase().includes(qq)));
   }, [all, dec, q, scope, show, origin, group, tier, impact]);
 
+  const draftFor = (c: Cand, d?: Decision): NoteDraft => drafts[c.id] ?? { rationale: d?.rationale ?? '', evidence: d?.evidence ?? '' };
+  const updateDraft = (id: string, key: keyof NoteDraft, value: string) => setDrafts((old) => ({
+    ...old,
+    [id]: {
+      ...(old[id] ?? { rationale: dec[id]?.rationale ?? '', evidence: dec[id]?.evidence ?? '' }),
+      [key]: value,
+    },
+  }));
   const decide = (c: Cand, v: Decision['v'], outcome?: string) => {
-    const d = { ...dec, [c.id]: { v, outcome: outcome ?? c.outcome ?? undefined, at: new Date().toISOString() } };
+    const note = draftFor(c);
+    const d = { ...dec, [c.id]: { v, outcome: outcome ?? c.outcome ?? undefined, rationale: note.rationale || undefined, evidence: note.evidence || undefined, at: new Date().toISOString() } };
     setDec(d); saveD(d);
   };
-  const undo = (c: Cand) => { const d = { ...dec }; delete d[c.id]; setDec(d); saveD(d); };
+  const saveNotes = (c: Cand, d: Decision) => {
+    const note = draftFor(c, d), next = { ...dec, [c.id]: { ...d, rationale: note.rationale || undefined, evidence: note.evidence || undefined, updated_at: new Date().toISOString() } };
+    setDec(next); saveD(next);
+  };
+  const undo = (c: Cand) => {
+    const prior = dec[c.id];
+    if (prior) setDrafts((old) => ({ ...old, [c.id]: { rationale: prior.rationale ?? '', evidence: prior.evidence ?? '' } }));
+    const d = { ...dec }; delete d[c.id]; setDec(d); saveD(d);
+  };
+
+  const exportPacket = () => {
+    if (!all) return;
+    const byId = new Map(all.map((c) => [c.id, c]));
+    const packet: ReviewPacket = {
+      schema: 'retested.queue.review-packet', version: 1, exported_at: new Date().toISOString(), source: { candidate_count: all.length },
+      reviews: Object.entries(dec).flatMap(([id, decision]) => {
+        const c = byId.get(id);
+        if (!c) return [];
+        const note = draftFor(c, decision);
+        return [{ candidate: snapshot(c), decision: { ...decision, rationale: note.rationale || undefined, evidence: note.evidence || undefined } }];
+      }),
+    };
+    const blob = new Blob([JSON.stringify(packet, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `retested-review-packet-v1-${new Date().toISOString().slice(0, 10)}.json`; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 0);
+  };
+
+  const importPacket = async (event: Event) => {
+    const input = event.currentTarget as HTMLInputElement, file = input.files?.[0];
+    input.value = '';
+    if (!file || !all) return;
+    try {
+      const parsed = parsePacket(JSON.parse(await file.text()));
+      if (!parsed.packet) { setPacketStatus(parsed.error!); return; }
+      const byId = new Map(all.map((c) => [c.id, c]));
+      const next = { ...dec }; let imported = 0, skipped = 0;
+      for (const review of parsed.packet.reviews) {
+        const current = byId.get(review.candidate.id);
+        if (!current || !matchesCurrent(current, review.candidate)) { skipped++; continue; }
+        const previous = next[current.id];
+        if (!previous || Date.parse(review.decision.updated_at ?? review.decision.at) >= Date.parse(previous.updated_at ?? previous.at)) {
+          next[current.id] = review.decision; imported++;
+        } else skipped++;
+      }
+      if (imported) { setDec(next); saveD(next); }
+      setPacketStatus(`Imported ${imported} decision${imported === 1 ? '' : 's'}${skipped ? `; skipped ${skipped} stale or non-matching row${skipped === 1 ? '' : 's'}` : ''}.`);
+    } catch { setPacketStatus('Could not read that JSON review packet.'); }
+  };
 
   const exportCsv = () => {
     if (!all) return;
@@ -86,20 +214,23 @@ export default function Queue({ base }: { base: string }) {
     const FLORA = ['doi_o', 'title_o', 'year_o', 'doi_r', 'alt_identifier_r', 'title_r', 'author_r', 'journal_r',
                    'year_r', 'url_r', 'outcome', 'outcome_quote', 'outcome_quote_source', 'type', 'source'] as const;
     const EXTRA = ['prereg_r', 'author_overlap', 'retested_link_method', 'retested_link_confidence',
-                   'retested_screen_tier', 'retested_found_by', 'retested_review_decision', 'retested_reviewed_at'] as const;
+                   'retested_screen_tier', 'retested_found_by', 'retested_review_decision', 'retested_reviewed_at',
+                   'retested_review_rationale', 'retested_review_evidence'] as const;
     const esc = (s: unknown) => `"${String(s ?? '').replace(/"/g, '""')}"`;
-    const rows = Object.entries(dec).filter(([, d]) => d.v === 'accept').map(([id, d]) => {
-      const c = byId.get(id)!;
+    const rows = Object.entries(dec).flatMap(([id, d]) => {
+      const c = byId.get(id);
+      if (d.v !== 'accept' || !c) return [];
       const overlap = c.independence?.verdict === 'shares_author' ? 'TRUE'
         : c.independence?.verdict === 'independent' ? 'FALSE' : '';
-      return [
+      const note = draftFor(c, d);
+      return [[
         c.doi_o, c.title_o, c.year_o, c.doi_r, c.osf_id ? `osf.io/${c.osf_id}` : '', c.title_r, c.authors_r,
         c.journal_r, c.year_r, c.landing_page, d.outcome ?? c.outcome, c.outcome_quote,
         c.outcome_quote ? 'abstract' : '', c.type, `${c.origin} via Retested`,
         c.preregistered ? (c.preregistered.is_registration ? c.preregistered.date ?? 'TRUE' : 'FALSE') : '',
         overlap, c.link_method, c.link_confidence, c.search_tier, (c.found_by ?? []).join('+'),
-        'accepted by human reviewer', d.at,
-      ].map(esc).join(',');
+        'accepted by local human review draft', d.at, note.rationale, note.evidence,
+      ].map(esc).join(',')];
     });
     const blob = new Blob([[[...FLORA, ...EXTRA].join(','), ...rows].join('\n')], { type: 'text/csv' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `retested-accepted-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
@@ -142,11 +273,17 @@ export default function Queue({ base }: { base: string }) {
           <option value="decided">My decisions</option>
         </select>
         <span class="mono faint">{list.length.toLocaleString()} shown · {nDec} reviewed · {nAcc} accepted</span>
+        <span class="mono faint">Local review drafts — stored only in this browser until you export a packet.</span>
         <button class="btn ghost" disabled={!nAcc} onClick={exportCsv}>Export accepted (CSV)</button>
+        <button class="btn ghost" disabled={!nDec} onClick={exportPacket}>Export all decisions (JSON)</button>
+        <button class="btn ghost" onClick={() => importInput.current?.click()}>Import review packet</button>
+        <input ref={importInput} type="file" accept="application/json,.json" hidden onChange={importPacket} />
+        {packetStatus && <span class="mono faint" role="status">{packetStatus}</span>}
       </div>
       <ol class="qlist">
         {pageList.map((c) => {
           const d = dec[c.id];
+          const note = draftFor(c, d);
           return (
             <li key={c.id} class="qitem">
               <div class="qhead">
@@ -205,6 +342,11 @@ export default function Queue({ base }: { base: string }) {
                 ) : <button class="btn ghost" onClick={() => undo(c)}>Undo</button>}
                 <span class="mono faint qm">{[c.link_confidence && `link: ${c.link_confidence}`, c.outcome_confidence && `outcome: ${c.outcome_confidence}`,
                   c.found_by?.length && `found by ${c.found_by.join(' + ')} search`, c.screen_reason].filter(Boolean).join(' · ')}</span>
+              </div>
+              <div class="qact" aria-label="Local review notes">
+                <label>Rationale <textarea value={note.rationale} onInput={(e) => updateDraft(c.id, 'rationale', (e.target as HTMLTextAreaElement).value)} placeholder="Why accept, reject, or hold this row?" rows={2} /></label>
+                <label>Evidence checked <textarea value={note.evidence} onInput={(e) => updateDraft(c.id, 'evidence', (e.target as HTMLTextAreaElement).value)} placeholder="Source, page, quote, or unresolved concern" rows={2} /></label>
+                {d && <button class="btn ghost" onClick={() => saveNotes(c, d)}>Save local notes</button>}
               </div>
             </li>
           );

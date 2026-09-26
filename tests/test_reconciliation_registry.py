@@ -160,6 +160,30 @@ class ReconciliationRegistryTests(unittest.TestCase):
         )
         self.assertEqual(validate_registry(document, policy), [])
 
+    def test_retested_addition_relation_counts_are_partitioned_and_validated(self):
+        document, policy = _document(
+            attempt_sources=("retested",),
+            reconciled_records=({
+                "doi_o": ORIGINAL,
+                "doi_r": LATER,
+                "reconciled_classification": "same_pair_recorded",
+            },),
+        )
+
+        self.assertEqual(document["counts"]["retested_additions"], 1)
+        self.assertEqual(
+            document["counts"]["retested_addition_bibliographic_relations"],
+            {"exact_expression_pair_reported": 1},
+        )
+        self.assertEqual(validate_registry(document, policy), [])
+
+        changed = copy.deepcopy(document)
+        changed["counts"]["retested_addition_bibliographic_relations"] = {}
+        self.assertTrue(any(
+            "Retested-addition bibliographic relation counts do not conserve" in problem
+            for problem in validate_registry(changed, policy)
+        ))
+
     def test_exact_paper_pair_never_resolves_effect_study_or_sample_axes(self):
         document, _ = _document()
 

@@ -8,7 +8,7 @@ import time
 
 from . import (
     authors, choose, claims, discover, export, fetch, fulltext, game, link, load, originals, osf,
-    osf_documents, outcomes, queue, reconciliation_registry, references, registry, reread, score,
+    osf_documents, outcomes, pair_summaries, queue, reconciliation_registry, references, registry, reread, score,
     stats, triage, validate, verify,
 )
 from .ids import EffectLedger
@@ -17,9 +17,39 @@ from .load import ROOT
 LEDGER = ROOT / "data" / "curated" / "registry" / "effect_ids.csv"
 
 
+def build_reconciliation_artifacts(step) -> list[str]:
+    """Refresh the pinned comparison input and fail closed on bad registry data.
+
+    This is deliberately after ``export.write``: the reconciliation registry
+    consumes the just-built ``data/build/attempts.json``.  Pair summaries use
+    only the fetched, manifest-pinned FORRT files and curated promoted rows;
+    optional live ``/tmp`` audit files are never consulted here.
+    """
+
+    summaries = pair_summaries.regenerate_default_document()
+    step(
+        f"pair summaries: {len(summaries['query_records'])} Retested records, "
+        f"{len(summaries['corpus_records'])} FORRT records"
+    )
+    document, problems = reconciliation_registry.generate_and_write()
+    if problems:
+        return problems
+    assert document is not None  # ``generate_and_write`` only returns None with problems.
+    counts = document["counts"]
+    step(
+        f"reconciliation registry: {counts['retested_normalized_pairs']} pairs, "
+        f"structural=PASS assurance=INCOMPLETE"
+    )
+    return []
+
+
 def build(accept_baseline: bool) -> int:
     t0 = time.time()
     step = lambda msg: print(f"[{time.time() - t0:5.1f}s] {msg}", flush=True)  # noqa: E731
+    raw_problems = fetch.validate_inputs()
+    if raw_problems:
+        print("\nRAW INPUT VALIDATION FAILED:", *raw_problems[:40], sep="\n  - ")
+        return 1
     src = {
         "flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
         "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
@@ -50,6 +80,11 @@ def build(accept_baseline: bool) -> int:
         return 1
     ledger.save()
     sizes = export.write(g, items, reveals, candidates, pending, st, load.load_citation())
+    reconciliation_problems = build_reconciliation_artifacts(step)
+    if reconciliation_problems:
+        print("\nRECONCILIATION REGISTRY FAILED (structural validation; assurance remains incomplete):",
+              *reconciliation_problems[:40], sep="\n  - ")
+        return 1
     (ROOT / "data" / "build" / "build-log.txt").write_text("\n".join(g["log"]), encoding="utf-8")
     step("wrote " + ", ".join(f"{k} {v / 1e6:.1f}MB" for k, v in sizes.items()))
     print(json.dumps(st["counts"], indent=1))
@@ -72,7 +107,7 @@ def main() -> None:
     b.add_argument("--accept-baseline", action="store_true", help="accept count changes and rewrite the baseline")
     f = sub.add_parser("fetch", help="download the raw sources listed in data/raw/forrt/MANIFEST.json")
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
-    dp = sub.add_parser("discover", help="find replications FORRT has not recorded")
+    dp = sub.add_parser("discover", help="find candidates outside Retested's counted record")
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
     ap_ = sub.add_parser("authors", help="fetch author identities for the originals our finds point at")
     ap_.add_argument("--max-usd", type=float, default=0.10, help="OpenAlex spending cap")

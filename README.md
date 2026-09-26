@@ -12,6 +12,7 @@ It also includes:
 - **Did it replicate?** A calibration game. You read a real finding, give a probability, and are scored with the Brier score.
 - **A review queue** of machine-found replication candidates that no human has checked yet, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review*. Individually source-checked original-and-replication pairs can be promoted into the counted record with an explicit effect claim.
 - **The record:** base rates with denominators and intervals, and the Graveyard, Survivors and Contested lists.
+- **Coverage and overlap:** a generated, evidence-level account of which Retested pairs already occur in the frozen FORRT corpus, which are only candidates, and why unmatched is not automatically new.
 
 Retested is independent and not an official FORRT product. It links FORRT-sourced papers to the [Replication Atlas](https://forrt.org/flora-replication-atlas/) and every paper to its DOI.
 
@@ -22,12 +23,12 @@ Requirements: Python ≥ 3.12 and Node ≥ 22.
 ```bash
 pip install -e .
 python -m pipeline fetch          # download FORRT sources listed in data/raw/forrt/MANIFEST.json (sha256-checked)
-python -m pipeline build          # sources -> data/build/*.json + site/public/generated/
-cd site && npm ci && npm run build   # -> site/dist (static, ~1,800 pages)
+python -m pipeline build          # sources -> data/build/*.json + reconciliation registry + site/public/generated/
+cd site && npm ci && npm run build   # -> site/dist (static, ~5,100 pages plus sitemap)
 npm run preview                   # http://localhost:4321
 ```
 
-Finding replications FORRT has not recorded is a separate, optional chain whose results live in `data/discovery/`
+Finding candidate replications outside Retested's counted record is a separate, optional chain whose results live in `data/discovery/`
 (outside `data/build/`, which every build wipes). Each step is cached, so re-runs are free:
 
 ```bash
@@ -50,6 +51,15 @@ what they share): a deterministic stratified draw, a person or a session reads e
 into precision with Wilson intervals and names the rows in a pool that no draw has reached rather than quoting a
 figure over them. The site prints these numbers through `stats`, so no page can state an accuracy the label
 files do not hold.
+
+Candidate discovery does not prove that a paper or pair is absent from FORRT. The evidence-first reconciliation
+registry compares Retested with commit-pinned or content-addressed FORRT snapshots and keeps paper identity separate from effect, study,
+sample and outcome identity. Run `python -m pipeline reconciliation-registry --check`; see
+`docs/REPLICATION_REGISTRY.md` and the site's Coverage page for the current bounded result.
+
+Every raw input used by the normal build or reconciliation corpus is listed and hash-checked in the FORRT manifest.
+Where an old moving endpoint no longer exposes the recorded bytes, a compressed content-addressed recovery asset is
+kept under `data/curated/forrt_snapshots/`; `pipeline fetch` verifies both compressed and restored hashes.
 
 `python -m pipeline fetch --refresh` pulls FORRT's newest release (FLoRA updates several times a week) and records the new hashes. CI does this weekly and deploys to GitHub Pages (`.github/workflows/site.yml`).
 
@@ -77,6 +87,7 @@ The build (`python -m pipeline build`) fails instead of shipping when:
 - a string that looks like an API key appears in code, curated data or docs;
 - an unexpected file or folder appears in the repository root;
 - a review-queue row loses its `machine` state, repeats a pair FORRT already records, or is shown on a page without being one of our linked replications.
+- the Retested/FORRT reconciliation registry is structurally invalid or no longer partitions every reviewed pair and every Retested addition exactly once.
 
 Effect IDs (`fx_…`) are issued once by `data/curated/registry/effect_ids.csv` and never reused, so renaming or merging an effect never breaks a link.
 
