@@ -637,6 +637,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.1007/bf01067445": {
+      "id": "https://openalex.org/W2064286554",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
     "10.1007/bf01176207": {
       "id": "https://openalex.org/W1990701030",
       "field": "Psychology",
@@ -1234,6 +1239,11 @@
     },
     "10.1016/0005-7967(89)90121-6": {
       "id": "https://openalex.org/W2017754358",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1016/0005-7967(91)90116-k": {
+      "id": "https://openalex.org/W2091557432",
       "field": "Psychology",
       "topic": "Obsessive-Compulsive Spectrum Disorders"
     },
@@ -2521,6 +2531,11 @@
       "id": "https://openalex.org/W1994461799",
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1016/s0005-7967(01)00062-6": {
+      "id": "https://openalex.org/W1992300477",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
     },
     "10.1016/s0022-5371(72)80081-1": {
       "id": "https://openalex.org/W2085068761",
@@ -6387,6 +6402,11 @@
       "field": "Psychology",
       "topic": "Evolutionary Psychology and Human Behavior"
     },
+    "10.1177/02654075241235335": {
+      "id": "https://openalex.org/W4392132132",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
     "10.1177/026540758900600106": {
       "id": "https://openalex.org/W2046176777",
       "field": "Psychology",
@@ -6672,6 +6692,11 @@
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
     },
+    "10.1177/154193120605001712": {
+      "id": "https://openalex.org/W2027237429",
+      "field": "Psychology",
+      "topic": "Team Dynamics and Performance"
+    },
     "10.1177/15480518241227660": {
       "id": "https://openalex.org/W4391032617",
       "field": "Social Sciences",
@@ -6741,6 +6766,11 @@
       "id": "https://openalex.org/W4401153364",
       "field": "Psychology",
       "topic": "Language, Metaphor, and Cognition"
+    },
+    "10.1177/17470218261434511": {
+      "id": "https://openalex.org/W7134890154",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
     },
     "10.1177/18344909251386084": {
       "id": "https://openalex.org/W4415250348",
@@ -8647,6 +8677,11 @@
       "field": "Psychology",
       "topic": "Death Anxiety and Social Exclusion"
     },
+    "10.3102/00028312010003203": {
+      "id": "https://openalex.org/W2109742436",
+      "field": "Psychology",
+      "topic": "Education, Achievement, and Giftedness"
+    },
     "10.3102/00028312016004341": {
       "id": "https://openalex.org/W2021442790",
       "field": "Psychology",
@@ -8806,6 +8841,11 @@
       "id": "https://openalex.org/W4409160568",
       "field": "Psychology",
       "topic": "Deception detection and forensic psychology"
+    },
+    "10.31390/gradschool_dissertations.1467": {
+      "id": "https://openalex.org/W2737940343",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
     },
     "10.31820/pt.28.3.7": {
       "id": "https://openalex.org/W2995090663",
@@ -9252,6 +9292,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.3758/bf03328756": {
+      "id": "https://openalex.org/W2032735570",
+      "field": "Psychology",
+      "topic": "Color perception and design"
+    },
     "10.3758/bf03330475": {
       "id": "https://openalex.org/W2070626749",
       "field": "Engineering",
@@ -9581,6 +9626,11 @@
       "id": "https://openalex.org/W4411068187",
       "field": "Psychology",
       "topic": "Safety Warnings and Signage"
+    },
+    "10.58088/fm0m-5d46": {
+      "id": "https://openalex.org/W2147239741",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
     },
     "10.5817/pf20-1-2067": {
       "id": "https://openalex.org/W3038465382",

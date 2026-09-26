@@ -1,5 +1,13 @@
 # Handoff — current verified state 2026-09-25
 
+## Ten more fully checked pairs — 2026-09-26 00:30:26 UTC
+
+The data build, Astro site build (4,683 pages), exact-pair audit, and whitespace check passed with zero issues. **1,689 built pairs carry Retested review, including 1,238 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,692 raw rows. **1,566 built effects are Retested named, including 1,562 new effects.** The latest parallel reader batches yielded ten distinct pairs after removing two cross-task duplicates and holding one teaching claim that was too broad. They cover mate preferences, teacher expectancy, relationship commitment, reverse Stroop, rotated-word recognition, visual tracking, Asch conformity, guilt and intrusive thoughts, lexical ambiguity, and directed forgetting in OCD. Dissertations and conceptual designs are identified in the review notes. Exact DOI pairs, source quotes, new samples, and later Psychology fields were checked. No push or site publication.
+
+The candidate-count safeguard flagged retested_independent dropping from a stale 1,878 baseline to 1,858. Comparing the previous built queue (1,867) with the new in-memory queue (1,858) found exactly nine removed IDs; each later DOI is in this ten-pair batch, including two corrected original links. No unrelated candidate was lost, so the baseline was accepted after that check.
+
+From 00:24:23 to 00:30:26, **ten new pairs passed in 6 minutes 3 seconds**, about **24.8 per 15 minutes**. Since 00:14:34, 27 pairs passed in 15 minutes 52 seconds, about **25.5 per 15 minutes**. The owner target remains 46 per 15 minutes.
+
 ## Six more fully checked pairs — 2026-09-26 00:24:23 UTC
 
 The data build, Astro site build (4,667 pages), exact-pair audit, and whitespace check passed with zero issues. **1,679 built pairs carry Retested review, including 1,228 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,682 raw rows. **1,556 built effects are Retested named, including 1,553 new effects.** Two more pairs from the 200–280 source task and four from the 280–360 source task passed: a reversed sex difference in Yatabe-Guilford desirability endorsement (failed), sadness and the endowment effect in a new dissertation experiment (failed), neonatal facial-gesture imitation in a separate infant sample (failed), cross-situational word learning (successful), a cafeteria behavior game reducing disruption (successful), and career-interest/personality overlap in a new Hong Kong sample (successful). Later dissertation/thesis works are identified as such in their rows; exact pair versions and primary Psychology fields were checked. No push or site publication.
