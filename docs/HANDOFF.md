@@ -1,5 +1,11 @@
 # Handoff — current verified state 2026-09-25
 
+## Three more fully checked pairs — 2026-09-26 00:14:34 UTC
+
+The data build, Astro site build (4,638 pages), exact-pair audit, and whitespace check passed with zero issues. **1,662 built pairs carry Retested review, including 1,211 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,665 raw rows. **1,539 built effects are Retested named, including 1,536 new effects.** Added a preregistered new-cohort test of domain-information hindsight bias (successful conceptual result), a new class's interdependent versus independent quiz contingency comparison (failed direct result), and a separate personality-disorder trial in which two schema modes again predicted later severity (successful scoped result). Each row records source quotes, participant separation, exact DOI linkage, and later Psychology field. No push or site publication.
+
+From the 00:00:34 to 00:14:34 completed-build checkpoints, **three new pairs passed in 14 minutes**, about **3.2 per 15 minutes**. Much of this interval launched the owner's requested separate reader tasks, each with parallel workers; the rate remains well below the owner's 46-per-15-minute target.
+
 ## Two more fully checked pairs — 2026-09-26 00:00:34 UTC
 
 The data build, Astro site build (4,632 pages), exact-pair audit, and whitespace check passed with zero issues. **1,659 built pairs carry Retested review, including 1,208 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,662 raw rows. **1,536 built effects are Retested named, including 1,533 new effects.** Added an independent anorexia-treatment cohort confirming that more severe baseline eating concerns predict slower weight gain, and a second naturalistic couple-counseling cohort showing similar pre/post relief of relationship distress. Both rows scope the findings carefully and record same-team authorship and study design limits. No push or site publication.

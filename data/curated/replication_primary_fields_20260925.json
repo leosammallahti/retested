@@ -1947,6 +1947,11 @@
       "field": "Neuroscience",
       "topic": "Psychology of Moral and Emotional Judgment"
     },
+    "10.1016/j.jbtep.2025.102074": {
+      "id": "https://openalex.org/W4415766932",
+      "field": "Psychology",
+      "topic": "Personality Disorders and Psychopathology"
+    },
     "10.1016/j.jbtep.2026.102086": {
       "id": "https://openalex.org/W7127310672",
       "field": "Psychology",
@@ -7477,6 +7482,11 @@
       "field": "Social Sciences",
       "topic": "Misinformation and Its Impacts"
     },
+    "10.1525/collabra.147499": {
+      "id": "https://openalex.org/W7110410704",
+      "field": "Psychology",
+      "topic": "Child and Animal Learning Development"
+    },
     "10.1525/collabra.147691": {
       "id": "https://openalex.org/W7108333828",
       "field": "Psychology",
@@ -7664,6 +7674,11 @@
     },
     "10.15763/issn.1936-9298.2025.2.1.1-10": {
       "id": "https://openalex.org/W4408012688",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.15763/issn.1936-9298.2025.2.4.35-48": {
+      "id": "https://openalex.org/W4417527618",
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
