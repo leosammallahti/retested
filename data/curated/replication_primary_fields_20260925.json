@@ -1312,6 +1312,11 @@
       "field": "Psychology",
       "topic": "Child and Animal Learning Development"
     },
+    "10.1016/0887-6185(94)00018-2": {
+      "id": "https://openalex.org/W2022505302",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
     "10.1016/0887-6185(96)00009-6": {
       "id": "https://openalex.org/W2049807249",
       "field": "Psychology",
@@ -2897,6 +2902,11 @@
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
     },
+    "10.1024/1421-0185/a000220": {
+      "id": "https://openalex.org/W2934612935",
+      "field": "Psychology",
+      "topic": "Language, Metaphor, and Cognition"
+    },
     "10.1027/1015-5759.23.1.24": {
       "id": "https://openalex.org/W2129081088",
       "field": "Psychology",
@@ -4477,6 +4487,11 @@
       "field": "Psychology",
       "topic": "Behavioral Health and Interventions"
     },
+    "10.1080/08927936.2023.2243737": {
+      "id": "https://openalex.org/W4386326713",
+      "field": "Psychology",
+      "topic": "Animal and Plant Science Education"
+    },
     "10.1080/09297040500473706": {
       "id": "https://openalex.org/W2136556448",
       "field": "Psychology",
@@ -5412,6 +5427,11 @@
       "field": "Psychology",
       "topic": "Child and Animal Learning Development"
     },
+    "10.1098/rsos.220194": {
+      "id": "https://openalex.org/W4313453564",
+      "field": "Psychology",
+      "topic": "Primate Behavior and Ecology"
+    },
     "10.1098/rsos.220497": {
       "id": "https://openalex.org/W4411163069",
       "field": "Neuroscience",
@@ -5456,6 +5476,11 @@
       "id": "https://openalex.org/W4417415908",
       "field": "Social Sciences",
       "topic": "Misinformation and Its Impacts"
+    },
+    "10.1101/2022.01.18.22269473": {
+      "id": "https://openalex.org/W4205374575",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
     "10.1108/bfj-09-2016-0443": {
       "id": "https://openalex.org/W2614031147",
@@ -7922,6 +7947,11 @@
       "field": "Psychology",
       "topic": "Multisensory perception and integration"
     },
+    "10.17605/osf.io/uyw9e": {
+      "id": "https://openalex.org/W3047375170",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
     "10.17605/osf.io/zdvgj": {
       "id": "https://openalex.org/W7130576160",
       "field": "Psychology",
@@ -8862,6 +8892,11 @@
       "field": "Psychology",
       "topic": "Perfectionism, Procrastination, Anxiety Studies"
     },
+    "10.31234/osf.io/2rqy5": {
+      "id": "https://openalex.org/W4235323743",
+      "field": "Psychology",
+      "topic": "Mental Health Research Topics"
+    },
     "10.31234/osf.io/2wpqe_v1": {
       "id": "https://openalex.org/W7207719307",
       "field": "Neuroscience",
@@ -8922,6 +8957,11 @@
       "field": "Psychology",
       "topic": "Death Anxiety and Social Exclusion"
     },
+    "10.31234/osf.io/mhpu9": {
+      "id": "https://openalex.org/W4400108565",
+      "field": "Psychology",
+      "topic": "Communication in Education and Healthcare"
+    },
     "10.31234/osf.io/mjs2d": {
       "id": "https://openalex.org/W4283262030",
       "field": "Psychology",
@@ -8961,6 +9001,11 @@
       "id": "https://openalex.org/W4200371506",
       "field": "Psychology",
       "topic": "Sport Psychology and Performance"
+    },
+    "10.31234/osf.io/yfktw": {
+      "id": "https://openalex.org/W4388703215",
+      "field": "Psychology",
+      "topic": "Educational Strategies and Epistemologies"
     },
     "10.31275/2019.1262": {
       "id": "https://openalex.org/W3035493595",
@@ -9422,6 +9467,11 @@
       "field": "Psychology",
       "topic": "Counseling Practices and Supervision"
     },
+    "10.34917/4478194": {
+      "id": "https://openalex.org/W147149308",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
     "10.37237/150205": {
       "id": "https://openalex.org/W4400142384",
       "field": "Psychology",
@@ -9476,6 +9526,16 @@
       "id": "https://openalex.org/W2332110933",
       "field": "Psychology",
       "topic": "Deception detection and forensic psychology"
+    },
+    "10.3758/bf03334046": {
+      "id": "https://openalex.org/W2050550192",
+      "field": "Psychology",
+      "topic": "Second Language Acquisition and Learning"
+    },
+    "10.3758/bf03336713": {
+      "id": "https://openalex.org/W2093155695",
+      "field": "Psychology",
+      "topic": "Psychological and Educational Research Studies"
     },
     "10.3758/bf03337046": {
       "id": "https://openalex.org/W2058122607",
