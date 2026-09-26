@@ -9946,6 +9946,156 @@
       "id": "https://openalex.org/W2810928372",
       "field": "Psychology",
       "topic": "Child and Animal Learning Development"
+    },
+    "10.1016/j.jbtep.2022.101831": {
+      "id": "https://openalex.org/W4311058911",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1016/j.jpsychires.2022.10.027": {
+      "id": "https://openalex.org/W4304128772",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1016/j.brat.2012.02.015": {
+      "id": "https://openalex.org/W2038772870",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1016/j.eatbeh.2005.11.002": {
+      "id": "https://openalex.org/W1966227359",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.31234/osf.io/cqj6h": {
+      "id": "https://openalex.org/W4388460711",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/rftnx": {
+      "id": "https://openalex.org/W3175170298",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/9q5rc": {
+      "id": "https://openalex.org/W4230655657",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31219/osf.io/sy4b9": {
+      "id": "https://openalex.org/W4249749587",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/dkg53": {
+      "id": "https://openalex.org/W3161225061",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31219/osf.io/9e27f": {
+      "id": "https://openalex.org/W4402770698",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/vn4jc": {
+      "id": "https://openalex.org/W4225281092",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/28yvp": {
+      "id": "https://openalex.org/W4230541069",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/4ertj": {
+      "id": "https://openalex.org/W4242882224",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/8mv32": {
+      "id": "https://openalex.org/W4240220240",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1037/e529992013-001": {
+      "id": "https://openalex.org/W1581709653",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.3200/socp.146.6.645-655": {
+      "id": "https://openalex.org/W1984479781",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/gavh9": {
+      "id": "https://openalex.org/W4390012011",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1080/17461391.2022.2152731": {
+      "id": "https://openalex.org/W4313340482",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.31234/osf.io/qzspr": {
+      "id": "https://openalex.org/W4253814839",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.3389/fpsyg.2019.02357": {
+      "id": "https://openalex.org/W2981642127",
+      "field": "Psychology",
+      "topic": "Motivation and Self-Concept in Sports"
+    },
+    "10.1007/s12671-017-0856-1": {
+      "id": "https://openalex.org/W2783009920",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
+    },
+    "10.1186/s13104-016-2324-8": {
+      "id": "https://openalex.org/W2569585767",
+      "field": "Psychology",
+      "topic": "Mental Health via Writing"
+    },
+    "10.1901/jeab.2007.68-06": {
+      "id": "https://openalex.org/W1971422266",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1521/pedi_2019_33_414": {
+      "id": "https://openalex.org/W2968999482",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1177/2332858419888892": {
+      "id": "https://openalex.org/W2986698074",
+      "field": "Psychology",
+      "topic": "LGBTQ Health, Identity, and Policy"
+    },
+    "10.12740/app/90328": {
+      "id": "https://openalex.org/W2806128387",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1037/ccp0000161": {
+      "id": "https://openalex.org/W2563357953",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1017/s1352465817000455": {
+      "id": "https://openalex.org/W2739519780",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1111/ecc.12170": {
+      "id": "https://openalex.org/W1899453141",
+      "field": "Psychology",
+      "topic": "Resilience and Mental Health"
+    },
+    "10.1186/1471-2458-7-161": {
+      "id": "https://openalex.org/W2073587975",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
     }
   },
   "manual_exception": [

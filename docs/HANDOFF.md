@@ -1,4 +1,14 @@
-# Handoff — current verified state 2026-09-25
+# Handoff — current verified state 2026-09-26
+
+## Thirty more completed pairs and FORRT provenance audit — 2026-09-26 01:19 UTC
+
+The data build, Astro site build (4,812 pages), exact-pair audit, and whitespace check passed with zero issues. **1,766 built pairs carry Retested review**: 451 built FORRT overlays and 1,315 pairs added to Retested's built pages. Thirty source-checked pairs were added since 00:59:58; 24 already had the exact original/later pair and outcome in FORRT's raw extractor, and six had no DOI/title match in the scanned local FORRT tables. The queue fell by exactly 30 IDs, each tied to one of the promoted later DOIs; no unrelated candidate disappeared.
+
+The full per-pair audit `data/curated/forrt_overlap_audit_20260926.json` classifies the 1,315 additions: 271 exact same-pair raw overlaps, 69 with the later paper present but no confirmed same-pair link, and 975 without an exact later DOI/title match. FORRT's raw extractor already had an outcome for 234 of the 271. Retested and extractor outcome labels differ for 29 of those 234; investigate scope before calling either wrong. The site now says these are additions to Retested's completed pages, not first discoveries. No upstream FORRT change, push, or site publication.
+
+## Correction: “new” means new to Retested's built pages — 2026-09-26
+
+The 1,285 `retested_new_pairs` at the 00:59:58 build were **not** all absent from FORRT. A raw-data audit found 309 later-paper DOI matches in local FORRT files, including 243 exact original/later DOI pairs; at least 210 of those exact pairs already had an outcome in FORRT's extractor. Seven additional later papers matched by exact title under another DOI version, four with the same original DOI. We have corrected the home page to identify these as source-checked additions to Retested's built record, not first discoveries. The full methods and caveats are in `docs/FORRT_OVERLAP_AUDIT.md`.
 
 ## Twelve more fully checked pairs — 2026-09-26 00:59:58 UTC
 

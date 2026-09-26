@@ -70,9 +70,9 @@ const cells = (() => {
   <section class="wrap">
     <div class="band card">
       <div>
-        <div class="label claim">Added by Retested</div>
-        <h2>{int(c.retested_new_effects)} completed effect pages</h2>
-        <p>{int(c.retested_new_findings)} original papers and {int(c.retested_new_pairs)} source-reviewed replication pairs now count in the record. Each addition links the original claim to the later study and shows the authors' result.</p>
+        <div class="label claim">Source checked by Retested</div>
+        <h2>{int(c.retested_new_effects)} completed effect pages added to this site</h2>
+        <p>{int(c.retested_new_findings)} original papers and {int(c.retested_new_pairs)} source-reviewed replication pairs were added to Retested's built record. Some pairs and outcomes already exist in FORRT's broader raw files; these figures measure completed Retested pages, not first discoveries. Each page links the original claim to the later study and shows the reported result.</p>
       </div>
       <a class="btn ghost" href={u('effects/?source=retested')}>Browse the additions →</a>
     </div>
@@ -82,8 +82,8 @@ const cells = (() => {
     <div class="band card ink">
       <div>
         <div class="label claim">Extending the record</div>
-        <h2>{int(c.candidates)} replications no human has checked yet</h2>
-        <p>FORRT's extractor and Retested's search have flagged papers that look like replications. The remaining queue needs review; verified original-and-replication pairs can join the counted record.</p>
+        <h2>{int(c.candidates)} candidate records awaiting Retested source checks</h2>
+        <p>FORRT's extractor and Retested's search have flagged papers that look like replications. FORRT already records an outcome for some of them. The queue count means Retested has not yet checked the exact study link, participants, and reported result for a completed page.</p>
       </div>
       <a class="btn" href={u('queue/')}>Open the review queue →</a>
     </div>
