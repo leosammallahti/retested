@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "packet_kind": "immutable_independent_second_review",
+  "reviewed_at_utc": "2026-09-26T19:11:14Z",
+  "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+  "decision_rule": "An original-side match requires the same DOI expression in the Retested and FORRT records, unless the FORRT record has no original expression. A later-side alternate DOI requires an explicit Crossref/DataCite version relation or a match on full title, ordered creators, and publication date/year. A blank FORRT original field remains an evidence gap even if primary metadata externally anchors the original Work.",
+  "inputs": {
+    "first_review": {
+      "path": "data/curated/forrt_identity_review_20260926.json",
+      "sha256": "d20f0e6c6665408348ca281b8f32ab9b84720ad27c1d6635085940ffd6d52bcb"
+    },
+    "pinned_snapshot": {
+      "path": "data/curated/forrt_semantic_match_review_20260926.json",
+      "sha256": "7d01bbeb77f148fed58a1da716cd7a0820b566c33102c88cb95a6b8a5d08fb38"
+    },
+    "raw_files": [
+      {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv", "sha256": "02f32adeee1166b0ad7f7f1a7ae6ded6678930cced25efc87e874cccc9247724"},
+      {"path": "data/raw/forrt/snapshots/2026-09-26/flora-validation_validated_export.csv", "sha256": "1553bdf10c0492877033fad1546b6f078df665bd3bd897d8a6d4674e3b375fd2"},
+      {"path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv", "sha256": "64bac1cbe742d33fb72031edbf2fa3e7478ad13f7678543bd9d41e6ac11ffc51"},
+      {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv", "sha256": "9cbbcdcc918982a22da62633d05c731a597de82221758757fae873f30bd01b25"}
+    ]
+  },
+  "reviews": [
+    {
+      "query_record_id": "ps_9a98cc6833fed966a9c4",
+      "candidate_record_id": "ps_d993dd4e5e070f866fc6",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv", "row": 3525, "original_doi": "10.1007/s11218-024-09948-6", "later_doi": "10.31234/osf.io/6vfdq_v1"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.31234/osf.io/6vfdq_v1", "kind": "Crossref", "checked": "2026-09-26", "title": "Growth Mindset Beliefs and Practices Among Students and Academic Advisors: A Conceptual Replication of Muenks et al. (2024)", "ordered_creators": ["Darby Matusz", "Matthew H. Kim", "Jennifer Osterhage"], "date": "2025-11-20"},
+        {"url": "https://api.crossref.org/works/10.1007/s11218-026-10258-2", "kind": "Crossref", "checked": "2026-09-26", "title": "Growth mindset beliefs and practices among students and academic advisors: a conceptual replication of Muenks et al. (2024)", "ordered_creators": ["Darby K. Matusz", "Matthew H. Kim", "Jennifer Osterhage"], "date": "2026-07-07"}
+      ],
+      "basis": "The original DOI is identical. The two later records have the same title apart from case, the same ordered creators, and compatible preprint/journal chronology.",
+      "evidence_gaps": ["Neither Crossref record declares a formal relation between these two DOI expressions."]
+    },
+    {
+      "query_record_id": "ps_edd44978d50df8b9281d",
+      "candidate_record_id": "ps_0f047803f869ac09ee3d",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-validation_validated_export.csv", "row": 32, "original_doi": "10.1016/0010-0285(89)90003-0", "later_doi": "10.7916/d8f76r2r"},
+      "external_metadata": [
+        {"url": "https://api.datacite.org/dois/10.7916/d8f76r2r", "kind": "DataCite", "checked": "2026-09-26", "title": "The Critical Period in the Acquisition of L2 Syntax: A Partial Replication of Johnson and Newport (1989)", "ordered_creators": ["Heekyung Seol"], "year": 2005},
+        {"url": "https://api.datacite.org/dois/10.7916/salt.v5i2.1571", "kind": "DataCite", "checked": "2026-09-26", "title": "The Critical Period in the Acquisition of L2 Syntax: A Partial Replication of Johnson and Newport (1989)", "ordered_creators": ["Heekyung Seol"], "year": 2005}
+      ],
+      "basis": "The original DOI is identical. The two later DataCite records have the same full title, sole creator, and publication year.",
+      "evidence_gaps": ["DataCite exposes no declared relation between the two DOI expressions."]
+    },
+    {
+      "query_record_id": "ps_d597d28dcdf7e966234e",
+      "candidate_record_id": "ps_7050d88e212343891d65",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv", "row": 3056, "original_doi": "10.1016/0749-596x(86)90041-0", "later_doi": "10.17169/refubium-44554"},
+      "external_metadata": [
+        {"url": "https://api.datacite.org/dois/10.17169/refubium-44554", "kind": "DataCite", "checked": "2026-09-26", "declared_relation": "IsIdenticalTo 10.1002/acp.4230"},
+        {"url": "https://api.crossref.org/works/10.1002/acp.4230", "kind": "Crossref", "checked": "2026-09-26", "title": "Does generation benefit learning for narrative and expository texts? A direct replication attempt", "ordered_creators": ["Julia Schindler", "Tobias Richter", "Raymond A. Mar"], "date": "2024-07"}
+      ],
+      "basis": "The original DOI is identical and DataCite explicitly connects the alternate later DOI to the Retested later DOI.",
+      "evidence_gaps": []
+    },
+    {
+      "query_record_id": "ps_914f623b98772aad4043",
+      "candidate_record_id": "ps_c430737befcd26de9813",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv", "row": 57, "original_doi": "10.1016/j.cognition.2008.08.008", "later_doi": "10.31234/osf.io/kfgr8"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.31234/osf.io/kfgr8", "kind": "Crossref", "checked": "2026-09-26", "declared_relation": "is-preprint-of 10.1016/j.cogdev.2021.101054"},
+        {"url": "https://api.crossref.org/works/10.1016/j.cogdev.2021.101054", "kind": "Crossref", "checked": "2026-09-26", "declared_relation": "has-preprint 10.31234/osf.io/kfgr8"}
+      ],
+      "basis": "The original DOI is identical and Crossref declares reciprocal preprint/journal relations for the later DOI expressions.",
+      "evidence_gaps": []
+    },
+    {
+      "query_record_id": "ps_7eb549baf488d18a5927",
+      "candidate_record_id": "ps_4a614a5ee9f60c5b21d4",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv", "row": 2237, "original_doi": "10.1037/a0018915", "later_doi": "10.1176/appi.ps.62.4.367"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.1176/appi.ps.62.4.367", "kind": "Crossref", "checked": "2026-09-26", "title": "Guided Self-Help Treatment for Recurrent Binge Eating: Replication and Extension", "ordered_creators": ["L. L. DeBar", "R. H. Striegel-Moore", "G. T. Wilson", "N. Perrin", "B. J. Yarborough", "J. Dickerson", "F. Lynch", "F. Rosselli", "H. C. Kraemer"], "date": "2011-04-01"},
+        {"url": "https://api.crossref.org/works/10.1176/ps.62.4.pss6204_0367", "kind": "Crossref", "checked": "2026-09-26", "title": "Guided Self-Help Treatment for Recurrent Binge Eating: Replication and Extension", "ordered_creators": ["Lynn L. DeBar", "Ruth H. Striegel-Moore", "G. Terence Wilson", "Nancy Perrin", "Bobbi Jo Yarborough", "John Dickerson", "Frances Lynch", "Francine Rosselli", "Helena C. Kraemer"], "date": "2011-04"}
+      ],
+      "basis": "The original DOI is identical. The later records have the same full title, nine creators in the same order, and the same publication month.",
+      "evidence_gaps": ["Crossref exposes no declared relation between the two DOI expressions."]
+    },
+    {
+      "query_record_id": "ps_646afb26c9ab35fd89e2",
+      "candidate_record_id": "ps_62ffb945a107ce2c5089",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv", "row": 574, "original_doi": "10.1111/jcpp.13733", "later_doi": "10.1111/1460-6984.13086"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.31234/osf.io/s5y7r", "kind": "Crossref", "checked": "2026-09-26", "declared_relation": "is-preprint-of 10.1111/1460-6984.13086"},
+        {"url": "https://api.crossref.org/works/10.1111/1460-6984.13086", "kind": "Crossref", "checked": "2026-09-26", "declared_relation": "has-preprint 10.31234/osf.io/s5y7r"}
+      ],
+      "basis": "The original DOI is identical and Crossref declares reciprocal preprint/journal relations for the later DOI expressions.",
+      "evidence_gaps": []
+    },
+    {
+      "query_record_id": "ps_05f347f5d02f8f6bd8ea",
+      "candidate_record_id": "ps_d11ff801d1341eb67c1b",
+      "first_review_decision": "confirmed_same_pair",
+      "second_review_status": "agree_with_evidence_gap",
+      "ordered_work_identity": "confirmed_with_external_original_anchor",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv", "row": 1378, "original_doi": null, "later_doi": "10.1525/collabra.122158"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.1525/collabra.122158", "kind": "Crossref", "checked": "2026-09-26", "title": "Theoretical Maturation of the “Bias Blind Spot”: A Preregistered Replication Study of Pronin, Lin, and Ross (2002) in a Brazilian Sample", "ordered_creators": ["Leonardo Seda", "Isabela Torrescasana Centrone Martins", "Thaís Luise Rebouças de Carvalho Lisbôa", "Marcelo Camargo Batistuzzo", "Daniel Fatori"], "date": "2024-08-12"},
+        {"url": "https://api.crossref.org/works/10.1177/0146167202286008", "kind": "Crossref", "checked": "2026-09-26", "title": "The Bias Blind Spot: Perceptions of Bias in Self Versus Others", "ordered_creators": ["Emily Pronin", "Daniel Y. Lin", "Lee Ross"], "date": "2002-03"}
+      ],
+      "basis": "The later DOI is identical. The later record's title supplies the exact author-year bibliographic anchor, and Crossref's original record supplies the matching ordered creators and year.",
+      "evidence_gaps": ["The retained FORRT row has no original DOI or title; the original-side identity is externally anchored, not recorded as a FORRT pair field."]
+    },
+    {
+      "query_record_id": "ps_0775442b12d22c0d2ae1",
+      "candidate_record_id": "ps_ff0b723497a17eb214d4",
+      "first_review_decision": "confirmed_same_later_version_same_pair",
+      "second_review_status": "agree",
+      "ordered_work_identity": "confirmed",
+      "pinned_row": {"path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv", "row": 2255, "original_doi": "10.2307/585120", "later_doi": "10.2307/1132137"},
+      "external_metadata": [
+        {"url": "https://api.crossref.org/works/10.2307/1132137", "kind": "Crossref", "checked": "2026-09-26", "title": "Family Relationships and Children's Emotional Adjustment as Correlates of Maternal and Paternal Differential Treatment: A Replication with Toddler and Preschool Siblings", "ordered_creators": ["Brenda L. Volling", "Julie L. Elins"], "date": "1998-12"},
+        {"url": "https://api.crossref.org/works/10.1111/j.1467-8624.1998.tb06182.x", "kind": "Crossref", "checked": "2026-09-26", "title": "Family Relationships and Children's Emotional Adjustment as Correlates of Maternal and Paternal Differential Treatment: A Replication with Toddler and Preschool Siblings", "ordered_creators": ["Brenda L. Volling", "Julie L. Elins"], "date": "1998-12-01"}
+      ],
+      "basis": "The original DOI is identical. The later records have the same full title, the same ordered creators, and matching publication month/date.",
+      "evidence_gaps": ["Crossref exposes no declared relation between the two DOI expressions."]
+    }
+  ],
+  "summary": {
+    "positive_first_review_decisions_reviewed": 8,
+    "full_agreements": 7,
+    "agreements_with_material_evidence_gap": 1,
+    "disagreements": 0,
+    "not_assessed": 0,
+    "nonrelation_evidence_gaps": 4,
+    "required_follow_up": "For ps_05f347f5d02f8f6bd8ea, retain the candidate as externally anchored and do not represent its absent FORRT original identifier as source-recorded. The four no-relation cases are bibliographically supported but should not be upgraded to formal registrar-version relations."
+  }
+}

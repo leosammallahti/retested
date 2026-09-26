@@ -1,11 +1,11 @@
 {
   "schema_version": "reconciliation-checkpoint/v1",
   "registry_schema_version": "reconciliation-registry/v1",
-  "checkpointed_at_utc": "2026-09-26T16:53:43Z",
+  "checkpointed_at_utc": "2026-09-26T20:34:03Z",
   "scope": "A reproducible comparison of Retested reviewed records with the pinned FORRT corpus; it is not a claim of universal literature completeness.",
   "generator": {
     "path": "pipeline/reconciliation_registry.py",
-    "sha256": "9044a2ca6a495ab99dcdd60f7dee7ac7d45a9f17b80819ef80b6f9235fb5bf6d"
+    "sha256": "7644e9c430d42df8e7f03b8ce2f7edb23695425fe0c1a20f9c5fa150b565631c"
   },
   "pair_summary_generator": {
     "path": "pipeline/pair_summaries.py",
@@ -34,12 +34,14 @@
     "samples_resolved": 0,
     "effect_relations_resolved": 0,
     "certified_new_to_forrt": 0,
+    "positive_ordered_bibliographic_work_relations": 880,
+    "retested_addition_positive_ordered_bibliographic_work_relations": 429,
     "bibliographic_relations": {
       "exact_expression_pair_reported": 814,
-      "reviewed_same_work_pair_expression_unresolved": 38,
-      "reviewed_same_work_pair_versioned_expressions": 20,
-      "title_or_alternate_identifier_pair_candidate": 10,
-      "reviewed_same_later_work_different_original": 39,
+      "reviewed_same_work_pair_expression_unresolved": 39,
+      "reviewed_same_work_pair_versioned_expressions": 27,
+      "title_or_alternate_identifier_pair_candidate": 0,
+      "reviewed_same_later_work_different_original": 41,
       "later_work_reported_original_relation_unresolved": 4,
       "original_expression_reported_with_other_later": 172,
       "reviewed_original_work_in_pending_record": 1,
@@ -47,10 +49,10 @@
     },
     "retested_addition_bibliographic_relations": {
       "exact_expression_pair_reported": 363,
-      "reviewed_same_work_pair_expression_unresolved": 38,
-      "reviewed_same_work_pair_versioned_expressions": 20,
-      "title_or_alternate_identifier_pair_candidate": 10,
-      "reviewed_same_later_work_different_original": 39,
+      "reviewed_same_work_pair_expression_unresolved": 39,
+      "reviewed_same_work_pair_versioned_expressions": 27,
+      "title_or_alternate_identifier_pair_candidate": 0,
+      "reviewed_same_later_work_different_original": 41,
       "later_work_reported_original_relation_unresolved": 4,
       "original_expression_reported_with_other_later": 172,
       "reviewed_original_work_in_pending_record": 1,
@@ -60,10 +62,10 @@
   "coverage": {
     "comparison_state": "interim_partially_source_adjudicated",
     "assurance_complete": false,
-    "semantic_queries_reviewed": 461,
-    "semantic_decisions_incomplete_evidence": 60,
+    "semantic_queries_reviewed": 471,
+    "semantic_decisions_incomplete_evidence": 40,
     "semantic_decisions_missing_rationale": 30,
-    "semantic_decisions_missing_locations": 30,
+    "semantic_decisions_missing_locations": 10,
     "comparison_blocks": {
       "direct_pair_join": "complete",
       "one_side_identifier_joins": "complete",
@@ -72,20 +74,31 @@
       "text_semantic_retrieval": "partial",
       "textless_metadata_audit": "partial",
       "source_stratum_deduplication": "complete",
-      "independent_review_and_adjudication": "not_started"
+      "independent_review_and_adjudication": "partial_bibliographic_work_identity_recheck_of_eight_direct_positive_candidates_only"
+    },
+    "independent_work_identity_review": {
+      "path": "data/curated/forrt_identity_second_review_20260926.json",
+      "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb",
+      "reviewed_positive_direct_source_identity_decisions": 8,
+      "full_agreements": 7,
+      "agreements_with_material_evidence_gap": 1,
+      "disagreements": 0,
+      "coverage": "partial bibliographic Work-identity review only; it is not full-registry dual-review assurance",
+      "scientific_equivalence_axes": "not_compared"
     },
     "assurance_blockers": [
       "effect identity has not been compared for any paper-pair overlap",
       "study and sample identities are intentionally unresolved for imported report-scoped tests",
       "semantic review does not cover every non-exact query",
-      "independent dual review and adjudication have not been completed",
-      "60 semantic decisions have incomplete evidence (30 lack rationale; 30 lack locations)"
+      "the partial eight-candidate bibliographic Work-identity recheck does not complete independent dual review and adjudication for the registry",
+      "40 semantic decisions have incomplete evidence (30 lack rationale; 10 lack locations)"
     ]
   },
   "input_hashes": {
     "data/build/attempts.json": "3f6b90acc4231d7a521a4d8ef35d4932c71216f98afa1d1aac6d315198315f7b",
-    "data/curated/forrt_overlap_reconciled_20260926.json": "68407769de92e3aaa18e28954473bb619bc38a7ddef216b9e89e178511d66592",
-    "data/curated/forrt_semantic_match_review_20260926.json": "ba0c713b543b6b4fe59decef6895ab1ed1ee929087f4ed969b3d44cc35d6a597",
+    "data/curated/forrt_overlap_reconciled_20260926.json": "593daef132e6fde9702711457251b75a2187d1da904c520e1ec818586c47c32a",
+    "data/curated/forrt_semantic_match_review_20260926.json": "66dc0da24d54a4cef9a9487d3b5e05857e31ba8f9ec7649b068a8ce37c15fc3d",
+    "data/curated/forrt_identity_second_review_20260926.json": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb",
     "data/curated/promoted_pairs.json": "80aaa3fa940cd682d89d115eddc3cf87c974ef6039723218c779e747c25bb330",
     "data/curated/registry/effect_ids.csv": "074167475f714ccdd079b5161d850d2caa236a6b0216dc241b9f0d7695bcd264",
     "data/curated/registry/reconciliation_policy_v1.json": "985fdfce1db42a58329131f1a339152a40349a800d3299f9bb4368601548ffc1",

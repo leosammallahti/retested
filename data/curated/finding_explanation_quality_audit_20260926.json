@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-09-26",
+  "scope": "Release audit of the original-study explanations shown before a finding-page prediction. This audit does not reassess the original-to-later link or the later study outcome.",
+  "canonical_artifacts": {
+    "accepted_path": "data/curated/finding_explanations.json",
+    "accepted_sha256": "99ed89e46d81a1a3a164626bd2e479c3e23ccaf72bd72e3c319d6b7f528b14d3",
+    "accepted_records": 156,
+    "holds_path": "data/curated/finding_explanation_review_holds_20260926.json",
+    "holds_sha256": "7630658593dcd864ebc6d3a660971ad04e13b45fbf1b81cf43f9dda34b5b8975",
+    "holds": 69
+  },
+  "audit_stages": [
+    {
+      "stage": "initial_121_record_quality_audit",
+      "working_audit_sha256": "ea6105614de034db192e9f91a31250495a0d21957197b55a2ca0f94bcc1f3265",
+      "scope": "The first 105 accepted records plus eight records each from source-review batches 11 and 12.",
+      "method": "Programmatic schema, field-support, source-URL, aim-only-claim, and later-outcome screens covered all 121 records. The auditor read the supplied primary-source evidence for all 16 incoming records and six risk-selected accepted records; this was not a fresh full-source reread of all 105 earlier records.",
+      "initial_findings": "One accepted record needed direct result evidence and all eight batch-11 records used aim or procedure language instead of an observed result.",
+      "resolution": "The accepted record and all eight batch-11 records were repaired against their primary sources before inclusion in the current canonical file; all eight batch-12 records passed."
+    },
+    {
+      "stage": "later_35_record_source_audit",
+      "working_audit_sha256": "a3948b422302a4d0048d2c9e472d7ded6943d775e8d555bac6dd237561a403f8",
+      "scope": "Every accepted record from source-review batches 13, 15, 16, 17, 18, 19, 20, and 21.",
+      "method": "The independent reader checked every display field and evidence entry against the supplied primary source or retained capture, as well as source identity and later-outcome leakage.",
+      "initial_findings": "Twenty-nine records passed and six needed citation-completeness repairs; no false or unsupported original result, source-identity failure, or later-outcome leak was found.",
+      "resolution": "All six citation-completeness repairs were applied to the canonical file."
+    },
+    {
+      "stage": "independent_final_recheck_of_six_repairs",
+      "auditor": "codex-terra-final-explanation-release-audit",
+      "records": [
+        "10.1038/s41598-017-12626-7",
+        "10.1038/s41598-023-40858-3",
+        "10.1038/srep00350",
+        "10.1038/srep30423",
+        "10.1111/aphw.12364",
+        "10.1111/ejn.15049"
+      ],
+      "method": "Checked all four display-field support unions and all 31 cited excerpts against four retained Nature captures plus official Europe PMC and Wiley full text.",
+      "result": "pass",
+      "blockers": 0,
+      "literal_contiguous_quotes": "31/31",
+      "later_outcome_leaks": 0
+    }
+  ],
+  "release_validation": {
+    "status": "pass",
+    "accepted_schema_valid": true,
+    "accepted_records": 156,
+    "accepted_orphans": 0,
+    "accepted_hold_overlap": 0,
+    "display_fields_required": [
+      "claim",
+      "method",
+      "population",
+      "outcome_measure"
+    ],
+    "display_fields_supported_for_every_accepted_record": true,
+    "aim_only_claim_guard_passed": true,
+    "later_outcome_leak_guard_passed": true,
+    "focused_tests_passed": 12,
+    "release_blockers": 0
+  },
+  "hold_breakdown": {
+    "held_source_unavailable": 32,
+    "held_source_insufficient": 29,
+    "held_source_mismatch": 3,
+    "held_nonempirical": 3,
+    "held_secondary_analysis": 2
+  },
+  "limits": [
+    "A source-reviewed original explanation is not a certification that its linked later paper is a valid replication of the same effect, study, sample, or outcome.",
+    "The initial independent audit used complete programmatic screening plus risk-selected source rereading; it did not independently reread every one of the first 105 primary sources.",
+    "The 69 held records are preserved review work, not displayable explanations, and remain excluded until their stated source problem is resolved.",
+    "Only 156 of 4,626 finding records have this canonical four-field source-review tier; lower context tiers remain labeled separately."
+  ]
+}

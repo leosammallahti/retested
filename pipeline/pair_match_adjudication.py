@@ -244,6 +244,287 @@ def build_ledger(queue_path: Path, decision_paths: Iterable[Path]) -> dict[str, 
     }
 
 
+def append_source_identity_review(
+    ledger: Mapping[str, Any],
+    review_path: Path,
+    summaries_path: Path,
+    audit_path: Path,
+) -> dict[str, Any]:
+    """Append a bounded non-embedding Work-identity review to a semantic ledger.
+
+    Some bibliographic candidates are found by title/alternate-identifier
+    reconciliation rather than the frozen embedding queue.  Their decisions
+    still need the same durable query/candidate snapshots and evidence fields,
+    but must not be assigned a fictional embedding rank.  This helper retains
+    the original ledger intact, appends those source reviews with a null queue
+    index, and records the distinct review artifact and its digest.
+    """
+
+    merged = json.loads(json.dumps(ledger))
+    review = json.loads(review_path.read_text(encoding="utf-8"))
+    decisions = review.get("decisions") if isinstance(review, Mapping) else None
+    if not isinstance(decisions, list) or not all(isinstance(row, Mapping) for row in decisions):
+        raise ValueError("source identity review needs a decisions list")
+    summaries = json.loads(summaries_path.read_text(encoding="utf-8"))
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    queries = {str(row["record_id"]): row for row in summaries.get("query_records") or []}
+    candidates = {str(row["record_id"]): row for row in summaries.get("corpus_records") or []}
+    audit_by_pair = {
+        (str(row.get("doi_o")), str(row.get("doi_r"))): row
+        for row in audit.get("records") or []
+    }
+    existing = {str(row.get("query_record_id")) for row in merged.get("decisions") or []}
+    added: list[dict[str, Any]] = []
+    for raw in decisions:
+        query_id = str(raw.get("query_record_id") or "")
+        if not query_id or query_id not in queries:
+            raise ValueError(f"source identity review query absent from pair summaries: {query_id!r}")
+        if query_id in existing:
+            raise ValueError(f"source identity review duplicates an existing query: {query_id}")
+        decision = str(raw.get("decision") or "")
+        if decision not in DECISIONS - {"related_but_distinct", "unresolved"}:
+            raise ValueError(f"{query_id}: source identity review has unsupported decision {decision!r}")
+        selected = [str(value) for value in raw.get("candidate_record_ids") or []]
+        if not selected or any(value not in candidates for value in selected):
+            raise ValueError(f"{query_id}: source identity review has no valid frozen candidate linkage")
+        query = queries[query_id]
+        doi_o, doi_r = str(raw.get("doi_o")), str(raw.get("doi_r"))
+        if (query.get("doi_o"), query.get("doi_r")) != (doi_o, doi_r):
+            raise ValueError(f"{query_id}: source identity review DOI pair disagrees with query")
+        prior = audit_by_pair.get((doi_o, doi_r))
+        if prior is None:
+            raise ValueError(f"{query_id}: source identity review pair absent from overlap audit")
+        original_matches, later_matches = _matches(raw, decision)
+        if (original_matches, later_matches) not in {(True, True), (False, True)}:
+            raise ValueError(f"{query_id}: source identity review must state ordered Work matches")
+        locations = _evidence_locations(raw)
+        if not raw.get("evidence") or not locations:
+            raise ValueError(f"{query_id}: source identity review lacks evidence or stable locations")
+        reviewer_record = dict(raw)
+        reviewer_record["review_method"] = "bounded_source_identity_review_outside_embedding_queue"
+        reviewer_record["scientific_equivalence_axes"] = "not_compared"
+        added.append({
+            "queue_index": None,
+            "query_record_id": query_id,
+            "doi_o": doi_o,
+            "doi_r": doi_r,
+            "prior_classification": prior.get("combined_classification"),
+            "top_cosine_similarity": None,
+            "decision": decision,
+            "original_work_matches": original_matches,
+            "later_work_matches": later_matches,
+            "candidate_record_ids": selected,
+            "evidence": raw.get("evidence"),
+            "evidence_locations": locations,
+            "query_snapshot": query,
+            "candidate_snapshots": [candidates[value] for value in selected],
+            "reviewer_record": reviewer_record,
+        })
+        existing.add(query_id)
+
+    merged["decisions"] = list(merged.get("decisions") or []) + added
+    merged["decisions"].sort(key=lambda row: (
+        row.get("queue_index") is None,
+        row.get("queue_index") if row.get("queue_index") is not None else float("inf"),
+        str(row.get("query_record_id")),
+    ))
+    descriptor = {
+        "path": str(review_path.relative_to(ROOT)),
+        "sha256": _sha256(review_path),
+        "reviewed_at_utc": review.get("reviewed_at_utc"),
+        "decisions": len(added),
+        "packet_metadata": {key: value for key, value in review.items() if key != "decisions"},
+    }
+    merged["decision_sources"] = list(merged.get("decision_sources") or []) + [descriptor]
+    merged["direct_source_identity_review"] = {
+        "path": descriptor["path"],
+        "sha256": descriptor["sha256"],
+        "decisions": len(added),
+        "scientific_equivalence_axes": "not_compared",
+    }
+    counts = Counter(str(row.get("decision")) for row in merged["decisions"])
+    summary = dict(merged.get("summary") or {})
+    summary["reviewed_queries"] = len(merged["decisions"])
+    summary["embedding_queue_queries_reviewed"] = sum(
+        row.get("queue_index") is not None for row in merged["decisions"]
+    )
+    summary["direct_source_identity_queries_reviewed"] = len(added)
+    summary["queue_indexes_reviewed"] = [
+        row["queue_index"] for row in merged["decisions"] if row.get("queue_index") is not None
+    ]
+    summary["counts"] = {decision: counts.get(decision, 0) for decision in sorted(DECISIONS)}
+    merged["summary"] = summary
+    return merged
+
+
+def repair_existing_evidence(ledger: Mapping[str, Any], repair_path: Path) -> dict[str, Any]:
+    """Apply a source-reviewed rationale/location repair without changing a decision.
+
+    Negative retrieval decisions are not evidence of absence, but each still
+    needs a durable explanation of why its reviewed candidate is distinct.
+    A repair packet may fill only a missing rationale or missing locator on an
+    existing ``related_but_distinct`` decision; it cannot alter its label,
+    selected candidates, or any scientific-equivalence field.
+    """
+
+    merged = json.loads(json.dumps(ledger))
+    repair = json.loads(repair_path.read_text(encoding="utf-8"))
+    rows = repair.get("repairs") if isinstance(repair, Mapping) else None
+    if not isinstance(rows, list) or not all(isinstance(row, Mapping) for row in rows):
+        raise ValueError("negative-evidence repair needs a repairs list")
+    by_query = {str(row.get("query_record_id")): row for row in merged.get("decisions") or []}
+    seen: set[str] = set()
+    for source in rows:
+        query_id = str(source.get("query_record_id") or "")
+        if not query_id or query_id in seen or query_id not in by_query:
+            raise ValueError(f"invalid or duplicate negative-evidence repair query: {query_id!r}")
+        seen.add(query_id)
+        target = by_query[query_id]
+        if target.get("decision") != "related_but_distinct":
+            raise ValueError(f"{query_id}: evidence repair may only amend related_but_distinct")
+        # A location-only repair preserves an already reviewed rationale.
+        evidence = source.get("evidence") or target.get("evidence")
+        locations = _evidence_locations(source)
+        if not str(evidence or "").strip() or not locations:
+            raise ValueError(f"{query_id}: evidence repair lacks rationale or locations")
+        if any(str(location.get("path") or "").startswith("/tmp/") for location in locations):
+            raise ValueError(f"{query_id}: evidence repair contains an ephemeral locator")
+        if target.get("evidence") and target.get("evidence_locations"):
+            raise ValueError(f"{query_id}: evidence repair would overwrite a complete decision")
+        target["evidence"] = evidence
+        target["evidence_locations"] = locations
+        reviewer = dict(target.get("reviewer_record") or {})
+        reviewer["evidence_repair"] = {
+            "artifact": str(repair_path.relative_to(ROOT)),
+            "evidence": evidence,
+            "evidence_locations": locations,
+            "scientific_equivalence_axes": "not_compared",
+        }
+        target["reviewer_record"] = reviewer
+
+    descriptor = {
+        "path": str(repair_path.relative_to(ROOT)),
+        "sha256": _sha256(repair_path),
+        "reviewed_at_utc": repair.get("reviewed_at_utc"),
+        "repairs": len(rows),
+        "packet_metadata": {key: value for key, value in repair.items() if key != "repairs"},
+    }
+    merged["evidence_repair_sources"] = list(merged.get("evidence_repair_sources") or []) + [descriptor]
+    return merged
+
+
+def retract_unsupported_evidence_repairs(ledger: Mapping[str, Any], correction_path: Path) -> dict[str, Any]:
+    """Re-open a negative decision when a prior repair lacked Work evidence.
+
+    An unmatched DOI is not enough to establish distinct Works.  This records
+    the correction durably, retains any valid source locations, and restores
+    the missing-rationale state rather than silently preserving an overclaim.
+    """
+
+    merged = json.loads(json.dumps(ledger))
+    correction = json.loads(correction_path.read_text(encoding="utf-8"))
+    rows = correction.get("retractions") if isinstance(correction, Mapping) else None
+    if not isinstance(rows, list) or not all(isinstance(row, Mapping) for row in rows):
+        raise ValueError("negative-evidence correction needs a retractions list")
+    by_query = {str(row.get("query_record_id")): row for row in merged.get("decisions") or []}
+    for source in rows:
+        query_id = str(source.get("query_record_id") or "")
+        target = by_query.get(query_id)
+        if target is None or target.get("decision") != "related_but_distinct":
+            raise ValueError(f"invalid negative-evidence correction query: {query_id!r}")
+        if not str(source.get("reason") or "").strip():
+            raise ValueError(f"{query_id}: correction lacks a reason")
+        target["evidence"] = None
+        reviewer = dict(target.get("reviewer_record") or {})
+        reviewer["evidence_repair_retraction"] = {
+            "artifact": str(correction_path.relative_to(ROOT)),
+            "reason": source["reason"],
+            "scientific_equivalence_axes": "not_compared",
+        }
+        target["reviewer_record"] = reviewer
+    merged["evidence_repair_corrections"] = list(merged.get("evidence_repair_corrections") or []) + [{
+        "path": str(correction_path.relative_to(ROOT)),
+        "sha256": _sha256(correction_path),
+        "reviewed_at_utc": correction.get("reviewed_at_utc"),
+        "retractions": len(rows),
+    }]
+    return merged
+
+
+def attach_independent_work_identity_review(
+    ledger: Mapping[str, Any], review_path: Path,
+) -> dict[str, Any]:
+    """Record a bounded, independent bibliographic identity re-review.
+
+    This is deliberately provenance rather than a new semantic adjudication:
+    it cannot change the original decision or upgrade any scientific axis.  A
+    second reviewer may agree while documenting an evidence gap, so coverage
+    remains partial even when every record in the small reviewed subset agrees.
+    """
+
+    merged = json.loads(json.dumps(ledger))
+    packet = json.loads(review_path.read_text(encoding="utf-8"))
+    reviews = packet.get("reviews") if isinstance(packet, Mapping) else None
+    summary = packet.get("summary") if isinstance(packet, Mapping) else None
+    if not isinstance(reviews, list) or not all(isinstance(row, Mapping) for row in reviews):
+        raise ValueError("independent identity review needs a reviews list")
+    if not isinstance(summary, Mapping):
+        raise ValueError("independent identity review needs a summary")
+    required_statuses = {"agree", "agree_with_evidence_gap"}
+    if any(str(row.get("second_review_status")) not in required_statuses for row in reviews):
+        raise ValueError("independent identity review has an unsupported review status")
+    if int(summary.get("disagreements", -1)) != 0:
+        raise ValueError("an independent disagreement requires a separate adjudication")
+
+    by_query = {str(row.get("query_record_id")): row for row in merged.get("decisions") or []}
+    seen: set[str] = set()
+    attached = 0
+    packet_reference = {
+        "path": str(review_path.relative_to(ROOT)),
+        "sha256": _sha256(review_path),
+        "reviewed_at_utc": packet.get("reviewed_at_utc"),
+        "scope": packet.get("scope"),
+    }
+    for review in reviews:
+        query_id = str(review.get("query_record_id") or "")
+        candidate_id = str(review.get("candidate_record_id") or "")
+        if not query_id or not candidate_id or query_id in seen:
+            raise ValueError(f"invalid or duplicate independent review query: {query_id!r}")
+        seen.add(query_id)
+        target = by_query.get(query_id)
+        if target is None or candidate_id not in set(target.get("candidate_record_ids") or []):
+            raise ValueError(f"{query_id}: independent review does not match a source-adjudicated pair")
+        if target.get("decision") not in {
+            "confirmed_same_pair", "confirmed_same_later_version_same_pair",
+        }:
+            raise ValueError(f"{query_id}: independent review cannot alter a non-positive identity decision")
+        target["independent_work_identity_review"] = {
+            **packet_reference,
+            "candidate_record_id": candidate_id,
+            "second_review_status": review["second_review_status"],
+            "ordered_work_identity": review.get("ordered_work_identity"),
+            "basis": review.get("basis"),
+            "evidence_gaps": review.get("evidence_gaps") or [],
+            "coverage": "partial_independent_bibliographic_work_identity_only",
+            "scientific_equivalence_axes": "not_compared",
+        }
+        attached += 1
+
+    if attached != int(summary.get("positive_first_review_decisions_reviewed", -1)):
+        raise ValueError("independent review count disagrees with its summary")
+    merged["independent_work_identity_review"] = {
+        **packet_reference,
+        "reviewed_positive_direct_source_identity_decisions": attached,
+        "full_agreements": int(summary.get("full_agreements", 0)),
+        "agreements_with_material_evidence_gap": int(summary.get("agreements_with_material_evidence_gap", 0)),
+        "disagreements": int(summary.get("disagreements", 0)),
+        "coverage": "partial: this is an independent bibliographic Work-identity review of the eight directly source-adjudicated positive candidates only; it is not full-registry assurance",
+        "scientific_equivalence_axes": "not_compared",
+        "required_follow_up": summary.get("required_follow_up"),
+    }
+    return merged
+
+
 def write_ledger(payload: Mapping[str, Any], output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     rendered = json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"

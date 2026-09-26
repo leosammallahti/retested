@@ -41,7 +41,18 @@ export interface Attempt {
     replication_target_quote: string; outcome_quote: string; outcome_quote_source: string; review_note?: string | null };
 }
 export interface Paper { doi: string; slug: string; title?: string; year?: number; journal?: string; authors?: string; ref?: string; oa_url?: string; openalex?: { cited_by: number; counts_by_year: Record<string, number>; is_retracted: boolean; topic: string; subfield: string; field: string } }
-export interface Finding { doi_o: string; slug: string; attempts: string[]; effects?: string[]; lenses: Lenses; page: boolean }
+export interface FindingExplanation {
+  original: { claim: string; method: string; population: string; outcome_measure: string };
+  source: { url: string; evidence: { location: string; quote: string; supports: ('claim' | 'method' | 'population' | 'outcome_measure')[] }[] };
+  review: { state: 'source_reviewed'; reviewed_by: string; reviewed_on: string };
+  provenance: { kind: 'manual_source_review'; promoted_pair_doi_r: string | null };
+}
+export interface FindingGameContext {
+  claim: string;
+  method: string;
+  review_state: 'plain_language_game_context_not_source_reviewed';
+}
+export interface Finding { doi_o: string; slug: string; attempts: string[]; effects?: string[]; lenses: Lenses; page: boolean; explanation?: FindingExplanation; game_contexts?: FindingGameContext[] }
 export interface Famous { status: string | null; status_raw: string | null; description: string | null; original_paper: string | null; original_year: number | null; critiques: string | null; original_es: string | null; replication_es: string | null; gs_citations: number | null }
 export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; name_sources?: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
 export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
@@ -54,6 +65,16 @@ export interface OutcomeAudit { n_read: number; n_pool: number; flipped: number;
   corrected_success_share: number | null; corrected_n?: number;
   by_verdict: Record<string, { n: number; right: number; precision: number }> }
 export interface EffectCard { slug: string; name: string; discipline: string | null; record: Record_; fame: number; numeric: Pick<Numeric, 'r' | 'ci' | 'ratio' | 'r_original' | 'label'> | null; famous_status: string | null }
+export interface FindingContextCoverage {
+  denominator: number;
+  source_reviewed_explanation: number;
+  plain_language_game_context: number;
+  fallback_source_reviewed_claim: number;
+  fallback_forrt_coded_claim: number;
+  fallback_named_effect: number;
+  fallback_title_only: number;
+  no_context: number;
+}
 export interface Stats {
   counts: Record<string, number>; overall: Share;
   by_replication_year: Record<string, Share>; by_original_decade: Record<string, Share>; by_discipline: Record<string, Share>; by_journal: Record<string, Share>;
@@ -64,6 +85,7 @@ export interface Stats {
     preregistered: Share; by_year: Record<string, Share>; audit: OutcomeAudit | null;
     link_audit: { shown: LinkAudit | null; page: LinkAudit | null; linked: LinkAudit | null } };
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
+  finding_context_coverage: FindingContextCoverage;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
 }
 

@@ -7,7 +7,14 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://retested.science',
   base: process.env.BASE_PATH || '/',
   trailingSlash: 'always',
-  integrations: [preact(), sitemap()],
+  integrations: [
+    preact(),
+    sitemap({
+      // Result dossiers are deliberately separate anti-spoiler documents.
+      // Their canonical prediction pages belong in search and the sitemap.
+      filter: (page) => !/\/finding\/[^/]+\/result\/$/.test(new URL(page).pathname),
+    }),
+  ],
   build: { format: 'directory' },
   server: { port: 4321 },
 });

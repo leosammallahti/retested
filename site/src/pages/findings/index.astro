@@ -10,21 +10,28 @@ const initialFindings = allFindings
   .sort((a, b) => b.lenses.record.k - a.lenses.record.k || (paperByDoi[b.doi_o]?.year ?? 0) - (paperByDoi[a.doi_o]?.year ?? 0))
   .slice(0, 60);
 ---
-<Base title="Original papers" description="Make a prediction, then inspect the source and attempt record for every original psychology paper in Retested." active="effects/">
+<Base title="Original papers" description="Make a prediction, then inspect the source and attempt record for every original psychology paper in Retested." active="findings/">
   <div class="wrap" style="padding-top:2.4rem">
     <header class="rise">
       <div class="label">By paper</div>
       <h1>{n.toLocaleString()} original papers</h1>
-      <p class="lede">Every original paper in Retested's finding record now has a local page. Open one, make a prediction, then reveal its source and attempt record. A record may contain one attempt, several mixed results, uncoded evidence, or no linked attempt yet; thin and unresolved records stay visible as exactly that.</p>
+      <p class="lede">Every original paper in Retested's finding record now has a local page. Open one, make a prediction, then reveal its source and attempt record. A record may contain one attempt, several mixed results, uncoded evidence, or no linked attempt yet; thin and unresolved records stay visible as exactly that. Use the source-reviewed filter to browse pages whose original claim, method, participants, and measure have all been checked against a primary source.</p>
+      <p class="faint progress-summary" id="finding-progress" hidden></p>
     </header>
-    <div class="fbar"><input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" /><span class="mono faint" id="pc" aria-live="polite">{n.toLocaleString()} papers</span></div>
+    <div class="fbar">
+      <input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" />
+      <button class="filter-toggle" id="unseen-findings" type="button" aria-pressed="false">Unseen only</button>
+      <button class="filter-toggle" id="reviewed-findings" type="button" aria-pressed="false">Source-reviewed context</button>
+      <button class="btn ghost" id="random-finding" type="button" disabled>Surprise me</button>
+      <span class="mono faint" id="pc" aria-live="polite">{n.toLocaleString()} papers</span>
+    </div>
     <ul class="rowlist" id="plist">
       {initialFindings.map((f) => {
         const paper = paperByDoi[f.doi_o];
         return <li><a class="erow" href={u(`finding/${f.slug}/`)}>
           <span class="nm">{paper?.title ?? f.doi_o}</span>
           <span class="chip">Guess the result →</span>
-          <span class="meta"><span>{[paper?.authors, paper?.year].filter(Boolean).join(', ')}</span><span>prediction + source record</span></span>
+          <span class="meta"><span>{[paper?.authors, paper?.year].filter(Boolean).join(', ')}</span><span>{f.explanation ? 'source-reviewed context' : 'prediction + source record'}</span></span>
         </a></li>;
       })}
     </ul>
@@ -34,18 +41,38 @@ const initialFindings = allFindings
 </Base>
 <script>
   import { u } from '../../lib/fmt';
-  type E = { t: string; s: string; n: string; doi?: string; au?: string; y?: number; k: number };
-  const q = document.getElementById('pq') as HTMLInputElement, list = document.getElementById('plist')!, more = document.getElementById('more')!;
-  let all: E[] = [], shown = 60;
+  type E = { t: string; s: string; n: string; doi?: string; au?: string; y?: number; k: number; ctx?: string };
+  const q = document.getElementById('pq') as HTMLInputElement, list = document.getElementById('plist')!, more = document.getElementById('more')!, random = document.getElementById('random-finding') as HTMLButtonElement, unseen = document.getElementById('unseen-findings') as HTMLButtonElement, reviewed = document.getElementById('reviewed-findings') as HTMLButtonElement;
+  let all: E[] = [], current: E[] = [], shown = 60, unseenOnly = false, reviewedOnly = false;
+  const explored = new Set<string>();
+  let guessed = 0;
+  const progress = document.getElementById('finding-progress')!;
+  try {
+    const saved = JSON.parse(localStorage.getItem('retested.finding-progress.v1') || '{}') as Record<string, { guess?: string; revealedAt?: string }>;
+    const categories = new Set(['replicated', 'mixed', 'failed', 'unclear']);
+    for (const [slug, entry] of Object.entries(saved)) {
+      if (typeof entry?.revealedAt === 'string') explored.add(slug);
+      if (categories.has(entry?.guess ?? '')) guessed++;
+    }
+    progress.textContent = `Private progress on this device: ${explored.size.toLocaleString()} explored · ${guessed.toLocaleString()} guessed.`;
+    progress.hidden = false;
+  } catch {
+    progress.textContent = 'Private progress is unavailable in this browser. Nothing is sent anywhere.';
+    progress.hidden = false;
+  }
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
   function render() {
     const qq = q.value.toLowerCase().trim();
-    const hits = all.filter((e) => !qq || [e.n, e.au, e.y, e.doi].join(' ').toLowerCase().includes(qq));
-    document.getElementById('pc')!.textContent = `${hits.length.toLocaleString()} papers`;
-    list.innerHTML = hits.slice(0, shown).map((e) => {
-      return `<li><a class="erow" href="${u('finding/' + e.s + '/')}"><span class="nm">${esc(e.n)}</span><span class="chip">Guess the result →</span><span class="meta"><span>${esc([e.au, e.y].filter(Boolean).join(', '))}</span><span>prediction + source record</span></span></a></li>`;
+    current = all.filter((e) => (!unseenOnly || !explored.has(e.s))
+      && (!reviewedOnly || e.ctx === 'source_reviewed_explanation')
+      && (!qq || [e.n, e.au, e.y, e.doi].join(' ').toLowerCase().includes(qq)));
+    document.getElementById('pc')!.textContent = `${current.length.toLocaleString()} papers`;
+    list.innerHTML = current.slice(0, shown).map((e) => {
+      const context = e.ctx === 'source_reviewed_explanation' ? 'source-reviewed context' : 'prediction + source record';
+      return `<li><a class="erow" href="${u('finding/' + e.s + '/')}"><span class="nm">${esc(e.n)}</span><span class="chip">Guess the result →</span><span class="meta"><span>${esc([e.au, e.y].filter(Boolean).join(', '))}</span><span>${context}</span></span></a></li>`;
     }).join('');
-    more.hidden = hits.length <= shown;
+    more.hidden = current.length <= shown;
+    random.disabled = current.length === 0;
   }
   fetch(u('generated/search.json')).then((r) => r.json()).then((d: E[]) => {
     all = d.filter((e) => e.t === 'finding').sort((a, b) => b.k - a.k || (b.y ?? 0) - (a.y ?? 0));
@@ -54,9 +81,32 @@ const initialFindings = allFindings
   });
   q.addEventListener('input', () => { shown = 60; render(); });
   more.addEventListener('click', () => { shown += 120; render(); });
+  unseen.addEventListener('click', () => {
+    unseenOnly = !unseenOnly;
+    unseen.setAttribute('aria-pressed', String(unseenOnly));
+    shown = 60;
+    render();
+  });
+  reviewed.addEventListener('click', () => {
+    reviewedOnly = !reviewedOnly;
+    reviewed.setAttribute('aria-pressed', String(reviewedOnly));
+    shown = 60;
+    render();
+  });
+  random.addEventListener('click', () => {
+    if (!current.length) return;
+    const values = new Uint32Array(1);
+    crypto.getRandomValues(values);
+    location.href = u('finding/' + current[values[0] % current.length].s + '/');
+  });
 </script>
 <style>
   .lede { font: 400 1.18rem/1.5 var(--f-display); color: var(--ink-2); }
+  .progress-summary { font-size: .86rem; }
   .fbar { display: flex; gap: .8rem; align-items: center; position: sticky; top: 0; background: var(--paper); padding: .8rem 0; border-bottom: 1px solid var(--ink); margin-top: 1.5rem; z-index: 5; }
-  .fbar input { flex: 1; font: 400 .95rem var(--f-body); padding: .5rem .7rem; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink); }
+  .fbar input { flex: 1 1 240px; font: 400 .95rem var(--f-body); padding: .5rem .7rem; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink); }
+  .fbar .btn { flex: 0 0 auto; }
+  .filter-toggle { min-height: 44px; padding: .5rem .7rem; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink); font: 500 .72rem var(--f-mono); letter-spacing: .05em; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+  .filter-toggle[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  @media (max-width: 560px) { .fbar { flex-wrap: wrap; } .fbar input { flex-basis: 100%; } }
 </style>

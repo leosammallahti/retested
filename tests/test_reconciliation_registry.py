@@ -184,6 +184,40 @@ class ReconciliationRegistryTests(unittest.TestCase):
             for problem in validate_registry(changed, policy)
         ))
 
+    def test_partial_independent_work_review_is_reported_without_upgrading_scientific_axes(self):
+        document, policy = _document(
+            attempt_sources=("retested",),
+            reconciled_records=({
+                "doi_o": ORIGINAL,
+                "doi_r": LATER,
+                "reconciled_classification": "same_pair_recorded",
+                "semantic_adjudication": {
+                    "query_record_id": "rq-1",
+                    "decision": "confirmed_same_pair",
+                    "candidate_record_ids": ["fq-1"],
+                    "original_work_matches": True,
+                    "later_work_matches": True,
+                    "evidence": "Two source reviews identify the ordered Works.",
+                    "evidence_locations": [{"path": FORRT_PATH, "row": 7}],
+                    "independent_work_identity_review": {
+                        "second_review_status": "agree",
+                        "scientific_equivalence_axes": "not_compared",
+                    },
+                },
+            },),
+        )
+
+        coverage = document["coverage"]
+        self.assertEqual(coverage["comparison_blocks"]["independent_review_and_adjudication"], "partial")
+        self.assertEqual(coverage["independent_work_identity_reviews"], 1)
+        self.assertEqual(coverage["independent_work_identity_full_agreements"], 1)
+        for overlap in document["overlap_decisions"]:
+            self.assertEqual(overlap["effect_relation"], "not_compared")
+            self.assertEqual(overlap["study_relation"], "not_compared")
+            self.assertEqual(overlap["sample_relation"], "not_compared")
+            self.assertEqual(overlap["outcome_relation"], "not_compared")
+        self.assertEqual(validate_registry(document, policy), [])
+
     def test_exact_paper_pair_never_resolves_effect_study_or_sample_axes(self):
         document, _ = _document()
 

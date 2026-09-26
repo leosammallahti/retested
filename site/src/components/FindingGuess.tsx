@@ -3,17 +3,31 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 type BroadCategory = 'replicated' | 'mixed' | 'failed' | 'unclear';
 
 export interface FindingGuessProps {
-  /** The canonical record code, for example `largely_replicated`. */
-  recordCode: string;
-  /** The record's exact, human-readable label. Shown only after reveal. */
-  recordLabel: string;
-  /** The id of the related record element to expose and move focus to on reveal. */
-  recordId: string;
-  /** Optional helpful context, revealed with the record rather than before a guess. */
-  attempts?: number;
-  successful?: number;
-  mixed?: number;
-  failed?: number;
+  /** Base-aware answer payload fetched only after the visitor reveals. */
+  revealUrl: string;
+  /** Base-aware, noindex page containing the complete source dossier. */
+  fullRecordHref: string;
+  /**
+   * Optional stable local identifier. When omitted, the browser path is used,
+   * which is unique for the generated finding pages.
+   */
+  storageId?: string;
+  /** Optional, already base-aware link to another local finding page. */
+  nextFindingHref?: string;
+  /** Optional accessible label for the next-finding link. */
+  nextFindingLabel?: string;
+}
+
+interface FindingReveal {
+  schema_version: 1;
+  record: {
+    code: string;
+    label: string;
+    n_attempts: number;
+    successful: number;
+    mixed: number;
+    failed: number;
+  };
 }
 
 interface Choice {
@@ -48,11 +62,74 @@ const CATEGORY_BY_CODE: Record<string, BroadCategory> = {
   not_coded: 'unclear',
 };
 
+// This deliberately contains no answer, record code, title, URL parameters,
+// or timing used for analytics. It is a small, on-device remembering aid.
+const PROGRESS_KEY = 'retested.finding-progress.v1';
+
+interface ProgressEntry {
+  guess?: BroadCategory;
+  revealedAt?: string;
+  skipped?: boolean;
+}
+
+type ProgressLedger = Record<string, ProgressEntry>;
+
+function isCategory(value: unknown): value is BroadCategory {
+  return value === 'replicated' || value === 'mixed' || value === 'failed' || value === 'unclear';
+}
+
+function cleanEntry(value: unknown): ProgressEntry | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const raw = value as Record<string, unknown>;
+  const entry: ProgressEntry = {};
+  if (isCategory(raw.guess)) entry.guess = raw.guess;
+  if (typeof raw.revealedAt === 'string' && raw.revealedAt.length <= 40) entry.revealedAt = raw.revealedAt;
+  if (raw.skipped === true) entry.skipped = true;
+  return entry.guess || entry.revealedAt ? entry : null;
+}
+
+function loadProgress(): { ledger: ProgressLedger; available: boolean } {
+  try {
+    const raw = localStorage.getItem(PROGRESS_KEY);
+    if (!raw) return { ledger: {}, available: true };
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return { ledger: {}, available: true };
+    const ledger: ProgressLedger = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      // A path/explicit identifier is short in normal use. This also prevents a
+      // malformed local value from creating an unexpectedly large UI payload.
+      if (key.length > 500) continue;
+      const entry = cleanEntry(value);
+      if (entry) ledger[key] = entry;
+    }
+    return { ledger, available: true };
+  } catch {
+    return { ledger: {}, available: false };
+  }
+}
+
+function saveProgress(ledger: ProgressLedger): boolean {
+  try {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(ledger));
+    return true;
+  } catch {
+    // Private browsing and restrictive privacy settings can reject writes.
+    return false;
+  }
+}
+
+function siteRelativeHref(value: string | undefined): string | null {
+  // The parent computes this with the site's base-path helper. Keep this
+  // component from becoming an unreviewed external-navigation surface.
+  if (!value || !value.startsWith('/') || value.startsWith('//')) return null;
+  return value;
+}
+
 function plural(n: number, word: string) {
   return `${n} ${word}${n === 1 ? '' : 's'}`;
 }
 
-function countSummary({ attempts, successful, mixed, failed }: FindingGuessProps) {
+function countSummary({ n_attempts: attempts, successful, mixed, failed }: FindingReveal['record']) {
   const parts: string[] = [];
   if (typeof attempts === 'number') parts.push(plural(attempts, 'linked attempt'));
   const outcomes = [
@@ -72,66 +149,87 @@ function countSummary({ attempts, successful, mixed, failed }: FindingGuessProps
  */
 export default function FindingGuess(props: FindingGuessProps) {
   const [guess, setGuess] = useState<BroadCategory | null>(null);
-  const [revealed, setRevealed] = useState(false);
+  const [reveal, setReveal] = useState<FindingReveal | null>(null);
+  const [revealError, setRevealError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [ledger, setLedger] = useState<ProgressLedger>({});
+  const [storageKey, setStorageKey] = useState<string | null>(null);
+  const [storageAvailable, setStorageAvailable] = useState<boolean | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
-  const groupId = `finding-guess-${props.recordId.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
-  const actual = CATEGORY_BY_CODE[props.recordCode];
-  const counts = countSummary(props);
+  const groupId = `finding-guess-${(props.storageId || 'record').replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+  const prior = storageKey ? ledger[storageKey] : undefined;
+  const nextFindingHref = siteRelativeHref(props.nextFindingHref);
+  const fullRecordHref = siteRelativeHref(props.fullRecordHref);
+  const revealUrl = siteRelativeHref(props.revealUrl);
+  const explored = Object.values(ledger).filter((entry) => !!entry.revealedAt).length;
+  const guessed = Object.values(ledger).filter((entry) => !!entry.guess).length;
 
-  // The sibling record is normally a native <details>. `open` gives no-JS
-  // visitors a useful disclosure as well, without relying on locked CSS.
-  const openRecord = (moveFocus = false) => {
-    const record = document.getElementById(props.recordId);
-    if (!record) return;
-    if (record instanceof HTMLDetailsElement) record.open = true;
-    else {
-      record.hidden = false;
-      record.removeAttribute('aria-hidden');
-    }
-    if (moveFocus) {
-      const summary = record.querySelector('summary');
-      if (summary instanceof HTMLElement) summary.focus();
-      else {
-        if (!record.hasAttribute('tabindex')) record.setAttribute('tabindex', '-1');
-        record.focus();
+  // Read after hydration so no visitor data participates in the static page.
+  // `storageId` is available for future route migrations; today the pathname is
+  // the reliable per-finding identity without a parent-page change.
+  useEffect(() => {
+    const key = props.storageId?.trim() || location.pathname;
+    const loaded = loadProgress();
+    setStorageKey(key);
+    setLedger(loaded.ledger);
+    setStorageAvailable(loaded.available);
+    const saved = loaded.ledger[key];
+    if (saved?.guess) setGuess(saved.guess);
+  }, [props.storageId]);
+
+  const updateProgress = (change: ProgressEntry) => {
+    if (!storageKey) return;
+    const next = { ...ledger, [storageKey]: { ...ledger[storageKey], ...change } };
+    setLedger(next);
+    if (storageAvailable !== false && !saveProgress(next)) setStorageAvailable(false);
+  };
+
+  const choose = (category: BroadCategory) => {
+    setGuess(category);
+    updateProgress({ guess: category, skipped: false });
+  };
+
+  const fetchReveal = async (skip: boolean) => {
+    if (!revealUrl || loading || (!skip && !guess)) return;
+    setLoading(true);
+    setRevealError(null);
+    try {
+      const response = await fetch(revealUrl, { credentials: 'same-origin' });
+      if (!response.ok) throw new Error(`request failed: ${response.status}`);
+      const payload = await response.json() as FindingReveal;
+      if (payload?.schema_version !== 1 || !payload.record || typeof payload.record.code !== 'string'
+          || typeof payload.record.label !== 'string' || typeof payload.record.n_attempts !== 'number') {
+        throw new Error('invalid result payload');
       }
+      setReveal(payload);
+      const revealedAt = new Date().toISOString();
+      if (skip) {
+        setGuess(null);
+        // Replace a saved but unrevealed choice so skips remain distinguishable.
+        if (storageKey) {
+          const next = { ...ledger, [storageKey]: { skipped: true, revealedAt } };
+          setLedger(next);
+          if (storageAvailable !== false && !saveProgress(next)) setStorageAvailable(false);
+        }
+      } else if (guess) {
+        updateProgress({ guess, skipped: false, revealedAt });
+      }
+    } catch {
+      setRevealError('The result could not load. Your guess has not been marked as revealed; try again.');
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const reveal = () => {
-    setRevealed(true);
-    openRecord();
-  };
-  const revealWithoutGuess = () => {
-    setGuess(null);
-    setRevealed(true);
-    openRecord();
   };
 
   // Put focus on the announced result rather than unexpectedly moving a
   // keyboard user down the page. The explicit control below moves to <summary>.
   useEffect(() => {
-    if (revealed) resultRef.current?.focus();
-  }, [revealed, props.recordId]);
+    if (reveal) resultRef.current?.focus();
+  }, [reveal]);
 
-  // Attempt anchors remain usable when the record becomes a <details>: opening
-  // its enclosing record on load/hash changes lets the browser expose the
-  // target it has navigated to.
-  useEffect(() => {
-    const openForHash = () => {
-      const hash = location.hash.slice(1);
-      if (!hash) return;
-      let target: HTMLElement | null = null;
-      try { target = document.getElementById(decodeURIComponent(hash)); } catch { return; }
-      const record = document.getElementById(props.recordId);
-      if (target && record && (target === record || record.contains(target))) openRecord();
-    };
-    openForHash();
-    addEventListener('hashchange', openForHash);
-    return () => removeEventListener('hashchange', openForHash);
-  }, [props.recordId]);
-
-  if (revealed) {
+  if (reveal) {
+    const actual = CATEGORY_BY_CODE[reveal.record.code];
+    const counts = countSummary(reveal.record);
     const selected = guess ? CHOICES.find((choice) => choice.category === guess) : null;
     const matches = !!selected && actual != null && selected.category === actual;
     const comparison = selected
@@ -146,11 +244,15 @@ export default function FindingGuess(props: FindingGuessProps) {
       <section class="finding-guess" aria-labelledby={`${groupId}-title`}>
         <div ref={resultRef} tabIndex={-1} role="status" aria-live="polite" aria-atomic="true">
           <h3 id={`${groupId}-title`}>Record revealed</h3>
-          <p><b>{props.recordLabel}</b></p>
+          <p><b>{reveal.record.label}</b></p>
           <p>{comparison}</p>
           {counts && <p class="faint">Record summary: {counts}.</p>}
         </div>
-        <button class="btn ghost" type="button" onClick={() => openRecord(true)}>Read the full record</button>
+        <div class="finding-guess-actions">
+          {fullRecordHref && <a class="btn ghost" href={fullRecordHref}>Read the full source and attempt record</a>}
+          {nextFindingHref && <a class="btn ghost" href={nextFindingHref}>{props.nextFindingLabel || 'Another finding'}</a>}
+        </div>
+        <ProgressNote prior={prior} explored={explored} guessed={guessed} storageAvailable={storageAvailable} />
       </section>
     );
   }
@@ -159,6 +261,7 @@ export default function FindingGuess(props: FindingGuessProps) {
     <section class="finding-guess" aria-labelledby={`${groupId}-title`}>
       <h3 id={`${groupId}-title`}>What do you expect this record to show?</h3>
       <p class="faint">Choose a broad category, then reveal the record. This is a calibration prompt, not a binary score.</p>
+      <ProgressNote prior={prior} explored={explored} guessed={guessed} storageAvailable={storageAvailable} />
       <div role="radiogroup" aria-labelledby={`${groupId}-title`}>
         {CHOICES.map((choice) => {
           const id = `${groupId}-${choice.category}`;
@@ -170,17 +273,43 @@ export default function FindingGuess(props: FindingGuessProps) {
                 name={groupId}
                 value={choice.category}
                 checked={guess === choice.category}
-                onChange={() => setGuess(choice.category)}
+                onChange={() => choose(choice.category)}
               />
               {choice.label}
             </label>
           );
         })}
       </div>
-      <p>
-        <button class="btn" type="button" onClick={reveal} disabled={!guess} aria-controls={props.recordId}>Reveal record</button>
-        <button class="btn ghost" type="button" onClick={revealWithoutGuess} aria-controls={props.recordId}>Reveal without a guess</button>
+      <p class="finding-guess-actions">
+        <button class="btn" type="button" onClick={() => { void fetchReveal(false); }} disabled={!guess || loading}>{loading ? 'Loading result…' : 'Reveal record'}</button>
+        <button class="btn ghost" type="button" onClick={() => { void fetchReveal(true); }} disabled={loading}>{guess ? 'Discard guess and reveal' : 'Reveal without a guess'}</button>
       </p>
+      {revealError && <p role="alert">{revealError}</p>}
     </section>
+  );
+}
+
+function ProgressNote({ prior, explored, guessed, storageAvailable }: {
+  prior?: ProgressEntry;
+  explored: number;
+  guessed: number;
+  storageAvailable: boolean | null;
+}) {
+  if (storageAvailable === false) {
+    return <p class="faint" role="status">Private progress cannot be saved in this browser. Nothing is sent anywhere.</p>;
+  }
+  if (storageAvailable === null) return null;
+  const priorText = prior?.revealedAt
+    ? prior.guess
+      ? `Previously explored: you guessed ${CHOICES.find((choice) => choice.category === prior.guess)?.label.toLowerCase()}.`
+      : 'Previously explored without a guess.'
+    : prior?.guess
+      ? `Saved selection: ${CHOICES.find((choice) => choice.category === prior.guess)?.label}. You have not revealed this record yet.`
+      : null;
+  return (
+    <p class="faint finding-guess-progress">
+      {priorText && <>{priorText} </>}
+      On this device: {explored} explored · {guessed} guessed. Private to this browser; no tracking.
+    </p>
   );
 }

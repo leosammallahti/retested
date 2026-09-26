@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "purpose": "retract the first twenty DOI-only related_but_distinct rationale repairs: different DOI expressions alone do not establish different Works",
+  "reviewed_at_utc": "2026-09-26T19:40:00Z",
+  "retractions": [
+    {"query_record_id":"ps_324e452ea803a70988c4","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_533604d13d8f24d38e13","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_4fd5bdae50684732814b","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_19ffa959536f9aecdf7a","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_eb3eb4dde923e09f52b2","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_55ec94b2f9a2fb1b8c8f","reason":"The later DOI differs, but the prior rationale did not record enough source metadata to exclude a version relation."},
+    {"query_record_id":"ps_c172772ee02400471bec","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_3f5bb28c4ea7245d14c4","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_0762b2ce3a5a7613047e","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_e9242fa55ac8764530cf","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_27dcbf8558b8724d758f","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_94b0e8826adede032e08","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_e3bf4a276d17beb414df","reason":"The later DOI differs, but the prior rationale did not record enough source metadata to exclude a version relation."},
+    {"query_record_id":"ps_8863f8d357a3189e6aae","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_757f9fefb56552586877","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_181340fa4c9737b8ce82","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_e2cc2bfab4c6245d5e70","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_6bae3a84192fba5b19e6","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_a073bbaf92761db30b40","reason":"The prior rationale relied on different later DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."},
+    {"query_record_id":"ps_8d90f08937768ba9863e","reason":"The prior rationale relied on different DOI expressions without recording title/author/version evidence sufficient to exclude a Work-level version relation."}
+  ]
+}

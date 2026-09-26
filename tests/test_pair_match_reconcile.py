@@ -21,6 +21,9 @@ class PairMatchReconcileTests(unittest.TestCase):
             {
                 "query_record_id": "q1", "doi_o": "10.1000/o1", "doi_r": "10.1000/r1",
                 "decision": "confirmed_same_later_version_same_pair", "candidate_record_ids": ["c1"],
+                "independent_work_identity_review": {
+                    "second_review_status": "agree", "scientific_equivalence_axes": "not_compared",
+                },
             },
             {
                 "query_record_id": "q2", "doi_o": "10.1000/o2", "doi_r": "10.1000/r2",
@@ -45,6 +48,10 @@ class PairMatchReconcileTests(unittest.TestCase):
             self.assertEqual(summary["candidate_new_pair_links"], 2)
             self.assertEqual(payload["records"][2]["reconciled_classification"], "later_paper_recorded_pair_unconfirmed")
             self.assertEqual(payload["records"][2]["semantic_adjudication"]["decision"], "related_but_distinct")
+            self.assertEqual(
+                payload["records"][0]["semantic_adjudication"]["independent_work_identity_review"]["second_review_status"],
+                "agree",
+            )
 
             output = root / "output.json"
             write_reconciliation(payload, output)

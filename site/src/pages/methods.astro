@@ -15,6 +15,7 @@ const positiveAdditions = (ra.exact_expression_pair_reported ?? 0)
   + (ra.reviewed_same_work_pair_versioned_expressions ?? 0);
 const pageLinkAudit = s.uncounted.link_audit?.page;
 const outcomeAudit = s.uncounted.audit;
+const context = s.finding_context_coverage;
 const outcomeRight = outcomeAudit
   ? Object.values(outcomeAudit.by_verdict).reduce((total, row) => total + row.right, 0)
   : 0;
@@ -53,6 +54,22 @@ const records = [
 
     <h2 id="units">Units</h2>
     <p>An <b>attempt</b> is one (original paper, replication paper) pair; we have {int(c.attempts)} of them ({int(c.replications)} replications, {int(c.reproductions)} reproductions). A <b>finding</b> is one original paper and all its attempts ({int(c.findings)}). An <b>effect</b> is a named phenomenon, such as "Ego depletion", which may span several original papers ({int(c.effects)}, of which {int(c.effects_with_attempts)} have linked attempts). Near-identical names that point at the same original paper are merged only when they differ in spelling or word form; anything else stays separate until a person merges it.</p>
+
+    <h2 id="finding-context">Original-study context</h2>
+    <p>Finding pages use a priority fallback ladder for pre-guess context. Only <b>{int(context.source_reviewed_explanation)}</b> of {int(context.denominator)} findings currently have a canonical, source-reviewed explanation of the original claim, method, population, and outcome measure. The remaining tiers are useful context, but not equivalent primary-source completion.</p>
+    <table class="tbl">
+      <thead><tr><th>Context available</th><th>Findings</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Canonical source-reviewed explanation</td><td>{int(context.source_reviewed_explanation)}</td><td>Original claim, method, population, and measure are each linked to reviewed primary-source evidence.</td></tr>
+        <tr><td>Plain-language game context</td><td>{int(context.plain_language_game_context)}</td><td>An answer-blind claim and experiment description already cleared the playable-card checks; this is not promoted to canonical source-reviewed status.</td></tr>
+        <tr><td>Reviewed-claim fallback</td><td>{int(context.fallback_source_reviewed_claim)}</td><td>A Retested source review quotes the original claim, but the four-part explanation is not yet complete.</td></tr>
+        <tr><td>FORRT-coded-claim fallback</td><td>{int(context.fallback_forrt_coded_claim)}</td><td>A claim is present in FORRT's coded row; it is not counted as a new source-reviewed explanation.</td></tr>
+        <tr><td>Named-effect fallback</td><td>{int(context.fallback_named_effect)}</td><td>An effect label supplies context where no claim field is available.</td></tr>
+        <tr><td>Title-only fallback</td><td>{int(context.fallback_title_only)}</td><td>A paper title identifies the finding, but is not source-finished explanatory context.</td></tr>
+        <tr><td>No context field</td><td>{int(context.no_context)}</td><td>No title, named effect, or claim field is currently available.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">These are disjoint counts in rendering order, so each finding appears once. A title-only page is an addressable record, not evidence that its original study has been source reviewed.</p>
 
     <h2 id="reconciliation">Retested versus FORRT</h2>
     <p>The site and FORRT overlap, so “added to Retested” is not the same as “new to FORRT.” The evidence-first reconciliation registry compares every Retested-reviewed pair with commit-pinned or content-addressed FORRT snapshots. It currently supports <b>{int(positivePairs)}</b> positive bibliographic same-pair relations, including <b>{int(positiveAdditions)}</b> of Retested's {int(rr.counts.retested_additions)} locally completed additions. Exact DOI identity is kept separate from reviewed preprint/journal-version identity.</p>

@@ -37,7 +37,7 @@ from .load import ROOT
 from .pair_summaries import canonical_doi
 
 SCHEMA_VERSION = "reconciliation-registry/v1"
-GENERATOR_VERSION = 1
+GENERATOR_VERSION = 2
 
 PAIR_SUMMARIES = ROOT / "data" / "discovery" / "pair_match_summaries.json"
 PROMOTED = ROOT / "data" / "curated" / "promoted_pairs.json"
@@ -751,6 +751,7 @@ def build_registry(
                 ),
                 "review_artifact": "data/curated/forrt_semantic_match_review_20260926.json",
                 "top_cosine_similarity_retrieval_only": semantic.get("top_cosine_similarity"),
+                "independent_work_identity_review": semantic.get("independent_work_identity_review"),
             }
         return {
             "artifact": "data/curated/forrt_overlap_reconciled_20260926.json",
@@ -775,20 +776,38 @@ def build_registry(
         exact_forrt_pair_reported = bool(pair["forrt_summary_record_ids"])
         semantic = (rec or {}).get("semantic_adjudication") or {}
         decision = semantic.get("decision")
+        independent = semantic.get("independent_work_identity_review") or {}
+        independent_status = independent.get("second_review_status")
         if exact_forrt_pair_reported:
             relation = "exact_expression_pair_reported"
             assurance_status = "exact_normalized_doi_pair_in_frozen_forrt_source"
             basis.append("a frozen FORRT source reports the same normalized original and later DOI pair")
         elif decision == "confirmed_same_later_version_same_pair":
             relation = "reviewed_same_work_pair_versioned_expressions"
-            assurance_status = "single_review_positive_work_identity"
             basis.append("source review links both works through different report versions or identifiers")
-            review_requirements.append("independent_work_identity_adjudication")
+            if independent_status == "agree":
+                assurance_status = "independently_confirmed_positive_work_identity"
+                basis.append("an independent reviewer agreed on ordered bibliographic Work identity")
+            elif independent_status == "agree_with_evidence_gap":
+                assurance_status = "independently_confirmed_work_identity_with_provenance_gap"
+                basis.append("an independent reviewer agreed but recorded a material provenance gap")
+                review_requirements.append("work_identity_provenance_gap")
+            else:
+                assurance_status = "single_review_positive_work_identity"
+                review_requirements.append("independent_work_identity_adjudication")
         elif decision == "confirmed_same_pair":
             relation = "reviewed_same_work_pair_expression_unresolved"
-            assurance_status = "single_review_positive_work_identity"
             basis.append("source review identifies the same two works but the FORRT expression pair is incomplete")
-            review_requirements.append("independent_work_identity_adjudication")
+            if independent_status == "agree":
+                assurance_status = "independently_confirmed_positive_work_identity"
+                basis.append("an independent reviewer agreed on ordered bibliographic Work identity")
+            elif independent_status == "agree_with_evidence_gap":
+                assurance_status = "independently_confirmed_work_identity_with_provenance_gap"
+                basis.append("an independent reviewer agreed but recorded a material provenance gap")
+                review_requirements.append("work_identity_provenance_gap")
+            else:
+                assurance_status = "single_review_positive_work_identity"
+                review_requirements.append("independent_work_identity_adjudication")
         elif rec and rec.get("reconciled_classification") == "same_pair_recorded":
             relation = "title_or_alternate_identifier_pair_candidate"
             assurance_status = "candidate_not_identity_assertion"
@@ -865,6 +884,14 @@ def build_registry(
     semantic_incomplete_evidence = sum(
         not row.get("evidence") or not row.get("evidence_locations") for row in semantic_rows
     )
+    independent_reviews = [
+        row["independent_work_identity_review"]
+        for row in semantic_rows
+        if isinstance(row.get("independent_work_identity_review"), Mapping)
+    ]
+    independent_status_counts = Counter(
+        str(row.get("second_review_status")) for row in independent_reviews
+    )
     pair_collisions = [
         {"doi_o": key[0], "doi_r": key[1], "promoted_rows": row_numbers}
         for key, row_numbers in sorted(promoted_pair_rows.items()) if len(row_numbers) > 1
@@ -878,7 +905,7 @@ def build_registry(
         "text_semantic_retrieval": "partial",
         "textless_metadata_audit": "partial",
         "source_stratum_deduplication": "complete",
-        "independent_review_and_adjudication": "not_started",
+        "independent_review_and_adjudication": "partial" if independent_reviews else "not_started",
     }
     assurance_blockers = [
         "effect identity has not been compared for any paper-pair overlap",
@@ -922,6 +949,10 @@ def build_registry(
             "semantic_decisions_incomplete_evidence": semantic_incomplete_evidence,
             "semantic_decisions_missing_rationale": semantic_missing_rationale,
             "semantic_decisions_missing_locations": semantic_missing_locations,
+            "independent_work_identity_reviews": len(independent_reviews),
+            "independent_work_identity_full_agreements": independent_status_counts.get("agree", 0),
+            "independent_work_identity_agreements_with_evidence_gap": independent_status_counts.get("agree_with_evidence_gap", 0),
+            "independent_work_identity_disagreements": independent_status_counts.get("disagree", 0),
             "promoted_normalized_pair_collisions": pair_collisions,
         },
         "counts": {

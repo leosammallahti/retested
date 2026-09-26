@@ -4,12 +4,13 @@ import Search from '../components/Search.tsx';
 import { citation } from '../lib/data';
 import { u, shortCitation } from '../lib/fmt';
 
-interface Props { title: string; description?: string; active?: string }
-const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active } = Astro.props;
+interface Props { title: string; description?: string; active?: string; noindex?: boolean; canonicalPath?: string }
+const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active, noindex = false, canonicalPath } = Astro.props;
 const full = title === 'Retested' ? "Retested: psychology's findings, tested again" : `${title} · Retested`;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const nav = [
   ['effects/', 'Effects'],
+  ['findings/', 'Findings'],
   ['stats/', 'The record'],
   ['coverage/', 'Coverage'],
   ['uncounted/', 'The uncounted'],
@@ -29,6 +30,7 @@ const nav = [
     <meta name="apple-mobile-web-app-title" content="Retested" />
     <title>{full}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta property="og:title" content={full} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

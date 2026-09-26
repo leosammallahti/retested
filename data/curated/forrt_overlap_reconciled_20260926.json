@@ -5,9 +5,17 @@
       "sha256": "95f05287c5753995509309dc38c6ecccef70e8fd3e559d956c239a673b7d3e39"
     },
     "semantic_adjudication": {
+      "decisions": 471,
       "path": "/root/retested/data/curated/forrt_semantic_match_review_20260926.json",
-      "sha256": "ba0c713b543b6b4fe59decef6895ab1ed1ee929087f4ed969b3d44cc35d6a597"
-    }
+      "sha256": "66dc0da24d54a4cef9a9487d3b5e05857e31ba8f9ec7649b068a8ce37c15fc3d"
+    },
+    "semantic_adjudications": [
+      {
+        "decisions": 471,
+        "path": "/root/retested/data/curated/forrt_semantic_match_review_20260926.json",
+        "sha256": "66dc0da24d54a4cef9a9487d3b5e05857e31ba8f9ec7649b068a8ce37c15fc3d"
+      }
+    ]
   },
   "purpose": "derived overlap audit; positive semantic decisions are source-adjudicated, rejections do not prove absence",
   "records": [
@@ -81,6 +89,7 @@
             "path": "/tmp/retested_live_forrt_pending.csv:547"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_800a3f53809170191fe4",
@@ -178,6 +187,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0253023"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d349ff0b1cf750781bf5",
@@ -459,6 +469,7 @@
             "row": 1072
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_2770c6390d4fc31c2281",
@@ -557,6 +568,7 @@
             "url": "https://doi.org/10.7334/psicothema2019.405"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d743451a57a79f97ce72",
@@ -592,6 +604,7 @@
             "url": "https://doi.org/10.1037/xlm0000265"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_c72fe436cf9bfd67bbab",
@@ -627,6 +640,7 @@
             "url": "https://doi.org/10.1044/2017_jslhr-l-16-0327"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0f06385159fac4ea364a",
@@ -689,6 +703,7 @@
             "url": "https://api.crossref.org/works/10.1002/jaba.484"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_d29611efde95ed44d811",
@@ -734,6 +749,7 @@
             "url": "https://api.crossref.org/works/10.1002/cpp.70057"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_38ad21a6615b875a171c",
@@ -781,6 +797,7 @@
             "url": "https://doi.org/10.1111/bjc.12481"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ffb3c8410258aa1c8d23",
@@ -840,6 +857,7 @@
             "url": "https://doi.org/10.1111/desc.13100"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_860f464fdd843be915c4",
@@ -876,6 +894,7 @@
             "url": "https://doi.org/10.1111/desc.13100"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_75f7ca0319df7fcf5685",
@@ -940,6 +959,7 @@
             "url": "https://api.crossref.org/works/10.1006/appe.2002.0477"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_6cbd580db5867af2ac85",
@@ -1079,6 +1099,7 @@
             "path": "/tmp/retested_live_forrt_extractor.csv:1211"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_360331ea2875dfe26735",
@@ -1126,7 +1147,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query is a partial replication of values–regulatory-focus associations; candidate tests beliefs about focus usefulness. DOI pairs differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 694
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 2272
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ffb604fc2da5b0c1b5d9",
@@ -1170,6 +1201,7 @@
             "url": "https://api.crossref.org/works/10.1016%2Fj.jesp.2009.06.003"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_b5a214d7ee926c9e1e3f",
@@ -1254,7 +1286,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query's later study failed to replicate the catastrophizing moderation; candidate has a different pain-neuroscience effect and DOI pair.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 543
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2099
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_3289b0b75c559e42af5e",
@@ -1291,6 +1333,7 @@
             "url": "https://doi.org/10.1002/jaba.504"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_adc2846295f30a3b6e94",
@@ -1329,6 +1372,7 @@
             "row": 128
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_fa27500e11f01d7266e6",
@@ -1382,6 +1426,7 @@
             "url": "https://doi.org/10.1007/s43494-020-00015-1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_5dda736a7d319a60c7c4",
@@ -1481,6 +1526,7 @@
             "url": "https://doi.org/10.1002/jaba.398"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_738bf297b872fef9ef39",
@@ -1528,6 +1574,7 @@
             "url": "https://doi.org/10.1007/s10864-020-09389-z"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_50418513528da93112b4",
@@ -1561,6 +1608,7 @@
             "row": 887
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7832f6f0b4ddcc39d890",
@@ -1617,6 +1665,7 @@
             "url": "https://doi.org/10.1002/jaba.666"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b5720875ff30a74cc682",
@@ -1670,6 +1719,7 @@
             "url": "https://doi.org/10.1007/s40732-020-00396-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1b4bf0560cae71a69cec",
@@ -1706,6 +1756,7 @@
             "url": "https://doi.org/10.1007/s40732-020-00396-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f970696cf9ec4c027bcf",
@@ -1767,6 +1818,7 @@
             "url": "https://api.crossref.org/works/10.1002/bin.1936"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_7eefe51d5f91eceefe52",
@@ -1803,6 +1855,7 @@
             "url": "https://doi.org/10.1002/bin.1836"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_295dd0781b30f0569ae2",
@@ -1838,6 +1891,7 @@
             "url": "https://doi.org/10.1002/bin.1836"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_5fc430a3abee0054262b",
@@ -1883,6 +1937,7 @@
             "url": "https://api.crossref.org/works/10.1002/jaba.70057"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_4b856c5d58bf53507a86",
@@ -1956,6 +2011,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query's original is observation/rating of DTI implementation; candidate found computer-trained participants acquired DTI skills. DOI pairs differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8035c37b1da194d5432f",
@@ -2044,6 +2100,7 @@
             "url": "https://doi.org/10.1007/s40732-020-00396-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_23ea819f210e1d2efdb3",
@@ -2139,6 +2196,7 @@
             "row": 69
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_8ab4bbef01b67a13454b",
@@ -2196,6 +2254,7 @@
             "url": "https://api.crossref.org/works/10.1007%2Fs40732-024-00597-x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_6557808698e3a1ac3b4e",
@@ -2276,6 +2335,7 @@
             "url": "https://doi.org/10.17605/OSF.IO/M36Y2"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_835f20b01d5c7de2e10c",
@@ -2311,6 +2371,7 @@
             "url": "https://doi.org/10.1177/0956797619831612"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8d043eb089462b98622b",
@@ -2502,6 +2563,7 @@
             "url": "https://osf.io/yfktw"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_3ba18ca0f7752b1cd69c",
@@ -2537,6 +2599,7 @@
             "url": "https://doi.org/10.2466/pr0.104.2.500-508"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_9b409a6e07e2ed302fce",
@@ -2572,6 +2635,7 @@
             "url": "https://doi.org/10.2466/pr0.104.2.500-508"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_34eab2379943624d94be",
@@ -2630,18 +2694,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[405]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1053
           },
           {
-            "path": "data/curated/promoted_pairs.json:1053"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1007/bf00288892"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.2466/pr0.1996.79.2.496"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 373
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_757f9fefb56552586877",
@@ -2715,6 +2776,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0248246"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_232ecf34522900efb5bc",
@@ -2750,6 +2812,7 @@
             "url": "https://doi.org/10.1098/rsos.231240"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_7ab3721d3d1a9561588e",
@@ -2786,6 +2849,7 @@
             "url": "https://doi.org/10.1002/anxi.3070010304"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_766a854060a2f4e15268",
@@ -2907,6 +2971,7 @@
             "url": "https://api.crossref.org/works/10.1111/jopy.12699"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_498d97a47211a50a8e99",
@@ -2956,6 +3021,7 @@
             "url": "https://doi.org/10.2466/pr0.1971.29.3f.1223"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_cfb907ccfe46efa0af86",
@@ -2992,6 +3058,7 @@
             "url": "https://doi.org/10.1002/jaba.329"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1d6d9da588df7d0d2e9e",
@@ -3064,6 +3131,7 @@
             "url": "https://doi.org/10.1080/13506285.2020.1751763"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_51192c48caae5e61c65e",
@@ -3247,6 +3315,7 @@
             "url": "https://doi.org/10.1080/00224499.2021.1999893"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_60aae6f4bf90fd5fee68",
@@ -3306,6 +3375,7 @@
             "url": "https://doi.org/10.1002/jts.22194"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a9df150e789a2d9a885a",
@@ -3432,6 +3502,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query replicates intellectual-ability differences in clinically anxious children; candidate is a different attention-deficit failure-to-replicate record.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c151a05b625ef569e558",
@@ -3467,6 +3538,7 @@
             "url": "https://doi.org/10.3390/brainsci11081059"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_3f37e6532e4c5a546373",
@@ -3506,6 +3578,7 @@
             "url": "https://doi.org/10.1002/jaba.70048"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ad2333a8cdc4d60411c1",
@@ -3738,7 +3811,45 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "successful"
+      "retested_outcome": "successful",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_d993dd4e5e070f866fc6"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT records the identical original DOI and preprint 10.31234/osf.io/6vfdq_v1. The preprint and Retested journal DOI have the identical later title, ordered authors (Matusz, Kim, Osterhage), and 2025/2026 version chronology. This is an ordered bibliographic Work-pair decision only; neither source exposes a formal registrar version edge for the v1 DOI.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 3525
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1007/s11218-026-10258-2"
+          },
+          {
+            "url": "https://doi.org/10.31234/osf.io/6vfdq_v1"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical. The two later records have the same title apart from case, the same ordered creators, and compatible preprint/journal chronology.",
+          "candidate_record_id": "ps_d993dd4e5e070f866fc6",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [
+            "Neither Crossref record declares a formal relation between these two DOI expressions."
+          ],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_9a98cc6833fed966a9c4",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -3807,6 +3918,7 @@
             "row": 696
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_dce172fa2fa95ba07931",
@@ -3846,6 +3958,7 @@
             "url": "https://doi.org/10.2466/pr0.2000.86.3.975"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_7d1e84d1f69c8ec9ed69",
@@ -3937,6 +4050,7 @@
             "url": "https://doi.org/10.1007/s12147-017-9189-6"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_bcf7e5dcef121a4a3994",
@@ -3985,6 +4099,7 @@
             "url": "https://doi.org/10.1002/bin.1836"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_4471d18bd75aaaf22c84",
@@ -4021,6 +4136,7 @@
             "url": "https://doi.org/10.1002/jaba.706"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1ba644aed5aa320d34d2",
@@ -4084,6 +4200,7 @@
             "url": "https://doi.org/10.1002/jaba.106"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_a9c5f2ddf7636100c661",
@@ -4128,6 +4245,7 @@
             "url": "https://doi.org/10.1002/bin.70104"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_027eec29de82eb4c8139",
@@ -4167,6 +4285,7 @@
             "url": "https://doi.org/10.21203/rs.3.rs-6613854/v1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_ce5fd5e3145a195aa39c",
@@ -4192,18 +4311,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[396]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 211
           },
           {
-            "path": "data/curated/promoted_pairs.json:211"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1007/s40732-014-0109-9"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1007/s40732-015-0134-3"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv",
+            "row": 1063
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_55ec94b2f9a2fb1b8c8f",
@@ -4227,7 +4343,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query systematically replicates racial-bias reduction; candidate tests feedback language. Original and later DOI pairs differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 209
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 745
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_1268b7978c5db1cddd4e",
@@ -4306,6 +4432,7 @@
             "url": "https://api.crossref.org/works/10.1186/s40359-024-02103-y"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b4e6de4022717f8f0c85",
@@ -4366,6 +4493,7 @@
             "url": "https://doi.org/10.7275/11921458"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_78a5da47e2d057004e7c",
@@ -4413,6 +4541,7 @@
             "url": "https://doi.org/10.1016/0005-7967(94)00062-o"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_6a9fd89b335e68281f92",
@@ -4464,6 +4593,7 @@
             "url": "https://doi.org/10.1016/0005-7967(94)90003-5"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c86f3504d8e1d2c4f8c5",
@@ -4544,7 +4674,45 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "mixed"
+      "retested_outcome": "mixed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_0f047803f869ac09ee3d"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT records the identical original DOI and 10.7916/d8f76r2r. DataCite records for that DOI and Retested's 10.7916/salt.v5i2.1571 agree on sole creator Heekyung Seol, 2005, and the full later title The Critical Period in the Acquisition of L2 Syntax: A Partial Replication of Johnson and Newport (1989). They are distinct DOI expressions without a declared registrar relation.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-validation_validated_export.csv",
+            "row": 32
+          },
+          {
+            "url": "https://api.datacite.org/dois/10.7916/d8f76r2r"
+          },
+          {
+            "url": "https://api.datacite.org/dois/10.7916/salt.v5i2.1571"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical. The two later DataCite records have the same full title, sole creator, and publication year.",
+          "candidate_record_id": "ps_0f047803f869ac09ee3d",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [
+            "DataCite exposes no declared relation between the two DOI expressions."
+          ],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_edd44978d50df8b9281d",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -4588,6 +4756,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query cannot firmly attribute behavioral improvement to treatment; candidate found no durable socially significant self-instruction benefit. DOI pairs differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_d888bb865ad7d0f33af8",
@@ -4624,6 +4793,7 @@
             "url": "https://doi.org/10.1016/j.jml.2022.104335"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_742c9d06733c4c3a7831",
@@ -4663,6 +4833,7 @@
             "url": "https://doi.org/10.1016/j.bandl.2007.04.009"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_a34e28c0bb2c18b1b934",
@@ -4698,6 +4869,7 @@
             "url": "https://doi.org/10.1002/jad.12502"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1edbab1f96ba0c03eb21",
@@ -4749,6 +4921,7 @@
             "url": "https://doi.org/10.1111/j.1467-6494.1986.tb00403.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_39b4b61e637bd5119c02",
@@ -4773,6 +4946,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query finds questionnaire subscale sex differences; candidate tests evaluative reactions to sex differences. DOI pairs differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_b2fdcaffa334769d91e9",
@@ -4798,7 +4972,43 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "mixed"
+      "retested_outcome": "mixed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_7050d88e212343891d65"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT pairs the identical original DOI with repository DOI 10.17169/refubium-44554. DataCite explicitly marks that repository record IsIdenticalTo 10.1002/acp.4230; both records name Does generation benefit learning for narrative and expository texts? A direct replication attempt by Schindler, Richter, and Mar (2024).",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 3056
+          },
+          {
+            "url": "https://api.datacite.org/dois/10.17169/refubium-44554"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1002/acp.4230"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical and DataCite explicitly connects the alternate later DOI to the Retested later DOI.",
+          "candidate_record_id": "ps_7050d88e212343891d65",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_d597d28dcdf7e966234e",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "same_pair_exact_dois",
@@ -4855,6 +5065,7 @@
             "url": "https://osf.io/f2qjc"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_4c18701879fcf5c54e7a",
@@ -4966,18 +5177,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[410]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1735
           },
           {
-            "path": "data/curated/promoted_pairs.json:1735"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.appet.2018.01.005"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1080/08927936.2023.2243737"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2083
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8d90f08937768ba9863e",
@@ -5057,6 +5265,7 @@
             "url": "https://api.crossref.org/works/10.1080/20445911.2024.2319268"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_19766f74e515511dda31",
@@ -5100,6 +5309,7 @@
             "row": 1025
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_feff420f45d806858108",
@@ -5135,6 +5345,7 @@
             "url": "https://doi.org/10.3389/fnhum.2015.00028"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_e3bad1452cb5bc7df43f",
@@ -5247,18 +5458,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[394]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 171
           },
           {
-            "path": "data/curated/promoted_pairs.json:171"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.biopsych.2005.10.026"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1002/ajmg.b.30576"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 939
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_19ffa959536f9aecdf7a",
@@ -5296,6 +5504,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.psyneuen.2015.06.006"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8544cf80469481f10114",
@@ -5341,6 +5550,7 @@
             "url": "https://api.crossref.org/works/10.1503%2Fjpn.120060"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_09f115942616a136c94d",
@@ -5406,6 +5616,7 @@
             "url": "https://doi.org/10.1007/s10608-012-9509-9"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_b13496be2c74113fcc86",
@@ -5451,6 +5662,7 @@
             "url": "https://api.crossref.org/works/10.1002%2Feat.20444"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_9f370b609072893eb35f",
@@ -5487,6 +5699,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.bodyim.2005.10.004"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ed23fd48f8ccab3dc1f5",
@@ -5522,6 +5735,7 @@
             "url": "https://doi.org/10.1016/j.cognition.2014.09.003"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_eb6412c18454fbbe1717",
@@ -5592,6 +5806,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0313619"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_52542acb696bc7fa5e76",
@@ -5627,6 +5842,7 @@
             "url": "https://osf.io/nz432"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8dc3e0e93b12ee53e29a",
@@ -5652,18 +5868,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[406]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1672
           },
           {
-            "path": "data/curated/promoted_pairs.json:1672"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.brat.2006.06.007"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.jbtep.2014.10.010"
+            "path": "data/raw/forrt/repos/flora-validation/extracted.csv",
+            "row": 103
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_181340fa4c9737b8ce82",
@@ -5881,6 +6094,7 @@
             "row": 89
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c9b0dd8c5ae32f5b828a",
@@ -5914,6 +6128,7 @@
             "row": 89
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_a1a2f646e9d3bab01f2d",
@@ -5953,6 +6168,7 @@
             "url": "https://doi.org/10.1016/j.bpsgos.2023.08.012"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_6922d0c5a74da587df37",
@@ -6248,6 +6464,7 @@
             "url": "https://api.crossref.org/works/10.1037/xge0001039"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_28534e1817d0567ca54e",
@@ -6307,6 +6524,7 @@
             "url": "https://doi.org/10.1111/jpr.12599"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f6104643663bec82e7c5",
@@ -6330,7 +6548,40 @@
       "forrt_extractor_outcome_latest": null,
       "live_match": null,
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "mixed"
+      "retested_outcome": "mixed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_c430737befcd26de9813"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT pairs the identical original DOI with preprint 10.31234/osf.io/kfgr8. Crossref's journal record has the same later title and authors (Schulze, Buttelmann) and explicitly declares has-preprint 10.31234/osf.io/kfgr8.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv",
+            "row": 57
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1016/j.cogdev.2021.101054"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical and Crossref declares reciprocal preprint/journal relations for the later DOI expressions.",
+          "candidate_record_id": "ps_c430737befcd26de9813",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_914f623b98772aad4043",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -6361,6 +6612,7 @@
             "url": "https://pubmed.ncbi.nlm.nih.gov/36113367/"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b1d6e01a6044e4751b4a",
@@ -6396,6 +6648,7 @@
             "url": "https://doi.org/10.3389/fdpys.2026.1764377"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_021cc281ee5c928901a6",
@@ -6431,6 +6684,7 @@
             "url": "https://doi.org/10.3389/fpsyg.2019.02508"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_076c9f7ab29a38ee7362",
@@ -6466,6 +6720,7 @@
             "url": "https://doi.org/10.1086/714812"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_700321a55841dcfab392",
@@ -6534,6 +6789,7 @@
             "url": "https://doi.org/10.3389/fpsyg.2021.745586"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f46e7d5aa9af60790569",
@@ -6594,6 +6850,7 @@
             "url": "https://api.crossref.org/works/10.1016%2Fj.cognition.2021.104650"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_07068c5b38f403895c1f",
@@ -6681,6 +6938,7 @@
             "url": "https://doi.org/10.3758/s13421-018-0791-y"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_6bd4abd6b35aa1adef35",
@@ -6770,6 +7028,7 @@
             "url": "https://doi.org/10.1101/2025.10.15.682521"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_c2879d23056332b46c4e",
@@ -6825,6 +7084,7 @@
             "url": "https://doi.org/10.1016/j.destud.2018.07.001"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_732878f32bdb84073360",
@@ -6850,18 +7110,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[392]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 553
           },
           {
-            "path": "data/curated/promoted_pairs.json:553"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.displa.2014.05.009"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.displa.2018.10.008"
+            "path": "data/raw/forrt/feeds/flora-extractor_extracted.csv",
+            "row": 885
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_533604d13d8f24d38e13",
@@ -6978,6 +7235,7 @@
             "url": "https://doi.org/10.1101/2024.10.10.617472"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_b0c97bd4a1f57bc76e2f",
@@ -7035,6 +7293,7 @@
             "row": 221
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_9e860140596d9d3f9066",
@@ -7106,7 +7365,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query is increased dwell time on socially threatening faces; candidate's effect is threat-related freezing. Both pair identifiers differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 8
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 425
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_b649e37c87f2a9b917ce",
@@ -7231,6 +7500,7 @@
             "url": "https://doi.org/10.1080/16506073.2014.990050"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9047613b65aea6ebee99",
@@ -7291,6 +7561,7 @@
             "url": "https://osf.io/cf4xz"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_69d5133f4029ee5dd886",
@@ -7374,6 +7645,7 @@
             "url": "https://doi.org/10.1111/bjc.12481"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d366fc9a13f17339c622",
@@ -7546,7 +7818,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query found checking reduced confidence, vividness and detail and automatized behavior; candidate has separate original/later DOIs and a different robustness question.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 392
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 1859
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_73a11027723a8910864f",
@@ -7592,6 +7874,7 @@
             "url": "https://api.crossref.org/works/10.1186/s12888-024-05601-w"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_7df480669ad1975c689a",
@@ -7659,6 +7942,7 @@
             "row": 1042
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_87d00f30e4974c8d29ce",
@@ -7780,6 +8064,7 @@
             "url": "https://doi.org/10.1037/a0025169"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8bfed8ed55c5e71f5885",
@@ -7913,6 +8198,7 @@
             "row": 878
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_dea55508af3778a55b44",
@@ -8072,6 +8358,7 @@
             "url": "https://osf.io/preprints/psyarxiv/s7qe5"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_590c185afed0a696339d",
@@ -8135,6 +8422,7 @@
             "url": "https://osf.io/ahgfx"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_fb85e63b027b7253cb78",
@@ -8174,6 +8462,7 @@
             "url": "https://doi.org/10.1037/0033-2909.129.6.914"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_2732bc2cc4e37ef5248e",
@@ -8411,6 +8700,7 @@
             "url": "https://doi.org/10.1016/j.paid.2021.111471"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_e95806fe6140d38dada9",
@@ -8446,6 +8736,7 @@
             "url": "https://doi.org/10.17605/osf.io/zrjy4"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_adade0e1887b534fad38",
@@ -8592,6 +8883,7 @@
             "url": "https://doi.org/10.1002/jts.22194"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_18b2b2ccf138cd08bad0",
@@ -8676,6 +8968,7 @@
             "url": "https://doi.org/10.1007/s11199-010-9772-8"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_c721f807bcf1c63253db",
@@ -8711,6 +9004,7 @@
             "url": "https://doi.org/10.1016/j.evolhumbehav.2018.02.008"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_5cfd75abab2f16dc07b0",
@@ -8772,6 +9066,7 @@
             "url": "https://doi.org/10.1017/s1352465800013163"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1f700c18396835f2cd64",
@@ -8868,6 +9163,7 @@
             "url": "https://doi.org/10.1080/20008198.2019.1705599"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0059cfcf274c619f4d56",
@@ -9039,6 +9335,7 @@
             "url": "https://doi.org/10.1016/j.actpsy.2006.07.007"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_fade4a91abb42756ce5b",
@@ -9062,7 +9359,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query is the Brazilian-Portuguese iconicity replication; candidate concerns semantic priming, with a different original DOI and later work.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1854
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 3678
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ed860fa9964f9b381e35",
@@ -9131,6 +9438,7 @@
             "url": "https://doi.org/10.31234/osf.io/hytnp"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_e97e479cbfe3e6c109df",
@@ -9190,6 +9498,7 @@
             "row": 2551
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7ed9a91b561507d6343a",
@@ -9238,6 +9547,7 @@
             "url": "https://doi.org/10.26686/wgtn.17143838"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1edf832cac9d973a649a",
@@ -9262,6 +9572,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query finds L1 practice alone no more beneficial than L2 instruction/practice; candidate reports no enhancement effect. Identifiers differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_acee5a9ed965c6150b3d",
@@ -9372,6 +9683,7 @@
             "url": "https://doi.org/10.1017/s1041610209991451"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_5989a9f79d2a138edfa5",
@@ -9456,6 +9768,7 @@
             "url": "https://doi.org/10.1007/s11292-017-9305-3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_197adf0164221c9e32db",
@@ -9515,6 +9828,7 @@
             "url": "https://doi.org/10.1901/jaba.1994.27-179"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_5c570e283856a0541222",
@@ -9562,6 +9876,7 @@
             "url": "https://api.crossref.org/works/10.1007%2Fs10879-009-9122-8"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_37e1db5a19440e1b49cb",
@@ -9705,6 +10020,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0242262"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_e73762f427bcfabb7b03",
@@ -9749,6 +10065,7 @@
             "url": "https://doi.org/10.1177/1948550619887702"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_c7b09c4b11fcdc3ce70e",
@@ -9811,6 +10128,7 @@
             "row": 320
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_a01cd3589f24fde76d79",
@@ -9852,6 +10170,7 @@
             "url": "https://doi.org/10.25959/23226032"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_bc8f6a362334b2e0775c",
@@ -9899,6 +10218,7 @@
             "url": "https://doi.org/10.1080/15475441.2014.979387"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a76378d2772ed1db0898",
@@ -9950,6 +10270,7 @@
             "url": "https://doi.org/10.1037/0021-843x.100.3.316"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_82c3d972027470729474",
@@ -10255,18 +10576,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[403]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 192
           },
           {
-            "path": "data/curated/promoted_pairs.json:192"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/0022-006x.67.4.460"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1007/bf03339753"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv",
+            "row": 417
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e3bf4a276d17beb414df",
@@ -10300,6 +10618,7 @@
             "row": 383
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_cf0100b35c301e4a6205",
@@ -10361,6 +10680,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.jad.2009.07.007"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_48ad785114cae59854d9",
@@ -10403,6 +10723,7 @@
             "row": 263
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_5066dba2b718e3a02c4f",
@@ -10468,6 +10789,7 @@
             "url": "https://doi.org/10.1016/j.jad.2009.07.007"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": null,
         "query_record_id": "ps_dcfb532492bb50bc515e",
@@ -10536,6 +10858,7 @@
             "url": "https://doi.org/10.1080/10503307.2011.598580"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_3d8233fd70ef5af5ee74",
@@ -10623,6 +10946,7 @@
             "row": 327
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_804700e61e3fb5ef1649",
@@ -10659,6 +10983,7 @@
             "url": "https://api.crossref.org/works/10.1080/01443410701366092"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_906b3d77499c4967e24c",
@@ -10694,6 +11019,7 @@
             "url": "https://doi.org/10.1080/10640260390218639"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a22e6dfa67d6a5f9021c",
@@ -10754,7 +11080,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query: instructed children had a substantial advantage in all tasks. Candidate: read-aloud treatment affected vocabulary knowledge; its original and later DOIs are both different.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 420
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 189
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_188c2ab22fa134e62cac",
@@ -10846,6 +11182,7 @@
             "url": "https://api.crossref.org/works/10.1080/00220973.2024.2306407"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d7a9be1f19c2aab50d6a",
@@ -10881,6 +11218,7 @@
             "url": "https://doi.org/10.1111/jcal.12485"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_43272f4607afd9f8096d",
@@ -10926,6 +11264,7 @@
             "url": "https://api.crossref.org/works/10.1007/s11409-020-09235-7"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_15d834edca28ec5d7fe9",
@@ -11073,6 +11412,7 @@
             "url": "https://doi.org/10.1177/1745691616674458"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_08671aa9998289f06a7f",
@@ -11111,6 +11451,7 @@
             "row": 554
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_8be9584ac0649c5b5db5",
@@ -11144,6 +11485,7 @@
             "row": 132
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_7a9f3dc5ada5496f408c",
@@ -11180,6 +11522,7 @@
             "url": "https://doi.org/10.31234/osf.io/jnfxw"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8b08d72a4baf5617010d",
@@ -11225,6 +11568,7 @@
             "url": "https://api.crossref.org/works/10.1371/journal.pone.0285267"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_e590f497521e4cb71c23",
@@ -11298,6 +11642,7 @@
             "url": "https://doi.org/10.1177/1474704919852921"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_c544f80e11e443f9d7d1",
@@ -11431,6 +11776,7 @@
             "url": "https://doi.org/10.1167/19.10.156"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_7beaa987bb10c6ba8d7b",
@@ -11466,6 +11812,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0147770"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_85b4052c44cfa8872f70",
@@ -11501,6 +11848,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_8882f115453bc5a7d776",
@@ -11536,6 +11884,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6524828c74d3c7851bdf",
@@ -11572,6 +11921,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0147770"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_393c2d48fecaa5798619",
@@ -11607,6 +11957,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0147770"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_db834e750585e7b8ee12",
@@ -11642,6 +11993,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_510400b2db50bad9d1c2",
@@ -11675,6 +12027,7 @@
             "row": 906
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_0612aa74987f802434da",
@@ -11710,6 +12063,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_63d340896a53d5a83e20",
@@ -11752,6 +12106,7 @@
             "url": "https://api.crossref.org/works/10.5465%2Fambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_5974a3a4e667399128b3",
@@ -11787,6 +12142,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_1c23bf03d55ba161a097",
@@ -11823,6 +12179,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b8005d865ac34e91a229",
@@ -11859,6 +12216,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_275a28bc4f6f53ac90cb",
@@ -11895,6 +12253,7 @@
             "url": "https://doi.org/10.17605/osf.io/8gjqx"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_0ef236ec6353d1543b22",
@@ -11928,6 +12287,7 @@
             "row": 1713
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_0190b68407ecffa1560c",
@@ -11963,6 +12323,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_c253117d4e2ff023893b",
@@ -12023,6 +12384,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0147770"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_bbae13c99e499e9769c8",
@@ -12068,6 +12430,7 @@
             "url": "https://api.crossref.org/works/10.1177/1948550619887702"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_d9610d4dcdd9d31b89c7",
@@ -12129,6 +12492,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d3656442e212185dc3d0",
@@ -12164,6 +12528,7 @@
             "url": "https://doi.org/10.1016/j.jesp.2012.10.014"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_67d2956e33da25155d57",
@@ -12199,6 +12564,7 @@
             "url": "https://doi.org/10.5465/ambpp.2016.196"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b41ffbd39abda7085044",
@@ -12234,6 +12600,7 @@
             "url": "https://doi.org/10.20982/tqmp.12.2.r001"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_52ebc48a06a38d3ba64a",
@@ -12270,6 +12637,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query's effect is narcissistic aggression conditional on rejection-related dACC activation; candidate reports a different trait-model replication and DOI pair.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_2377e84cc4aaf9e96af8",
@@ -12347,6 +12715,7 @@
             "url": "https://api.crossref.org/works/10.1037/xge0001559"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f72c0d2d54a0333d97c4",
@@ -12443,6 +12812,7 @@
             "row": 2171
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_fbc770397715e5852834",
@@ -12478,6 +12848,7 @@
             "url": "https://doi.org/10.21193/kjspp.2013.27.3.004"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_12c77eca3b2e6c8514ea",
@@ -12513,6 +12884,7 @@
             "url": "https://doi.org/10.21193/kjspp.2013.27.3.004"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_15e46cdef18977627601",
@@ -12551,6 +12923,7 @@
             "row": 2821
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_bfe2add77c935d1ea391",
@@ -12584,6 +12957,7 @@
             "row": 984
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_60b288e5628c7576f53a",
@@ -12624,6 +12998,7 @@
             "row": 2821
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_bfb063bf58e6202fe6d0",
@@ -12659,6 +13034,7 @@
             "url": "https://doi.org/10.21193/kjspp.2013.27.3.004"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f82e0ceceee81c1e83c2",
@@ -12713,6 +13089,7 @@
             "row": 504
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_49ea9b195d57eb185337",
@@ -12758,7 +13135,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query independently replicates Murray et al. Study 3 on self-esteem, relationship threat, and dependency regulation; candidate has neither query DOI.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 534
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 1907
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_6e69da09a6284d59f07c",
@@ -12804,6 +13191,7 @@
             "row": 715
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d9a973bfcfb20c2a17b2",
@@ -12858,6 +13246,7 @@
             "row": 1255
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_8cd0dc2bb156ef88b5df",
@@ -12904,6 +13293,7 @@
             "url": "https://api.crossref.org/works/10.1016%2Fj.appet.2013.12.020"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e9fe42023b8c33c00edc",
@@ -12940,6 +13330,7 @@
             "url": "https://doi.org/10.1016/j.appet.2013.12.020"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6f80be80ccdb2d7f4b1d",
@@ -12979,6 +13370,7 @@
             "url": "https://api.crossref.org/works/10.1037/a0019486"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_36cae8effbdd0f2f638f",
@@ -13017,6 +13409,7 @@
             "url": "https://api.crossref.org/works/10.1371/journal.pone.0122218"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_d40a30c11200d3044dbb",
@@ -13065,6 +13458,7 @@
             "url": "https://doi.org/10.1037/a0019486"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_5069d7c70894a698a2e3",
@@ -13090,18 +13484,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[402]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 579
           },
           {
-            "path": "data/curated/promoted_pairs.json:579"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/0022-3514.93.1.23"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.actpsy.2015.01.008"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 715
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_94b0e8826adede032e08",
@@ -13133,6 +13524,7 @@
             "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx:Arb274_1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_1da241985f2870732cca",
@@ -13209,6 +13601,7 @@
             "url": "https://doi.org/10.1126/science.aac4716"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_1eca0e37c1af8185869c",
@@ -13305,6 +13698,7 @@
             "url": "https://doi.org/10.1037/0033-2909.125.4.387"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_dfe79a4f0abe270d5578",
@@ -13352,6 +13746,7 @@
             "url": "https://doi.org/10.1177/0956797619831612"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_7a3d57a703a111d84b2d",
@@ -13464,6 +13859,7 @@
             "row": 1725
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6287dfa3945956fc0b96",
@@ -13533,6 +13929,7 @@
             "row": 907
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7a5007fb129960929957",
@@ -13568,6 +13965,7 @@
             "url": "https://doi.org/10.3758/s13423-013-0548-3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f7f78a1dcbe5ee2c322d",
@@ -13603,6 +14001,7 @@
             "url": "https://doi.org/10.31234/osf.io/pcy98"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_71826d6742686d70f85e",
@@ -13648,6 +14047,7 @@
             "row": 451
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_ceae65ec7b282ca264f7",
@@ -13707,6 +14107,7 @@
             "url": "https://doi.org/10.1080/14640749408401108"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_88ad6d516b0bd47bf9cc",
@@ -13934,6 +14335,7 @@
             "url": "https://doi.org/10.1037/h0087122"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_de633599167f8fc04e96",
@@ -13993,6 +14395,7 @@
             "url": "https://doi.org/10.1027/1618-3169.51.2.109"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1c5a3b088f1a5d788152",
@@ -14028,6 +14431,7 @@
             "url": "https://doi.org/10.1525/collabra.35271"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9a8506ac48d1cdd8b5e4",
@@ -14113,6 +14517,7 @@
             "url": "https://doi.org/10.1016/S0005-7967(98)00158-2"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_907515d6186c1138dfaa",
@@ -14148,6 +14553,7 @@
             "url": "https://doi.org/10.1016/S0005-7967(98)00158-2"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_b3a1321ed87411b9525d",
@@ -14185,6 +14591,7 @@
             "url": "https://api.crossref.org/works/10.1037/a0031373"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_998826d411631d850ed8",
@@ -14232,6 +14639,7 @@
             "url": "https://doi.org/10.1037/dev0002158"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_75e6456546a49e05cc22",
@@ -14294,7 +14702,45 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "successful"
+      "retested_outcome": "successful",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_4a614a5ee9f60c5b21d4"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT records the identical original DOI with 10.1176/appi.ps.62.4.367. Crossref's two later records agree on the full title Guided Self-Help Treatment for Recurrent Binge Eating: Replication and Extension, the same nine ordered authors (DeBar through Kraemer), and 2011-04 publication. The DOI expressions remain distinct because neither registration declares their relation.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2237
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1176/ps.62.4.pss6204_0367"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1176/appi.ps.62.4.367"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical. The later records have the same full title, nine creators in the same order, and the same publication month.",
+          "candidate_record_id": "ps_4a614a5ee9f60c5b21d4",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [
+            "Crossref exposes no declared relation between the two DOI expressions."
+          ],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_7eb549baf488d18a5927",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -14329,6 +14775,7 @@
             "url": "https://doi.org/10.1126/science.283.5398.77"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_f0c43d59f08f7ecc6aff",
@@ -14367,6 +14814,7 @@
             "row": 886
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d0ba38200b069f4566c8",
@@ -14467,6 +14915,7 @@
             "row": 506
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_bedac8e5322473b00ebc",
@@ -14526,6 +14975,7 @@
             "row": 507
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_216489546071690ce582",
@@ -14564,6 +15014,7 @@
             "row": 293
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_c4243f3c2caacc387982",
@@ -14659,6 +15110,7 @@
             "url": "https://doi.org/10.1037/xap0000526"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_078cf4df5063801c06b0",
@@ -14712,6 +15164,7 @@
             "url": "https://doi.org/10.7717/peerj.3580"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d38f57002b8132535ad0",
@@ -14761,18 +15214,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[391]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 573
           },
           {
-            "path": "data/curated/promoted_pairs.json:573"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/a0022582"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1080/23743603.2017.1298355"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 1911
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_324e452ea803a70988c4",
@@ -14834,6 +15284,7 @@
             "url": "https://doi.org/10.3758/s13414-017-1344-3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_ad600c2803f293ec2a77",
@@ -14927,6 +15378,7 @@
             "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx:Arb274_1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_eff22a50f0e1f9158a3a",
@@ -15081,6 +15533,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0184844"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d162f1d423930e596aa3",
@@ -15116,6 +15569,7 @@
             "url": "https://doi.org/10.3389/fnagi.2021.702810"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_cce29698d294949dd910",
@@ -15324,6 +15778,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query's target is preventive internet cognitive-control training; candidate's effect is guided positive-memory recall. Both DOI pairs differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8b5c38b501a8f1467919",
@@ -15384,6 +15839,7 @@
             "url": "https://api.crossref.org/works/10.1037%2Fcns0000199"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_c6c47913e5a0f8824766",
@@ -15559,6 +16015,7 @@
             "url": "https://api.crossref.org/works/10.1037/cou0000890"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_5c2228d2ef57d4af0c89",
@@ -15709,6 +16166,7 @@
             "row": 147
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_24f9966055a9d4c6b0dc",
@@ -15744,6 +16202,7 @@
             "url": "https://doi.org/10.1111/j.1468-5884.2005.00297.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0be7d87201cc288b75ce",
@@ -15780,6 +16239,7 @@
             "url": "https://doi.org/10.1111/j.1468-5884.2005.00297.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_4751b7dda96846d0f282",
@@ -15863,7 +16323,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Shared theory is insufficient: all four original/later DOI identifiers differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 722
+          },
+          {
+            "path": "data/raw/forrt/feeds/flora-extractor_search_link_unconfirmed.csv",
+            "row": 62
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_5a6330a63a8be66b9aff",
@@ -16008,6 +16478,7 @@
             "url": "https://doi.org/10.1037/0012-1649.19.6.839"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_cee95af3bc3e9e2d3835",
@@ -16055,6 +16526,7 @@
             "url": "https://doi.org/10.1007/s10608-024-10550-5"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d7968965a8056f2c0137",
@@ -16190,18 +16662,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[400]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1495
           },
           {
-            "path": "data/curated/promoted_pairs.json:1495"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/h0042110"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1007/bf03393971"
+            "path": "data/raw/forrt/repos/flora-validation/data/extracted_22.07.2026.csv",
+            "row": 559
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e9242fa55ac8764530cf",
@@ -16299,6 +16768,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query found at most equivocal word-specific satiation; candidate supplies no matching original work and a distinct later DOI.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_bde9643670f6d60e0325",
@@ -16336,18 +16806,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[393]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1793
           },
           {
-            "path": "data/curated/promoted_pairs.json:1793"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/h0047716"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/0005-7916(89)90046-3"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 1015
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_4fd5bdae50684732814b",
@@ -16483,6 +16950,7 @@
             "row": 9
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_ca9078f75cfc1eb18dea",
@@ -16524,6 +16992,7 @@
             "url": "https://doi.org/10.31820/pt.28.3.7"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_daf7f750db290ce92ec2",
@@ -16559,6 +17028,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0294325"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_9a8956a89e935fc67b6d",
@@ -16594,6 +17064,7 @@
             "url": "https://doi.org/10.1371/journal.pone.0294325"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6a075b18aa7b38e2b1de",
@@ -16654,6 +17125,7 @@
             "url": "https://doi.org/10.1002/jaba.213"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8b46f8fd500a736d7bc3",
@@ -16728,18 +17200,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[407]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1536
           },
           {
-            "path": "data/curated/promoted_pairs.json:1536"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/mot0000370"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1525/collabra.169365"
+            "path": "data/raw/forrt/feeds/flora-extractor_extracted.csv",
+            "row": 1074
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e2cc2bfab4c6245d5e70",
@@ -16777,18 +17246,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[395]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 483
           },
           {
-            "path": "data/curated/promoted_pairs.json:483"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/pag0000382"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1177/1747021820951131"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 1769
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_eb3eb4dde923e09f52b2",
@@ -16849,6 +17315,7 @@
             "url": "https://doi.org/10.26686/wgtn.17139935.v1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_dc5426a1f50954c39ece",
@@ -16884,6 +17351,7 @@
             "url": "https://doi.org/10.1037/a0022144"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f2d8fc7313f3e347b3d9",
@@ -16956,6 +17424,7 @@
             "url": "https://doi.org/10.1080/00224499.2021.1999893"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ee8c00d41e23c7517d2b",
@@ -16991,6 +17460,7 @@
             "url": "https://doi.org/10.31234/osf.io/cqj6h"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_7c4f59e62aaba6aafa9e",
@@ -17130,6 +17600,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.jml.2026.104815"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_ff09e1ed2dde4095da75",
@@ -17240,6 +17711,7 @@
             "url": "https://doi.org/10.31234/osf.io/xyhwt"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_459c40b6500bb35af50e",
@@ -17323,6 +17795,7 @@
             "url": "https://api.crossref.org/works/10.1371/journal.pone.0194101"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_c690aa5d561a96812714",
@@ -17373,6 +17846,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query's 63-ms nonnative priming differs from a nonsignificant native effect; candidate supports episodic L2 representation. DOI pairs differ.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_925a050e74b256b4cfa9",
@@ -17447,6 +17921,7 @@
             "url": "https://api.crossref.org/works/10.1111/psyp.13986"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d6a62104ef0fbc87027c",
@@ -17494,6 +17969,7 @@
             "url": "https://doi.org/10.1016/0885-2014(95)90011-x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_1baf0c455a81ad0e54ae",
@@ -17565,6 +18041,7 @@
             "url": "https://api.crossref.org/works/10.1098/rsos.191795"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7342cf189da8d6a5bf5f",
@@ -17613,6 +18090,7 @@
             "url": "https://doi.org/10.1016/j.cogdev.2010.09.001"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_ad66e4ca67dd80ce77be",
@@ -17788,6 +18266,7 @@
             "url": "https://doi.org/10.1007/s10484-020-09484-x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ccd90916a59a9772c3e1",
@@ -17880,6 +18359,7 @@
             "url": "https://osf.io/preprints/psyarxiv/kpcwv"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_007bedaf24dd3b8bf1c4",
@@ -17915,6 +18395,7 @@
             "url": "https://doi.org/10.1080/14616734.2013.768790"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0b98b742de2332b8ef74",
@@ -18082,6 +18563,7 @@
             "url": "https://doi.org/10.1901/jaba.2007.40-489"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_d451e52235932013b934",
@@ -18230,6 +18712,7 @@
             "url": "https://api.crossref.org/works/10.1371/journal.pone.0063614"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_5b3112a699d7a2356c50",
@@ -18271,6 +18754,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.infbeh.2019.03.005"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_349f48a890d3ba1597c9",
@@ -18306,6 +18790,7 @@
             "url": "https://doi.org/10.1111/desc.13377"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_eb1808ab03c8468241d3",
@@ -18387,6 +18872,7 @@
             "url": "https://doi.org/10.1080/15475441.2014.979387"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_692502be2bea73743948",
@@ -18431,6 +18917,7 @@
             "url": "https://doi.org/10.1073/pnas.1118373109"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_45d8a09921d2281c2c10",
@@ -18478,6 +18965,7 @@
             "url": "https://api.osf.io/v2/nodes/nxeaq/"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_df240bedba7301d4932c",
@@ -18588,6 +19076,7 @@
             "url": "https://osf.io/sy8xz"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_c99bd9e4c4ab39766099",
@@ -18724,6 +19213,7 @@
             "url": "https://api.crossref.org/works/10.1073%2Fpnas.1905779116"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_957c18ffdd32ec34546b",
@@ -18811,6 +19301,7 @@
             "url": "https://doi.org/10.1016/j.cogdev.2017.08.007"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_4c8f25ba7cd3e7a6c4bf",
@@ -18876,6 +19367,7 @@
             "path": "/tmp/retested_live_forrt_pending.csv:391"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_b4f09a5da467ef26d5b4",
@@ -19026,6 +19518,7 @@
             "url": "https://doi.org/10.1080/02674659808404254"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ec06fb61755d4cab447c",
@@ -19078,6 +19571,7 @@
             "path": "/tmp/retested_live_forrt_pending.csv:259"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_3ee912d27f1b79f1d249",
@@ -19203,6 +19697,7 @@
             "path": "/tmp/retested_live_forrt_pending.csv:177"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_ac4bea09dee757c9ab61",
@@ -19328,6 +19823,7 @@
             "url": "https://doi.org/10.1515/phon-2023-0012"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_aad850e3667cef6acc53",
@@ -19458,6 +19954,7 @@
             "url": "https://doi.org/10.1080/02646838.2019.1607968"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_b31c79e3ed527570cc0b",
@@ -19525,6 +20022,7 @@
             "url": "https://doi.org/10.1080/02673843.2023.2283563"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_c0dd3f4de0e5367b334a",
@@ -19587,6 +20085,7 @@
             "url": "https://api.osf.io/v2/preprints/4wjch/"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_cc18a5b264d21c9a2c57",
@@ -19622,6 +20121,7 @@
             "row": 2772
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a4b83f32d1d72cf3deb3",
@@ -19658,6 +20158,7 @@
             "path": "data/raw/forrt/feeds/flora-validation_flora_entry_sheets.csv:1053"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_1ef9dafc0cbe8d3c5253",
@@ -19757,6 +20258,7 @@
             "url": "https://doi.org/10.1177/2167702617712262"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_850a3f224f45e162754c",
@@ -19792,6 +20294,7 @@
             "url": "https://doi.org/10.1080/02699930125941"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d5d03d640eba9a194819",
@@ -19913,6 +20416,7 @@
             "url": "https://doi.org/10.1177/00915521231201166"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_0d158c0abf0c1b3dc77d",
@@ -19936,7 +20440,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query finds mindfulness facets relate to physical stress symptoms partly through perceived stress; candidate has a different mood pathway and DOI pair.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 559
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 1788
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_9dda3cfef04a0bfb008a",
@@ -20112,6 +20626,7 @@
             "row": 10
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_87a2c115219236da261d",
@@ -20137,18 +20652,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[398]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1533
           },
           {
-            "path": "data/curated/promoted_pairs.json:1533"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1080/10410236.2019.1652392"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1080/10410236.2024.2386215"
+            "path": "data/raw/forrt/feeds/flora-extractor_extracted.csv",
+            "row": 1505
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_3f5bb28c4ea7245d14c4",
@@ -20295,6 +20807,7 @@
             "url": "https://osf.io"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_4b4bd1538ea3256517ce",
@@ -20485,6 +20998,7 @@
             "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx:Arb274_1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_378c7643ca954b66eacb",
@@ -20554,7 +21068,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query's accurate eye-tracking failed to replicate its basic finding; candidate reports orthographic but no semantic preview benefit. DOI pairs differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 580
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 3
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_4a5bd76e38da65bf409a",
@@ -20602,6 +21126,7 @@
             "url": "https://doi.org/10.1007/s42822-025-00242-4"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ebf3c3f8035dd73c22f6",
@@ -20649,7 +21174,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query reports varying replication across infant tasks; candidate reports successful replication in a different false-belief paradigm and has different DOI works.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1934
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 641
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_2560297820ad4c0aa351",
@@ -20742,6 +21277,7 @@
             "row": 185
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_a8ea9b9affab5cbd805b",
@@ -20897,6 +21433,7 @@
             "url": "https://www.tandfonline.com/doi/full/10.1080/23273798.2026.2728022"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_38835e11a2150fa3bff4",
@@ -20933,6 +21470,7 @@
             "url": "https://api.crossref.org/works/10.1080/09658211.2020.1826527"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_73ccd7216e1d936641d3",
@@ -20989,6 +21527,7 @@
             "url": "https://api.crossref.org/works/10.37237/150205"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_39450e649256eab1f015",
@@ -21072,6 +21611,7 @@
             "url": "https://doi.org/10.1017/s1366728922000748"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1f2ebef96177f6b70204",
@@ -21109,18 +21649,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[404]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 3
           },
           {
-            "path": "data/curated/promoted_pairs.json:3"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1080/713663852"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1002/cpp.324"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 50
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8863f8d357a3189e6aae",
@@ -21157,6 +21694,7 @@
             "url": "https://api.crossref.org/works/10.1086/426624"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_3f1bbc94cbe315fe7cfb",
@@ -21239,6 +21777,7 @@
             "url": "https://doi.org/10.1016/j.jaacop.2025.09.005"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_41762b72426731df6a2e",
@@ -21460,6 +21999,7 @@
             "url": "https://api.crossref.org/works/10.1093%2Fscan%2Fnsae034"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_71b139b39967fc733a80",
@@ -21809,6 +22349,7 @@
             "url": "https://doi.org/10.1016/S0191-8869(03)00085-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_756cc638f8897ca4e213",
@@ -21914,6 +22455,7 @@
             "url": "https://osf.io/ak9sc"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_3e187e187b63e1c6d3f6",
@@ -21965,6 +22507,7 @@
             "url": "https://doi.org/10.1016/j.appet.2020.104808"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_0f1c083a5f1ffa0fa591",
@@ -22036,6 +22579,7 @@
             "url": "https://doi.org/10.1037/0022-3514.74.3.774"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_4d3156af8da3782fde5f",
@@ -22185,6 +22729,7 @@
             "url": "https://doi.org/10.1098/rsos.211278"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_20f98ece3e7855bdfb19",
@@ -22418,7 +22963,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query replicated the cultural first-mention metric but not the descriptive-account metric; candidate is a separate attention/memory pair with different DOIs.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1878
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2563
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_38d2ab8b2d34d70b3745",
@@ -22454,6 +23009,7 @@
             "url": "https://doi.org/10.31542/r.gm:2129"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_73f3377ca11e9361c370",
@@ -22501,6 +23057,7 @@
             "url": "https://doi.org/10.1111/desc.12445"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_2d3c7241a2ee3ebbc4a0",
@@ -22564,6 +23121,7 @@
             "url": "https://doi.org/10.1037/0022-3514.86.2.345"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ccc7b6e0a65023bacbbb",
@@ -22598,6 +23156,7 @@
             "row": 80
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_365d308b6f4d40de9008",
@@ -22645,6 +23204,7 @@
             "url": "https://doi.org/10.1111/j.1468-3148.2004.00194.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_74199f0dcd7ac2edfdf3",
@@ -22705,6 +23265,7 @@
             "url": "https://doi.org/10.1037/xge0000402"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_a9015ddfb2aeff1884c4",
@@ -22743,18 +23304,19 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[409]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 73
           },
           {
-            "path": "data/curated/promoted_pairs.json:73"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 3668
           },
           {
-            "url": "https://api.crossref.org/works/10.1111/j.1467-7687.2005.00441.x"
-          },
-          {
-            "url": "https://doi.org/10.24382/r8g8-ae22"
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 302
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_a073bbaf92761db30b40",
@@ -22799,6 +23361,7 @@
             "url": "https://doi.org/10.1037/xge0000203"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_63f056942ff1ba3e6d23",
@@ -22859,6 +23422,7 @@
             "url": "https://api.crossref.org/works/10.1111/j.1467-7687.2009.00888.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_efeab7d359d267a1683a",
@@ -22894,6 +23458,7 @@
             "url": "https://doi.org/10.1111/j.1467-7687.2007.00635.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_2969e87bc6cc3dec3ff8",
@@ -22967,6 +23532,7 @@
             "url": "https://doi.org/10.1016/j.dcn.2020.100783"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_de28fe056105aca6a691",
@@ -23050,6 +23616,7 @@
             "url": "https://doi.org/10.2307/1132137"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_fb361dfa461b118db355",
@@ -23131,6 +23698,7 @@
             "url": "https://doi.org/10.1027/1864-9335/a000185"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_01a4645515cb1aa57415",
@@ -23213,6 +23781,7 @@
             "row": 928
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6bfb5ed19d89fc749ffb",
@@ -23288,6 +23857,7 @@
             "url": "https://api.crossref.org/works/10.1098/rsos.190068"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_254bda54670a0770be17",
@@ -23325,6 +23895,7 @@
             "url": "https://doi.org/10.57709/1399902"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_6e47ebcdfc6bc8da4bd9",
@@ -23442,6 +24013,7 @@
             "row": 2417
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_69b59ef3886e8d80dbcc",
@@ -23531,6 +24103,7 @@
             "url": "https://doi.org/10.3390/bs9010010"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_83504a7fbc6eeaf71df4",
@@ -23583,6 +24156,7 @@
             "path": "/tmp/retested_live_forrt_pending.csv:229"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_29130d349d162d2f826f",
@@ -23725,6 +24299,7 @@
             "url": "https://doi.org/10.1111/j.1600-0447.1978.tb00238.x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_f8130c9574bd562f1fd1",
@@ -23786,6 +24361,7 @@
             "url": "https://doi.org/10.1177/0956797619831612"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ae342fa56c4d09e08ddd",
@@ -23824,6 +24400,7 @@
             "row": 234
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_afdeddbe8706bd08eb6f",
@@ -24083,7 +24660,40 @@
       "forrt_extractor_outcome_latest": null,
       "live_match": null,
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "successful"
+      "retested_outcome": "successful",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_62ffb945a107ce2c5089"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT pairs the identical original DOI with journal DOI 10.1111/1460-6984.13086. Crossref gives the identical later title and ordered authors (Gasparini, Shepherd, Wang, Wake, Morgan) and explicitly declares has-preprint 10.31234/osf.io/s5y7r.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv",
+            "row": 574
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1111/1460-6984.13086"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical and Crossref declares reciprocal preprint/journal relations for the later DOI expressions.",
+          "candidate_record_id": "ps_62ffb945a107ce2c5089",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_646afb26c9ab35fd89e2",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -24191,6 +24801,7 @@
             "url": "https://api.crossref.org/works/10.31234/osf.io/yk4ra_v1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_578dc43721d847fd0f61",
@@ -24229,6 +24840,7 @@
             "row": 2447
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ba7b10cf6f50213fb80a",
@@ -24264,6 +24876,7 @@
             "url": "https://doi.org/10.1111/lang.12621"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_43a19f6bb55cdb889713",
@@ -24300,6 +24913,7 @@
             "url": "https://doi.org/10.1111/lang.12616"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_965ba6e3318cdd0f28e5",
@@ -24335,6 +24949,7 @@
             "url": "https://doi.org/10.1007/s00426-019-01258-3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1cdfb98fae65f1d3e966",
@@ -24358,7 +24973,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query validates pain, hopelessness and their interaction for ideation; candidate has only a distinct later DOI and no matching work identifier.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1501
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv",
+            "row": 361
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_1e22fcba5c654fc7355c",
@@ -24440,6 +25065,7 @@
             "url": "https://api.crossref.org/works/10.1016%2Fj.jml.2022.104352"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_6e439f63f6d4193abd98",
@@ -24550,6 +25176,7 @@
             "url": "https://api.crossref.org/works/10.1037/a0027471"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_e37a256f566e91a5bc30",
@@ -24583,6 +25210,7 @@
             "row": 280
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6d0acd5ce314d8d9125b",
@@ -24618,6 +25246,7 @@
             "url": "https://doi.org/10.1086/714812"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f6a0a56cbbee9ee0efab",
@@ -24653,6 +25282,7 @@
             "url": "https://doi.org/10.1037/xge0000091"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_37403cbca50e702a459a",
@@ -24694,6 +25324,7 @@
             "url": "https://api.crossref.org/works/10.1080/17439760.2014.891154"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_2d27742afb57ac11a4d1",
@@ -24730,6 +25361,7 @@
             "url": "https://doi.org/10.1027/1864-9335/a000187"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_af12147e37cb89b435ea",
@@ -24818,6 +25450,7 @@
             "url": "https://api.crossref.org/works/10.1126/science.162.3856.920"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d1e6463d845a11443404",
@@ -24902,6 +25535,7 @@
             "url": "https://doi.org/10.1016/s0163-6383(83)80012-5"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_981c50a0bb99c5d68c6c",
@@ -24956,6 +25590,7 @@
             "row": "Arb34_1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7d1754159043aaaa7b84",
@@ -24992,6 +25627,7 @@
             "url": "https://doi.org/10.1111/desc.13244"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_9f9437226bac3ac4e007",
@@ -25030,6 +25666,7 @@
             "row": "Arb34_1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_2f42d996a79967ed4457",
@@ -25065,6 +25702,7 @@
             "url": "https://doi.org/10.1111/desc.13244"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_550e5523884eaa501490",
@@ -25100,6 +25738,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_2df63e421aa43053d35a",
@@ -25135,6 +25774,7 @@
             "url": "https://doi.org/10.1016/j.ssci.2020.105065"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f99b5e135a83c7643761",
@@ -25171,6 +25811,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_cf209f54f15ba3d7f9b7",
@@ -25220,6 +25861,7 @@
             "url": "https://doi.org/10.1027/1864-9335/a000178"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_a096e901f9b8ad112c66",
@@ -25256,6 +25898,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_93f87d7866fb7197a3aa",
@@ -25293,6 +25936,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f0c4e6acd1c18a03506e",
@@ -25336,6 +25980,7 @@
             "row": 2218
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_35730f296700ad37df23",
@@ -25373,6 +26018,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_036517d15129b736941a",
@@ -25408,6 +26054,7 @@
             "url": "https://doi.org/10.1073/pnas.2202700119"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_6b2d6b8cafccf5f0de56",
@@ -25528,6 +26175,7 @@
             "path": "data/raw/forrt/feeds/flora-extractor_unidentified_original.csv:78"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_a14ec4d3c9be71080d0b",
@@ -25596,6 +26244,7 @@
             "url": "https://api.crossref.org/works/10.1167/jov.20.6.18"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_36d714488225669ed88c",
@@ -25632,6 +26281,7 @@
             "url": "https://doi.org/10.31234/osf.io/uyvm6"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_d1f8318ad48e3f8fe81d",
@@ -25679,6 +26329,7 @@
             "url": "https://doi.org/10.5958/2320-6233.2015.00002.4"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_e0d93422fb795569b1fc",
@@ -25929,6 +26580,7 @@
             "url": "https://doi.org/10.1186/1471-244x-8-74"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_1b48bf1ce9f284f8c78f",
@@ -25973,6 +26625,7 @@
             "url": "https://doi.org/10.1177/0098628321995431"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_c26496380a0ed2a75394",
@@ -26071,6 +26724,7 @@
             "url": "https://doi.org/10.1007/s41811-019-00044-8"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_5fa0abc515efdf08a423",
@@ -26145,7 +26799,45 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "mixed"
+      "retested_outcome": "mixed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_d11ff801d1341eb67c1b"
+        ],
+        "decision": "confirmed_same_pair",
+        "evidence": "FORRT's pending row retains the exact later DOI/title but no original expression. Crossref identifies that 2024 article by Seda, Martins, Lisbôa, Batistuzzo, and Fatori; its abstract identifies a direct replication of Pronin, Lin, and Ross (2002) Study 1. Crossref identifies Retested's original DOI as the 2002 Pronin, Lin, Ross Bias Blind Spot report. This resolves the ordered Work pair but does not fill FORRT's original DOI field.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv",
+            "row": 1378
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1525/collabra.122158"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1177/0146167202286008"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The later DOI is identical. The later record's title supplies the exact author-year bibliographic anchor, and Crossref's original record supplies the matching ordered creators and year.",
+          "candidate_record_id": "ps_d11ff801d1341eb67c1b",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [
+            "The retained FORRT row has no original DOI or title; the original-side identity is externally anchored, not recorded as a FORRT pair field."
+          ],
+          "ordered_work_identity": "confirmed_with_external_original_anchor",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree_with_evidence_gap",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_05f347f5d02f8f6bd8ea",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "same_pair_exact_dois",
@@ -26205,6 +26897,7 @@
             "url": "https://escholarship.org/uc/item/9n2618c3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8a0ec691e8260d48e6cb",
@@ -26240,6 +26933,7 @@
             "url": "https://doi.org/10.1027/1864-9335/a000185"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ef2d2ecf249d4bc47615",
@@ -26301,6 +26995,7 @@
             "url": "https://doi.org/10.1002/ejsp.70015"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_8e051965fc4b6e7bc818",
@@ -26384,6 +27079,7 @@
             "row": 2064
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_a029ff6b51ee85e713f7",
@@ -26428,6 +27124,7 @@
             "url": "https://api.crossref.org/works/10.1525/collabra.154998"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_187e799d48e73a0e42b1",
@@ -26484,6 +27181,7 @@
             "url": "https://doi.org/10.1177/0146167219879126"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_2e616b545bcfc9d12f6b",
@@ -26546,6 +27244,7 @@
             "url": "https://api.crossref.org/works/10.3758/s13428-021-01629-y"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e07ce69d92c805ba84c3",
@@ -26750,6 +27449,7 @@
             "url": "https://doi.org/10.1017/s136672891500067x"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_9be004d0302419c59845",
@@ -26834,6 +27534,7 @@
             "url": "https://doi.org/10.1007/s11145-020-10060-2"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_096396f24465bf5ac5e9",
@@ -26869,6 +27570,7 @@
             "url": "https://doi.org/10.1177/07419325211016048"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_6b6fbf551f88be932fb9",
@@ -26950,6 +27652,7 @@
             "url": "https://api.crossref.org/works/10.1037/abn0000230"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_7a9472089933d7f6ccc3",
@@ -27003,6 +27706,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.janxdis.2017.09.004"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_621ac3d4385e48502735",
@@ -27049,6 +27753,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.yhbeh.2016.11.003"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_bf97e82715d720210c99",
@@ -27102,6 +27807,7 @@
             "url": "https://doi.org/10.1080/23743603.2016.1248081"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_5d9c106fd8bffbbbffb8",
@@ -27138,6 +27844,7 @@
             "url": "https://doi.org/10.1186/s40359-024-02194-7"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_b31d5367c947f1580352",
@@ -27194,6 +27901,7 @@
             "url": "https://doi.org/10.1186/s40359-024-02194-7"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_0eb65c4722192638bf73",
@@ -27246,6 +27954,7 @@
             "url": "https://doi.org/10.3389/fnins.2020.00803"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_8a7e8ffcafadb6eeb919",
@@ -27337,6 +28046,7 @@
             "url": "https://api.crossref.org/works/10.3389/fpsyg.2015.00314"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_0159df8916d8de0e65f0",
@@ -27491,6 +28201,7 @@
             "url": "https://doi.org/10.1521/soco.2020.38.6.521"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_136bbca2cd36cf55541d",
@@ -27530,6 +28241,7 @@
             "row": 1261
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_d06b0949bd01d810f199",
@@ -27615,6 +28327,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.evolhumbehav.2022.04.002"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_1623af0c9963d7db07c4",
@@ -27660,6 +28373,7 @@
             "row": 1257
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_2948cd1873a9327cf58f",
@@ -27693,6 +28407,7 @@
             "row": 1913
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_7cf752c5acb76abc8b4c",
@@ -27765,6 +28480,7 @@
             "url": "https://doi.org/10.1111/desc.13100"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a085b01d51a7734e3e68",
@@ -27937,6 +28653,7 @@
             "url": "https://doi.org/10.1111/desc.13208"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_fcb2b134dc7a5bea325e",
@@ -27976,6 +28693,7 @@
             "url": "https://doi.org/10.1177/0956797620953842"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_3ac1668a51b91732690b",
@@ -28072,6 +28790,7 @@
             "url": "https://doi.org/10.1177/10634266050130030401"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_9b070bb0f0c00222c08f",
@@ -28116,6 +28835,7 @@
             "url": "https://doi.org/10.1080/15546128.2020.1763881"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_cac308c98b691cddbb2e",
@@ -28226,6 +28946,7 @@
             "url": "https://api.crossref.org/works/10.1177%2F0014402918771321"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_f32d6c8ce8166cc51083",
@@ -28259,6 +28980,7 @@
             "row": 84
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_42c1399670986130ab1a",
@@ -28345,6 +29067,7 @@
             "url": "https://doi.org/10.15760/etd.8062"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_b1768c4fb80b34ab43ff",
@@ -28412,6 +29135,7 @@
             "row": 1846
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_7edaf78e247c7520aa2a",
@@ -28469,6 +29193,7 @@
             "row": 2161
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c373c6a6ede654e66b33",
@@ -28492,7 +29217,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query reports no ego-depletion effect on risk taking; candidate reports no depletion effect on a subsequent self-control task. Neither DOI pair matches.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1149
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 1937
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_2a7b6c78f056d4d5f06f",
@@ -28572,6 +29307,7 @@
             "url": "https://api.crossref.org/works/10.1177/0146167220928238"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_c4f7631579593408850d",
@@ -28623,6 +29359,7 @@
             "url": "https://api.crossref.org/works/10.1187/cbe.25-04-0055"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_78092a9b23be2525930a",
@@ -28697,8 +29434,35 @@
           "10.17605/osf.io/gupxn"
         ]
       },
-      "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "failed"
+      "reconciled_classification": "later_paper_recorded_pair_unconfirmed",
+      "retested_outcome": "failed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_b19fa2ed7020c6b1bd3f"
+        ],
+        "decision": "same_later_work_different_original",
+        "evidence": "The later DOI is exact, but FORRT links it to 10.17605/osf.io/hw3v6. DataCite identifies that original as Markers of Adulthood Subscale Development by Fosse, Grahe, and Reifman, whereas Retested's original is Interinstitutional Variation in Emerging Adulthood by Fosse and Toyokawa. These are different original Works; the shared later expression does not establish the Retested pair.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/feeds/flora-extractor_keyed_link_disputed.csv",
+            "row": 13
+          },
+          {
+            "url": "https://api.datacite.org/dois/10.17605/osf.io/hw3v6"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1177/2167696815585685"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1177/2167696818810268"
+          }
+        ],
+        "independent_work_identity_review": null,
+        "later_work_matches": true,
+        "original_work_matches": false,
+        "query_record_id": "ps_84ad15a52c21b83b7ac8",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -28782,6 +29546,7 @@
             "url": "https://api.crossref.org/works/10.1016%2Fj.jbtep.2022.101831"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_afc5c326e2532a575b0c",
@@ -28807,18 +29572,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[401]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1251
           },
           {
-            "path": "data/curated/promoted_pairs.json:1251"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1177/21677026261432206"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/per0000778"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2617
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_27dcbf8558b8724d758f",
@@ -28856,6 +29618,7 @@
             "url": "https://api.crossref.org/works/10.1038/s44271-024-00135-z"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_3af46e6fe66fa7d01424",
@@ -28895,6 +29658,7 @@
             "url": "https://doi.org/10.1037/0021-843x.109.3.473"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_a6feedc3c08ed9a7de8f",
@@ -28988,6 +29752,7 @@
             "url": "https://api.crossref.org/works/10.1176/ajp.151.7.1001"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_93e1369b3e7602561f51",
@@ -29036,6 +29801,7 @@
             "url": "https://osf.io/b62aw"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ce83fc40c1bd57cef9aa",
@@ -29114,6 +29880,7 @@
             "row": 507
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_a5a2142345e7ddccabde",
@@ -29147,6 +29914,7 @@
             "row": 507
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_45fe640deef09f0ee684",
@@ -29220,7 +29988,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query's metaphor-norm responses were stable across time/populations; candidate has a different original and later DOI record.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 508
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 1833
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_04c4529c0f09c46fb038",
@@ -29257,6 +30035,7 @@
             "url": "https://doi.org/10.3389/fnhum.2023.1233594"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9e2b536dc4c0be2e7b6e",
@@ -29337,6 +30116,7 @@
             "row": 3124
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_958162179d9d6c776e06",
@@ -29372,6 +30152,7 @@
             "url": "https://doi.org/10.3200/socp.146.6.645-655"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_1633e1c3f3d24f796b3d",
@@ -29445,8 +30226,35 @@
           "10.5281/zenodo.18538611"
         ]
       },
-      "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "failed"
+      "reconciled_classification": "later_paper_recorded_pair_unconfirmed",
+      "retested_outcome": "failed",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_1f5f618a4e389241ee6c"
+        ],
+        "decision": "same_later_work_different_original",
+        "evidence": "The later DOI is exact, but FORRT links it to 10.1126/science.167.3914.86, the 1970 Chimpanzees: Self-Recognition report. Retested's original DOI is the 2008 magpie Mirror-Induced Behavior report by Prior, Schwarz, and Güntürkün. These are different original Works; the shared later expression does not establish the Retested pair.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora_filtered.csv",
+            "row": 316
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1371/journal.pbio.0060202"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1037/com0000223"
+          },
+          {
+            "url": "https://doi.org/10.1126/science.167.3914.86"
+          }
+        ],
+        "independent_work_identity_review": null,
+        "later_work_matches": true,
+        "original_work_matches": false,
+        "query_record_id": "ps_0685c51d4e861aa566ab",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "same_pair_exact_dois",
@@ -29500,6 +30308,7 @@
             "row": 2848
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_291e8d8ffbd918c32fcc",
@@ -29533,6 +30342,7 @@
             "row": 2848
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_d7e495d2448f25f513e6",
@@ -29649,6 +30459,7 @@
             "url": "https://api.crossref.org/works/10.1002/hbm.70592"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_a9e3b836cfd8acf321d7",
@@ -29685,6 +30496,7 @@
             "url": "https://osf.io/94vrb"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_ac7d05a6402a30bf7df1",
@@ -29813,6 +30625,7 @@
             "row": 622
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_3fe7f2aa798dbefa5320",
@@ -29892,6 +30705,7 @@
             "url": "https://api.crossref.org/works/10.1371%2Fjournal.pone.0213194"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_632e71a7cebc5138d287",
@@ -29915,7 +30729,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query's effect is pessimism toward a cold-incompetent character; candidate analyzes evaluative-learning optimism. DOI pairs differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 599
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2749
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e9f784c3d2c2e2938755",
@@ -30000,6 +30824,7 @@
             "url": "https://doi.org/10.1101/2022.01.18.22269473"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9852bd2395474146b301",
@@ -30062,6 +30887,7 @@
             "url": "https://api.crossref.org/works/10.1186/s40359-026-04810-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a887db9119b5fcfa6593",
@@ -30098,6 +30924,7 @@
             "url": "https://api.crossref.org/works/10.1017/thg.2012.23"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_a0a048a8072225974127",
@@ -30244,6 +31071,7 @@
             "url": "https://doi.org/10.5334/pb.1036"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_a877412e2a6e7bcb5276",
@@ -30305,6 +31133,7 @@
             "url": "https://doi.org/10.1111/jmft.12140"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9d31a70511b6694cc2bc",
@@ -30353,6 +31182,7 @@
             "url": "https://doi.org/10.1521/pedi.2024.38.2.138"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_94c1385bcc01f97e3e1b",
@@ -30460,6 +31290,7 @@
             "row": 761
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e7971d1ed4c0a10ba24a",
@@ -30552,6 +31383,7 @@
             "url": "https://doi.org/10.1007/s10864-020-09415-0"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_5a247295d9eeb57701c2",
@@ -30655,6 +31487,7 @@
             "url": "https://api.crossref.org/works/10.1901/jaba.1989.22-325"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": false,
         "query_record_id": "ps_57530bb492c4a78b62d5",
@@ -30769,6 +31602,7 @@
             "row": 318
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_f97e4805c4ad9da4bb0e",
@@ -30802,6 +31636,7 @@
             "row": 318
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_429d753765660d3936f4",
@@ -30889,6 +31724,7 @@
             "url": "https://doi.org/10.1901/jaba.2006.173-05"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_90dba19d04d0c808cf97",
@@ -30924,6 +31760,7 @@
             "url": "https://doi.org/10.1002/jaba.70060"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_cb8a52dde659e89480bf",
@@ -30957,6 +31794,7 @@
             "row": 137
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_4dcbc6f515000a7dc409",
@@ -31041,6 +31879,7 @@
             "url": "https://doi.org/10.1002/jaba.504"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c14349dec1da2624c440",
@@ -31089,6 +31928,7 @@
             "url": "https://doi.org/10.1016/j.rasd.2013.02.007"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_990980c3c45011865f05",
@@ -31113,6 +31953,7 @@
         "decision": "related_but_distinct",
         "evidence": "Query's specified comparison is TIP versus social stories; candidate studies feedback delivery and has different DOI pair.",
         "evidence_locations": [],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_3f2a693cdfa9395aa853",
@@ -31170,6 +32011,7 @@
             "url": "https://api.crossref.org/works/10.1002%2Fjaba.679"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_b87efec1042a50e3a421",
@@ -31193,7 +32035,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query found DRO yielded the lowest target response and highest alternative response; candidate tests a different reinforcement contingency and outcome.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 380
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 767
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_b468627f78f7e902bde7",
@@ -31253,6 +32105,7 @@
             "url": "https://doi.org/10.1901/jeab.1975.24-191"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9a8d3643e3e9744aa4ef",
@@ -31300,6 +32153,7 @@
             "url": "https://doi.org/10.1901/jeab.2012.98-169"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_92159c944c9e65342489",
@@ -31497,6 +32351,7 @@
             "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2319992"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_270c39573b8ad43fcfc1",
@@ -31589,7 +32444,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "The query pair's target is attachment antecedents in mother-toddler problem solving; candidate has different original/later attachment publications and identifiers.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1723
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+            "row": 324
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_e43ff7b59417332438c8",
@@ -31649,7 +32514,17 @@
         ],
         "decision": "related_but_distinct",
         "evidence": "Query compares attractiveness and teacher expectations; candidate attempts a different teacher-expectancy original. Both identifiers differ.",
-        "evidence_locations": [],
+        "evidence_locations": [
+          {
+            "path": "data/curated/promoted_pairs.json",
+            "row": 539
+          },
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 201
+          }
+        ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_8dc7897be847a37fbb13",
@@ -31732,7 +32607,45 @@
         ]
       },
       "reconciled_classification": "same_pair_recorded",
-      "retested_outcome": "successful"
+      "retested_outcome": "successful",
+      "semantic_adjudication": {
+        "candidate_record_ids": [
+          "ps_ff0b723497a17eb214d4"
+        ],
+        "decision": "confirmed_same_later_version_same_pair",
+        "evidence": "FORRT records the identical original DOI with 10.2307/1132137. Crossref's JSTOR and Wiley records agree on the full later title Family Relationships and Children's Emotional Adjustment as Correlates of Maternal and Paternal Differential Treatment: A Replication with Toddler and Preschool Siblings, authors Brenda L. Volling and Julie L. Elins, and 1998-12 publication. The DOI expressions remain distinct because no registrar relation is exposed.",
+        "evidence_locations": [
+          {
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 2255
+          },
+          {
+            "url": "https://api.crossref.org/works/10.2307/1132137"
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1111/j.1467-8624.1998.tb06182.x"
+          }
+        ],
+        "independent_work_identity_review": {
+          "basis": "The original DOI is identical. The later records have the same full title, the same ordered creators, and matching publication month/date.",
+          "candidate_record_id": "ps_ff0b723497a17eb214d4",
+          "coverage": "partial_independent_bibliographic_work_identity_only",
+          "evidence_gaps": [
+            "Crossref exposes no declared relation between the two DOI expressions."
+          ],
+          "ordered_work_identity": "confirmed",
+          "path": "data/curated/forrt_identity_second_review_20260926.json",
+          "reviewed_at_utc": "2026-09-26T19:11:14Z",
+          "scientific_equivalence_axes": "not_compared",
+          "scope": "Ordered bibliographic Work identity only. This packet does not assess an effect, study, sample, population, contrast, method, or outcome.",
+          "second_review_status": "agree",
+          "sha256": "08b692d93b55f5ae7b56fa4097f4b2228fa927dee4e051833869a998eba8c2fb"
+        },
+        "later_work_matches": true,
+        "original_work_matches": true,
+        "query_record_id": "ps_0775442b12d22c0d2ae1",
+        "top_cosine_similarity": null
+      }
     },
     {
       "classification": "same_pair_exact_dois",
@@ -32030,6 +32943,7 @@
             "url": "https://osf.io/ryzva"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_9efb9792d9bfee5f70f1",
@@ -32128,18 +33042,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[399]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 141
           },
           {
-            "path": "data/curated/promoted_pairs.json:141"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.2466/pr0.1993.73.1.347"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.2466/pr0.1994.74.2.446"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 500
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_0762b2ce3a5a7613047e",
@@ -32213,6 +33124,7 @@
             "url": "https://api.crossref.org/works/10.2466/pr0.2002.90.2.515"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c248a80d61bbde7d561d",
@@ -32384,6 +33296,7 @@
             "url": "https://api.crossref.org/works/10.1007/s10648-025-10005-7"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_ea25901a7d8b8a06820f",
@@ -32527,6 +33440,7 @@
             "url": "https://doi.org/10.1037/edu0000944"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_ddd41a376f12c585f78d",
@@ -32636,6 +33550,7 @@
             "url": "https://doi.org/10.1027/1614-0001/a000311"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0f91c9bbbdd8c439c55d",
@@ -32699,6 +33614,7 @@
             "url": "https://doi.org/10.1037/0022-3514.92.2.325"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_fa192575b3ee186331cd",
@@ -32883,6 +33799,7 @@
             "url": "https://osf.io/k23cv"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_95e19d3cc9e034b5e7ce",
@@ -32971,18 +33888,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[408]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 570
           },
           {
-            "path": "data/curated/promoted_pairs.json:570"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.3758/bf03194393"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1037/h0087468"
+            "path": "data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv",
+            "row": 12
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_6bae3a84192fba5b19e6",
@@ -33066,6 +33980,7 @@
             "url": "https://doi.org/10.1037/xlm0000265"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_88edc58fea1e6049192c",
@@ -33219,6 +34134,7 @@
             "url": "https://doi.org/10.1007/s40732-024-00601-4"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_0e2ac149058609a5c73f",
@@ -33291,6 +34207,7 @@
             "url": "https://osf.io/x5b6d"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_2623ab3aff2e1e637f17",
@@ -33327,6 +34244,7 @@
             "url": "https://doi.org/10.2466/pms.1993.77.3f.1265"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": false,
         "query_record_id": "ps_3275657db3a839c5aec6",
@@ -33449,6 +34367,7 @@
             "url": "https://doi.org/10.1007/s41809-020-00072-3"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": false,
         "original_work_matches": true,
         "query_record_id": "ps_71a49685b597d1a4b417",
@@ -33593,18 +34512,15 @@
         "evidence": null,
         "evidence_locations": [
           {
-            "path": "/tmp/retested_embedding_review_all.json#records[397]"
+            "path": "data/curated/promoted_pairs.json",
+            "row": 1638
           },
           {
-            "path": "data/curated/promoted_pairs.json:1638"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.5127/jep.020011"
-          },
-          {
-            "url": "https://api.crossref.org/works/10.1016/j.jbtep.2012.08.004"
+            "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+            "row": 54
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_c172772ee02400471bec",
@@ -33669,6 +34585,7 @@
             "url": "https://api.crossref.org/works/10.1016/j.addbeh.2025.108393"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_bb316c1fa50477125f2d",
@@ -33714,6 +34631,7 @@
             "url": "https://osf.io/preprints/psyarxiv/4k8ey_v1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": true,
         "original_work_matches": true,
         "query_record_id": "ps_a56750d1330c23ac275f",
@@ -33756,6 +34674,7 @@
             "url": "https://doi.org/10.26686/wgtn.17057906.v1"
           }
         ],
+        "independent_work_identity_review": null,
         "later_work_matches": null,
         "original_work_matches": null,
         "query_record_id": "ps_0ab0d32b558d95f583e0",
@@ -33803,22 +34722,22 @@
   "schema_version": 1,
   "summary": {
     "audited_pairs": 1487,
-    "candidate_new_pair_links": 1056,
-    "later_paper_recorded_pair_unconfirmed": 43,
+    "candidate_new_pair_links": 1058,
+    "later_paper_recorded_pair_unconfirmed": 45,
     "no_exact_doi_or_title_match": 1013,
     "reconciled_classifications": {
-      "later_paper_recorded_pair_unconfirmed": 43,
+      "later_paper_recorded_pair_unconfirmed": 45,
       "no_exact_doi_or_title_match": 1013,
-      "same_pair_recorded": 431
+      "same_pair_recorded": 429
     },
-    "same_pair_recorded": 431,
+    "same_pair_recorded": 429,
     "semantic_decisions": {
-      "confirmed_same_later_version_same_pair": 20,
-      "confirmed_same_pair": 39,
+      "confirmed_same_later_version_same_pair": 27,
+      "confirmed_same_pair": 40,
       "related_but_distinct": 363,
-      "same_later_work_different_original": 39
+      "same_later_work_different_original": 41
     },
-    "semantic_queries_reviewed": 461,
+    "semantic_queries_reviewed": 471,
     "transitions": [
       {
         "from": "later_paper_recorded_pair_unconfirmed",
@@ -33847,7 +34766,12 @@
       },
       {
         "from": "same_pair_recorded",
-        "pairs": 372,
+        "pairs": 2,
+        "to": "later_paper_recorded_pair_unconfirmed"
+      },
+      {
+        "from": "same_pair_recorded",
+        "pairs": 370,
         "to": "same_pair_recorded"
       }
     ]

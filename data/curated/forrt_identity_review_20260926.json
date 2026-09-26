@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "purpose": "bounded source-level adjudication of the ten Retested/FORRT title-or-alternate-identifier candidates; resolves citable Work identity only, never effect, study, sample, population, contrast, or outcome identity",
+  "reviewed_at_utc": "2026-09-26T19:00:00Z",
+  "method": "Each source relation was checked against the retained FORRT row and DOI metadata. DOI equality is expression equality only. Different DOI expressions were linked only by an explicit Crossref/DataCite relation or matching full title, ordered authors, and publication year/date. The work decision does not establish scientific equivalence.",
+  "decisions": [
+    {
+      "query_record_id": "ps_9a98cc6833fed966a9c4",
+      "doi_o": "10.1007/s11218-024-09948-6",
+      "doi_r": "10.1007/s11218-026-10258-2",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_d993dd4e5e070f866fc6"],
+      "evidence": "FORRT records the identical original DOI and preprint 10.31234/osf.io/6vfdq_v1. The preprint and Retested journal DOI have the identical later title, ordered authors (Matusz, Kim, Osterhage), and 2025/2026 version chronology. This is an ordered bibliographic Work-pair decision only; neither source exposes a formal registrar version edge for the v1 DOI.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":3525},{"url":"https://api.crossref.org/works/10.1007/s11218-026-10258-2"},{"url":"https://doi.org/10.31234/osf.io/6vfdq_v1"}]
+    },
+    {
+      "query_record_id": "ps_edd44978d50df8b9281d",
+      "doi_o": "10.1016/0010-0285(89)90003-0",
+      "doi_r": "10.7916/salt.v5i2.1571",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_0f047803f869ac09ee3d"],
+      "evidence": "FORRT records the identical original DOI and 10.7916/d8f76r2r. DataCite records for that DOI and Retested's 10.7916/salt.v5i2.1571 agree on sole creator Heekyung Seol, 2005, and the full later title The Critical Period in the Acquisition of L2 Syntax: A Partial Replication of Johnson and Newport (1989). They are distinct DOI expressions without a declared registrar relation.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-validation_validated_export.csv","row":32},{"url":"https://api.datacite.org/dois/10.7916/d8f76r2r"},{"url":"https://api.datacite.org/dois/10.7916/salt.v5i2.1571"}]
+    },
+    {
+      "query_record_id": "ps_d597d28dcdf7e966234e",
+      "doi_o": "10.1016/0749-596x(86)90041-0",
+      "doi_r": "10.1002/acp.4230",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_7050d88e212343891d65"],
+      "evidence": "FORRT pairs the identical original DOI with repository DOI 10.17169/refubium-44554. DataCite explicitly marks that repository record IsIdenticalTo 10.1002/acp.4230; both records name Does generation benefit learning for narrative and expository texts? A direct replication attempt by Schindler, Richter, and Mar (2024).",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":3056},{"url":"https://api.datacite.org/dois/10.17169/refubium-44554"},{"url":"https://api.crossref.org/works/10.1002/acp.4230"}]
+    },
+    {
+      "query_record_id": "ps_914f623b98772aad4043",
+      "doi_o": "10.1016/j.cognition.2008.08.008",
+      "doi_r": "10.1016/j.cogdev.2021.101054",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_c430737befcd26de9813"],
+      "evidence": "FORRT pairs the identical original DOI with preprint 10.31234/osf.io/kfgr8. Crossref's journal record has the same later title and authors (Schulze, Buttelmann) and explicitly declares has-preprint 10.31234/osf.io/kfgr8.",
+      "evidence_locations": [{"path":"data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv","row":57},{"url":"https://api.crossref.org/works/10.1016/j.cogdev.2021.101054"}]
+    },
+    {
+      "query_record_id": "ps_7eb549baf488d18a5927",
+      "doi_o": "10.1037/a0018915",
+      "doi_r": "10.1176/ps.62.4.pss6204_0367",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_4a614a5ee9f60c5b21d4"],
+      "evidence": "FORRT records the identical original DOI with 10.1176/appi.ps.62.4.367. Crossref's two later records agree on the full title Guided Self-Help Treatment for Recurrent Binge Eating: Replication and Extension, the same nine ordered authors (DeBar through Kraemer), and 2011-04 publication. The DOI expressions remain distinct because neither registration declares their relation.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":2237},{"url":"https://api.crossref.org/works/10.1176/ps.62.4.pss6204_0367"},{"url":"https://api.crossref.org/works/10.1176/appi.ps.62.4.367"}]
+    },
+    {
+      "query_record_id": "ps_646afb26c9ab35fd89e2",
+      "doi_o": "10.1111/jcpp.13733",
+      "doi_r": "10.31234/osf.io/s5y7r",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_62ffb945a107ce2c5089"],
+      "evidence": "FORRT pairs the identical original DOI with journal DOI 10.1111/1460-6984.13086. Crossref gives the identical later title and ordered authors (Gasparini, Shepherd, Wang, Wake, Morgan) and explicitly declares has-preprint 10.31234/osf.io/s5y7r.",
+      "evidence_locations": [{"path":"data/raw/forrt/repos/flora-validation/data/extracted_08.06.2026.csv","row":574},{"url":"https://api.crossref.org/works/10.1111/1460-6984.13086"}]
+    },
+    {
+      "query_record_id": "ps_05f347f5d02f8f6bd8ea",
+      "doi_o": "10.1177/0146167202286008",
+      "doi_r": "10.1525/collabra.122158",
+      "decision": "confirmed_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_d11ff801d1341eb67c1b"],
+      "evidence": "FORRT's pending row retains the exact later DOI/title but no original expression. Crossref identifies that 2024 article by Seda, Martins, Lisbôa, Batistuzzo, and Fatori; its abstract identifies a direct replication of Pronin, Lin, and Ross (2002) Study 1. Crossref identifies Retested's original DOI as the 2002 Pronin, Lin, Ross Bias Blind Spot report. This resolves the ordered Work pair but does not fill FORRT's original DOI field.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv","row":1378},{"url":"https://api.crossref.org/works/10.1525/collabra.122158"},{"url":"https://api.crossref.org/works/10.1177/0146167202286008"}]
+    },
+    {
+      "query_record_id": "ps_84ad15a52c21b83b7ac8",
+      "doi_o": "10.1177/2167696815585685",
+      "doi_r": "10.1177/2167696818810268",
+      "decision": "same_later_work_different_original",
+      "original_work_matches": false,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_b19fa2ed7020c6b1bd3f"],
+      "evidence": "The later DOI is exact, but FORRT links it to 10.17605/osf.io/hw3v6. DataCite identifies that original as Markers of Adulthood Subscale Development by Fosse, Grahe, and Reifman, whereas Retested's original is Interinstitutional Variation in Emerging Adulthood by Fosse and Toyokawa. These are different original Works; the shared later expression does not establish the Retested pair.",
+      "evidence_locations": [{"path":"data/raw/forrt/feeds/flora-extractor_keyed_link_disputed.csv","row":13},{"url":"https://api.datacite.org/dois/10.17605/osf.io/hw3v6"},{"url":"https://api.crossref.org/works/10.1177/2167696815585685"},{"url":"https://api.crossref.org/works/10.1177/2167696818810268"}]
+    },
+    {
+      "query_record_id": "ps_0685c51d4e861aa566ab",
+      "doi_o": "10.1371/journal.pbio.0060202",
+      "doi_r": "10.1037/com0000223",
+      "decision": "same_later_work_different_original",
+      "original_work_matches": false,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_1f5f618a4e389241ee6c"],
+      "evidence": "The later DOI is exact, but FORRT links it to 10.1126/science.167.3914.86, the 1970 Chimpanzees: Self-Recognition report. Retested's original DOI is the 2008 magpie Mirror-Induced Behavior report by Prior, Schwarz, and Güntürkün. These are different original Works; the shared later expression does not establish the Retested pair.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora_filtered.csv","row":316},{"url":"https://api.crossref.org/works/10.1371/journal.pbio.0060202"},{"url":"https://api.crossref.org/works/10.1037/com0000223"},{"url":"https://doi.org/10.1126/science.167.3914.86"}]
+    },
+    {
+      "query_record_id": "ps_0775442b12d22c0d2ae1",
+      "doi_o": "10.2307/585120",
+      "doi_r": "10.1111/j.1467-8624.1998.tb06182.x",
+      "decision": "confirmed_same_later_version_same_pair",
+      "original_work_matches": true,
+      "later_work_matches": true,
+      "candidate_record_ids": ["ps_ff0b723497a17eb214d4"],
+      "evidence": "FORRT records the identical original DOI with 10.2307/1132137. Crossref's JSTOR and Wiley records agree on the full later title Family Relationships and Children's Emotional Adjustment as Correlates of Maternal and Paternal Differential Treatment: A Replication with Toddler and Preschool Siblings, authors Brenda L. Volling and Julie L. Elins, and 1998-12 publication. The DOI expressions remain distinct because no registrar relation is exposed.",
+      "evidence_locations": [{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":2255},{"url":"https://api.crossref.org/works/10.2307/1132137"},{"url":"https://api.crossref.org/works/10.1111/j.1467-8624.1998.tb06182.x"}]
+    }
+  ]
+}

@@ -9,6 +9,7 @@ from pathlib import Path
 
 from .game import context_ready
 from .load import ROOT
+from .stats import finding_context_tier
 
 BUILD = ROOT / "data" / "build"
 PUBLIC = ROOT / "site" / "public" / "generated"
@@ -40,6 +41,25 @@ def has_local_page(f: dict) -> bool:
     """
 
     return bool(f.get("slug"))
+
+
+def _finding_reveal(f: dict) -> dict:
+    """Return the answer-only payload fetched after a finding prediction.
+
+    Finding pages are static, so this is a casual anti-spoiler boundary rather
+    than access control.  Keeping these fields out of the initial HTML and
+    hydration props still makes the intended guess-before-reveal interaction
+    honest for ordinary visitors and mirrors the main game's payload split.
+    """
+
+    record = f["lenses"]["record"]
+    return {
+        "schema_version": 1,
+        "record": {
+            key: record[key]
+            for key in ("code", "label", "n_attempts", "successful", "mixed", "failed")
+        },
+    }
 
 
 def _daily_decks(items: list[dict], reveals: dict) -> dict[str, list[str]]:
@@ -105,17 +125,24 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
         "pending.json": _dump(BUILD / "pending.json", pending),
     }
 
-    # --- client payloads (only what the browser needs; answers kept apart from cards)
+    # --- client payloads (only what the browser needs; answers kept apart from cards/pages)
     _dump(PUBLIC / "game" / "items.json", items)
     _dump(PUBLIC / "game" / "daily.json", _daily_decks(items, reveals))
     for gid, rv in reveals.items():
         _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
+    sizes["finding-reveals"] = sum(
+        _dump(PUBLIC / "finding" / "r" / f"{f['slug']}.json", _finding_reveal(f))
+        for f in F.values()
+    )
     _dump(PUBLIC / "queue" / "candidates.json", candidates)
     search = [{"t": "effect", "s": e["slug"], "n": e["name"], "a": e["aliases"][:6], "d": e.get("discipline"),
                "k": e["lenses"]["record"]["k"]} for e in E.values()]
     for f in F.values():
         p = P.get(f["doi_o"], {})
         search.append({"t": "finding", "s": f["slug"], "n": p.get("title") or f["doi_o"], "doi": f["doi_o"],
-                       "au": p.get("authors"), "y": p.get("year"), "k": f["lenses"]["record"]["k"]})
+                       "au": p.get("authors"), "y": p.get("year"), "k": f["lenses"]["record"]["k"],
+                       # Context quality is answer-blind and lets readers find
+                       # the genuinely source-finished explanation pages.
+                       "ctx": finding_context_tier(g, f["doi_o"], f)})
     sizes["search.json"] = _dump(PUBLIC / "search.json", search)
     return sizes

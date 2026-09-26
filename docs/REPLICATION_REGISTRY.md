@@ -158,16 +158,16 @@ reviewed_original_work_in_pending_record
 not_fully_compared
 ```
 
-In the current frozen comparison, 814 Retested pairs are `exact_expression_pair_reported`; 38 are `reviewed_same_work_pair_expression_unresolved`; 20 are `reviewed_same_work_pair_versioned_expressions`; and 10 are `title_or_alternate_identifier_pair_candidate`. The first group is exact DOI-expression evidence. The next two are single-review Work assertions that keep expressions distinct; the last is explicitly a candidate, not an identity assertion. None resolves effect, study, sample, or outcome identity.
+In the current frozen comparison, 814 Retested pairs are `exact_expression_pair_reported`; 39 are `reviewed_same_work_pair_expression_unresolved`; and 27 are `reviewed_same_work_pair_versioned_expressions`. Together these are 880 positive ordered bibliographic Work relations, 429 among Retested additions. There are no remaining `title_or_alternate_identifier_pair_candidate` records: the bounded source review resolved the former candidates into the two reviewed same-Work classes or `reviewed_same_later_work_different_original` (41 records). The exact group is DOI-expression evidence; the reviewed groups are Work assertions that keep expressions distinct. None resolves effect, study, sample, or outcome identity.
 
 The document always declares `coverage.comparison_state: interim_partially_source_adjudicated` and `coverage.assurance_complete: false`. Its assurance blockers include the following limits:
 
 - effect identity has not been compared for any paper-pair overlap;
 - study and sample identity are intentionally unresolved for report-scoped claim tests;
 - semantic review does not cover every non-exact query; and
-- independent dual review/adjudication has not started.
+- a partial independent bibliographic Work-identity re-review covers only eight directly source-adjudicated positive candidates (seven full agreements and one agreement with a material original-side provenance gap); it does not complete independent dual review/adjudication for the registry.
 
-The implementation also reports partial comparison blocks (alias/version graph, bibliographic fallback, semantic retrieval, and textless metadata audit). Registry evidence locators are rewritten to stable pinned/captured paths where possible, rather than carrying transient `/tmp` references. The semantic review is nonetheless incomplete as evidence: 60 decisions have incomplete evidence, comprising 30 without a rationale and 30 without evidence locations. Therefore a no-confirmed-match outcome is bounded to the declared frozen scope and comparison blocks; it is never a universal claim that FORRT or the literature contains no match. V1 has `effect_relations_resolved: 0` and `certified_new_to_forrt: 0` by construction.
+The implementation also reports partial comparison blocks (alias/version graph, bibliographic fallback, semantic retrieval, and textless metadata audit). Registry evidence locators are rewritten to stable pinned/captured paths where possible, rather than carrying transient `/tmp` references. The semantic review is nonetheless incomplete as evidence: 40 decisions have incomplete evidence, comprising 30 without a rationale and 10 without evidence locations. The independent re-review is limited to ordered bibliographic Work identity; it compares no effect, study, sample, population, contrast, method, or outcome axis. Therefore a no-confirmed-match outcome is bounded to the declared frozen scope and comparison blocks; it is never a universal claim that FORRT or the literature contains no match. V1 has `effect_relations_resolved: 0` and `certified_new_to_forrt: 0` by construction.
 
 ## Commands and validation
 

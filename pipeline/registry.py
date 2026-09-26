@@ -14,6 +14,7 @@ from collections import Counter, defaultdict
 from rapidfuzz import fuzz
 
 from . import evidence as ev
+from . import explanations
 from .ids import EffectLedger, doi_slug, is_na, norm_doi, norm_name, slugify
 
 CLOSENESS = ("instructions", "measures", "stimuli", "procedure", "location", "renumeration",
@@ -267,6 +268,11 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             p = papers[doi_o]
             p["openalex"] = {k: o[k] for k in ("cited_by", "counts_by_year", "is_retracted", "topic", "subfield", "field")}
         findings[doi_o] = {"doi_o": doi_o, "slug": p.get("slug") or doi_slug(doi_o), "attempts": sorted(aids)}
+
+    # This layer is deliberately attached after DOI folds and after every
+    # finding exists.  It can therefore neither create a phantom finding nor
+    # silently attach source-backed prose to a different original paper.
+    explanations.attach(findings, src.get("explanations") or {}, doi_folds)
 
     # ---------------------------------------------------------------- effects: named phenomena
     famous_by_key = {}

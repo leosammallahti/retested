@@ -6,6 +6,7 @@
     "data": "cd .. && python -m pipeline build",
     "dev": "astro dev",
     "build": "astro build",
+    "verify": "node scripts/verify-build.mjs",
     "preview": "astro preview",
     "all": "npm run data && npm run build"
   },

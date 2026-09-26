@@ -6,6 +6,15 @@ import statistics
 from collections import Counter, defaultdict
 
 VERDICT = ("successful", "failed", "mixed")
+FINDING_CONTEXT_TIERS = (
+    "source_reviewed_explanation",
+    "plain_language_game_context",
+    "fallback_source_reviewed_claim",
+    "fallback_forrt_coded_claim",
+    "fallback_named_effect",
+    "fallback_title_only",
+    "no_context",
+)
 
 
 def wilson(k: int, n: int, z: float = 1.96) -> list[float] | None:
@@ -80,6 +89,45 @@ def uncounted(candidates: list[dict]) -> dict:
     }
 
 
+def finding_context_tier(g: dict, doi_o: str, finding: dict) -> str:
+    """Return the first pre-guess context tier used by a finding page."""
+    attempts, papers = g["attempts"], g["papers"]
+    finding_attempts = [attempts[aid] for aid in finding["attempts"]]
+    explanation = finding.get("explanation") or {}
+    if (explanation.get("review") or {}).get("state") == "source_reviewed":
+        return "source_reviewed_explanation"
+    if finding.get("game_contexts"):
+        return "plain_language_game_context"
+    if any((attempt.get("retested_review") or {}).get("original_claim_quote") for attempt in finding_attempts):
+        return "fallback_source_reviewed_claim"
+    if any(row.get("claim_text_o") for attempt in finding_attempts for row in attempt.get("rows") or []):
+        return "fallback_forrt_coded_claim"
+    if finding.get("effects"):
+        return "fallback_named_effect"
+    if (papers.get(doi_o) or {}).get("title"):
+        return "fallback_title_only"
+    return "no_context"
+
+
+def finding_context_coverage(g: dict) -> dict[str, int]:
+    """Priority-disjoint context coverage for original-finding pages.
+
+    This describes what a reader can be shown *before* seeing an attempt's
+    result.  It intentionally does not call a paper title, a FORRT-coded
+    string, or a named effect ``source_reviewed``: only the canonical
+    explanation layer earns that label.  The tiers mirror the rendering
+    fallback order and therefore sum exactly to the finding denominator.
+    """
+    findings = g["findings"]
+    counts = Counter()
+    for doi_o, finding in findings.items():
+        counts[finding_context_tier(g, doi_o, finding)] += 1
+    result = {"denominator": len(findings), **{tier: counts[tier] for tier in FINDING_CONTEXT_TIERS}}
+    if sum(result[tier] for tier in FINDING_CONTEXT_TIERS) != result["denominator"]:
+        raise AssertionError("finding context tiers must partition the finding denominator")
+    return result
+
+
 def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     A, F, E, P = g["attempts"], g["findings"], g["effects"], g["papers"]
     g["_eff_by_id"] = {e["id"]: e for e in E.values()}
@@ -152,6 +200,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
 
     rec_counts = Counter(e["lenses"]["record"]["code"] for e in E.values())
     fin_counts = Counter(f["lenses"]["record"]["code"] for f in F.values())
+    context_coverage = finding_context_coverage(g)
 
     def fame(e):
         fam = e.get("famous") or {}
@@ -198,6 +247,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
                                            for a in A.values()),
             "famous_effects": sum(1 for e in E.values() if e.get("famous")),
             "findings": len(F),
+            "source_reviewed_explanations": context_coverage["source_reviewed_explanation"],
             "attempts": len(A),
             "replications": len(reps),
             "reproductions": len(A) - len(reps),
@@ -256,6 +306,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
         "uncounted": uncounted(candidates),
         "effect_record_counts": dict(rec_counts),
         "finding_record_counts": dict(fin_counts),
+        "finding_context_coverage": context_coverage,
         "lists": {
             "graveyard": [card(e) for e in graveyard[:80]],
             "survivors": [card(e) for e in survivors[:80]],

@@ -5,12 +5,14 @@ import argparse
 import json
 import sys
 import time
+from pathlib import Path
 
 from . import (
     authors, choose, claims, discover, export, fetch, fulltext, game, link, load, originals, osf,
     osf_documents, outcomes, pair_summaries, queue, reconciliation_registry, references, registry, reread, score,
     stats, triage, validate, verify,
 )
+from . import explanation_import
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -50,10 +52,12 @@ def build(accept_baseline: bool) -> int:
     if raw_problems:
         print("\nRAW INPUT VALIDATION FAILED:", *raw_problems[:40], sep="\n  - ")
         return 1
+    promoted_rows = load.load_promoted()
     src = {
         "flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
         "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
-        "promoted": load.load_promoted(),
+        "promoted": promoted_rows,
+        "explanations": load.load_finding_explanations(promoted_rows),
     }
     step(f"loaded: flora {len(src['flora'])}, fred {len(src['fred'])}, legacy {len(src['legacy']['data'])}+{len(src['legacy']['rr'])}, "
          f"famous {len(src['famous'])}, openalex {len(src['openalex'])}, promoted {len(src['promoted'])}")
@@ -67,12 +71,14 @@ def build(accept_baseline: bool) -> int:
     before = len(candidates)
     candidates = queue.dedupe(candidates)
     items, reveals = game.build(g, load.load_claims(), candidates, load.load_refused_claims())
+    finding_contexts = game.attach_finding_contexts(g, items, reveals)
     if before != len(candidates):
         step(f"deduped {before - len(candidates)} repeat deposits of work already in the queue")
     queue.consequences(candidates, g)
     pending = queue.pending(candidates, g)
     st = stats.build(g, items, candidates)
-    step(f"game {len(items)} items; queue {len(candidates)} candidates; "
+    step(f"game {len(items)} items; {finding_contexts} study contexts attached to finding pages; "
+         f"queue {len(candidates)} candidates; "
          f"{sum(len(v) for v in pending['by_finding'].values())} pending on {len(pending['by_finding'])} finding pages")
     problems = validate.run(g, src["flora"], items, reveals, st, accept_baseline, candidates, pending)
     if problems:
@@ -92,9 +98,10 @@ def build(accept_baseline: bool) -> int:
 
 
 def run_discover(mode: str) -> int:
+    promoted_rows = load.load_promoted()
     src = {"flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
            "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
-           "promoted": load.load_promoted()}
+           "promoted": promoted_rows, "explanations": load.load_finding_explanations(promoted_rows)}
     g = registry.build(src, EffectLedger(LEDGER))
     discover.run(g, mode)
     return 0
@@ -107,6 +114,13 @@ def main() -> None:
     b.add_argument("--accept-baseline", action="store_true", help="accept count changes and rewrite the baseline")
     f = sub.add_parser("fetch", help="download the raw sources listed in data/raw/forrt/MANIFEST.json")
     f.add_argument("--refresh", action="store_true", help="re-download from upstream and record new hashes")
+    ei = sub.add_parser("explanations-import", help="validate and merge source-reviewed explanation packets")
+    ei.add_argument("packets", nargs="+", type=Path, help="versioned finding_explanations JSON packet(s)")
+    ei.add_argument("--target", type=Path, default=load.ROOT / "data" / "curated" / "finding_explanations.json",
+                    help="committed explanation layer to update")
+    check_mode = ei.add_mutually_exclusive_group()
+    check_mode.add_argument("--check", action="store_true", help="validate/merge-check without writing")
+    check_mode.add_argument("--dry-run", action="store_true", help="show the safe merge result without writing")
     dp = sub.add_parser("discover", help="find candidates outside Retested's counted record")
     dp.add_argument("--mode", choices=["cites", "keyword", "coverage"], default="cites", help="cites = citation graph of known originals; keyword = title search; coverage = what a keyword search can see")
     ap_ = sub.add_parser("authors", help="fetch author identities for the originals our finds point at")
@@ -199,6 +213,8 @@ def main() -> None:
                             {f.strip() for f in a.fields.split(",")} if a.fields else None, a.source, a.limit))
     if a.cmd == "discover":
         sys.exit(run_discover(a.mode))
+    if a.cmd == "explanations-import":
+        sys.exit(explanation_import.run(a.packets, a.target, check=a.check, dry_run=a.dry_run))
     if a.cmd == "build":
         sys.exit(build(a.accept_baseline))
     if a.cmd == "fetch":

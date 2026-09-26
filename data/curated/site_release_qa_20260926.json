@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-09-26",
+  "status": "pass",
+  "scope": "Answer-separated finding prediction and result routes in the final local root and /retested/ static builds.",
+  "final_static_build": {
+    "html_pages": 11969,
+    "indexable_pages": 7342,
+    "sitemap_urls": 7342,
+    "finding_prediction_pages": 4626,
+    "finding_result_pages": 4626,
+    "finding_reveal_payloads": 4626,
+    "local_references_checked_per_base_variant": 192823,
+    "missing_targets": 0,
+    "missing_fragments": 0
+  },
+  "answer_separation": {
+    "prediction_pages_without_embedded_record_answer": 4626,
+    "reveal_payloads_matching_built_record": 4626,
+    "result_pages_with_noindex_follow": 4626,
+    "result_pages_canonicalized_to_prediction": 4626,
+    "result_routes_in_sitemap": 0,
+    "boundary": "casual static-site anti-spoiler separation, not access control"
+  },
+  "context_partition": {
+    "denominator": 4626,
+    "source_reviewed_explanation": 156,
+    "plain_language_game_context": 456,
+    "fallback_source_reviewed_claim": 1539,
+    "fallback_forrt_coded_claim": 250,
+    "fallback_named_effect": 132,
+    "fallback_title_only": 2093,
+    "no_context": 0,
+    "stats_search_and_recomputed_counts_agree": true
+  },
+  "independent_checks": [
+    {
+      "audit": "final_static_release_recheck",
+      "auditor": "codex-terra-final-site-release-recheck",
+      "status": "pass",
+      "blockers": 0,
+      "notes": "Read-only exhaustive route, payload, sitemap, context-partition, local-link, and fragment audit of the final 156-explanation build."
+    },
+    {
+      "audit": "earlier_browser_and_base_path_qa",
+      "working_report_sha256": "5c216aaa42c79d2bccd443cbfcd2fe80c1553ba5ab574557d601e618cc1332ca",
+      "status": "pass",
+      "scope_note": "Ran against the same answer-separated route implementation when 146 source-reviewed explanations were present. It included headless-Chrome inspection at 320 and 430 CSS pixels and a disposable /retested/ build."
+    }
+  ],
+  "targeted_regression": {
+    "doi": "10.1016/j.nlm.2017.12.007",
+    "result": "The former no-context finding now has a source-reviewed four-field original-study explanation and primary-source evidence."
+  },
+  "browser_caveat": "The final 156-explanation artifact received exhaustive static QA but not another browser render because no Chrome, Chromium, Playwright, or Puppeteer executable was available to the final reviewer. The earlier browser QA passed on the same layout and interaction code before the last ten content-only explanation imports."
+}

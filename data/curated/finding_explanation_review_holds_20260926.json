@@ -1,0 +1,629 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-26",
+  "scope": "Consolidated source-review holds from temporary batches 1–21; accepted explanations are excluded from this unresolved queue.",
+  "holds": [
+    {
+      "doi_o": "10.1007/s40617-018-0243-y",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_10] The accessible primary record did not provide enough precise population and measurement detail to support all required display fields. Held rather than convert intervention descriptions into unsupported claims.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5959821/",
+      "source_batches": [
+        "session_source_batch_10"
+      ]
+    },
+    {
+      "doi_o": "10.1016/0010-0285(73)90033-9",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_21] The openly reachable scan did not yield inspectable article text, so the claim, method, population, and outcome measure could not each be source-verified.",
+      "source_url": "https://people.umass.edu/biep540w/pdf/Tversky%20availability.pdf",
+      "source_batches": [
+        "session_source_batch_21"
+      ]
+    },
+    {
+      "doi_o": "10.1016/j.cognition.2017.09.005",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_21] The supplied author-manuscript URL returned HTTP 403 during review; no primary full text was available for strict field verification.",
+      "source_url": "https://scholar.harvard.edu/files/peggyli/files/liabarbanellanimals.pdf",
+      "source_batches": [
+        "session_source_batch_21"
+      ]
+    },
+    {
+      "doi_o": "10.1016/j.cogpsych.2017.07.001",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1016/j.joep.2018.12.001",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_21] The reachable document exposed only title-and-abstract material, which is insufficient under the no-abstract-only rule.",
+      "source_url": "https://shafir.scholar.princeton.edu/sites/g/files/toruqf4226/files/exercise_in_self_replication.pdf",
+      "source_batches": [
+        "session_source_batch_21"
+      ]
+    },
+    {
+      "doi_o": "10.1016/j.neuron.2008.07.005",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch] The publisher source was bot-blocked and no independently reachable original full text was obtained in this batch.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch"
+      ]
+    },
+    {
+      "doi_o": "10.1016/j.visres.2006.11.013",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1037/0022-006x.74.2.263",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/a0016687",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/a0017981",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/a0022010",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/a0034864",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/a0038029",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/ccp0000161",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/h0030644",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_13] The accessible source PDF is image-only in this environment, so it could not support a quote-bearing original-study record.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_13"
+      ]
+    },
+    {
+      "doi_o": "10.1037/pspp0000115",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_18] The direct PMC article was source-readable, but its DOI has no built finding after current registry folding, so it cannot be imported into the finding-explanation layer.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1037/xlm0000281",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_18] PMC full-text retrieval returned a reCAPTCHA challenge rather than the article; no quote-bearing source review completed.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_18"
+      ]
+    },
+    {
+      "doi_o": "10.1038/nature08637",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_19] Publisher page provided the original abstract but not directly accessible full methods/population text in this review; do not accept an abstract-only summary.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_19"
+      ]
+    },
+    {
+      "doi_o": "10.1038/s41598-018-31129-7",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_19] Direct original full text was accessible, but this bounded pass did not complete exact population/outcome extraction; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_19"
+      ]
+    },
+    {
+      "doi_o": "10.1038/s41598-020-71919-6",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_19] Direct original full text was accessible, but this bounded pass did not complete exact population/outcome extraction; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_19"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.0803768105",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.0907664106",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_8] The directly fetched primary-source record supplied an abstract describing eye tracking and the inference, but not a sufficiently precise participant description for all four strict v1 display fields. Held rather than infer population details.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2795489/",
+      "source_batches": [
+        "session_source_batch_8"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1202129109",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1321202111",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch] The publisher PDF endpoint was bot-blocked in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1415086111",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1421435112",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch] The publisher PDF endpoint was bot-blocked in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1514699113",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1516047113",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1523698113",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1601280113",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_12] The accessible source summary was insufficient to verify each required field from full primary methods and measurements. Held rather than synthesize beyond the source.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4978259/",
+      "source_batches": [
+        "session_source_batch_12"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1607330114",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_12] The accessible source summary was insufficient to verify each required field from full primary methods and measurements. Held rather than synthesize beyond the source.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5224403/",
+      "source_batches": [
+        "session_source_batch_12"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1618923114",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch] The publisher PDF endpoint was bot-blocked in this environment; do not infer a method from metadata.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1701916114",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1707040114",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1717092115",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.1805327115",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.192579399",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.2014505117",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_15] Official PMC identifier was found, but the full-article request returned a reCAPTCHA challenge rather than source text; no record drafted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_15"
+      ]
+    },
+    {
+      "doi_o": "10.1073/pnas.2026447118",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1093/scan/nsn046",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1093/scan/nsv107",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_10] The accessible primary text did not provide a sufficiently precise participant description and outcome-measure specification for all strict v1 fields. Held rather than infer them from a broad summary.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4769621/",
+      "source_batches": [
+        "session_source_batch_10"
+      ]
+    },
+    {
+      "doi_o": "10.1098/rspb.2011.1024",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_12] The accessible primary text did not yield a sufficiently precise original-study population and outcome specification for a strict v1 record. Held rather than overstate the task evidence.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3248720/",
+      "source_batches": [
+        "session_source_batch_12"
+      ]
+    },
+    {
+      "doi_o": "10.1111/cogs.13064",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_20] A university portal identified an accepted manuscript, but its document endpoint returned 403 in this pass; the portal metadata alone was not used for source-level review.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_20"
+      ]
+    },
+    {
+      "doi_o": "10.1111/desc.12445",
+      "state": "held_source_mismatch",
+      "reason": "[session_source_batch_20] The PMC DOI lookup returned a different article that cited this DOI rather than a matching primary full text.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_20"
+      ]
+    },
+    {
+      "doi_o": "10.1111/jopy.12690",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_20] The accessible publisher record exposed bibliographic information and abstract text, but no directly inspectable primary full text was captured.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_20"
+      ]
+    },
+    {
+      "doi_o": "10.1111/sms.13776",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_20] A public repository PDF was indexed, but its retrieval endpoint did not yield an inspectable article file in this pass; no abstract-only record was accepted.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_20"
+      ]
+    },
+    {
+      "doi_o": "10.1126/science.1169144",
+      "state": "held_source_mismatch",
+      "reason": "[session_source_batch_13] The configured original-source URL resolves to a different Science article and DOI (10.1126/science.1165565), not the promoted original.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_13"
+      ]
+    },
+    {
+      "doi_o": "10.1177/0956797611429801",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_13] The configured full-text URL returned 404, so the original article could not be source-checked in this lane.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_13"
+      ]
+    },
+    {
+      "doi_o": "10.1177/0956797615576533",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch_2] A full, directly inspectable original source was not obtained in this environment.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_2"
+      ]
+    },
+    {
+      "doi_o": "10.1371/journal.pone.0043122",
+      "state": "held_nonempirical",
+      "reason": "[session_source_batch_11] The directly inspectable primary source is an ALE meta-analysis, not a focal original participant study.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_11"
+      ]
+    },
+    {
+      "doi_o": "10.1371/journal.pone.0051382",
+      "state": "held_secondary_analysis",
+      "reason": "[session_source_batch_11] The source explicitly comprises six follow-up attempts rather than a standalone original-study finding, so it is unsuitable for outcome-free original-study context.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_11"
+      ]
+    },
+    {
+      "doi_o": "10.1371/journal.pone.0187727",
+      "state": "held_secondary_analysis",
+      "reason": "[session_source_batch_11] The official full text identifies the report as a post-hoc reanalysis of longitudinal data derived from an earlier randomized trial, rather than a standalone focal original study.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_11"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.0411-11.2011",
+      "state": "held_source_mismatch",
+      "reason": "[session_source_batch_17] The PMC search endpoint returned a mismatched article identity for this DOI query; no directly inspectable matching full primary source was captured.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.0979-09.2009",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] Official publisher full text returned 403 and the PMC EFetch record exposed metadata and abstract rather than a full inspectable article body in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.1182-13.2013",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.14-05-03208.1994",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.1489-14.2014",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.1770-13.2013",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.18-23-10105.1998",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.1959-18.2018",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch] The publisher PDF endpoint was bot-blocked in this environment. [session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch",
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.2377-10.2010",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.2513-09.2009",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.3427-13.2014",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.5538-09.2010",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.5864-10.2011",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.1523/jneurosci.5996-10.2012",
+      "state": "held_source_insufficient",
+      "reason": "[session_source_batch_17] No directly inspectable full primary source was captured for source-level method and population review in this pass.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_17"
+      ]
+    },
+    {
+      "doi_o": "10.3389/fnhum.2013.00014",
+      "state": "held_nonempirical",
+      "reason": "[session_source_batch_9] Official Frontiers full text labels the article a Review Article; it does not report a focal original-study participant sample and procedure.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_9"
+      ]
+    },
+    {
+      "doi_o": "10.3389/fnhum.2017.00468",
+      "state": "held_nonempirical",
+      "reason": "[session_source_batch_9] The full text reports a survey of neuroscience-journal editorial policies rather than a focal participant experiment suitable for an original-study explanation.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch_9"
+      ]
+    },
+    {
+      "doi_o": "10.3758/mc.37.1.65",
+      "state": "held_source_unavailable",
+      "reason": "[session_source_batch] The reachable Springer endpoint returned a web challenge rather than the primary PDF.",
+      "source_url": null,
+      "source_batches": [
+        "session_source_batch"
+      ]
+    }
+  ]
+}

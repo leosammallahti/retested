@@ -1,6 +1,31 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## Corrected Work-level partition and answer-separated site release — 2026-09-26 20:34 UTC
+
+The current validated inventory remains **1,938** finished Retested-reviewed normalized pairs: **451** overlay the built FORRT layer and **1,487** were added to Retested's built pages. This checkpoint changes the site's evidence presentation and the precision of the reconciliation record; it does not add any effect/replication pair and does not change FORRT itself.
+
+| Bibliographic relation in the pinned FORRT scope | All Retested pairs | Retested additions only |
+| --- | ---: | ---: |
+| Exact normalized original/later DOI-expression pair reported | **814** | **363** |
+| Reviewed same two Works; FORRT expression unresolved | **39** | **39** |
+| Reviewed same two Works through versioned expressions/identifiers | **27** | **27** |
+| Reviewed same later Work, but FORRT links another original | **41** | **41** |
+| Later Work reported; original relation unresolved | **4** | **4** |
+| Exact original expression reported with another later record | **172** | **172** |
+| Original Work represented only by a reviewed pending record | **1** | **1** |
+| No positive identity relation established; comparison incomplete | **840** | **840** |
+| **Total** | **1,938** | **1,487** |
+
+The first three rows are **880 positive ordered bibliographic Work relations** overall and **429** among the additions. The remaining **1,058 additions** are candidate new pair links in this frozen scope, not certified absences from FORRT. The audit still resolves **0** effect, study, sample, or outcome identities and certifies **0** effects or replications as new to FORRT. Its partial independent Work review covers eight positive decisions: seven full agreements, one agreement with a material original-side provenance gap, and no disagreements. Semantic review covers 471 queries; 40 decisions still have incomplete evidence (30 missing rationales and 10 missing locations).
+
+The pinned FORRT comparison corpus contains **14,242 normalized source-summary records**: 11,168 original/later relation records and 3,074 later-only records. Those are source records, not 14,242 unique replication effects or independently validated experiments. Exact expression identity, reviewed Work identity, and scientific equivalence remain separate layers.
+
+All **4,626** finding records now have answer-separated prediction pages and separate noindex result dossiers. This product change does not count as replication discovery. The site additionally has **156** canonical source-reviewed original-finding explanations and a durable, excluded queue of **69** source-review holds. Their final independent release audit passed, but an original-finding explanation does not adjudicate whether a later paper tests the same effect, study, sample, or outcome.
+
+The 84-test suite, full data build, zero-issue promoted audit, structural reconciliation check, and root/base static builds pass. Both base variants contain 11,969 HTML pages, 7,342 indexable/sitemap URLs, all 4,626 prediction and result routes, and 192,823 checked local references with no missing path or fragment. From commit `e3c3054` at 18:19:03 to this 20:34 checkpoint, strict completed-pair throughput was **0 per 15 minutes**. Nothing was sent to FORRT, pushed, deployed, or published.
+
+
 ## All finding records local; overlap counts unchanged — 2026-09-26 18:18 UTC
 
 All **4,626** original-paper finding records now have a local prediction-and-disclosure page, up from 2,419 local finding pages. The additional **2,207** routes expose records that already existed in Retested; they are not newly source-reviewed pairs or evidence that FORRT lacks anything. Some are intentionally thin: 250 have no linked attempt and 754 have no clear verdict. The separate scored game remains 879 context-ready cards.

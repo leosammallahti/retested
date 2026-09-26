@@ -1,0 +1,59 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Dossier from '../../../components/Dossier.astro';
+import Pending from '../../../components/Pending.astro';
+import { findings, attempts, papers, effectById, pending, type Finding } from '../../../lib/data';
+import { u, atlasUrl, doiUrl, clip } from '../../../lib/fmt';
+
+export function getStaticPaths() {
+  return Object.values(findings()).map((f) => ({ params: { slug: f.slug }, props: { f } }));
+}
+
+const { f } = Astro.props as { f: Finding };
+const A = attempts();
+const p = papers()[f.doi_o] ?? { doi: f.doi_o, slug: f.slug };
+const list = f.attempts.map((id) => A[id]);
+const hasForrt = list.some((a) => a.sources.some((s) => ['flora', 'fred', 'legacy'].includes(s)));
+const effs = (f.effects ?? []).map(effectById).filter(Boolean);
+const P_ = pending();
+const unverified = P_.by_finding[f.doi_o] ?? [];
+const provisional = P_.verdict_if_accepted[f.doi_o] ?? null;
+const title = p.title ?? f.doi_o;
+const findingHref = u(`finding/${f.slug}/`);
+---
+<Base
+  title={`Result: ${clip(title, 82)}`}
+  description={`Full source and attempt record for ${p.authors ?? ''} ${p.year ?? ''}.`}
+  active="findings/"
+  noindex={true}
+  canonicalPath={findingHref}
+>
+  <article class="wrap result-page">
+    <header class="result-head rise">
+      <div class="label">Result record</div>
+      <h1>{title}</h1>
+      <p class="mono by">{[p.authors, p.year].filter(Boolean).join(', ')} · <a href={doiUrl(f.doi_o)}>doi.org/{f.doi_o}</a></p>
+      <p><a class="btn ghost" href={findingHref}>← Return to the prediction page</a></p>
+    </header>
+    <section aria-labelledby="full-record-heading">
+      <div class="sh">
+        <h2 id="full-record-heading">Full source and attempt record</h2>
+        <span class="label">revealed result</span>
+      </div>
+      {(effs.length > 0 || hasForrt) && <p class="record-links">
+        {effs.length > 0 && <>Related effect{effs.length === 1 ? '' : 's'}: {effs.map((e, i) => <>{i > 0 && ', '}<a href={u(`effect/${e!.slug}/`)}>{e!.name}</a></>)}</>}
+        {effs.length > 0 && hasForrt && ' · '}
+        {hasForrt && <a href={atlasUrl(f.doi_o)}>FORRT atlas ↗</a>}
+      </p>}
+      <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+      {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
+    </section>
+  </article>
+</Base>
+<style>
+  .result-page { padding-top: 2.4rem; }
+  .result-head h1 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); max-width: 30ch; margin-top: .6rem; }
+  .by { font-size: .8rem; color: var(--ink-2); }
+  .result-head { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+  .record-links { margin: .8rem 0 0; }
+</style>

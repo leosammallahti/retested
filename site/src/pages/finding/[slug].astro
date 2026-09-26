@@ -1,10 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Dossier from '../../components/Dossier.astro';
 import FindingGuess from '../../components/FindingGuess.tsx';
-import Pending from '../../components/Pending.astro';
-import { findings, attempts, papers, effectById, pending, type Finding } from '../../lib/data';
-import { u, atlasUrl, doiUrl, cleanQuote, clip } from '../../lib/fmt';
+import { findings, attempts, papers, effectById, type Finding } from '../../lib/data';
+import { u, doiUrl, cleanQuote, clip } from '../../lib/fmt';
 
 export function getStaticPaths() {
   return Object.values(findings()).map((f) => ({ params: { slug: f.slug }, props: { f } }));
@@ -13,7 +11,6 @@ const { f } = Astro.props as { f: Finding };
 const A = attempts();
 const p = papers()[f.doi_o] ?? { doi: f.doi_o, slug: f.slug };
 const list = f.attempts.map((id) => A[id]);
-const hasForrt = list.some((a) => a.sources.some((s) => ['flora', 'fred', 'legacy'].includes(s)));
 const effs = (f.effects ?? []).map(effectById).filter(Boolean);
 // Only original-study claim fields belong above the prediction. Generic row
 // descriptions sometimes summarize the later result and would spoil it.
@@ -21,58 +18,72 @@ const claims = [...new Set([
   ...list.flatMap((a) => a.rows).map((r) => r.claim_text_o),
   ...list.map((a) => a.retested_review?.original_claim_quote),
 ].filter((d): d is string => !!d && d.length > 30))];
+const explanation = f.explanation;
+const gameContexts = f.game_contexts ?? [];
 const title = p.title ?? f.doi_o;
-const recordId = 'full-replication-record';
-const P_ = pending();
-const unverified = P_.by_finding[f.doi_o] ?? [];
-const provisional = P_.verdict_if_accepted[f.doi_o] ?? null;
+const resultHref = u(`finding/${f.slug}/result/`);
 ---
-<Base title={clip(title, 90)} description={`Make a prediction, then inspect the replication record of ${p.authors ?? ''} ${p.year ?? ''}.`} active="effects/">
+<Base title={clip(title, 90)} description={`Make a prediction, then inspect the replication record of ${p.authors ?? ''} ${p.year ?? ''}.`} active="findings/">
   <article class="wrap">
     <header class="fhead rise">
       <div class="label">Original paper{p.journal && <> · {p.journal}</>}</div>
       <h1>{title}</h1>
       <p class="mono by">{[p.authors, p.year].filter(Boolean).join(', ')} · <a href={doiUrl(f.doi_o)}>doi.org/{f.doi_o}</a></p>
-      {claims.length > 0 && (
+      {explanation && (
+        <section class="contextbox" aria-labelledby="tested-heading">
+          <span class="label claim">Source-reviewed original finding</span>
+          <h2 id="tested-heading">What was tested</h2>
+          <p class="plain-claim">{explanation.original.claim}</p>
+          <p>{explanation.original.method}</p>
+          <dl class="context-facts">
+            <div><dt>Participants</dt><dd>{explanation.original.population}</dd></div>
+            <div><dt>Measure</dt><dd>{explanation.original.outcome_measure}</dd></div>
+          </dl>
+          <p class="source-note"><a href={explanation.source.url}>Read the original source evidence ↗</a> <span>· reviewed {explanation.review.reviewed_on}</span></p>
+        </section>
+      )}
+      {!explanation && gameContexts.length > 0 && (
+        <section class="contextbox" aria-labelledby="tested-heading">
+          <span class="label claim">Plain-language study context</span>
+          <h2 id="tested-heading">What was tested</h2>
+          <div class="game-contexts">
+            {gameContexts.map((context, index) => (
+              <section aria-labelledby={`game-context-${index}`}>
+                <h3 id={`game-context-${index}`}>{context.claim}</h3>
+                <p>{context.method}</p>
+              </section>
+            ))}
+          </div>
+          <p class="source-note">Prepared for the prediction game from original-study material in the record. This is useful context, but not yet the canonical four-field source review described in <a href={u('methods/#finding-context')}>Methods</a>.</p>
+        </section>
+      )}
+      {!explanation && gameContexts.length === 0 && claims.length > 0 && (
         <div class="claimbox">
           <span class="label claim">What the original paper reported</span>
           <ul>{claims.slice(0, 6).map((c) => <li>{clip(cleanQuote(c), 260)}</li>)}</ul>
         </div>
       )}
-      {claims.length === 0 && effs.length > 0 && (
+      {!explanation && gameContexts.length === 0 && claims.length === 0 && effs.length > 0 && (
         <div class="claimbox">
           <span class="label claim">Claim or topic</span>
           <ul>{effs.slice(0, 6).map((e) => <li>{e!.name}</li>)}</ul>
         </div>
       )}
-      {claims.length === 0 && effs.length === 0 && <p class="faint context-note">A source-checked claim summary is not available yet; use the original-paper title and citation as context for your prediction.</p>}
+      {!explanation && gameContexts.length === 0 && claims.length === 0 && effs.length === 0 && <p class="faint context-note">A source-checked claim summary is not available yet; use the original-paper title and citation as context for your prediction.</p>}
     </header>
     <FindingGuess
       client:only="preact"
-      recordCode={f.lenses.record.code}
-      recordLabel={f.lenses.record.label}
-      recordId={recordId}
-      attempts={f.lenses.record.n_attempts}
-      successful={f.lenses.record.successful}
-      mixed={f.lenses.record.mixed}
-      failed={f.lenses.record.failed}
+      revealUrl={u(`generated/finding/r/${f.slug}.json`)}
+      fullRecordHref={resultHref}
+      storageId={f.slug}
+      nextFindingHref={u('findings/')}
+      nextFindingLabel="Choose another finding"
     >
       <section slot="fallback" class="card guess-fallback">
         <h3>What do you expect this record to show?</h3>
-        <p>Prediction choices require JavaScript. You can still reveal the complete record with the disclosure below.</p>
+        <p>Prediction choices require JavaScript. You can still <a href={resultHref}>skip the guess and read the complete result record</a>.</p>
       </section>
     </FindingGuess>
-
-    <details id={recordId} class="finding-record">
-      <summary>Full source and attempt record — reveal without guessing</summary>
-      {(effs.length > 0 || hasForrt) && <p class="record-links">
-        {effs.length > 0 && <>Related effect{effs.length === 1 ? '' : 's'}: {effs.map((e, i) => <>{i > 0 && ', '}<a href={u(`effect/${e!.slug}/`)}>{e!.name}</a></>)}</>}
-        {effs.length > 0 && hasForrt && ' · '}
-        {hasForrt && <a href={atlasUrl(f.doi_o)}>FORRT atlas ↗</a>}
-      </p>}
-      <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
-      {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
-    </details>
   </article>
 </Base>
 <style>
@@ -81,6 +92,19 @@ const provisional = P_.verdict_if_accepted[f.doi_o] ?? null;
   .by { font-size: .8rem; color: var(--ink-2); }
   .claimbox { border-left: 4px solid var(--claim); padding: .3rem 0 .3rem 1.2rem; margin: 1.4rem 0 .4rem; }
   .claimbox ul { margin: .4rem 0 0; padding-left: 1.1rem; font: 400 1.08rem/1.45 var(--f-display); }
+  .contextbox { border-left: 4px solid var(--claim); padding: .35rem 0 .2rem 1.2rem; margin: 1.4rem 0 .4rem; max-width: 72ch; }
+  .contextbox h2 { margin: .35rem 0 .55rem; font-size: clamp(1.25rem, 2.4vw, 1.65rem); }
+  .plain-claim { margin: 0 0 .65rem; font: 500 1.12rem/1.48 var(--f-display); }
+  .contextbox > p:not(.plain-claim):not(.source-note) { margin: 0 0 .85rem; color: var(--ink-2); }
+  .context-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem 1.2rem; margin: .8rem 0; }
+  .context-facts div { border-top: 1px solid var(--rule); padding-top: .55rem; }
+  .context-facts dt { font: 600 .68rem/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+  .context-facts dd { margin: .2rem 0 0; line-height: 1.42; }
+  .source-note { margin: .75rem 0 0; font-size: .82rem; color: var(--ink-2); }
+  .game-contexts { display: grid; gap: .8rem; }
+  .game-contexts section { border-top: 1px solid var(--rule); padding-top: .7rem; }
+  .game-contexts h3 { margin: 0 0 .35rem; font: 500 1.08rem/1.42 var(--f-display); }
+  .game-contexts p { margin: 0; color: var(--ink-2); }
   .context-note { margin-top: 1rem; font-size: .9rem; }
   :global(.finding-guess), .guess-fallback { margin: 1.5rem 0 0; padding: clamp(1rem, 2.4vw, 1.6rem); border: 1px solid var(--ink); background: var(--card); box-shadow: 5px 5px 0 var(--rule); }
   :global(.finding-guess h3), .guess-fallback h3 { margin-bottom: .45rem; }
@@ -88,12 +112,9 @@ const provisional = P_.verdict_if_accepted[f.doi_o] ?? null;
   :global(.finding-guess-choice) { display: flex; align-items: center; min-height: 44px; gap: .65rem; padding: .65rem .75rem; border: 1px solid var(--rule-2); border-radius: var(--r); cursor: pointer; }
   :global(.finding-guess-choice:has(input:checked)) { border-color: var(--obs); background: var(--obs-soft); }
   :global(.finding-guess-choice input) { inline-size: 1.15rem; block-size: 1.15rem; accent-color: var(--obs); flex: 0 0 auto; }
-  :global(.finding-guess > p:last-child) { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 0; }
-  .finding-record { margin-top: 1rem; }
-  .finding-record > summary { min-height: 44px; padding: .8rem 0; cursor: pointer; border-bottom: 1px solid var(--rule); font: 500 .78rem/1.4 var(--f-mono); letter-spacing: .07em; text-transform: uppercase; }
-  .finding-record[open] > summary { color: var(--obs); }
-  .record-links { margin: 1.2rem 0 0; }
+  :global(.finding-guess-actions) { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: .8rem; }
   @media (max-width: 560px) {
     :global(.finding-guess [role="radiogroup"]) { grid-template-columns: 1fr; }
+    .context-facts { grid-template-columns: 1fr; }
   }
 </style>

@@ -100,6 +100,7 @@ def reconcile(audit_path: Path, ledger_paths: Path | Sequence[Path]) -> dict[str
                 "top_cosine_similarity": decision.get("top_cosine_similarity"),
                 "evidence": decision.get("evidence"),
                 "evidence_locations": decision.get("evidence_locations") or [],
+                "independent_work_identity_review": decision.get("independent_work_identity_review"),
             }
         transitions[(prior, reconciled)] += 1
         records.append({
@@ -118,6 +119,11 @@ def reconcile(audit_path: Path, ledger_paths: Path | Sequence[Path]) -> dict[str
         "inputs": {
             "exact_overlap_audit": {"path": str(audit_path), "sha256": _sha256(audit_path)},
             "semantic_adjudications": ledger_inputs,
+            # The registry validates the canonical single-ledger path/hash as
+            # well as each embedded decision.  Keep this singular descriptor
+            # for that compatibility contract while retaining the plural list
+            # above for provenance when callers deliberately merge ledgers.
+            **({"semantic_adjudication": ledger_inputs[0]} if len(ledger_inputs) == 1 else {}),
         },
         "summary": {
             "audited_pairs": len(records),

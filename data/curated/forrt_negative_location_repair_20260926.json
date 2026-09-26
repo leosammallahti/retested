@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "purpose": "source-location repair for the first twenty remaining related_but_distinct decisions lacking evidence-location lists, in frozen review order; existing rationale and every scientific-equivalence axis are preserved",
+  "reviewed_at_utc": "2026-09-26T19:30:00Z",
+  "method": "Re-opened the retained source-reviewed Retested row and candidate FORRT provenance. This packet supplies durable locators only; it does not change a decision, candidate selection, or infer effect, study, sample, condition, population, or outcome equivalence.",
+  "repairs": [
+    {"query_record_id":"ps_188c2ab22fa134e62cac","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":420},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":189}]},
+    {"query_record_id":"ps_38d2ab8b2d34d70b3745","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1878},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":2563}]},
+    {"query_record_id":"ps_e43ff7b59417332438c8","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1723},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":324}]},
+    {"query_record_id":"ps_b649e37c87f2a9b917ce","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":8},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":425}]},
+    {"query_record_id":"ps_ed860fa9964f9b381e35","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1854},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":3678}]},
+    {"query_record_id":"ps_1268b7978c5db1cddd4e","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":209},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":745}]},
+    {"query_record_id":"ps_ffb604fc2da5b0c1b5d9","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":694},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":2272}]},
+    {"query_record_id":"ps_6e69da09a6284d59f07c","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":534},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":1907}]},
+    {"query_record_id":"ps_8dc7897be847a37fbb13","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":539},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":201}]},
+    {"query_record_id":"ps_5a6330a63a8be66b9aff","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":722},{"path":"data/raw/forrt/feeds/flora-extractor_search_link_unconfirmed.csv","row":62}]},
+    {"query_record_id":"ps_3289b0b75c559e42af5e","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":543},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":2099}]},
+    {"query_record_id":"ps_b468627f78f7e902bde7","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":380},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":767}]},
+    {"query_record_id":"ps_4a5bd76e38da65bf409a","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":580},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":3}]},
+    {"query_record_id":"ps_2560297820ad4c0aa351","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1934},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":641}]},
+    {"query_record_id":"ps_73a11027723a8910864f","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":392},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":1859}]},
+    {"query_record_id":"ps_2a7b6c78f056d4d5f06f","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1149},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":1937}]},
+    {"query_record_id":"ps_e9f784c3d2c2e2938755","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":599},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":2749}]},
+    {"query_record_id":"ps_04c4529c0f09c46fb038","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":508},{"path":"data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv","row":1833}]},
+    {"query_record_id":"ps_1e22fcba5c654fc7355c","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":1501},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv","row":361}]},
+    {"query_record_id":"ps_9dda3cfef04a0bfb008a","evidence_locations":[{"path":"data/curated/promoted_pairs.json","row":559},{"path":"data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv","row":1788}]}
+  ]
+}

@@ -59,6 +59,49 @@ def context_ready(item: dict) -> bool:
                 and _clean_method(item.get("method")))
 
 
+def attach_finding_contexts(g: dict, items: list[dict], reveals: dict[str, dict]) -> int:
+    """Reuse answer-blind study-card prose on its finding page.
+
+    The main game deliberately keeps its card-to-paper mapping in the reveal
+    payload.  The build may still reuse the already public claim and method on
+    the corresponding static finding page without copying the card id, answer,
+    cues, or reveal metadata into the finding.  These are plain-language game
+    contexts, not canonical source-reviewed explanations, and the site labels
+    them accordingly.
+    """
+
+    findings = g["findings"]
+    by_slug = {finding.get("slug"): finding for finding in findings.values()}
+    if len(by_slug) != len(findings) or None in by_slug:
+        raise ValueError("finding slugs must be present and unique before attaching game context")
+
+    attached: dict[str, set[tuple[str, str]]] = defaultdict(set)
+    for item in items:
+        if item.get("tier") != "study" or not context_ready(item):
+            continue
+        reveal = reveals.get(str(item.get("id")))
+        slug = reveal.get("finding") if isinstance(reveal, dict) else None
+        if not isinstance(slug, str) or slug not in by_slug:
+            raise ValueError(f"context-ready study card {item.get('id')!r} has no built finding")
+        # Re-clean at the transfer boundary rather than trusting a stale
+        # context_ready flag from a caller or fixture.
+        claim = _clean_claim(item.get("claim"), 30)
+        method = _clean_method(item.get("method"))
+        assert claim is not None and method is not None
+        attached[slug].add((claim, method))
+
+    for slug, contexts in attached.items():
+        by_slug[slug]["game_contexts"] = [
+            {
+                "claim": claim,
+                "method": method,
+                "review_state": "plain_language_game_context_not_source_reviewed",
+            }
+            for claim, method in sorted(contexts)
+        ]
+    return sum(len(contexts) for contexts in attached.values())
+
+
 def _p_bucket(p) -> str | None:
     try:
         p = float(p)

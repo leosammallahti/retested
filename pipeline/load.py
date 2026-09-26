@@ -235,6 +235,22 @@ def load_promoted() -> list[dict]:
     return promoted.load()
 
 
+def load_finding_explanations(promoted_rows: list[dict] | None = None) -> dict[str, dict]:
+    """Manually reviewed original-study context, keyed by original DOI.
+
+    The explanation loader receives the already validated promoted rows so its
+    provenance can point to an existing source review without importing any
+    later-result text into a finding record.
+    """
+    from . import explanations
+    accepted = explanations.load(promoted_rows=promoted_rows)
+    # The holds are not display data, but validating them during every normal
+    # load prevents completed screening work from becoming an untracked /tmp
+    # list or silently remaining held after the DOI is accepted.
+    explanations.load_holds(accepted)
+    return accepted
+
+
 def load_reference_author_links() -> dict[str, dict]:
     """Matches made by finding the named author and year inside the paper's own reference list."""
     p = DISCOVERY / "reference_author_links.json"
