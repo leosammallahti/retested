@@ -227,6 +227,11 @@
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
     },
+    "10.1002/eat.22014": {
+      "id": "https://openalex.org/W2158062868",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
     "10.1002/eat.23531": {
       "id": "https://openalex.org/W3157918343",
       "field": "Psychology",
@@ -5626,6 +5631,11 @@
       "id": "https://openalex.org/W1904741550",
       "field": "Psychology",
       "topic": "Cognitive Abilities and Testing"
+    },
+    "10.1111/j.1752-0606.2009.00164.x": {
+      "id": "https://openalex.org/W2025297635",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
     },
     "10.1111/j.2044-8260.1988.tb00788.x": {
       "id": "https://openalex.org/W1997465924",
