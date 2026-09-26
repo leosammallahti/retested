@@ -1092,6 +1092,11 @@
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
     },
+    "10.1007/s40616-014-0012-0": {
+      "id": "https://openalex.org/W2089037650",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
     "10.1007/s40616-020-00139-w": {
       "id": "https://openalex.org/W3092741537",
       "field": "Psychology",
@@ -1306,6 +1311,11 @@
       "id": "https://openalex.org/W2952640867",
       "field": "Psychology",
       "topic": "Categorization, perception, and language"
+    },
+    "10.1016/j.actpsy.2019.102873": {
+      "id": "https://openalex.org/W2949816921",
+      "field": "Psychology",
+      "topic": "Color perception and design"
     },
     "10.1016/j.actpsy.2020.103140": {
       "id": "https://openalex.org/W3046089273",
@@ -1551,6 +1561,11 @@
       "id": "https://openalex.org/W2088454697",
       "field": "Psychology",
       "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1016/j.brat.2016.11.003": {
+      "id": "https://openalex.org/W2552146748",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
     },
     "10.1016/j.brat.2017.03.002": {
       "id": "https://openalex.org/W2594099885",
@@ -1812,6 +1827,11 @@
       "field": "Psychology",
       "topic": "Healthcare Decision-Making and Restraints"
     },
+    "10.1016/j.ijpsycho.2011.11.013": {
+      "id": "https://openalex.org/W2005736756",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
     "10.1016/j.ijpsycho.2020.10.005": {
       "id": "https://openalex.org/W3093477103",
       "field": "Psychology",
@@ -1946,6 +1966,11 @@
       "id": "https://openalex.org/W1985550365",
       "field": "Psychology",
       "topic": "Posttraumatic Stress Disorder Research"
+    },
+    "10.1016/j.jbtep.2014.10.010": {
+      "id": "https://openalex.org/W2015006686",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     },
     "10.1016/j.jbtep.2014.10.011": {
       "id": "https://openalex.org/W2093733451",
@@ -2356,6 +2381,11 @@
       "id": "https://openalex.org/W2559989913",
       "field": "Medicine",
       "topic": "Psychosomatic Disorders and Their Treatments"
+    },
+    "10.1016/j.psychres.2018.11.071": {
+      "id": "https://openalex.org/W2902328470",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
     },
     "10.1016/j.psychres.2022.114480": {
       "id": "https://openalex.org/W4213434112",
