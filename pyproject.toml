@@ -11,6 +11,11 @@ dependencies = [
   "pypdf>=6.0",       # pure-Python; `fulltext --pdf` only
 ]
 
+[project.optional-dependencies]
+matching = [
+  "fastembed>=0.8,<0.9",
+]
+
 [tool.ruff]
 line-length = 140
 

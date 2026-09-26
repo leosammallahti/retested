@@ -1,6 +1,36 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## Evidence-first reconciliation registry — 2026-09-26 16:06 UTC
+
+The earlier audit's single “same pair” bucket was too coarse. The new deterministic registry separates exact DOI-expression pairs from reviewed Work/version relations and from unreviewed title or alternate-identifier candidates. It is built from commit-pinned official FORRT snapshots and the retained historical corpus; its policy, ontology, commands, and limits are documented in `docs/REPLICATION_REGISTRY.md`.
+
+The built site is unchanged at **1,938 Retested-reviewed normalized pairs**: **451** built FORRT overlays and **1,487** additions to Retested's built pages. The reproducible FORRT comparison corpus has **14,242 normalized source-summary records**: **11,168 reported original/later relations** plus **3,074 later-only status records**. The 11,168 relations comprise **9,755 distinct DOI–DOI relations**, **1,398 relations involving a URL, OpenAlex record, or record-scoped title candidate**, and **15 source-reported same-DOI anomalies requiring identity review**. These are bibliographic records, not a count of unique effects, studies, samples, or scientifically valid replications.
+
+The complete 1,938-pair Retested partition is:
+
+| Bibliographic relation in the frozen scope | All Retested pairs | Retested additions only |
+| --- | ---: | ---: |
+| Exact normalized original/later DOI pair reported by a frozen FORRT source | **814** | **363** |
+| Same two Works supported by one source review, but FORRT expression is unresolved | **38** | **38** |
+| Same two Works supported by one source review through different versions/identifiers | **20** | **20** |
+| Title/alternate-identifier pair candidate, not yet an identity assertion | **10** | **10** |
+| Same later Work reviewed, but FORRT links a different original | **39** | **39** |
+| Later Work reported; original relation remains unresolved | **4** | **4** |
+| Exact original DOI reported with another later record | **172** | **172** |
+| Original Work linked only through a reviewed pending record | **1** | **1** |
+| No positive identity relation established; comparison is incomplete | **840** | **840** |
+| **Total** | **1,938** | **1,487** |
+
+Thus **872** Retested pairs have positive bibliographic same-pair evidence: 814 exact DOI-expression pairs plus 58 single-reviewed same-Work/version links. Of those, **421** are among the 1,487 additions to Retested's built pages. The ten title/alternate-identifier candidates are deliberately excluded from that positive total. This corrects the previous 882 “same pair” figure, which had combined all three evidence levels.
+
+This still does **not** answer how many exact effects or replication studies FORRT lacks. For every pair, `effect_relation`, `study_relation`, `sample_relation`, and `outcome_relation` remain `not_compared`. The registry therefore reports **zero certified-new-to-FORRT effects or replications**. “No positive relation established” means only that the declared frozen comparison is unfinished; it is not an absence or novelty claim.
+
+The semantic ledger covers **461** queries. Sixty negative `related_but_distinct` decisions have incomplete evidence fields: 30 lack written rationale and a different 30 lack locations. Positive reviewed Work matches retain rationale and stable locations, with old live-file locators resolved to the pinned snapshots. Independent dual review/adjudication has not started, and 654 of the initial 1,115 non-exact queries have not received semantic review. Structural validation nevertheless passes: all source rows, source-summary payloads, references, hashes, relation counts, and non-overclaim invariants are internally consistent. Full output is `data/build/reconciliation_registry.json`; the compact generated summary is `data/build/reconciliation_registry.summary.json`, and the committed hashed checkpoint is `data/curated/registry/reconciliation_checkpoint_20260926.json`.
+
+No data was submitted to FORRT, pushed, deployed, or published.
+
+
 ## Final local checkpoint — 2026-09-26 13:11 UTC
 
 The built Retested site has **1,938 source-reviewed pairs**: 451 overlays on its built FORRT layer and 1,487 additions to Retested's built pages. The combined historical-plus-current official-file audit classifies those 1,487 additions as follows:

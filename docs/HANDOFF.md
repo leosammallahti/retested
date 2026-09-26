@@ -1,6 +1,30 @@
 # Handoff — current verified state 2026-09-26
 
 
+## Evidence-first registry checkpoint — 2026-09-26 16:06 UTC
+
+The site remains at **1,938 finished Retested-reviewed normalized pairs**: **451** built FORRT overlays and **1,487** additions to Retested's built pages. No effect/replication pages were added during the reconciliation work, so page completion over this interval was **0 per 15 minutes**; this was an assurance/architecture phase, not a discovery-speed trial. Nothing was sent upstream, pushed, deployed, or published.
+
+The new additive reconciliation registry passes its full structural check. It preserves all **1,941 promoted source rows** as 1,941 separate source-scoped claims, report-scoped claim tests, and outcome assessments instead of collapsing them into the 1,938 DOI pairs. Study, sample, and contrast-result IDs remain unresolved. Fifteen FORRT source relations report the same DOI on both sides and are retained as data-quality anomalies, not interpreted as within-paper replications.
+
+The pinned FORRT corpus contains **14,242 normalized summary records**: **11,168 original/later relations** and **3,074 later-only records**. Of the 11,168 relations, 9,755 are distinct DOI–DOI relations, 1,398 involve non-DOI or unresolved identifier candidates, and 15 are same-expression anomalies. This is the strongest current bibliographic inventory; it is not a count of unique effects, studies, samples, or valid replications.
+
+Across all 1,938 Retested pairs, the registry finds **814 exact frozen-source DOI-expression overlaps**, **38 single-reviewed same-Work pairs whose FORRT expression is unresolved**, and **20 single-reviewed version/identifier-equivalent Work pairs**. That is **872 positive bibliographic same-pair relations**, including **421** of the 1,487 Retested additions. Ten more title/alternate-identifier cases are candidates rather than confirmed identity. The remaining partition is 39 same-later/different-original reviews, four later-only/original-unresolved records, 172 exact originals paired with another later record, one reviewed original in a pending record, and 840 without a positive identity relation after incomplete comparison.
+
+Crucially, exact paper identity does not establish exact effect, study, sample, or outcome identity. All four axes remain `not_compared`, assurance is explicitly incomplete, and `certified_new_to_forrt` is **0**. The semantic ledger has reviewed 461 of the initial 1,115 non-exact queries; 654 remain. Sixty negative `related_but_distinct` decisions have incomplete evidence fields (30 missing rationale and a different 30 missing locations), and independent dual review/adjudication has not started.
+
+Implementation and verification:
+
+- `data/curated/registry/reconciliation_policy_v1.json` pins the comparison policy and five current official source commits/digests.
+- `data/curated/registry/reconciliation_checkpoint_20260926.json` preserves the validated counts and exact input/generator hashes outside the ignored build directory.
+- `pipeline/pair_summaries.py` now defaults to committed/pinned inputs rather than `/tmp`; ephemeral live files require explicit opt-in.
+- `pipeline/reconciliation_registry.py` emits exact identifier records, record-scoped title candidates, source-summary payload hashes and all attributed outcome labels, source observations, assertions, claim/test/assessment records, and the non-overclaim partition. It cross-checks the semantic-review artifact against the reconciled ledger and refuses unsafe or invalid writes.
+- Run `.venv/bin/python -m pipeline reconciliation-registry --check`; the direct module command also works. The full and summary build artifacts are under `data/build/`.
+- `docs/REPLICATION_REGISTRY.md` is the ontology and migration contract. `docs/FORRT_OVERLAP_AUDIT.md` has the complete corrected count table.
+
+For a defensible “what does FORRT lack?” answer, next review the ten title/alternate-ID candidates; complete semantic comparison of the remaining 654 queries; repair the 60 negative evidence gaps; independently re-review/adjudicate semantic decisions; then compare effect/claim, study, sample/participant, and outcome scope within the 872 positive bibliographic matches. Only after those blocks close may a pair be labelled “no confirmed match in the named frozen FORRT scope.” Universal absence still cannot be certified.
+
+
 ## Multi-session checkpoint and durable review archive — 2026-09-26 13:11 UTC
 
 The complete data build, Astro site build, promoted-pair audit, current-plus-local FORRT audit, and whitespace check pass with **1,938 source-reviewed Retested pairs**: **451** built FORRT overlays and **1,487** additions to Retested's built pages. The queue is **6,320**. Since the 10:43 checkpoint, **49 distinct pages** were added. The latest audit classifies the 1,487 additions as **372 exact original/later pairs already recorded somewhere in checked FORRT data**, **88 later papers recorded without the same pair confirmed**, and **1,027 with no exact later DOI/title match**. The latter two total **1,115 candidate new pair links**, not certified new FORRT replications. FORRT's extractor has an outcome for 327 of the 372 exact overlaps; 57 scoped labels differ and require effect-level review. Nothing was submitted upstream, pushed, or deployed.

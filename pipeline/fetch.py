@@ -28,8 +28,13 @@ def _sha(b: bytes) -> str:
 def run(refresh: bool = False) -> int:
     man = json.loads(MANIFEST.read_text(encoding="utf-8"))
     entries = {e["path"]: e for e in man["files"]}
+    required = list(REQUIRED)
+    required.extend(
+        e["path"] for e in man["files"]
+        if e.get("purpose") == "forrt_comparison_snapshot" and e["path"] not in required
+    )
     bad = 0
-    for rel in REQUIRED:
+    for rel in required:
         e = entries.get(rel)
         if not e or not str(e.get("source_url", "")).startswith("http"):
             print(f"  ! {rel}: no source URL in manifest")

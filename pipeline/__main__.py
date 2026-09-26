@@ -6,7 +6,11 @@ import json
 import sys
 import time
 
-from . import authors, claims, discover, references, export, fetch, game, link, load, originals, osf, osf_documents, outcomes, queue, registry, score, stats, triage, validate, verify, choose, fulltext, reread
+from . import (
+    authors, choose, claims, discover, export, fetch, fulltext, game, link, load, originals, osf,
+    osf_documents, outcomes, queue, reconciliation_registry, references, registry, reread, score,
+    stats, triage, validate, verify,
+)
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -97,6 +101,10 @@ def main() -> None:
                                                   "(`python -m pipeline choose --help`)")
     sub.add_parser("verify", add_help=False, help="ask the model whether each find was matched to the right "
                                                   "earlier paper (`python -m pipeline verify --help`)")
+    sub.add_parser(
+        "reconciliation-registry", add_help=False,
+        help="build the evidence-first Retested/FORRT reconciliation registry",
+    )
     sub.add_parser("outcomes", add_help=False, help="hand-read audit of whether the verdicts were read correctly "
                                                     "(its own flags: `python -m pipeline outcomes --help`)")
     cp = sub.add_parser("claims", help="write the plain-language claim each game card shows")
@@ -132,6 +140,8 @@ def main() -> None:
         sys.exit(verify.main(sys.argv[2:]))
     if sys.argv[1:2] == ["originals"]:
         sys.exit(originals.run(sys.argv[2:]))
+    if sys.argv[1:2] == ["reconciliation-registry"]:
+        sys.exit(reconciliation_registry.main(sys.argv[2:]))
     a = ap.parse_args()
     if a.cmd == "authors":
         sys.exit(authors.run_finds(a.max_usd) if a.finds

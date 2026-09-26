@@ -655,6 +655,56 @@
       "bytes": 85,
       "sha256": "9ca511c066b3632322c637bb4a659d729714534c187f3cbb9161f115f963cf4b",
       "source_url": "https://raw.githubusercontent.com/forrtproject/marco/main/README.md"
+    },
+    {
+      "path": "snapshots/2026-09-26/flora-extractor_extracted.csv",
+      "bytes": 15389549,
+      "sha256": "02f32adeee1166b0ad7f7f1a7ae6ded6678930cced25efc87e874cccc9247724",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/daea59618ee36379958a40752898e2c055f55b28/data/extracted.csv",
+      "purpose": "forrt_comparison_snapshot",
+      "repository_commit": "daea59618ee36379958a40752898e2c055f55b28",
+      "source_status": "extractor",
+      "retrieved_on": "2026-09-26"
+    },
+    {
+      "path": "snapshots/2026-09-26/flora-extractor_target_pending.csv",
+      "bytes": 6663554,
+      "sha256": "9cbbcdcc918982a22da62633d05c731a597de82221758757fae873f30bd01b25",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-extractor/daea59618ee36379958a40752898e2c055f55b28/data/target_pending.csv",
+      "purpose": "forrt_comparison_snapshot",
+      "repository_commit": "daea59618ee36379958a40752898e2c055f55b28",
+      "source_status": "pending_original_unresolved",
+      "retrieved_on": "2026-09-26"
+    },
+    {
+      "path": "snapshots/2026-09-26/flora-validation_validated_export.csv",
+      "bytes": 878210,
+      "sha256": "1553bdf10c0492877033fad1546b6f078df665bd3bd897d8a6d4674e3b375fd2",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/flora-validation/7ab7f941ffe902ebfd5641826ca80ce7bd3d4540/data/validated_export.csv",
+      "purpose": "forrt_comparison_snapshot",
+      "repository_commit": "7ab7f941ffe902ebfd5641826ca80ce7bd3d4540",
+      "source_status": "validated",
+      "retrieved_on": "2026-09-26"
+    },
+    {
+      "path": "snapshots/2026-09-26/fred-data_output_flora.csv",
+      "bytes": 9844791,
+      "sha256": "4545487a9d5d2b6824a2f6891bd0153611473673032c9cff4033aa82568e352f",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/b343a4394a059ee5e198c2475ac9d2fb322e6748/output/flora.csv",
+      "purpose": "forrt_comparison_snapshot",
+      "repository_commit": "b343a4394a059ee5e198c2475ac9d2fb322e6748",
+      "source_status": "published",
+      "retrieved_on": "2026-09-26"
+    },
+    {
+      "path": "snapshots/2026-09-26/fred-data_output_flora_filtered.csv",
+      "bytes": 8719399,
+      "sha256": "830faf55c1da4d7abe036b831b56d0bb30550b3c4bb15b578a367161e6af5440",
+      "source_url": "https://raw.githubusercontent.com/forrtproject/fred-data/b343a4394a059ee5e198c2475ac9d2fb322e6748/output/flora_filtered.csv",
+      "purpose": "forrt_comparison_snapshot",
+      "repository_commit": "b343a4394a059ee5e198c2475ac9d2fb322e6748",
+      "source_status": "published",
+      "retrieved_on": "2026-09-26"
     }
   ],
   "repos": {

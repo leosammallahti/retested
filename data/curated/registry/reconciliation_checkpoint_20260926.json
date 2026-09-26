@@ -1,0 +1,89 @@
+{
+  "schema_version": "reconciliation-checkpoint/v1",
+  "registry_schema_version": "reconciliation-registry/v1",
+  "checkpointed_at_utc": "2026-09-26T16:03:00Z",
+  "scope": "A reproducible comparison of Retested reviewed records with the pinned FORRT corpus; it is not a claim of universal literature completeness.",
+  "generator": {
+    "path": "pipeline/reconciliation_registry.py",
+    "sha256": "0329ea38087ec574159895b4a48c9d6c1052adf8277dbc998eb4166f951d098a"
+  },
+  "pair_summary_generator": {
+    "path": "pipeline/pair_summaries.py",
+    "sha256": "1fc57793afdb7e36f38106fc900050073e50bbdddf48739768b523c0dabb43af"
+  },
+  "counts": {
+    "retested_reviewed_source_rows": 1941,
+    "retested_normalized_pairs": 1938,
+    "retested_built_overlays": 451,
+    "retested_additions": 1487,
+    "forrt_summary_records": 14242,
+    "forrt_pair_records": 11168,
+    "forrt_later_status_records": 3074,
+    "source_summary_records": 16180,
+    "source_observations": 54272,
+    "source_outcome_labels": 16393,
+    "reported_expression_relations": 12292,
+    "distinct_expression_relations": 12277,
+    "source_reported_same_expression_anomalies": 15,
+    "expressions": 22870,
+    "effect_refs": 1802,
+    "source_scoped_claims": 1941,
+    "report_scoped_claim_tests": 1941,
+    "result_assessments": 1941,
+    "studies_resolved": 0,
+    "samples_resolved": 0,
+    "effect_relations_resolved": 0,
+    "certified_new_to_forrt": 0,
+    "bibliographic_relations": {
+      "exact_expression_pair_reported": 814,
+      "reviewed_same_work_pair_expression_unresolved": 38,
+      "reviewed_same_work_pair_versioned_expressions": 20,
+      "title_or_alternate_identifier_pair_candidate": 10,
+      "reviewed_same_later_work_different_original": 39,
+      "later_work_reported_original_relation_unresolved": 4,
+      "original_expression_reported_with_other_later": 172,
+      "reviewed_original_work_in_pending_record": 1,
+      "not_fully_compared": 840
+    }
+  },
+  "coverage": {
+    "comparison_state": "interim_partially_source_adjudicated",
+    "assurance_complete": false,
+    "semantic_queries_reviewed": 461,
+    "semantic_decisions_incomplete_evidence": 60,
+    "semantic_decisions_missing_rationale": 30,
+    "semantic_decisions_missing_locations": 30,
+    "comparison_blocks": {
+      "direct_pair_join": "complete",
+      "one_side_identifier_joins": "complete",
+      "pinned_alias_version_graph": "partial",
+      "bibliographic_fallback": "partial",
+      "text_semantic_retrieval": "partial",
+      "textless_metadata_audit": "partial",
+      "source_stratum_deduplication": "complete",
+      "independent_review_and_adjudication": "not_started"
+    },
+    "assurance_blockers": [
+      "effect identity has not been compared for any paper-pair overlap",
+      "study and sample identities are intentionally unresolved for imported report-scoped tests",
+      "semantic review does not cover every non-exact query",
+      "independent dual review and adjudication have not been completed",
+      "60 semantic decisions have incomplete evidence (30 lack rationale; 30 lack locations)"
+    ]
+  },
+  "input_hashes": {
+    "data/build/attempts.json": "3f6b90acc4231d7a521a4d8ef35d4932c71216f98afa1d1aac6d315198315f7b",
+    "data/curated/forrt_overlap_reconciled_20260926.json": "68407769de92e3aaa18e28954473bb619bc38a7ddef216b9e89e178511d66592",
+    "data/curated/forrt_semantic_match_review_20260926.json": "ba0c713b543b6b4fe59decef6895ab1ed1ee929087f4ed969b3d44cc35d6a597",
+    "data/curated/promoted_pairs.json": "80aaa3fa940cd682d89d115eddc3cf87c974ef6039723218c779e747c25bb330",
+    "data/curated/registry/effect_ids.csv": "074167475f714ccdd079b5161d850d2caa236a6b0216dc241b9f0d7695bcd264",
+    "data/curated/registry/reconciliation_policy_v1.json": "985fdfce1db42a58329131f1a339152a40349a800d3299f9bb4368601548ffc1",
+    "data/discovery/pair_match_summaries.json": "9fa0f3a000efe8f12183e7bdc40080d525a0d3361243b1ea63e6de4f61f02c70",
+    "data/raw/forrt/MANIFEST.json": "187cc71803d98c26ba9550443ac05d5a7ac09be7b7e90b244b77f046a165e5ef"
+  },
+  "validation": {
+    "structurally_valid": true,
+    "assurance_complete": false,
+    "problems": []
+  }
+}

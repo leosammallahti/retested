@@ -3,6 +3,8 @@
 
 ## 4. Entity model, identifiers, URL scheme
 
+> **Supersession note (2026-09-26).** This is the historical target architecture. The current implementation boundary and incremental reconciliation registry are defined in [`docs/REPLICATION_REGISTRY.md`](../../REPLICATION_REGISTRY.md). In particular, v1 canonicalizes only original/later **paper pairs** plus attributed source assertions; it does not yet canonicalize effect, claim, study, sample, or result identity across sources. Keep this section for its design history and later-phase ideas.
+
 ### 4.1 Entities (grain · sources · expected count at first build)
 
 | Entity | One row means | Sources | Expected count |

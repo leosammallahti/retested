@@ -1,0 +1,104 @@
+{
+  "schema_version": "reconciliation-policy/v1",
+  "scope": "A reproducible comparison of Retested reviewed records with the pinned FORRT corpus; it is not a claim of universal literature completeness.",
+  "source_layers": {
+    "source_reviewed": "retested_reviewed",
+    "published": "forrt_public",
+    "validated": "forrt_validated",
+    "extractor": "forrt_extractor",
+    "pending_original_unresolved": "forrt_pending",
+    "unconfirmed": "forrt_unconfirmed",
+    "disputed": "forrt_disputed",
+    "unresolved": "forrt_unresolved",
+    "historical": "forrt_historical",
+    "diagnostic": "forrt_diagnostic",
+    "local": "local_unclassified"
+  },
+  "membership_priority": [
+    "published",
+    "validated",
+    "extractor",
+    "pending_original_unresolved",
+    "unconfirmed",
+    "disputed",
+    "unresolved",
+    "historical",
+    "diagnostic"
+  ],
+  "bibliographic_relations": [
+    "exact_expression_pair_reported",
+    "reviewed_same_work_pair_versioned_expressions",
+    "reviewed_same_work_pair_expression_unresolved",
+    "title_or_alternate_identifier_pair_candidate",
+    "legacy_overlay_not_reproduced_in_frozen_sources",
+    "reviewed_same_later_work_different_original",
+    "later_work_reported_original_relation_unresolved",
+    "original_expression_reported_with_other_later",
+    "reviewed_original_work_in_pending_record",
+    "not_fully_compared"
+  ],
+  "candidate_dispositions": [
+    "candidate_same_pair",
+    "candidate_same_later_different_original",
+    "candidate_different_later_work",
+    "candidate_insufficient_evidence",
+    "candidate_not_reached"
+  ],
+  "comparison_blocks": [
+    "direct_pair_join",
+    "one_side_identifier_joins",
+    "pinned_alias_version_graph",
+    "bibliographic_fallback",
+    "text_semantic_retrieval",
+    "textless_metadata_audit",
+    "source_stratum_deduplication",
+    "independent_review_and_adjudication"
+  ],
+  "rules": {
+    "paper_pair_is_not_effect_identity": true,
+    "effect_name_is_not_claim_identity": true,
+    "study_is_not_sample_identity": true,
+    "outcome_is_scoped_assessment": true,
+    "embeddings_are_retrieval_only": true,
+    "candidate_rejection_never_proves_absence": true,
+    "unresolved_is_never_counted_as_new": true,
+    "novelty_wording": "No confirmed match found in the named frozen scope after the declared comparison blocks; never universal absence."
+  },
+  "pinned_current_sources": [
+    {
+      "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_extracted.csv",
+      "repository": "https://github.com/forrtproject/flora-extractor",
+      "commit": "daea59618ee36379958a40752898e2c055f55b28",
+      "sha256": "02f32adeee1166b0ad7f7f1a7ae6ded6678930cced25efc87e874cccc9247724",
+      "status": "extractor"
+    },
+    {
+      "path": "data/raw/forrt/snapshots/2026-09-26/flora-extractor_target_pending.csv",
+      "repository": "https://github.com/forrtproject/flora-extractor",
+      "commit": "daea59618ee36379958a40752898e2c055f55b28",
+      "sha256": "9cbbcdcc918982a22da62633d05c731a597de82221758757fae873f30bd01b25",
+      "status": "pending_original_unresolved"
+    },
+    {
+      "path": "data/raw/forrt/snapshots/2026-09-26/flora-validation_validated_export.csv",
+      "repository": "https://github.com/forrtproject/flora-validation",
+      "commit": "7ab7f941ffe902ebfd5641826ca80ce7bd3d4540",
+      "sha256": "1553bdf10c0492877033fad1546b6f078df665bd3bd897d8a6d4674e3b375fd2",
+      "status": "validated"
+    },
+    {
+      "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora.csv",
+      "repository": "https://github.com/forrtproject/fred-data",
+      "commit": "b343a4394a059ee5e198c2475ac9d2fb322e6748",
+      "sha256": "4545487a9d5d2b6824a2f6891bd0153611473673032c9cff4033aa82568e352f",
+      "status": "published"
+    },
+    {
+      "path": "data/raw/forrt/snapshots/2026-09-26/fred-data_output_flora_filtered.csv",
+      "repository": "https://github.com/forrtproject/fred-data",
+      "commit": "b343a4394a059ee5e198c2475ac9d2fb322e6748",
+      "sha256": "830faf55c1da4d7abe036b831b56d0bb30550b3c4bb15b578a367161e6af5440",
+      "status": "published"
+    }
+  ]
+}

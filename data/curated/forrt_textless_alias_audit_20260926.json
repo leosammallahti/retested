@@ -1,0 +1,1260 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Offline audit of FORRT corpus records excluded from embedding because all embedding text fields are null, against Retested unresolved pair-match review rows.",
+  "method": {
+    "network_calls": 0,
+    "identifier_comparison": "Exact normalized retained identifiers on original and later sides separately; DOI resolver prefixes, whitespace, punctuation, and accidental doubled slashes normalized.",
+    "aliases_checked": "All values in each record identifiers.original and identifiers.replication; citation DOI aliases retained in the legacy FReD source were also checked as corroborating evidence.",
+    "version_family_sources_checked": [
+      "data/raw/forrt/fred-data/output_preprint_dedup_candidates.csv",
+      "data/cache/openalex/**/*.json",
+      "data/raw/local/openalex_original_enrichment.json",
+      "data/raw/forrt/repos/flora-validation/oa_ref_cache.json"
+    ],
+    "crossref_cache": "No dedicated Crossref response cache was present under data/cache; no availability probe or network request was made.",
+    "version_family_rule": "A different-identifier version family requires a local preprint/published alias edge or title/metadata evidence tying the two later identifiers. Shared original DOI alone is not treated as a same-effect or same-later match."
+  },
+  "inputs": {
+    "candidates": {
+      "path": "data/discovery/pair_match_candidates.json",
+      "sha256": "12c728997214327880841160566903157b633f7541607458e6ecafed09fcacbd"
+    },
+    "review_queue": {
+      "path": "data/discovery/pair_match_review_queue.json",
+      "sha256": "d41573072b4ede13e1cf571fa63f3f0ff445598de706f2c02bafedd4c1e6faa8"
+    },
+    "textless_corpus_records": 613,
+    "unresolved_review_rows": 1115,
+    "source_provenance_counts": {
+      "data/raw/forrt/fred-data/archive/additional_subjective_coding_with_ai.csv": 3,
+      "data/raw/forrt/fred-data/archive/subj_coding_Roksana.csv": 38,
+      "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx": 583,
+      "data/raw/forrt/repos/flora-validation/data/needs_manual_refs.csv": 2
+    }
+  },
+  "counts": {
+    "exact_identifier_relationships": 13,
+    "unique_textless_records_with_any_relationship": 11,
+    "unique_queue_rows_with_any_relationship": 13,
+    "confirmed_same_later_work_relationships": 1,
+    "confirmed_same_original_work_relationships": 12,
+    "confirmed_complete_original_later_pair_relationships": 0,
+    "confirmed_same_original_effect_pair_relationships": 0,
+    "indeterminate_shared_original_work_relationships": 12,
+    "nonexact_version_family_bridges": 0,
+    "rejected_title_similarity_candidates": 2,
+    "textless_records_with_no_relationship": 602,
+    "queue_rows_with_no_relationship": 1102
+  },
+  "relationships": [
+    {
+      "queue_audit_record_index": 32,
+      "queue_record_id": "ps_6b464460fa564181ab35",
+      "textless_forrt_record_id": "ps_a3c18c43ed194f34b7fa",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1002/bdm.501"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1002/bdm.501",
+        "later_doi": "10.26686/wgtn.21154615",
+        "original_title": "The heat of the moment: The effect of sexual arousal on sexual decision making",
+        "later_title": "Love on the Brain: The Impact of Sexual Arousal on Sexual Decision-making",
+        "provenance": [
+          {
+            "id": "pv_2b3dcfeac438b82a4667",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 541,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1002/bdm.501",
+        "later_doi": "10.1007/s10508-014-0329-8",
+        "provenance": [
+          {
+            "id": "pv_b9f895667e82374dc38f",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_106_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_b9f895667e82374dc38f",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_106_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "The heat of the moment: The\n \n effect of sexual arousal on sexual decision making. Journal of\n \n Behavioral Decision Making, 19, 87–98. doi:10.1002/bdm.501.",
+          "replication": "Sexual Disinhibition Under Sexual Arousal: Evidence for Domain Specificity in Men and Women"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1002/bdm.501"
+          ],
+          "replication": [
+            "10.1007/s10508-014-0329-8"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1002/bdm.501",
+        "https://doi.org/10.1007/s10508-014-0329-8",
+        "https://doi.org/10.26686/wgtn.21154615"
+      ]
+    },
+    {
+      "queue_audit_record_index": 238,
+      "queue_record_id": "ps_8dc3e0e93b12ee53e29a",
+      "textless_forrt_record_id": "ps_409db5cc895f0b37a5e4",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1016/j.bodyim.2015.04.007"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1016/j.bodyim.2015.04.007",
+        "later_doi": "10.1016/j.bodyim.2019.12.003",
+        "original_title": "Self-compassion moderates body comparison and appearance self-worth’s inverse relationships with body appreciation",
+        "later_title": "The protective role of self-compassion for women’s positive body image: an open replication and extension",
+        "provenance": [
+          {
+            "id": "pv_abff57ee0dbd7eadb13f",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 168,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1016/j.bodyim.2015.04.007",
+        "later_doi": "10.1016/j.bodyim.2017.07.003",
+        "provenance": [
+          {
+            "id": "pv_69ee67b184df748c4302",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_7_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_69ee67b184df748c4302",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_7_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Self-compassion moderates body comparison and appearance self-worth’s inverse relationships with body appreciation",
+          "replication": "Body image in emerging adults: The protective role of self-compassion"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1016/j.bodyim.2015.04.007"
+          ],
+          "replication": [
+            "10.1016/j.bodyim.2017.07.003"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1016/j.bodyim.2015.04.007",
+        "https://doi.org/10.1016/j.bodyim.2017.07.003",
+        "https://doi.org/10.1016/j.bodyim.2019.12.003"
+      ]
+    },
+    {
+      "queue_audit_record_index": 340,
+      "queue_record_id": "ps_3650ec28558a93351a58",
+      "textless_forrt_record_id": "ps_7b4bb5b454858908b6d3",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1016/j.jrp.2011.05.002"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1016/j.jrp.2011.05.002",
+        "later_doi": "10.1016/j.jrp.2013.09.001",
+        "original_title": "Reactive and self-regulatory dimensions of temperament: Interactive relations with symptoms of general distress and anhedonia",
+        "later_title": "Dimensions of temperament and depressive symptoms: Replicating a three-way interaction",
+        "provenance": [
+          {
+            "id": "pv_007bd9bf343d800c1e38",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 1865,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1016/j.jrp.2011.05.002",
+        "later_doi": "10.1016/j.jrp.2014.09.005",
+        "provenance": [
+          {
+            "id": "pv_4ba2eca91850dfccd4a9",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_231_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_4ba2eca91850dfccd4a9",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_231_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Reactive and self-regulatory dimensions of temperament: Interactive relations with symptoms of general distress and anhedonia",
+          "replication": "Temperament synergies in risk for and protection against depressive symptoms: A prospective replication of a three-way interaction"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1016/j.jrp.2011.05.002"
+          ],
+          "replication": [
+            "10.1016/j.jrp.2014.09.005"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1016/j.jrp.2011.05.002",
+        "https://doi.org/10.1016/j.jrp.2013.09.001",
+        "https://doi.org/10.1016/j.jrp.2014.09.005"
+      ]
+    },
+    {
+      "queue_audit_record_index": 497,
+      "queue_record_id": "ps_08671aa9998289f06a7f",
+      "textless_forrt_record_id": "ps_423d3d5d97bb91f0e430",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1037/0022-3514.54.5.768"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1037/0022-3514.54.5.768",
+        "later_doi": "10.1037/emo0000532",
+        "original_title": "Inhibiting and facilitating conditions of the human smile: a nonobtrusive test of the facial feedback hypothesis",
+        "later_title": "A multi-semester classroom demonstration yields evidence in support of the facial feedback effect",
+        "provenance": [
+          {
+            "id": "pv_49b944f51c58464a4c4a",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 839,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1037/0022-3514.54.5.768",
+        "later_doi": "10.3389/fpsyg.2019.02871",
+        "provenance": [
+          {
+            "id": "pv_1d50bd9e2e3cede48a1a",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_181_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_1d50bd9e2e3cede48a1a",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_181_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Inhibiting and facilitating conditions of the human smile: a nonobtrusive test of the facial feedback hypothesis",
+          "replication": "Investigating the Effects of Embodiment on Emotional Categorization of Faces and Words in Children and Adults"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1037/0022-3514.54.5.768"
+          ],
+          "replication": [
+            "10.3389/fpsyg.2019.02871"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1037/0022-3514.54.5.768",
+        "https://doi.org/10.1037/emo0000532",
+        "https://doi.org/10.3389/fpsyg.2019.02871"
+      ]
+    },
+    {
+      "queue_audit_record_index": 498,
+      "queue_record_id": "ps_8be9584ac0649c5b5db5",
+      "textless_forrt_record_id": "ps_423d3d5d97bb91f0e430",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1037/0022-3514.54.5.768"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1037/0022-3514.54.5.768",
+        "later_doi": "10.1080/00221309.2014.884052",
+        "original_title": "Inhibiting and facilitating conditions of the human smile: A nonobtrusive test of the facial feedback hypothesis.",
+        "later_title": "Attention to Emotion and Non-Western Faces: Revisiting the Facial Feedback Hypothesis",
+        "provenance": [
+          {
+            "id": "pv_4fc28156c514f190e1d0",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 253,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1037/0022-3514.54.5.768",
+        "later_doi": "10.3389/fpsyg.2019.02871",
+        "provenance": [
+          {
+            "id": "pv_1d50bd9e2e3cede48a1a",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_181_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_1d50bd9e2e3cede48a1a",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_181_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Inhibiting and facilitating conditions of the human smile: a nonobtrusive test of the facial feedback hypothesis",
+          "replication": "Investigating the Effects of Embodiment on Emotional Categorization of Faces and Words in Children and Adults"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1037/0022-3514.54.5.768"
+          ],
+          "replication": [
+            "10.3389/fpsyg.2019.02871"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1037/0022-3514.54.5.768",
+        "https://doi.org/10.1080/00221309.2014.884052",
+        "https://doi.org/10.3389/fpsyg.2019.02871"
+      ]
+    },
+    {
+      "queue_audit_record_index": 500,
+      "queue_record_id": "ps_8b08d72a4baf5617010d",
+      "textless_forrt_record_id": "ps_de8f8cf4a8e7cabe9c47",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1037/0022-3514.58.2.308"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1037/0022-3514.58.2.308",
+        "later_doi": "10.1177/0146167296221008",
+        "original_title": "Evidence for terror management theory II: The effects of mortality salience on reactions to those who threaten or bolster the cultural worldview",
+        "later_title": "Mild Depression, Mortality Salience and Defense of the Worldview Evidence of Intensified Terror Management in the Mildly Depressed",
+        "provenance": [
+          {
+            "id": "pv_19b705ce5fdb492eb4a4",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 91,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1037/0022-3514.58.2.308",
+        "later_doi": "10.1007/s12144-018-9810-1",
+        "provenance": [
+          {
+            "id": "pv_8f7a9a5cef9c4d771bfc",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_89_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_8f7a9a5cef9c4d771bfc",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_89_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Evidence for terror management theory II: The effects of mortality salience on reactions to those who threaten or bolster the cultural worldview",
+          "replication": "Spiritual transcendence as a buffer against death anxiety"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1037/0022-3514.58.2.308"
+          ],
+          "replication": [
+            "10.1007/s12144-018-9810-1"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1007/s12144-018-9810-1",
+        "https://doi.org/10.1037/0022-3514.58.2.308",
+        "https://doi.org/10.1177/0146167296221008"
+      ]
+    },
+    {
+      "queue_audit_record_index": 501,
+      "queue_record_id": "ps_e590f497521e4cb71c23",
+      "textless_forrt_record_id": "ps_de8f8cf4a8e7cabe9c47",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1037/0022-3514.58.2.308"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1037/0022-3514.58.2.308",
+        "later_doi": "10.1371/journal.pone.0285267",
+        "original_title": "Evidence for terror management theory II: The effects of mortality salience on reactions to those who threaten or bolster the cultural worldview",
+        "later_title": "Not so terrifying after all? A set of failed replications of the mortality salience effects of Terror Management Theory",
+        "provenance": [
+          {
+            "id": "pv_d6ae43e6e8bcdd43b12d",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 748,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1037/0022-3514.58.2.308",
+        "later_doi": "10.1007/s12144-018-9810-1",
+        "provenance": [
+          {
+            "id": "pv_8f7a9a5cef9c4d771bfc",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_89_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_8f7a9a5cef9c4d771bfc",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_89_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Evidence for terror management theory II: The effects of mortality salience on reactions to those who threaten or bolster the cultural worldview",
+          "replication": "Spiritual transcendence as a buffer against death anxiety"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1037/0022-3514.58.2.308"
+          ],
+          "replication": [
+            "10.1007/s12144-018-9810-1"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1007/s12144-018-9810-1",
+        "https://doi.org/10.1037/0022-3514.58.2.308",
+        "https://doi.org/10.1371/journal.pone.0285267"
+      ]
+    },
+    {
+      "queue_audit_record_index": 752,
+      "queue_record_id": "ps_e0bc11007b5b4b36a672",
+      "textless_forrt_record_id": "ps_ea70162f9d44ccc7e61f",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1037/xge0000595"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1037/xge0000595",
+        "later_doi": "10.1521/soco.2024.42.4.291",
+        "original_title": "Empathy is hard work: People choose to avoid empathy because of its cognitive costs",
+        "later_title": "Are Observers Differentially Motivated to Empathize With Stigmatized Targets? An Investigation Using the Empathy Selection Task",
+        "provenance": [
+          {
+            "id": "pv_0b4e85705b15044b8761",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 105,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1037/xge0000595",
+        "later_doi": "10.1016/j.jesp.2020.104010",
+        "provenance": [
+          {
+            "id": "pv_52b5b5eda32ced06fb03",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_10_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_52b5b5eda32ced06fb03",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_10_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Empathy is hard work: People choose to avoid empathy because of its cognitive costs. Journal of Experimental Psychology: General. https://doi.org/10.1037/xge0000595.",
+          "replication": "Motivational effects on empathic choices"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1037/xge0000595"
+          ],
+          "replication": [
+            "10.1016/j.jesp.2020.104010"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1016/j.jesp.2020.104010",
+        "https://doi.org/10.1037/xge0000595",
+        "https://doi.org/10.1521/soco.2024.42.4.291"
+      ]
+    },
+    {
+      "queue_audit_record_index": 763,
+      "queue_record_id": "ps_1baf0c455a81ad0e54ae",
+      "textless_forrt_record_id": "ps_260086ffba753f3647ce",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1038/358749a0"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1038/358749a0",
+        "later_doi": "10.1111/j.1467-7687.2007.00607.x",
+        "original_title": "Addition and subtraction by human infants",
+        "later_title": "Do you believe in magic? Infants? social looking during violations of expectations",
+        "provenance": [
+          {
+            "id": "pv_bccdcbe2f5399ad9fdf1",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 181,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1038/358749a0",
+        "later_doi": "10.1037/0012-1649.42.4.666",
+        "provenance": [
+          {
+            "id": "pv_e57ad6b88c24088622da",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "add_ai231_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_e57ad6b88c24088622da",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "add_ai231_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Addition and subtraction by human infants",
+          "replication": "Perception precedes computation: Can familiarity preferences explain apparent calculation by human babies?"
+        },
+        "citation_doi_aliases": {
+          "original": [],
+          "replication": [
+            "10.1037/0012-1649.42.4.666"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1037/0012-1649.42.4.666",
+        "https://doi.org/10.1038/358749a0",
+        "https://doi.org/10.1111/j.1467-7687.2007.00607.x"
+      ]
+    },
+    {
+      "queue_audit_record_index": 852,
+      "queue_record_id": "ps_1ef9dafc0cbe8d3c5253",
+      "textless_forrt_record_id": "ps_6692f0ba51034950d93f",
+      "shared_retained_identifiers": {
+        "original": [],
+        "replication": [
+          "10.1080/02699931.2016.1168779"
+        ]
+      },
+      "same_later_work_confirmed": true,
+      "same_original_work_confirmed": false,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "not_same_original",
+      "queue": {
+        "original_doi": "10.1080/02699931.2014.998631",
+        "later_doi": "10.1080/02699931.2016.1168779",
+        "original_title": "Influence of maternal depression on children’s brooding rumination: Moderation by CRHR1 TAT haplotype",
+        "later_title": "Partial replication of two rumination-related candidate gene studies",
+        "provenance": [
+          {
+            "id": "pv_64310088e31880b4ab6b",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 1581,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.3389/fgene.2013.00246",
+        "later_doi": "10.1080/02699931.2016.1168779",
+        "provenance": [
+          {
+            "id": "pv_38f3df892b7dc747953e",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_209_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_38f3df892b7dc747953e",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_209_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Identifying genetic predictors of depression risk: 5-HTTLPR and BDNF val66met polymorphisms are associated with rumination and co-rumination in adolescents",
+          "replication": "Partial replication of two rumination-related candidate gene studies"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.3389/fgene.2013.00246"
+          ],
+          "replication": [
+            "10.1080/02699931.2016.1168779"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1080/02699931.2014.998631",
+        "https://doi.org/10.1080/02699931.2016.1168779",
+        "https://doi.org/10.3389/fgene.2013.00246"
+      ]
+    },
+    {
+      "queue_audit_record_index": 1128,
+      "queue_record_id": "ps_99253140f46b0029529f",
+      "textless_forrt_record_id": "ps_b5701f919b4c600ee0c2",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1177/001872089203400309"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1177/001872089203400309",
+        "later_doi": "10.1518/001872000779698169",
+        "original_title": "A dyadic protocol for training complex skills",
+        "later_title": "A Dyadic Protocol for Training Complex Skills: A Replication Using Female Participants",
+        "provenance": [
+          {
+            "id": "pv_c15058601c86a7b9df92",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 131,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1177/001872089203400309",
+        "later_doi": "10.1037/0021-9010.82.5.783",
+        "provenance": [
+          {
+            "id": "pv_b4082d21574a1e4e6505",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "jh_at_18_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_b4082d21574a1e4e6505",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "jh_at_18_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "A dyadic protocol for training complex skills",
+          "replication": "Dyadic versus individual training protocols: Loss and reacquisition of a complex skill"
+        },
+        "citation_doi_aliases": {
+          "original": [],
+          "replication": []
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1037/0021-9010.82.5.783",
+        "https://doi.org/10.1177/001872089203400309",
+        "https://doi.org/10.1518/001872000779698169"
+      ]
+    },
+    {
+      "queue_audit_record_index": 1256,
+      "queue_record_id": "ps_a6feedc3c08ed9a7de8f",
+      "textless_forrt_record_id": "ps_12cb72070ee472a8882d",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1186/1747-597x-1-22"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1186/1747-597x-1-22",
+        "later_doi": "10.1080/10826084.2020.1840589",
+        "original_title": "Pothead or pot smoker? a taxometric investigation of cannabis dependence",
+        "later_title": "Replicating the Dimensional Structure of Cannabis Problems: A Taxometric Analysis",
+        "provenance": [
+          {
+            "id": "pv_9349a333248bcc760b1e",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 327,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1186/1747-597x-1-22",
+        "later_doi": "10.1037/pas0000828",
+        "provenance": [
+          {
+            "id": "pv_9ad66b554e87b13b2635",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_237_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_9ad66b554e87b13b2635",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_237_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "Pothead or pot smoker? A taxometric investigation of cannabis dependence",
+          "replication": "The latent structure of cannabis misuse: A taxometric analysis"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1186/1747-597x-1-22"
+          ],
+          "replication": [
+            "10.1037/pas0000828"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1037/pas0000828",
+        "https://doi.org/10.1080/10826084.2020.1840589",
+        "https://doi.org/10.1186/1747-597x-1-22"
+      ]
+    },
+    {
+      "queue_audit_record_index": 1352,
+      "queue_record_id": "ps_2783d80edeb952fbbd7c",
+      "textless_forrt_record_id": "ps_0b7bce598235ed01acdc",
+      "shared_retained_identifiers": {
+        "original": [
+          "10.1901/jaba.2012.45-657"
+        ],
+        "replication": []
+      },
+      "same_later_work_confirmed": false,
+      "same_original_work_confirmed": true,
+      "same_complete_original_later_pair_confirmed": false,
+      "same_original_effect_pair_status": "indeterminate_missing_legacy_effect_text",
+      "queue": {
+        "original_doi": "10.1901/jaba.2012.45-657",
+        "later_doi": "10.1002/jaba.568",
+        "original_title": "The role of increased exposure to transfer-of-stimulus control procedures on the acquisition of intraverbal behavior",
+        "later_title": "Exposure to a specific prompt topography predicts its relative efficiency when teaching intraverbal behavior to children with autism spectrum disorder",
+        "provenance": [
+          {
+            "id": "pv_866767e246d25ee64921",
+            "original_identifier_fields": [
+              "doi_o"
+            ],
+            "path": "data/curated/promoted_pairs.json",
+            "replication_identifier_fields": [
+              "doi_r"
+            ],
+            "row": 111,
+            "source": "retested_promoted",
+            "status": "source_reviewed"
+          }
+        ]
+      },
+      "textless_forrt": {
+        "original_doi": "10.1901/jaba.2012.45-657",
+        "later_doi": "10.1002/jaba.606",
+        "provenance": [
+          {
+            "id": "pv_e7546dcc231c88c77d28",
+            "original_identifier_fields": [
+              "doi_original"
+            ],
+            "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+            "replication_identifier_fields": [
+              "doi_replication"
+            ],
+            "row": "av_105_1",
+            "source": "forrt_fred_legacy_data",
+            "status": "historical"
+          }
+        ]
+      },
+      "source_citation_evidence": {
+        "provenance": {
+          "id": "pv_e7546dcc231c88c77d28",
+          "original_identifier_fields": [
+            "doi_original"
+          ],
+          "path": "data/raw/forrt/osf/version-history/FReD_2.4.1_2025-06-25.xlsx",
+          "replication_identifier_fields": [
+            "doi_replication"
+          ],
+          "row": "av_105_1",
+          "source": "forrt_fred_legacy_data",
+          "status": "historical"
+        },
+        "citation_titles": {
+          "original": "The role of\n \n increased exposure to transfer-of-stimulus control\n \n procedures on the acquisition of intraverbal behavior",
+          "replication": "Effects of exposure to prompts on the acquisition of intraverbals in children with autism spectrum disorder"
+        },
+        "citation_doi_aliases": {
+          "original": [
+            "10.1901/jaba.2012.45-657"
+          ],
+          "replication": [
+            "10.1002/jaba.606"
+          ]
+        },
+        "legacy_effect": "",
+        "legacy_description": ""
+      },
+      "doi_urls": [
+        "https://doi.org/10.1002/jaba.568",
+        "https://doi.org/10.1002/jaba.606",
+        "https://doi.org/10.1901/jaba.2012.45-657"
+      ]
+    }
+  ],
+  "nonexact_version_family_bridges": [],
+  "rejected_title_similarity_candidates": [
+    {
+      "textless_forrt_record_id": "ps_1c2600037f86ba229015",
+      "queue_audit_record_index": 222,
+      "queue_record_id": "ps_e3bad1452cb5bc7df43f",
+      "textless_later_doi": "10.1016/j.neuropsychologia.2018.05.004",
+      "queue_later_doi": "10.1016/j.bandl.2021.105007",
+      "textless_source_later_title": "Creative conceptual expansion: A combined fMRI replication and extension study to examine individual differences in creativity",
+      "queue_later_title": "Conceptual expansion via novel metaphor processing: An ERP replication and extension study examining individual differences in creativity",
+      "sequence_similarity": 0.8,
+      "token_jaccard": 0.375,
+      "verdict": "not_a_confirmed_version_family: different retained DOI and no local preprint/published alias evidence"
+    },
+    {
+      "textless_forrt_record_id": "ps_12cb72070ee472a8882d",
+      "queue_audit_record_index": 1256,
+      "queue_record_id": "ps_a6feedc3c08ed9a7de8f",
+      "textless_later_doi": "10.1037/pas0000828",
+      "queue_later_doi": "10.1080/10826084.2020.1840589",
+      "textless_source_later_title": "The latent structure of cannabis misuse: A taxometric analysis",
+      "queue_later_title": "Replicating the Dimensional Structure of Cannabis Problems: A Taxometric Analysis",
+      "sequence_similarity": 0.7258,
+      "token_jaccard": 0.4444,
+      "verdict": "not_a_confirmed_version_family: different retained DOI and no local preprint/published alias evidence"
+    }
+  ],
+  "unresolved_coverage_gaps": [
+    {
+      "gap": "No textless record has a confirmed complete original+later pair with an unresolved queue row (13 partial identifier relations were inspected).",
+      "count": 0,
+      "implication": "No embedding-excluded FORRT record can be promoted as the same complete pair from identifier evidence."
+    },
+    {
+      "gap": "Shared-original records have no legacy effect/description text.",
+      "count": 12,
+      "implication": "They confirm the original work only; whether they represent the same effect remains unresolved without paper-level review."
+    },
+    {
+      "gap": "Textless FORRT records not connected to any queue row by retained identifier or supported version-family evidence.",
+      "count": 602,
+      "implication": "These remain outside semantic embedding coverage and outside this unresolved-queue crosswalk."
+    },
+    {
+      "gap": "Unresolved queue rows not connected to any textless FORRT record.",
+      "count": 1102,
+      "implication": "Their outstanding semantic matching problem is unaffected by the textless corpus set."
+    }
+  ],
+  "validation": {
+    "json_serializable": true,
+    "assertions": {
+      "textless_records": 613,
+      "queue_rows": 1115,
+      "relationships_have_evidence": true,
+      "no_network_calls": true
+    }
+  }
+}
