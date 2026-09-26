@@ -1,6 +1,21 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## Final local checkpoint — 2026-09-26 13:11 UTC
+
+The built Retested site has **1,938 source-reviewed pairs**: 451 overlays on its built FORRT layer and 1,487 additions to Retested's built pages. The combined historical-plus-current official-file audit classifies those 1,487 additions as follows:
+
+| Relation to checked FORRT data | Pairs |
+| --- | ---: |
+| Same original and later paper already recorded | **372** |
+| Later paper recorded, but the same original/later link is unconfirmed | **88** |
+| No exact later DOI/title match in checked sources | **1,027** |
+
+The last two categories total **1,115 candidate new pair links**. They are not certified new FORRT replications: alternate identifiers or versions may remain, and some Retested comparisons may fall outside FLoRA's narrower inclusion rules. FORRT's extractor already has an outcome for **327** of the 372 same-pair records; **57** scoped Retested labels differ and require effect-level adjudication rather than assuming either source is wrong. No Retested rows have been submitted to FORRT.
+
+The parallel-review packet inventory was reconciled rather than discarded. Fourteen unique accepted pairs occurred in the multi-session packets: 11 were already promoted, two had already been excluded for publication-order or canonical-field evidence, and one remains held because the documented publication order fails the counted-registry gate. Three separately completed B4 rows passed the full pipeline at this checkpoint. The lossless, hashed packet and decision archive is `data/curated/source_review_archive_20260926.json`; the current pair-by-pair overlap evidence remains in `data/curated/forrt_overlap_audit_20260926.json`.
+
+
 ## Updated after the 10:43 build — 2026-09-26
 
 The built Retested site has **1,889 source-reviewed pairs**: 451 built FORRT overlays and 1,438 additions to its built pages. The combined historical-plus-current official FORRT audit classifies the 1,438 additions as **354 exact same original/later pairs already recorded in FORRT data**, **87 later papers recorded without the same pair confirmed**, and **997 without an exact later DOI/title match** in checked sources. The latter two total **1,084 candidate new pair links**, not certified absence from every FORRT file or version. FORRT extractor outcomes exist for 309 of the 354 same-pair records; 56 scoped Retested labels differ and warrant review. Pair-level evidence and official source URLs are in data/curated/forrt_overlap_audit_20260926.json. No upstream FORRT submission was made.

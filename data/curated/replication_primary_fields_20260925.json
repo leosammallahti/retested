@@ -10558,6 +10558,162 @@
     "10.3758/s13428-024-02434-z": {
       "id": "https://openalex.org/W4398248296",
       "field": "Psychology"
+    },
+    "10.1007/bf01071735": {
+      "id": "https://openalex.org/W2062409342",
+      "field": "Psychology",
+      "topic": "LGBTQ Health, Identity, and Policy"
+    },
+    "10.1016/j.lindif.2010.03.010": {
+      "id": "https://openalex.org/W2081059656",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
+    },
+    "10.1016/s0887-6185(02)00128-7": {
+      "id": "https://openalex.org/W2013898339",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1111/j.2044-8279.1973.tb00755.x": {
+      "id": "https://openalex.org/W1996152292",
+      "field": "Psychology",
+      "topic": "Academic and Historical Perspectives in Psychology"
+    },
+    "10.1371/journal.pone.0091845": {
+      "id": "https://openalex.org/W2052764996",
+      "field": "Psychology",
+      "topic": "Psychopathy, Forensic Psychiatry, Sexual Offending"
+    },
+    "10.1017/s0272263117000171": {
+      "id": "https://openalex.org/W2784420508",
+      "field": "Psychology",
+      "topic": "Second Language Acquisition and Learning"
+    },
+    "10.1177/21677026241301048": {
+      "id": "https://openalex.org/W4405543569",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.3758/s13423-021-01885-1": {
+      "id": "https://openalex.org/W2754077173",
+      "field": "Psychology",
+      "topic": "Phonetics and Phonology Research"
+    },
+    "10.14704/nq.2013.11.4.670": {
+      "id": "https://openalex.org/W2066130061",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.11575/prism/9729": {
+      "id": "https://openalex.org/W1572906621",
+      "field": "Psychology",
+      "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1177/082957359601100219": {
+      "id": "https://openalex.org/W1965887226",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1038/s44271-024-00135-z": {
+      "id": "https://openalex.org/W4403203719",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
+    },
+    "10.1016/j.infbeh.2011.09.003": {
+      "id": "https://openalex.org/W2086640339",
+      "field": "Psychology",
+      "topic": "Language Development and Disorders"
+    },
+    "10.1002/1097-4679(198701)43:1<28::aid-jclp2270430105>3.0.co;2-j": {
+      "id": "https://openalex.org/W2001970252",
+      "field": "Psychology",
+      "topic": "Posttraumatic Stress Disorder Research"
+    },
+    "10.1016/0022-3999(87)90017-1": {
+      "id": "https://openalex.org/W2125427864",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1037/0021-843x.91.5.337": {
+      "id": "https://openalex.org/W4249386403",
+      "field": "Psychology",
+      "topic": "Mental Health Research Topics"
+    },
+    "10.1037/apl0001415": {
+      "id": "https://openalex.org/W7207586671",
+      "field": "Psychology",
+      "topic": "Psychological Testing and Assessment"
+    },
+    "10.1080/15299730802045914": {
+      "id": "https://openalex.org/W1979299327",
+      "field": "Psychology",
+      "topic": "Child Abuse and Trauma"
+    },
+    "10.2224/sbp.1980.8.1.41": {
+      "id": "https://openalex.org/W2013575643",
+      "field": "Psychology",
+      "topic": "Identity, Memory, and Therapy"
+    },
+    "10.25609/sure.v4.2851": {
+      "id": "https://openalex.org/W2950501895",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.2307/1128945": {
+      "id": "https://openalex.org/W2014346970",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1002/jts.22587": {
+      "id": "https://openalex.org/W3091892418",
+      "field": "Psychology",
+      "topic": "Posttraumatic Stress Disorder Research"
+    },
+    "10.1006/appe.2002.0477": {
+      "id": "https://openalex.org/W2057391152",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.31234/osf.io/c7qnh": {
+      "id": "https://openalex.org/W3108007595",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
+    },
+    "10.2466/pr0.1977.41.1.291": {
+      "official_work_id": "https://openalex.org/W2088417606",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1037/arc0000031": {
+      "official_work_id": "https://openalex.org/W2617021429",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1016/j.yhbeh.2018.12.004": {
+      "id": "https://openalex.org/W2905726684",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.31234/osf.io/5fj9c": {
+      "id": "https://openalex.org/W4234404190",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1111/desc.12600": {
+      "id": "https://openalex.org/W2760474631",
+      "field": "Psychology",
+      "topic": "Child and Animal Learning Development",
+      "source": "/tmp/retested_multisession_20260926/field_sweep_20260926.json"
+    },
+    "10.1080/2153599x.2015.1014061": {
+      "official_work_id": "https://openalex.org/W2085609336",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.3390/jintelligence5020022": {
+      "official_work_id": "https://openalex.org/W2615088627",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
     }
   },
   "manual_exception": [
