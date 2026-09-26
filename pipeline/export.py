@@ -30,10 +30,16 @@ def _default(o):
     raise TypeError(type(o))
 
 
-def promoted(f: dict, game_findings: set[str]) -> bool:
-    """A finding gets its own page only when it adds something the FORRT atlas page does not."""
-    L = f["lenses"]
-    return L["record"]["n_attempts"] >= 2 or L["numeric"] is not None or bool(f.get("effects")) or f["slug"] in game_findings
+def has_local_page(f: dict) -> bool:
+    """Every addressable finding gets a local page and prediction interaction.
+
+    Thin records used to link straight to the FORRT Atlas.  That saved duplicate
+    pages, but it also meant only a subset of findings offered Retested's core
+    guess-before-reveal experience.  Sparse and unresolved records are useful
+    answers in their own right as long as the page labels them honestly.
+    """
+
+    return bool(f.get("slug"))
 
 
 def _daily_decks(items: list[dict], reveals: dict) -> dict[str, list[str]]:
@@ -78,9 +84,8 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
     if PUBLIC.exists():
         shutil.rmtree(PUBLIC)
     A, F, E, P = g["attempts"], g["findings"], g["effects"], g["papers"]
-    game_findings = {r["finding"] for r in reveals.values() if r.get("finding")}
     for f in F.values():
-        f["page"] = promoted(f, game_findings)
+        f["page"] = has_local_page(f)
 
     used = set(F)
     for a in A.values():
@@ -107,11 +112,10 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
         _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
     _dump(PUBLIC / "queue" / "candidates.json", candidates)
     search = [{"t": "effect", "s": e["slug"], "n": e["name"], "a": e["aliases"][:6], "d": e.get("discipline"),
-               "c": e["lenses"]["record"]["code"], "k": e["lenses"]["record"]["k"]} for e in E.values()]
+               "k": e["lenses"]["record"]["k"]} for e in E.values()]
     for f in F.values():
         p = P.get(f["doi_o"], {})
         search.append({"t": "finding", "s": f["slug"], "n": p.get("title") or f["doi_o"], "doi": f["doi_o"],
-                       "au": p.get("authors"), "y": p.get("year"), "c": f["lenses"]["record"]["code"],
-                       "k": f["lenses"]["record"]["k"], "pg": f["page"]})
+                       "au": p.get("authors"), "y": p.get("year"), "k": f["lenses"]["record"]["k"]})
     sizes["search.json"] = _dump(PUBLIC / "search.json", search)
     return sizes

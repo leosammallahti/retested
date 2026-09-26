@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { findings, papers } from '../../lib/data';
-import { atlasUrl, RECORD_TONE, u } from '../../lib/fmt';
+import { u } from '../../lib/fmt';
 
 const allFindings = Object.values(findings());
 const paperByDoi = papers();
@@ -9,30 +9,22 @@ const n = allFindings.length;
 const initialFindings = allFindings
   .sort((a, b) => b.lenses.record.k - a.lenses.record.k || (paperByDoi[b.doi_o]?.year ?? 0) - (paperByDoi[a.doi_o]?.year ?? 0))
   .slice(0, 60);
-const LABEL: Record<string, string> = {
-  replicated: 'Replicated', largely_replicated: 'Largely replicated', contested: 'Contested',
-  largely_failed: 'Largely failed', failed: 'Failed to replicate', reversed: 'Reversed',
-  single_success: 'Replicated once', single_failure: 'Failed once', single_mixed: 'Mixed (one attempt)',
-  unclear: 'No clear verdict', untested: 'No linked attempts yet',
-};
 ---
-<Base title="Original papers" description="Every original psychology paper with a known replication attempt." active="effects/">
+<Base title="Original papers" description="Make a prediction, then inspect the source and attempt record for every original psychology paper in Retested." active="effects/">
   <div class="wrap" style="padding-top:2.4rem">
     <header class="rise">
       <div class="label">By paper</div>
       <h1>{n.toLocaleString()} original papers</h1>
-      <p class="lede">Every original paper that someone has tried to replicate. Papers with several attempts, effect sizes, or a named effect have their own page here. For the rest, the per-paper record lives in FORRT's <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>, which we link to rather than duplicate.</p>
+      <p class="lede">Every original paper in Retested's finding record now has a local page. Open one, make a prediction, then reveal its source and attempt record. A record may contain one attempt, several mixed results, uncoded evidence, or no linked attempt yet; thin and unresolved records stay visible as exactly that.</p>
     </header>
     <div class="fbar"><input type="search" id="pq" placeholder="Title, author, year or DOI…" aria-label="Filter papers" /><span class="mono faint" id="pc" aria-live="polite">{n.toLocaleString()} papers</span></div>
     <ul class="rowlist" id="plist">
       {initialFindings.map((f) => {
-        const record = f.lenses.record;
         const paper = paperByDoi[f.doi_o];
-        const href = f.page ? u(`finding/${f.slug}/`) : atlasUrl(f.doi_o);
-        return <li><a class="erow" href={href}>
+        return <li><a class="erow" href={u(`finding/${f.slug}/`)}>
           <span class="nm">{paper?.title ?? f.doi_o}</span>
-          <span class={`stamp sm t-${RECORD_TONE[record.code] ?? 'na'}`}>{LABEL[record.code] ?? record.label}</span>
-          <span class="meta"><span>{[paper?.authors, paper?.year].filter(Boolean).join(', ')}</span><span>{record.k} with verdict</span><span>{f.page ? 'full record here' : 'record on FORRT atlas ↗'}</span></span>
+          <span class="chip">Guess the result →</span>
+          <span class="meta"><span>{[paper?.authors, paper?.year].filter(Boolean).join(', ')}</span><span>prediction + source record</span></span>
         </a></li>;
       })}
     </ul>
@@ -41,9 +33,8 @@ const LABEL: Record<string, string> = {
   </div>
 </Base>
 <script>
-  import { u, RECORD_TONE, atlasUrl } from '../../lib/fmt';
-  type E = { t: string; s: string; n: string; doi?: string; au?: string; y?: number; c: string; k: number; pg?: boolean };
-  const LABEL: Record<string, string> = { replicated: 'Replicated', largely_replicated: 'Largely replicated', contested: 'Contested', largely_failed: 'Largely failed', failed: 'Failed to replicate', reversed: 'Reversed', single_success: 'Replicated once', single_failure: 'Failed once', single_mixed: 'Mixed (one attempt)', unclear: 'No clear verdict', untested: 'No linked attempts yet' };
+  import { u } from '../../lib/fmt';
+  type E = { t: string; s: string; n: string; doi?: string; au?: string; y?: number; k: number };
   const q = document.getElementById('pq') as HTMLInputElement, list = document.getElementById('plist')!, more = document.getElementById('more')!;
   let all: E[] = [], shown = 60;
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
@@ -52,8 +43,7 @@ const LABEL: Record<string, string> = {
     const hits = all.filter((e) => !qq || [e.n, e.au, e.y, e.doi].join(' ').toLowerCase().includes(qq));
     document.getElementById('pc')!.textContent = `${hits.length.toLocaleString()} papers`;
     list.innerHTML = hits.slice(0, shown).map((e) => {
-      const href = e.pg ? u(`finding/${e.s}/`) : atlasUrl(e.doi!);
-      return `<li><a class="erow" href="${href}"><span class="nm">${esc(e.n)}</span><span class="stamp sm t-${RECORD_TONE[e.c] ?? 'na'}">${LABEL[e.c] ?? e.c}</span><span class="meta"><span>${esc([e.au, e.y].filter(Boolean).join(', '))}</span><span>${e.k} with verdict</span><span>${e.pg ? 'full record here' : 'record on FORRT atlas ↗'}</span></span></a></li>`;
+      return `<li><a class="erow" href="${u('finding/' + e.s + '/')}"><span class="nm">${esc(e.n)}</span><span class="chip">Guess the result →</span><span class="meta"><span>${esc([e.au, e.y].filter(Boolean).join(', '))}</span><span>prediction + source record</span></span></a></li>`;
     }).join('');
     more.hidden = hits.length <= shown;
   }

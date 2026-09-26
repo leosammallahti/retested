@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 
-interface Entry { t: 'effect' | 'finding'; s: string; n: string; a?: string[]; d?: string; doi?: string; au?: string; y?: number; c: string; k: number; pg?: boolean }
+interface Entry { t: 'effect' | 'finding'; s: string; n: string; a?: string[]; d?: string; doi?: string; au?: string; y?: number; k: number }
 
 let cache: Promise<Entry[]> | null = null;
 const load = (base: string) => (cache ??= fetch(base + 'generated/search.json').then((r) => r.json()));
@@ -44,7 +44,7 @@ export default function Search({ base }: { base: string }) {
   }, [q, data]);
 
   const href = (e: Entry) =>
-    e.t === 'effect' ? `${base}effect/${e.s}/` : e.pg ? `${base}finding/${e.s}/` : `${base}findings/?q=${encodeURIComponent(e.doi || '')}`;
+    e.t === 'effect' ? `${base}effect/${e.s}/` : `${base}finding/${e.s}/`;
 
   return (
     <div class="search" ref={box} role="search">

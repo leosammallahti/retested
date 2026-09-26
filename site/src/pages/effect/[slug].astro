@@ -23,7 +23,7 @@ const orig = e.originals.map((d) => P[d]).filter(Boolean);
 const byline = orig.length === 1 ? [orig[0].authors, orig[0].year].filter(Boolean).join(', ') : orig.length > 1 ? `${orig.length} original papers` : e.famous?.original_year ? `original from ${e.famous.original_year}` : '';
 const fam = e.famous;
 const famStatus = fam?.status ? { replicated: 'replicated', not_replicated: 'not replicated', mixed: 'mixed', reversed: 'reversed' }[fam.status] : null;
-const findingPages = e.originals.map((d) => F[d]).filter((f) => f?.page);
+const findingPages = e.originals.map((d) => F[d]).filter(Boolean);
 const P_ = pending();
 const unverified = P_.by_effect[e.id] ?? [];
 const provisional = P_.effect_verdict_if_accepted[e.id] ?? null;

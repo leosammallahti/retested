@@ -4,11 +4,15 @@ from __future__ import annotations
 
 import unittest
 
-from pipeline.export import _daily_decks
+from pipeline.export import _daily_decks, has_local_page
 from pipeline.game import context_ready
 
 
 class DailyGameExportTests(unittest.TestCase):
+    def test_every_addressable_finding_gets_a_local_prediction_page(self) -> None:
+        self.assertTrue(has_local_page({"slug": "a-thin-but-addressable-finding"}))
+        self.assertFalse(has_local_page({"slug": ""}))
+
     def test_context_contract_requires_written_claim_and_experiment_explanation(self) -> None:
         complete = {
             "written": True,

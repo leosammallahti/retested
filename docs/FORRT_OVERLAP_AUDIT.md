@@ -1,6 +1,15 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## All finding records local; overlap counts unchanged — 2026-09-26 18:18 UTC
+
+All **4,626** original-paper finding records now have a local prediction-and-disclosure page, up from 2,419 local finding pages. The additional **2,207** routes expose records that already existed in Retested; they are not newly source-reviewed pairs or evidence that FORRT lacks anything. Some are intentionally thin: 250 have no linked attempt and 754 have no clear verdict. The separate scored game remains 879 context-ready cards.
+
+The scientific inventory and reconciliation partition are unchanged: **1,938** finished Retested-reviewed normalized pairs, **451** built FORRT overlays, **1,487** additions to Retested's built pages, 872 positive bibliographic same-pair relations overall, 421 among the additions, and **0** effect- or replication-level records certified new to FORRT. Effect, study, sample, and outcome equivalence assurance remains incomplete.
+
+From local commit `267bc779` at 17:55:33 through this approximately 18:18 checkpoint, product work added **0 source-completed effect/replication pages** in about 22 minutes, or **0 per 15 minutes**. Verification passes with 69 tests, the data and audit gates, 7,343-page root and base-path builds, 7,342 sitemap URLs, complete 4,626-route prediction coverage, static link/fragment scans, and mobile browser checks across all broad record states. Nothing was sent to FORRT, pushed, deployed, or published.
+
+
 ## Mobile release QA; overlap counts unchanged — 2026-09-26 17:55 UTC
 
 The mobile game and guarded deployment path were completed without changing the scientific corpus or its reconciliation classification. The current verified inventory remains **1,938** finished Retested-reviewed normalized pairs: **451** built FORRT overlays and **1,487** additions to Retested's built pages. Positive bibliographic same-pair evidence covers **872** Retested pairs overall and **421** of the additions. Effect, study, sample, and outcome equivalence remain unadjudicated, so the audit still certifies **0** effects or replications as new to FORRT.
