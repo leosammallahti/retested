@@ -1,5 +1,11 @@
 # Handoff — current verified state 2026-09-25
 
+## Five more fully checked pairs — 2026-09-26 00:17:38 UTC
+
+The data build, Astro site build (4,648 pages), exact-pair audit, and whitespace check passed with zero issues. **1,667 built pairs carry Retested review, including 1,216 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,670 raw rows. **1,544 built effects are Retested named, including 1,541 new effects.** Five parallel-reader source reviews became finished pairs: threat-word Stroop interference in anxious patients (successful), ideal-versus-current body-figure ratings among new female undergraduates (successful), older-adult cognitive training with narrow transfer (mixed), parent internalizing symptoms versus youth self-rated anxiety in a new clinic sample (failed), and pharmacology escape-room interest across two new student cohorts (mixed). Exact source quotes, independent samples, narrower effect claims and later Psychology fields are recorded. A prospective OCD lead was held because its participant independence remained unverified. No push or site publication.
+
+From 00:14:34 to 00:17:38, **five new pairs passed in 3 minutes 4 seconds**, about **24.5 per 15 minutes** over this short interval. This is faster than the prior interval but remains below the owner's 46-per-15-minute target; three separate reader tasks with their own parallel readers are still working.
+
 ## Three more fully checked pairs — 2026-09-26 00:14:34 UTC
 
 The data build, Astro site build (4,638 pages), exact-pair audit, and whitespace check passed with zero issues. **1,662 built pairs carry Retested review, including 1,211 new original/later pairs** and 451 FORRT overlays. The curated JSON has 1,665 raw rows. **1,539 built effects are Retested named, including 1,536 new effects.** Added a preregistered new-cohort test of domain-information hindsight bias (successful conceptual result), a new class's interdependent versus independent quiz contingency comparison (failed direct result), and a separate personality-disorder trial in which two schema modes again predicted later severity (successful scoped result). Each row records source quotes, participant separation, exact DOI linkage, and later Psychology field. No push or site publication.

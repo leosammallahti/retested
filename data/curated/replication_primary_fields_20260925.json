@@ -32,6 +32,11 @@
       "field": "Psychology",
       "topic": "Cognitive Abilities and Testing"
     },
+    "10.1002/1098-108x(198811)7:6<813::aid-eat2260070612>3.0.co;2-4": {
+      "id": "https://openalex.org/W2078324118",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
     "10.1002/1099-0879(200007)7:3<220::aid-cpp243>3.0.co;2-f": {
       "id": "https://openalex.org/W2086027013",
       "field": "Psychology",
@@ -1217,6 +1222,11 @@
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
     },
+    "10.1016/0005-7967(89)90001-6": {
+      "id": "https://openalex.org/W1993235937",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
     "10.1016/0005-7967(89)90121-6": {
       "id": "https://openalex.org/W2017754358",
       "field": "Psychology",
@@ -1746,6 +1756,11 @@
       "id": "https://openalex.org/W4399929104",
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1016/j.ejphar.2025.177496": {
+      "id": "https://openalex.org/W4408224307",
+      "field": "Psychology",
+      "topic": "Motivation and Self-Concept in Sports"
     },
     "10.1016/j.evolhumbehav.2016.12.003": {
       "id": "https://openalex.org/W2565980765",
@@ -3051,6 +3066,11 @@
       "id": "https://openalex.org/W1985934536",
       "field": "Neuroscience",
       "topic": "Neurobiology of Language and Bilingualism"
+    },
+    "10.1037/0882-7974.1.2.172": {
+      "id": "https://openalex.org/W2095132716",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
     },
     "10.1037/0893-3200.22.3.355": {
       "id": "https://openalex.org/W2060045680",
@@ -4936,6 +4956,11 @@
       "id": "https://openalex.org/W2091917880",
       "field": "Psychology",
       "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1080/23311908.2025.2466935": {
+      "id": "https://openalex.org/W4407980736",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
     },
     "10.1080/23322705.2024.2327950": {
       "id": "https://openalex.org/W4393142152",
