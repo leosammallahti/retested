@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from hashlib import sha256
 from pathlib import Path
 
+from .game import context_ready
 from .load import ROOT
 
 BUILD = ROOT / "data" / "build"
@@ -46,7 +47,8 @@ def _daily_decks(items: list[dict], reveals: dict) -> dict[str, list[str]]:
     by_tier_answer: dict[tuple[str, str], list[dict]] = {}
     for tier in ("study", "famous"):
         for answer in ("successful", "failed"):
-            rows = [item for item in items if item["tier"] == tier and item.get("written")
+            rows = [item for item in items if item["tier"] == tier and item.get("context_ready")
+                    and context_ready(item)
                     and reveals[item["id"]].get("answer") == answer]
             by_tier_answer[tier, answer] = rows
     quotas = {("study", "successful"): 4, ("study", "failed"): 4,

@@ -46,6 +46,19 @@ def _clean_method(s: str | None) -> str | None:
     return None if len(t) < 20 or len(t) > 500 or LEAK.search(t) else t
 
 
+def context_ready(item: dict) -> bool:
+    """Whether a public card explains both the finding and the original experiment.
+
+    This is deliberately answer-blind.  It is the selection contract for every
+    playable deck: a claim alone is a trivia prompt, not enough context for a
+    player to judge a replication.  Ineligible records stay in the generated
+    payload for auditing, but no mode may deal them.
+    """
+
+    return bool(item.get("written") and _clean_claim(item.get("claim"), 30)
+                and _clean_method(item.get("method")))
+
+
 def _p_bucket(p) -> str | None:
     try:
         p = float(p)
@@ -115,6 +128,7 @@ def build(g: dict, written: dict[str, dict] | None = None,
                 "cited_by": (p.get("openalex") or {}).get("cited_by"),
             },
         })
+        items[-1]["context_ready"] = context_ready(items[-1])
         reps = sorted({a["id"]: a for a, _ in pairs}.values(), key=lambda a: a.get("year_r") or 0)
         reveals[gid] = {
             "id": gid,
@@ -152,6 +166,7 @@ def build(g: dict, written: dict[str, dict] | None = None,
             "year": fam.get("original_year"), "journal": None, "discipline": e.get("discipline"),
             "cues": {"gs_citations": fam.get("gs_citations")},
         })
+        items[-1]["context_ready"] = context_ready(items[-1])
         reveals[gid] = {
             "id": gid, "answer": "successful" if fam["status"] == "replicated" else "failed",
             "curated_status": fam["status_raw"], "critiques": fam.get("critiques"),
@@ -236,6 +251,7 @@ def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: lis
             "discipline": None,
             "cues": {"n": None, "p": None, "r": None, "cited_by": c0.get("cited_by_o")},
         })
+        items[-1]["context_ready"] = context_ready(items[-1])
         reveals[gid] = {
             "id": gid, "answer": next(iter(outs)),
             "title_o": c0.get("title_o"), "authors_o": c0.get("authors_o"),

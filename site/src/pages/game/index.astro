@@ -15,16 +15,23 @@ const pl = s.predictors.p_le_005, pm = s.predictors.p_005_05;
     </header>
     <div class="grid grid-main">
       <Game client:load base={u('')} />
+      <noscript>
+        <section class="card gnojs" aria-labelledby="gnojs-title">
+          <div class="label">JavaScript needed for the game</div>
+          <h2 id="gnojs-title">Browse the record instead</h2>
+          <p>The game reveals each result only after a prediction, so it needs JavaScript. You can still explore the underlying record by <a href={u('effects/')}>browsing effects</a> or <a href={u('findings/')}>browsing papers</a>.</p>
+        </section>
+      </noscript>
       <aside class="ghints stack">
         <div class="card">
           <div class="label">What predicts a replication</div>
           <p>In this deck, originals with <b>p ≤ .005</b> replicated <b class="num">{pct(pl.success_share)}</b> of the time (n = {pl.n}); those with <b>.005 &lt; p &lt; .05</b> only <b class="num">{pct(pm.success_share)}</b> (n = {pm.n}).</p>
           <p>Across all {s.overall.n.toLocaleString()} replications with a verdict, <b class="num">{pct(s.overall.success_share)}</b> succeeded. Social psychology: <b class="num">{pct(s.by_discipline['Social Psychology']?.success_share)}</b>. Cognitive: <b class="num">{pct(s.by_discipline['Cognitive Psychology']?.success_share)}</b>.</p>
-          <p class="faint" style="font-size:.85rem">Base rates reflect which studies people chose to replicate, not psychology as a whole. <a href={u('stats/')}>More on the record</a>.</p>
+          <p class="faint gsmall">Base rates reflect which studies people chose to replicate, not psychology as a whole. <a href={u('stats/')}>More on the record</a>.</p>
         </div>
         <div class="card">
           <div class="label">How the deck is built</div>
-          <p style="font-size:.95rem">One card per original study, only where the replication verdict is clear and consistent. Claims that give the answer away are removed automatically. The daily round is balanced: five cards whose later replications found the effect and five that did not. The result is fetched only after you lock in.</p>
+          <p style="font-size:.95rem">One card per original study, only where the replication verdict is clear and consistent. Claims that give the answer away are removed automatically. The daily round uses a fixed, quality-controlled mix. The result is fetched only after you lock in.</p>
         </div>
       </aside>
     </div>
@@ -53,7 +60,7 @@ const pl = s.predictors.p_le_005, pm = s.predictors.p_005_05;
   :global(.gguess) { margin-top: 1.4rem; border-top: 1px dashed var(--rule-2); padding-top: 1.2rem; }
   :global(.gq) { font: 500 1.02rem var(--f-display); display: block; margin-bottom: .6rem; }
   :global(.gslider) { display: flex; gap: .7rem; align-items: center; }
-  :global(.gslider input) { flex: 1; accent-color: var(--obs); height: 2rem; }
+  :global(.gslider input) { flex: 1; accent-color: var(--obs); height: 2.75rem; }
   :global(.gp) { font-size: 1.1rem; margin: .4rem 0 .9rem; }
   :global(.gp b) { font: 600 2rem var(--f-display); }
   :global(.gnote) { font-size: .8rem; margin-top: .8rem; }
@@ -68,6 +75,19 @@ const pl = s.predictors.p_le_005, pm = s.predictors.p_005_05;
   :global(.gsum .emo) { font-size: 1.5rem; letter-spacing: .1em; }
   :global(.gsum) { margin-bottom: 1rem; }
   :global(.gcal) { margin-top: 1rem; }
-  :global(.gcal svg) { display: block; max-width: 320px; }
+  :global(.gcal svg) { display: block; width: 100%; height: auto; max-width: 320px; }
   :global(.gcal svg text) { font-family: var(--f-mono); font-size: 9px; fill: var(--ink-3); }
+  .gnojs { margin-top: 1rem; }
+  .gnojs h2 { margin-top: .35rem; }
+  .gsmall { font-size: .85rem; }
+  @media (max-width: 480px) {
+    .gwrap { padding-top: 1.5rem; }
+    .lede { font-size: 1.15rem; }
+    :global(.gcard) { min-height: 0; }
+    :global(.gm) { min-height: 44px; padding: 1rem; }
+    :global(.gslider) { gap: .45rem; }
+    :global(.gslider input) { min-width: 0; }
+    :global(.gcal) { overflow: hidden; }
+    .gsmall { font-size: .9rem; }
+  }
 </style>

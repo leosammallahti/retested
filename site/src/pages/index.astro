@@ -31,6 +31,7 @@ const cells = (() => {
           <a class="btn" href={u('game/')}>Play: did it replicate? →</a>
           <a class="btn ghost" href={u('effects/')}>Browse {c.effects} effects</a>
         </div>
+        <p class="game-note faint">Start with today’s ten: make a probability call about each real finding, see what later studies reported, then share your score. No account needed.</p>
       </div>
       <figure class="waffle rise" aria-label={`Of every 100 replications: ${cells.filter((x) => x === 'ok').length} replicated, ${cells.filter((x) => x === 'mix').length} mixed, ${cells.filter((x) => x === 'bad').length} did not.`}>
         <div class="cells">{cells.map((t, i) => <i class={t} style={`--d:${i * 9}ms`}></i>)}</div>
@@ -106,6 +107,7 @@ const cells = (() => {
   .mixc { color: var(--mix); }
   .sub { font-size: 1.05rem; }
   .cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+  .game-note { font-size: .82rem; margin: .7rem 0 0; max-width: 60ch; }
   .waffle .cells { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; max-width: 420px; }
   .waffle .cells i { aspect-ratio: 1; border-radius: 2px; display: block; }
   .waffle i.ok { background: var(--ok); } .waffle i.mix { background: var(--mix); } .waffle i.bad { background: transparent; box-shadow: inset 0 0 0 2px var(--bad); }

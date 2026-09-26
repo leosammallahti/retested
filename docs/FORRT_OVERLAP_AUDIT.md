@@ -1,6 +1,13 @@
 # FORRT overlap audit — 2026-09-26
 
 
+## Mobile release QA; overlap counts unchanged — 2026-09-26 17:55 UTC
+
+The mobile game and guarded deployment path were completed without changing the scientific corpus or its reconciliation classification. The current verified inventory remains **1,938** finished Retested-reviewed normalized pairs: **451** built FORRT overlays and **1,487** additions to Retested's built pages. Positive bibliographic same-pair evidence covers **872** Retested pairs overall and **421** of the additions. Effect, study, sample, and outcome equivalence remain unadjudicated, so the audit still certifies **0** effects or replications as new to FORRT.
+
+From the preceding 16:55:48 local commit through the 17:55 checkpoint, product QA added **0 effect/replication pages** in about 59 minutes, or **0 per 15 minutes**. The 68-test suite, data build, zero-issue promoted audit, structural registry check, 5,136-page root and base-path site builds, static link scans, and a real-browser ten-card mobile game run pass. These product checks do not change the novelty evidence or close the literature-assurance backlog. Nothing was sent to FORRT, pushed, deployed, or published.
+
+
 ## Public, reproducible audit surface — 2026-09-26 16:52 UTC
 
 The validated reconciliation summary now drives the site's public `/coverage/` page, home-page overlap statement, and methods explanation. A normal data build regenerates the pair summaries and registry after validating every declared raw input; the site cannot silently retain a stale standalone registry. The complete bibliographic partition remains **1,938** Retested pairs: **872** positive same-pair relations overall, **421** among the **1,487** Retested additions, and **0** effect- or replication-level records certified new to FORRT.
