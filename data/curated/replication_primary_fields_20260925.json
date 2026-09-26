@@ -10176,6 +10176,261 @@
       "id": "https://openalex.org/W1976377795",
       "field": "Psychology",
       "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.3758/bf03336547": {
+      "id": "https://openalex.org/W2092232900",
+      "field": "Psychology",
+      "topic": "Psychological and Temporal Perspectives Research"
+    },
+    "10.1037/0033-2909.125.4.387": {
+      "id": "https://openalex.org/W2159566910",
+      "field": "Psychology",
+      "topic": "Paranormal Experiences and Beliefs"
+    },
+    "10.1016/j.jpsychires.2016.08.014": {
+      "id": "https://openalex.org/W2508593627",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1016/j.bodyim.2005.10.004": {
+      "id": "https://openalex.org/W2029723616",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1016/j.jss.2023.111937": {
+      "id": "https://openalex.org/W4389954587",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1016/s0005-7967(03)00173-6": {
+      "id": "https://openalex.org/W1995525865",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1016/0005-7916(89)90046-3": {
+      "id": "https://openalex.org/W1999287384",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.2466/pr0.1977.40.1.70": {
+      "id": "https://openalex.org/W2072965144",
+      "field": "Psychology",
+      "topic": "Psychological and Temporal Perspectives Research"
+    },
+    "10.3758/s13428-021-01629-y": {
+      "id": "https://openalex.org/W3197077292",
+      "field": "Psychology",
+      "topic": "Digital Mental Health Interventions"
+    },
+    "10.2466/pms.1997.85.3f.1428": {
+      "id": "https://openalex.org/W2059487603",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.1177/104298598702200208": {
+      "id": "https://openalex.org/W318132064",
+      "field": "Psychology",
+      "topic": "Recreation, Leisure, Wilderness Management"
+    },
+    "10.3758/s13428-026-03099-6": {
+      "id": "https://openalex.org/W7167626477",
+      "field": "Psychology",
+      "topic": "Behavioral Health and Interventions"
+    },
+    "10.1007/s10803-008-0632-0": {
+      "id": "https://openalex.org/W2063133393",
+      "field": "Psychology",
+      "topic": "Family and Disability Support Research"
+    },
+    "10.1037/h0030709": {
+      "id": "https://openalex.org/W3152404398",
+      "field": "Psychology",
+      "topic": "Psychological and Educational Research Studies"
+    },
+    "10.1016/j.dib.2021.107595": {
+      "id": "https://openalex.org/W3214996005",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1080/17439760.2020.1818811": {
+      "id": "https://openalex.org/W3084208426",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.1207/s15327752jpa4605_1": {
+      "id": "https://openalex.org/W1998612237",
+      "field": "Psychology",
+      "topic": "Psychological Testing and Assessment"
+    },
+    "10.1093/sleep/zsaa056.102": {
+      "id": "https://openalex.org/W3032422810",
+      "field": "Psychology",
+      "topic": "Children's Physical and Motor Development"
+    },
+    "10.1016/j.jad.2009.07.007": {
+      "id": "https://openalex.org/W2132476515",
+      "field": "Psychology",
+      "topic": "Mindfulness and Compassion Interventions"
+    },
+    "10.1176/ajp.130.4.468": {
+      "id": "https://openalex.org/W2155496096",
+      "field": "Psychology",
+      "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.3758/bf03329495": {
+      "id": "https://openalex.org/W2008347704",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1111/psyp.13986": {
+      "id": "https://openalex.org/W4200233082",
+      "field": "Psychology",
+      "topic": "Reading and Literacy Development"
+    },
+    "10.3758/bf03336494": {
+      "id": "https://openalex.org/W1966361192",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1037/dev0001181": {
+      "id": "https://openalex.org/W4200283085",
+      "field": "Psychology",
+      "topic": "Cognitive Abilities and Testing"
+    },
+    "10.1016/j.addbeh.2004.01.001": {
+      "id": "https://openalex.org/W2101881744",
+      "field": "Psychology",
+      "topic": "Sleep and related disorders"
+    },
+    "10.3758/s13420-014-0151-0": {
+      "id": "https://openalex.org/W2079923742",
+      "field": "Psychology",
+      "topic": "Child and Animal Learning Development"
+    },
+    "10.1080/10508619.2025.2487726": {
+      "id": "https://openalex.org/W4409176126",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
+    },
+    "10.1080/00918369.2020.1815432": {
+      "id": "https://openalex.org/W3084375293",
+      "field": "Psychology",
+      "topic": "LGBTQ Health, Identity, and Policy"
+    },
+    "10.1080/02640414.2021.2015945": {
+      "id": "https://openalex.org/W4226249028",
+      "field": "Psychology",
+      "topic": "Sport Psychology and Performance"
+    },
+    "10.1111/j.1600-0447.1991.tb03198.x": {
+      "id": "https://openalex.org/W2010239296",
+      "field": "Psychology",
+      "topic": "Personality Disorders and Psychopathology"
+    },
+    "10.1515/psych-2025-0017": {
+      "id": "https://openalex.org/W7203485155",
+      "field": "Psychology",
+      "topic": "Psychological Well-being and Life Satisfaction"
+    },
+    "10.5334/cpsy.84": {
+      "id": "https://openalex.org/W4285297812",
+      "field": "Psychology",
+      "topic": "Gambling Behavior and Treatments"
+    },
+    "10.1111/bjc.12319": {
+      "id": "https://openalex.org/W3181325973",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1038/s41598-021-87827-2": {
+      "id": "https://openalex.org/W3158618515",
+      "field": "Psychology",
+      "topic": "Social Robot Interaction and HRI"
+    },
+    "10.1016/s0005-7967(02)00026-8": {
+      "id": "https://openalex.org/W1999020933",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.1016/j.paid.2014.07.024": {
+      "id": "https://openalex.org/W1981060642",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1016/0005-7967(93)90070-b": {
+      "id": "https://openalex.org/W2059188224",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1080/20445911.2020.1796686": {
+      "id": "https://openalex.org/W3045432250",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.2307/1128582": {
+      "id": "https://openalex.org/W2002705740",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1007/s40616-023-00181-4": {
+      "id": "https://openalex.org/W4361209694",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1002/1099-0968(200008)8:4<293::aid-erv346>3.0.co;2-4": {
+      "id": "https://openalex.org/W2135161734",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1038/oby.2001.55": {
+      "id": "https://openalex.org/W2005852823",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1121/10.0015938": {
+      "id": "https://openalex.org/W4313159181",
+      "field": "Psychology",
+      "topic": "Phonetics and Phonology Research"
+    },
+    "10.1016/j.humov.2023.103074": {
+      "id": "https://openalex.org/W4362635237",
+      "field": "Psychology",
+      "topic": "Action Observation and Synchronization"
+    },
+    "10.1016/j.jad.2016.08.017": {
+      "id": "https://openalex.org/W2507547617",
+      "field": "Psychology",
+      "topic": "Personality Disorders and Psychopathology"
+    },
+    "10.1016/j.brat.2021.103850": {
+      "id": "https://openalex.org/W3152009214",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1016/j.brat.2017.09.013": {
+      "id": "https://openalex.org/W2763305681",
+      "field": "Psychology",
+      "topic": "Sleep and related disorders"
+    },
+    "10.26153/tsw/3226": {
+      "id": "https://openalex.org/W2987572096",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
+    },
+    "10.1007/s40750-018-0101-8": {
+      "id": "https://openalex.org/W2889225310",
+      "field": "Psychology",
+      "topic": "Neuroendocrine regulation and behavior"
+    },
+    "10.1080/08964289.2016.1232241": {
+      "id": "https://openalex.org/W2531758938",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.4172/2155-6105.1000119": {
+      "id": "https://openalex.org/W2121568166",
+      "field": "Psychology",
+      "topic": "Child and Adolescent Psychosocial and Emotional Development"
     }
   },
   "manual_exception": [

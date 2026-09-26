@@ -1,5 +1,11 @@
 # Handoff — current verified state 2026-09-26
 
+## Sixty backlog pairs completed after interruption — 2026-09-26 09:30 UTC
+
+The last previous data/site checkpoint was 01:22 UTC; reader files continued to be staged until 03:26 UTC, then no work occurred until the resumed session at 09:21 UTC. Sixty distinct source-checked rows remained unbuilt. They were bulk imported, with two duplicate drafts folded into one pair and one cross-study candidate alias removed. The queue guard found 50 disappeared IDs, all tied to promoted later papers, and four distinct candidates restored after the alias correction. The data build, Astro build (4,955 pages), promoted-pair audit, and whitespace check passed with zero issues. **1,843 built pairs carry Retested review**, including **1,392 new to the built site** and 451 built FORRT overlays.
+
+The current local-plus-live FORRT audit classifies the 1,392 new-to-site pairs as **345 already-recorded same pairs**, **85 later papers recorded with no confirmed same-pair link**, and **962 with no exact DOI/title match** in checked sources. Thus **1,047 are candidate new pair links**, not certified absent from every FORRT variant. FORRT's extractor already has outcomes for 300 same-pair records; 55 scoped labels differ. This backlog was read over roughly 124 minutes from 01:22 to 03:26, about 7.2 staged pairs per 15 minutes. The resumed bulk build was a backlog flush, not a sustainable discovery rate. No upstream FORRT change, push, or site publication.
+
 ## Live FORRT overlap correction — 2026-09-26 01:27 UTC
 
 A check of current official FORRT extractor, pending, validated, and FLoRA CSVs found 74 of Retested's supposedly local-unmatched papers already upstream. The combined local-plus-live per-pair audit now classifies the 1,332 new-to-site pairs as **338 same-pair FORRT records**, **84 later papers in FORRT without a confirmed same-pair link**, and **910 with no exact later DOI/title match** in the checked sources. Thus 994 are candidate new pair links, not certified first discoveries. FORRT's extractor already has an outcome for 293 same-pair records; 54 scoped labels differ and need review. Details/evidence: `data/curated/forrt_overlap_audit_20260926.json` and `docs/FORRT_OVERLAP_AUDIT.md`. The 01:22 checkpoint below is local-snapshot-only and superseded for FORRT novelty assessment.
