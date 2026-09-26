@@ -4142,6 +4142,11 @@
       "field": "Psychology",
       "topic": "Cultural Differences and Values"
     },
+    "10.1080/01443410701366092": {
+      "id": "https://openalex.org/W2070661594",
+      "field": "Psychology",
+      "topic": "Creativity in Education and Neuroscience"
+    },
     "10.1080/0144341860060206": {
       "id": "https://openalex.org/W2006571354",
       "field": "Psychology",
@@ -5666,6 +5671,11 @@
       "id": "https://openalex.org/W2126199205",
       "field": "Psychology",
       "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1111/j.1551-6709.2011.01218.x": {
+      "id": "https://openalex.org/W2093450164",
+      "field": "Psychology",
+      "topic": "Language Development and Disorders"
     },
     "10.1111/j.1559-1816.1984.tb02250.x": {
       "id": "https://openalex.org/W2083029523",
@@ -7787,6 +7797,11 @@
       "field": "Psychology",
       "topic": "Language, Metaphor, and Cognition"
     },
+    "10.17760/d20002958": {
+      "id": "https://openalex.org/W2096456468",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
     "10.18061/emr.v17i1.8446": {
       "id": "https://openalex.org/W4385724681",
       "field": "Neuroscience",
@@ -8291,6 +8306,11 @@
       "id": "https://openalex.org/W2073528995",
       "field": "Psychology",
       "topic": "Behavioral and Psychological Studies"
+    },
+    "10.2466/pr0.1966.19.1.249": {
+      "id": "https://openalex.org/W2093964669",
+      "field": "Psychology",
+      "topic": "Psychological Testing and Assessment"
     },
     "10.2466/pr0.1966.19.3.910": {
       "id": "https://openalex.org/W1997594945",
@@ -9602,6 +9622,11 @@
       "field": "Psychology",
       "topic": "Child and Animal Learning Development"
     },
+    "10.7282/t34t6jjp": {
+      "id": "https://openalex.org/W2252718641",
+      "field": "Psychology",
+      "topic": "Emotions and Moral Behavior"
+    },
     "10.7334/psicothema2019.405": {
       "id": "https://openalex.org/W3046535490",
       "field": "Psychology",
@@ -9631,6 +9656,11 @@
       "id": "https://openalex.org/W6977726099",
       "field": "Psychology",
       "topic": "Phonetics and Phonology Research"
+    },
+    "10.7939/r3c24r22f": {
+      "id": "https://openalex.org/W2810928372",
+      "field": "Psychology",
+      "topic": "Child and Animal Learning Development"
     }
   },
   "manual_exception": [
