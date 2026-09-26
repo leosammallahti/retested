@@ -1,21 +1,21 @@
 {
   "summary": {
-    "audited_at_utc": "2026-09-26T09:48:34.527552+00:00",
+    "audited_at_utc": "2026-09-26T10:26:12.858206+00:00",
     "local_forrt_snapshot_retrieved_on": "2026-09-07",
-    "retested_new_to_built_site": 1413,
+    "retested_new_to_built_site": 1427,
     "classifications": {
-      "no_exact_doi_or_title_match_in_local_forrt_tables": 1059,
-      "same_pair_exact_dois": 279,
+      "no_exact_doi_or_title_match_in_local_forrt_tables": 1071,
+      "same_pair_exact_dois": 281,
       "later_paper_doi_only": 68,
       "same_pair_title_alternate_doi": 4,
       "later_paper_title_alternate_doi_only": 3
     },
-    "same_pair_raw": 283,
+    "same_pair_raw": 285,
     "later_paper_present_but_same_pair_unconfirmed": 71,
-    "later_paper_no_exact_doi_or_title_match": 1059,
-    "extractor_same_pair_with_outcome": 246,
+    "later_paper_no_exact_doi_or_title_match": 1071,
+    "extractor_same_pair_with_outcome": 248,
     "extractor_outcome_differs_from_retested": 33,
-    "live_checked_at_utc": "2026-09-26T09:48:34.527552+00:00",
+    "live_checked_at_utc": "2026-09-26T10:26:12.858206+00:00",
     "live_sources": [
       "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/extracted.csv",
       "https://raw.githubusercontent.com/forrtproject/flora-extractor/HEAD/data/target_pending.csv",
@@ -24,12 +24,12 @@
       "https://raw.githubusercontent.com/forrtproject/fred-data/main/output/flora_filtered.csv"
     ],
     "combined_local_and_live_classifications": {
-      "no_exact_doi_or_title_match": 981,
+      "no_exact_doi_or_title_match": 993,
       "later_paper_recorded_pair_unconfirmed": 87,
-      "same_pair_recorded": 345
+      "same_pair_recorded": 347
     },
     "live_new_matches_not_in_local_snapshot": 78,
-    "same_pair_with_extractor_outcome_local_or_live": 300,
+    "same_pair_with_extractor_outcome_local_or_live": 302,
     "extractor_outcome_differs_from_retested_local_or_live": 55
   },
   "records": [
@@ -2209,6 +2209,30 @@
       "forrt_extractor_outcome_latest": null
     },
     {
+      "doi_o": "10.1007/s10964-022-01602-8",
+      "doi_r": "10.1002/jad.12502",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 2063,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "successful",
+      "live_match": {
+        "source": "extractor",
+        "row": 2875,
+        "match_basis": "doi",
+        "same_original": true,
+        "outcome": "successful",
+        "source_later_dois": [
+          "10.1002/jad.12502"
+        ]
+      },
+      "combined_classification": "same_pair_recorded",
+      "forrt_extractor_outcome_latest": "successful"
+    },
+    {
       "doi_o": "10.1007/s10979-006-9054-8",
       "doi_r": "10.1007/s10979-007-9091-y",
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -3062,6 +3086,30 @@
       "live_match": null,
       "combined_classification": "no_exact_doi_or_title_match",
       "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1016/j.bbi.2020.05.024",
+      "doi_r": "10.1016/j.bpsgos.2024.100332",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 1903,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "successful",
+      "live_match": {
+        "source": "extractor",
+        "row": 2691,
+        "match_basis": "doi",
+        "same_original": true,
+        "outcome": "successful",
+        "source_later_dois": [
+          "10.1016/j.bpsgos.2024.100332"
+        ]
+      },
+      "combined_classification": "same_pair_recorded",
+      "forrt_extractor_outcome_latest": "successful"
     },
     {
       "doi_o": "10.1016/j.beth.2007.05.004",
@@ -4102,6 +4150,17 @@
       "forrt_extractor_outcome_latest": null
     },
     {
+      "doi_o": "10.1016/j.evolhumbehav.2016.10.008",
+      "doi_r": "10.1017/ehs.2020.36",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "failed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.1016/j.ijlp.2025.102071",
       "doi_r": "10.1016/j.ijlp.2026.102221",
       "classification": "same_pair_exact_dois",
@@ -4358,6 +4417,17 @@
     {
       "doi_o": "10.1016/j.jcbs.2016.05.001",
       "doi_r": "10.1016/j.jcbs.2018.06.005",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1016/j.jcbs.2021.06.005",
+      "doi_r": "10.1007/s40732-025-00646-z",
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
       "evidence": null,
       "forrt_extractor_outcome": null,
@@ -6820,6 +6890,17 @@
       "forrt_extractor_outcome_latest": "failed"
     },
     {
+      "doi_o": "10.1037/0022-3514.67.6.949",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.1037/0022-3514.69.1.130",
       "doi_r": "10.1037/emo0001281",
       "classification": "same_pair_exact_dois",
@@ -7233,6 +7314,17 @@
     },
     {
       "doi_o": "10.1037/0022-3514.77.4.785",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "failed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1037/0022-3514.77.4.785",
       "doi_r": "10.1080/00224545.2022.2036670",
       "classification": "same_pair_exact_dois",
       "evidence": {
@@ -7448,6 +7540,17 @@
       "evidence": null,
       "forrt_extractor_outcome": null,
       "retested_outcome": "failed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1037/0022-3514.87.1.57",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
       "live_match": null,
       "combined_classification": "no_exact_doi_or_title_match",
       "forrt_extractor_outcome_latest": null
@@ -8183,6 +8286,17 @@
       "evidence": null,
       "forrt_extractor_outcome": null,
       "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1037/a0015999",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "failed",
       "live_match": null,
       "combined_classification": "no_exact_doi_or_title_match",
       "forrt_extractor_outcome_latest": null
@@ -10916,6 +11030,17 @@
       "forrt_extractor_outcome_latest": "successful"
     },
     {
+      "doi_o": "10.1073/pnas.1818365116",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "failed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.1073/pnas.1905779116",
       "doi_r": "10.1073/pnas.2305629120",
       "classification": "later_paper_doi_only",
@@ -13432,6 +13557,17 @@
       "forrt_extractor_outcome_latest": null
     },
     {
+      "doi_o": "10.1111/desc.12016",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "mixed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.1111/desc.12193",
       "doi_r": "10.5178/lebs.2026.131",
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -15301,6 +15437,17 @@
       "evidence": null,
       "forrt_extractor_outcome": null,
       "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.1177/0022022114537704",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "failed",
       "live_match": null,
       "combined_classification": "no_exact_doi_or_title_match",
       "forrt_extractor_outcome_latest": null
@@ -19157,6 +19304,17 @@
       "forrt_extractor_outcome_latest": null
     },
     {
+      "doi_o": "10.2466/pr0.1998.82.3.863",
+      "doi_r": "10.2466/pr0.2002.90.1.173",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.2466/pr0.1998.82.3c.1239",
       "doi_r": "10.2466/pr0.1999.84.3c.1111",
       "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
@@ -19844,6 +20002,17 @@
       "forrt_extractor_outcome_latest": "failed"
     },
     {
+      "doi_o": "10.3758/bf03196742",
+      "doi_r": "10.1080/10489223.2023.2260792",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
       "doi_o": "10.3758/bf03197221",
       "doi_r": "10.31234/osf.io/mhpu9",
       "classification": "same_pair_exact_dois",
@@ -20219,6 +20388,17 @@
       "evidence": null,
       "forrt_extractor_outcome": null,
       "retested_outcome": "failed",
+      "live_match": null,
+      "combined_classification": "no_exact_doi_or_title_match",
+      "forrt_extractor_outcome_latest": null
+    },
+    {
+      "doi_o": "10.7298/nwhb-ty53",
+      "doi_r": "10.1037/xge0001559",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful",
       "live_match": null,
       "combined_classification": "no_exact_doi_or_title_match",
       "forrt_extractor_outcome_latest": null

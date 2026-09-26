@@ -10511,6 +10511,41 @@
       "id": "https://openalex.org/W2801996353",
       "field": "Psychology",
       "topic": "Reading and Literacy Development"
+    },
+    "10.2466/pr0.2002.90.1.173": {
+      "id": "https://openalex.org/W2035833884",
+      "field": "Psychology",
+      "topic": "Bullying, Victimization, and Aggression"
+    },
+    "10.1080/10489223.2023.2260792": {
+      "id": "https://openalex.org/W4387460954",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1017/ehs.2020.36": {
+      "id": "https://openalex.org/W4241590236",
+      "field": "Psychology",
+      "topic": "Evolutionary Psychology and Human Behavior"
+    },
+    "10.1002/jad.12502": {
+      "id": "https://openalex.org/W4409467806",
+      "field": "Psychology",
+      "topic": "Personality Traits and Psychology"
+    },
+    "10.1016/j.bpsgos.2024.100332": {
+      "id": "https://openalex.org/W4396747278",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1007/s40732-025-00646-z": {
+      "id": "https://openalex.org/W4411235459",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1037/xge0001559": {
+      "id": "https://openalex.org/W4399628341",
+      "field": "Psychology",
+      "topic": "Cultural Differences and Values"
     }
   },
   "manual_exception": [

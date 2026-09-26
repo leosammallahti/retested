@@ -14,6 +14,10 @@ Sources: local `data/raw/forrt` snapshot and its `MANIFEST.json` (retrieved 2026
 
 The built Retested site has **1,864 source-reviewed pairs**, including **1,413 additions to its built pages** and 451 built FORRT overlays. The combined local-history and current-official-file audit classifies those 1,413 additions as **345 same original/later pairs already in FORRT data**, **87 later papers present without the same pair confirmed**, and **981 with no exact later DOI/title match** in the checked files. The latter two groups total **1,068 candidate new pair links**, not verified worldwide first discoveries. The official FORRT extractor already has an outcome for 300 of the 345 same-pair records; 55 Retested scoped labels differ and require inspection. The current official CSV sources and per-row evidence are in data/curated/forrt_overlap_audit_20260926.json. This update changes Retested's local built site only; no upstream FORRT contribution has been made.
 
+## Updated after the 10:26 build — 2026-09-26
+
+The built Retested site has **1,878 source-reviewed pairs**: 451 built FORRT overlays and 1,427 additions to its built pages. The combined local-history and current-official-file audit classifies those 1,427 as **347 exact same original/later pairs already recorded in FORRT data**, **87 later papers recorded without the same pair confirmed**, and **993 with no exact later DOI/title match**. The latter two total **1,080 candidate new pair links**, not proof of absence from every FORRT source or alternate paper version. FORRT's extractor holds outcomes for 302 of the 347 same-pair records; 55 Retested scoped labels differ and warrant effect-level inspection. Pair-by-pair evidence and current official source URLs are in data/curated/forrt_overlap_audit_20260926.json. No upstream FORRT data changed.
+
 ## Completed-site checkpoint — 2026-09-26 01:19 UTC
 
 The latest audited Retested build has **1,766 finished source-reviewed pairs**: 451 overlay pairs in the built FORRT layer, and 1,315 pairs new to Retested's built pages. The 1,315 break down as follows; these categories are mutually exclusive:
