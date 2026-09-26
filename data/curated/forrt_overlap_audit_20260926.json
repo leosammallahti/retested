@@ -1,20 +1,20 @@
 {
   "summary": {
-    "audited_at_utc": "2026-09-26T01:19:22.973172+00:00",
+    "audited_at_utc": "2026-09-26T01:22:50.300747+00:00",
     "local_forrt_snapshot_retrieved_on": "2026-09-07",
-    "retested_new_to_built_site": 1315,
+    "retested_new_to_built_site": 1332,
     "classifications": {
-      "no_exact_doi_or_title_match_in_local_forrt_tables": 975,
-      "same_pair_exact_dois": 267,
+      "no_exact_doi_or_title_match_in_local_forrt_tables": 984,
+      "same_pair_exact_dois": 275,
       "later_paper_doi_only": 66,
       "same_pair_title_alternate_doi": 4,
       "later_paper_title_alternate_doi_only": 3
     },
-    "same_pair_raw": 271,
+    "same_pair_raw": 279,
     "later_paper_present_but_same_pair_unconfirmed": 69,
-    "later_paper_no_exact_doi_or_title_match": 975,
-    "extractor_same_pair_with_outcome": 234,
-    "extractor_outcome_differs_from_retested": 29
+    "later_paper_no_exact_doi_or_title_match": 984,
+    "extractor_same_pair_with_outcome": 242,
+    "extractor_outcome_differs_from_retested": 33
   },
   "records": [
     {
@@ -11651,6 +11651,174 @@
       "evidence": null,
       "forrt_extractor_outcome": null,
       "retested_outcome": "failed"
+    },
+    {
+      "doi_o": "10.1001/archpsyc.63.1.82",
+      "doi_r": "10.1002/eat.22304",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 69,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "mixed"
+    },
+    {
+      "doi_o": "10.1002/cpp.581",
+      "doi_r": "10.1016/j.janxdis.2009.02.017",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1007/s10212-012-0132-7",
+      "doi_r": "10.5334/pb.ac",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 456,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "mixed",
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1007/s10804-012-9141-7",
+      "doi_r": "10.1080/00223980.2013.826165",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 242,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1007/s10862-013-9379-9",
+      "doi_r": "10.1017/s0954579420002114",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1007/s40616-016-0075-1",
+      "doi_r": "10.1007/s40616-023-00195-y",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1007/s40617-017-0179-7",
+      "doi_r": "10.1007/s40616-020-00126-1",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1037/0735-7028.26.5.474",
+      "doi_r": "10.1080/00223891.2018.1501568",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 965,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "mixed",
+      "retested_outcome": "mixed"
+    },
+    {
+      "doi_o": "10.1037/a0025612",
+      "doi_r": "10.1111/ajpy.12024",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 94,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1038/264746a0",
+      "doi_r": "10.1121/1.2028778",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1080/00223890802634340",
+      "doi_r": "10.1080/00223891.2013.765883",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 144,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "mixed"
+    },
+    {
+      "doi_o": "10.1080/15332691.2013.836047",
+      "doi_r": "10.1080/15332691.2016.1141136",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 763,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "successful",
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1093/scan/nsz080",
+      "doi_r": "10.1038/s44271-024-00128-y",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1097/00006842-199803000-00010",
+      "doi_r": "10.1080/0887044021000020941",
+      "classification": "same_pair_exact_dois",
+      "evidence": {
+        "path": "feeds/flora-extractor_extracted.csv",
+        "row": 244,
+        "exact_pair": true
+      },
+      "forrt_extractor_outcome": "mixed",
+      "retested_outcome": "failed"
+    },
+    {
+      "doi_o": "10.1101/lm.045187.117",
+      "doi_r": "10.1038/s44271-024-00128-y",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1111/j.2044-8260.1975.tb00188.x",
+      "doi_r": "10.2466/pr0.1977.40.1.183",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
+    },
+    {
+      "doi_o": "10.1177/1088868306294587",
+      "doi_r": "10.1177/0022022108318431",
+      "classification": "no_exact_doi_or_title_match_in_local_forrt_tables",
+      "evidence": null,
+      "forrt_extractor_outcome": null,
+      "retested_outcome": "successful"
     }
   ]
 }

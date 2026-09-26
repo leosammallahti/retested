@@ -1,5 +1,9 @@
 # Handoff — current verified state 2026-09-26
 
+## Seventeen more completed pairs — 2026-09-26 01:22 UTC
+
+The data build, Astro site build (4,845 pages), exact-pair audit, and whitespace check passed with zero issues. **1,783 built pairs carry Retested review**: 451 built FORRT overlays and 1,332 additions to Retested's built pages. Seventeen additional source-checked pairs passed; eight were exact raw FORRT extractor pairs and nine had no exact later DOI/title match in the scanned local FORRT tables. The queue fell by 16 IDs, all tied to newly promoted later DOIs; one new pair was not a queued record. The updated per-pair FORRT audit now reports 279 same-pair raw overlaps, 69 later-paper-only matches, and 984 without exact later DOI/title matches. FORRT's raw extractor held an outcome for 242 of the 279; 33 Retested outcome labels differ by scope. No upstream FORRT change, push, or site publication.
+
 ## Thirty more completed pairs and FORRT provenance audit — 2026-09-26 01:19 UTC
 
 The data build, Astro site build (4,812 pages), exact-pair audit, and whitespace check passed with zero issues. **1,766 built pairs carry Retested review**: 451 built FORRT overlays and 1,315 pairs added to Retested's built pages. Thirty source-checked pairs were added since 00:59:58; 24 already had the exact original/later pair and outcome in FORRT's raw extractor, and six had no DOI/title match in the scanned local FORRT tables. The queue fell by exactly 30 IDs, each tied to one of the promoted later DOIs; no unrelated candidate disappeared.

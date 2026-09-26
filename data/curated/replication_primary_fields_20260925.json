@@ -10096,6 +10096,86 @@
       "id": "https://openalex.org/W2073587975",
       "field": "Psychology",
       "topic": "Suicide and Self-Harm Studies"
+    },
+    "10.1038/s44271-024-00128-y": {
+      "id": "https://openalex.org/W4401855227",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1017/s0954579420002114": {
+      "id": "https://openalex.org/W3105681895",
+      "field": "Psychology",
+      "topic": "Psychopathy, Forensic Psychiatry, Sexual Offending"
+    },
+    "10.1007/s40616-023-00195-y": {
+      "id": "https://openalex.org/W4388601116",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1007/s40616-020-00126-1": {
+      "id": "https://openalex.org/W3037627229",
+      "field": "Psychology",
+      "topic": "Behavioral and Psychological Studies"
+    },
+    "10.1016/j.janxdis.2009.02.017": {
+      "id": "https://openalex.org/W2170244172",
+      "field": "Psychology",
+      "topic": "Obsessive-Compulsive Spectrum Disorders"
+    },
+    "10.2466/pr0.1977.40.1.183": {
+      "id": "https://openalex.org/W2023967213",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1121/1.2028778": {
+      "id": "https://openalex.org/W2132720615",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1080/00223891.2018.1501568": {
+      "id": "https://openalex.org/W2889308897",
+      "field": "Psychology",
+      "topic": "Psychological Testing and Assessment"
+    },
+    "10.5334/pb.ac": {
+      "id": "https://openalex.org/W2094786540",
+      "field": "Psychology",
+      "topic": "Perfectionism, Procrastination, Anxiety Studies"
+    },
+    "10.1111/ajpy.12024": {
+      "id": "https://openalex.org/W1912764042",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
+    },
+    "10.1080/0887044021000020941": {
+      "id": "https://openalex.org/W2017144831",
+      "field": "Psychology",
+      "topic": "Body Image and Dysmorphia Studies"
+    },
+    "10.1177/0022022108318431": {
+      "id": "https://openalex.org/W2168370630",
+      "field": "Psychology",
+      "topic": null
+    },
+    "10.1080/15332691.2016.1141136": {
+      "id": "https://openalex.org/W2520234680",
+      "field": "Psychology",
+      "topic": "Attachment and Relationship Dynamics"
+    },
+    "10.1002/eat.22304": {
+      "id": "https://openalex.org/W1567325983",
+      "field": "Psychology",
+      "topic": "Eating Disorders and Behaviors"
+    },
+    "10.1080/00223980.2013.826165": {
+      "id": "https://openalex.org/W2015759079",
+      "field": "Psychology",
+      "topic": "Humor Studies and Applications"
+    },
+    "10.1080/00223891.2013.765883": {
+      "id": "https://openalex.org/W1976377795",
+      "field": "Psychology",
+      "topic": "Anxiety, Depression, Psychometrics, Treatment, Cognitive Processes"
     }
   },
   "manual_exception": [
