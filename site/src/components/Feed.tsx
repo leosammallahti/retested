@@ -197,8 +197,16 @@ function Card({ item, index, base, hint, onActive, onAnswer }: CardProps) {
       <div class="fbody">
         <p class="flabel mono">{label}</p>
         {item.effect_name && <h2 class="fname">{item.effect_name.replace(/\*+/g, '').trim()}</h2>}
-        <p class="fclaim">{item.claim}</p>
-        {item.method && <p class="fmethod">{item.method}</p>}
+        <div class="fpart">
+          <p class="fkey mono">What they tested</p>
+          <p class="fclaim">{item.claim}</p>
+        </div>
+        {item.method && (
+          <div class="fpart">
+            <p class="fkey mono">How they tested it</p>
+            <p class="fmethod">{item.method}</p>
+          </div>
+        )}
       </div>
       <div class="fdock">
         {!rv ? (

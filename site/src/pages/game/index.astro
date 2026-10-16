@@ -16,7 +16,7 @@ import { u } from '../../lib/fmt';
 <style is:global>
   html:has(body.bare) { background: #000; }
   body.bare {
-    --f-ink: #f4f1ea; --f-mute: #b4afa2; --f-faint: #8d887c; --f-line: #2e2e2a;
+    --f-ink: #f4f1ea; --f-soft: #d9d5ca; --f-mute: #b4afa2; --f-faint: #8d887c; --f-line: #2e2e2a;
     --f-yes: #86a8ff; --f-no: #ff7b5f;
     background: #000; color: var(--f-ink); overflow: hidden;
   }
@@ -38,12 +38,13 @@ import { u } from '../../lib/fmt';
     padding: calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(1.25rem + env(safe-area-inset-bottom)); }
   @media (min-width: 31rem) { .fcard { border-inline: 1px solid #161614; } }
 
-  .fbody { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: .9rem; padding-block: 1rem; }
+  .fbody { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.1rem; padding-block: 1rem; }
   .flabel { margin: 0; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--f-faint); }
   .fname { margin: 0; font: 500 1.05rem/1.2 var(--f-display); color: var(--f-mute); }
-  .fclaim { margin: 0; max-width: none; font: 400 clamp(1.45rem, 6.2vw, 1.95rem)/1.28 var(--f-display); letter-spacing: -.01em; }
-  .fmethod { margin: 0; max-width: none; padding-left: .85rem; border-left: 2px solid var(--f-line); font: 400 1rem/1.5 var(--f-body); color: var(--f-mute); }
-  .fcard.done .fmethod { display: none; }
+  .fpart { display: flex; flex-direction: column; gap: .35rem; }
+  .fkey { margin: 0; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--f-faint); }
+  .fclaim { margin: 0; max-width: none; font: 400 clamp(1.35rem, 5.6vw, 1.75rem)/1.28 var(--f-display); letter-spacing: -.01em; }
+  .fmethod { margin: 0; max-width: none; font: 400 1.12rem/1.5 var(--f-body); color: var(--f-soft); }
 
   .fq { margin: 0 0 .7rem; max-width: none; font: 500 1.05rem/1.2 var(--f-display); color: var(--f-mute); }
   .fchoices { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -93,8 +94,9 @@ import { u } from '../../lib/fmt';
   /* small phones: keep a result and its Next button on one screen where possible */
   @media (max-height: 640px) {
     .fcard { padding-top: calc(3rem + env(safe-area-inset-top)); }
-    .fbody { gap: .6rem; padding-block: .4rem; }
-    .fclaim { font-size: 1.35rem; }
+    .fbody { gap: .7rem; padding-block: .4rem; }
+    .fclaim { font-size: 1.25rem; }
+    .fmethod { font-size: 1rem; line-height: 1.45; }
     .fbtn { min-height: 3.25rem; }
     .fbtn.fgo { margin-top: .7rem; }
     .frep { margin-bottom: .6rem; }
