@@ -4,8 +4,8 @@ import Search from '../components/Search.tsx';
 import { citation } from '../lib/data';
 import { u, shortCitation } from '../lib/fmt';
 
-interface Props { title: string; description?: string; active?: string; noindex?: boolean; canonicalPath?: string }
-const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active, noindex = false, canonicalPath } = Astro.props;
+interface Props { title: string; description?: string; active?: string; noindex?: boolean; canonicalPath?: string; bare?: boolean }
+const { title, description = "Every psychology finding, tested again: an effect-by-effect guide to psychology's replication record, built on FORRT's open data.", active, noindex = false, canonicalPath, bare = false } = Astro.props;
 const full = title === 'Retested' ? "Retested: psychology's findings, tested again" : `${title} · Retested`;
 const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site ?? Astro.url).toString();
 const nav = [
@@ -22,9 +22,15 @@ const nav = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)" />
+    <meta name="viewport" content={bare ? 'width=device-width, initial-scale=1, viewport-fit=cover' : 'width=device-width, initial-scale=1'} />
+    {bare ? (
+      <meta name="theme-color" content="#000000" />
+    ) : (
+      <>
+        <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)" />
+      </>
+    )}
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Retested" />
@@ -45,8 +51,8 @@ const nav = [
       try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
     </script>
   </head>
-  <body>
-    <header class="mast">
+  <body class={bare ? 'bare' : undefined}>
+    {!bare && <header class="mast">
       <div class="wrap">
         <a class="brand" href={u('')}><b>Re<i>tested</i></b><span>psychology, tested again</span></a>
         <Search client:idle base={u('')} />
@@ -55,11 +61,11 @@ const nav = [
           {nav.map(([href, label]) => <a href={u(href)} aria-current={active === href ? 'page' : undefined}>{label}</a>)}
         </nav>
       </div>
-    </header>
+    </header>}
     <main>
       <slot />
     </main>
-    <footer class="foot">
+    {!bare && <footer class="foot">
       <div class="wrap grid grid-2">
         <div class="stack">
           <p><strong>Retested</strong> is an independent, effect-level explorer built on the open data of the <a href="https://forrt.org/replication-hub/">FORRT Replication Hub</a> (FReD and FLoRA). It is not an official FORRT product. The counted record also includes source-reviewed Retested additions. FORRT papers link to the <a href="https://forrt.org/flora-replication-atlas/">Replication Atlas</a>; every paper links to its primary source. Found a mistake or a missing replication? <a href="https://forrt.org/replication-hub/submit/">Submit it to FORRT</a>, so everyone benefits.</p>
@@ -71,7 +77,7 @@ const nav = [
           <p><button class="btn ghost" id="theme" type="button" style="padding:.5rem .7rem">Light / dark</button></p>
         </div>
       </div>
-    </footer>
+    </footer>}
     <script is:inline>
       document.getElementById('theme')?.addEventListener('click', () => {
         const r = document.documentElement;

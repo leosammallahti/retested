@@ -9,7 +9,7 @@ For each named effect (ego depletion, power posing, the Macbeth effect…) the s
 3. **How the attempts were done.** Preregistration, team independence, closeness to the original.
 
 It also includes:
-- **Did it replicate?** A calibration game. You read a real finding, give a probability, and are scored with the Brier score.
+- **Did it replicate?** A black, phone-style feed. You read a real finding, tap whether it replicated, and see the result.
 - **A review queue** of machine-found replication candidates that no human has checked yet, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review*. Individually source-checked original-and-replication pairs can be promoted into the counted record with an explicit effect claim.
 - **The record:** base rates with denominators and intervals, and the Graveyard, Survivors and Contested lists.
 - **Coverage and overlap:** a generated, evidence-level account of which Retested pairs already occur in the frozen FORRT corpus, which are only candidates, and why unmatched is not automatically new.

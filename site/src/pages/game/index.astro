@@ -1,93 +1,109 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Game from '../../components/Game.tsx';
-import { stats } from '../../lib/data';
-import { u, pct } from '../../lib/fmt';
-const s = stats();
-const pl = s.predictors.p_le_005, pm = s.predictors.p_005_05;
+import Feed from '../../components/Feed.tsx';
+import { u } from '../../lib/fmt';
 ---
-<Base title="Did it replicate?" description="A calibration game: read a real psychology finding, say how likely it is that it replicated, and see what happened." active="game/">
-  <div class="wrap gwrap">
-    <header class="ghead rise">
-      <div class="label claim">The game</div>
-      <h1>Did it <em>replicate?</em></h1>
-      <p class="lede">Read a finding from a real psychology paper. Say how sure you are that later replications found the same thing. Then see what actually happened — in the replicators' own words.</p>
-    </header>
-    <div class="grid grid-main">
-      <Game client:load base={u('')} />
-      <noscript>
-        <section class="card gnojs" aria-labelledby="gnojs-title">
-          <div class="label">JavaScript needed for the game</div>
-          <h2 id="gnojs-title">Browse the record instead</h2>
-          <p>The game reveals each result only after a prediction, so it needs JavaScript. You can still explore the underlying record by <a href={u('effects/')}>browsing effects</a> or <a href={u('findings/')}>browsing papers</a>.</p>
-        </section>
-      </noscript>
-      <aside class="ghints stack">
-        <div class="card">
-          <div class="label">What predicts a replication</div>
-          <p>In this deck, originals with <b>p ≤ .005</b> replicated <b class="num">{pct(pl.success_share)}</b> of the time (n = {pl.n}); those with <b>.005 &lt; p &lt; .05</b> only <b class="num">{pct(pm.success_share)}</b> (n = {pm.n}).</p>
-          <p>Across all {s.overall.n.toLocaleString()} replications with a verdict, <b class="num">{pct(s.overall.success_share)}</b> succeeded. Social psychology: <b class="num">{pct(s.by_discipline['Social Psychology']?.success_share)}</b>. Cognitive: <b class="num">{pct(s.by_discipline['Cognitive Psychology']?.success_share)}</b>.</p>
-          <p class="faint gsmall">Base rates reflect which studies people chose to replicate, not psychology as a whole. <a href={u('stats/')}>More on the record</a>.</p>
-        </div>
-        <div class="card">
-          <div class="label">How the deck is built</div>
-          <p style="font-size:.95rem">One card per original study, only where the replication verdict is clear and consistent. Claims that give the answer away are removed automatically. The daily round uses a fixed, quality-controlled mix. The result is fetched only after you lock in.</p>
-        </div>
-      </aside>
+<Base bare title="Did it replicate?" description="A phone feed of real psychology findings. Say whether each one replicated, then see what happened." active="game/">
+  <h1 class="fsr">Did it replicate?</h1>
+  <Feed client:load base={u('')} />
+  <noscript>
+    <div class="fstatus">
+      <p>The feed reveals each result only after you answer, so it needs JavaScript.</p>
+      <p>You can still browse <a href={u('effects/')}>effects</a> or <a href={u('findings/')}>papers</a>.</p>
     </div>
-  </div>
+  </noscript>
 </Base>
-<style>
-  .gwrap { padding-top: 2.4rem; }
-  .ghead h1 em { font-style: italic; color: var(--claim); font-variation-settings: "SOFT" 100, "WONK" 1; }
-  .lede { font: 400 1.25rem/1.5 var(--f-display); color: var(--ink-2); max-width: 60ch; }
-  :global(.gmodes) { display: grid; gap: .8rem; }
-  :global(.gm) { text-align: left; background: var(--card); border: 1px solid var(--ink); border-radius: var(--r); padding: 1.1rem 1.2rem; cursor: pointer; color: var(--ink); font: inherit; transition: transform .15s, box-shadow .15s; }
-  :global(.gm:hover) { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--claim); }
-  :global(.gm b) { display: block; font: 560 1.35rem var(--f-display); margin-bottom: .2rem; }
-  :global(.gm span) { color: var(--ink-2); font-size: .95rem; }
-  :global(.gtop) { display: flex; justify-content: space-between; font-size: .78rem; color: var(--ink-3); margin-bottom: .5rem; }
-  :global(.gcard) { min-height: 360px; }
-  :global(.gname) { margin: .5rem 0 0; }
-  :global(.gclaim) { font: 400 clamp(1.25rem, 2.4vw, 1.6rem)/1.4 var(--f-display); margin: .8rem 0 .5rem; }
-  /* how the study was run, under the claim: the player needs it to judge, so it is quieter but not hidden */
-  :global(.gmethod) { font-size: .95rem; line-height: 1.5; color: var(--ink-2, #555); margin: 0 0 .6rem; }
-  /* the provenance of an unreviewed card, in its reveal: it is not the record and must not read like it */
-  :global(.gunver) { font-size: .9rem; line-height: 1.5; margin: .5rem 0 .8rem; padding: .6rem .8rem;
-    border-left: 3px dashed var(--line, #ccc); color: var(--ink-2, #555); }
-  :global(.gj) { font-size: .92rem; }
-  :global(.gnums) { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .82rem; color: var(--ink-2); }
-  :global(.gguess) { margin-top: 1.4rem; border-top: 1px dashed var(--rule-2); padding-top: 1.2rem; }
-  :global(.gq) { font: 500 1.02rem var(--f-display); display: block; margin-bottom: .6rem; }
-  :global(.gslider) { display: flex; gap: .7rem; align-items: center; }
-  :global(.gslider input) { flex: 1; accent-color: var(--obs); height: 2.75rem; }
-  :global(.gp) { font-size: 1.1rem; margin: .4rem 0 .9rem; }
-  :global(.gp b) { font: 600 2rem var(--f-display); }
-  :global(.gnote) { font-size: .8rem; margin-top: .8rem; }
-  :global(.greveal) { margin-top: 1.3rem; border-top: 1px dashed var(--rule-2); padding-top: 1.2rem; }
-  :global(.greveal .stamp) { font-size: .9rem; }
-  :global(.gpts) { font: 600 1.6rem var(--f-display); margin: .8rem 0; }
-  :global(.gpts span) { font: .8rem var(--f-mono); margin-left: .5rem; }
-  :global(.grep) { margin-bottom: .8rem; }
-  :global(.grep p) { font-size: .74rem; margin: 0 0 .3rem; }
-  :global(.glinks) { font-size: .92rem; }
-  :global(.gsum .big) { font: 600 2.6rem var(--f-display); margin: .3rem 0; }
-  :global(.gsum .emo) { font-size: 1.5rem; letter-spacing: .1em; }
-  :global(.gsum) { margin-bottom: 1rem; }
-  :global(.gcal) { margin-top: 1rem; }
-  :global(.gcal svg) { display: block; width: 100%; height: auto; max-width: 320px; }
-  :global(.gcal svg text) { font-family: var(--f-mono); font-size: 9px; fill: var(--ink-3); }
-  .gnojs { margin-top: 1rem; }
-  .gnojs h2 { margin-top: .35rem; }
-  .gsmall { font-size: .85rem; }
-  @media (max-width: 480px) {
-    .gwrap { padding-top: 1.5rem; }
-    .lede { font-size: 1.15rem; }
-    :global(.gcard) { min-height: 0; }
-    :global(.gm) { min-height: 44px; padding: 1rem; }
-    :global(.gslider) { gap: .45rem; }
-    :global(.gslider input) { min-width: 0; }
-    :global(.gcal) { overflow: hidden; }
-    .gsmall { font-size: .9rem; }
+<style is:global>
+  html:has(body.bare) { background: #000; }
+  body.bare {
+    --f-ink: #f4f1ea; --f-mute: #b4afa2; --f-faint: #8d887c; --f-line: #2e2e2a;
+    --f-yes: #86a8ff; --f-no: #ff7b5f;
+    background: #000; color: var(--f-ink); overflow: hidden;
   }
+  .fsr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .ftop { position: fixed; z-index: 5; top: 0; left: 50%; transform: translateX(-50%); width: min(100%, 30rem);
+    display: flex; justify-content: space-between; align-items: center; pointer-events: none;
+    padding: calc(.85rem + env(safe-area-inset-top)) 1.25rem 1.1rem; background: linear-gradient(#000 55%, rgba(0, 0, 0, 0)); }
+  .ftop > * { pointer-events: auto; }
+  .fbrand { font: 560 1.05rem/1 var(--f-display); letter-spacing: -.01em; color: var(--f-ink); text-decoration: none; }
+  .fbrand:hover { color: var(--f-ink); }
+  .ftally { font-size: .85rem; color: var(--f-mute); }
+
+  .feed { position: fixed; inset: 0; overflow-x: hidden; overflow-y: auto; scroll-snap-type: y mandatory;
+    overscroll-behavior: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .feed::-webkit-scrollbar { display: none; }
+  .fcard { display: flex; flex-direction: column; width: min(100%, 30rem); margin: 0 auto;
+    min-height: 100vh; min-height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always;
+    padding: calc(3.6rem + env(safe-area-inset-top)) 1.25rem calc(1.25rem + env(safe-area-inset-bottom)); }
+  @media (min-width: 31rem) { .fcard { border-inline: 1px solid #161614; } }
+
+  .fbody { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: .9rem; padding-block: 1rem; }
+  .flabel { margin: 0; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--f-faint); }
+  .fname { margin: 0; font: 500 1.05rem/1.2 var(--f-display); color: var(--f-mute); }
+  .fclaim { margin: 0; max-width: none; font: 400 clamp(1.45rem, 6.2vw, 1.95rem)/1.28 var(--f-display); letter-spacing: -.01em; }
+  .fmethod { margin: 0; max-width: none; padding-left: .85rem; border-left: 2px solid var(--f-line); font: 400 1rem/1.5 var(--f-body); color: var(--f-mute); }
+  .fcard.done .fmethod { display: none; }
+
+  .fq { margin: 0 0 .7rem; max-width: none; font: 500 1.05rem/1.2 var(--f-display); color: var(--f-mute); }
+  .fchoices { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .fbtn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.6rem; padding: .8rem 1rem;
+    border: 1.5px solid #3b3b37; border-radius: 1rem; background: #0f0f0e; color: var(--f-ink); cursor: pointer;
+    font: 560 1.15rem/1.1 var(--f-display); touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    transition: transform .1s, background .15s, border-color .15s, opacity .15s; }
+  .fbtn:active:not(:disabled) { transform: scale(.97); }
+  .fbtn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .fbtn.yes span { color: var(--f-yes); }
+  .fbtn.no span { color: var(--f-no); }
+  .fbtn.yes:hover:not(:disabled) { border-color: var(--f-yes); }
+  .fbtn.no:hover:not(:disabled) { border-color: var(--f-no); }
+  .fbtn:disabled { cursor: default; }
+  .fbtn:disabled:not(.picked) { opacity: .4; }
+  .fbtn.picked.yes { background: var(--f-yes); border-color: var(--f-yes); color: #000; }
+  .fbtn.picked.no { background: var(--f-no); border-color: var(--f-no); color: #000; }
+  .fbtn.picked span { color: #000; }
+  .fbtn.fgo { width: 100%; margin-top: 1rem; background: var(--f-ink); border-color: var(--f-ink); color: #000; }
+  .ferr { margin: .8rem 0 0; font-size: .9rem; color: var(--f-no); }
+  .fhint { margin: .9rem 0 0; text-align: center; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--f-faint); }
+
+  .fresult { animation: frise .25s ease both; }
+  .fverdict-box:focus { outline: none; }
+  .fverdict { display: flex; gap: .5rem; align-items: baseline; margin: 0 0 .5rem; max-width: none; font: 560 clamp(1.9rem, 8vw, 2.4rem)/1.1 var(--f-display); letter-spacing: -.01em; }
+  .fverdict.yes { color: var(--f-yes); }
+  .fverdict.no { color: var(--f-no); }
+  .fgrade { display: inline-block; margin: 0 0 1.1rem; padding: .25rem .75rem; border: 1px solid #4a4a45; border-radius: 999px;
+    font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--f-mute); }
+  .fgrade.right { background: var(--f-ink); border-color: var(--f-ink); color: #000; }
+  .frep { margin: 0 0 .9rem; }
+  .frep figcaption { font-size: .75rem; color: var(--f-faint); }
+  .frep blockquote { margin: .35rem 0 0; padding-left: .85rem; border-left: 2px solid var(--f-line); font: italic 400 1rem/1.45 var(--f-body); color: var(--f-ink); }
+  .fcurated { margin: 0 0 .9rem; max-width: none; font-size: .92rem; color: var(--f-mute); }
+  .fcurated b { color: var(--f-ink); }
+  .flinks { display: flex; flex-direction: column; gap: .15rem; margin: 0; max-width: none; font-size: .85rem; line-height: 1.5; color: var(--f-faint); }
+  .flinks a { align-self: flex-start; }
+  .flinks a { color: var(--f-mute); text-decoration-color: #555; }
+  .flinks a:hover { color: var(--f-ink); text-decoration-color: currentColor; }
+
+  .fstatus { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem;
+    padding: 1.5rem; text-align: center; color: var(--f-mute); }
+  .fstatus p { margin: 0; }
+  .fstatus a { color: var(--f-ink); }
+  .fstatus .fbtn.fgo { width: auto; margin-top: .6rem; padding-inline: 2rem; }
+
+  /* small phones: keep a result and its Next button on one screen where possible */
+  @media (max-height: 640px) {
+    .fcard { padding-top: calc(3rem + env(safe-area-inset-top)); }
+    .fbody { gap: .6rem; padding-block: .4rem; }
+    .fclaim { font-size: 1.35rem; }
+    .fbtn { min-height: 3.25rem; }
+    .fbtn.fgo { margin-top: .7rem; }
+    .frep { margin-bottom: .6rem; }
+    .frep blockquote { font-size: .92rem; line-height: 1.4; }
+    .fverdict { font-size: 1.75rem; margin-bottom: .35rem; }
+    .fgrade { margin-bottom: .7rem; }
+    .fcard { padding-bottom: calc(.9rem + env(safe-area-inset-bottom)); }
+  }
+
+  @keyframes frise { from { opacity: 0; transform: translateY(8px); } }
+  @media (prefers-reduced-motion: reduce) { .fresult { animation: none; } .fbtn { transition: none; } }
 </style>

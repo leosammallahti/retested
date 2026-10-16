@@ -32,7 +32,7 @@ const cells = (() => {
           <a class="btn ghost" href={u('effects/')}>Browse {c.effects} effects</a>
           <a class="btn ghost" href={u('findings/')}>Guess across {int(c.findings)} findings</a>
         </div>
-        <p class="game-note faint">Start with today’s ten: make a probability call about each real finding, see what later studies reported, then share your score. No account needed.</p>
+        <p class="game-note faint">Swipe through real findings, tap whether each one replicated, and see what happened. No account needed.</p>
       </div>
       <figure class="waffle rise" aria-label={`Of every 100 replications: ${cells.filter((x) => x === 'ok').length} replicated, ${cells.filter((x) => x === 'mix').length} mixed, ${cells.filter((x) => x === 'bad').length} did not.`}>
         <div class="cells">{cells.map((t, i) => <i class={t} style={`--d:${i * 9}ms`}></i>)}</div>

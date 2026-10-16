@@ -1,6 +1,17 @@
 # Handoff — current verified state 2026-09-26
 
 
+## The game is now a black phone feed — 2026-10-17
+
+`/game/` is a full-screen black, vertical scroll-snap feed (`site/src/components/Feed.tsx`, page and styles in `site/src/pages/game/index.astro`). Each screen is one original-study card (written claim plus what the study did). The visitor taps **Replicated** or **Didn’t**; only then is the reveal JSON fetched, and the screen shows the verdict, whether the call was right, the replicators’ words with N and r, the original paper, and a link to the full record. **Next** or a swipe moves on. The only score is a right/total tally kept in the browser (`retested.feed.v1`); cards already played in the old game (`retested.game.v1`, read only) are not dealt first. A failed reveal records nothing and offers a retry. The feed uses the 670 playable study and famous-effect cards (353 replicated, 317 not), shuffled, unseen first; the unreviewed `found` tier is not in it. Cards are marked seen when they cross the middle of the screen, so skipped cards do not come back first.
+
+Removed: the probability slider, Brier points, deck modes, the calibration chart, the share button and the daily-ten schedule use. The old component is in git history (`site/src/components/Game.tsx` at `e226612`); `data/build` and `site/public/generated/game/` are unchanged, so nothing in the pipeline or its tests moved. `Base.astro` gained a `bare` prop (no masthead or footer, black theme colour, `viewport-fit=cover`); the home page, Methods and README no longer describe the old scoring.
+
+Known data issue, handled in the display only: about 36% of study reveals (180 of 493) have no real replicator wording because their `quote` is a source’s coding note (“Coded as not replicated: Replicate = 0…”, “Subjective replication success rating = 0…”, “Replicated = Yes: the project’s binary…”). The feed drops those quotes (`CODING_NOTE` in `Feed.tsx`) and shows only authors, year, N and r; the full record still shows them. The clean fix is a quote-kind flag in `pipeline/game.py`, so the notes are classified once in the data. Famous effects have no attempt records, only the curated list’s “Critiques” text, so the feed shows that list’s study names with the bracketed counts stripped (“Later tests: Bull 2020”).
+
+Checked: root and `/retested/` builds both give 11,969 pages and `npm run verify` reports 0 missing targets or fragments; in the browser at 375 × 812, 320 × 568 and 1024 × 768 (a centred 30 rem column), with no horizontal overflow, a failed reveal handled, skip and Next working. Not done: a real-device swipe test (the in-app browser emulates width but not touch), committing, pushing or deploying. Preview with `cd site && npm run dev -- --port 4322`.
+
+
 ## Answer-separated finding release and source-context checkpoint — 2026-09-26 20:34 UTC
 
 The local site now gives every one of the **4,626** original-paper finding records a real guess-before-reveal flow without shipping that record's answer in its initial HTML or hydration properties. A visitor chooses replicated, mixed/contested, failed, or unclear; only an explicit reveal action fetches the small answer payload. Every finding also has a separate complete `/result/` dossier for no-JavaScript and direct access. All **4,626** result routes are `noindex, follow`, canonicalize to their prediction route, and are excluded from the sitemap. This remains a static-site anti-spoiler boundary rather than access control: a determined visitor can request a known reveal JSON directly.
