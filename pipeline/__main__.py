@@ -12,7 +12,7 @@ from . import (
     osf_documents, outcomes, pair_summaries, queue, reconciliation_registry, references, registry, reread, score,
     stats, triage, validate, verify,
 )
-from . import explanation_import
+from . import explanation_import, original_abstracts, posts
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -70,7 +70,7 @@ def build(accept_baseline: bool) -> int:
                                       load.load_original_authors())
     before = len(candidates)
     candidates = queue.dedupe(candidates)
-    items, reveals = game.build(g, load.load_claims(), candidates, load.load_refused_claims())
+    items, reveals = game.build(g, load.load_claims(), candidates, load.load_refused_claims() | load.load_card_holds(), load.load_posts())
     finding_contexts = game.attach_finding_contexts(g, items, reveals)
     if before != len(candidates):
         step(f"deduped {before - len(candidates)} repeat deposits of work already in the queue")
@@ -128,6 +128,14 @@ def main() -> None:
     ap_.add_argument("--deck", action="store_true", help="fetch abstracts for the originals the game deals cards about")
     ap_.add_argument("--finds", action="store_true", help="fetch abstracts for the originals our own finds point at")
     ap_.add_argument("--famous", action="store_true", help="find the famous effects' papers by title and fetch their abstracts")
+    pi_ = sub.add_parser("posts-import", help="validate and merge written feed posts (what was done, then what was found)")
+    pi_.add_argument("packets", nargs="+", type=Path, help="JSON array(s) of {id, post, source_level}")
+    pi_.add_argument("--writer", default="claude-sonnet-5-5", help="who wrote them, recorded with each post")
+    pi_.add_argument("--check", action="store_true", help="validate only; write nothing")
+    oa_ = sub.add_parser("original-abstracts", help="keep every original paper's abstract with its source and date")
+    oa_.add_argument("--max-usd", type=float, default=0.10, help="OpenAlex spending cap")
+    oa_.add_argument("--semantic-scholar", action="store_true", help="also ask Semantic Scholar (free but slow and throttled)")
+    oa_.add_argument("--no-pages", action="store_true", help="do not re-read the original pages reviewers already used")
     rp = sub.add_parser("references", help="find the original in the replication's own reference list")
     rp.add_argument("--max-usd", type=float, default=1.20, help="OpenAlex spending cap")
     rp.add_argument("--by-author", action="store_true",
@@ -196,6 +204,10 @@ def main() -> None:
         sys.exit(authors.run_finds(a.max_usd) if a.finds
                  else authors.run_famous(a.max_usd) if a.famous
                  else authors.run_deck(a.max_usd) if a.deck else authors.run(a.max_usd))
+    if a.cmd == "posts-import":
+        sys.exit(posts.run(a.packets, a.writer, a.check))
+    if a.cmd == "original-abstracts":
+        sys.exit(original_abstracts.run(a.max_usd, a.semantic_scholar, not a.no_pages))
     if a.cmd == "references":
         sys.exit(references.run_author(a.max_usd) if a.by_author else references.run(a.max_usd, a.relink))
     if a.cmd == "osf":

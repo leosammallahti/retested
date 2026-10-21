@@ -5,7 +5,7 @@ import type { RefObject } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface Item {
-  id: string; tier: 'study' | 'famous' | 'found'; claim: string; method?: string | null; written?: boolean; context_ready?: boolean;
+  id: string; tier: 'study' | 'famous' | 'found'; claim: string; method?: string | null; post?: string; written?: boolean; context_ready?: boolean;
   year: number | null; discipline: string | null; effect_name?: string;
 }
 interface Rep { authors: string | null; year: number | null; journal: string | null; n: number | null; r: number | null; quote: string | null }
@@ -62,7 +62,15 @@ async function getJson<T>(url: string): Promise<T> {
 
 // Mirrors pipeline.game.context_ready: only cards with a written claim and an explained original experiment are dealt.
 function playable(item: Item): boolean {
-  return item.tier !== 'found' && item.context_ready === true && !!item.written && item.claim.trim().length >= 30 && !!item.method?.trim();
+  if (item.tier === 'found') return false;
+  if (item.post) return item.post.trim().length >= 60;      // a written post is the whole card
+  return item.context_ready === true && !!item.written && item.claim.trim().length >= 30 && !!item.method?.trim();
+}
+
+// A post tells what was done and ends with the finding; the build makes that last sentence the card's `claim`.
+function story(item: Item): string {
+  const post = (item.post ?? '').trim(), claim = item.claim.trim();
+  return post.endsWith(claim) ? post.slice(0, post.length - claim.length).trim() : post;
 }
 
 function shuffle<T>(a: T[]): T[] {
@@ -197,15 +205,24 @@ function Card({ item, index, base, hint, onActive, onAnswer }: CardProps) {
       <div class="fbody">
         <p class="flabel mono">{label}</p>
         {item.effect_name && <h2 class="fname">{item.effect_name.replace(/\*+/g, '').trim()}</h2>}
-        <div class="fpart">
-          <p class="fkey mono">What they tested</p>
-          <p class="fclaim">{item.claim}</p>
-        </div>
-        {item.method && (
-          <div class="fpart">
-            <p class="fkey mono">How they tested it</p>
-            <p class="fmethod">{item.method}</p>
-          </div>
+        {item.post ? (
+          <>
+            {story(item) && <p class="fstory">{story(item)}</p>}
+            <p class="fclaim">{item.claim}</p>
+          </>
+        ) : (
+          <>
+            <div class="fpart">
+              <p class="fkey mono">What they tested</p>
+              <p class="fclaim">{item.claim}</p>
+            </div>
+            {item.method && (
+              <div class="fpart">
+                <p class="fkey mono">How they tested it</p>
+                <p class="fmethod">{item.method}</p>
+              </div>
+            )}
+          </>
         )}
       </div>
       <div class="fdock">

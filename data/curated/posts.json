@@ -1,0 +1,2370 @@
+{
+ "posts": {
+  "f08c722676": {
+   "post": "Some people were unemployed, some were told their state had high unemployment, and some were asked to think about past and future economic insecurity. Others had none of these experiences. Everyone then reported how much physical pain they felt. People who had these experiences reported more pain.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f0af0cf0ba": {
+   "post": "Seven-month-old babies listened to made-up sentences that all followed one pattern. Then they heard new sentences, some with the same pattern and some with a different one. The babies listened longer to the sentences with the unfamiliar pattern.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f196ce5262": {
+   "post": "People read an object and a property, such as cranberries and tart, and judged whether the property fit the object. Then they did the same for another pair, such as blender and loud. They were slower to judge when the property involved a different sense than the one just before, like sound after taste.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f1bab4aca3": {
+   "post": "People compared prices that were one cent apart and rated how big the difference felt. In some pairs, such as $2.99 and $3.00, the first digit changed. In others, such as $3.00 and $3.01, it did not. People rated the first kind of pair as a larger difference.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f1c53f4309": {
+   "post": "People unscrambled jumbled sentences. For some, the sentences contained God-related words, and for others, neutral words. Then everyone said how willing they were to take risks. People who had seen the God words were more willing to take risks that had nothing to do with morality.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f1c8a90d47": {
+   "post": "Men chose between a smaller sum of money tomorrow and a larger sum at a later date. Then they rated how appealing 12 photographs of women's faces were, attractive faces for some and unattractive for others, and chose again. Men who saw attractive faces then favored the money tomorrow more than men who saw unattractive ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f1f873e260": {
+   "post": "Crows watched a stick move inside a hide. Sometimes a person went in before it moved and left after. Other times no one went in or out. The crows inspected the hide and gave up fishing for food with a tool more often when no one had been in the hide.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f243d1dbc4": {
+   "post": "People saw one serving of ice cream on its own and said how much they would pay for it. For some it was 7 ounces in a cup that overflowed, and for others 8 ounces in a cup that was not full. People valued the overfilled 7 ounces more than the underfilled 8 ounces.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f2e52468a2": {
+   "post": "People assembled IKEA boxes, folded origami, or built Lego sets. Then they said how much they would pay for what they had made and for a similar product they had not made. People would pay more for their own creation.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f2fa4623bb": {
+   "post": "Some people were given an object to keep and others were not. Everyone then rated the object. The people who owned it rated it more favorably.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f324c2ec6a": {
+   "post": "Some people were reminded that resources can be scarce, and others were not. Then everyone played a game where they could keep resources for themselves or share them. After the reminder, people who cared less about others' outcomes shared less and kept more for themselves.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f383b1084d": {
+   "post": "Adults pressed a button whenever a go signal appeared, but tried to hold back when a stop signal came. The stop signal was a picture of a face that was fearful, happy, or neutral. People were better at stopping when the face was fearful or happy than when it was neutral.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f3bf8206bf": {
+   "post": "During the 2008 U.S. presidential election, people took an online study. Some were briefly shown an American flag and others were not. Then everyone reported their political beliefs, attitudes and voting intentions. People who saw the flag reported more Republican beliefs, attitudes and voting intentions.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f480eb0da6": {
+   "post": "People rated how much they and others are swayed by various biases in thinking. The others were the average American, classmates in a seminar, or fellow airport travelers. People rated themselves as less susceptible to biases than they rated other people.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f4832b45d4": {
+   "post": "Jays could hide food either behind a solid barrier or behind a see-through one. Sometimes another jay was watching, and sometimes the jay hid food in private. The jays hid more of their food behind the solid barrier when another jay was watching.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f4c18c1937": {
+   "post": "People saw a series of striped patterns one after another and reported the tilt of each one. Their report was pulled toward the tilt they had reported on the previous pattern.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f51e802051": {
+   "post": "People were randomly given a rank among other participants. Then each chose whether to give money to the person one rank above them or one rank below. People ranked second-to-last were the most likely to give to the person above them rather than the one below.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f52e778cfb": {
+   "post": "Some people were asked to eat radishes while chocolates were nearby, and others had no such demand. Then everyone tried puzzles that could not be solved. People who had to resist the chocolates and eat radishes quit the puzzles sooner.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f55bce5fcc": {
+   "post": "A nationwide group of adults said how they spent their income and how happy they were. People who spent more of their income on others were happier than people who spent more on themselves.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f6395d9d4a": {
+   "post": "People saw a word such as mother, father, nurse or doctor, and then a pronoun such as she or he. They said whether the pronoun was male or female. They answered faster when the pronoun matched the gender suggested by the first word.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f6444e0b43": {
+   "post": "Children and adults read a sentence suggesting an object was large or small. Then they saw a picture of the object, shown either large or small, and responded to it. They responded faster when the size in the picture matched the size the sentence suggested.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f64b86590c": {
+   "post": "Students, some of them depressed and some not, could press a button or leave it alone, and a green light sometimes came on. Afterwards each one guessed how much the light depended on what they did. The depressed students guessed more accurately than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f664e5cc80": {
+   "post": "Voters read about two candidates in a pretend race for mayor. One was always a middle-aged white man, and the other varied in gender, race or age. Voters tended to favor the candidate who shared their own gender or race.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f6819db591": {
+   "post": "People reported how much television they watch each day by picking from a list. One list ran from 'up to half an hour' to 'more than two and a half hours'. The other ran from 'up to two and a half hours' to 'more than four and a half hours'. People given the first list reported watching less television.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f701ed7e9c": {
+   "post": "People heard two voices at once, one in each ear. They repeated one voice out loud and ignored the other. They noticed almost nothing from the ignored voice, except their own name.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f71d96ee8a": {
+   "post": "People read about an outbreak expected to kill 600 people and chose between a sure outcome and a gamble. For some the outcomes were described as people saved, and for others as people dying. When it was about lives saved people picked the sure option, and when it was about lives lost they picked the gamble.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f7baeacb41": {
+   "post": "People recalled personal events from their past, some positive and some negative, and rated how far away each event felt. People felt farther from their negative events than from their positive ones, and the gap was larger for people with high self-esteem.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f8224c7654": {
+   "post": "People unscrambled sentences, some full of hostile words and others with neutral words. Then they rated how hostile some behavior seemed, behavior that could be read either way. The people who had seen more hostile words rated the behavior as more hostile.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f8a1007f2e": {
+   "post": "People chose between consumer products, from simple ones like towels to complex ones like cars. Some thought carefully before choosing and others were distracted first. Afterward they rated their choice. For complex products, the distracted people rated their choice more favorably than the people who thought carefully.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f92c2f6310": {
+   "post": "People unscrambled jumbled sentences, some containing God-related words and others neutral words. Then everyone chose between a safe way and a risky way to get money. People who had seen the God words took more risks.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "f9b9a16f2b": {
+   "post": "People unscrambled sentences that contained religious words, or neutral words. Then they decided how much money to give to an anonymous partner. People who unscrambled religious words gave more money.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "f9c8f36b69": {
+   "post": "People read a sentence that hinted an object was standing up or lying flat. Then they saw a picture of that object, either standing or lying. They recognized the object faster when its position matched the sentence.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "fa07252cce": {
+   "post": "Half the people were given a coffee mug and half were not. Then everyone could buy and sell mugs. The people who had a mug asked for more money to sell it than the others were willing to pay to buy it.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "fa29f6606d": {
+   "post": "Consumers saw an ad for a product available only in limited quantity, or a control ad. Then researchers measured how they saw other shoppers and how aggressively they acted. People who saw the limited-quantity ad saw other shoppers as competitive threats and acted more aggressively.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fabc453a9a": {
+   "post": "People saw a target letter in the middle of a row, with other letters on each side, and pressed one key or another depending on the target. Sometimes the side letters called for the same key and sometimes for the opposite key. People were slower when the side letters called for the opposite key.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fadf643df9": {
+   "post": "Adults were randomly given one of two tasks for a month. Some tried to live the month as if it were their last in their current city, and others just kept track of their daily activities. Everyone reported their well-being. People who imagined their time in the city as limited were happier than people who tracked their activities.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fafd1b8078": {
+   "post": "Some people were asked the least money they would accept to spend a given number of hours on something. Others were asked the most hours they would spend for a given amount of money. Researchers worked out the hourly wage each answer implied. People asked about hours demanded a higher wage than people asked about money.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fb6e31b775": {
+   "post": "People did a real task twice, once paid for their own work and once in a competition against others. Then they chose which of the two pay schemes to use for their next try. Twice as many men as women chose the competition.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fb71bc850e": {
+   "post": "Adults were shown pictures of objects and wrote down each object's name. Some of the names are learned early in life and others late, but the words are used equally often. Names learned early were written faster and more accurately.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fba1a0e853": {
+   "post": "Students who had learned French as a second language translated 145 words, in both directions between English and French. Words people had learned early in life were translated faster than words they learned later.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "fbc2fb5ef9": {
+   "post": "Adults read a story about a sudden change to their imagined future income. For some it got worse, for some better, and for some it stayed the same. Then they did a task that measured how much they valued money received or lost later. People whose imagined income dropped valued delayed gains and losses less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fc461d1fee": {
+   "post": "People saw a person repeatedly gaze toward some objects and away from others. Then they rated how much they liked each object. People rated the objects the person had gazed toward as more likeable.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fc945016a7": {
+   "post": "The death tolls of 92 past hurricanes were compared. Some hurricanes had girls' names and some had boys' names. Hurricanes with girls' names caused more deaths than hurricanes with boys' names.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "fd036c40ff": {
+   "post": "Turkey changed its law to make students stay in school longer. Researchers compared rural women who had to stay in school longer with those who did not, and asked about violence at home. The women who stayed longer reported more psychological violence and financial control at home.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fd16a30172": {
+   "post": "Over 10,000 students in China were surveyed about learning English. They were asked whether they picture themselves using English well in the future, and how motivated they were to learn it. The students who did picture it were more motivated.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "fd1b270a90": {
+   "post": "People read sentences about an object that was either near or far from a person in the scene. Then they saw a picture of the object, either big or small, and responded to it. When the object was far, people responded faster to small pictures, and when it was near, faster to big ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fd3427630b": {
+   "post": "Adults received a nasal spray containing oxytocin or a placebo. Then they played a game in which they decided how much money to hand to a stranger. People who got oxytocin trusted the stranger with more money.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fd40b47904": {
+   "post": "People watched words appear one after another in rapid succession and tried to spot two target words. Sometimes the second target came right after the first, and sometimes later. People often missed the second target when it came 200 to 500 milliseconds after the first.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fdc13a9763": {
+   "post": "Adults watched either a video that put them in a mildly positive mood or a neutral video. Then they chose between smaller amounts of money now and larger amounts later. People who watched the positive video were more willing to wait for the larger amounts.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fdefe06619": {
+   "post": "People read a sentence about an animal in a certain place, such as an eagle in the sky or an eagle in a nest. Then they saw a line drawing of the animal and said whether it had been mentioned. They answered faster when the drawing's shape matched the shape the sentence implied.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fdff112db8": {
+   "post": "People answered political knowledge questions in an online experiment. Before that, some were reminded of gender stereotypes about political knowledge and others were not. Women who were reminded did worse on the questions than women who were not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fe196cafe8": {
+   "post": "People filled in a form reporting information about themselves, with a chance to cheat. Some signed a statement of honest intent at the beginning, before reporting, and others at the end, after. People who signed at the beginning were less dishonest.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fe40578263": {
+   "post": "U.S. residents were asked to write an essay arguing against their own view on who made a better president. Some preferred conservative presidents and some liberal ones. Researchers recorded who went along with it. Conservatives were more likely to avoid writing it than liberals.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "fed1e7d99b": {
+   "post": "Students briefly held a cup of hot coffee or iced coffee. Then they read a description of a person and rated the person's personality. Students who held the hot coffee judged the person as warmer and more caring.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "feffdf75c7": {
+   "post": "People said how lonely they felt and how often they took warm baths or showers. The lonelier people were, the more warm baths and showers they took.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ff4e922ade": {
+   "post": "Some people chose between a sure gain and a gamble. Others got the same problem with the gains turned into losses. People avoided risk when the choice was a sure gain and took risks when it was a sure loss.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ff6afe4e5a": {
+   "post": "People saw strings of letters and had to say, as fast as they could, whether each one was a real word. Some of the words are ones people learn early in life, and others they learn later. Words learned earlier were recognized faster and more accurately.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ff773a7b5c": {
+   "post": "Students studied a list of words and then took a recall test. After the test, they restudied some of the words. On the test, they had recalled the restudied words better than the words they did not restudy.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ffb4c9e0bd": {
+   "post": "Adults read sentences while their eye movements were tracked. Some words in the sentences are ones people learn early in life, and some are ones they learn later. Words learned early got shorter looks than words learned later.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g00bb75770": {
+   "post": "People read about a crime. Some were told it was explained by the offender's genes and others by the offender's environment. Then they rated how well an insanity defense applied. People given the genetic explanation said the insanity defense applied more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g00d70652a": {
+   "post": "People looked at pictures that got clearer the harder they squeezed a hand grip. Researchers wanted to see whether people squeeze harder for pictures of things they like. Most people squeezed hardest for the kind of picture they liked best.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "g0279d7097": {
+   "post": "People saw digits appear at irregular times and later recalled either their order or their timing. Some were told to split the list into groups. People paused between the groups when they recalled, whether they were recalling order or timing.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g034e5d76e": {
+   "post": "People read someone's description of a Democrat. Some read it with the good deeds described in broad terms and the bad deeds in specific detail, and others read the reverse. People who read the first version were more likely to think the writer was also a Democrat.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g04f1e1a9a": {
+   "post": "Some people read an essay saying that behavior is shaped by genes and environment, and others read a neutral essay. Then everyone solved math problems on a computer that could show the answers if they let it. People who read the essay about behavior being determined cheated more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g0564da8de": {
+   "post": "People read about someone whose actions led to a person's death. In one version the person who died was a police officer, and in the other a thief. Then they rated whether the death was brought about intentionally. People rated it as more intentional when the victim was a police officer.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g0669aacf9": {
+   "post": "People looked at a seesaw logo. For some the bar was tilted to suggest movement, and for others it was left flat. Then they rated how they felt about the brand. People who saw the moving logo felt more favorably toward the brand.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g06b0efcd8": {
+   "post": "People named the ink color of color words, some spelling a different color than the ink and others the same, once while sitting and once while standing. When seated, people were slower on the mismatched words. When standing, they were not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g07bc1e61d": {
+   "post": "Students said whether they think interests are fixed or can be developed. Then they read an article on a topic that fit their existing interests or one that did not, and rated how interesting it was. Students who see interests as fixed lost interest in topics outside their existing interests.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g08f177485": {
+   "post": "People imagined eating a food, such as cheese, many times, or only a few times, or imagined eating a different food. Then they were given the food to eat. People who imagined eating the food many times ate less of it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g0a1df3a6c": {
+   "post": "People played buyers and sellers in a market where only the seller knew what fix the buyer needed. In some games sellers had to pay if they prescribed the wrong fix. In some, buyers could check what was done. Markets worked better when sellers were on the hook, but letting buyers check did little.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g0a6c73ab7": {
+   "post": "Senior police officers did realistic video shoot or don't-shoot scenarios before and after a training. Some were randomly given a video-based training on situational awareness and where to look, and others a training like traditional police training. Officers who got the video-based training responded faster and hit the target sooner.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g0beacb169": {
+   "post": "People rated how much they agreed with comparisons such as 'men earn more than women' or 'women earn less than men'. The two kinds of wording say the same thing. People agreed more with the 'more than' wording.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g0f360ff07": {
+   "post": "People imagined two people. One knew what experiences they had paid for, like vacations and concerts, and the other knew what things they had bought, like clothes and gadgets. They rated how well each would know them. People said the person who knew their experiences would know them better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g0f88c1df1": {
+   "post": "People marked points on graph paper, with the points either close together or far apart. Then everyone rated how close they felt to their family and their hometown. People who had marked far-apart points felt less attached.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g1013df2ef": {
+   "post": "People viewed everyday objects, each shown in a state such as open or closed. After a short or a long delay, they were asked which state and which particular object they had seen. After a long delay, people often remembered one of the two without the other.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g119401406": {
+   "post": "People read about a person who acquired a moral deficit, or lost their memories, or lost their desires. Then they rated how profoundly the person had changed. People rated the person who lost their morals as more profoundly changed.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g11aac6f31": {
+   "post": "People saw colored pictures of animals, and a cue told them each time whether to say the animal or its color. Some spoke one language and some spoke two. When the two tasks were mixed together, the people who spoke two languages slowed down less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g11c290e3b": {
+   "post": "People were asked what share of the smartphones sold in the US came from one particular phone. Some saw its model number as P97 and others as P17. The people who saw P97 guessed a higher share.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g15a3983f2": {
+   "post": "Pairs played a money game for 60 seconds. In some games each player could switch between cooperating and not at any moment. In others they could only choose eight times. The pairs who could switch at any moment cooperated far more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g1792158a3": {
+   "post": "Each person was given some money and could split it between two pools. One pool helped only their own group. The other helped their group and also hurt a rival group. Almost all the money went to the pool that helped only their own group.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g19a89a81e": {
+   "post": "Some people wrote about the limits on their money, and others wrote about something else. Then everyone chose between buying things and buying experiences. The people who had written about their money limits leaned more toward buying things.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g1afd7f006": {
+   "post": "Women estimated the weight of 120 other women who varied in body size. They underestimated the weight of overweight and obese women, and the heavier the woman was, the bigger the underestimate.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g1c168a5cd": {
+   "post": "Children and teenagers, some with anxiety disorders and some healthy, viewed faces while their eye movements were tracked. Researchers measured how long they looked at negative faces compared with other faces. Those with anxiety disorders looked longer at negative faces than healthy peers did.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g20159a32d": {
+   "post": "Adults online did a quick task that brought to mind either cleanliness or a neutral idea, and were told to respond fast without paying much attention. Then they rated how wrong the behaviors in several stories were. People who had cleanliness on their minds judged them as less wrong.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g226ba5776": {
+   "post": "Lists of real and made-up words flashed by very fast, and some lists had one word repeated. People wrote down what they saw. They reported the repeat less often than the first showing.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g22830c464": {
+   "post": "Consumers read persuasive messages from sources described as either experts or non-experts. Some sources sounded certain and others uncertain. Non-experts persuaded more when they sounded certain, while experts persuaded more when they sounded uncertain.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g22da4a617": {
+   "post": "White people in the US said how fair they think the country's racial order is. Then some read about progress in racial equality and others did not, and everyone said how much Whites face discrimination. Among people who saw the racial order as fair, those who read about progress said Whites face more discrimination.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g2358b523e": {
+   "post": "Adults answered questions about how often they feel inspired and about their personality. People who scored higher on inspiration also scored higher on extraversion.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g23d9ebffd": {
+   "post": "People had to say whether they had seen a face or a house before. Sometimes they were shown the whole thing, and sometimes just one part of it. People were more accurate when they saw the whole face or house than when they saw a part.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g23e487f3d": {
+   "post": "People got a message that came either from friends and family or from an organization. Then they said how willing they were to join in on social media, for example by commenting or liking. They were more willing when the message came from friends and family.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g24edf60c2": {
+   "post": "People said how long they would be willing to work to get either cash or a music book, priced at $30 or $60. For cash, people would work much longer for $60 than for $30. For the book, the price made less difference.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g2566717e4": {
+   "post": "Women looked at a photograph of a man shown on either a red or a gray background and rated how attractive he was. They rated him as more attractive on the red background.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g25edd4513": {
+   "post": "People were asked the average price of a middle-class car. Before answering, they saw a number flashed too briefly to notice, either high or low. People who had seen the high number gave higher price estimates than people who had seen the low number.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g26275b33f": {
+   "post": "People saw a row of objects from smallest to largest and marked where 'big' starts. The stretch they called 'small' was longer than the stretch they called 'big'.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g2789384ad": {
+   "post": "Some people looked at pictures taken from high up and others at pictures taken from down low. Then everyone said how likely they were to buy new products. The people who saw the high-up pictures said they were more likely to buy.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g27dce03de": {
+   "post": "Some people read a passage of literary fiction and others a passage of popular fiction. Then everyone looked at photos of eyes and guessed what each person was feeling. The people who read literary fiction did better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g290dcb2e5": {
+   "post": "People were given a high-ranking or a low-ranking role and recorded talking. Other people listened and rated how likely each speaker was to act like a boss. Speakers who had been given the high-ranking role were rated as more likely to act like a boss.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g29456dbf6": {
+   "post": "People viewed random patterns of dots or shapes and estimated how many items each pattern contained. Some patterns were all identical in color and shape, and others had several colors or shapes. People estimated more items in the identical patterns.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g294c0c989": {
+   "post": "People watched videos of eight job interviews. Half the job candidates told the truth and half lied to look better. People who trust others in general were better at spotting the lies than people who don't.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g2bb855678": {
+   "post": "Adults looked at an image of Rodin's sculpture The Thinker, or at a control image. Then they reported how much they believed in God. People who saw The Thinker reported less belief in God.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g302bafbb9": {
+   "post": "People rated how closely different traits go with creativity. Some traits are ones we think of as masculine, like daring and self-reliance, and some as feminine, like cooperative and supportive. The masculine traits were linked to creativity more than the feminine ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g33fe2976b": {
+   "post": "People were made to feel either unsure or sure about who they are. Then they chose whether to keep or cancel a subscription that fit their identity. People made to feel unsure were more likely to keep it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g346d8bde2": {
+   "post": "People held a cold pack, a warm pack, or a neutral one, and then rated how lonely they felt. People who held the cold pack felt lonelier than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g36ebff528": {
+   "post": "People were shown a sample amount of candy and poured out candy to match it. Some poured candy of mixed colors and others poured candy of a single color. People who poured mixed colors poured more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g36efffd81": {
+   "post": "Hindi speakers read a story about a chairman. In one version what he did harmed the environment and in the other it helped. They judged whether he acted 'jaan-bujhkar', a Hindi word for intentionally. They were more likely to say he acted intentionally when his behavior caused harm.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g3c08e9f10": {
+   "post": "People studied pictures of objects on plain backgrounds. Some objects were positive, some negative and some neutral. Later, people were shown either the object or the background and had to recall the other one. Emotional objects were more likely than neutral ones to bring back their background.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g3d1e2653f": {
+   "post": "Students learned about Bayesian reasoning. Some tried to solve problems before being taught the solution, and others were taught first. Then everyone took a test of conceptual knowledge. Students who tried the problems first scored higher.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g3f0139c85": {
+   "post": "People were told they would play either a confrontational game or a nonconfrontational one. Before playing, they chose which activities they would prefer: ones that would make them angry, ones that would excite them, or neutral ones. People who expected a confrontation preferred activities that would make them angry, but people who expected a nonconfrontational game did not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g3f8d8ff6e": {
+   "post": "While their eyes were tracked, people judged whether faces were happy, fearful or neutral. The faces appeared at increasing distances from the point where people were looking. Judging happy faces stayed accurate farther from the center of gaze than judging fearful faces.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g402c3db28": {
+   "post": "People chose between two laptops. One was better overall, and the other was better on more of the separate features. Some people read descriptions that made both laptops sound human, and others read plain descriptions. The people who read the human-sounding descriptions picked the better-overall laptop more often.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g4250a6010": {
+   "post": "People heard lists of words to remember while a stream of other words that rhymed with them played in the background. Some had to recall the words in any order and some in the order they were heard. The rhyming stream hurt recall in any order but not recall in the order heard.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g43fb642cf": {
+   "post": "People studied a list of words. Some controlled how long to spend on each word, and others saw the words at a fixed pace with the same total study time. Then everyone took a memory test. People who controlled their own study time did better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g442483f76": {
+   "post": "Young and older adults described events from their past and imagined events in their future. Each description was split into details about the event itself and other kinds of details. Older adults gave fewer details about the event itself than younger adults, for both past and future events.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4455a836a": {
+   "post": "People copied out a story about themselves, a story in which they did something either unethical or ethical. Then they rated how much they wanted cleansing products. Those who had copied the unethical story wanted cleansing products more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g462fe3aff": {
+   "post": "People read about someone doing something wrong. In some stories the person came from the reader's own culture, in others from a very different one. The more different the person's way of life, the less people said there was one right answer.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g46817d4c1": {
+   "post": "Drivers were watched to see who broke traffic laws, and in lab tests people could lie, cheat or take things from others. Upper-class people did all of these more often than lower-class people.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g47a0c89e6": {
+   "post": "People could donate money to help a sick child, or to help a group of eight sick children. Some saw a photo of the child or children and some did not. A photo made people give more to the one child, but made no difference for the group of eight.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g4843bef5c": {
+   "post": "Some Americans were prompted to think in terms of choice, and others were not. Then everyone read facts about wealth inequality in the United States and said how disturbed they were. The people prompted to think about choice were less disturbed.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4b61c0dcb": {
+   "post": "People aged 10 to 20 filled out a personality questionnaire online. The younger ones differed more from each other in how often they just agreed with a statement, whatever it said.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g4c56a436d": {
+   "post": "People read made-up words, company names, or person names and rated how much they liked them. In some the consonants move from the front of the mouth to the back, like BENOKA, and in others from the back to the front, like KENOBA. People liked the front-to-back words more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4c60f12bb": {
+   "post": "People rated how much their personal goals conflicted with each other. Then they browsed a set of books that was described as work. People who felt more conflict between their goals spent more time browsing.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4d86fee69": {
+   "post": "College seniors reported their emotions on graduation day. Some of them were first reminded that graduation was an ending. Those who were reminded felt more mixed emotions than those who were not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4f043273e": {
+   "post": "People were asked about their own regrets, and about the regrets of people in short stories. Things people did hurt more at first. Over the years, people regretted the things they never did more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g4f1039da2": {
+   "post": "Some people repeatedly checked a virtual stove, some just repeatedly used it, and others did the same with a light bulb. Then they rated how well they remembered the object. People were less accurate, confident and clear about their memory of the stove than of the light bulb.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4f6062772": {
+   "post": "People read about a negotiation. In one version the buyer used true statements to give a misleading impression, and in the other the buyer answered honestly. Then they rated the buyer's behavior. People judged the buyer who used true statements to mislead as more unethical.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g4ff55b0de": {
+   "post": "People first said how much their view on an issue rested on moral concerns. Then they read a message arguing against their view, framed either as a moral appeal or as a nonmoral one. A moral appeal persuaded more than a nonmoral one when the person's view rested on moral concerns, and less when it did not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g517d260a2": {
+   "post": "Adults recently diagnosed with Type 2 diabetes were randomly given a five-step course on managing their condition, or no course. Afterward researchers measured how well they planned ahead for problems, how well they reached their goals, and how confident they felt. Those who took the course did better on all three.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g5244df747": {
+   "post": "Dogs were observed with their owner, who either cried, hummed, or talked. Observers recorded how often each dog looked at, approached, and touched the owner. Dogs looked at, approached, and touched a crying person more than a person who was humming or talking.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g55c71d874": {
+   "post": "People read about a world where everything that happens is determined by earlier events. In it, a man robs a bank. Then they judged whether he robbed the bank of his own free will. Most people said he did.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g55d4d3605": {
+   "post": "People saw two foods side by side, one healthy and one unhealthy, and chose which they preferred. For some people the healthy food was on the left, and for others it was on the right. People chose the healthy food more often when it was on the left.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g564cfd00c": {
+   "post": "Registered voters received a survey before a statewide election. Some survey questions asked about 'being a voter' and others about 'voting'. Official state records later showed who voted. People asked about 'being a voter' were more likely to vote.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g564ea117b": {
+   "post": "Adults judged where a sound came from, sometimes while a flash of light appeared at the same time. Researchers also tested how well they located the sound alone and the flash alone. Adults located the source more precisely when they heard and saw it together than from sound alone or sight alone.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g572fc4c3c": {
+   "post": "People looked at photos of government officials they did not know and rated each on traits such as corruptibility, honesty, selfishness and aggression. Some of the officials had been convicted of corruption and others had clean records. People rated the convicted officials as more corruptible, dishonest, selfish and aggressive.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g57b45003a": {
+   "post": "People held digits in mind while switching between tasks, with some people switching more often than others. Then they recalled the digits. The more often people switched tasks, the fewer digits they recalled.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g5830c2474": {
+   "post": "People looked at upsetting pictures, each with an object in front of a background. Then some stayed awake for 12 hours and others slept. People who slept still remembered the upsetting objects but not their backgrounds, while people who stayed awake forgot the whole scene.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g593f64594": {
+   "post": "People looking for dates flipped through photographs of potential partners and chose those they wanted to meet. Some photos showed an expansive posture, taking up more space, and others a contracted one. People were more likely to choose the photos with an expansive posture.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g595242176": {
+   "post": "Groups harvested from a shared supply that could run out, over several rounds. Some groups could talk to each other, and others could neither talk nor punish. The groups that could talk earned more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g5b6f01eab": {
+   "post": "People with PTSD and trauma survivors without PTSD were shown reminders of upsetting scenes and told to push the memory away. People with PTSD were worse at forgetting the scenes they tried to push away.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g5c2a0282b": {
+   "post": "People rated how much they agreed with claims that one thing causes or explains another. In some cases the relationship held only under certain background conditions, and in others it held across conditions, with the overall strength the same. People agreed less with the claims when the relationship held only under some conditions.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g5c96bc515": {
+   "post": "Groups played a money game over many rounds. Some groups could pay to punish each other, and some could not. When players couldn't see exactly what the others had given, the groups that could punish ended up earning less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g5d6c1fb8c": {
+   "post": "European Americans and Asian Americans were reminded of death, or of another topic. Then they rated someone who breaks cultural norms. After the death reminder, European Americans defended themselves, while Asian Americans defended other people.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g5fb4717ab": {
+   "post": "Researchers made some people feel unsure about who they are, and others feel sure. Everyone then said how interested they were in adding new traits to themselves, and rated themselves on the traits of a possible romantic partner. The people who felt unsure were less interested in adding new traits, and less likely to pick up the partner's traits.",
+   "source_level": "design_only",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "g61b50aceb": {
+   "post": "People judged whether two letters were the same or different. Some pairs of different letters were mirror images of each other, like b and d, and others were not, like a and h. People took longer and made more errors telling apart the mirror-image letters.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6306bc101": {
+   "post": "People read information about hazards such as nuclear power. The information was written to make people feel more favorable or less favorable toward each hazard. Then they rated how risky and how beneficial it was. When people felt more favorable, they saw less risk and more benefit.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6529ad286": {
+   "post": "People wrote about their own death or about dental pain. Then they filled in the missing letters of word fragments, some right away and some after a delay. People who had thought about death and filled them in right away made more death-related words than those who waited.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6655914b3": {
+   "post": "People saw items flashed one after another very quickly and had to pick out two targets. Some of the adults spoke one language and some spoke two. Bilingual adults were worse than monolingual adults at noticing the second target when it came soon after the first.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g665934120": {
+   "post": "People read about scientific studies and guessed how likely it was that the results would come out the same way again. Some were told how the study came out, and others were not. People who were told the result thought it was more likely to happen again.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g66f677083": {
+   "post": "Seventh graders said whether they thought intelligence can grow or is fixed. Then their math grades were followed for two years. Students who thought intelligence can grow saw their grades climb, while students who thought it is fixed stayed flat.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g679faa6d9": {
+   "post": "People read stories about someone who acted against their own better judgment. In some stories the action was bad and in others it was neutral. Then they rated how much the person showed weakness of will. People were more likely to say so when the action was bad.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g68d204b37": {
+   "post": "People read descriptions of a person's behavior, written either as what the person was doing or as what the person did. Then they rated how intentional the behavior was. People who read what the person was doing rated the behavior as more intentional.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g68e6d6c15": {
+   "post": "Employees chose between helping a colleague, a career-advancing project, or a project taking the company in a new direction. Some were first prompted to think of a long future at work, some a short one, and some not at all. Those prompted to think long were less likely to choose helping a colleague.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6a11f9966": {
+   "post": "People saw products with either a round logo or an angular one. Then they rated how comfortable and how durable each product seemed. Products with round logos were rated as more comfortable and less durable than products with angular logos.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g6a77908a7": {
+   "post": "People quickly judged whether five-word sequences were grammatical. Some wrong ones were made by swapping two neighboring words in a correct sentence, like 'The white cat was big' becoming 'The white was cat big'. People were slower to call those wrong than wrong ones made from an already wrong sequence.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6b000ff80": {
+   "post": "People chose whether to receive health-related information. For some they had to opt in to get it, and for others they had to opt out to avoid it. More people agreed to receive it when they had to opt out.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6b12ac86b": {
+   "post": "People chose whether to enter a competition based on solving calculations. Under one rule nothing changed, and under another one extra correct calculation was added to every woman's score. Women entered the competition more often under the rule that added to their score.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6bf6b8afe": {
+   "post": "People chose between two options. In some conditions a third, clearly worse option was added. Some people were also asked to think about how much they might regret their choice. Thinking about regret stopped the worse third option from pushing people toward the more expensive choice.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6c1701060": {
+   "post": "Some people planned how they would carry out a decision. Others weighed up a decision, and others did neither. Then everyone said how they felt about several things unrelated to the decision. People who had planned how to carry out their decision had less mixed feelings about those things.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6c6f2a3ab": {
+   "post": "People responded to letters shown on a screen while hearing a letter spoken at the same time, which they were meant to ignore. Sometimes the spoken letter had the same name as the one on the screen, and sometimes it was a different letter. People responded faster when the names matched.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6f454777f": {
+   "post": "Adults read a short literary fiction story or a nonfiction article. Then they took a test of how well they understand other people's emotions. People who read the literary fiction story did better than people who read the nonfiction article.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6f82cebed": {
+   "post": "People did tasks that tested attention and memory with their own smartphone on the desk, in a pocket or bag, or in another room. People did worse when their smartphone was nearby than when it was in another room.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g6f8394118": {
+   "post": "Adults received money offers, some fair and some unfair, that were worth the same amount of money. They rated how happy each offer made them while their brain activity was recorded. Fair offers made people happier than unfair offers of the same value.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g70cae8571": {
+   "post": "People held either a heavy clipboard or a light one while they rated job candidates on how important they seemed, from 1 to 7. People holding the heavy clipboard rated the candidates as more important.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g70fbb0cff": {
+   "post": "People tried to recall the same list of items in order, over and over, with new lists mixed in. The more often they had given a particular answer before, the more likely they were to give it again, whether it was right or wrong.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g735e3d716": {
+   "post": "People played a golf putting game. Some were told the ball they were using was lucky, and others used a neutral ball. People did better with the ball they believed was lucky.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7403844c5": {
+   "post": "People read a story that contained a morally odd statement. Some read it as a police story and others as an Aztec myth, with the same statement in both. People resisted going along with the statement more in the police story than in the myth.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g744e4cb3a": {
+   "post": "Adults chose between completing a task alone or together with a partner. Doing it alone was the more effective way to reach the goal. Adults preferred to do it together anyway.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7571d43b7": {
+   "post": "People read climate information from NASA online and shared what they thought it showed in small groups. Some groups had only liberals or only conservatives, and others had both. When liberals and conservatives shared their views with no party labels showing, both got better at reading the data, and the gap between their beliefs disappeared.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "g7668ae1fa": {
+   "post": "Adults said whether they owned each of 52 things and how much they wanted each one. Then they rated how happy they were. The more of the things they wanted that people had, the happier they were.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g76da92b99": {
+   "post": "People studied words, some shown once and some shown twice. Then they were told to forget some of the words before recalling them. When told to forget, people forgot the words they had seen twice more easily than those they had seen once.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7861778bc": {
+   "post": "People read descriptions of decisions that were identical except for how things turned out, a success or a failure. Then they rated how good each decision was. People rated the decision as better when it turned out well.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g788a58218": {
+   "post": "People recalled something unethical they did, something ethical they did, or a neutral event. Then they rated how human they felt. People who recalled the unethical act felt less human than people who recalled the ethical act.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g794cc8ebf": {
+   "post": "Children played a game where two puppets, each starting with a different number of chips, gave some chips to the child. Then the child picked which puppet was nicer. Four-year-olds picked the puppet that gave more chips, while five-year-olds started to look at what share of its chips each puppet gave.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g79e116167": {
+   "post": "Students read science texts. Some then practiced recalling what they had read, and others studied the texts by making concept maps. One week later everyone took a final test. Students who practiced recalling did better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g79ea71c65": {
+   "post": "Hiring managers read about job candidates who were either highly capable or capable enough. They rated how committed each candidate would be to the organization and decided whether to offer a job. Managers saw highly capable candidates as less committed and were less likely to offer them the job.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7a228798d": {
+   "post": "Some people were told they would probably get a mug, and others that they probably would not. Then everyone named the lowest price they would sell the mug for. The people who expected to keep the mug asked for more money.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g7a69bfa12": {
+   "post": "College students answered questions about how often they look for reassurance about tests. Researchers then looked up their ACT college entrance test scores in their academic records. Students who sought more reassurance scored lower on the ACT.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7acb4c9b7": {
+   "post": "People read about a stranger, described either in words that made him seem less than human or in words that made him seem fully human. Then they said how willing they would be to break his thumb for money. People were more willing when he was described as less than human.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g7b69cf6d1": {
+   "post": "People rated words for how useful each would be in a survival situation, or in a richly described scenario that was not about survival. Then they recalled the words. People remembered more of the words they had rated for survival.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g7f1c9c81e": {
+   "post": "Right-handed and left-handed people looked at each of their arms and hands one at a time and judged how long they were. Right-handed people judged their right arm and hand to be longer than their left. Left-handed people judged both arms accurately.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g7fa992dfe": {
+   "post": "People looked at ads that promised a change. Some ads showed just the before and after pictures, and others also showed pictures of the steps in between. People found the ads with the in-between steps more believable.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g7fd2d48bd": {
+   "post": "People made a numerical estimate after seeing a starting number. For some the number was precise, and for others it was rounded. People adjusted less away from the precise number than from the rounded one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g8156193d1": {
+   "post": "Some people wrote about the role of God in their lives, and others wrote about their day. Then everyone chose whether to follow advice from a computer or from a human. The people who wrote about God leaned more toward the computer.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g818de5171": {
+   "post": "People who use social media a lot and people who use it less saw social media images and other images. After each image they rated how pleasant an unrelated Chinese character looked. Frequent users rated the characters as more pleasant after social media images than after the other images, while less frequent users rated them the same.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g84bb5cd65": {
+   "post": "Preschool children and adults looked at eight pictures at once and had to find one particular picture. Sometimes the picture they were looking for was a snake, and sometimes a flower, a frog or a caterpillar. Both children and adults found the snake faster than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g84dd89e40": {
+   "post": "People were randomly asked to think about a recession or about architecture. Then they rated how much meaning they felt in their life. People who thought about a recession felt their life had less meaning.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g85938cde3": {
+   "post": "People saw a word like 'farmer' in the middle of the screen with a word on each side. They had to decide whether the middle word was a real word. They were faster when the side words were 'farm' than when the side words were unrelated.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g885a60293": {
+   "post": "People looked at ads that put either a sexually charged scene or a neutral scene next to an expensive or a cheap product. Then they rated how they felt about the imagery. Women reacted less negatively to the sexual imagery when the product was expensive than when it was cheap.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g88d673018": {
+   "post": "A public attitudes survey asked Londoners about their police, and the day each person was surveyed was random. Black Londoners surveyed after the police killing of Eric Garner in New York were less satisfied with London's police than those surveyed before. White and South Asian Londoners changed little.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g8a51cb052": {
+   "post": "People looked at photographs of tennis players at their peak emotional moments. Some saw only the body, some only the face, and some the face with the body. They rated how positive or negative the player felt. People could tell positive from negative by looking at the body alone, but not by looking at the face alone.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g8a82e2f67": {
+   "post": "People imagined working on a team project and read a greeting from a teammate. Some greetings had smileys and some didn't. Then people rated the sender. In formal work messages, the sender who used smileys seemed less competent.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g8add51e26": {
+   "post": "Poorer and richer people were asked to think about a money problem. Then they did a test of how well they could focus their attention. The poorer people did worse on the test than the richer people.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g8af3c94ff": {
+   "post": "People played an online game as a fake news producer and learned six tricks used to spread misinformation. Before and after playing, they rated their ability to spot and resist misinformation. After playing, people rated their ability higher.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g8b8569b99": {
+   "post": "People read a statement from a made-up government official that set low or high expectations for the city's services. Then they looked at photos of streets that were cleaner or dirtier and rated how satisfied they were with public services. People who saw the cleaner streets were more satisfied than people who saw the dirtier ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g8d0439b1d": {
+   "post": "People drank a sweet drink, a bitter drink or water. Then everyone rated how wrong various moral misdeeds were. The people who drank the bitter drink judged the misdeeds more harshly than the people who drank water.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g8f84ec622": {
+   "post": "People negotiated a simulated deal after being given a weak alternative, a strong alternative, or no alternative. Researchers recorded each person's first offer. People with a weak alternative made lower first offers than people with no alternative or a strong one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g9172d5ab7": {
+   "post": "People decided how much more to invest in a project that was failing. Some were told they would be judged on how they made the decision, and others had no such evaluation. People judged on their decision process committed fewer resources to the failing project.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g94b52f3ad": {
+   "post": "Arabic speakers who use two sets of number symbols saw pairs of digits, written in the same set or in different sets. They only had to say whether the two digits looked identical, whatever their value. They still answered faster when the numbers were far apart in value than when they were close.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g959d1a09f": {
+   "post": "People read either neuroscience articles about the brain basis of human behavior or other science articles. Then they recommended a prison sentence for a wrongdoer and said how much to blame the wrongdoer. People who read the neuroscience articles recommended shorter sentences and blamed the wrongdoer less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g95ad01eb6": {
+   "post": "Some people were first led to think about God and others were not. Then everyone chose whether to follow a song recommended by artificial intelligence. People who had thought about God were more willing to follow the AI's recommendation.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g965daa634": {
+   "post": "Adults got 25 painful electric shocks to the arm and rated how much each one hurt. Some shocks came alone and some came a split second after a weak electrical pulse. Shocks that came after a weak pulse were rated as less painful.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g9706097f8": {
+   "post": "People studied pairs of words, then practiced recalling some of them, which made them forget other related pairs. After that they studied some of the forgotten pairs again, along with some they hadn't forgotten. Relearning helped more for the pairs they had forgotten.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g974c7f1c7": {
+   "post": "People chose between a kiss from their favorite movie star and $50 in cash. For some the choice was between getting each for sure, and for others between a tiny chance of each. When both were certain, people preferred the cash, but when each was only a tiny chance, they preferred the kiss.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g988316a54": {
+   "post": "People in Hong Kong and in the US were asked where rich and poor people live in an imaginary city. Hong Kong people put the rich people in the south and the poor people in the north. People in the US did the opposite.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g9b5613ee7": {
+   "post": "People read about unfamiliar natural events, with no explanation of how they work. Some were told that scientists understand the events, and others that scientists don't yet. Then everyone rated how well they understood the events themselves. Those told that scientists understand rated their own understanding higher.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "g9b7ac8e03": {
+   "post": "People watched videos of people lying or telling the truth, then judged which statements were lies. Some were distracted before deciding, some were told to deliberate, and some decided right away. The distracted people spotted lies and truths more accurately than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "g9e69b4db0": {
+   "post": "Students took a math pretest. Later they took a high-pressure math test, and some wrote about their thoughts right before it while others did not. Students who wrote about their thoughts improved more from the first test to the second.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga040598b9": {
+   "post": "People looked at a series of still photographs that implied movement in one direction. Then they judged which way patterns of moving dots were going. After the photos, people saw real motion as heading in the opposite direction.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga0e986d3f": {
+   "post": "People looked at packages of snack foods that showed different numbers of product units on the front, and judged how many items each package contained. People thought a package held more food when it showed more product units.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga2768bdc1": {
+   "post": "People in 17 countries watched real news clips while their bodies were monitored and they reported their feelings. Some clips were negative, some neutral and some positive. Negative news set off stronger bodily and emotional reactions than the other clips.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ga2d094579": {
+   "post": "People read about a virtual reality machine that provides pleasurable experiences. Some read that their life was going badly and others that it was going well. Then they chose whether to stay connected to the machine or return to reality. People whose life was going badly were more willing to stay connected.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga2d2a169e": {
+   "post": "Canadians read about a made-up Olympic athlete. He was either Canadian-American or Belgian-American, and he either won or lost. Then they rated how Canadian he was. The Canadian-American athlete was seen as more Canadian when he won than when he lost.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga37baefbb": {
+   "post": "American adults read information about rising economic inequality in the United States, or read control information. Then they rated how important being born wealthy and how important hard work are for getting ahead. People who read about rising inequality said being born wealthy matters more and hard work matters less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ga5eb8a37f": {
+   "post": "Some people ate soup from bowls that slowly and secretly refilled as they ate, and others ate from normal bowls. The people with the refilling bowls ate about 73% more soup. They did not think they had eaten more, or feel any fuller.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ga8fbea240": {
+   "post": "People read messages urging them to protect the environment. Some messages talked about harm and care, and others about keeping nature pure and clean. Conservatives who read the purity version cared more about the environment.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ga942ab3cf": {
+   "post": "People played firms and workers in a lab job market. Some firms could check an applicant's work attitude before hiring, and some could not. The firms that could check produced more total value.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ga97d8cb70": {
+   "post": "People watched two flashes of light appear one right after the other in the same spot and said whether they saw one flash or two. Sometimes a cue pointed to the spot just before, and sometimes not. People were worse at telling the two flashes apart when a cue pointed to the spot.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gac8c2880b": {
+   "post": "White Americans read about the projected shift toward a nation where racial minorities are the majority, or read a control passage. Then they reported how much they supported conservative policy positions. Those who read about the demographic shift supported conservative positions more strongly.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gaf2f5a5ed": {
+   "post": "Some people were put in a situation where they had no control over what happened, and others in one where they had complete control. Then everyone said how much physical pain they felt. The people with no control reported more than double the pain.",
+   "source_level": "design_only",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gb0ab41308": {
+   "post": "People received a greedy, an equal or a generous split of money or work from an anonymous person. Then they divided more resources with a different anonymous person. People treated greedily passed on more greed than people treated generously passed on generosity.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gb0bff7869": {
+   "post": "People were taught to fear two signals, and then one of the two was unlearned. The next day both signals were shown again while their sweat and brain waves were recorded. The signal that had never been unlearned set off a bigger sweat response and more of one kind of brain wave at the front of the head.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gb1de46812": {
+   "post": "People answered reasoning questions. For some, the questions were printed in a degraded, hard-to-read font, and for others in a normal, easy-to-read font. People did better on the questions when they were hard to read.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gb38550e49": {
+   "post": "People read about a chairman whose pursuit of profits also harmed or helped the environment. Then they rated whether he brought about that side effect on purpose. People said he did it on purpose more when the side effect was harmful than when it was helpful.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gb3c4b9096": {
+   "post": "Some people solved a set of tricky puzzles before judging some moral dilemmas, and others solved them afterward. People who did the puzzles first judged actions that harm some people to help others as more acceptable.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gb44fa3145": {
+   "post": "People answered 18 questions about how open they are to opposing views. Then they chose how much to read from U.S. senators of their own party and from senators of the other party. The more open people were, the bigger the share they chose to read from senators of the other party.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gb52ce49fe": {
+   "post": "People looked at webpages with ads on backgrounds that were simple or complicated. Then they rated how they felt about the ad, the brand, buying the product and the website. Simpler backgrounds led to more positive feelings on all four.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gb83f6a371": {
+   "post": "White people watched videos of Black and White speakers talking about their relationships. Some of the speakers told the truth and some lied, and the viewers judged which. The White viewers said 'truth' more often for the Black speakers.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gbcc2322ec": {
+   "post": "Adults played an exercise video game in which they held an abdominal plank as long as they could. Then some exercised alone and others with an Internet partner, and everyone held a plank again. People with an Internet partner held the plank longer than people alone.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc2a9660bc": {
+   "post": "Some people were reminded of scarcity and others of plenty. Then everyone had to come up with uses for a given product. The people reminded of scarcity came up with more novel uses.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gc2ed93a6d": {
+   "post": "Drivers rated how safe and how skillful they are compared with the average driver. People rated themselves as safer and more skillful than the average driver.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc4e84cffd": {
+   "post": "People traded assets in a market. In some markets what the asset was truly worth stayed the same over time, and in others it went down. Prices moved farther away from the true worth when it went down.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc56d9f446": {
+   "post": "African American and White professionals read about workplaces that varied in how many minority employees they had and in whether they valued diversity or were colorblind. They rated how much they would trust each one. African American professionals distrusted a workplace with few minorities that was colorblind rather than valuing diversity.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc5e0ea304": {
+   "post": "People recalled either an unethical deed or an ethical one. Then they were offered a choice between an antiseptic wipe and another product. People who recalled the unethical deed were more likely to take the wipe.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc5ef78cc0": {
+   "post": "Adults spent 90 minutes either doing a demanding mental task or watching emotionally neutral documentaries. Then they cycled at high intensity until they could not continue. After the demanding mental task, people gave up cycling sooner.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc6d419676": {
+   "post": "People looked at objects and products in colors that were either vivid or dull, and rated how big each one looked. People rated the products in vivid, highly saturated colors as larger.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc81bb12a2": {
+   "post": "People were told something negative about a health risk, a risk described as either changeable or unchangeable. Some were asked to think about it in broad, big-picture terms, and others in concrete detail. When the risk was changeable, big-picture thinking made people more eager to find out more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gc8c561191": {
+   "post": "Men and women judged whether women's nonverbal cues showed friendliness or sexual interest. Men were worse than women at telling the two apart.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gc985a4195": {
+   "post": "People looked at a series of objects and said whether each was new, seen before, or similar to one seen before. Right after seeing a new object, they were better at noticing a subtle change in a similar object than right after recognizing an old one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gc99e8664e": {
+   "post": "Thousands of German adults who had jobs rated their personality, and then rated it again four years later. In between, some of them lost their jobs. The people who became unemployed changed more in agreeableness, conscientiousness and openness than the people who kept working.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gc9ea607b2": {
+   "post": "People unscrambled sentences, some of which brought analytic thinking to mind and others not. Then they rated how much they believed in conspiracy theories. People primed to think analytically believed in conspiracy theories less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gca7778a7b": {
+   "post": "Countries were compared on how many of their people become organ donors. In some countries people are donors unless they opt out, and in others they are donors only if they opt in. Donation rates were higher where people were donors unless they opted out.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gcc95fcb04": {
+   "post": "White people expected to have a conversation with a Black partner, about either racial profiling or love and relationships. Then the researchers measured how far apart they sat. The ones who feared seeming racist sat farther from the partner.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gcebe7f064": {
+   "post": "Groups played a trading game in a lab. Some groups had a money object to trade with and some did not. The groups with money got more out of their trading.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gcf7531c11": {
+   "post": "People read short stories about a person who thought something was true. In some stories the person would lose a lot if they were wrong, and in others very little. People were less likely to say the person knew it when the stakes were high.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gd197285cf": {
+   "post": "People faced mild or intense upsetting pictures or electric shocks. Each time they chose between two ways to handle their feelings: thinking about the situation differently, or distracting themselves. People preferred thinking about it differently for the mild situations and distracting themselves for the intense ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd1bd22fa0": {
+   "post": "People watched letters flash by very fast, and two of the letters had a ring around them. They had to name both ringed letters. When the second ringed letter came soon after the first, people picked it out less often, more slowly and less precisely.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gd2eae5db4": {
+   "post": "Before a speed-dating event, people rated what they wanted in an ideal partner. At the event they met partners and rated their romantic interest in each one. Researchers compared those ratings with each partner's attractiveness and earning prospects. Attractiveness and earning prospects shaped romantic interest no differently for men than for women.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd3a6c2164": {
+   "post": "High school students, some Asian American and some European American, experienced a failure. Then they reported how motivated they felt by their mothers. Asian American students were more motivated by their mothers than European American students were.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd5137e011": {
+   "post": "Researchers compared the criminal records of incarcerated men who had antisocial personality disorder, antisocial personality disorder plus psychopathy, or neither. Men with antisocial personality disorder alone had committed more types of crimes than men with neither.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd5ff42d8e": {
+   "post": "People searched displays of four or eight items for a target, once while sitting and once while standing. People searched more slowly while standing than while sitting.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd6109585a": {
+   "post": "People read a custody case about two parents. Some were asked which parent should be awarded the child, and others which should be denied the child. The same parent was the more popular answer to both questions.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd6b425692": {
+   "post": "People saw some die rolls: three 6's, two 6's, or two 6's and a 3. Each person guessed how long the whole sequence of rolls had been. People who saw three 6's guessed a longer sequence than people who saw two 6's or the mix.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd6b51f068": {
+   "post": "People read stories in which a harmful outcome could come from doing something or from doing nothing, with the person's intentions, motives and the outcome the same. They rated how immoral the person's choice was. People rated harm from doing nothing as less immoral than harm from doing something.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd7bd1cb0b": {
+   "post": "People saw two curtains on a screen and guessed which one hid a picture. Only after they guessed did the computer randomly pick which side the picture was on. When the hidden picture was erotic, people picked the right curtain more often than chance.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gd7c57f93a": {
+   "post": "People took a perspective-taking test. Some were told it measured spatial ability, and others that it measured empathy, with human figures added to the empathy version. Men outperformed women when the test was framed as spatial but not when it was framed as social.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd889e2c02": {
+   "post": "People briefly viewed a display of colored circles of different sizes, then reported the size of one circle they were asked about. People remembered a circle as larger when it was among larger circles of the same color, and smaller when it was among smaller ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd8dd1a053": {
+   "post": "People drank a soft drink that had either sugar or artificial sweetener. Then they chose again and again between a smaller amount of money now and a larger amount later. The people who drank sugar valued the larger, later amount more than the people who drank artificial sweetener.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gd9409ebf3": {
+   "post": "Children with autism either got 35 to 40 hours a week of early intensive behavioral treatment from a community agency or went to special education classes, as their parents chose. Researchers tested their IQ and adaptive behavior over three years. The treated children had higher IQ and adaptive behavior scores than the children in special education.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gda118e382": {
+   "post": "People chose between less money soon and more money later. Some were nudged to line the two offers up and compare them side by side. Others were nudged to look at one offer at a time. The people nudged to compare were more willing to wait.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gda60c1911": {
+   "post": "People watched a film clip that wasn't very funny. Some were told beforehand that it was good, and others were told nothing. People who like thinking hard enjoyed it less after being told it was good, while people who don't enjoyed it more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gdab919b48": {
+   "post": "People answered a series of difficult trivia questions. Then they named the ink color of words as fast as they could, some about computers and some not. After the hard questions, computer-related words came to mind more readily than other words.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gdad375184": {
+   "post": "Younger and older adults imagined donating money and time to relatives and to people they were not related to, at different levels of closeness. Older adults donated less to people they were not related to than younger adults did, but gave more time to relatives.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gdcd682156": {
+   "post": "Some people were asked to recall a time they were treated with disrespect, and others to recall an ordinary experience. Then everyone rated how selfish and untrustworthy they think people are. Those who had recalled being disrespected were more cynical.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gdced4f949": {
+   "post": "Some people were made to feel lonely, some scared and some neither. Then everyone rated how much they believed in supernatural beings, and how many social traits their pets had. The lonely people believed more in supernatural beings and saw more social traits in their pets.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gdd7b2a1ee": {
+   "post": "People watched an upsetting movie. Some were told just to watch it, some to feel less, and some to feel more. Afterwards, the ones who tried to change their feelings said it took more effort than just watching.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ge13b33391": {
+   "post": "German speakers read words for groups of people, either in the usual masculine form or in forms that also name or include women. Then they named their favorite musicians. Those who read the masculine-only form named fewer women than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "ge2247dfb2": {
+   "post": "People took the role of a buyer choosing between three suppliers. They read a few customer comments about each one, then guessed how many of all its comments were good and how many were bad. They guessed too few were good and too many were bad, and the more comments a supplier had, the bigger the mistake.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "ge290113ed": {
+   "post": "People were led to think about an economic recession or an economic upswing. Then they decided how to split resources between girls and boys. People who thought about a recession gave more to girls than people who thought about an upswing.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "ge80af4395": {
+   "post": "People guessed something they did not know, then guessed again after a delay. Researchers averaged each person's two guesses. The average of the two guesses was closer to the truth than the first guess alone.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gea051ba4e": {
+   "post": "People agreed or disagreed with statements by moving a handle toward one of two answers, while the path of the movement was recorded. Some statements seemed clearly true, some clearly false, and some partly true and partly false. People's hand movements wavered more on the partly true, partly false statements.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "geb693aff5": {
+   "post": "People in Calgary listened to recordings of workers speaking English. Some of the speakers were native English speakers and some were native Tagalog speakers. The listeners rated the Tagalog speakers as less competent and harder to understand.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gec7677bff": {
+   "post": "People read about someone giving a gift, either a $45 scarf or a $55 coat. Each person read about only one of them and rated how generous the giver was. The giver of the cheaper scarf was rated more generous than the giver of the coat.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gecd6d761d": {
+   "post": "Some people were asked for a small favor. Others were first asked for an extreme favor, which they refused, and then asked for the small favor. People who had first refused the extreme favor were more likely to agree to the small one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gedf602d20": {
+   "post": "Women rated their mood while thinking about their next menstrual period, and again while remembering their last one. They reported stronger emotion while looking ahead to it than while remembering it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "geeed8bb26": {
+   "post": "People made plans for managing a limited resource when it was more or less tight. Some plans stretched the resource to make it last, and others gave up less important goals to save it. The tighter the resource, the more people gave up less important goals instead of stretching it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gef528c7da": {
+   "post": "People read statements and rated how likely each was to be true. Each statement had the same content but was written either in concrete language or in abstract language. People judged the concrete wording as more likely to be true.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf0aab7478": {
+   "post": "People viewed an advertisement for lamb. In one version the lamb was shown as a living animal, and in the other as meat. Then they reported how much empathy they felt. People felt more empathy when the lamb was shown as a living animal.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf0f4e464b": {
+   "post": "Pairs of people watched a film, each seeing a different version, and then discussed it. Afterwards each person recalled details alone. People remembered the details they had not discussed better than the details they had.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gf15632d5b": {
+   "post": "In a game, two sides had to pick a judge for a dispute. In some games both sides struck out names at the same time. In others they took turns narrowing down a list. The turn-taking games gave the two sides higher payoffs.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gf1de109ef": {
+   "post": "People in a public place reported their political attitudes. For some, a hand-sanitizer dispenser was nearby, and for others it was not. People near the hand sanitizer reported more politically conservative attitudes.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf2a93cafc": {
+   "post": "Some people took part in a racist task and others only watched it. Then they rated a person who refused to go along with it. People who had taken part disliked the person who refused, but people who had only watched did not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf368bfa75": {
+   "post": "Women rated how attractive they found men who were described as either single or already in a relationship. Women who already had a partner favored the attached men at times in their cycle when they were least likely to conceive. At times when they were most likely to conceive, they favored single, masculine men.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gf4738c406": {
+   "post": "People looked at spiky shapes and rounded shapes and rated how emotionally arousing each one was. People rated the spiky shapes as more emotionally arousing than the rounded ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf529ea20e": {
+   "post": "People read about an organization that had either many levels of bosses or few. Then they rated how much corruption they expected from its employees. People expected more corruption in the organization with more bosses over workers.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf83e798d8": {
+   "post": "People saw photos of the crowds at the 2017 Trump inauguration and the 2009 Obama inauguration and picked which crowd was larger. Trump supporters were more likely than other people to wrongly pick Trump's crowd.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gf8f10b3cf": {
+   "post": "Adults listed who they spent each part of yesterday with. Some had spent time with a wide mix of people, such as a partner, friends, coworkers and family, and others with fewer kinds of people. The people with the wider mix said they felt better about their lives.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gfaf524330": {
+   "post": "People evaluated leaders who acted either dominant or communal. The leaders were Black or White, women or men. White female leaders were given lower status when they acted dominant rather than communal, but Black female leaders were not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gfb894d68f": {
+   "post": "People read about someone making a moral or an immoral decision, either quickly or slowly. Then they rated the person's moral character. Quick immoral decisions made the person look worse than slow ones, and quick moral decisions made the person look better than slow ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gfc9f764ec": {
+   "post": "People rated how much they liked four vegetables. Then some were led to think the vegetables were scarce and others plentiful, and everyone chose six pieces from the set. People who saw the vegetables as scarce chose a bigger share of their favorite than people who saw them as plentiful.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gfd42786a8": {
+   "post": "People were told a study was about vigilance and watched several hundred words and images go by. Mixed in, one unfamiliar object kept appearing with positive items and another with negative ones. Later people liked the object paired with positive items more, though they did not remember the pairings.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gfd6537bed": {
+   "post": "People read about someone from a harsh, unpredictable place or from a secure, stable one, rich or poor. Then they guessed how impulsive and short-sighted that person was. People from the harsh places were judged as more impulsive and short-sighted, whether rich or poor.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gfd8847805": {
+   "post": "People made number estimates, starting from a number they had come up with themselves. Some were kept mentally busy while they adjusted their guess. The people who weren't busy moved their estimates further away from the starting number.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, hand-written 2026-10-20",
+   "written_on": "2026-10-20"
+  },
+  "gfd8fe4bc1": {
+   "post": "Rats were trained with delayed rewards, with immediate rewards, or not at all. Then they chose between a smaller immediate reward and a larger delayed one. Rats trained with delayed rewards chose the larger, later reward more often than rats trained with immediate rewards or no training.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "gffc4447be": {
+   "post": "American students wrote about their own death or about watching television. Then they read two essays, one praising the United States and one criticizing it, and rated how much they liked each author. Students who wrote about their own death liked the author who praised the country more than the one who criticized it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p0191d212b": {
+   "post": "People played a cooperation game and chose which of two groups to be in, one where members could punish others and one where they could not. Over time the entire population moved to the group with punishment, and the group without it emptied out.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p06185dc09": {
+   "post": "People did a reaction-time task at a fast or slow pace, then were falsely accused of hitting a wrong key that damaged the computer. Another person said she either saw them hit it or saw nothing. People in the fast task with a witness were more likely to sign a confession than those in the slow task with no witness.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p08b2157e1": {
+   "post": "Some people ranked sets of cartoons from magazines by how funny they were, and others ranked the same cartoons by how aggressive they were. The cartoons ranked as more aggressive were also ranked as funnier.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p0c3bdc84b": {
+   "post": "People judged how big objects were while their hands were magnified or not magnified. People judged objects as smaller when their hand was magnified.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p0eec1b5ac": {
+   "post": "People recalled or read about an achievement they were proud of and said how intensely they would show their pride to someone else. For some the achievement was relevant to that person, and for others it was not. People said they would show less pride when the achievement was relevant to the person watching.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p117831118": {
+   "post": "Some people wrote a letter to their future self and others did not. Then they made choices that could be delinquent. People who wrote to their future self were less inclined to make delinquent choices.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p154f8890d": {
+   "post": "Men crossing a scary suspension bridge or a non-scary bridge were approached by an attractive woman interviewer. She asked them to fill out a questionnaire that included writing stories about pictures. The men on the scary bridge wrote stories with more sexual content and were more likely to try to contact her afterward.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p19789ad5a": {
+   "post": "People chose from a set of options that were shown either one at a time or all at once. Then they rated how satisfied they were with their choice and how committed they felt to it. People shown the options one at a time were less satisfied and less committed.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p1cc37feb5": {
+   "post": "People watched a video that included a salient person. Later, some described that person's face and others did not. Then everyone tried to recognize the face. People who had described the face did worse at recognizing it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p24ec0c969": {
+   "post": "Some people ate a sweet food, some a food that was not sweet, and some no food. Then they rated how agreeable they were. People who had eaten the sweet food rated themselves as more agreeable and helped more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p272ce9c73": {
+   "post": "People watched a rapid stream of images and tried to spot a target that came right after an irrelevant picture. They did this when hungry and when full. Pictures of food made hungry people worse at spotting the target.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p27485cdac": {
+   "post": "People read scenarios in their native language or in a foreign language. In each, they imagined doing something under a superstitious circumstance, such as a broken mirror or a four-leaf clover, and rated how they would feel. A foreign language led to less negative feelings about bad-luck scenarios and less positive feelings about good-luck scenarios.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p296e0c072": {
+   "post": "People chose between gambles described in terms of gains or in terms of losses. Some choices had to be made under time pressure and others not. The way a gamble was described shifted people's choices more when they had to decide fast.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p2d8e62ae6": {
+   "post": "People decided whether a word was a brand name. Brand names were shown in their usual case, such as adidas and IKEA, or in the other case, such as ADIDAS and ikea. People identified brand names faster in their usual case.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p312808aa8": {
+   "post": "High school students either played a game in which they made a misleading news article about a politicized issue, or did not. Then they rated how reliable and persuasive fake news articles were. Students who had played the game rated fake news articles as less reliable and less persuasive.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p32f15d1d7": {
+   "post": "People from age 7 to adulthood saw a set of shelves with objects and moved objects as a director instructed. The director could see only some of the objects, so people had to move only the ones the director could see. Teenagers aged 14 to 17 made more errors than adults.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p37ebefb1d": {
+   "post": "People read about a person's behaviors and judged how much each behavior reflected the person's true self. People judged morally good behaviors as reflecting the true self more than morally bad ones.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p3a105046d": {
+   "post": "Athletes with no track experience did sprint starts, once before and once after a first task. For some, the first task was meant to use up self-control, and for others it was not. Only those whose self-control had been used up became more likely to start before the signal.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p3bd6c6916": {
+   "post": "Japanese people rated how much they liked different Japanese letters. They liked the letters included in their own name more than the other letters.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p3f2802938": {
+   "post": "Infants were held and gently bounced to music while facing an experimenter, who bounced either in sync or out of sync with the infant. Then the experimenter 'accidentally' dropped objects, and researchers watched whether the infants handed them back. Infants bounced in sync with the experimenter were more likely to help.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p4274e34b3": {
+   "post": "People did a task of spotting changes in a display while holding both hands either near the display or away from it. People were more accurate at detecting changes, and held more items in short-term memory, when their hands were near the display.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p44a8dad93": {
+   "post": "Children of different ages saw two rows of objects, one longer and one with more objects, and said which row had more. Children of about two and a half to three picked the row with more objects. Children aged about three to four and a half picked the longer row even though it had fewer. Older children again picked correctly.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p46c3ede86": {
+   "post": "People read about actions that happened at a nearby place or a distant one, and chose whether to identify each action by what it was for or by how it was done. People more often identified actions by what they were for when the place was distant.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p4b35c8a2b": {
+   "post": "Parish councils in England were sent requests for information, some as formal Freedom of Information requests and others as simple informal asks. The formal requests were more effective at getting the information than the informal asks.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p4bebdf2ed": {
+   "post": "People learned verbal material and were tested after a period of sleep or a period awake. Some were also exposed to interference before the test. Recall was better after sleep than after being awake, and the gap was even bigger when interference was added.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p4faf74fe4": {
+   "post": "People read about a favor done for them, either for kind reasons or for ulterior motives. Then they rated how grateful and how indebted they felt. People felt more grateful when the helper had kind intentions, but felt equally indebted either way.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p506e5e803": {
+   "post": "Students were given hypnotic suggestions to respond to. For some the suggestions went from easy to difficult, and for others from difficult to easy. The two groups' total scores did not differ.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p50d149c05": {
+   "post": "People were randomly given oxytocin or a placebo and were asked to trust someone with confidential information. People who got oxytocin were more trusting that their privacy would not be violated.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p5a0cea8bb": {
+   "post": "Japanese participants imagined a scenario in which they had either caused harm to someone or not. Then they decided how to share resources between themselves and the other person. People who had caused harm gave more of their resources to the other person at their own expense.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p62c72748d": {
+   "post": "People rated how intense the emotion was in instrumental music, or in the same music with lyrics. Lyrics made happy and calm music less emotional, but made sad and angry music more emotional.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p65b16319b": {
+   "post": "People saw some fake-news headlines one time or four times, and other headlines not at all. Later they rated how unethical it would be to publish and share each headline. People rated the headlines they had seen before as less unethical to share, even when the headlines were clearly labeled as false.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p6e3da285a": {
+   "post": "People decided as fast as they could whether strings of letters were real words. Some words were more iconic, meaning their sound resembles their meaning. People responded faster and more accurately to the more iconic words.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p6f50545a4": {
+   "post": "Undergraduates read a persuasive message that argued against what they already believed. Some read strong arguments and some weak ones, and the message came from a source that was either an expert or not. For some students the issue mattered a lot to them personally, and for others it hardly did. When the issue mattered to them, students were swayed mostly by how strong the arguments were, and when it did not, they were swayed mostly by how expert the source seemed.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "p70218946d": {
+   "post": "University students were randomly assigned to study groups. Students became more conscientious when assigned to conscientious peers, more open-minded when assigned to open-minded peers, and more competitive when assigned to competitive peers.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p740db5049": {
+   "post": "Children and adults learned about two made-up groups, Hibbles and Glerks, that typically ate different kinds of berries. They then judged individuals who ate the berries typical of their own group or of the other group. Children judged the individuals who ate the other group's berries negatively, less so as they got older.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p74f4c64ce": {
+   "post": "People traded in experimental markets where they could know about upcoming dividends. In some markets everyone knew, in some no one knew, and in some only some traders knew. Bubbles were smaller in the markets where only some traders knew more than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p777411842": {
+   "post": "People read explanations for why a person behaved a certain way. Some explanations appealed to a named tendency or condition, and others gave the same explanation without the name. People found the explanations with the name more satisfying.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p7a6dbf0f8": {
+   "post": "People who were high or low in social anxiety gave an impromptu speech. Researchers measured how anxious they felt and acted, how aroused they thought their bodies were, and how aroused their bodies actually were. High-anxiety people felt and acted more anxious and thought they were more aroused, but their actual physiological activation did not differ.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p7b88dedbf": {
+   "post": "Infants aged 6 and 12 months saw novel actions demonstrated. Some then took a nap of at least 30 minutes and others did not. Later they were tested on whether they remembered the actions. Only infants who had napped remembered the actions.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p7cb125292": {
+   "post": "Some people were given reminders that atheists are common, and others were not. Then they rated how much they distrust atheists. People reminded of how common atheists are distrusted them less.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p7cd1acb8d": {
+   "post": "Working-class and middle-class Americans decided which products to buy after learning what other people had chosen. Working-class Americans were more influenced by others' choices than middle-class Americans.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p7cf2e81a9": {
+   "post": "Preschoolers heard a made-up verb in a sentence while watching events, such as 'the girl is fezzing' or 'the tall girl is fezzing'. Then they pointed to the event they thought the verb meant. Children picked the right event for 'the girl is fezzing' but not for 'the tall girl is fezzing'.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p84159028b": {
+   "post": "Undergraduates filled in two questionnaires: one on how they treat themselves when things go wrong, and one on their health habits. Researchers looked at which parts of self-compassion went with a healthier lifestyle. Students who were kind to themselves, saw their struggles as part of being human, and were mindful lived healthier lives.",
+   "source_level": "procedure",
+   "writer": "approved example, hand-written",
+   "written_on": "2026-10-17"
+  },
+  "p846fd2bd7": {
+   "post": "People sang two popular songs from memory, and their pitch was compared with the pitch of the original recordings. Many people sang at least one song at the right pitch.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p887f3f577": {
+   "post": "Women saw photographs of men who were more or less attractive, each with a description of how he behaved in different situations, altruistically or not. They rated how desirable each man was. Women preferred the altruistic men, especially for long-term relationships.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p8d09c3b4a": {
+   "post": "People solved math problems that have an intuitively tempting wrong answer, and also reported how strongly they believe in God. People who gave more of the tempting intuitive answers reported stronger belief in God.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9029f7700": {
+   "post": "People's pupils were measured while they read single words that conveyed brightness, such as day, darkness, such as night, or neither, such as house. Pupils were largest for the dark words, in between for neutral words, and smallest for the bright words.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9184a27b1": {
+   "post": "People held either expansive, open poses or contracted, closed poses. Then they prepared and gave a speech to two evaluators in a mock job interview. People who had held the expansive poses performed better and were more likely to be chosen for hire.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p95498aeb7": {
+   "post": "People told the truth about a route they had taken, and also lied about it, describing it either in normal order or in reverse order. Other people then read the transcripts and judged which accounts were lies. Observers detected lies better when the route was described in reverse order.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p97bcb718e": {
+   "post": "People viewed a few organic foods, comfort foods, or control foods. Then they were asked to volunteer time to help a needy stranger. People who had seen organic foods volunteered less time.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9843f1b69": {
+   "post": "Some people were reminded of their own death and others were not. Then they answered questions about a group they belonged to. People reminded of death identified more strongly with their group and showed more bias in favor of it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9ba3b95b4": {
+   "post": "Infants raised with one language or two learned to look at one side of a screen ahead of time because a cue predicted a reward there. Then the cue began to predict the reward on the opposite side. Only the bilingual infants managed to switch their looks to the new side.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9d528fc73": {
+   "post": "Some people first had the chance to disagree with blatantly sexist statements, and others did not. Later they chose whether to favor a man or a woman for a stereotypically male job. People who had first disagreed with the sexist statements were more willing to favor the man.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "p9f41d416e": {
+   "post": "People heard either a word such as 'cat' or a sound such as a cat meowing, and then saw a picture and said whether it matched. People verified the picture faster and more accurately after the word than after the sound.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pa0a292be2": {
+   "post": "University students solved logic problems presented in text, in formulas, or in combinations such as text with formulas or text with graphics. Students given a combination of representations outperformed students given just one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pa5bd01a96": {
+   "post": "Children aged 6 to 11 were told about the carrots other children had eaten: a large amount, none, or no information. Then they got carrots to eat. Children who thought other children had eaten a large amount of carrots ate more carrots than all the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pa5fd08df3": {
+   "post": "People had a chance to cheat by overreporting how well they did on a task. Then they did tasks that measure creativity. People who cheated were more creative afterward than people who did not.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pa69956311": {
+   "post": "Adults looked at photographs of trees shown in patterns based on the seasons, or in random order, and rated how meaningful their lives felt. People who saw the patterned photographs reported more meaning in life.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pab759937a": {
+   "post": "People wrote statements about an event, some as mock criminals who were lying and some as innocent people telling the truth. Half of each group were told beforehand that their statements would be checked for details that could be verified. Being told made truth tellers, but not liars, give more details that could be checked.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pb29f01275": {
+   "post": "In New Haven, registered voters were randomly assigned to receive a get-out-the-vote message just before an election, from a canvasser in person, by mail, or by telephone. Then researchers checked who voted. Voter turnout rose substantially with canvassing, slightly with mail, and not at all with phone calls.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pb66f6f4bc": {
+   "post": "Some people were first asked how much they would donate to help one needy person, and then how much to donate to help a whole group of needy people. Others were asked only about the group. People who were asked about one person first gave more to the group.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pb6a03b3f7": {
+   "post": "People thought about their own death or about dental pain. Then they chose between $50 now and increasingly attractive rewards in three months. People who had thought about death accepted a smaller later reward in place of the $50 than people who had thought about dental pain.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pb89f51c24": {
+   "post": "Native English speakers heard odd sentences, like 'the mother gave the candle the daughter', and said what they thought was meant. Some were spoken with a foreign accent and others with a native accent. People were more likely to take the odd sentence as the sensible one when the speaker had a foreign accent.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pb9ba564a1": {
+   "post": "Students first did a brief task that made them anxious. Then some colored a mandala, some colored a plaid pattern, and some colored on a blank piece of paper. Anxiety went down about equally for the mandala and plaid colorers, and more than for the blank-paper colorers.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pbaabe24f1": {
+   "post": "People saw faces of other people described as students at their own university or at a different one. Later they tried to recognize the faces. People recognized faces of their own university's students better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pbba258e36": {
+   "post": "People had a chance to claim money they were not entitled to. Some were told 'Please don't be a cheater' and others 'Please don't cheat'. People told 'Please don't cheat' claimed more money than people told 'Please don't be a cheater'.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pbba789cda": {
+   "post": "Toddlers learned a new word for an object from a speaker who had been either accurate or inaccurate before. Then they were tested on what the word meant. Toddlers responded less systematically when the speaker had been inaccurate.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pbecc04662": {
+   "post": "Adults did a creativity test in which they came up with uses for everyday objects, once while sitting and once while walking on a treadmill. Most people scored higher on creativity while walking than while sitting.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pc0ade8d90": {
+   "post": "Silver and bronze medalists at the 1992 Summer Olympics were observed right after their events and on the medal stand, and their emotional reactions were analyzed. Bronze medalists tended to be happier than silver medalists.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pc19669eb8": {
+   "post": "People watched campaign advertisements that were the same in every way except for their tone, negative or not. Then they said how likely they were to vote. People who saw the negative ads reported lower intentions to vote.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pc28ea6705": {
+   "post": "Women were led to value happiness, or were given no such prompt. Then some did something designed to make them feel happy and others something to make them feel sad, and they reported how they felt. Women led to value happiness reacted less positively to the happy activity, but not to the sad one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pc2ee1d4bd": {
+   "post": "People learned to sort 'aliens' into ones to approach and ones to avoid. After each answer they got feedback, and then a nonsense label was either shown or not. People who saw the labels learned the categories better, even though the labels added no new information.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pc810308cc": {
+   "post": "People saw slides of a car hitting a pedestrian. Afterward some got information consistent with what they saw, some got misleading information, and some got irrelevant information. Then they took a recognition test. People who got misleading information were less accurate.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pcacbb3d19": {
+   "post": "People read about a local recycling program and the officials running it. Some saw more female first names among the officials, and others saw fewer. Then they rated how willing they were to recycle and compost. Women were more willing to cooperate when more of the officials had female names.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pccd080bde": {
+   "post": "People read about someone whose action brought a personal benefit and also helped charity, or about a similar action that brought only the personal benefit. Then they evaluated the behavior. People judged the action that also helped charity as worse.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pccf366b6b": {
+   "post": "People watched a distressing film. Then some thought about it on purpose, some did a demanding task knowing the film would matter later, and some did it believing the study was over. Those who did the task knowing the film would matter had fewer unwanted memories of the film than the others.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pcd3735d69": {
+   "post": "People learned computer skills in one of two ways. One group was guided to avoid errors. The other group was given problems too hard to solve without making errors. The group that practiced with errors scored higher on tests that were not timed.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pd27671c51": {
+   "post": "People first did a task meant to use up their self-control, or a control task. Then they worked on matchstick arithmetic puzzles, which are solved by suddenly seeing the problem in a new way. People whose self-control had been used up solved more of them correctly.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pd55f8c3e4": {
+   "post": "Beginning algebra students solved simple problems presented either as story problems or as equations that mean the same thing. Students were more successful at solving the story problems than the equations.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pd8ee825f2": {
+   "post": "Children aged 6 and 10 listened to stories in which a character hides how they feel. They were asked how the character would look and how the character would really feel. Both age groups could tell the difference quite accurately.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pd91b977ab": {
+   "post": "People answered 22 standard questions that test cognitive biases, such as overconfidence and anchoring. Some were first told to notice three new things, which was meant to make them mindful. Mindful people were less likely to show the bias on most of the questions.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pda46001d8": {
+   "post": "People read a sentence that implied an object's color, then saw a picture of the object in a color that either matched or mismatched, and said whether the object had been mentioned. They responded faster when the colors mismatched than when they matched.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pdc848472b": {
+   "post": "People were assigned to a high-power role or a low-power role. Then they chose between smaller immediate rewards and larger future rewards. People in high-power roles were less likely to prefer the smaller immediate reward.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe0d7b180f": {
+   "post": "Some people were led to think about having power and others were not. Then they played a golf putting game. People who had been led to think about power putted better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe2c85a598": {
+   "post": "Smokers saw cigarette package warnings with pictures that were more or less graphic, or with no picture. Then they reported how much they intended to quit smoking. More graphic pictures strengthened smokers' intentions to quit.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe48fb5dbd": {
+   "post": "Asian American participants were prompted to think about their American self, their Asian self, or things in nature. Then they recalled important events from their lives. Those prompted to think about their American self recalled more self-focused and less socially oriented memories than those prompted to think about their Asian self.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe50892472": {
+   "post": "In the Netherlands, Muslims and non-Muslims rated how much they believed conspiracy theories, some about Muslims or Jewish people and some unrelated, such as that the moon landings were fake. Muslims believed both kinds more strongly than non-Muslims did.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe57b6b57c": {
+   "post": "People first did a task that used up their self-control, or a control task. Then they reported how well they had done on another task, with money at stake. People whose self-control had been used up overstated their performance more.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe77949923": {
+   "post": "Adults learned about the structure and function of the human heart from paper materials. Some were told to gesture, such as pointing and tracing, as they learned, and others were not. Then they took a knowledge test. People instructed to gesture performed better.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pe83fa6eb6": {
+   "post": "People chose two candy bars. For some, the choice was framed as picking two single candy bars, and for others as picking one bundle of two. People picked more variety when they chose single candy bars than when they chose a bundle.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pec602469b": {
+   "post": "People read about a deceased person and several candidates who might be that person's reincarnation, each matching the deceased in one feature. They chose the candidate most likely to be the reincarnation. Candidates sharing a physical mark, such as a mole, or a specific autobiographical memory were chosen more often than candidates sharing other features.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pee2d20adb": {
+   "post": "People about to sing karaoke, give a speech, or do math either tried to calm down or told themselves they were excited, for example by saying 'I am excited' out loud. People who told themselves they were excited felt more excited and performed better than people who tried to calm down.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pef1254bd7": {
+   "post": "People recalled a series of related events from their lives, either in reverse order ending with a target event, or in chronological order starting with it. Then they rated how far away the target event felt. The event felt closer when people recalled the series backward.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pef860b2f5": {
+   "post": "People described an intention in an interview, some telling the truth about what they planned to do and some lying about it. Researchers counted how many details about places and times each person gave. People telling the truth gave more spatial and temporal details.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pf001587df": {
+   "post": "People saw two digits and then a symbol, and said as fast as they could whether the symbol was a number. Before it, a word flashed too briefly to see: either 'add' or a control word. When the symbol was the sum of the two digits and the hidden word was 'add', people identified it faster.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pf65bd4aca": {
+   "post": "People turned a crank either clockwise or counterclockwise. Then they chose between familiar things and new ones. People who turned the crank counterclockwise preferred the familiar, while people who turned it clockwise preferred the new.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pf7c8f385c": {
+   "post": "People negotiated on a computer and were told whether their opponent was angry, happy, or neither. People gave in more to an angry opponent than to a happy one.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pf85070837": {
+   "post": "People chose between a basic option and a premium option, such as direct flights. For some, the premium price was shown as the extra cost, 'for $20 more'. For others it was shown as the total, 'for $60 total'. More people chose the premium option when its price was shown as the extra cost.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pfbaf6e6f7": {
+   "post": "People reported on their current and past romantic relationships, saying who confessed love first and how they felt when a partner said 'I love you'. People thought women confess love first and feel happier when they hear it, but in real relationships men confessed first and felt happier hearing it.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pfcb38528a": {
+   "post": "American and Chinese college students answered a survey about dating attitudes and behaviors. American students had more liberal views, started dating younger, dated more often, and were more likely to have sex with their dates than Chinese students.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  },
+  "pfd1be9e46": {
+   "post": "People studied prose passages. Then some repeatedly restudied the material and others repeatedly took tests on it. One week later everyone took a final test with new questions that required drawing inferences. People who had repeatedly taken tests did better than people who had repeatedly restudied.",
+   "source_level": "procedure",
+   "writer": "claude-sonnet-5-5, reviewed",
+   "written_on": "2026-10-21"
+  }
+ },
+ "schema_version": 1,
+ "unusable": {}
+}

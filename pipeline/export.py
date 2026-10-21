@@ -126,10 +126,15 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
     }
 
     # --- client payloads (only what the browser needs; answers kept apart from cards/pages)
-    _dump(PUBLIC / "game" / "items.json", items)
-    _dump(PUBLIC / "game" / "daily.json", _daily_decks(items, reveals))
+    # A card is dealt only when it has a written post (what was done, then what was found). The older database text
+    # was read and rejected as unclear, so those cards stay in data/build/game-items.json and are not dealt.
+    deck = [it for it in items if it.get("post")]
+    deck_ids = {it["id"] for it in deck}
+    _dump(PUBLIC / "game" / "items.json", deck)
+    _dump(PUBLIC / "game" / "daily.json", _daily_decks(deck, reveals))
     for gid, rv in reveals.items():
-        _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
+        if gid in deck_ids:
+            _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
     sizes["finding-reveals"] = sum(
         _dump(PUBLIC / "finding" / "r" / f"{f['slug']}.json", _finding_reveal(f))
         for f in F.values()

@@ -374,12 +374,32 @@ def _band_score(link: dict) -> float:
     return _BAND_SCORES.get(key, _UNREAD.get(link.get("confidence"), 0.0))
 
 
+def load_posts() -> dict[str, dict]:
+    """The written feed posts, keyed by card id. Empty until `python -m pipeline posts-import` has run."""
+    from . import posts
+    return posts.load()
+
+
 def load_claims() -> dict[str, dict]:
     """The written game-card claims, keyed by card id. Empty until `python -m pipeline claims --all` has run."""
     p = DISCOVERY / "claims.json"
     if not p.exists():
         return {}
     return {r["id"]: r for r in json.loads(p.read_text(encoding="utf-8")) if r.get("ok")}
+
+
+CARD_HOLDS = ROOT / "data" / "curated" / "card_holds.json"
+
+
+def load_card_holds() -> set[str]:
+    """Cards a person has held back from the deck, with the reason written next to each id.
+
+    A hold is for a card whose pairing is wrong or whose text a stranger cannot understand. It is not a verdict
+    on the finding: lift it by deleting the entry once the card is fixed.
+    """
+    if not CARD_HOLDS.exists():
+        return set()
+    return set(json.loads(CARD_HOLDS.read_text(encoding="utf-8")).get("holds", {}))
 
 
 def load_refused_claims() -> set[str]:

@@ -1,0 +1,45 @@
+{
+ "holds": {
+  "f279d51a76": {
+   "on": "2026-10-21",
+   "reason": "Wrong paper behind the card: the effect is mutual exclusivity (Davidson 1997), but its abstract and claim are about a different paper on vocabulary size."
+  },
+  "f58c53a8de": {
+   "on": "2026-10-21",
+   "reason": "Opposite statement: the effect description says coyotes do not follow a point, the paper says they can; the replication result may refer to the other statement."
+  },
+  "f7a38692eb": {
+   "on": "2026-10-21",
+   "reason": "Stronger claim than the paper: the effect says all autistic people lack theory of mind, the paper says only that autistic children did worse on belief stories; the replication result may refer to the stronger claim."
+  },
+  "fc1507d001": {
+   "on": "2026-10-21",
+   "reason": "Wrong paper behind the card: the setup (rating preference for uncommitted sex) comes from the re-run, the attached original (Gangestad and Thornhill 1998) studied the scent of shirts."
+  },
+  "fcd83b1538": {
+   "on": "2026-10-20",
+   "reason": "Wrong label: the effect list names it \"Choice overload\" but its paper and replication are about women's luxury goods."
+  },
+  "fe659f0338": {
+   "on": "2026-10-21",
+   "reason": "Opposite statement: the effect description says felines do not follow pointing, the paper says cats do about as well as dogs."
+  },
+  "g04c08f9e1": {
+   "on": "2026-10-20",
+   "reason": "The claim (\"a racist really wants racial equality more than a liberal\") makes no sense without the scenario, and the source does not give it. Lift when the original's materials are found."
+  },
+  "g0c9945552": {
+   "on": "2026-10-20",
+   "reason": "Replicated only in the third experiment after weaker earlier ones; the recorded outcome is a judgement call."
+  },
+  "g6fcc9a4c0": {
+   "on": "2026-10-21",
+   "reason": "The replication says it replicated Study 2 of the original paper, but this card is Study 1."
+  },
+  "g840632391": {
+   "on": "2026-10-20",
+   "reason": "The claim describes Experiment 1, but the replication tested Experiment 3."
+  }
+ },
+ "schema_version": 1
+}

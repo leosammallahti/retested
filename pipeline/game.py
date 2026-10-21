@@ -10,6 +10,7 @@ import hashlib
 import re
 from collections import defaultdict
 
+from . import posts as _posts
 from .ids import is_na
 
 # Words that give away the answer or the premise of the game.
@@ -120,10 +121,12 @@ def _p_bucket(p) -> str | None:
 
 def build(g: dict, written: dict[str, dict] | None = None,
           found: list[dict] | None = None,
-          refused: set[str] | None = None) -> tuple[list[dict], dict[str, dict]]:
+          refused: set[str] | None = None,
+          posts: dict[str, dict] | None = None) -> tuple[list[dict], dict[str, dict]]:
     A, F, P, E = g["attempts"], g["findings"], g["papers"], g["effects"]
     written = written or {}
     refused = refused or set()
+    posts = posts or {}
     eff_by_id = {e["id"]: e for e in E.values()}
     groups: dict[tuple, list[tuple[dict, dict]]] = defaultdict(list)
     for a in A.values():
@@ -146,6 +149,9 @@ def build(g: dict, written: dict[str, dict] | None = None,
         w = written.get(gid) or {}
         written_claim = _clean_claim(w.get("claim"), 30)
         claim = written_claim or next((c for _, r in pairs if (c := _clean_claim(r.get("description")))), None)
+        post = (posts.get(gid) or {}).get("post")
+        if not claim and post:
+            claim = _posts.split(post)[1]      # the post's last sentence is the finding
         if not claim:
             continue
         p = P.get(doi_o, {})
@@ -172,6 +178,11 @@ def build(g: dict, written: dict[str, dict] | None = None,
             },
         })
         items[-1]["context_ready"] = context_ready(items[-1])
+        if post:
+            # a written post is the whole account of the experiment, so it makes the card playable on its own; the
+            # claim becomes its last sentence, the finding, which the fairness checks and the feed both use
+            items[-1]["_dedupe_key"] = items[-1]["claim"]   # de-duplicate on the claim before the post replaced it
+            items[-1].update(post=post, claim=_posts.split(post)[1], written=True, context_ready=True)
         reps = sorted({a["id"]: a for a, _ in pairs}.values(), key=lambda a: a.get("year_r") or 0)
         reveals[gid] = {
             "id": gid,
@@ -195,14 +206,17 @@ def build(g: dict, written: dict[str, dict] | None = None,
         if not fam or fam["status"] not in ("replicated", "not_replicated", "reversed"):
             continue
         claim = _clean_claim(fam.get("description"))
-        if not claim and not (written.get("f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]) or {}).get("claim"):
-            continue
         gid = "f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]
+        post = (posts.get(gid) or {}).get("post")
+        if not claim and not (written.get(gid) or {}).get("claim") and not post:
+            continue
         if gid in refused:
             continue
         w = written.get(gid) or {}
         written_claim = _clean_claim(w.get("claim"), 30)
         claim = written_claim or claim
+        if not claim and post:
+            claim = _posts.split(post)[1]
         items.append({
             "id": gid, "tier": "famous", "claim": claim, "effect_name": e["name"],
             "method": _clean_method(w.get("method")) if written_claim else None, "written": bool(written_claim),
@@ -210,6 +224,9 @@ def build(g: dict, written: dict[str, dict] | None = None,
             "cues": {"gs_citations": fam.get("gs_citations")},
         })
         items[-1]["context_ready"] = context_ready(items[-1])
+        if post:
+            items[-1]["_dedupe_key"] = items[-1]["claim"]   # de-duplicate on the claim before the post replaced it
+            items[-1].update(post=post, claim=_posts.split(post)[1], written=True, context_ready=True)
         reveals[gid] = {
             "id": gid, "answer": "successful" if fam["status"] == "replicated" else "failed",
             "curated_status": fam["status_raw"], "critiques": fam.get("critiques"),
@@ -217,10 +234,57 @@ def build(g: dict, written: dict[str, dict] | None = None,
             "original_paper": fam.get("original_paper"),
             "effect": {"slug": e["slug"], "name": e["name"]}, "finding": None, "replications": [],
         }
+    _paper_items(g, items, reveals, posts, {doi for doi, _ in groups}, refused)
     _found_tier(items, reveals, written or {}, found or [])
     _dedupe_claims(items, reveals)
     items.sort(key=lambda x: x["id"])
     return items, reveals
+
+
+def _paper_items(g: dict, items: list[dict], reveals: dict, posts: dict, covered: set[str], refused: set[str]) -> int:
+    """One card per original PAPER, for pairs that carry no study-level rows.
+
+    FORRT's FReD rows say which study of a paper was replicated, and `build` makes one card per such study. The pairs
+    in FLoRA and in Retested's own source reviews link paper to paper, with no study number, so they never reached a
+    card. A paper-level card describes the paper's main experiment (its post is written from the abstract or Methods)
+    and is dealt only where every replication attempt of the paper reported the same clear outcome. Papers that
+    already have study-level rows are left to those cards, so no experiment is dealt twice.
+    """
+    A, F, P = g["attempts"], g["findings"], g["papers"]
+    made = 0
+    for doi_o, f in F.items():
+        pid = _posts.paper_id(doi_o)
+        post = (posts.get(pid) or {}).get("post")
+        if not post or doi_o in covered or pid in refused:
+            continue
+        atts = [A[a] for a in f["attempts"] if a in A and A[a]["type"] == "replication"]
+        outs = {a.get("outcome") for a in atts}
+        year = (P.get(doi_o) or {}).get("year")
+        if len(outs) != 1 or next(iter(outs)) not in ("successful", "failed") or not year:
+            continue
+        p = P[doi_o]
+        rows = [r for a in atts for r in a["rows"]]
+        items.append({
+            "id": pid, "tier": "study", "unit": "paper",
+            "claim": _posts.split(post)[1], "method": None, "written": True, "post": post, "context_ready": True,
+            "year": int(year), "journal": p.get("journal"),
+            "discipline": next((r.get("discipline") for r in rows if r.get("discipline")), None),
+            "cues": {"n": None, "p": None, "r": None, "cited_by": (p.get("openalex") or {}).get("cited_by")},
+        })
+        reps = sorted(atts, key=lambda a: a.get("year_r") or 0)
+        reveals[pid] = {
+            "id": pid, "answer": next(iter(outs)),
+            "title_o": p.get("title"), "authors_o": p.get("authors"),
+            "replications": [{
+                "authors": a.get("authors_r"), "year": _int(a.get("year_r")), "journal": a.get("journal_r"),
+                "doi": a.get("doi_r"), "n": _int(max((r.get("n_r") or 0 for r in a["rows"]), default=0) or None),
+                "r": _round(next((r.get("r_r") for r in a["rows"] if r.get("r_r") is not None), None)),
+                "quote": a.get("quote"),
+            } for a in reps[:4]],
+            "finding": f["slug"], "effect": None, "effect_label": None,
+        }
+        made += 1
+    return made
 
 
 # Tiers in the order a duplicate should be kept. `study` and `famous` come from a curated record; `found` is
@@ -243,7 +307,7 @@ def _dedupe_claims(items: list[dict], reveals: dict) -> None:
     """
     by_claim: dict[str, list[dict]] = defaultdict(list)
     for it in items:
-        by_claim[it["claim"].strip().lower()].append(it)
+        by_claim[it.get("_dedupe_key", it["claim"]).strip().lower()].append(it)
     drop: set[str] = set()
     for group in by_claim.values():
         if len(group) < 2:
@@ -258,6 +322,8 @@ def _dedupe_claims(items: list[dict], reveals: dict) -> None:
         items[:] = [it for it in items if it["id"] not in drop]
         for gid in drop:
             reveals.pop(gid, None)
+    for it in items:
+        it.pop("_dedupe_key", None)
 
 
 def _found_tier(items: list[dict], reveals: dict, written: dict, candidates: list[dict]) -> None:
