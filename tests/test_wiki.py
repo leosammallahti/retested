@@ -127,3 +127,23 @@ class ReleaseTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LinkTests(unittest.TestCase):
+    def setUp(self):
+        self.saved = wiki._OA
+        wiki._OA = {"by_doi": {"10.1/r": {"free_url": "https://repo.example/r.pdf", "free_version": "submittedVersion"}},
+                    "by_openalex_id": {"W123": {"paper_url": "https://journal.example/w123", "free_url": None}}}
+
+    def tearDown(self):
+        wiki._OA = self.saved
+
+    def test_the_records_own_free_link_comes_first(self):
+        self.assertEqual(wiki.links_for(attempt(doi_r="10.1/r", oa_url_r="https://own.example")),
+                         (None, "https://own.example", None))
+
+    def test_an_open_access_copy_is_linked_with_its_version(self):
+        self.assertEqual(wiki.links_for(attempt(doi_r="10.1/R")), (None, "https://repo.example/r.pdf", "submittedVersion"))
+
+    def test_a_catalogue_address_gives_way_to_the_papers_own_page(self):
+        self.assertEqual(wiki.links_for(attempt(url_r="https://openalex.org/W123"))[0], "https://journal.example/w123")

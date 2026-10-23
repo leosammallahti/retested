@@ -227,6 +227,33 @@ def shares_author(a: dict, orig: dict | None) -> bool:
     return len(sn) >= 2 and sn <= on
 
 
+_OA: dict | None = None
+
+
+def oa_links() -> dict:
+    """Legal free copies and real paper pages from OpenAlex's open-access record (data/discovery/replication_oa_links.json,
+    written by /root/wiki-scratch/oa_links.py); empty when the file is absent."""
+    global _OA
+    if _OA is None:
+        p = DISCOVERY / "replication_oa_links.json"
+        _OA = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"by_doi": {}, "by_openalex_id": {}}
+    return _OA
+
+
+def links_for(a: dict) -> tuple[str | None, str | None, str | None]:
+    """(paper page, free copy, free copy's version) for an attempt: the record's own links first, OpenAlex's after."""
+    oa = oa_links()
+    rec = (oa["by_doi"].get((a.get("doi_r") or "").lower()) or {}) if a.get("doi_r") else {}
+    url = a.get("url_r")
+    m = re.match(r"https?://openalex\.org/(W\d+)", url or "")
+    if m:                       # a catalogue entry, not the paper: link the paper's own page when OpenAlex names one
+        rec = oa["by_openalex_id"].get(m.group(1)) or rec
+        url = rec.get("paper_url") or url
+    if a.get("oa_url_r"):
+        return url, a["oa_url_r"], None
+    return url, rec.get("free_url"), rec.get("free_version")
+
+
 def explanation_for(a: dict, explanations: dict) -> dict | None:
     """The written "what they did / what they found" for an attempt, if one was written for this very paper.
 
@@ -256,7 +283,7 @@ def attempt_story(a: dict, vocab: Counter, lines: dict, orig: dict | None, expla
     return {
         "id": a["id"], "type": a["type"], "authors": short_authors(a.get("authors_r")), "year": int(a["year_r"]) if a.get("year_r") else None,
         "journal": a.get("journal_r"), "title": _title(a.get("title_r")), "doi": a.get("doi_r"),
-        "open_url": a.get("oa_url_r"), "url": a.get("url_r"),
+        "open_url": links_for(a)[1], "open_version": links_for(a)[2], "url": links_for(a)[0],
         "outcome": a["outcome"], "sources_disagree": bool(a.get("sources_disagree")),
         "outcomes_by_source": a.get("outcomes_by_source") or {},
         "line": line,

@@ -46,7 +46,7 @@ BUILD = load.ROOT / "data" / "build"
 UA = {"User-Agent": USER_AGENT}
 MIN_CHARS = 300
 _STOP = frozenset("the of and in to a that is was for with were as on by from this are be or at an which not".split())
-_JUNK = re.compile(r"^\s*\[?\d+\]|downloads?\b|metrics|total citations|^abstract\s*$|view article|cite this", re.I)
+_JUNK = re.compile(r"^\s*\[?\d+\]|\bdownloads?\b|\bmetrics\b|total citations|^abstract\s*$|view article|cite this", re.I)  # word "metrics", not "Econometrics"
 PAGE_META = ["citation_abstract", "dc.description", "DC.Description", "og:description", "description", "twitter:description"]
 PAGE_TITLE_META = ["citation_title", "og:title", "dc.title", "DC.Title"]
 

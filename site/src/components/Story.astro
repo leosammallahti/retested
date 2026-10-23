@@ -116,7 +116,7 @@ const studyText = (a: { tested_study: string[] }) => {
                   {S.same_paper_twice.includes(a.doi ?? '') && <span class="warn">same paper is filed against more than one original</span>}
                   {a.doi && <a href={doiUrl(a.doi)} rel="noopener">paper</a>}
                   {!a.doi && a.url && <a href={a.url} rel="noopener">paper</a>}
-                  {a.open_url && <a href={a.open_url} rel="noopener">free text</a>}
+                  {a.open_url && <a href={a.open_url} rel="noopener">{a.open_version === 'submittedVersion' ? 'free preprint' : 'free text'}</a>}
                 </div>
               </div>
             </li>

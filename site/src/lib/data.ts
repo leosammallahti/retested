@@ -171,7 +171,7 @@ export interface StoryPaper { doi: string; title: string | null; authors: string
 export interface StoryWhy { text: string; kind: string; from: string; who?: string | null }
 export interface StoryAttempt {
   id: string; type: string; authors: string | null; year: number | null; journal: string | null; title: string | null; doi: string | null;
-  open_url: string | null; url: string | null; outcome: Outcome; sources_disagree: boolean; outcomes_by_source: Record<string, string>;
+  open_url: string | null; open_version?: string | null; url: string | null; outcome: Outcome; sources_disagree: boolean; outcomes_by_source: Record<string, string>;
   line: string | null; did: string | null; found: string | null; written_from: string | null; written_check: 'read' | 'sampled' | null; their_words: string; their_words_from: string | null; tested_study: string[]; tested_paper: string | null;
   n: number | null; r: number | null; ci: [number, number] | null; preregistered: boolean | null; independent: boolean | null;
   reviewer_sentences: string[]; why: StoryWhy[]; reviewed_on: string | null; reviewer_links: { original: string | null; replication: string | null } | null; in: string[];
