@@ -40,7 +40,9 @@ const studyText = (a: { tested_study: string[] }) => {
         {s.quote && <p class="faint vb">In the original authors’ words: “{clip(s.quote, 300)}”</p>}
       </div>
     ))}
-    <p class="srcnote">A plain-words account of the experiment, read against its paper before it was used. {sceneOrigin}</p>
+    <p class="srcnote">{S.scenes.every((s) => s.check !== 'sampled')
+      ? 'A plain-words account of the experiment, written by an AI model and read against its paper before it was used.'
+      : `A plain-words account of the experiment, written by an AI model from ${S.scenes.find((s) => s.check === 'sampled')?.written_from ?? 'its paper'}; checked against it automatically, and a sample of these accounts read in full by another AI model.`} {sceneOrigin}</p>
   </section>
 )}
 
@@ -97,9 +99,9 @@ const studyText = (a: { tested_study: string[] }) => {
                 </div>
                 {a.did && <p class="aline"><span class="label">What they did</span> {a.did}</p>}
                 {a.found && <p class="aline"><span class="label">What they found</span> {a.found}</p>}
-                {a.did && a.written_from && <p class="faint sm">Written from {a.written_from}{a.written_check === 'read'
-                  ? `, and read against ${/,| and /.test(a.written_from) ? 'them' : 'it'}.`
-                  : `; checked against ${/,| and /.test(a.written_from) ? 'them' : 'it'} automatically, and a sample of these passages read by a person.`}</p>}
+                {a.did && a.written_from && <p class="faint sm">Written by an AI model from {a.written_from}{a.written_check === 'read'
+                  ? `, and read against ${/,| and /.test(a.written_from) ? 'them' : 'it'} by another AI model.`
+                  : `; checked against ${/,| and /.test(a.written_from) ? 'them' : 'it'} automatically, and a sample of these passages read in full by another AI model.`}</p>}
                 {!a.did && a.line && <p class="aline">{a.line}</p>}
                 {!a.did && !a.line && a.title && <p class="atitle">{a.title}</p>}
                 {a.their_words && <blockquote class="q">“{a.their_words}”</blockquote>}

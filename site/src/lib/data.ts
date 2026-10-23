@@ -166,7 +166,7 @@ let _effById: Map<string, Effect> | undefined;
 export const effectById = (id: string) => (_effById ??= new Map(effects().map((e) => [e.id, e]))).get(id);
 
 // The wiki story of a page (data/build/wiki.json, written by `python -m pipeline wiki`). Absent for pages without one.
-export interface StoryScene { id: string; label: string | null; study: string | null; quote: string; did: string; found: string; level: string | null; writer: string | null; written_on: string | null }
+export interface StoryScene { id: string; label: string | null; study: string | null; quote: string; did: string; found: string; level: string | null; writer: string | null; written_on: string | null; check?: 'read' | 'sampled'; written_from?: string | null }
 export interface StoryPaper { doi: string; title: string | null; authors: string | null; year: number | null; journal: string | null; cited_by: number | null; retracted: boolean; ref: string | null }
 export interface StoryWhy { text: string; kind: string; from: string; who?: string | null }
 export interface StoryAttempt {

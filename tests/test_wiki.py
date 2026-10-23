@@ -113,6 +113,17 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(len(wiki.finding_scenes("10.1/o", f, att, posts, set(), Counter())), 1)
         self.assertEqual(wiki.finding_scenes("10.1/o", f, att, posts, {pid}, Counter()), [])
 
+    def test_a_wiki_scene_fills_a_card_with_no_post_and_says_how_it_was_checked(self):
+        post = {"post": "People read a story. Some read it twice. The ones who read it twice liked it more."}
+        scene = {"post": "People saw faces. Some faces smiled. People liked the smiling faces more.", "read_on": None,
+                 "written_from": "the original paper’s abstract"}
+        merged = wiki.scene_sources({"g1": post}, {"g1": dict(scene), "g2": dict(scene), "g3": dict(scene, read_on="2026-10-23")})
+        self.assertEqual(merged["g1"]["post"], post["post"])          # a reviewed post always wins
+        self.assertEqual(merged["g1"]["check"], "read")
+        self.assertEqual(wiki._scene("g2", merged, None)["check"], "sampled")
+        self.assertEqual(wiki._scene("g2", merged, None)["written_from"], "the original paper’s abstract")
+        self.assertEqual(merged["g3"]["check"], "read")
+
 
 if __name__ == "__main__":
     unittest.main()

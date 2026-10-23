@@ -4,12 +4,14 @@
 
 Reads data/build/{effects,findings,attempts,papers}.json (so run `python -m pipeline build` first) and the curated posts,
 and writes data/build/wiki.json: one "story" per page, which the Astro pages render. Nothing here calls a model and
-nothing is invented: every sentence is either a template filled with counts the Store holds, or text a person or a
-source wrote (the post, the replicators' own words, a reviewer's note), shown with where it came from. The one
-exception is data/curated/wiki_explanations.json: per attempt, "what they did" and "what they found", written by a
-model from that attempt's own abstract and words only, checked mechanically and read against those sources by a
-person before it is imported; the page says what it was written from. Text that is not ready is left out and the
-page says so; it is never replaced by a guess.
+nothing is invented: every sentence is either a template filled with counts the Store holds, or text written
+elsewhere (the post, the replicators' own words, a reviewer's note), shown with where it came from. Two curated files
+hold text an AI model wrote for the wiki: data/curated/wiki_explanations.json (per attempt, "what they did" and "what
+they found", from that attempt's own abstract and words only, checked mechanically and by a second model, then read
+against the sources by Claude whether or not the check flagged it) and data/curated/wiki_scenes.json (the scene of a
+finding that has no post, from the original paper's abstract, checked and then read against its card the same way).
+An entry with no `read_on` was not read and the page says so. The page says what each was written from
+and how it was checked. Text that is not ready is left out and the page says so; it is never replaced by a guess.
 
 A story has these parts (all optional except the verdict):
   scene     what people did, then what the original found (a reviewed post); answer-blind, safe before a prediction
@@ -261,8 +263,8 @@ def attempt_story(a: dict, vocab: Counter, lines: dict, orig: dict | None, expla
         "did": ex["did"] if ex else None,
         "found": ex["found"] if ex else None,
         "written_from": ex.get("basis") if ex else None,
-        # "read": a person read this text against its sources; "sampled": it passed the mechanical check and a
-        # person read a random sample of the run it came from, not this text itself
+        # "read": an AI model other than the writer (Claude) read this text against its sources; "sampled": it passed the
+        # automatic checks and a random sample of the run it came from was read, not this text itself
         "written_check": ("read" if ex.get("read_on") else "sampled") if ex else None,
         "their_words": cut(q, 420) if q else "",
         "their_words_from": rv.get("outcome_quote_source") if rv.get("outcome_quote") else a.get("quote_source"),
@@ -384,11 +386,24 @@ def _original_words(doi: str, f: dict, attempts: dict, study: str | None, vocab:
     return ""
 
 
+def scene_sources(posts: dict, scenes: dict) -> dict:
+    """Every account a page may show as "what people did", by card id: the reviewed posts, and for a card with no post
+    the wiki scene written for it (data/curated/wiki_scenes.json). A post always wins. A wiki scene is marked so the page
+    can say how it was checked: read one by one, or checked automatically with a sample read."""
+    out = {k: dict(v, check="read", written_from=None) for k, v in scenes.items() if k not in posts}
+    for k in out:
+        out[k]["check"] = "read" if scenes[k].get("read_on") else "sampled"
+        out[k]["written_from"] = scenes[k].get("written_from")
+    out.update({k: dict(v, check="read", written_from=None) for k, v in posts.items()})
+    return out
+
+
 def _scene(pid: str, posts: dict, label: str | None, quote: str = "", study: str | None = None) -> dict:
     rec = posts[pid]
     did, found = _posts.split(rec["post"])
     return {"id": pid, "label": label, "study": study, "quote": quote, "did": did, "found": found, "level": rec.get("source_level"),
-            "writer": rec.get("writer"), "written_on": rec.get("written_on")}
+            "writer": rec.get("writer"), "written_on": rec.get("written_on"), "check": rec.get("check", "read"),
+            "written_from": rec.get("written_from")}
 
 
 def finding_scenes(doi: str, f: dict, attempts: dict, posts: dict, holds: set, vocab: Counter) -> list[dict]:
@@ -460,6 +475,8 @@ def build(slugs: set[str] | None, posts_path: Path | None = None) -> dict:
     att = json.loads((BUILD / "attempts.json").read_text(encoding="utf-8"))
     pap = json.loads((BUILD / "papers.json").read_text(encoding="utf-8"))
     posts = json.loads((posts_path or CURATED / "posts.json").read_text(encoding="utf-8"))["posts"]
+    sp = CURATED / "wiki_scenes.json"
+    posts = scene_sources(posts, json.loads(sp.read_text(encoding="utf-8")).get("scenes", {}) if sp.exists() else {})
     hp = CURATED / "card_holds.json"
     holds = set(json.loads(hp.read_text(encoding="utf-8")).get("holds", {})) if hp.exists() else set()
     lp = CURATED / "wiki_lines.json"
