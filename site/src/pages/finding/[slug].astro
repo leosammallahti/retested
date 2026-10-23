@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FindingGuess from '../../components/FindingGuess.tsx';
-import { findings, attempts, papers, effectById, type Finding } from '../../lib/data';
+import Story from '../../components/Story.astro';
+import { findings, attempts, papers, effectById, storyFor, type Finding } from '../../lib/data';
 import { u, doiUrl, cleanQuote, clip } from '../../lib/fmt';
 
 export function getStaticPaths() {
@@ -19,6 +20,8 @@ const claims = [...new Set([
   ...list.map((a) => a.retested_review?.original_claim_quote),
 ].filter((d): d is string => !!d && d.length > 30))];
 const explanation = f.explanation;
+const story = storyFor('finding', f.slug);
+const hasScene = !!story && story.scenes.length > 0;
 const gameContexts = f.game_contexts ?? [];
 const title = p.title ?? f.doi_o;
 const resultHref = u(`finding/${f.slug}/result/`);
@@ -29,6 +32,7 @@ const resultHref = u(`finding/${f.slug}/result/`);
       <div class="label">Original paper{p.journal && <> · {p.journal}</>}</div>
       <h1>{title}</h1>
       <p class="mono by">{[p.authors, p.year].filter(Boolean).join(', ')} · <a href={doiUrl(f.doi_o)}>doi.org/{f.doi_o}</a></p>
+      {hasScene && story && <Story story={story} mode="scene" />}
       {explanation && (
         <section class="contextbox" aria-labelledby="tested-heading">
           <span class="label claim">Source-reviewed original finding</span>
@@ -42,7 +46,7 @@ const resultHref = u(`finding/${f.slug}/result/`);
           <p class="source-note"><a href={explanation.source.url}>Read the original source evidence ↗</a> <span>· reviewed {explanation.review.reviewed_on}</span></p>
         </section>
       )}
-      {!explanation && gameContexts.length > 0 && (
+      {!explanation && !hasScene && gameContexts.length > 0 && (
         <section class="contextbox" aria-labelledby="tested-heading">
           <span class="label claim">Plain-language study context</span>
           <h2 id="tested-heading">What was tested</h2>
@@ -57,19 +61,19 @@ const resultHref = u(`finding/${f.slug}/result/`);
           <p class="source-note">Prepared for the prediction game from original-study material in the record. This is useful context, but not yet the canonical four-field source review described in <a href={u('methods/#finding-context')}>Methods</a>.</p>
         </section>
       )}
-      {!explanation && gameContexts.length === 0 && claims.length > 0 && (
+      {!explanation && !hasScene && gameContexts.length === 0 && claims.length > 0 && (
         <div class="claimbox">
           <span class="label claim">What the original paper reported</span>
           <ul>{claims.slice(0, 6).map((c) => <li>{clip(cleanQuote(c), 260)}</li>)}</ul>
         </div>
       )}
-      {!explanation && gameContexts.length === 0 && claims.length === 0 && effs.length > 0 && (
+      {!explanation && !hasScene && gameContexts.length === 0 && claims.length === 0 && effs.length > 0 && (
         <div class="claimbox">
           <span class="label claim">Claim or topic</span>
           <ul>{effs.slice(0, 6).map((e) => <li>{e!.name}</li>)}</ul>
         </div>
       )}
-      {!explanation && gameContexts.length === 0 && claims.length === 0 && effs.length === 0 && <p class="faint context-note">A source-checked claim summary is not available yet; use the original-paper title and citation as context for your prediction.</p>}
+      {!explanation && !hasScene && gameContexts.length === 0 && claims.length === 0 && effs.length === 0 && <p class="faint context-note">A source-checked claim summary is not available yet; use the original-paper title and citation as context for your prediction.</p>}
     </header>
     <FindingGuess
       client:only="preact"

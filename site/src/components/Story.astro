@@ -1,0 +1,191 @@
+---
+// The plain-words story of an effect or a finding: what people did, what the original found, whether it held up,
+// how sure we can be, what each later attempt did and found, and why results may differ. Built by
+// `python -m pipeline wiki` from the Store; every part carries where it came from.
+// mode "scene" is answer-blind (safe above a prediction); mode "full" tells the whole story.
+import Stamp from './Stamp.astro';
+import Tally from './Tally.astro';
+import { OUTCOME, doiUrl, clip, fr } from '../lib/fmt';
+import type { Story } from '../lib/data';
+
+interface Props { story: Story; mode: 'scene' | 'full'; subject?: string }
+const { story: S, mode, subject = 'this' } = Astro.props;
+const multi = S.groups.length > 1;
+const single = S.groups[0];
+const allAttempts = S.groups.flatMap((g) => g.attempts);
+const LABEL: Record<string, string> = { successful: 'Found it', failed: 'Did not find it', mixed: 'Found part of it', inconclusive: 'No clear verdict', not_coded: 'No clear verdict' };
+const sceneOrigin = S.kind === 'effect' && multi ? 'It describes one experiment behind this effect.' : '';
+const whoYear = (a: { authors: string | null; year: number | null }) => [a.authors, a.year].filter(Boolean).join(' ');
+const origName = (o: { authors: string | null; year: number | null } | null) => (o ? [o.authors, o.year ? `(${o.year})` : ''].filter(Boolean).join(' ') : 'an original not listed');
+const whySize = S.groups.flatMap((g) => g.why);
+const hasWhy = S.groups.some((g) => g.why.length > 0);
+const studyText = (a: { tested_study: string[] }) => {
+  const s = a.tested_study;
+  if (!s.length) return '';
+  const numbered = s.every((x) => /^\d/.test(x));
+  return numbered ? `tested Stud${s.length > 1 ? 'ies' : 'y'} ${s.join(', ')}` : `tested ${s.join(', ')}`;
+};
+---
+{S.scenes.length > 0 && (
+  <section class="scene" aria-labelledby="scene-h">
+    <div class="label" id="scene-h">What people did</div>
+    {S.scenes.map((s) => (
+      <div class="sc">
+        {s.label && <h3 class="sclabel">{s.label}</h3>}
+        <p class="did">{s.did}</p>
+        <div class="foundbox">
+          <span class="label claim">What the original found</span>
+          <p class="found">{s.found}</p>
+        </div>
+        {s.quote && <p class="faint vb">In the original authors’ words: “{clip(s.quote, 300)}”</p>}
+      </div>
+    ))}
+    <p class="srcnote">A plain-words account of the experiment, read against its paper before it was used. {sceneOrigin}</p>
+  </section>
+)}
+
+{mode === 'full' && (
+  <section class="held" aria-labelledby="held-h">
+    <div class="label" id="held-h">Did it hold up?</div>
+    <div class="hrow">
+      <Stamp code={S.verdict.code} label={S.verdict.label} />
+      <p class="hhead">{S.verdict.headline}</p>
+    </div>
+    {S.verdict.detail && <p class="hdetail">{S.verdict.detail}</p>}
+    <div class="htally"><Tally outcomes={allAttempts.map((a) => a.outcome)} /> <span class="faint mono">each mark is one later attempt</span></div>
+  </section>
+)}
+
+{mode === 'full' && (
+  <section class="sure" aria-labelledby="sure-h">
+    <div class="sh"><h2 id="sure-h">How sure can we be?</h2><span class="label">what the record holds</span></div>
+    <ul class="facts">
+      {S.sure.map((f) => <li>{f.text}</li>)}
+      {S.numbers && <li>{S.numbers.text} <span class="faint">(Here r is a scale from 0, no link, to 1, a perfect link.)</span></li>}
+      <li>Each verdict is the replicating authors’ own conclusion, recorded by FORRT’s coders or checked by Retested reviewers against the later paper.</li>
+    </ul>
+  </section>
+)}
+
+{mode === 'full' && allAttempts.length > 0 && (
+  <section class="next" aria-labelledby="next-h">
+    <div class="sh"><h2 id="next-h">What happened when others tried it</h2><span class="label">{allAttempts.length} attempt{allAttempts.length === 1 ? '' : 's'}, oldest first</span></div>
+    {S.groups.map((g) => (
+      <div class="grp">
+        {multi && (
+          <header class="ghead">
+            <div class="label">Tested the original paper</div>
+            <h3>{g.original?.title ?? 'An original not listed'}</h3>
+            <p class="mono faint gby">{g.original ? [g.original.authors, g.original.year, g.original.journal].filter(Boolean).join(' · ') : ''}{g.original?.doi ? <> · <a href={doiUrl(g.original.doi)} rel="noopener">doi.org/{g.original.doi}</a></> : null}</p>
+            {g.scenes.map((s) => (
+              <div class="gscene">
+                {s.study ? <span class="label">Study {s.study}</span> : s.label && <span class="label">{s.label}</span>}
+                <p class="did sm">{s.did} <strong>{s.found}</strong></p>
+              </div>
+            ))}
+          </header>
+        )}
+        <ol class="atts">
+          {g.attempts.map((a) => (
+            <li id={a.id} class="att">
+              <div class="ayear mono">{a.year ?? '–'}</div>
+              <div class="abody">
+                <div class="ahead">
+                  <span class={`stamp sm t-${OUTCOME[a.outcome]?.tone ?? 'na'}`}>{a.type === 'reproduction' ? 'Re-analysis · ' : ''}{LABEL[a.outcome] ?? a.outcome}</span>
+                  <span class="who">{a.authors ?? 'Replication'}</span>
+                  {a.journal && <span class="faint jr">{a.journal}</span>}
+                </div>
+                {a.did && <p class="aline"><span class="label">What they did</span> {a.did}</p>}
+                {a.found && <p class="aline"><span class="label">What they found</span> {a.found}</p>}
+                {a.did && a.written_from && <p class="faint sm">Written from {a.written_from}{a.written_check === 'read'
+                  ? `, and read against ${/,| and /.test(a.written_from) ? 'them' : 'it'}.`
+                  : `; checked against ${/,| and /.test(a.written_from) ? 'them' : 'it'} automatically, and a sample of these passages read by a person.`}</p>}
+                {!a.did && a.line && <p class="aline">{a.line}</p>}
+                {!a.did && !a.line && a.title && <p class="atitle">{a.title}</p>}
+                {a.their_words && <blockquote class="q">“{a.their_words}”</blockquote>}
+                {a.reviewer_sentences.length > 0 && <p class="rnote">{a.reviewer_sentences.join(' ')} <span class="faint">— reviewer’s note{a.reviewed_on ? `, ${a.reviewed_on}` : ''}</span></p>}
+                <div class="afacts mono">
+                  {a.n && <span>{a.n.toLocaleString('en-US')} people</span>}
+                  {a.tested_study.length > 0 && <span>{studyText(a)}</span>}
+                  {a.preregistered === true && <span>preregistered</span>}
+                  {a.independent === true && <span>no author in common with the original</span>}
+                  {a.independent === false && <span class="warn">shares authors with the original</span>}
+                  {a.sources_disagree && <span class="warn" title={Object.entries(a.outcomes_by_source).map(([k, v]) => `${k}: ${LABEL[v] ?? v}`).join('; ')}>coding sources disagree</span>}
+                  {S.same_paper_twice.includes(a.doi ?? '') && <span class="warn">same paper is filed against more than one original</span>}
+                  {a.doi && <a href={doiUrl(a.doi)} rel="noopener">paper</a>}
+                  {!a.doi && a.url && <a href={a.url} rel="noopener">paper</a>}
+                  {a.open_url && <a href={a.open_url} rel="noopener">free text</a>}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </section>
+)}
+
+{mode === 'full' && (
+  <section class="why" aria-labelledby="why-h">
+    <div class="sh"><h2 id="why-h">Why results may differ</h2><span class="label">only what a source states or the numbers show</span></div>
+    {hasWhy ? S.groups.map((g) => g.why.length > 0 && (
+      <div class="whygrp">
+        {multi && <h3 class="whyh">{origName(g.original)}</h3>}
+        <ul class="facts">
+          {g.why.map((w) => (
+            <li>
+              {w.kind === 'their reasons' || w.kind === 'design' ? <>{w.who && <strong>{w.who}: </strong>}{w.kind === 'their reasons' ? <>“{w.text}”</> : w.text} <span class="faint">— {w.from}</span></> : <>{w.text} <span class="faint">— {w.from}</span></>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )) : <p class="muted">The record does not yet say how the attempts differed from the original.</p>}
+    <p class="faint wnote">Differences are listed only when the replicators say so in their own words, a Retested reviewer noted them, or the recorded numbers show them. Nothing here is a guess about why an attempt came out as it did.</p>
+  </section>
+)}
+
+<style>
+  .scene { margin: 2rem 0 0; max-width: 72ch; }
+  .sc + .sc { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+  .sclabel { font: 500 .78rem/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: .4rem 0 .5rem; }
+  .did { font: 400 clamp(1.2rem, 2.2vw, 1.5rem)/1.5 var(--f-display); margin: .5rem 0 1rem; max-width: 60ch; }
+  .did.sm { font-size: 1.02rem; margin: .2rem 0 0; }
+  .foundbox { border-left: 4px solid var(--claim); padding: .25rem 0 .25rem 1.1rem; margin: 0 0 .5rem; }
+  .found { font: 560 clamp(1.15rem, 2vw, 1.4rem)/1.4 var(--f-display); margin: .3rem 0 0; }
+  .vb { font-size: .92rem; font-style: italic; margin: .8rem 0 0; }
+  .srcnote { font-size: .8rem; color: var(--ink-3); margin: 1rem 0 0; }
+
+  .held { margin: 2.6rem 0 0; padding: 1.4rem 0 1.2rem; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .hrow { display: flex; flex-wrap: wrap; gap: .9rem 1.6rem; align-items: center; margin-top: .8rem; }
+  .hrow :global(.stamp) { font-size: .92rem; padding: .55rem .95rem .5rem; }
+  .hhead { font: 480 clamp(1.4rem, 3vw, 2.1rem)/1.2 var(--f-display); letter-spacing: -.02em; margin: 0; max-width: 28ch; }
+  .hdetail { margin: .9rem 0 .6rem; font-size: 1.05rem; }
+  .htally { display: flex; flex-wrap: wrap; gap: .5rem .9rem; align-items: center; font-size: .72rem; }
+
+  .facts { margin: 0; padding-left: 1.15rem; max-width: 72ch; }
+  .facts li { margin-bottom: .45rem; }
+  .wnote { font-size: .85rem; margin-top: 1rem; }
+  .whyh { font: 500 1.05rem/1.3 var(--f-display); margin: 1.2rem 0 .4rem; }
+
+  .ghead { margin: 2rem 0 .6rem; padding-top: 1rem; border-top: 1px solid var(--rule-2); }
+  .ghead h3 { font-size: 1.2rem; margin: .3rem 0 .2rem; max-width: 60ch; }
+  .gby { font-size: .74rem; margin: 0 0 .5rem; }
+  .gscene { margin-top: .5rem; max-width: 68ch; }
+  .atts { list-style: none; padding: 0; margin: 0; }
+  .att { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 0 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule); }
+  .att:target { background: var(--obs-soft); }
+  .ayear { font-size: .9rem; color: var(--ink-2); padding-top: .2rem; }
+  .ahead { display: flex; flex-wrap: wrap; gap: .35rem .8rem; align-items: center; }
+  .who { font: 500 1.05rem var(--f-display); }
+  .jr { font-style: italic; font-size: .9rem; }
+  .aline { margin: .55rem 0 .5rem; font-size: 1.05rem; line-height: 1.55; max-width: 66ch; }
+  .atitle { margin: .5rem 0; color: var(--ink-2); max-width: 66ch; }
+  .att blockquote.q { font-size: .92rem; margin: .5rem 0; max-width: 66ch; }
+  .rnote { font-size: .9rem; color: var(--ink-2); margin: .5rem 0; }
+  .afacts { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .72rem; color: var(--ink-2); margin-top: .55rem; }
+  .afacts .warn { color: var(--mix); }
+  @media (max-width: 560px) {
+    .att { grid-template-columns: 1fr; }
+    .ayear { padding: 0 0 .3rem; }
+  }
+</style>

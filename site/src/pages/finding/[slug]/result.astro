@@ -2,7 +2,8 @@
 import Base from '../../../layouts/Base.astro';
 import Dossier from '../../../components/Dossier.astro';
 import Pending from '../../../components/Pending.astro';
-import { findings, attempts, papers, effectById, pending, type Finding } from '../../../lib/data';
+import Story from '../../../components/Story.astro';
+import { findings, attempts, papers, effectById, pending, storyFor, type Finding } from '../../../lib/data';
 import { u, atlasUrl, doiUrl, clip } from '../../../lib/fmt';
 
 export function getStaticPaths() {
@@ -19,6 +20,7 @@ const P_ = pending();
 const unverified = P_.by_finding[f.doi_o] ?? [];
 const provisional = P_.verdict_if_accepted[f.doi_o] ?? null;
 const title = p.title ?? f.doi_o;
+const story = storyFor('finding', f.slug);
 const findingHref = u(`finding/${f.slug}/`);
 ---
 <Base
@@ -45,8 +47,21 @@ const findingHref = u(`finding/${f.slug}/`);
         {effs.length > 0 && hasForrt && ' · '}
         {hasForrt && <a href={atlasUrl(f.doi_o)}>FORRT atlas ↗</a>}
       </p>}
-      <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
-      {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
+      {story ? (
+        <>
+          <Story story={story} mode="full" />
+          <details class="fullrec">
+            <summary>For researchers: the full record, with every number and source</summary>
+            <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+            {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
+          </details>
+        </>
+      ) : (
+        <>
+          <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+          {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
+        </>
+      )}
     </section>
   </article>
 </Base>
@@ -56,4 +71,6 @@ const findingHref = u(`finding/${f.slug}/`);
   .by { font-size: .8rem; color: var(--ink-2); }
   .result-head { padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
   .record-links { margin: .8rem 0 0; }
+  .fullrec { margin-top: 3.5rem; border-top: 1px solid var(--ink); }
+  .fullrec > summary { cursor: pointer; padding: 1rem 0; font: 500 .8rem/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 </style>

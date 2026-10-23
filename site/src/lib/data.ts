@@ -5,6 +5,14 @@ import path from 'node:path';
 const BUILD = path.resolve(process.cwd(), '..', 'data', 'build');
 const cache = new Map<string, unknown>();
 
+function readOptional<T>(name: string): T | null {
+  if (!cache.has(name)) {
+    const file = path.join(BUILD, name);
+    cache.set(name, fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null);
+  }
+  return cache.get(name) as T | null;
+}
+
 function read<T>(name: string): T {
   if (!cache.has(name)) {
     const file = path.join(BUILD, name);
@@ -156,3 +164,28 @@ export const reconciliation = () => read<ReconciliationSummary>('reconciliation_
 
 let _effById: Map<string, Effect> | undefined;
 export const effectById = (id: string) => (_effById ??= new Map(effects().map((e) => [e.id, e]))).get(id);
+
+// The wiki story of a page (data/build/wiki.json, written by `python -m pipeline wiki`). Absent for pages without one.
+export interface StoryScene { id: string; label: string | null; study: string | null; quote: string; did: string; found: string; level: string | null; writer: string | null; written_on: string | null }
+export interface StoryPaper { doi: string; title: string | null; authors: string | null; year: number | null; journal: string | null; cited_by: number | null; retracted: boolean; ref: string | null }
+export interface StoryWhy { text: string; kind: string; from: string; who?: string | null }
+export interface StoryAttempt {
+  id: string; type: string; authors: string | null; year: number | null; journal: string | null; title: string | null; doi: string | null;
+  open_url: string | null; url: string | null; outcome: Outcome; sources_disagree: boolean; outcomes_by_source: Record<string, string>;
+  line: string | null; did: string | null; found: string | null; written_from: string | null; written_check: 'read' | 'sampled' | null; their_words: string; their_words_from: string | null; tested_study: string[]; tested_paper: string | null;
+  n: number | null; r: number | null; ci: [number, number] | null; preregistered: boolean | null; independent: boolean | null;
+  reviewer_sentences: string[]; why: StoryWhy[]; reviewed_on: string | null; reviewer_links: { original: string | null; replication: string | null } | null; in: string[];
+}
+export interface StoryGroup { original: StoryPaper | null; original_quote: string; scenes: StoryScene[]; attempts: StoryAttempt[]; why: StoryWhy[] }
+export interface Story {
+  kind: 'effect' | 'finding'; slug: string; name?: string; doi?: string;
+  scenes: StoryScene[]; scene_from?: string | null;
+  verdict: { code: string; label: string; headline: string; detail: string; counts: Record<string, number>; n_attempts: number };
+  groups: StoryGroup[]; sure: { text: string; from: string }[];
+  numbers: { text: string; pooled_r: number; ci: [number, number]; original_r: number | null; ratio_text: string | null; label: string } | null;
+  multi_original: boolean; same_paper_twice: string[];
+  explanation?: { claim: string; method: string; population: string; measure: string; source_url: string; reviewed_on: string } | null;
+  game_contexts?: FindingGameContext[]; effects?: string[];
+}
+export const storyFor = (kind: 'effect' | 'finding', slug: string): Story | null =>
+  readOptional<{ effects: Record<string, Story>; findings: Record<string, Story> }>('wiki.json')?.[kind === 'effect' ? 'effects' : 'findings']?.[slug] ?? null;

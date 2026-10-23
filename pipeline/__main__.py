@@ -12,7 +12,7 @@ from . import (
     osf_documents, outcomes, pair_summaries, queue, reconciliation_registry, references, registry, reread, score,
     stats, triage, validate, verify,
 )
-from . import explanation_import, original_abstracts, posts
+from . import explanation_import, original_abstracts, posts, rep_abstracts, wiki
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -86,6 +86,8 @@ def build(accept_baseline: bool) -> int:
         return 1
     ledger.save()
     sizes = export.write(g, items, reveals, candidates, pending, st, load.load_citation())
+    wiki_effects, wiki_findings = wiki.write_release()
+    step(f"wiki stories: {wiki_effects} effect pages and {wiki_findings} finding pages have a reviewed post")
     reconciliation_problems = build_reconciliation_artifacts(step)
     if reconciliation_problems:
         print("\nRECONCILIATION REGISTRY FAILED (structural validation; assurance remains incomplete):",
@@ -142,6 +144,10 @@ def main() -> None:
                     help="match the author and year the abstract names against the paper's own reference list")
     rp.add_argument("--relink", action="store_true",
                     help="also reconsider finds whose author-and-year match landed in the weak band")
+    sub.add_parser("rep-abstracts", add_help=False, help="keep each later paper's own abstract from the caches already on disk "
+                                                          "(free; `python -m pipeline rep-abstracts`)")
+    sub.add_parser("wiki", add_help=False, help="assemble the story each effect and finding page tells "
+                                                "(`python -m pipeline wiki --help`)")
     sub.add_parser("osf", help="ask OSF whether our OSF-hosted finds are registrations (free, cached)")
     sub.add_parser("osf-documents", add_help=False, help="collect original-study evidence from public OSF attachments (free)")
     lp = sub.add_parser("link", help="resolve the original study named by triage but given no DOI")
@@ -185,6 +191,10 @@ def main() -> None:
                                      "default is every field the title sweep covers")
     if sys.argv[1:2] == ["outcomes"]:      # these own their flag sets; keep them out of the shared parser
         sys.exit(outcomes.run(sys.argv[2:]))
+    if sys.argv[1:2] == ["rep-abstracts"]:
+        sys.exit(rep_abstracts.main(sys.argv[2:]))
+    if sys.argv[1:2] == ["wiki"]:
+        sys.exit(wiki.main(sys.argv[2:]))
     if sys.argv[1:2] == ["reread"]:
         sys.exit(reread.main(sys.argv[2:]))
     if sys.argv[1:2] == ["osf-documents"]:
