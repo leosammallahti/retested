@@ -52,7 +52,7 @@ const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.r
         <Story story={story} mode="full" />
         <details class="fullrec">
           <summary>For researchers: the full record, with every number and source</summary>
-          <Dossier attempts={own} lenses={e.lenses} originals={e.originals} shared={shared} subject="this effect" />
+          <Dossier attempts={own} lenses={e.lenses} originals={e.originals} shared={shared} subject="this effect" withAccounts={false} />
           {unverified.length > 0 && <Pending rows={unverified} subject="this effect" verdict={provisional} />}
         </details>
       </>

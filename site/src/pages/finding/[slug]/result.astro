@@ -52,7 +52,7 @@ const findingHref = u(`finding/${f.slug}/`);
           <Story story={story} mode="full" />
           <details class="fullrec">
             <summary>For researchers: the full record, with every number and source</summary>
-            <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" />
+            <Dossier attempts={list} lenses={f.lenses} originals={[f.doi_o]} subject="this paper" withAccounts={false} />
             {unverified.length > 0 && <Pending rows={unverified} subject="this paper's finding" verdict={provisional} />}
           </details>
         </>

@@ -100,6 +100,18 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(sorted(out["effects"]), ["a", "c"])
         self.assertEqual(sorted(out["findings"]), ["x"])
 
+    def test_every_written_account_is_kept_for_the_old_layouts_ledger(self):
+        att = {"at_1": {"id": "at_1", "doi_r": "10.1/r"}, "at_2": {"id": "at_2", "doi_r": "10.1/moved"}, "at_3": {"id": "at_3", "doi_r": None}}
+        ex = {"at_1": {"doi_r": "10.1/r", "did": "They did.", "found": "They found.", "basis": "the later paper’s abstract", "read_on": "2026-10-23"},
+              "at_2": {"doi_r": "10.1/r", "did": "They did.", "found": "They found."},
+              "at_3": {"doi_r": None, "did": "They did.", "found": "They found."}}
+        acc = wiki.accounts(att, ex)
+        self.assertEqual(sorted(acc), ["at_1", "at_3"])                 # at_2 was written for another paper
+        self.assertEqual(acc["at_1"]["written_check"], "read")
+        self.assertEqual(acc["at_3"]["written_check"], "sampled")
+        doc = {"schema_version": 1, "effects": {}, "findings": {"y": {"scenes": []}}, "accounts": acc}
+        self.assertEqual(wiki.released(doc)["accounts"], acc)           # kept even where no page carries the story
+
     def test_a_scene_is_answer_blind_by_the_decks_own_leak_test(self):
         post = {"post": "People played a putting game. Some were told the ball was lucky. People did better with the ball they believed was lucky."}
         scene = wiki._scene("g1", {"g1": post}, None)

@@ -189,3 +189,7 @@ export interface Story {
 }
 export const storyFor = (kind: 'effect' | 'finding', slug: string): Story | null =>
   readOptional<{ effects: Record<string, Story>; findings: Record<string, Story> }>('wiki.json')?.[kind === 'effect' ? 'effects' : 'findings']?.[slug] ?? null;
+// An attempt's written account, for pages in the old layout (their ledger shows it); null when none was written.
+export interface StoryAccount { did: string; found: string; written_from: string | null; written_check: 'read' | 'sampled' }
+export const accountFor = (id: string): StoryAccount | null =>
+  readOptional<{ accounts?: Record<string, StoryAccount> }>('wiki.json')?.accounts?.[id] ?? null;

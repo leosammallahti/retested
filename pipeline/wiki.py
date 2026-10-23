@@ -265,6 +265,18 @@ def explanation_for(a: dict, explanations: dict) -> dict | None:
     return e
 
 
+def accounts(att: dict, explanations: dict) -> dict:
+    """Every attempt's written "what they did / what they found", by attempt id, for the pages without the story
+    template: their attempt ledger shows it too, so no read account waits on its page's post to be seen."""
+    out = {}
+    for a in att.values():
+        ex = explanation_for(a, explanations)
+        if ex:
+            out[a["id"]] = {"did": ex["did"], "found": ex["found"], "written_from": ex.get("basis"),
+                            "written_check": "read" if ex.get("read_on") else "sampled"}
+    return out
+
+
 def attempt_story(a: dict, vocab: Counter, lines: dict, orig: dict | None, explanations: dict | None = None) -> dict:
     est = a.get("est") or {}
     rv = a.get("retested_review") or {}
@@ -512,7 +524,7 @@ def build(slugs: set[str] | None, posts_path: Path | None = None) -> dict:
     explanations = json.loads(ep.read_text(encoding="utf-8")).get("explanations", {}) if ep.exists() else {}
     vocab = _vocab(att)
     fby = {f["slug"]: (d, f) for d, f in fnd.items()}
-    out = {"schema_version": SCHEMA, "effects": {}, "findings": {}}
+    out = {"schema_version": SCHEMA, "effects": {}, "findings": {}, "accounts": accounts(att, explanations)}
 
     def common(atts_raw: list[dict], lens: dict, originals: list[str]) -> dict:
         ordered = sorted(atts_raw, key=lambda a: (a.get("year_r") or 9999, a["id"]))
@@ -572,10 +584,12 @@ def released(doc: dict) -> dict:
 
     A page without one keeps its old layout until it has one: the story needs 'what people did' to read as a story,
     and nothing is written to fill the gap. The rule is the only gate, so a page joins the moment its post is imported.
+    The attempts' own accounts are kept whole ("accounts"), because the old layout's ledger shows them as well.
     """
     return {"schema_version": doc["schema_version"],
             "effects": {k: v for k, v in doc["effects"].items() if v["scenes"] or any(g["scenes"] for g in v["groups"])},
-            "findings": {k: v for k, v in doc["findings"].items() if v["scenes"]}}
+            "findings": {k: v for k, v in doc["findings"].items() if v["scenes"]},
+            "accounts": doc.get("accounts", {})}
 
 
 def write_release(posts_path: Path | None = None) -> tuple[int, int]:

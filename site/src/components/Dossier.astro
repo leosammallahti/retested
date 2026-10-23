@@ -5,11 +5,14 @@ import Tally from './Tally.astro';
 import ForestPlot from './ForestPlot.astro';
 import CriteriaMatrix from './CriteriaMatrix.astro';
 import CitationCurve from './CitationCurve.astro';
-import { papers, type Attempt, type Lenses } from '../lib/data';
+import { papers, accountFor, type Attempt, type Lenses } from '../lib/data';
 import { OUTCOME, RECORD_BLURB, NUMERIC_TONE, DISPLAY_SOURCE, fr, int, pct, atlasUrl, doiUrl, cleanQuote, clip } from '../lib/fmt';
 
-interface Props { attempts: Attempt[]; lenses: Lenses; originals: string[]; shared?: Attempt[]; subject: string }
-const { attempts, lenses: L, originals, shared = [], subject } = Astro.props;
+// withAccounts: show each attempt's written "what they did / what they found". Off where the page's story above
+// already shows them, so they are not printed twice.
+interface Props { attempts: Attempt[]; lenses: Lenses; originals: string[]; shared?: Attempt[]; subject: string; withAccounts?: boolean }
+const { attempts, lenses: L, originals, shared = [], subject, withAccounts = true } = Astro.props;
+const many = (from: string) => /,| and /.test(from);
 const P = papers();
 const forrtOriginals = new Set([...attempts, ...shared].filter((a) => a.sources.some((s) => ['flora', 'fred', 'legacy'].includes(s))).map((a) => a.doi_o));
 const reps = attempts.filter((a) => a.type === 'replication').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
@@ -132,6 +135,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
     {[...reps, ...repros].map((a) => {
       const o = OUTCOME[a.outcome];
       const e = (a as any).est;
+      const acc = withAccounts ? accountFor(a.id) : null;
       return (
         <li id={a.id}>
           <div class="lhead">
@@ -140,6 +144,11 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
             {a.journal_r && <span class="faint jr">{a.journal_r}</span>}
           </div>
           {a.title_r && <p class="lt">{a.title_r}</p>}
+          {acc && <p class="aline"><span class="label">What they did</span> {acc.did}</p>}
+          {acc && <p class="aline"><span class="label">What they found</span> {acc.found}</p>}
+          {acc && acc.written_from && <p class="faint prov">Written by an AI model from {acc.written_from}{acc.written_check === 'read'
+            ? `, and read against ${many(acc.written_from) ? 'them' : 'it'} by another AI model.`
+            : `; checked against ${many(acc.written_from) ? 'them' : 'it'} automatically, and a sample of these passages read in full by another AI model.`}</p>}
           {a.quote && <blockquote class="q">“{clip(cleanQuote(a.quote), 420)}”</blockquote>}
           {a.retested_review?.review_note && <p class="muted" style="font-size:.88rem">{a.retested_review.review_note}</p>}
           {a.retested_review?.original_source_type && a.retested_review.original_source_type !== "empirical_study" && <span class="chip warn">{a.retested_review.original_source_type === "meta_analysis" ? "Earlier source: meta-analysis" : a.retested_review.original_source_type === "review" ? "Earlier source: review" : "Earlier source: other"}</span>}
@@ -203,6 +212,8 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
   .who { font: 500 1.02rem var(--f-display); }
   .jr { font-style: italic; font-size: .9rem; }
   .lt { margin: .35rem 0 .5rem; color: var(--ink-2); font-size: .98rem; }
+  .aline { margin: .45rem 0 .4rem; font-size: 1rem; line-height: 1.55; max-width: 66ch; }
+  .prov { font-size: .8rem; margin: .2rem 0 .5rem; }
   .lfoot { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; font-size: .74rem; margin-top: .6rem; color: var(--ink-2); }
   .shared { margin-top: 1.2rem; font-size: .92rem; }
   .shared summary { cursor: pointer; color: var(--ink-2); }
