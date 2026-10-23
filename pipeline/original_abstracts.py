@@ -38,12 +38,12 @@ from pathlib import Path
 from urllib.parse import quote, urlparse
 
 from . import authors, fulltext, load
-from .discover import MAILTO
+from .discover import MAILTO, USER_AGENT
 
 OUT = load.DISCOVERY / "original_abstracts.json"
 CACHE_DIR = load.CACHE / "original_abstracts"
 BUILD = load.ROOT / "data" / "build"
-UA = {"User-Agent": f"Retested/0.1 (mailto:{MAILTO})"}
+UA = {"User-Agent": USER_AGENT}
 MIN_CHARS = 300
 _STOP = frozenset("the of and in to a that is was for with were as on by from this are be or at an which not".split())
 _JUNK = re.compile(r"^\s*\[?\d+\]|downloads?\b|metrics|total citations|^abstract\s*$|view article|cite this", re.I)
@@ -118,7 +118,7 @@ def from_europepmc(dois: list[str]) -> dict[str, tuple[str, str | None]]:
 def from_crossref(dois: list[str]) -> dict[str, tuple[str, str | None]]:
     def one(doi: str):
         def build():
-            raw = _http(f"https://api.crossref.org/works/{quote(doi, safe='/')}?mailto={MAILTO}")
+            raw = _http(f"https://api.crossref.org/works/{quote(doi, safe='/')}" + (f"?mailto={MAILTO}" if MAILTO else ""))
             msg = (json.loads(raw).get("message") if raw else None) or {}
             return {"abstract": msg.get("abstract"), "title": " ".join(msg.get("title") or [])}
         return doi, _cached("crossref", doi, build)

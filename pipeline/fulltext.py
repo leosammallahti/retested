@@ -52,7 +52,7 @@ from collections import Counter
 from .load import CACHE, DISCOVERY, osf_token
 
 OUT = DISCOVERY / "fulltext.json"
-UA = {"User-Agent": "Retested/0.1 (mailto:leosammallahti@gmail.com)"}
+UA = {"User-Agent": "Retested/0.1 (noncommercial replication research)"}
 OSF_API = "https://api.osf.io/v2"
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest"
 MAX_CHARS = 6000          # enough for a Results section; a whole paper is not needed and is not free to read

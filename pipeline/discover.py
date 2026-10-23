@@ -27,7 +27,8 @@ from .ids import norm_doi
 from .load import CACHE, DISCOVERY, FORRT, ROOT
 
 API = "https://api.openalex.org/works"
-MAILTO = "leosammallahti@gmail.com"
+MAILTO = ""  # no personal address in requests; OpenAlex identifies the project by its API key
+USER_AGENT = "Retested/0.1 (noncommercial replication research)"
 OA_CACHE = CACHE / "openalex"
 SELECT = "id,doi,title,publication_year,type,referenced_works,abstract_inverted_index,primary_location,authorships"
 
@@ -55,10 +56,10 @@ def _get(params: dict, cache_key: str) -> dict:
     if f.exists():
         return json.loads(f.read_text(encoding="utf-8"))
     key = _api_key()
-    q = urllib.parse.urlencode({**params, "mailto": MAILTO, **({"api_key": key} if key else {})}, safe=":|,*")
+    q = urllib.parse.urlencode({**params, **({"mailto": MAILTO} if MAILTO else {}), **({"api_key": key} if key else {})}, safe=":|,*")
     for attempt in range(6):
         try:
-            req = urllib.request.Request(f"{API}?{q}", headers={"User-Agent": f"Retested/0.1 (mailto:{MAILTO})"})
+            req = urllib.request.Request(f"{API}?{q}", headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=60) as r:
                 d = json.loads(r.read())
             break

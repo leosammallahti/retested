@@ -19,7 +19,7 @@ import urllib.request
 from .load import CACHE, DISCOVERY
 
 API = "https://api.osf.io/v2/guids/{}/"
-UA = {"User-Agent": "Retested/0.1 (mailto:leosammallahti@gmail.com)"}
+UA = {"User-Agent": "Retested/0.1 (noncommercial replication research)"}
 
 
 def lookup(token: str) -> dict:

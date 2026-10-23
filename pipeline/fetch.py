@@ -18,7 +18,7 @@ from typing import Any
 from .load import FORRT, ROOT, SOURCES
 
 MANIFEST = FORRT / "MANIFEST.json"
-UA = {"User-Agent": "Retested/0.1 (+https://github.com/; mailto:leosammallahti@gmail.com)"}
+UA = {"User-Agent": "Retested/0.1 (noncommercial replication research)"}
 
 # Files the pipeline reads, relative to data/raw/forrt/. Everything else in the manifest is reference material.
 REQUIRED = [str(p.relative_to(FORRT)).replace("\\", "/") for k, p in SOURCES.items() if str(p).startswith(str(FORRT))]

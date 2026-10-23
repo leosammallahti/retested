@@ -32,7 +32,7 @@ from .load import CACHE, DISCOVERY, ROOT
 API = "https://api.osf.io/v2"
 OUT = DISCOVERY / "osf_document_evidence.json"
 STORE = CACHE / "osf_documents"
-UA = {"User-Agent": "Retested/0.1 (mailto:leosammallahti@gmail.com)"}
+UA = {"User-Agent": "Retested/0.1 (noncommercial replication research)"}
 MAX_BYTES = 20_000_000
 MAX_FILES = 5
 MAX_PAGES = 200

@@ -28,9 +28,27 @@
   - **Cost.** No API money in this step; the wiki's API spend in total is about $7.30. The helper reading used about 8 million tokens of Claude Code usage.
   - **Still open.**
     - Technical terms left unexplained.
-    - Leo's email in the `fetch.py` user agent.
     - Fixing the wrong pairings at their source in the registry build.
     - There is no publishing host.
+- **Accounts for the attempts that had none — 2026-10-23 (Leo: "lets figure those out", then "go ahead"; about $3 approved).** Before this step, 1,061 attempts had no account. They were:
+    - 208 texts the check had refused twice;
+    - 148 the writer declined because the authors' words alone were too thin;
+    - 36 attempts added after the writing run;
+    - about 650 with no later abstract on file.
+  - *Email removed.* Leo's email is out of every user agent and request (`discover.py`, `original_abstracts.py`, `fetch.py`, `fulltext.py`, `osf.py`, `osf_documents.py`). The user agent is now "Retested/0.1 (noncommercial replication research)", OpenAlex keeps its API key, and Crossref is asked without a contact address.
+  - *Abstracts looked up* with `/root/wiki-scratch/fetch_rep_missing.py`, using the original-abstract fetcher's sources and its gate (title match, English, length): 483 of 752 later papers found (OpenAlex 277 for $0.002, Europe PMC 139, Crossref 4, Semantic Scholar 27, DOI landing page 36). Output in `pilot/fetched_rep_abstracts.json`; each account written from one records it in `abstract_looked_up`.
+  - *Written* with the same instructions and batch as the full run (`select_more.py`, then `pilot_v4.py` / `pilot_v4r.py` `requests` and `collect` for `more` and `morer`): 423 replications and 81 re-analyses, two rounds, $1.26.
+  - *All read* by Sonnet 5.5 helpers (`more_reading.py show|check`, decisions in `chunks/more/r*.py` and `n*.py`): 209 refused texts repaired (203 kept after editing or rewriting from sources, 6 held), and 481 new texts read (475 kept, most edited, 6 held). Imported with `import_more.py`.
+  - *Bare statistics.* Statistics written as bare numbers (effect sizes, ratios, thresholds, AUC), which `pilot_v4.check` does not catch, were found in 71 accounts across the wiki. 55 were reworded in plain words and 16 were measured quantities or false matches (`stat_fixes.py`; decisions `chunks/fix/stats.py`).
+  - **Order of the import chain:**
+    1. `verify_reading.py build`;
+    2. restore `wiki_explanations.before_verify.json`;
+    3. `import_verified.py`;
+    4. `import_repro.py`;
+    5. `import_more.py`;
+    6. `stat_fixes.py apply`.
+  - **Result.** 4,973 accounts, every one read, so 93% of the 5,356 attempts now have one. The other 383 (253 replications and 130 re-analyses) have no abstract in any free source (333) or no DOI (50); they show title, verdict and link. The site builds the same 11,969 pages; 536 pages differ from the previous build, all in account text and its "Written by …" line. 128 tests pass.
+  - **More data questions** are in `chunks/more/*.py`: wrong original pairings, broken later-paper records ("https://doi" titles, missing authors), and stored counts that disagree with abstracts.
 
 ## The other chat's 300 posts: 287 read, accepted and live; 13 held — 2026-10-21
 
