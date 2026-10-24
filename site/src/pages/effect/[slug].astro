@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Dossier from '../../components/Dossier.astro';
 import Pending from '../../components/Pending.astro';
 import Story from '../../components/Story.astro';
-import { effects, attempts, papers, findings, pending, storyFor, type Effect } from '../../lib/data';
+import { effects, attempts, papers, findings, pending, storyFor, effectLine, type Effect } from '../../lib/data';
 import { u, cleanQuote, clip, int, asClaim } from '../../lib/fmt';
 
 export function getStaticPaths() {
@@ -19,6 +19,8 @@ const shared = e.shared_attempts.map((id) => A[id]);
 const rowClaim = own.flatMap((a) => a.rows).find((r) => r.description && r.description.length > 30)?.description;
 // curated effect-level wording first; a single study's claim only as a fallback
 const claim = asClaim(e.famous?.description) ?? asClaim(e.description) ?? asClaim(rowClaim) ?? null;
+// the plain sentence, read against its sources, says what the effect claims; the database's own wording is the fallback
+const plain = effectLine(e.slug);
 const verbatim = own.flatMap((a) => a.rows).find((r) => r.claim_text_o && r.claim_text_o.length > 30)?.claim_text_o ?? own.find((a) => a.retested_review?.original_claim_quote)?.retested_review?.original_claim_quote;
 const orig = e.originals.map((d) => P[d]).filter(Boolean);
 const byline = orig.length === 1 ? [orig[0].authors, orig[0].year].filter(Boolean).join(', ') : orig.length > 1 ? `${orig.length} original papers` : e.famous?.original_year ? `original from ${e.famous.original_year}` : '';
@@ -29,7 +31,7 @@ const P_ = pending();
 const story = storyFor('effect', e.slug);
 const unverified = P_.by_effect[e.id] ?? [];
 const provisional = P_.effect_verdict_if_accepted[e.id] ?? null;
-const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.record.k} replication${e.lenses.record.k === 1 ? '' : 's'} with a verdict. ${claim ? clip(claim, 140) : ''}`;
+const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.record.k} replication${e.lenses.record.k === 1 ? '' : 's'} with a verdict. ${plain ?? (claim ? clip(claim, 140) : '')}`;
 ---
 <Base title={e.name} description={desc} active="effects/">
   <article class="wrap">
@@ -37,10 +39,10 @@ const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.r
       <div class="label"><a href={u('effects/')}>Effects</a>{e.discipline && <> / {e.discipline}</>}</div>
       <h1>{e.name}</h1>
       {byline && <p class="by mono">{byline}</p>}
-      {claim && (
+      {(plain || claim) && (
         <div class="claimbox">
           <span class="label claim">The claim</span>
-          <p class="ctext">{clip(claim, 360)}</p>
+          <p class="ctext">{plain ?? clip(claim!, 360)}</p>
           {verbatim && verbatim !== claim && <p class="faint vb">In the original authors' words: “{clip(cleanQuote(verbatim), 260)}”</p>}
         </div>
       )}

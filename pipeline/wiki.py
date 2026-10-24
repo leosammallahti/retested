@@ -265,6 +265,16 @@ def explanation_for(a: dict, explanations: dict) -> dict | None:
     return e
 
 
+def effect_lines() -> dict:
+    """One plain sentence per effect saying what the original research claimed, by effect slug, for the effect lists
+    and the top of each effect page (data/curated/effect_lines.json; written and read 2026-10-24). Only lines a
+    reader has approved are in the file; an effect without one shows none."""
+    p = CURATED / "effect_lines.json"
+    if not p.exists():
+        return {}
+    return {slug: v["line"] for slug, v in json.loads(p.read_text(encoding="utf-8")).get("lines", {}).items() if v.get("line")}
+
+
 def accounts(att: dict, explanations: dict) -> dict:
     """Every attempt's written "what they did / what they found", by attempt id, for the pages without the story
     template: their attempt ledger shows it too, so no read account waits on its page's post to be seen."""
@@ -524,7 +534,8 @@ def build(slugs: set[str] | None, posts_path: Path | None = None) -> dict:
     explanations = json.loads(ep.read_text(encoding="utf-8")).get("explanations", {}) if ep.exists() else {}
     vocab = _vocab(att)
     fby = {f["slug"]: (d, f) for d, f in fnd.items()}
-    out = {"schema_version": SCHEMA, "effects": {}, "findings": {}, "accounts": accounts(att, explanations)}
+    out = {"schema_version": SCHEMA, "effects": {}, "findings": {}, "accounts": accounts(att, explanations),
+           "effect_lines": effect_lines()}
 
     def common(atts_raw: list[dict], lens: dict, originals: list[str]) -> dict:
         ordered = sorted(atts_raw, key=lambda a: (a.get("year_r") or 9999, a["id"]))
@@ -589,7 +600,7 @@ def released(doc: dict) -> dict:
     return {"schema_version": doc["schema_version"],
             "effects": {k: v for k, v in doc["effects"].items() if v["scenes"] or any(g["scenes"] for g in v["groups"])},
             "findings": {k: v for k, v in doc["findings"].items() if v["scenes"]},
-            "accounts": doc.get("accounts", {})}
+            "accounts": doc.get("accounts", {}), "effect_lines": doc.get("effect_lines", {})}
 
 
 def write_release(posts_path: Path | None = None) -> tuple[int, int]:

@@ -2,16 +2,18 @@
 import Stamp from './Stamp.astro';
 import Tally from './Tally.astro';
 import { u, fr, int } from '../lib/fmt';
-import type { EffectCard } from '../lib/data';
+import { effectLine, type EffectCard } from '../lib/data';
 interface Props { e: EffectCard; showFame?: boolean }
 const { e, showFame } = Astro.props;
 const r = e.record;
+const line = effectLine(e.slug);
 const marks: string[] = [...Array(r.successful).fill('successful'), ...Array(r.mixed).fill('mixed'), ...Array(r.failed).fill('failed')];
 ---
 <li>
   <a class="erow" href={u(`effect/${e.slug}/`)}>
     <span class="nm">{e.name}</span>
     <Stamp code={r.code} label={r.label} small />
+    {line && <span class="dek">{line}</span>}
     <span class="meta">
       {e.discipline && <span>{e.discipline}</span>}
       {r.k > 0 && <span>{r.successful} replicated · {r.mixed} mixed · {r.failed} not</span>}

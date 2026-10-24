@@ -177,14 +177,14 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for r in src.get("promoted") or []:
         doi_o, doi_r = r["doi_o"], r["doi_r"]
         paper(doi_o, title=r["original_title"], year=r["original_year"],
-              journal=r.get("original_journal"), authors=r["original_authors"],
+              journal=r.get("original_journal"), authors=_names(r["original_authors"]),
               source_url=r["original_source_url"])
         paper(doi_r, title=r["replication_title"], year=r["replication_year"],
-              journal=r.get("replication_journal"), authors=r["replication_authors"],
+              journal=r.get("replication_journal"), authors=_names(r["replication_authors"]),
               source_url=r["replication_source_url"])
         a = attempt(doi_o, doi_r, title_r=r["replication_title"],
                     year_r=r["replication_year"], journal_r=r.get("replication_journal"),
-                    authors_r=r["replication_authors"], quote=r["outcome_quote"],
+                    authors_r=_names(r["replication_authors"]), quote=r["outcome_quote"],
                     quote_source=r["outcome_quote_source"])
         if "retested" not in a["sources"]:
             a["sources"].append("retested")
@@ -430,9 +430,24 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             "doi_folds": doi_folds, "log": log}
 
 
+# A group tag listed as an author ("[SCORE]" in FLoRA's SCORE rows) is not a name; it is dropped before shortening, so
+# the page names the first real author instead of "[SCORE] et al.".
+_GROUP_TAG = re.compile(r"\{[^{}]*['\"]family['\"]\s*:\s*['\"]\[[^'\"\]]*\]['\"][^{}]*\},?\s*")
+
+
 def _short(raw):
     from .load import short_authors
+    if raw is not None and not is_na(raw):
+        raw = _GROUP_TAG.sub("", str(raw))
     return short_authors(raw)
+
+
+def _names(raw):
+    """A reviewed record's author field as the page shows it: a plain string stays as written; an author list in
+    CrossRef form ({"given", "family"} entries) is shortened like FLoRA's, never shown as raw data."""
+    if raw is None or is_na(raw):
+        return None
+    return _short(raw) if re.search(r"['\"]family['\"]\s*:", str(raw)) else raw
 
 
 def _surnames(raw):

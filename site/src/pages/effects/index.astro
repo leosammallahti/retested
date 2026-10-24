@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { effects, papers } from '../../lib/data';
+import { effects, papers, effectLine } from '../../lib/data';
 import { u, RECORD_TONE, fr } from '../../lib/fmt';
 
 const P = papers();
@@ -38,11 +38,13 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
     <ul class="rowlist" id="elist">
       {rows.map(({ e, fame, g }) => {
         const r = e.lenses.record;
+        const line = effectLine(e.slug);
         return (
-          <li data-g={g} data-source={e.name_sources?.includes('retested') ? 'retested' : 'forrt'} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ')).toLowerCase()}>
+          <li data-g={g} data-source={e.name_sources?.includes('retested') ? 'retested' : 'forrt'} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ') + ' ' + (line ?? '')).toLowerCase()}>
             <a class="erow" href={u(`effect/${e.slug}/`)}>
               <span class="nm">{e.name}</span>
               <span class={`stamp sm t-${RECORD_TONE[r.code]}`}>{r.label}</span>
+              {line && <span class="dek">{line}</span>}
               <span class="meta">
                 {e.discipline && <span>{e.discipline}</span>}
                 {r.k > 0 && <span>{r.successful}✓ {r.mixed}~ {r.failed}✗</span>}

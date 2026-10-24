@@ -193,3 +193,6 @@ export const storyFor = (kind: 'effect' | 'finding', slug: string): Story | null
 export interface StoryAccount { did: string; found: string; written_from: string | null; written_check: 'read' | 'sampled' }
 export const accountFor = (id: string): StoryAccount | null =>
   readOptional<{ accounts?: Record<string, StoryAccount> }>('wiki.json')?.accounts?.[id] ?? null;
+// One plain sentence saying what an effect claims (data/curated/effect_lines.json, through wiki.json); null when none.
+export const effectLine = (slug: string): string | null =>
+  readOptional<{ effect_lines?: Record<string, string> }>('wiki.json')?.effect_lines?.[slug] ?? null;

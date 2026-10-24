@@ -160,6 +160,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .erow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1rem; padding: .85rem .2rem; text-decoration: none; align-items: center; }
 .erow:hover { background: var(--paper-2); color: var(--ink); }
 .erow .nm { font: 500 1.08rem/1.25 var(--f-display); }
+.erow .dek { grid-column: 1 / -1; font: 400 .98rem/1.45 var(--f-body); color: var(--ink-2); max-width: 62ch; }
 .erow .meta { grid-column: 1 / -1; display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; font: .72rem var(--f-mono); color: var(--ink-3); }
 
 /* ---------- section heads ---------- */
