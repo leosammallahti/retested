@@ -1,0 +1,29 @@
+CASE 0 | RELINK 10.1002/acp.3301 | van Prooijen education and conspiracy beliefs paper; online 2016, print 2017
+CASE 1 | RELINK 10.1007/s12147-017-9189-6 | Drake et al. IRAP gender stereotypes, online 2017, print 2018
+CASE 4 | RELINK 10.1177/0956797610384746 | Roelofs, Hagenaars, Stins 2010 Facing Freeze, Psychological Science
+CASE 5 | RELINK 10.1037/0096-1523.1.3.288 | Fischhoff 1975 hindsight experiment is the first replicated original
+CASE 6 | RELINK 10.1037/0021-9010.73.3.467 | Campion 1988 Journal of Applied Psychology, data reanalyzed by replication
+CASE 11 | NONE | Only a conference abstract found; the full Hoglinger GWAS paper is absent
+CASE 12 | RELINK 10.1177/0146167218796473 | Garrison et al. preregistered Stroop and antisaccade ego depletion experiment
+CASE 14 | RELINK 10.1037/a0018915 | Striegel-Moore 2010 guided self-help binge eating trial in JCCP
+CASE 16 | NONE | No candidate is Hudson and Zitnick Generative Adversarial Transformers
+CASE 18 | RELINK 10.1016/j.leaqua.2011.12.013 | Kuvaas et al. 2012 social and economic LMX and performance, replicated
+CASE 19 | RELINK 10.1056/nejm199801223380401 | Schmidt 1998 NEJM original; the other candidate is a survey digest
+CASE 20 | RELINK 10.3102/0162373715581709 | Borman, Grigg, Hanselman 2016 field experiment replicated in the same setting
+CASE 22 | RELINK 10.1111/j.1540-4781.1992.tb02573.x | Phillips 1992 Modern Language Journal oral test anxiety study
+CASE 23 | RELINK 10.3389/fnhum.2013.00069 | Robinson, Krimsky, Grillon 2013 induced anxiety and response inhibition
+CASE 27 | RELINK 10.1371/journal.pbio.0060202 | Prior et al. 2008 magpie mirror self-recognition study
+CASE 28 | RELINK 10.1017/s0003055421000678 | Stauffer 2021 APSR, perceptions of women's inclusion and efficacy
+CASE 29 | RELINK 10.1037/0022-3514.81.6.1014 | Bargh et al. 2001 Automated Will, high-performance goal priming
+CASE 30 | RELINK 10.1177/0956797612464058 | Fernbach et al. 2013 Psychological Science, illusion of understanding
+CASE 31 | RELINK 10.1177/0956797611427045 | Gebauer, Sedikides, Neberich 2012 religiosity and social self-esteem
+CASE 33 | RELINK 10.1001/jamapsychiatry.2018.2467 | Wolfers 2018 normative models of schizophrenia and bipolar disorder
+CASE 34 | RELINK 10.1111/j.1467-7687.2009.00888.x | Dumontheil, Apperly, Blakemore 2010 director task in adolescence
+CASE 35 | RELINK 10.1037/xge0000039 | Walasek and Stewart 2015 loss aversion range manipulation
+CASE 41 | NONE | Kroch and Small 1978 chapter not among candidates; Kroch 1978 differs
+CASE 45 | RELINK 10.1016/j.jbusvent.2008.04.003 | Davidsson, Steffens, Fitzsimmons 2009 Journal of Business Venturing
+CASE 46 | RELINK 10.1177/1745691609356789 | Commentary answers Trzesniewski and Donnellan 2010, same year, same journal
+CASE 47 | RELINK 10.1038/nn1066 | Fischer, Castel, Dodd, Pratt 2003 Att-SNARC original
+CASE 51 | RELINK 10.1101/gr.126516.111 | Castellarin et al. Genome Research, online 2011, print 2012
+CASE 52 | RELINK 10.1126/science.1121629 | Dijksterhuis et al. 2006 deliberation-without-attention effect, Science
+CASE 54 | RELINK 10.3389/fnhum.2013.00257 | Gao et al. 2013 original article, not the erratum

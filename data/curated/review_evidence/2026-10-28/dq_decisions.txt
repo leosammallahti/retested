@@ -1,0 +1,212 @@
+at_0a7868a329 | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_0ce9e9aa04 | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_12697d002c | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_1b59855fb8 | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_1daf7f9a1d | BAD_RECORD | reviewer note says 52 women recruited; later abstract says 37 visited, analysed subsets 20 and 17
+at_2680624c49 | BAD_RECORD | people_tested is 1835 but later abstract says N = 2003
+at_29e1ec81d6 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_2db3eaafa1 | BAD_RECORD | people_tested is 197 but later abstract says N = 196
+at_387442279f | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_3a2f618f18 | BAD_RECORD | people_tested 106 vs reviewer note 105 after exclusions vs later abstract N = 185 total
+at_3bd0f45d87 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_3cd6267ab7 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_41aa037e88 | BAD_RECORD | people_tested is 952 but later abstract says N = 941
+at_43d20f1245 | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_4c684f9e8f | NOT_A_REPLICATION | stored original is the same paper as the replication (Mellers et al. 2001)
+at_51bb63ee0d | WRONG_PAIRING | later paper replicates van Prooijen's study of education predicting conspiracy beliefs, not the stored 2018 minorities paper
+at_ad09b09198 | NOT_A_REPLICATION | later paper and original are the same paper (Niederle and Vesterlund 2007)
+at_b5d74ea9fa | BAD_RECORD | people_tested is 74 but later abstract says n = 37
+at_c479fdf2f7 | OTHER | later abstract (Italian nouns and verbs) does not mention replicating Brysbaert et al. 2000; pairing doubtful, not stated plainly
+at_ca25feba1d | OTHER | later abstract does not say it replicates Donnelly and Davidoff 1999; pairing rests on introduction sentence citing Experiment 5
+at_d56dea701f | BAD_RECORD | people_tested is 604 but later abstract says N = 608
+at_e579f45386 | OTHER | later abstract does not describe replicating Brysbaert et al. 2000; pairing may be wrong, not stated plainly
+at_ece2e2dbce | OTHER | later abstract does not describe replicating Eriksen and Eriksen 1974; examines flanker task features; pairing doubtful
+at_f2665f12ad | BAD_RECORD | people_tested is 582 but later abstract gives 586 students in second study, 832 in total
+at_0030f8f241 | BAD_RECORD | replications_reported_together is 21 but abstract says 20 studies; original not named in abstract either
+at_0039a3253e | NOT_A_REPLICATION | later paper and original are the same paper (Duke & Begue 2015), a replication of itself
+at_006b632f2e | OTHER | stored original (Lang & Litzenberger 1989) has no abstract, so results cannot be compared
+at_02c6495088 | OTHER | original (Simpson 1998) has the abstract of an intercultural communication journal issue; pairing with Gen Z survey unclear
+at_02d00fd7d9 | BAD_RECORD | original's authors stored as None (2009 Pathological Narcissism Inventory paper)
+at_04c112dc07 | WRONG_PAIRING | authors replicated Drake et al. (2018), not the stored Scanlon et al. 2014
+at_075236506c | WRONG_PAIRING | original (Myers & Diener 1995) is a review of happiness research, not a single study repeated
+at_0839bf71b5 | WRONG_PAIRING | stored original (Bettis et al. 2016) is an editorial, not one of the three IPO underpricing studies replicated
+at_0c3457c115 | WRONG_PAIRING | later paper replicates Roelofs et al. 2010 Psychological Science freezing study (angry faces, heart rate), not the gaze paper
+at_0d95ae49f3 | WRONG_PAIRING | original (Roese & Vohs 2012) is a review; later paper replicates Fischhoff (1975) and Slovic and Fischhoff (1977)
+at_0e280c6c96 | BAD_RECORD | authors of both later and original paper stored as raw JSON instead of names
+at_119dd33aa2 | BAD_RECORD | people_tested is 160 but abstract reports N = 268
+at_18e05ddb9d | OTHER | later paper has no abstract and authors' words are a fragment; unclear whether it tests the TLR4 variant
+at_195f7b82e4 | WRONG_PAIRING | later paper reanalyses Campion's 1988 data; Edwards et al. 1999 is a different study; right original Campion 1988
+at_1abe68563f | WRONG_PAIRING | stored original is a review; later paper repeats Riccucci et al. 2016, Public Administration Review 76(1), on coproduction
+at_1be1711941 | BAD_RECORD | original's authors stored as None (2009 COPD and depressive symptoms paper)
+at_1c281ad3a6 | OTHER | only one sentence from later paper stored, no abstract; what was measured and found is unknown
+at_1cf25bd859 | WRONG_PAIRING | later paper replicates Camuffo et al. 2020 scientific-approach trial, not Camuffo et al. 2008 Geox case study
+at_1d2e5def10 | WRONG_PAIRING | original (Lukacik et al. 2022) is a conceptual framework with no results; later main study replicates its own pilot
+at_1d7ccff7c4 | BAD_RECORD | original's title has line breaks inside it
+at_1dd8238b39 | BAD_RECORD | later abstract is garbled where Bayes factor ranges were; strong end of evidence range missing
+at_2393fe1654 | OTHER | SCORE words (Asian-language vs Spanish-language intercepts) do not match van Gastel et al. claim; check claim pairing
+at_2416f51297 | BAD_RECORD | later abstract stops mid-sentence and authors' quote hides the first comparison behind '...'
+at_24450954f4 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_275a0c2f5b | WRONG_PAIRING | original (Freeman 2007) is a review; later paper replicates an aberrant salience by self-concept clarity interaction from other work
+at_293171ef19 | BAD_RECORD | original's authors stored as None (2017 scientific reasoning for graduate admissions paper)
+at_2b82dbc22b | OTHER | stored original (Catterson, Eldesouky & John 2017) has no abstract, so original's finding cannot be stated
+at_30e1a8dbba | WRONG_PAIRING | original (Thurtell et al. 2011) is a neuro-ophthalmic review, not the genome-wide study the later paper follows up
+at_30f8556ebc | BAD_RECORD | original's authors stored as None (2009 preventing the return of fear paper)
+at_314b926d7e | BAD_RECORD | later paper's authors field holds a news headline (Brown University Psychopharmacology Update); no author names
+at_32be19a603 | BAD_RECORD | later paper's authors stored as "Korbmacher}" with a stray brace
+at_33679e8b82 | WRONG_PAIRING | stored original (Baumeister et al. 1998) not repeated; later paper replicated a recent preregistered Stroop and antisaccade experiment
+at_34fd49bffc | WRONG_PAIRING | later paper replicates Buckwalter and Stich ("Gender and philosophical intuition"), not Knobe 2012
+at_36ead24e89 | BAD_RECORD | original's authors stored as "(Ed.)." (2011 size distribution of macroeconomic disasters)
+at_3e275d93d3 | OTHER | same paper (Holbrook et al., ERN and Pe reliability) appears as 2024 and 2025 (also at_22b1d1fbe8)
+at_3fcec3f799 | BAD_RECORD | later paper has no authors (None); title shows it is Report #13, replication of Lloyd, McKay & Furl 2022
+at_455ec5c52f | OTHER | Wiersma et al. 1998 is needs-for-care paper; suicide rate likely from same cohort's 15-year course report; check pairing
+at_485fd230fe | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_48d3cea324 | BAD_RECORD | original's authors stored as None (1997 mutual exclusivity paper)
+at_4bede9eb1f | WRONG_PAIRING | original (Hudson et al. 2007, eating-disorder prevalence) is not the guided self-help trial the later paper replicates
+at_4c0420e873 | BAD_RECORD | original's abstract is the correction notice for Soto & John 2017, not the article's abstract
+at_4d167379c3 | WRONG_PAIRING | original (Román-González et al. 2018) is not the 2017 Computers in Human Behavior study the later paper replicates
+at_4d7ebf20ed | BAD_RECORD | original's abstract is web page navigation text, not the Naftulin et al. 1973 abstract
+at_505f41bd53 | WRONG_PAIRING | later paper reproduces GANformer (Hudson and Zitnick, Generative Adversarial Transformers), not Aarti 2021 GAN introduction
+at_53d87b132b | OTHER | same magpie replication (Soler et al. 2020) also appears as at_18b4ba0152; possibly one paper counted twice
+at_56912d4093 | WRONG_PAIRING | later paper replicates Bitchener and Knoch (2010), not their 2009 paper
+at_57f9ce28d9 | WRONG_PAIRING | original (Kuvaas et al. 2012) is not the leader-member exchange and work effort study replicated
+at_5944cd88a7 | WRONG_PAIRING | original (Nguyen et al. 2017) is a metabolomics study; later paper replicates earlier symptom result of ovarian suppression and addback
+at_5a9941ddf8 | WRONG_PAIRING | later paper replicates an earlier large-scale field experiment in same school setting, not Cohen et al. 2006 itself
+at_5b65b31a15 | BAD_RECORD | later paper's first author stored as "Soren" in quotation marks
+at_5dbcd250a8 | OTHER | authors' words say over a third of keynote speakers had no publications; stored abstract says over 50%; possibly different versions
+at_5e89a18965 | WRONG_PAIRING | original (Gries & Wulff 2009, gerund and infinitival constructions) is not the tense-aspect work replicated; apostrophes also mis-decoded
+at_5eb4944a79 | WRONG_PAIRING | original (Horwitz et al. 1986) is not the study replicated, which is Phillips 1992
+at_5ebe0e057c | OTHER | original (Shu et al. 2012) title begins RETRACTED: but no retraction field or date stored
+at_5f7dae7e41 | OTHER | recorded outcome 'did not find it' has no quoted support; abstract effects match the original's account; check outcome coding
+at_60e1100194 | OTHER | Glenberg and Kaschak 2002 looks unrelated to Fischer 2003 (numbers shifting attention); pairing may be wrong, hedged
+at_61f756d5be | OTHER | sources do not say what outcome was compared; check stored original matches the replicated claim
+at_6343ca0cb9 | OTHER | original is retracted per its title yet counted as replicated; check how wiki shows retracted originals
+at_66d08412eb | BAD_RECORD | original's authors (Bushman and Baumeister 1998) stored as raw JSON
+at_6845e69f03 | BAD_RECORD | original's authors stored as raw citation data ([{given, family}, ...])
+at_697286601c | WRONG_PAIRING | stored original (Crockett et al. 2009) is not the study the later abstract says it replicated (response inhibition under threat of shock)
+at_6beebb96ea | BAD_RECORD | original's authors missing (shown as None 1824); the original is Wollaston 1824
+at_6e0718ff10 | OTHER | stored original (Sciascia 2012) is about family involvement, J-shaped; later abstract says family ownership, curvilinear; may be different paper
+at_70902b72c0 | BAD_RECORD | original's title has line breaks inside it (bicycle helmet risk taking)
+at_710375f706 | OTHER | stored original (Roediger & Karpicke 2006) is a review; later abstract does not name it; unclear if it is the paper replicated
+at_718694ad98 | WRONG_PAIRING | later paper replicates and extends Levin and Isen 1975, 'Feeling good and helping', not Dijksterhuis et al. 2006
+at_7258fb0cb1 | BAD_RECORD | later paper's stored abstract is unrelated influenza vaccination case reports, not the PARK16 replication
+at_73549cdfd4 | BAD_RECORD | people_tested 153 equals replications_reported_together 153; likely a copied number, no per-replication sample size stored
+at_7363efeaca | BAD_RECORD | later paper's first author stored as "Shanshan" in quotation marks
+at_73be0bb16e | NOT_A_REPLICATION | stored original is the replication paper itself (Olma et al. 2024)
+at_74465140a5 | BAD_RECORD | original's title carries an encoding artefact and line breaks ('behav_x0002_ioral')
+at_76445509ce | WRONG_PAIRING | Katz & Braly 1933 is the trait-list source; later paper repeats a 1970 study of southern students
+at_766614b450 | BAD_RECORD | original's abstract is the retraction notice; original retracted for data manipulation, page should say so
+at_78408c441d | BAD_RECORD | later paper's title has its citation (journal, volume, article number) appended
+at_786159dc3c | BAD_RECORD | original's title has line breaks inside it (situation awareness)
+at_7a8768c82c | BAD_RECORD | original's title has line breaks inside it (transfer-of-stimulus control)
+at_7bb73c0626 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_7c5a5fea98 | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_7cdd7190f6 | BAD_RECORD | year: original (Najafabadi et al. 2023) dated a year after its replication (2022)
+at_7cf44a5207 | OTHER | sources give only the aim and no result, though recorded outcome is 'found part of it'; which part not stored
+at_7d383439fb | BAD_RECORD | original's title has line breaks inside it (moderate alcohol)
+at_7f5f8dec17 | OTHER | no abstract stored for later paper or original (Kang & Chasteen 2009); cannot compare results
+at_8186145529 | OTHER | later abstract reports four new experiments and does not name Cirrin 1984; unclear it repeats that paper
+at_818838e995 | WRONG_PAIRING | later paper names Bauer and Mulder 2011 (Learning in Health and Social Care) as earlier study, not Bauer et al. 2012
+at_8399dd0381 | BAD_RECORD | original's title has line breaks inside it (interest-based intervention package)
+at_84c957b3b7 | WRONG_PAIRING | magpie replication (Soler et al. 2020) repeats Prior et al. 2008, not Gallup 1970 (chimpanzees)
+at_84d01b1d8f | OTHER | same multi-lab paper (Paul et al., FRN and P300) appears as 2022 (at_55c570d8f3) and 2025 with different verdicts
+at_866aad7ce5 | WRONG_PAIRING | later paper replicates Stauffer 2021 (perceived gender diversity of legislatures), not Badas & Stauffer 2022
+at_8710094344 | OTHER | original (Förster & Denzler 2011) retracted: title and abstract show it; no retraction field or date stored
+at_8743a3fd33 | WRONG_PAIRING | later paper replicates Bargh et al. 2001 (high-performance goal priming), not Dalal & Hakel 2016
+at_8d52fb164b | OTHER | same BDSM replication (Lecuona et al.) appears as 2024 and 2026 (at_0d35c8d26f)
+at_8eb3854004 | BAD_RECORD | original's title has line breaks inside it (preliminary assessment of reliability)
+at_8f0d288913 | BAD_RECORD | original's title has line breaks inside it (rise and fall of priming)
+at_8f4dc43361 | BAD_RECORD | later abstract holds author list and affiliations; original (2011 Tools for Getting Along) authors stored as None
+at_91c43af0ab | OTHER | stored original (Simonovits & Bor 2020) shares abstract with later paper, which replicates Simonovits, Guess and Nagler 2019; may be earlier version
+at_936ec5a5f8 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176; no per-replication result though outcome is 'found part of it'
+at_93aba25dbe | BAD_RECORD | original's authors stored as None (2012 dissociation and PTSD latent class analysis)
+at_960c5ec3e0 | BAD_RECORD | original's title has line breaks inside it (music students' health problems)
+at_9640ca35df | WRONG_PAIRING | stored original (Crawford & Ruscio 2021) is itself failed replications; later paper replicates Fernbach et al. 2013
+at_969c47bc23 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_9b24d467ae | BAD_RECORD | original's title has line breaks inside it (voluntary task switching)
+at_9bab247705 | WRONG_PAIRING | later paper replicates Gebauer, Sedikides and Neberich 2012 (religiosity, self-esteem), not Gebauer et al. 2013
+at_9efd4cb73a | OTHER | no later abstract stored, only one sentence; cannot say if content knowledge and knowledge for teaching were distinguishable
+at_a006aa1711 | OTHER | later abstract describes new self-monitoring moderator test, no mention of replicating Gangestad & Snyder 2000 (an appraisal)
+at_a0c524f763 | WRONG_PAIRING | later paper tests facial masculinity preferences and hormones, not Gangestad & Thornhill 1998 symmetrical men scent
+at_a0dd35c7cc | OTHER | later abstract says it replicates Papi and Khajavy (2021); stored original is Papi et al. 2019; may be different paper
+at_a10d5ba059 | BAD_RECORD | original's author list is cut short ('KAREN HUX, JENNIFER MARQUARDT, SUZA')
+at_a22eb1a245 | OTHER | later abstract says Yu and Smith (2007); stored original is Smith & Yu 2007 on 12- and 14-month-olds; may differ
+at_a3529f5b10 | BAD_RECORD | reviewer note says diet articles rose to 1995; authors' abstract says they decreased from 1989
+at_a4661cafa9 | OTHER | later abstract says it replicates Green (in press), a book chapter; stored original is Green 2011; may be different paper
+at_a48aac1df8 | WRONG_PAIRING | later paper replicates authors' own earlier normative-modelling study, not Ayesa-Arriola et al. 2018
+at_a4b314af31 | WRONG_PAIRING | later paper replicates director-task findings on theory of mind, not Cacchione & Call 2010 tubes task
+at_a726811184 | WRONG_PAIRING | later paper reexamines Walasek and Stewart (2015), not Kahneman and Tversky 1979
+at_a9518249fd | BAD_RECORD | original's authors field holds its title (likely Goeree & Yariv 2011, check source)
+at_a9eec780d1 | OTHER | later abstract says replicated Fuchs et al. had sample 139; stored original abstract has 564 first graders; may be different paper
+at_abd2395dbc | WRONG_PAIRING | later paper replicates klein Selle et al. 2016 (Concealed Information Test), not Riccelli et al. 2017
+at_aff317a599 | OTHER | later abstract never mentions Konradt et al. 2009; 'Study 2 replicated' refers to Study 1 of same paper
+at_b13a522741 | WRONG_PAIRING | later paper replicates 2013 Rubio-Fernandez and Geurts Duplo task, not their 2012 verbal false-belief paper
+at_b153705d73 | BAD_RECORD | people_tested 258786 for Detroit 911 call records; probably incidents, not people
+at_b4d998de9c | WRONG_PAIRING | later paper replicates recent cross-sectional service dog studies using PTSD checklist, not Kloep et al. 2017
+at_b4f6180598 | WRONG_PAIRING | later paper re-examines Lei et al. (2020) on banks as lenders of first resort, not 'Solarizing networks'
+at_b50d68a211 | OTHER | later paper says earlier study had 26 subjects; stored original (Mayer et al. 2007) abstract reports 32
+at_b5a628095f | BAD_RECORD | original's authors stored as None (1951 isosceles triangles paper)
+at_b7ee518155 | OTHER | later paper (agentive syntax, fairness) vs original Choi 2008 (entity justice survey); sources do not show the replication link
+at_b95352959d | OTHER | stored original and later paper both listed as McDonald et al. 2018; check they are two papers
+at_bc443dc20e | WRONG_PAIRING | report replicates Mazar, Amir and Ariely (2008, Experiment 1), not Mazar and Ariely 2007
+at_c0b7d17ec3 | WRONG_PAIRING | stored original (Milroy 1981) is a book review; later paper tests Kroch and Small's (1978) finding
+at_c184157493 | BAD_RECORD | later paper's authors stored as fragment ('R.\" et al.') and original's authors as raw JSON string
+at_c19905ebc4 | BAD_RECORD | later abstract lists 'right-anodal/left-anodal', probably typo for right-anodal/left-cathodal
+at_c212ab3daa | WRONG_PAIRING | later paper replicates Shillingsburg, Frampton, Cleveland and Cariveau (2018); stored Tullis et al. 2021 postdates it
+at_c373605ac6 | BAD_RECORD | later paper's stored abstract is only the journal's publication notice
+at_c4aa7c3cd7 | OTHER | later paper names Dek, van den Hout, Giele and Engelhard (2014) as original; Store gives authors "Lakatos et al."
+at_c4c8559f6c | WRONG_PAIRING | authors replicate DeYoung, Quilty, Peterson and Gray 2014 (aspects and intelligence), not DeYoung et al. 2007
+at_c4f925866b | BAD_RECORD | original's authors garbled ('KÃ¶bach et al. 2015' for Köbach)
+at_c5625808d1 | BAD_RECORD | year of original (Deans-Browne & Singmann 2026) later than replication (2024); replication cites 2024
+at_c5a7208fe1 | BAD_RECORD | record names Study 8 as tested but reviewer's note says Study 1; original has six studies
+at_c687812579 | BAD_RECORD | original's authors stored as None (2010 cortical thickness and attentional networks)
+at_c88842025b | BAD_RECORD | people_tested is 240 but authors report N = 756
+at_cae6ba3c5c | BAD_RECORD | later paper's authors stored as 'Replications & Harris'; title field runs title, journal and original authors together
+at_caf554c1ec | WRONG_PAIRING | later paper replicates authors' own 2008 Journal of Politics genes and voter turnout article, not Stein and Vonnahme 2008
+at_cafbf72491 | WRONG_PAIRING | stored original title is 'Index', not the study; later paper replicates Davidsson et al. (2009)
+at_cba8f9dd5e | OTHER | stored original has no abstract, so its result cannot be compared
+at_cc9e95e0db | BAD_RECORD | original's title has line breaks inside it (Speed on the dance floor)
+at_cd1f43a9bc | OTHER | sources give only the aim and no result, though recorded outcome is 'found part of it'
+at_cebbf5a924 | OTHER | authors' words test GINI vs math achievement; stored original (Chudgar & Luschei 2009) abstract never states that claim
+at_d02a55c099 | OTHER | later abstract gives original sample as 150 pre-service teachers; original's own abstract says 105
+at_d0ddac836a | OTHER | stored original is Moon & Souva 2014 but later paper says it uses Moon and Souva (2016)
+at_d14c315edb | WRONG_PAIRING | later paper (Roberts et al. 2010) predates stored original (Twenge 2013); it answers earlier Generation Me work
+at_d258062ac8 | OTHER | stored original (Baumeister et al. 1998) has no abstract, so its finding cannot be checked
+at_d336a5286e | WRONG_PAIRING | later paper replicates Fischer et al. 2003 (Att-SNARC), not Glenberg & Kaschak 2002
+at_d49a63ef71 | OTHER | authors' words say 'consistent with the original study' without naming the pattern; comparison not shown
+at_d6463851c8 | WRONG_PAIRING | later paper compares with Roter's study, not Hall et al. 1987 analogue study
+at_d67ec598bb | OTHER | later paper replicates Boroditsky et al. 2003; stored original titled 'Languages and Representations' (Clark 2003); check same source
+at_d7d89f51a8 | BAD_RECORD | replications_reported_together is 154 but later abstract says 176; no per-replication result though 'found part of it'
+at_d83a31f913 | BAD_RECORD | later paper's author field garbled ('W.\" et al.'); original's author stored as raw dictionary string
+at_d8f957e81f | BAD_RECORD | later paper's authors stored as 'B." et al.'
+at_d9eba88c70 | WRONG_PAIRING | later paper replicates Crowe et al. (2019) on structure of narcissism, not Crowe et al. 2016
+at_daf09ea9ab | WRONG_PAIRING | later paper revisits Kilian (2009) on drivers of real oil price, not Kilian & Park 2009
+at_dcc40ab2e5 | OTHER | later paper reports two new studies on emotion regulation; original is Zhao et al. 2007 meta-analysis; unclear which finding replicated
+at_dd083d07f1 | BAD_RECORD | original's title has a stray character code ('reli_x0002_ability')
+at_dd5aaac1f4 | WRONG_PAIRING | replication tests Castellarin et al. (2012), not the project's own Registered Report (Repass et al. 2016)
+at_dd712e6b29 | BAD_RECORD | later paper's author field garbled ('A.\" et al.'); original's authors stored as raw dictionary string
+at_de27fa2feb | BAD_RECORD | replications_reported_together is 154 but later abstract says 176 replications
+at_e119c557ac | WRONG_PAIRING | later paper tests the unconscious thought advantage, not Kahneman and Tversky 1979 (prospect theory)
+at_e11dfe80f4 | OTHER | later paper tests threat-of-shock anxiety on timing; Stetson et al. 2007 free fall is a different design; loose match
+at_e178c4eaf3 | OTHER | original is retracted per its title yet counted as normal original; check how wiki shows retracted originals
+at_e32140042b | BAD_RECORD | replications_reported_together is 153 but later abstract says 100 replications
+at_e37dfe35fd | BAD_RECORD | original's abstract is about American anthropologists, not Schneider et al. 1998 homogeneity of personality in organizations
+at_e4b7dbeee1 | OTHER | later paper compares with Milgram's 1960s studies and builds on Burger's shortened version; stored original is Burger 2009 alone
+at_e5d772bc88 | BAD_RECORD | authors of both later and original paper stored as raw JSON instead of names
+at_e627f286d8 | BAD_RECORD | people_tested is 18 but abstract reports 37 infants
+at_e6d8b57d50 | WRONG_PAIRING | later paper replicates Imel, Barco et al. 2014 (vocal pitch synchrony, empathy), not Imel et al. 2014 therapist adherence
+at_e759a69cca | BAD_RECORD | original's authors stored as raw JSON; later first author stored as quoted given name ("Sarah")
+at_e819358a1e | OTHER | original is retracted per its title yet counted as normal original; check how wiki shows retracted originals
+at_e8ef543e24 | BAD_RECORD | original's first author stored as "Stiluon" (Stillion)
+at_eb9c49952d | BAD_RECORD | original has no authors and year 2022; later paper says it replicates Segev and Fernandes (2023)
+at_f08b50c816 | BAD_RECORD | people_tested 43 but paper reports four samples totalling 1,555; tested_study_of_original 1 but Experiments 1 and 2 replicated
+at_f09f2c6e88 | OTHER | stored original (Sera et al. 1994) has no abstract, so findings cannot be checked against later claims
+at_f104f00742 | BAD_RECORD | original's abstract (Schneider et al. 1980) is its acknowledgements paragraph, not an abstract
+at_f1bad74e56 | BAD_RECORD | later paper's authors stored as '"Charlotte" et al.'
+at_f23adfd4a4 | OTHER | only aggregate tally for 13 effects stored; 13-effect paper reports 6,344 participants vs 5,979 stored for this effect
+at_f270944f16 | BAD_RECORD | stored abstract says 'Self-After and Self-Before'; paper's results show it means Self-After and Self-Both
+at_f33127d091 | WRONG_PAIRING | later paper replicates Gao et al. (2013), not Klein et al. 2013 (error awareness, insula)
+at_f36b214220 | WRONG_PAIRING | replication tests Thadani-Mulero et al. (2014), not the project's own Registered Report (Shan et al. 2015)
+at_f50fcb0dd9 | WRONG_PAIRING | later paper directly replicates Palermo et al. 2018 (affective factors, facial-expression recognition), not Berggren & Eimer 2018
+at_f9e71f0d50 | BAD_RECORD | original's authors garbled ('Cho & as-'); later abstract names original as Cho and Cheon (2004)
+at_fb927057ea | BAD_RECORD | original's authors stored as 'None'
+at_fc3ffb303a | BAD_RECORD | original's authors stored as '(Ed.)'

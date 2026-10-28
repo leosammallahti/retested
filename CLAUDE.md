@@ -1,6 +1,6 @@
 # Retested — instructions for Claude sessions
 
-**Read `docs/HANDOFF.md` first.** It has the current state, the numbers, and the next steps.
+**Read `docs/START_HERE.md` first**, then `docs/HANDOFF.md` (what is in flight) and `docs/SOURCES_AND_LEDGER.md` (sources, ledger, reviewed decisions).
 
 ## What this is
 An effect-level wiki of psychology's replication record, built on FORRT's open data (FReD + FLoRA), plus a

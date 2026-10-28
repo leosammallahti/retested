@@ -1,0 +1,79 @@
+PAIR 0 | SAME keep=at_58abdb06d1 drop=at_e42f1205a6 | Journal article kept over its PsyArXiv preprint
+PAIR 1 | SAME keep=at_b09c80ff52 drop=at_e6c304b65a | Same article under two DOIs; kept record with journal field
+PAIR 2 | SAME keep=at_dfd77cb176 drop=at_25f1638dab | Journal article kept over its PsyArXiv preprint
+PAIR 3 | SAME keep=at_b5fa18ec10 drop=at_2210dda8c0 | Journal article kept over its bioRxiv preprint
+PAIR 4 | SAME keep=at_972b9bded7 drop=at_0a34933990 | Version 3 kept over version 2 of same preprint
+PAIR 5 | SAME keep=at_fcc2f3a566 drop=at_825a0952ff | Journal article kept over its bioRxiv preprint
+PAIR 6 | SAME keep=at_da3f5bc84c drop=at_898194fb8b | Journal article kept over its PsyArXiv preprint
+PAIR 7 | SAME keep=at_fe0970ec4d drop=at_653d0c7a4c | Journal article kept over its Research Square preprint
+PAIR 8 | SAME keep=at_d51ec56aa3 drop=at_8e552a8277 | Journal article kept over its OSF preprint
+PAIR 9 | SAME keep=at_9716959e37 drop=at_a5d6945494 | Same preprint, neither journal; kept the coded result
+PAIR 10 | SAME keep=at_99bf5d696a drop=at_5d7363e83a | Journal article kept over its OSF project record
+PAIR 11 | SAME keep=at_99fceaaea4 drop=at_13c9c98144 | Same report on two hosts; kept Zenodo over withdrawn preprint
+PAIR 12 | SAME keep=at_1b2c7a54f9 drop=at_79fdf715cc | Collabra article kept over author's thesis
+PAIR 13 | SAME keep=at_d77b78fc57 drop=at_579a3f2fe9 | Journal article kept over its MetaArXiv preprint
+PAIR 14 | SAME keep=at_6d88f13b2a drop=at_c53357a90c | Same report on two hosts; kept the coded one
+PAIR 15 | SAME keep=at_b22ead5cc8 drop=at_404dffca1e | Same report on two hosts; kept the coded one
+PAIR 16 | SAME keep=at_31cd3d0165 drop=at_b4cb684e6b | Journal article kept over its PsyArXiv preprint
+PAIR 17 | SAME keep=at_ce07d2719a drop=at_07a9b217de | Journal article kept over its PsyArXiv preprint
+PAIR 18 | DIFFERENT | Many Labs 5 Experiment 7 versus Experiment 5, separate studies
+PAIR 19 | SAME keep=at_9af3b5b507 drop=at_c1c9870c12 | Journal article kept over its PsyArXiv preprint, Experiment 7
+PAIR 20 | DIFFERENT | Experiment 5 article versus Experiment 7 preprint, separate studies
+PAIR 21 | SAME keep=at_a6c109966d drop=at_bea0f83898 | JABA article kept over repository copy of same report
+PAIR 22 | SAME keep=at_122f1c5962 drop=at_99004f9bbb | Journal article kept over its OSF preprint
+PAIR 23 | SAME keep=at_d643934ddd drop=at_4cb42cc067 | Same Report 11 on two hosts; kept Zenodo DOI copy
+PAIR 24 | DIFFERENT | Experiment 1 versus Experiment 3, separate second replications
+PAIR 25 | SAME keep=at_a9e0713791 drop=at_6f763c06e1 | Journal article kept over repository copy
+PAIR 26 | SAME keep=at_f3999c814c drop=at_8341a89304 | Journal article kept over its PsyArXiv preprint
+PAIR 27 | SAME keep=at_941905dc80 drop=at_fa63f373bd | Journal article kept over its bioRxiv preprint
+PAIR 28 | SAME keep=at_f24e53f1e1 drop=at_55f18a7c14 | Journal article kept over its PsyArXiv preprint
+PAIR 29 | SAME keep=at_d518e57dc8 drop=at_49b01738e9 | Journal article kept over its OSF registered report project
+PAIR 30 | SAME keep=at_c48a6e6d66 drop=at_00310ea9bd | Journal article kept over its PsyArXiv preprint
+PAIR 31 | SAME keep=at_84d01b1d8f drop=at_55c570d8f3 | Cortex article kept over preprint; result coded only on preprint
+PAIR 32 | SAME keep=at_bf11b920e9 drop=at_30ec336a8c | Journal article kept over its arXiv preprint
+PAIR 33 | DIFFERENT | Two separate AER comments by different authors
+PAIR 34 | SAME keep=at_ab471b39e1 drop=at_e9dd7091f2 | Same JARMAC article under two DOIs; kept record with journal field
+PAIR 35 | SAME keep=at_ae7d8f2e02 drop=at_efbe125c07 | Journal article kept over its PsyArXiv preprint
+PAIR 36 | SAME keep=at_216b26e49c drop=at_bf170d7e68 | Journal article kept over its PsyArXiv preprint
+PAIR 37 | SAME keep=at_3a38c0511d drop=at_727939a066 | Journal article kept over its PsyArXiv preprint
+PAIR 38 | SAME keep=at_f3c68bf3bd drop=at_614d22c55d | Journal article kept over its PsyArXiv preprint
+PAIR 39 | DIFFERENT | Two OSF projects, differing authors and results; sameness not confirmed
+PAIR 40 | SAME keep=at_59678209be drop=at_928fdd8bf4 | Journal article kept over its PsyArXiv preprint
+PAIR 41 | SAME keep=at_a745ae9664 drop=at_81e94fd884 | Journal article kept over its OSF preprint
+PAIR 42 | SAME keep=at_015bdcdace drop=at_c5a748d805 | Journal article kept over its PsyArXiv preprint
+PAIR 43 | SAME keep=at_7a64b4019e drop=at_d02c8f0039 | Same report on two hosts; kept Zenodo over withdrawn preprint
+PAIR 44 | SAME keep=at_7a64b4019e drop=at_2f2e5ae064 | Adjacent Zenodo records of the same report
+PAIR 45 | SAME keep=at_2f2e5ae064 drop=at_d02c8f0039 | Zenodo record kept over withdrawn preprint; see pair 44
+PAIR 46 | SAME keep=at_b5d74ea9fa drop=at_907871d588 | Journal article kept over its PsyArXiv preprint
+PAIR 47 | SAME keep=at_6de2995aa5 drop=at_6bc03233b2 | Journal article kept over its PsyArXiv preprint
+PAIR 48 | DIFFERENT | Study 2a versus Study 2c, separate studies
+PAIR 49 | SAME keep=at_102967ff02 drop=at_081ec2e1b5 | Same replication, identical title, authors, result, two OSF records
+PAIR 50 | SAME keep=at_4ddc30a210 drop=at_a20f0a5977 | Same replication, identical title, author, result, two OSF records
+PAIR 51 | SAME keep=at_290e767fb3 drop=at_229d3db20c | Same replication, two OSF records; DOI form kept
+PAIR 52 | SAME keep=at_290e767fb3 drop=at_3f882f997b | Same replication, two OSF records; clean DOI kept
+PAIR 53 | SAME keep=at_3f882f997b drop=at_229d3db20c | Same replication; both set aside in favour of ictp5
+PAIR 54 | SAME keep=at_c3ac754c71 drop=at_301324b5c1 | Written report kept over its OSF project, same authors
+PAIR 55 | SAME keep=at_22b1d1fbe8 drop=at_3e275d93d3 | Journal article kept over its PsyArXiv preprint
+PAIR 56 | SAME keep=at_fe2d3e73a5 drop=at_dab626b64f | Journal article kept over its SportRxiv preprint
+PAIR 57 | SAME keep=at_10122b8c40 drop=at_3f30f689f1 | Journal article kept over its PsyArXiv preprint
+PAIR 58 | SAME keep=at_0a347bc6a3 drop=at_f7510fe70d | Collabra article kept over its PsyArXiv preprint
+PAIR 59 | SAME keep=at_2ef8d22bce drop=at_7ec7bf1b7b | Journal article kept over its PsyArXiv preprint
+PAIR 60 | SAME keep=at_80e044e98f drop=at_d9122a833f | Journal article kept over PsychArchives copy
+PAIR 61 | SAME keep=at_4d2fff0132 drop=at_c7ab49b479 | Journal article kept over Columbia repository copy
+PAIR 62 | SAME keep=at_53d87b132b drop=at_18b4ba0152 | Journal article kept over its Zenodo copy
+PAIR 63 | SAME keep=at_b9b69905eb drop=at_4071471855 | Journal article kept over its PsyArXiv preprint
+PAIR 64 | SAME keep=at_7fe3a38c62 drop=at_0309f86413 | Journal article kept over its PsyArXiv preprint
+PAIR 65 | SAME keep=at_32be19a603 drop=at_c88842025b | Same replication, OSF project and repository copy; kept coded DOI
+PAIR 66 | SAME keep=at_9dc23f5feb drop=at_788e92f6f1 | Journal article kept over its PsyArXiv preprint
+PAIR 67 | SAME keep=at_6bd203a7aa drop=at_eae133c23d | Journal article kept over its PsyArXiv preprint
+PAIR 68 | SAME keep=at_55abdd0886 drop=at_68886c5a50 | Same replication, two OSF records; kept the coded one
+PAIR 69 | DIFFERENT | Separate SCORE replications by different teams
+PAIR 70 | DIFFERENT | Separate SCORE replications by different teams
+PAIR 71 | DIFFERENT | Two records from one source, no shared study label; unsure
+PAIR 72 | SAME keep=at_a5f4483d25 drop=at_378ff2e3fb | PsyArXiv report kept over its OSF project
+PAIR 73 | SAME keep=at_0a93d789b9 drop=at_5b01255494 | Journal article kept over its PsyArXiv preprint
+PAIR 74 | SAME keep=at_f84ef05276 drop=at_965baa2d52 | Journal article kept over its OSF preprint
+PAIR 75 | SAME keep=at_a42cbea3eb drop=at_23ba91cc3d | Same journal article under two DOIs; kept fuller author name
+PAIR 76 | SAME keep=at_8d52fb164b drop=at_0d35c8d26f | Journal article kept over its PsyArXiv preprint
+PAIR 77 | SAME keep=at_01486345a1 drop=at_7a3d36fde4 | Journal article kept over its PsyArXiv preprint
+PAIR 78 | SAME keep=at_13a6e0be4c drop=at_f498245555 | Journal article kept over its OSF preprint

@@ -1,0 +1,57 @@
+CASE 0 | SEARCH "van Prooijen 2017 why education predicts decreased belief in conspiracy theories" | Title names van Prooijen (2017); no candidate is that paper.
+CASE 1 | SEARCH "Drake 2018 implicit relational assessment procedure gender stereotypes" | Note says Drake et al. 2018 was replicated; candidates unrelated.
+CASE 2 | NONE | Replicates unspecified previous research; no specific original study named.
+CASE 3 | NONE | Replicates three unnamed IPO underpricing studies; no single original identifiable.
+CASE 4 | SEARCH "Roelofs Hagenaars Stins 2010 facing freeze social threat induces bodily freeze in humans" | Replicates Roelofs 2010 Psychological Science freezing study; not among candidates.
+CASE 5 | SEARCH "Fischhoff 1975 hindsight is not equal to foresight effect of outcome knowledge on judgment under uncertainty" | Replicates Fischhoff 1975 and Slovic-Fischhoff 1977; neither among candidates.
+CASE 6 | SEARCH "Campion 1988 interdisciplinary approaches to job design constructive replication with extensions" | Reanalyses Campion 1988 data; only a test record among candidates.
+CASE 7 | RELINK 10.1111/puar.12401 | Riccucci, Van Ryzin, Li coproduction experiment in Public Administration Review; exact title.
+CASE 8 | RELINK 10.1287/mnsc.2018.3249 | Camuffo et al. 2020 Management Science scientific approach randomized trial.
+CASE 9 | NONE | Main study replicates its own pilot; no external original exists.
+CASE 10 | RELINK 10.1037/a0027361 | Cicero 2013 shows the aberrant salience by self-concept clarity interaction replicated.
+CASE 11 | SEARCH "Hoglinger 2011 identification of common variants influencing risk of the tauopathy progressive supranuclear palsy" | Follows up the original PSP genome-wide study; not among candidates.
+CASE 12 | SEARCH "Garrison Finley Schmeichel 2019 ego depletion reduces attention control two high-powered preregistered experiments" | Replicates preregistered Stroop-antisaccade ego depletion experiment; candidates unrelated.
+CASE 13 | RELINK 10.1093/acprof:osobl/9780199927418.003.0013 | Buckwalter and Stich chapter in Experimental Philosophy second edition, as cited.
+CASE 14 | SEARCH "Striegel-Moore 2010 cognitive behavioral guided self-help treatment recurrent binge eating health maintenance organization" | Replicates earlier guided self-help HMO trial; candidates are a workbook.
+CASE 15 | RELINK 10.1016/j.chb.2016.08.047 | Roman-Gonzalez 2017 Computers in Human Behavior, cognitive abilities and computational thinking.
+CASE 16 | SEARCH "Hudson Zitnick 2021 Generative Adversarial Transformers" | Reproduces the GANformer paper; no candidate matches.
+CASE 17 | RELINK 10.1016/j.jslw.2010.10.002 | Note says Bitchener and Knoch 2010, not 2009; article-function feedback study.
+CASE 18 | SEARCH "Kuvaas Buch Dysvik Haerem 2012 economic and social leader-member exchange relationships and follower performance" | Prior social and economic LMX work-effort finding replicated; no candidate.
+CASE 19 | SEARCH "Schmidt 1998 differential behavioral effects of gonadal steroids in women with and without premenstrual syndrome" | Original suppression and addback study; 10 patients and 15 controls match.
+CASE 20 | SEARCH "Borman Grigg Hanselman 2016 effort to close achievement gaps at scale through self-affirmation" | Prior large-scale same-district field experiment; likely Borman 2016; candidates irrelevant.
+CASE 21 | NONE | No abstract; original tense-aspect study cannot be identified.
+CASE 22 | SEARCH "Phillips 1992 effects of language anxiety on students' oral test performance and attitudes" | Title and abstract name Phillips 1992, Modern Language Journal.
+CASE 23 | SEARCH "Robinson Krimsky Grillon 2013 impact of induced anxiety on response inhibition" | Replicates threat-of-shock response inhibition study; candidates irrelevant.
+CASE 24 | RELINK 10.2307/2786238 | Levin and Isen 1975 Sociometry, the dime and helping study.
+CASE 25 | NONE | Replicates an unnamed 1970 study; candidates irrelevant.
+CASE 26 | RELINK 10.1111/j.1473-6861.2007.00150.x | Bauer and Mulder, Learning in Health and Social Care, errors model; year differs.
+CASE 27 | SEARCH "Prior Schwarz Gunturkun 2008 mirror-induced behavior in the magpie evidence of self-recognition" | Note says it repeats Prior et al. 2008 magpie mirror study.
+CASE 28 | SEARCH "Stauffer 2021 public perceptions of women's inclusion and feelings of political efficacy" | Replicates Stauffer 2021; no candidate matches.
+CASE 29 | SEARCH "Bargh Gollwitzer Lee-Chai Barndollar Trotschel 2001 the automated will nonconscious activation and pursuit of behavioral goals" | Replicates Bargh et al. 2001 high-performance goal priming.
+CASE 30 | SEARCH "Fernbach Rogers Fox Sloman 2013 political extremism is supported by an illusion of understanding" | Replicates Fernbach et al. 2013; the candidate is another replication.
+CASE 31 | SEARCH "Gebauer Sedikides Neberich 2012 religiosity social self-esteem psychological adjustment cross-cultural specificity" | Replicates Gebauer, Sedikides, Neberich 2012; not among candidates.
+CASE 32 | NONE | Original unspecified; many studies link facial masculinity preferences and hormones.
+CASE 33 | SEARCH "Wolfers 2018 mapping the heterogeneous phenotype of schizophrenia and bipolar disorder using normative models" | Replicates authors' earlier normative-modelling heterogeneity study; candidates irrelevant.
+CASE 34 | SEARCH "Dumontheil Apperly Blakemore 2010 online usage of theory of mind continues to develop in late adolescence" | Replicates earlier director task age-difference findings; candidates are not that study.
+CASE 35 | SEARCH "Walasek Stewart 2015 how to make loss aversion disappear and reverse" | Reexamines Walasek and Stewart 2015; candidates are later critiques.
+CASE 36 | RELINK 10.1111/psyp.12583 | klein Selle et al. orienting versus inhibition in Concealed Information Test; exact title.
+CASE 37 | RELINK 10.1177/0956797612447819 | Rubio-Fernandez and Geurts Duplo task, Psychological Science article printed 2013.
+CASE 38 | NONE | Replicates unnamed earlier service dog PCL studies; candidates are checklists.
+CASE 39 | RELINK 10.1093/rcfs/cfaa009 | Li, Strahan, Zhang banks as lenders of first resort; published version.
+CASE 40 | RELINK 10.1509/jmkr.45.6.633 | Mazar, Amir, Ariely 2008 Journal of Marketing Research, Experiment 1.
+CASE 41 | SEARCH "Kroch Small 1978 grammatical ideology and its effect on speech" | Tests Kroch and Small 1978 finding; candidate is a different Kroch paper.
+CASE 42 | RELINK 10.1016/j.lmot.2017.02.003 | Shillingsburg, Frampton, Cleveland, Cariveau 2018 emergence of untrained intraverbal relations.
+CASE 43 | RELINK 10.1080/00223891.2013.806327 | DeYoung, Quilty, Peterson, Gray: openness, intellect and cognitive ability; matches.
+CASE 44 | RELINK 10.1017/s0022381608080638 | Fowler and Dawes 2008 Journal of Politics, two genes predict turnout.
+CASE 45 | SEARCH "Davidsson Steffens Fitzsimmons 2009 growing profitable or growing from profits" | Replicates Davidsson et al. 2009; not among candidates.
+CASE 46 | SEARCH "Trzesniewski Donnellan 2010 rethinking Generation Me cohort effects 1976-2006" | Commentary on Trzesniewski and Donnellan (2010); not among candidates.
+CASE 47 | SEARCH "Fischer Castel Dodd Pratt 2003 perceiving numbers causes spatial shifts of attention" | Replicates Fischer et al. 2003 Att-SNARC; not among candidates.
+CASE 48 | NONE | Semi-replication of an unspecified Roter study; original not identifiable.
+CASE 49 | RELINK 10.1111/jopy.12464 | Crowe et al. 2019 Journal of Personality, structure of narcissism.
+CASE 50 | RELINK 10.1257/aer.99.3.1053 | Kilian 2009 American Economic Review, drivers of real oil price.
+CASE 51 | SEARCH "Castellarin 2012 Fusobacterium nucleatum infection is prevalent in human colorectal carcinoma" | Replication tests Castellarin et al. 2012; not among candidates.
+CASE 52 | SEARCH "Dijksterhuis Bos Nordgren van Baaren 2006 on making the right choice deliberation-without-attention effect" | Tests the unconscious thought advantage from Dijksterhuis et al. 2006.
+CASE 53 | RELINK 10.1037/a0034943 | Imel, Barco et al. 2014 therapist empathy and vocal arousal synchrony.
+CASE 54 | SEARCH "Gao 2013 extraversion and neuroticism relate to topological properties of resting-state brain networks" | Replicates Gao et al. 2013 personality connectivity study.
+CASE 55 | RELINK 10.1158/0008-5472.can-13-2876 | Thadani-Mulero 2014 Cancer Research, AR splice variants and taxane sensitivity.
+CASE 56 | RELINK 10.1037/xhp0000463 | Palermo et al. 2018, affective factors and facial expression recognition.

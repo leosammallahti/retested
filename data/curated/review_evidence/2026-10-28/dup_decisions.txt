@@ -1,0 +1,67 @@
+SET 0 | MERGE into=a-person-nation-interaction-effect-of-interest-and-achievement from=economic-resources-strengthen-interestscience-achievement-link | same Tucker-Drob interest by economic resources claim, reworded
+SET 1 | MERGE into=abstract-rule-learning from=infant-rule-learning-speech | same Marcus 1999 infant rule learning, name only adds stimulus type
+SET 2 | APART affective-misattribution,skipping-influence-aware-amp-trials-leaves-priming-unchanged | awareness moderation differs from skipping aware trials leaving priming unchanged
+SET 3 | APART age-of-acquisition-effects-influence-on-free-recall-pure-block,age-of-acquisition-effects-influence-on-recognition-mixed-block | different tasks (recall vs recognition) and block designs
+SET 4 | MERGE into=age-of-acquisition-influence-on-lexical-retrieval-auditory-lexical-dec-22c4 from=age-of-acquisition-influence-on-lexical-retrieval-auditory-lexical-dec | identical claim text; opaque-languages note only describes the task
+SET 4 | APART frequency-influence-on-lexical-retrieval-auditory-lexical-decision-tas | word frequency effect differs from age of acquisition effect
+SET 5 | APART age-of-acquisition-influence-on-lexical-semantic-processes-picture-wor,frequency-influence-on-lexical-semantic-processes-picture-word-interfe | age of acquisition versus word frequency are different effects
+SET 6 | MERGE into=anchors-make-related-examples-more-accessible from=anchor-consistent-exemplar-accessibility-in-lexical-decisions | same anchoring selective accessibility claim, reworded
+SET 7 | MERGE into=availability-heuristic from=availability-bias-in-first-letter-versus-third-letter-frequency-judgme | same Tversky Kahneman letter frequency availability finding
+SET 8 | APART below-average-effect,people-tend-to-perceive-themselves-as-above-average-when-considering-e,people-tend-to-perceive-themselves-as-below-average-when-considering-d | easy versus difficult ability conditions give opposite effects
+SET 9 | APART certainty-effect,overweighting-small-probabilities | different probability ranges: 99 to 100 percent versus 0 to small
+SET 10 | APART classroom-observation-code-distinguishes-hyperactive-from-normal-child,two-category-classroom-observation-code-distinguishes-hyperactive-from | general validity claim versus combined two-category scoring claim
+SET 11 | APART colour-on-approach-avoidance,red-blue-avoidance-and-approach-priming-of-anagram-solution-times | general colour motivation claim versus anagram solution time sub-study
+SET 12 | MERGE into=commitment-priming from=commitment-priming-reduces-destructive-responses-to-betrayal | same Study 1 priming effect on responses to betrayal
+SET 12 | APART commitment-priming-recall | forgiveness outcome after recall prime, different manipulation and outcome
+SET 13 | MERGE into=warmer-hearts-warmer-room-effect from=communal-trait-descriptions-raise-perceived-room-temperature | same Szymkow communal priming raises room temperature estimate
+SET 14 | APART correlation-between-narcissism-and-and-hypersensitive-narcissism,correlation-between-narcissism-and-hostility,correlation-between-narcissism-and-self-esteem,correlation-between-self-esteem-and-hostility | each is a correlation between a different pair of measures
+SET 15 | MERGE into=cortical-thickness-and-attention from=structural-brain-behaviour-correlations-the-association-between-attent | same cortical thickness and attention network claim
+SET 16 | MERGE into=deliberate-practice from=expertise-attained-after-10-000-hours-practice | same claim that deliberate practice explains expert performance
+SET 17 | APART distance-priming,spatial-priming,spatial-priming-for-emotional-closeness | different Williams Bargh sub-studies and outcomes; spatial-priming too vague
+SET 18 | MERGE into=door-in-the-face-effect from=door-in-the-face-technique | same Cialdini door-in-the-face compliance effect
+SET 19 | APART dynamic-norms,dynamic-norms-control-as-control-interest,dynamic-norms-static-as-control-interest | different control comparisons and outcomes
+SET 20 | MERGE into=unlikely-future-actions-are-segmented-into-fewer-units from=effect-of-subjective-likehood-on-construal-level | same Wakslak likelihood and construal claim; forrt name has typo
+SET 21 | APART effects-of-smiling-emoticons-on-virtual-first-impressions-smileys-form,effects-of-smiling-emoticons-on-virtual-first-impressions-smileys-form-9bcb,effects-of-smiling-emoticons-on-virtual-first-impressions-smileys-form-a3d2,effects-of-smiling-emoticons-on-virtual-first-impressions-smileys-form-4063,effects-of-smiling-emoticons-on-virtual-first-impressions-smileys-form-3eed | different outcomes and mediation paths (appropriateness, competence, warmth)
+SET 22 | MERGE into=false-memories-eyewitness-testimony from=post-event-collision-wording-changes-speed-estimates | same Loftus Palmer misleading wording memory effect
+SET 23 | MERGE into=implicit-theory-of-mind-measured-through-anticipatory-looking from=false-belief-anticipatory-looking-in-the-southgate-task | same Southgate false-belief anticipatory looking claim
+SET 24 | MERGE into=false-belief-looking-in-the-southgate-task from=theory-of-mind | same Southgate anticipatory looking claim; Theory of Mind name too broad
+SET 25 | MERGE into=fertility-facial-preferences from=fertility-facial-preferences-effect | same Penton-Voak cycle-dependent masculine face preference
+SET 26 | APART footbridge,speedboat | different moral dilemma scenarios and hypotheses
+SET 27 | MERGE into=goal-conflict-and-work-and-leisure-time-spent from=goal-conflict | same goal conflict work and leisure claim
+SET 28 | MERGE into=grey-matter-and-distractibility from=structural-brain-behaviour-correlations-the-association-between-distra | same Kanai distractibility and grey matter claim
+SET 29 | MERGE into=grey-matter-and-social-networks from=online-social-network-size-and-regional-grey-matter-volume,structural-brain-behaviour-correlations-the-association-between-social | same Kanai social network size and grey matter claim
+SET 30 | APART gustatory-disgust-bitter-test-group,gustatory-disgust-disgust-test-group-conservative,gustatory-disgust-disgust-test-group-liberal-results,gustatory-disgust-sweet-test-group,gustatory-disgust-sweet-test-group-conservative,gustatory-disgust-sweet-test-group-liberal-results | different taste conditions and analysis variants
+SET 31 | MERGE into=handedness-differences-in-schizophrenia from=handedness-differences-schizophrenia | same non-right-handedness in schizophrenia claim
+SET 32 | MERGE into=weight-importance-effect from=holding-a-heavy-clipboard-increases-judgments-of-importance | same Jostmann weight embodies importance effect
+SET 33 | MERGE into=impact-of-scarcity-on-attention from=scarcity-reallocates-attention-and-increases-overborrowing | same Shah 2012 scarcity and attention claim
+SET 34 | MERGE into=impact-of-scarcity-on-wellbeing from=scarcity-effect-wellbeing | same Layous time scarcity and wellbeing claim
+SET 35 | MERGE into=product-size-on-status-signaling from=larger-products-signal-higher-status-retracted-original | same claim that larger products signal higher status
+SET 35 | APART product-size-and-status | low-power consumers choosing supersized items is a different claim
+SET 36 | APART main-effect-for-incentive-structure-gain-framed-vs-loss-framed,main-effect-for-recall-activity,main-effect-for-task-eager-vs-vigilant,simple-effect-of-task-in-the-gain-frame-condition-of-the-task-x-incent,simple-effect-of-task-in-the-loss-frame-condition-of-the-task-x-incent,simple-effect-of-task-in-the-prevention-condition-of-the-task-x-recall,simple-effect-of-task-in-the-promotion-condition-of-the-task-x-recall,task-x-incentive-structure-interaction-effect-significance-of-overall,task-x-recall-activity-interaction-effect-significance-of-overall-inte | distinct main effects, simple effects and interactions from two experiments
+SET 37 | MERGE into=mental-simulation-match-advantage-object-orientation from=sentence-implied-orientation-speeds-matching-picture-recognition | same orientation match advantage in picture verification
+SET 38 | MERGE into=mental-simulation-match-advantage-object-shape from=sentence-implied-object-shape-speeds-recognition-of-matching-pictures | same shape match advantage in picture verification
+SET 39 | MERGE into=spatial-schema-priming-shifts-ambiguous-temporal-interpretation from=metaphoric-restructuring-effect | same Boroditsky spatial priming of time; forrt name garbled
+SET 40 | MERGE into=modulation-of-1-f-noise-on-the-weapon-identification-task from=modulation-of-1-f-noise-racial-bias | same Correll 1/f noise effort effect, reworded
+SET 41 | MERGE into=motivational-role-of-l2-vision from=vision-as-a-driver-of-second-language-motivation | same L2 vision motivates language learning claim
+SET 42 | MERGE into=social-referencing-effect from=offensive-remarks-direct-gaze-toward-an-able-to-hear-target | same Crosby gaze toward offended person who can hear
+SET 43 | APART own-age-bias-correlation,own-age-bias-group-difference | correlation with age versus older-versus-young group comparison
+SET 44 | MERGE into=oxytocin-on-trust from=oxytocin-trust | same Kosfeld oxytocin increases trust claim
+SET 45 | MERGE into=personality-traits-and-consequential-life-outcomes from=personalities-and-outcomes | same Big Five predicts life outcomes claim
+SET 46 | MERGE into=power-impairs-perspective-taking-effect from=power-priming-impairs-perspective-taking | same Galinsky power impairs perspective taking claim
+SET 47 | MERGE into=preferences-for-uniqueness-and-conformity from=useast-asian-preference-for-uncommon-color-pens | same Kim Markus pen choice cultural difference
+SET 48 | APART prosocial-orientation-correlates-with-attachment-siblings-and-age,social-value-orientation | three-correlate claim versus attachment-only claim
+SET 49 | MERGE into=prosocial-spending from=prosocial-spending-raises-happiness-relative-to-personal-spending | same Dunn spending on others raises happiness
+SET 50 | MERGE into=risk-and-goal-message-framing from=risk-goal-message-framing | same Rothman gain and loss framing by behaviour type
+SET 51 | MERGE into=scarcity-effect-brand-attitudes from=scarcity-brand-attitudes | same name with different wording, same claim
+SET 52 | MERGE into=scarcity-effect-competition-threat from=scarcity-competition | same name with different wording, same claim
+SET 53 | MERGE into=scarcity-effect-overborrowing from=scarcity-overborrowing | same name with different wording, same claim
+SET 54 | MERGE into=scarcity-effect-planning from=scarcity-planning | same name with different wording, same claim
+SET 55 | MERGE into=scarcity-effect-preference-for-material-goods from=scarcity-prefer-material-goods | same name with different wording, same claim
+SET 56 | MERGE into=scarcity-effect-preference-polarisation from=scarcity-preference-polarisation | same name with different wording, same claim
+SET 57 | MERGE into=scarcity-effect-product-use-creativity from=scarcity-product-use-creativity | same name with different wording, same claim
+SET 58 | MERGE into=scarcity-effect-wage-rates from=scarcity-wage-rates | same name with different wording, same claim
+SET 59 | MERGE into=scarcity-effect-attention from=wood-et-al-2008 | borrowing by rich versus poor is Shah scarcity claim; name is garbled
+SET 60 | MERGE into=self-protective-subjective-temporal-distance-effect from=self-esteem-strengthens-distancing-from-negative-past-experiences | same Ross Wilson self-esteem and temporal distance claim
+SET 61 | MERGE into=social-comparison from=social-comparison-amplifies-body-dissatisfactionfat-talk-association | same interaction claim; retested name is garbled
+SET 62 | MERGE into=stereotype-threat-on-gender-differences-in-political-knowledge from=stereotype-threat | same Ihme Tausendpfund stereotype activation lowers womens political knowledge
+SET 63 | MERGE into=stroop-effect from=stroop-word-color-interference | same Stroop colour-word interference effect

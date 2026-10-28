@@ -1,0 +1,442 @@
+rr|10.1037/0022-3514.74.6.1464|10.1177/1745691619863798 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Review of IAT construct validity; no new test of the bias finding.
+rr|10.1177/2167696812466548|10.1177/2167696812466842 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Argumentative commentary against Twenge; no new data collected or reanalysed.
+rr|10.1177/0956797611432497|10.1177/0956797613485092 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | Critique of top-down perception claims; abstract does not say if effect retested.
+rr|10.1016/j.jesp.2015.09.014|10.1080/15534510.2012.663741 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New experiment on third-party reactions to ingroup hypocrisy; not a retest.
+rr|10.1016/b978-0-12-205050-3.50008-7|10.1007/s11205-004-6170-z | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | Reply to critics; no abstract, so unclear whether it retests the paradox.
+rr|10.1016/j.cognition.2014.09.006|10.17759/exppsy.2017100102 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Alcohol experiment on moral dilemmas; shifts went both ways, no consistent utilitarian increase.
+rr|10.1007/s10508-015-0637-7|10.1007/s10508-016-0713-7 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Title reports data contradicting the original association; no abstract, so inferred.
+rr|10.1007/bf00461152|10.1111/jopy.12382 | NEW_DATA_REPLICATION | YES | MIXED | - | New global survey: effort facet tied to well-being, interest-consistency facet not.
+rr|10.3758/bf03201278|10.1080/14640747808400654 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Regression on anagram solution included age of acquisition; its result not stated.
+rr|10.1016/s0001-6918(00)00021-4|10.1080/17470218.2012.719528 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Chinese grammatical-category study; age-of-acquisition result in semantic decision not stated.
+rr|10.1016/s0022-5371(73)80036-2|10.3758/bf03195507 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | French picture norms; no abstract, unclear if age-of-acquisition effects were tested.
+rr|10.1016/s0022-5371(73)80036-2|10.1080/17470210701814352 | NEW_DATA_REPLICATION | YES | FOUND | - | Significant age-of-acquisition effect reported in object naming, among other tasks.
+rr|10.1037/0278-7393.24.2.515|10.1080/17470210701814352 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | No delayed picture-naming task; tasks were verification, classification and immediate naming.
+rr|10.1037/0278-7393.24.2.515|10.1080/13506280544000093 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Delayed naming showed no age-of-acquisition effect, though immediate naming did.
+rr|10.1037/0278-7393.21.1.116|10.1080/095414400382208 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Dutch immediate naming, lexical decision and priming; no delayed naming test.
+rr|10.1080/095414496383149|10.1080/13594320500165896 | NEW_DATA_REPLICATION | YES | MIXED | - | Spanish naming: age of acquisition predicted latencies, frequency lost significance in regression.
+rr|10.1080/095414400382208|10.1080/17470210601100126 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Regression comparing theories of age of acquisition; data source and effect tests unclear.
+rr|10.3758/bf03202720|10.1080/09541440340000097 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Frequency manipulated in object decision; abstract only implies it did not explain effect.
+rr|10.1016/s0022-5371(73)80042-8|10.1080/095414400382208 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Immediate naming, lexical decision, priming only; delayed naming frequency effect untested.
+rr|10.1016/s0022-5371(73)80042-8|10.3758/s13421-019-00986-6 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Age of acquisition in compound-word naming; frequency effect is not the question.
+rr|10.1016/0278-2626(83)90021-0|10.1525/collabra.88320 | NEW_DATA_REPLICATION | YES | FOUND | - | Multi-study replication; Faces study (chimeric faces) reported as supporting the original.
+rr|10.1037/0022-0663.69.4.309|10.1525/collabra.88320 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Abstract does not say which of the eight studies matches perspective-switching.
+rr|10.1037/0278-7393.31.1.3|10.1525/collabra.88320 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Abstract does not say which of the eight studies matches the feedback finding.
+rr|10.1037/e524912015-029|10.1371/journal.pmed.1001756 | META_ANALYSIS | NO | NOT_APPLICABLE | - | Older-adult computerized training meta-analysis; outcomes are memory and speed, not fluid intelligence.
+rr|10.1037/e524912015-029|10.1177/1529100616661983 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Narrative evidence review of brain-training literature; no new test or pooling.
+rr|10.1007/bf02769363|10.2466/pms.1991.72.2.483 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Videogame experience and anticipation timing in children; spatial skills not measured.
+rr|10.1017/s1366728903001007|10.1017/s0305000915000276 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Examines language proficiency within bilinguals; not a bilingual versus monolingual advantage test.
+rr|10.1177/001698626500900103|10.3389/fpsyg.2017.01067 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Bilingual versus monolingual divergent thinking, but abstract reports flexibility only, not fluency.
+rr|10.1037/h0028767|10.3389/fpsyg.2017.01067 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Bilinguals outperformed monolinguals on flexibility, opposite to the original monolingual advantage.
+rr|10.1097/00001756-199612200-00068|10.1098/rspb.2012.0500 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Doubled-sample rock-paper-scissors replication does not support the automatic imitation conclusion.
+rr|10.1037/0096-3445.106.3.226|10.1016/j.cognition.2013.09.001 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests cross-domain conflict adaptation, a new claim, not the sequence effect itself.
+rr|10.1016/0001-6918(82)90036-1|10.2478/v10053-008-0032-1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Theoretical overview of subliminal priming mechanisms; no single retest of the finding.
+rr|10.1037/h0031564|10.1080/23273798.2020.1849749 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Priming and interference in people with aphasia; clinical group, different question.
+rr|10.1016/j.cognition.2006.02.009|10.1080/20445911.2017.1281283 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Found a colour match advantage, opposite to the original mismatch advantage.
+rr|10.1016/j.cognition.2006.02.009|10.3758/s13421-017-0708-1 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Conceptual replication found colour match advantage, not the original mismatch advantage.
+rr|10.1111/1467-9280.00430|10.1080/20445911.2017.1281283 | NEW_DATA_REPLICATION | YES | FOUND | - | Match advantages reported for shape, size and colour; only orientation lacked one.
+rr|10.1080/17470210802618900|10.1080/0163853x.2016.1175899 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Eye-tracking reading study: semantic size alone did not influence word processing.
+rr|10.1177/0956797618806296|10.3758/s13423-022-02150-9 | NEW_DATA_REPLICATION | YES | FOUND | - | Title reports failure to notice transpositions with serial presentation; effect persists (inferred).
+rr|10.1177/0956797618806296|10.3758/s13423-020-01819-3 | NEW_DATA_REPLICATION | YES | FOUND | - | Change-detection task showed transposition effects, larger for word sequences than nonwords.
+rr|10.1111/j.1467-9213.2009.624.x|10.1007/s11229-019-02221-w | NEW_DATA_REPLICATION | YES | MIXED | - | Error salience affected knowledge judgments only sometimes, in ways consistent with invariantism.
+rr|10.7551/mitpress/7458.003.0084|10.1080/1357650x.2019.1619750 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Hand skill asymmetry and fitness markers; dyslexia not mentioned.
+rr|10.1080/135765099396980|10.1186/s40359-020-00401-9 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Hong Kong sample found no increased left-handedness in twins.
+rr|10.3758/bf03213926|10.1521/soco.2011.29.4.476 | NEW_DATA_REPLICATION | YES | MIXED | - | Cued objects preferred when sender trustworthy; not shown for untrustworthy sender.
+rr|10.1080/87565649009540453|10.1348/000709902158801 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Dyslexic students tested on verbal fluency, but abstract gives no fluency result.
+rr|10.1037/a0018366|10.1177/17470218211046350 | NEW_DATA_REPLICATION | YES | FOUND | - | Precision interacted with neighbourhood density in masked priming, extending the original pattern.
+rr|10.1073/pnas.1511269112|10.1177/09567976221119727 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Preregistered study did not replicate group differences in empathy under placebo analgesia.
+rr|10.2307/1413350|10.2466/pms.1992.74.2.443 | NEW_DATA_REPLICATION | YES | FOUND | - | Auditory imagery interfered with tone detection, an auditory Perky effect.
+rr|10.2307/1413350|10.2466/pms.1969.28.3.791 | NEW_DATA_REPLICATION | YES | FOUND | - | Perky replication condition gave poorest detection sensitivity while imagining.
+rr|10.1016/j.jesp.2008.03.004|10.1037/xge0000236 | NEW_DATA_REPLICATION | YES | FOUND | - | Not responding to appetitive stimuli caused devaluation in experiments one to three.
+rr|10.1038/nn.3689|10.1111/bjop.12349 | NEW_DATA_REPLICATION | YES | FOUND | - | Attraction toward the preceding stimulus found across trials in working memory.
+rr|10.1006/cogp.1998.0681|10.3758/bf03194784 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Viewpoint dependence of scene learning; no abstract, unclear if cueing was retested.
+rr|10.1006/cogp.1998.0681|10.1037/a0028644 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests working memory load effects on contextual learning, a different question.
+rr|10.1037/h0045925|10.1002/ab.21655 | META_ANALYSIS | NO | NOT_APPLICABLE | - | Meta-analysis of hostile appraisals, not aggressive behaviour from violent media.
+rr|10.1037/h0045925|10.1037/bul0000074 | META_ANALYSIS | YES | NOT_APPLICABLE | - | Bias-adjusted re-meta-analysis of violent game effects on aggression, not the original data.
+rr|10.1016/0191-8869(83)90061-2|10.1098/rspb.2011.0544 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Digit ratio and male attractiveness; not assertiveness or sex differences.
+rr|10.1016/0191-8869(83)90061-2|10.1371/journal.pone.0121560 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Digit ratio and half-marathon running time; unrelated outcome.
+rr|10.1016/0191-8869(83)90061-2|10.1016/j.paid.2010.06.009 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Digit ratio and sex-role orientation meta-analysis; no abstract, link to assertiveness unclear.
+rr|10.1007/bf00055564|10.1126/science.1091721 | NEW_DATA_REPLICATION | YES | FOUND | - | Organ-donation defaults showed large effects, a conceptual test of default stickiness.
+rr|10.1037/0022-3514.67.3.357|10.3389/fpsyg.2016.01941 | NEW_DATA_REPLICATION | YES | MIXED | - | Regrets of inaction more frequent, but action regrets slightly more intense.
+rr|10.1901/jeab.1961.4-179|10.1901/jaba.2004.37-411 | NEW_DATA_REPLICATION | YES | FOUND | - | DRO reduced disruptive behaviour in preschoolers in an alternating treatments design.
+rr|10.1901/jaba.1985.18-111|10.1177/13623613211065540 | META_ANALYSIS | YES | NOT_APPLICABLE | - | Pools functional communication training studies with delays; reports effectiveness.
+rr|10.1037/0022-3514.77.2.221|10.1111/pops.12093 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests ingroup stereotype account of below-average effect, not task-difficulty account.
+rr|10.1037/0022-3514.77.2.221|10.1016/j.trf.2007.05.002 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Measurement review of driving self-assessment; no abstract, no test of the finding.
+rr|10.1037/t02741-000|10.1080/0887044022000004920 | META_ANALYSIS | NO | NOT_APPLICABLE | - | Meta-analysis of perceived control and optimistic bias; does not test optimism itself.
+rr|10.1086/429600|10.1287/mnsc.1110.1364 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Stock-trade round-number study; left-digit bias is not tested.
+rr|10.1002/hbm.21275|10.1016/j.cortex.2017.03.007 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | Corrigendum with no abstract; unclear what it tests.
+rr|10.1016/j.neures.2010.07.428|10.1016/j.cortex.2017.03.007 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | Corrigendum with no abstract; unclear what it tests.
+rr|10.1016/s0896-6273(00)80475-4|10.1016/j.neuroimage.2009.09.040 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Instructed-fear meta-analysis, no abstract; link to conditioned-fear amygdala unclear.
+rr|10.1016/s0896-6273(00)80475-4|10.1371/journal.pone.0005865 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Descriptive systematic review of 46 conditioning imaging studies; no pooled test.
+rr|10.1016/s0896-6273(00)80475-4|10.1523/eneuro.0445-17.2018 | NEW_DATA_REPLICATION | YES | MIXED | - | No overall amygdala CS+ effect, but amygdala activity attenuated over acquisition trials.
+rr|10.1523/jneurosci.3427-13.2014|10.1126/sciadv.abf4198 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Theta during fear learning (CS+ versus CS-), not recall of conditioned versus extinguished fear.
+rr|10.1037/h0060870|10.1037/xge0000283 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Visual cortex plasticity study; heart-rate orienting appears only as learning index.
+rr|10.1037/h0060870|10.1523/eneuro.0445-17.2018 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | fMRI amygdala study; heart rate modulation not reported.
+rr|10.1002/mrm.22159|10.1371/journal.pone.0068250 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Three-group classification study; depression-versus-control accuracy not separately stated.
+rr|10.1017/s1355617709090365|10.1186/s13195-015-0099-0 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Systematic review of daily-living deficits in MCI; no pooled test.
+rr|10.1007/bf02322211|10.1111/1529-1006.01431 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Review of self-esteem outcomes; no new test of the findings.
+rr|10.1126/science.179.4068.90|10.2466/pms.2000.91.2.697 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Social status and stress did not predict sex ratio; self-esteem link opposed prediction.
+rr|10.1001/archneurpsyc.1925.02200170002001|10.1080/00797308.1955.11822551 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | Psychoanalytic paper on strephosymbolia; no abstract, unclear whether it tests mirror reading.
+rr|10.1037/0022-3514.67.3.357|10.1002/acp.1386 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Survey of regret predictors; does not state action-inaction regret pattern result
+rr|10.1126/science.1198364|10.1126/sciadv.aay3689 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Follow-up of the original participants on adult outcomes, not independent test
+rr|10.1136/tobaccocontrol-2013-051170|10.3390/ijerph14010098 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Asks how warning-smoking link varies by education across countries
+rr|10.1177/1948550614567356|10.1111/pops.12681 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests left-right asymmetry in conspiracy thinking, not extremism's quadratic effect
+rr|10.1037/h0081881|10.1126/science.1110589 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests competence inferences from faces, not attractiveness
+rr|10.1037/h0081881|10.1177/1532673x14532825 | NEW_DATA_REPLICATION | YES | MIXED | - | New coding of attractiveness and election success; effect only in same-gender races
+rr|10.1037/h0081881|10.1111/ssqu.12155 | NEW_DATA_REPLICATION | YES | MIXED | - | Attractiveness swayed uninformed voters but not informed voters
+rr|10.1007/s100710050013|10.1007/s10071-018-1205-z | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New study on ostensive signals and chimp gaze following; no abstract
+rr|10.1037/0735-7036.108.4.307|10.1007/s10071-005-0008-1 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | Comparative review of pointing comprehension; no abstract, primate coverage unclear
+rr|10.1007/s100710050016|10.1371/journal.pone.0021676 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests context and tone of voice effects on pointing; pointing only a control
+rr|10.1007/s100710000070|10.1038/s41598-017-12055-6 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Compares wolves and dogs on cue types; gaze following not reported
+rr|10.1007/s100710050046|10.1038/s41598-021-95727-8 | NEW_DATA_REPLICATION | YES | MIXED | - | Horses followed pointing, but only those sustaining high attention
+rr|10.1016/j.anbehav.2004.05.008|10.3389/fpsyg.2020.00915 | NEW_DATA_REPLICATION | YES | MIXED | - | Goats used near pointing but not distant asymmetric pointing
+rr|10.1038/s41598-020-73426-0|10.3390/ani10122256 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Slow blinks and rehoming speed; different question from eye-narrowing finding
+rr|10.31234/osf.io/grb54|10.1177/00222194221095265 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Stuttering rate in struggling readers; earlier preprint's claim not shown
+rr|10.1111/j.2044-8295.1962.tb00835.x|10.1177/2167702614535914 | NEW_DATA_REPLICATION | YES | MIXED | - | Stress-reaction trait relates to fear conditioning, in mixed directions
+rr|10.1111/j.2044-8295.1962.tb00835.x|10.1177/0145445506295054 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Extraversion measured as predictor; its result is not stated
+rr|10.3758/bf03198377|10.1111/1467-9817.12040 | NEW_DATA_REPLICATION | YES | FOUND | - | Clear robust age-of-acquisition effect in demasking and lexical decision
+rr|10.1080/713754339|10.1186/s40359-020-00401-9 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | No evidence of increased left-handedness in twins
+rr|10.1086/261737|10.1086/317590 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Studies why buyer and seller prices differ; mechanism, not endowment test
+rr|10.1017/cbo9780511618031.017|10.1177/1745691614553988 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Methods paper; choice overload meta-analysis used only as illustration
+rr|10.1073/pnas.1004932107|10.1016/j.cortex.2017.03.007 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Corrigendum notice with no abstract; not itself a test
+rr|10.1016/j.biopsych.2007.04.032|10.1093/cercor/bhq253 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Brain structure and conditioning; abstract never reports dorsal anterior cingulate result
+rr|10.1371/journal.pone.0021676|10.1371/journal.pone.0021676 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Later paper is the earlier study itself, not a separate test
+rr|10.1007/s13164-009-0014-3|10.1017/epi.2011.2 | NEW_DATA_REPLICATION | YES | FOUND | - | New experiments report strong support for a stakes effect
+at|at_00e8e1b112 | NEW_DATA_REPLICATION | YES | MIXED | - | Humour style profiles inconsistent across countries and prior literature
+at|at_022eab37c9 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_02c8df2465 | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Smith paper; no abstract or result
+at|at_03d55573e5 | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Bruner paper using author data; no result
+at|at_03edf91ee8 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates 20 scarcity studies; Mani study not named
+at|at_05c563c3da | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Goeree paper using author data; no result
+at|at_080de96db5 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_0823b7507a | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Bayesian evidence supports null for implicit religious priming
+at|at_0846cd6923 | NEW_DATA_REPLICATION | YES | FOUND | - | Sleepiness increased interpretive bias in workplace studies, with threat condition
+at|at_087c4bab7b | META_ANALYSIS | NO | NOT_APPLICABLE | - | Pools procedures that change implicit measures; not the implicit bias effect
+at|at_08c87d54b4 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates 20 scarcity studies; Cook and Sadeghein not named
+at|at_08f4f3af84 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Truncated abstract; unclear whether it tests Goodstein's findings
+at|at_0a107dca4a | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_0d0e31fc9d | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Li paper using author data; no result
+at|at_0d9530a0f7 | REANALYSIS | YES | MIXED | - | Comment corrects model errors; volatility effects hold but calibration and net exports fail
+at|at_0d9f0ed672 | NEW_DATA_REPLICATION | YES | FOUND | - | Rehearsal beat suppression and silence in grammar learning, mirroring original design
+at|at_0ee3104899 | NEW_DATA_REPLICATION | YES | FOUND | - | Gold-MSI results replicated well overall, with noted caveats
+at|at_109e093eaf | NEW_DATA_REPLICATION | YES | FOUND | - | Self-described replication and extension; reaffirms the .70 individual-level minimum
+at|at_1397fdcd1a | REANALYSIS | YES | MIXED | - | Rational expectations violated, but significantly less than originally reported
+at|at_1424c476a5 | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Antras paper using author data; no result
+at|at_1809be6977 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Partial replication with 2015-16 data; replication outcome not stated
+at|at_18e05ddb9d | NEW_DATA_REPLICATION | YES | MIXED | - | TLR4 allele replicated for Crohn's disease but not ulcerative colitis
+at|at_18ef5f8e08 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | Reply article with no abstract; unclear whether it contains new tests
+at|at_19f92b7c94 | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Andreoni paper using author data; no result
+at|at_1a7766738e | NEW_DATA_REPLICATION | YES | MIXED | - | Partial replication; results correlated strongly but differed in noteworthy ways
+at|at_1acc2e0c34 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests neuroticism by conscientiousness and agreeableness on misconduct, not Witt's interaction
+at|at_1b49b4bb79 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates an unnamed design-research study, not the hierarchy fluency study
+at|at_1bdd05dc4f | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many-labs project of 13 effects; Lorge and Curtiss not named
+at|at_1becf88f4d | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Evaluates convex budget data from a different Andreoni-Sprenger paper
+at|at_1d52a3d6af | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_1dd8238b39 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates five unnamed brain-behavior studies; Kanai inclusion not confirmed
+at|at_1dff255a6d | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Focuses on organizational fit as a resource, not demand differentiation
+at|at_1e13d28651 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 176 student replications; Rychlowska study not identified
+at|at_22bf38562e | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Cohen paper using author data; no result
+at|at_23d99a578a | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 176 student replications; Griffiths and Tenenbaum study not identified
+at|at_243ff8d654 | NEW_DATA_REPLICATION | YES | FOUND | - | Field trial reports earlier lab results replicated for combined therapy package
+at|at_24ac0af202 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Review re-evaluates the risk-framing hypothesis; evidence weak and inconsistent
+at|at_26029b42d2 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_27d1ac82fc | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests a modified factor structure, not questionnaire-versus-interview comparison
+at|at_293171ef19 | NEW_DATA_REPLICATION | YES | FOUND | - | Replicate-and-extend studies; reasoning-intelligence disconnect extended to other sciences
+at|at_2a3ee7b685 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Tests a new first-offer model; earlier anchoring finding not shown
+at|at_2b572c33a8 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Main question is joint action; crossmodal effect replicated only as baseline
+at|at_2e5da5da75 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 176 student replications; Gray mind-perception study not identified
+at|at_2e7986dc20 | NEW_DATA_REPLICATION | YES | FOUND | - | Community replication of Lovaas model; significantly higher IQ and adaptive behavior
+at|at_2f78cc2fef | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_30f12f0b76 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Says it replicates prior work and extends; replication outcome not stated
+at|at_320ff92973 | NEW_DATA_REPLICATION | YES | FOUND | - | 87% of 78 trait-outcome replications significant in expected direction
+at|at_3419ddb0c3 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Experiment on buyer-seller valuation; Vickrey's auction theory not tested
+at|at_34feaa8792 | REANALYSIS | YES | NO_RESULT_STATED | - | Titled reproduction of the Weidmann paper using author data; no result
+at|at_35223c75d5 | REANALYSIS | YES | MIXED | - | Comment finds misreported standard test; case for heterogeneity weaker
+at|at_35605c0982 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_35c5958fd2 | REANALYSIS | YES | FOUND | - | Replication analyses on original data validate the original trial findings
+at|at_385b923908 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; this study not named in abstract
+at|at_3949248236 | META_ANALYSIS | NO | NOT_APPLICABLE | - | Pools IAT criterion studies on predictive validity, not the IAT association effect itself
+at|at_3c029efde6 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study brain-behaviour replication; abstract never names this white matter study or its outcome
+at|at_3ca845a63a | NEW_DATA_REPLICATION | YES | FOUND | - | Replicated the same song analysis in silvery gibbons; significant female individuality found
+at|at_3d57d864e2 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New rational model of peer reactions to high performers; only replicates its own study
+at|at_3d57f12074 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New observational study of bedtimes and OCD severity, not a test of the review
+at|at_3db4fb6f95 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_3ef15d2011 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Six studies found no interrogative versus declarative self-talk difference
+at|at_3f5721f813 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests positive contagion from a pro's putter, not good-luck superstition
+at|at_405e2e5b3b | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction found many issues; declined to replicate; effect neither confirmed nor refuted
+at|at_429c06272e | NEW_DATA_REPLICATION | YES | FOUND | - | Replicated comprehension-to-production structural priming in syntactic choice; other measures null
+at|at_4440deb193 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_4448e24b1a | NEW_DATA_REPLICATION | YES | MIXED | - | Replication and extension; age effect replicated but vanished controlling for salary
+at|at_46d37dde32 | REANALYSIS | YES | NOT_FOUND | - | Replication finds key results not robust; does not support net worth causing hedging
+at|at_47d3441def | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests ingroup versus outgroup deviant judgement, not identification effects on ingroup ratings
+at|at_4815e79758 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | New work-unit LMX study; failed replication cited is of unnamed earlier research
+at|at_48d3cea324 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Meta-analysis plus experiments on linguistic experience; bilingual finding not explicitly tested
+at|at_49dc14caf3 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates a different GWAS (nephropathy loci), not the type 2 diabetes loci
+at|at_4a0759a87c | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Dataset of 176 student replications; abstract does not name this study
+at|at_4a496b53fe | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_4a6cb74036 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Threat-of-shock shooting task, not angry-face freezing
+at|at_4b217ba407 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_4b45683b53 | REANALYSIS | YES | MIXED | - | Recoding civil wars overturns rebound claim; financial crisis persistence not challenged
+at|at_4b6dd83995 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; title alone does not show whether it tests the earlier finding
+at|at_4c191d1433 | REANALYSIS | YES | NOT_FOUND | - | Diseconomies of scale result is an artifact of data errors; not found post-2001
+at|at_4cd0a259ea | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_4dc013a3a7 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Dataset of 176 student replications; abstract does not name this study
+at|at_4e1eae84f3 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 20 scarcity replications; abstract does not name this study or its result
+at|at_4ee7022d25 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Examines microsaccade inhibition habituation, a different measure from saccadic capture
+at|at_4fe82e3323 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_520e1fb141 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; review plus multi-task study, unclear it tests speeded naming effect
+at|at_5296dc710e | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Exploratory field goal-setting study; does not name or test task complexity moderation
+at|at_52beb11a34 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Ten RP:P studies re-run; abstract does not name this one
+at|at_530c02a466 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_53a5dfae4d | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_53d6ce68a2 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; title is a reply, unclear whether it tests the finding
+at|at_53f0736ff5 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Secondary-data path analysis; replicated earlier associations are not tied to this paper
+at|at_5517714526 | REANALYSIS | YES | NO_RESULT_STATED | - | Re-estimates the Supreme Court model; abstract does not say the original result changed
+at|at_58da8f46b5 | NEW_DATA_REPLICATION | YES | MIXED | - | Segmentation learning confirmed; many moderations, such as cue effects, failed to replicate
+at|at_5ab4c54e0e | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Policy argument for correcting scores; assumes Flynn gains rather than testing them
+at|at_5abf86d9ce | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; boundary-condition helping study, unclear it tests the original effect
+at|at_5aca89e6ac | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | Explicit replication attempt; authors could not replicate the racism by climate interaction
+at|at_5b51eedcb8 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_5c3bfde880 | NEW_DATA_REPLICATION | YES | MIXED | - | Authors claim replication; baseline effect lost with added covariates, change effect held
+at|at_5e28e454fa | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Replacement-rate model lists age of acquisition but states no result for it
+at|at_5e93a6e5bb | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; a note on the paper could be commentary or re-estimation
+at|at_5f08ea5b57 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Dataset of 176 student replications; abstract does not name this study
+at|at_5f7dae7e41 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests placebo analgesia effect on prosocial helping, not on empathy for pain
+at|at_606f933046 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests negative-state helping theory with lost letters, not the positive mood effect
+at|at_637d487efb | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_63e7a3e5b8 | NEW_DATA_REPLICATION | YES | MIXED | - | Repeated profile on 2010-2015 patients; several characteristics differ, others not reported changed
+at|at_64f010fec4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates a 2006 unconscious thought study, not the mood and helping finding
+at|at_6532b134db | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Uses the genetic score to predict disinhibition, not retesting the genome-wide association
+at|at_687a9eed33 | REANALYSIS | YES | FOUND | - | Generally successful replication of results, with minor discrepancies and small errors found
+at|at_69adec8c58 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New minimal-pair experiments on L2 encoding, not retesting articulatory training effect
+at|at_6d791a07da | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_6dedcf7624 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Reply disputing the narcissism increase with critique and counterevidence, no new data
+at|at_6e0718ff10 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Replication and extension on new sample; abstract gives no clear verdict on original result
+at|at_6ee923d07b | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_709f62ef9b | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | No abstract; nine replications, title does not name this study
+at|at_710375f706 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests immediate questioning and false memory in children, not the testing effect review
+at|at_71ddded8cb | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_71f43c25a3 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_7268d42c17 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_7334567f7e | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 20 scarcity replications; abstract does not name this study or its result
+at|at_74cefbc038 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New six-year trait-state study of scale stability, not the original development findings
+at|at_75c559bb23 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Dataset of 176 student replications; abstract does not name this study
+at|at_786159dc3c | NEW_DATA_REPLICATION | YES | FOUND | - | Replicated between-person effect: higher situation awareness predicted better performance
+at|at_78e8aec9fe | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; Serbian priming study, unclear it is a test of the original
+at|at_7bf5b1bd46 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New study of narcissism, intelligence and well-being, a different question
+at|at_7c3c213e1c | REANALYSIS | YES | FOUND | - | Same data reproduces the mafia GDP loss; magnitude only slightly overestimated
+at|at_7c5a5fea98 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_7c9316eaf2 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_7cdd7190f6 | NEW_DATA_REPLICATION | YES | MIXED | - | Older adults: agency and feedback advantage replicated, body schema ownership link not
+at|at_7f33abf700 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_7f5f8dec17 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Title states a new data replication of this paper; no outcome given
+at|at_7fd57f85fd | NEW_DATA_REPLICATION | YES | MIXED | - | Largely aligns on waste and management, but contrasts with original on releases
+at|at_807010c008 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data; no outcome given
+at|at_81221bef73 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | 100-study replication project; abstract does not name this study or its result
+at|at_817bacda53 | REANALYSIS | YES | NO_RESULT_STATED | - | Title names a reproduction with author data and code; no outcome given
+at|at_7c28e73737 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Scarcity audit replicates 20 studies; abstract does not name this one or its result.
+at|at_8778e4f5f0 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result given.
+at|at_87a9ea0ca3 | META_ANALYSIS | YES | NOT_APPLICABLE | - | Pools hundreds of validity studies; replicates and extends differential validity result.
+at|at_88c465f9f6 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_8af82d77ab | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Replication and extension with new MBA sample; outcome on original claim unclear.
+at|at_8becfc9554 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Meta-analysis of media and relational aggression; no abstract, differs from imitation study.
+at|at_8bf6a3cfa8 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset; abstract does not say this study was tested or its result.
+at|at_8de9a7eb12 | NEW_DATA_REPLICATION | YES | NOT_FOUND | - | New nurse sample; directional support but magnitude not significant.
+at|at_8e4eb71ba4 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Comment critiquing data quality and method of the original mobility study.
+at|at_8e7f61c9ee | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 abstract does not identify this study or its individual result.
+at|at_8eb3854004 | NEW_DATA_REPLICATION | YES | FOUND | - | Replicated and extended; tool largely valid and generally reliable, slightly lower scores.
+at|at_8ff023faf4 | REANALYSIS | YES | FOUND | - | Replicates Bloom's VAR results in narrow sense, then extends model.
+at|at_907c603b93 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | Abstract is PNAS boilerplate; title alone does not settle kind.
+at|at_91193259f8 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_92c039945e | REANALYSIS | YES | NOT_FOUND | - | Comment finds Chang's empirical results depend on specification; not robust.
+at|at_92ca536c00 | NEW_DATA_REPLICATION | YES | FOUND | - | Title calls it a compelling replication of goal-level results; no abstract.
+at|at_92e7480a36 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_94a4b02c5c | NEW_DATA_REPLICATION | YES | MIXED | - | Sex differences replicate in three countries; personality correlates mixed.
+at|at_953a08aa6a | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New food conditioning experiments on generalization, not testing the misattribution finding.
+at|at_970ec3ecc2 | REANALYSIS | YES | MIXED | - | Supports panel stationarity conclusion but contradicts original univariate findings.
+at|at_9719e1e817 | REANALYSIS | YES | NOT_FOUND | - | Reanalysis rejects single sharp critical age; finds steady decline.
+at|at_9781c649d9 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_98e7a76062 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Note qualifying Liu's conclusions due to intercorrelated indicators; result not stated.
+at|at_9b24d467ae | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Conceptually replicates Demanet and Liefooghe 2014, a different study.
+at|at_9b34010058 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_9de93d86ab | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 abstract does not identify this study or its individual result.
+at|at_9e177f5ea1 | NEW_DATA_REPLICATION | YES | MIXED | - | French replication of Bartlett; reports similarities and differences with original.
+at|at_9eef8d5e76 | REANALYSIS | YES | MIXED | - | Replication finds original results problematic but alternative model supports hypothesis.
+at|at_9f1ec2583d | NEW_DATA_REPLICATION | YES | FOUND | - | Hong Kong constructive replication; thesis supported, women trade off, men do not.
+at|at_9f47c07920 | NEW_DATA_REPLICATION | YES | FOUND | - | Aims to replicate; problem behaviors predicted placement disruption in regular foster care.
+at|at_9f751e01d0 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Critique of Donohue and Wolfers sensitivity analysis, defending deterrence findings.
+at|at_a05f8eace5 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_a0dd35c7cc | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates Papi and Khajavy 2021, not clearly the earlier paper listed.
+at|at_a0e19c863a | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data; no result stated.
+at|at_a1c3887626 | REANALYSIS | YES | MIXED | - | Dropping one outlier pair shrinks return to 5.1 percent, only 10 percent significant.
+at|at_a2890a3a07 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 abstract does not identify this study or its individual result.
+at|at_a32f9c09fa | NEW_DATA_REPLICATION | YES | MIXED | - | Tests objectification theory in bisexual women; good fit but some paths nonsignificant.
+at|at_a6137e81d9 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset; abstract does not say this study was tested or its result.
+at|at_a64ad09166 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_a79b1f99f4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Self-pathology versus neuroticism factor study; does not test personality dysfunction components.
+at|at_a80e1742a9 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_a8728c585a | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New studies on individual differences in narrative persuasion; not a test of transportation.
+at|at_a90853f573 | REANALYSIS | YES | FOUND | - | Pure replication found no major discrepancy; results robust.
+at|at_aa4ae31543 | REANALYSIS | YES | FOUND | - | Narrow replication confirms results; positive correlation stable across models.
+at|at_ab9bbffbeb | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_ac7e5af59d | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates unnamed prior stress research; unclear it targets the control theory.
+at|at_ad1f3336b9 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; title suggests critical review of the IAT.
+at|at_adbe8cf3c0 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New experiments extending fractality to head sway; not a replication.
+at|at_ae6a75f8c1 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Replicates strategic contingency model; abstract only notes differing correlations.
+at|at_b0866a090b | NEW_DATA_REPLICATION | YES | FOUND | - | Three-factor MBI structure replicated in Norwegian human service workers.
+at|at_b1453c4eb2 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Applies the method to firm sizes; does not test original findings.
+at|at_b198a6914f | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_b220541e38 | REANALYSIS | CANNOT_TELL | NOT_FOUND | - | Earlier title is a mismatched case report; comment finds instrument too weak.
+at|at_b38147538f | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates family check-up on depression, not substance use finding.
+at|at_b3cbde8ebd | REANALYSIS | NO | NO_RESULT_STATED | - | Reclassifies data by growth; does not test debt overhang finding.
+at|at_b4a2c77149 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Scarcity audit replicates 20 studies; abstract does not name this one or its result.
+at|at_b5a7f370f7 | REANALYSIS | YES | NOT_FOUND | - | Reproduces Putnam analysis; diversity-trust link is compositional artifact.
+at|at_b6863798f6 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New studies of nostalgia content and function; not framed as testing the survey.
+at|at_b6b956aa2b | NEW_DATA_REPLICATION | YES | MIXED | - | Partly replicated Bass and Yammarino with new manager sample.
+at|at_b73e81a875 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Searches background EEG for RP-like events; does not retest the readiness potential.
+at|at_b77d2e13ad | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | No abstract; title says unsuccessful replication but not method or target.
+at|at_b84b31a446 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset; abstract does not say this study was tested or its result.
+at|at_b88ac1fc13 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | - | Title says replication and extension in business setting; no abstract.
+at|at_bb4b2f45ad | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Title says replication; abstract too thin to tie it to this study.
+at|at_bb58d346bd | META_ANALYSIS | NO | NOT_APPLICABLE | - | Meta-analyses IAT prediction of discrimination, not the IAT effect itself.
+at|at_bc9b8f11d8 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_bd58c5479b | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_bdab70125f | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_be5f8af128 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_c3f22ce47b | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 abstract does not identify this study or its individual result.
+at|at_c5c23da196 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Scarcity audit replicates 20 studies; abstract does not name this one or its result.
+at|at_c687812579 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates five brain-behavior studies; abstract does not name this one.
+at|at_c82ed7ba72 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_caa177b55e | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows replicating the paper's results; no abstract or outcome.
+at|at_cc92da07fa | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Fear-conditioning freezing study, not a test of angry-face freezing.
+at|at_ce806c07d3 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Portuguese psychometric study; no abstract to show it tests the scale.
+at|at_cfcd008a22 | REVIEW_OR_COMMENTARY | YES | NOT_APPLICABLE | - | Reply to Easterlin arguing happiness has risen; abstract truncated.
+at|at_d00a297d03 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Experience sampling study; replication of trait findings not clearly this paper.
+at|at_d0ddac836a | REANALYSIS | NO | NO_RESULT_STATED | - | Tests a new economy hypothesis using the data; original effect not tested.
+at|at_d1ead3e585 | NEW_DATA_REPLICATION | YES | FOUND | - | Bibliometric data show women underrepresented and less cited, a Matilda effect.
+at|at_d228990d8f | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Handedness-depression meta-analysis; no abstract; unclear it tests the asymmetry finding.
+at|at_d267228729 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_d2c6965673 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Scarcity audit replicates 20 studies; abstract does not name this one or its result.
+at|at_d41cf116c2 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | Abstract is background text only; kind and link to the trial unclear.
+at|at_d648517b7b | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Scarcity audit replicates 20 studies; abstract does not name this one or its result.
+at|at_d67ec598bb | NEW_DATA_REPLICATION | CANNOT_TELL | NOT_FOUND | - | Failed replication of Boroditsky 2003; earlier entry has no content to match.
+at|at_d78ec0af4a | NEW_DATA_REPLICATION | YES | FOUND | - | Multi-site replication finds threat detection advantage for snakes and angry faces.
+at|at_d84930ccd6 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 abstract does not identify this study or its individual result.
+at|at_d84e815ccf | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_daa0d2a885 | REANALYSIS | CANNOT_TELL | NO_RESULT_STATED | - | Replicates a different study that applies these estimators; target finding unclear.
+at|at_db1950ebe4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Extends feedback reversal to retrieval difficulty; not a retest of the transfer finding.
+at|at_dc2e8c9c34 | REANALYSIS | YES | NOT_FOUND | - | Replicates then finds no meaningful abortion-crime association in extended analyses.
+at|at_dc9a2279f0 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_dcc40ab2e5 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New studies on emotion regulation moderating breach; not a test of the meta-analysis.
+at|at_dcf9d8145f | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | - | Nigerian recognition experiment; link to the incentive study unclear.
+at|at_dd2614b781 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_ddca67a151 | REANALYSIS | YES | NO_RESULT_STATED | - | Title shows reproduction with author data and code; no result stated.
+at|at_ded940eefb | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset; abstract does not say this study was tested or its result.
+at|at_df0c599d16 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Reproducibility Project; abstract gives only aggregate results, not this study.
+at|at_dfbe30d3a8 | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_e11dfe80f4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests anxiety and timing, not the free-fall duration finding
+at|at_e178c4eaf3 | NEW_DATA_REPLICATION | YES | MIXED | - | Mouse beta cells respond to S961; human beta cells do not
+at|at_e369d0e688 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Analyses comments from Burger's replication; does not test obedience rate
+at|at_e4497a479f | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_e49ad047bf | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New study on mechanisms of repetitive negative thinking
+at|at_e579f45386 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | fMRI study of neural bases, not the behavioural lexical decision effect
+at|at_e5a100cc5f | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_e5cfaa8d01 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Follow-up varying depth consistency and viewpoint, not repeating the cue effect
+at|at_e62abab440 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset; inclusion of this study and result unstated
+at|at_e691c1156f | REANALYSIS | YES | NO_RESULT_STATED | - | Rebuilds Ashton study, finds errors; effect on its result not stated
+at|at_e6cc311b57 | REANALYSIS | YES | FOUND | - | Replication from public data and code confirms Sweden transport emissions reduction
+at|at_e73999b450 | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_e85a2a8c1e | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_e879ec60de | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Titled replication and extension; target study and outcome not stated
+at|at_e96d829eac | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_e9af81ca29 | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction without author data; no outcome stated
+at|at_e9f6a9fcb4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Uses the scale to replicate other findings, not validating it
+at|at_ea63750230 | REANALYSIS | YES | NO_RESULT_STATED | - | Revisits Pitt and Khandker evidence; abstract absent, no outcome stated
+at|at_ec4e71f520 | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_ed1c01bc71 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests negativity bias and ideology, not disgust and immigration opposition
+at|at_ed7c2a0b64 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates a different serial order recognition study
+at|at_ed7c32e176 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-lab project; abstract does not name this study or its result
+at|at_ee05d2d668 | NEW_DATA_REPLICATION | YES | FOUND | - | Replicates Autor et al. and extends; original inequality finding confirmed
+at|at_eebc6d928b | REANALYSIS | YES | FOUND | - | Re-estimates model; basic conclusions robust, laws reduce violent crime
+at|at_ef65e3059c | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_f09f2c6e88 | NEW_DATA_REPLICATION | YES | FOUND | - | Polish and French speakers; grammatical gender cued object gender ratings
+at|at_f0cf2148c7 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests eliminating the Simon effect by instruction, not the effect itself
+at|at_f104f00742 | NEW_DATA_REPLICATION | YES | MIXED | - | Replication and extension; moderate support for some links, good for others
+at|at_f12276e85e | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Audit of 20 scarcity studies; this study's inclusion and outcome unstated
+at|at_f1392835c8 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | - | Review of evidence; no new test of the claim
+at|at_f2097b5b8c | REANALYSIS | YES | NO_RESULT_STATED | - | Retests Fair's model with diagnostics; no verdict on Fair's finding
+at|at_f64a3ca161 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_f68bb439dc | META_ANALYSIS | YES | NOT_APPLICABLE | - | Meta-analysis of deliberate practice and sports performance
+at|at_f693b355cf | REANALYSIS | YES | NO_RESULT_STATED | - | Recomputes spillover index over all orderings; finding's fate not stated
+at|at_f7522ce38b | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Linear versus nonlinear commitment study; Meyer paper is a conceptual model
+at|at_f8208d52a1 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_f8b3ee893f | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | New study of location mapping effects on the Simon effect
+at|at_f98c20ebc3 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-study project abstract; this study's inclusion and outcome not stated
+at|at_fa04002747 | REANALYSIS | YES | NO_RESULT_STATED | - | Reproduction with author data and code; no outcome stated
+at|at_fb2541e453 | REANALYSIS | YES | FOUND | - | Dynare re-implementation; original code results fully replicated, minor discrepancies
+ref||10.1111/j.1539-6053.2009.01038.x | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | YES | Literature review of learning styles; matches Pashler reference
+ref||10.1037/e683342011-086 | NEW_DATA_REPLICATION | YES | MIXED | NO | Three studies on too-much-choice; only justification moderated; different document than dissertation
+ref||10.1177/1745691614553988 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | YES | Methods paper; choice overload reanalysis used only as demonstration
+ref||10.1038/s41598-021-89445-4 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | YES | Cross-cultural vocalization comprehension, not the bouba/kiki effect
+ref||10.1080/00224545.1991.9713892 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | YES | Only a citation as abstract; matches reference
+ref||10.2224/sbp.2003.31.6.613 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | YES | New study of beardedness in hiring, not framed as testing the finding
+ref||10.1080/01973533.2015.1129335 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Reply about money priming data; reference names a different paper
+ref|10.1111/j.1467-9280.2008.02084.x|10.1126/science.aac4716 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | YES | Replication project abstract; this study and result not stated
+ref|10.1111/j.1467-9280.2007.01983.x|10.1037/xge0000111 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Comment on a replication; reference names Gomes and McCullough
+ref||10.1201/9781003210665 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Agriculture book unrelated to signing; reference names a different paper
+ref|10.21236/ad0751041|10.31234/osf.io/ktsrq | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Debate piece; reference names Haslam et al. 2019
+ref|10.1006/jesp.1998.1373|10.1007/978-3-642-85860-4_12 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Unrelated 1969 comment; reference names Agnoli et al.
+ref|10.1037/h0093718|10.1039/ft9969204415 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Chemistry paper unrelated to conformity; reference names Bond and Smith
+ref|10.1111/j.1467-9280.2009.02326.x|10.5194/acp-2019-85-rc1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of unrelated manuscript; reference names Urban et al.
+ref|10.1037/a0023527|10.7748/en.22.8.11.s16 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Book review on bereavement, unrelated; reviews, does not name Wortman paper
+ref|10.1257/app.20160278|10.1016/j.aott.2016.08.010 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Bone biology keywords only; unrelated to domestic violence finding
+ref|10.1111/j.1467-9280.2008.02072.x|10.5040/9781350909168 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Film biography text, unrelated; reference names Jonas and Skorinko
+ref|10.1037/0022-3514.54.5.768|10.5194/hess-2016-564-rc1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of hydrology manuscript; reference names a different Coles paper
+ref|10.1037/0278-7393.21.1.116|10.1016/s0010-0277(99)00052-9 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | CANNOT_TELL | Speeded naming, not delayed naming; year differs from reference
+ref|10.1016/s0022-5371(78)90110-x|10.1017/s003118200008104x | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Parasite codon usage; reference names a different Morrison and Ellis paper
+ref|10.1080/095414400382208|10.1007/978-3-642-57387-3_1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Stroke book introduction, unrelated; reference names Fiebach et al. fMRI paper
+ref|10.2466/pr0.1960.7.2.337|10.1016/s0092-8674(00)81778-x | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Unrelated cell biology response; reference names Dewhurst et al.
+ref|10.1016/s0022-5371(73)80042-8|10.1016/s0010-0277(99)00052-9 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | CANNOT_TELL | Speeded naming, not delayed naming; year differs from reference
+ref|10.1016/s0022-5371(73)80042-8|10.1017/s003118200008104x | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Parasite codon usage; reference names a different Morrison and Ellis paper
+ref|10.1073/pnas.1018033108|10.1073/pnas.1110910108 | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | YES | Abstract is unrelated text; title and authors match reference
+ref|10.1080/00140136308930679|10.2172/5901643 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Hydroelectric report unrelated; reference names Marble and Proctor
+ref|10.1016/s0022-5371(74)80011-3|10.5040/9781350991637 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Fashion show description, unrelated; reference names different paper
+ref|10.1016/0028-3932(77)90067-7|10.1037/bul0000121 | META_ANALYSIS | YES | NOT_APPLICABLE | NO | Correction notice carrying meta-analysis abstract; not the 2008 article itself
+ref|10.1038/s41586-021-03380-y|10.31234/osf.io/gt7cs | REVIEW_OR_COMMENTARY | CANNOT_TELL | NOT_APPLICABLE | NO | Rebuttal to Fillon et al.; reference names Fillon commentary
+ref|10.1080/87565649009540453|10.1159/000301197 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Ophthalmology paper unrelated to dyslexia fluency finding
+ref|10.1037/a0018366|10.7717/peerj.18459/fig-2 | META_ANALYSIS | NO | NOT_APPLICABLE | NO | Forest plot on kidney disease, unrelated to lexical precision
+ref|10.1016/0010-0285(88)90017-5|10.5194/acp-2020-456-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of atmospheric chemistry manuscript; unrelated
+ref|10.1017/s0305000996002917|10.5194/acp-2020-456-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of atmospheric chemistry manuscript; unrelated
+ref||10.5194/gmd-2015-269-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of unrelated 2016 manuscript; reference names Mertens et al. 2021
+ref|10.1037/0022-3514.67.3.357|10.1006/obhd.1999.2834 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Reply to Zeelenberg; reference names Zeelenberg, not the reply
+ref|10.1111/j.1467-9280.2008.02159.x|10.1192/bjp.2026.10551 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | MDMA commentary, unrelated to temporal value asymmetry
+ref|10.1901/jeab.1962.5-59|10.1017/s0031819100069813 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Philosophy book review, unrelated; reference names Allen and Harris
+ref|10.1007/bf00412364|10.1093/infdis/jir154 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | CANNOT_TELL | Malaria letter, unrelated to readiness potentials; reference loosely matches
+ref|10.1523/jneurosci.3427-13.2014|10.7717/peerj.20049/fig-7 | META_ANALYSIS | NO | NOT_APPLICABLE | NO | Liver failure sensitivity analysis figure, unrelated to fear theta
+ref|10.1177/155005949802900301|10.7717/peerj.20146/fig-8 | META_ANALYSIS | NO | NOT_APPLICABLE | NO | Diabetes exercise forest plot, unrelated to Mozart effect
+ref|10.1098/rspb.1998.0380|10.5194/gmd-2018-187-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of ocean modelling manuscript; unrelated
+ref|10.1177/0956797612466415|10.1515/9781400873371-028 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | CANNOT_TELL | General statistics critique; reference year differs from 2016
+ref|10.1176/ajp.153.1.27|10.1097/00005053-199409000-00009 | REANALYSIS | YES | NO_RESULT_STATED | YES | Reanalysis of Bieber data on birth order; no outcome stated
+ref||10.5194/acp-2018-1145-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of air quality manuscript; unrelated to flipped learning
+ref|10.1111/j.1467-8624.2007.00995.x|10.26780/2017.001.0011 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Geology guidebook, unrelated to growth mindset
+ref|10.1097/00001888-197307000-00003|10.1097/00001888-197502000-00006 | NEW_DATA_REPLICATION | YES | FOUND | YES | Seductive lectures raised ratings; Dr. Fox effect more than illusion
+ref|10.1037/h0029611|10.1177/014616727900500123 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | NO | Bargaining context study; different paper from reference
+ref|10.1037/a0015141|10.31234/osf.io/p5fj8 | REANALYSIS | CANNOT_TELL | NO_RESULT_STATED | YES | Factor structure reanalysis; no abstract, unclear it tests the finding
+ref|10.1016/j.paid.2009.11.013|10.5194/acp-2016-850-rc2 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of unrelated manuscript; reference names a different paper
+ref|10.1080/02589349608705033|10.2307/20033636 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | YES | Book contents list only; matches Gibson and Gouws reference
+ref|10.1037/0735-7036.108.4.307|10.5194/bg-2019-271-rc1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of methane emissions manuscript; unrelated
+ref|10.1371/journal.pone.0021676|10.5194/bg-2019-271-rc1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Peer review of methane emissions manuscript; unrelated
+ref|10.1007/s10071-014-0743-2|10.1038/ajg.2013.16 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Medical letter response, unrelated to jay caching
+ref||10.5040/9798881816711 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | Philosophy of language book, unrelated; reference names different paper
+ref|10.1016/j.jfludis.2004.06.001|10.7717/peerj.20049/fig-7 | META_ANALYSIS | NO | NOT_APPLICABLE | NO | Liver failure sensitivity analysis figure, unrelated to stuttering
+ref|10.1016/j.jfludis.2004.06.001|10.1016/j.jfludis.2014.06.001 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | YES | Preschool nonword repetition and recovery; no abstract, title only
+ref||10.1177/00222194221095265 | OTHER_NEW_STUDY | CANNOT_TELL | NOT_APPLICABLE | YES | Stuttering rate in struggling readers; not framed as testing earlier finding
+rr|10.1016/s2468-2667(17)30075-0|10.1136/bmjgh-2020-004124 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Social isolation and all mortality in 20 countries; not loneliness and cancer death.
+at|at_02493a9327 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 replicates ten studies; the abstract does not say which result is this one.
+at|at_0b0de4c7ae | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Age of acquisition in picture naming by older adults, not category learning.
+at|at_663b095440 | CANNOT_TELL | CANNOT_TELL | NOT_APPLICABLE | - | The stored abstract is about contraception and does not match the earnings title.
+at|at_69bb2125a3 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Audit replicates 20 scarcity studies; this study's result is not in the abstract.
+at|at_7916c22cd5 | NEW_DATA_REPLICATION | YES | FOUND | - | New survey analysis: negative advertising causes lower turnout in the NES data.
+at|at_d4af8c6690 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Many Labs 5 replicates ten studies; the abstract does not say which result is this one.
+at|at_f2a4391703 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Tests spiritual transcendence as a buffer, not the worldview defence effect itself.
+ref|10.1177/0956797618806296|10.1016/j.actpsy.2019.102943 | NEW_DATA_REPLICATION | YES | NO_RESULT_STATED | CANNOT_TELL | New transposed-word experiment; result and match to FORRT's reference not stated.
+ref|10.1901/jeab.1961.4-179|10.5194/wes-2016-4-rc1 | REVIEW_OR_COMMENTARY | NO | NOT_APPLICABLE | NO | A referee report on a wind-energy paper, not FORRT's Vollmer et al. 1993.

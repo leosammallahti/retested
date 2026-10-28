@@ -1,7 +1,7 @@
 # Backlog
 
 Open work, with what is known about each item rather than a guess at its size. Numbers are from the build of
-2026-09-21. `docs/HANDOFF.md` has the current state; `docs/LINK_AUDIT_20260919.md` has the accuracy measurements
+2026-09-21. `docs/history/HANDOFF_diary_2026-09-26_to_2026-10-28.md` has the current state; `docs/LINK_AUDIT_20260919.md` has the accuracy measurements
 that most of these items depend on.
 
 ## 1. The 664 finds with no original (17% of psychology finds)

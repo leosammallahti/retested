@@ -1,0 +1,64 @@
+ATTEMPT at_0039a3253e | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_2b76d1780f | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_4c684f9e8f | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_ad09b09198 | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_73be0bb16e | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_e5d231c586 | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_d4c05cdad5 | NOT_A_REPLICATION | Same authors, year, title and DOI as the original paper itself.
+ATTEMPT at_0a7d96b8fd | KEEP | Later study by Nauts et al. 2014 reusing the Asch title; tests primacy of warmth.
+ATTEMPT at_91c43af0ab | NOT_A_REPLICATION | Same authors and title; the 2020 preprint and its 2023 journal version.
+ATTEMPT at_b3e09c77e7 | KEEP | Kou et al. 2017 later study testing Chinese introverts and extraverts.
+ATTEMPT at_d5e5b3634f | KEEP | Pelzl et al. 2024 is a later study replicating the cognate facilitation pattern.
+ATTEMPT at_a0946011ee | KEEP | Different authors, 2021 versus 2015, different DOI; a later separate paper.
+ATTEMPT at_57828e529a | KEEP | Different author, 2017 versus 2012, different DOI; a later separate paper.
+ATTEMPT at_06ac41897c | KEEP | Different authors, 2014 versus 2011, different DOI; a later separate paper.
+ATTEMPT at_da98a2ab3f | KEEP | Different author, 2010 versus 2002, different DOI; a later separate paper.
+ATTEMPT at_fc452d0bfe | KEEP | Different authors, 2010 versus 2007, different DOI and title; a later paper.
+ATTEMPT at_008394a215 | KEEP | Different authors, 2005 versus 2002, a later Comment with its own DOI.
+ATTEMPT at_46a1b3f1d5 | KEEP | Different author, 1984 versus 1980, different DOI; a later separate paper.
+ATTEMPT at_95ef3c985c | KEEP | Different authors, same year, own DOI and issue; a separate commentary paper.
+ATTEMPT at_8e4eb71ba4 | KEEP | Different authors, same year, own DOI and issue; a separate commentary paper.
+ATTEMPT at_490f419fc4 | KEEP | Campbell & Mau 2021 is a later paper "On" the original, different DOI.
+ATTEMPT at_ba8a626a9e | KEEP | Connors et al. 2016 is a later independent replication attempt.
+ATTEMPT at_77091e75e8 | KEEP | Moore et al. 2024 is a later replication of the 2023 original.
+ATTEMPT at_e04f6b8720 | KEEP | Different authors in 2021 replicating a 1997 original in a new setting.
+ATTEMPT at_a0180be8ec | KEEP | Mousavi et al. 2022 is a later replication of the 2017 study.
+ATTEMPT at_bee45c296c | KEEP | Different author, 2017 versus 2015, separate replication-journal DOI.
+ATTEMPT at_ee05d2d668 | KEEP | Different author, 2024 versus 2008, separate replication-journal DOI.
+ATTEMPT at_fd97ef794b | KEEP | Different authors and DOIs; titles are broken fragments, no sign of duplication.
+ATTEMPT at_f7203fc2d0 | KEEP | Different year, journal and DOI; titles are broken fragments, so unsure.
+ATTEMPT at_ba155fb038 | KEEP | Skaggs et al. 1991 is a later study, different authors, year and DOI.
+ATTEMPT at_972401621c | KEEP | Anusic et al. 2014 is a later study with different authors and DOI.
+ATTEMPT at_35ff224575 | KEEP | Cracco et al. 2023 is a later replication of Liepelt & Brass 2009.
+CONTRADICTION 5-htt-gene-by-environment-interaction-5-htt-g-x-e | The list's critiques (large samples and a 28,252-person meta-analysis) are not linked here, and the only linked success is one 2012 study.
+CONTRADICTION bottomless-soup-bowl | The list's critiques are blog posts about the original, not replications, while the linked 2024 preregistered replication is newer than the list.
+CONTRADICTION men-s-preference-for-competition | The list's critique cites Price 2020, a direct replication not linked here, and the linked successful study is a different-country test.
+CONTRADICTION moral-foundations-across-the-political-spectrum | The linked Many Labs 2 is a many-effect project testing a narrower claim, while the list's critiques of the five-foundation claim are not linked here.
+CONTRADICTION last-place-aversion | The linked failure is a broad multi-study economics replication project that may not test this specific effect, and the list's critique Bull 2020 is not linked here.
+CONTRADICTION personal-cognitive-dissonance-induced-compliance-paradigm | The list rested on meta-analyses and a multilab replication listed as in preparation, while the linked failed multilab replication from 2024 is newer than the list.
+CONTRADICTION scarcity-effect-discounting | The linked item is an audit and review of a whole research field, not a direct replication of this discounting effect, and it is the list's own critique.
+CONTRADICTION scarcity-effect-physical-pain | The linked items are a field-wide audit and a study of replication correlates, not direct replications of this pain effect, so they do not really test the claim.
+UNLINKED affect-heuristic-music-book-versus-cash | NO | Title names the paper, not this scenario; three effects share that paper.
+UNLINKED affect-heuristic-saving-panda | NO | Title names the paper, not this scenario; three effects share that paper.
+UNLINKED affect-heuristic-sentencing-a-mugger | NO | Title names the paper, not this scenario; three effects share that paper.
+UNLINKED age-of-acquisition-influence-on-the-pre-conceptual-stages-of-lexical-r-6999 | NO | Listed items concern ratings and lexical decision, not category falsification.
+UNLINKED analytical-thinking-and-belief-in-conspiracy-theories | ATTACH at_259db43162 | Title tests priming analytic thinking on conspiracy belief, exactly this claim.
+UNLINKED anthropomorphism-belief-in-supernatural-agents | NO | Neither title names belief in supernatural agents; filed under general anthropomorphism.
+UNLINKED anthropomorphism-face-detection | NO | Neither title names face detection; filed under general anthropomorphism.
+UNLINKED anthropomorphism-pet-ratings | NO | Neither title names pet ratings; filed under general anthropomorphism.
+UNLINKED deliberative-thought-identifiable-victim-effect | NO | Titles do not show the deliberative-thought condition was tested; filed under the victim effect.
+UNLINKED endowment-effect | NO | Replications test the moderated versions, which are filed under their own effects.
+UNLINKED endowment-effect-moderated-by-goral-relevant-or-irrelevant | ATTACH at_081c37990e | Replicates Irmak 2013, whose only claim here is this moderated effect.
+UNLINKED endowment-effect-moderated-by-transation-demand | ATTACH at_e3c778def6 | Replicates Mandel 2002, whose only claim here is transaction-demand moderation.
+UNLINKED frequency-influence-on-speeded-phonological-retrieval-speeded-spoken-w | NO | Both items concern age of acquisition, not word frequency.
+UNLINKED frequency-on-lexical-semantic-processes-translation-task | NO | Both items concern age of acquisition in translation, not word frequency.
+UNLINKED implicit-god-prime-increases-actual-risky-behaviour | NO | Titles do not distinguish actual from self-reported risk; one is multi-study.
+UNLINKED inaction-effect-general-regret | NO | Title is about temporal pattern of regret, not general regret.
+UNLINKED isolation-effect | NO | Titles concern loss aversion and other effects; none names the isolation effect.
+UNLINKED low-self-esteem-on-poor-mental-health-psychological-outcomes | NO | Items concern teacher expectancy and Pygmalion, not self-esteem and mental health.
+UNLINKED magnitude-effect | NO | Titles concern loss aversion and other effects; none names the magnitude effect.
+UNLINKED reference-framing | NO | Titles concern loss aversion and other effects; none names reference framing.
+UNLINKED reflection-effect | NO | Titles concern loss aversion and other effects; none names the reflection effect.
+UNLINKED semantic-priming | NO | Title is unreadable and the item is filed under associative priming.
+UNLINKED social-relationship-hypothesis | NO | Title names the essential moral self, not the social relationship hypothesis.
+UNLINKED theory-of-mind-over-development-false-belief | NO | Item concerns infants under four, filed under a different effect.

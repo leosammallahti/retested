@@ -1,0 +1,7 @@
+at_12598081e4 | WRONG anchoring-effect | Anchoring is a different phenomenon from the response-scale category range effect.
+at_90e349a132 | WRONG anchoring-effect | Anchoring is unrelated to the money-exposure and free-market paper.
+at_1b240548b9 | WRONG heat-priming | Heat words and aggression differ from attachment anxiety and warm refreshment preference.
+at_6434f5c1f8 | WRONG heat-priming | Heat-word aggression priming is unrelated to loneliness and warm showers.
+at_c281c8b98e | WRONG heat-priming | Heat-word aggression priming is unrelated to loneliness and warm bathing.
+at_97b9201275 | WRONG money-priming | Money priming is unrelated to the imagined contact paper.
+at_97b9201275 | WRONG sunk-cost-effect | Sunk cost is unrelated to the imagined contact paper.
