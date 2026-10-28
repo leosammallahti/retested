@@ -25,6 +25,40 @@ def _aid(doi_o: str, rep_key: str) -> str:
     return "at_" + hashlib.md5(f"{doi_o}|{rep_key}".encode()).hexdigest()[:10]
 
 
+def _oa_authors(names: list[str]) -> str | None:
+    """OpenAlex display names -> 'Isen & Levin', 'Kruger et al.' (surname = the last word of each name)."""
+    sur = [n.split()[-1] for n in names if n and n.split()]
+    if not sur:
+        return None
+    return sur[0] if len(sur) == 1 else f"{sur[0]} & {sur[1]}" if len(sur) == 2 else f"{sur[0]} et al."
+
+
+def _broken_authors(a) -> bool:
+    """An author field that is not names: missing, 'None', raw citation data, an editor marker, stray quotes or braces,
+    a mis-decoded accent ('KÃ¶bach'), a study label, or a title ('An Experimental Study of …')."""
+    t = str(a or "").strip()
+    if not t or t == "None":
+        return True
+    if re.search(r'[{}\[\]"]|\(Ed\.?\)|Ã|^Replications\b', t) or t[:1] in "(.,;:":
+        return True
+    words = t.rstrip(".").split()
+    return t.endswith(".") and len(words) >= 3 and "&" not in t and "et al" not in t
+
+
+def _broken_title(t) -> bool:
+    """A title that is really a fragment of a reference: a link, a page number, a journal name with no words of a
+    title, or a few characters."""
+    t = str(t or "").strip()
+    return (not t or t.lower().startswith(("http", "doi")) or t[:1] in ":,;.)" or len(t) < 12
+            or bool(re.match(r"^(study \d|journal of|vol\.?|volume|pp)\b", t, re.I)) or bool(re.search(r"\bet al\.?$", t)))
+
+
+def _shown(name: str) -> str:
+    """An effect name as the site shows it: whitespace folded (\\s also folds non-breaking spaces), the famous list's
+    'Name. (alias)' joined, and no trailing full stop."""
+    return re.sub(r"\s+", " ", str(name)).replace(". (", " (").strip().rstrip(".")
+
+
 def _num(x):
     try:
         v = float(x)
@@ -55,6 +89,9 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     papers: dict[str, dict] = {}
     attempts: dict[str, dict] = {}
     log: list[str] = []
+    # where every source row went, for the FORRT ledger (pipeline/forrt_ledger.py): its pair, or why it has none
+    trace: list[dict] = []
+    stale: list[str] = []      # reviewed inputs that no longer match the data: the build stops on any of them
 
     def paper(doi, **kw):
         if not doi:
@@ -79,9 +116,11 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         return a
 
     # ---------------------------------------------------------------- FLoRA (paper pairs, author verdict + quote)
-    for r in flora:
+    for i, r in enumerate(flora, 1):
         doi_o = norm_doi(r.get("doi_o"))
         rep_key = norm_doi(r.get("doi_r")) or norm_doi(r.get("alt_identifier_r")) or r.get("alt_identifier_r") or r.get("url_r")
+        trace.append({"file": "FLoRA", "row": i, "doi_o": doi_o, "rep_key": rep_key or None,
+                      "why_not": None if doi_o and rep_key else "the row has no original DOI or no replication identifier"})
         if not doi_o or not rep_key:
             log.append(f"flora row skipped (no doi_o or replication id): {r.get('title_r')}")
             continue
@@ -108,6 +147,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for r in fred:
         doi_o = r["doi_o"]
         rep_key = r["doi_r"] or r.get("url_r")
+        trace.append({"file": "FReD", "row": r["row"], "doi_o": doi_o or None, "rep_key": rep_key or None,
+                      "why_not": None if doi_o and rep_key else "the row has no original DOI or no replication identifier"})
         if not doi_o or not rep_key:
             log.append(f"fred row {r['row']} skipped (no doi pair)")
             continue
@@ -138,10 +179,14 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     name_rows: dict[str, list[dict]] = defaultdict(list)                  # effect key -> rows that name it
 
     for sheet in ("data", "rr"):
-        for r in legacy[sheet]:
+        for i, r in enumerate(legacy[sheet], 1):
             doi_o = norm_doi(r.get("doi_original"))
             doi_r = norm_doi(r.get("doi_replication"))
             name = r.get("effect")
+            named = bool(name and not is_na(name) and str(name).strip() not in ("#", "?"))
+            trace.append({"file": "FReD 2.4.1 data sheet" if sheet == "data" else "Replications & Reversals sheet",
+                          "row": i, "doi_o": doi_o, "rep_key": doi_r,
+                          "effect_key": norm_name(name) if named else None, "why_not": None})
             if name and not is_na(name) and str(name).strip() not in ("#", "?"):
                 key = norm_name(name)
                 name_rows[key].append({"name": str(name).strip(), "doi_o": doi_o, "doi_r": doi_r, "sheet": sheet,
@@ -174,8 +219,9 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     # ------------------------------------------------------------ Retested reviewed pairs
     # Only source-checked rows in data/curated/promoted_pairs.json enter the
     # counted graph. No discovery/triage result is promoted by a machine gate.
-    for r in src.get("promoted") or []:
+    for i, r in enumerate(src.get("promoted") or [], 1):
         doi_o, doi_r = r["doi_o"], r["doi_r"]
+        trace.append({"file": "Retested reviewed pairs", "row": i, "doi_o": doi_o, "rep_key": doi_r, "why_not": None})
         paper(doi_o, title=r["original_title"], year=r["original_year"],
               journal=r.get("original_journal"), authors=_names(r["original_authors"]),
               source_url=r["original_source_url"])
@@ -212,13 +258,55 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         })
         labels[(doi_o, doi_r)].add(key)
 
+    # ---------------------------------------------------------------- FLoRA validation files (pipeline/flora_validation.py)
+    # A pair FORRT has validated but not yet exported to FLoRA is still FORRT's coding: it enters as FLoRA data.
+    # A replication already on the site under another original keeps FLoRA's exported link; the ledger shows both.
+    reps_known = {a["doi_r"] for a in attempts.values() if a["doi_r"]} | {a["rep_key"] for a in attempts.values()}
+    for r in src.get("flora_validation") or []:
+        doi_o, rep_key = r["doi_o"], r["rep_key"]
+        if not doi_o or not rep_key or _aid(doi_o, rep_key) in attempts or rep_key in reps_known:
+            continue
+        paper(doi_o, ref=r["ref_o"])
+        if norm_doi(rep_key):
+            paper(norm_doi(rep_key), ref=r["ref_r"], title=r["title_r"], year=_num(r["year_r"]))
+        a = attempt(doi_o, rep_key, title_r=r["title_r"], year_r=_num(r["year_r"]),
+                    quote=r["outcome_quote"], quote_source=r["outcome_quote_source"])
+        if str(r["type"] or "").lower().startswith("reproduc"):
+            a["type"] = "reproduction"
+        a["sources"].append("flora")
+        a["outcomes_by_source"]["flora"] = ev.norm_outcome(r["outcome"])
+        a["outcome_raw"] = r["outcome"]
+        a["flora_source"] = f"{r['file']} (validated by FORRT, not yet in FLoRA's export)"
+
+    # ---------------------------------------------------------------- reviewed links (pipeline/curated_links.py)
+    links = src.get("links") or {}
+    for r in links.get("effect_originals", []):
+        name_rows[norm_name(r["effect"])].append({"name": r["effect"], "doi_o": r["doi_o"], "doi_r": None,
+                                                  "sheet": "reviewed link", "discipline": None, "description": None})
+    for r in links.get("attempt_effects", []):
+        labels[(r["doi_o"], r["doi_r"])].add(norm_name(r["effect"]))
+    for r in links.get("effect_original_exclusions", []):
+        k = norm_name(r["effect"])
+        kept = [x for x in name_rows.get(k, []) if x["doi_o"] != r["doi_o"]]
+        if len(kept) == len(name_rows.get(k, [])):
+            stale.append(f"reviewed exclusion not applied: effect '{r['effect']}' original {r['doi_o']}")
+        else:
+            name_rows[k] = kept
+            for (o, _), labs in labels.items():
+                if o == r["doi_o"]:
+                    labs.discard(k)
+
     # ---------------------------------------------------------------- fill gaps from APA reference strings (legacy rows carry only 'ref')
     for p in papers.values():
         if p.get("ref") and (not p.get("authors") or not p.get("year") or not p.get("title")):
             au, yr, ti = parse_apa(p["ref"])
             p.setdefault("authors", None); p.setdefault("year", None); p.setdefault("title", None)
             p["authors"] = p["authors"] or au
+            if not p["year"] and yr:
+                p["year_from_ref"] = True
             p["year"] = p["year"] or yr
+            if not p["title"] and ti:
+                p["title_from_ref"] = True      # parsed out of a reference string: replaced below when OpenAlex has the DOI
             p["title"] = p["title"] or ti
     for a in attempts.values():
         rp = papers.get(a["doi_r"]) if a["doi_r"] else None
@@ -241,6 +329,159 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 row["doi_o"] = doi_folds.get(row["doi_o"], row["doi_o"]) if row["doi_o"] else None
                 row["doi_r"] = doi_folds.get(row["doi_r"], row["doi_r"]) if row["doi_r"] else None
 
+    # ---------------------------------------------------------------- OpenAlex titles (data/raw/local/openalex_paper_metadata.json)
+    # A title the site could only parse out of a reference string, or a missing one, is replaced by the title OpenAlex
+    # holds for the DOI; a missing year or author list is filled the same way. Titles from FLoRA and FReD are kept
+    # (they agree with OpenAlex for 99% of DOIs; the rest are listed in the identity check).
+    works = (src.get("openalex_works") or {})
+    replaced: dict[str, str | None] = {}
+    for d, p in papers.items():
+        w = works.get(d)
+        if not w:
+            continue
+        if (not p.get("title") or p.get("title_from_ref") or _broken_title(p.get("title"))) and w.get("title") and not _broken_title(w["title"]):
+            replaced[d] = p.get("title")
+            p["title"], p["title_source"] = w["title"], "OpenAlex"
+        if w.get("is_retracted"):
+            # OpenAlex marks the paper retracted: every page shows it, not only the originals in the older enrichment
+            p["openalex"] = {**(p.get("openalex") or {}), "is_retracted": True}
+        if w.get("authors") and _broken_authors(p.get("authors")):
+            p["authors"] = _oa_authors(w["authors"])
+        if w.get("year") and (not p.get("year") or p.get("year_from_ref")):
+            p["year"] = w["year"]
+        if not p.get("authors") and w.get("authors"):
+            p["authors"] = _oa_authors(w["authors"])
+    for a in attempts.values():
+        rp = papers.get(a["doi_r"]) if a["doi_r"] else None
+        if not rp:
+            continue
+        if a["doi_r"] in replaced and (a.get("title_r") is None or a.get("title_r") == replaced[a["doi_r"]] or _broken_title(a.get("title_r"))):
+            a["title_r"] = rp["title"]
+        for src_k, dst_k in (("authors", "authors_r"), ("year", "year_r")):
+            if a.get(dst_k) is None and rp.get(src_k) is not None:
+                a[dst_k] = rp[src_k]
+        if rp.get("year_from_ref") and rp.get("year"):
+            a["year_r"] = rp["year"]
+        if _broken_authors(a.get("authors_r")) and rp.get("authors") and not _broken_authors(rp["authors"]):
+            a["authors_r"] = rp["authors"]
+
+    # a title is one line: line breaks and repeated spaces from the source spreadsheets are folded
+    for p in papers.values():
+        if isinstance(p.get("title"), str):
+            p["title"] = re.sub(r"\s+", " ", p["title"]).strip()
+    for a in attempts.values():
+        if isinstance(a.get("title_r"), str):
+            a["title_r"] = re.sub(r"\s+", " ", a["title_r"]).strip()
+
+    # one study listed twice under one original is merged into the record it duplicates: counted once, nothing lost
+    merged_into: dict[str, str] = {}
+    for r in (src.get("links") or {}).get("attempt_duplicates", []):
+        o = doi_folds.get(r["doi_o"], r["doi_o"])
+        drop, keep = _aid(o, doi_folds.get(r["rep_key"], r["rep_key"])), _aid(o, doi_folds.get(r["same_as"], r["same_as"]))
+        if drop not in attempts or keep not in attempts:
+            stale.append(f"reviewed duplicate not applied: {r['doi_o']} -> {r['rep_key']} (same as {r['same_as']})")
+            continue
+        gone = attempts.pop(drop)
+        attempts[keep] = _merge_attempts(attempts[keep], gone)
+        attempts[keep].setdefault("same_study_as", []).append({"rep_key": gone["rep_key"], "title_r": gone.get("title_r"), "why": r["reason"]})
+        merged_into[drop] = keep
+        labels[(o, attempts[keep]["doi_r"])].update(labels.get((o, gone["doi_r"]), set()))
+
+    # attempts that reading showed are not replications are set aside with the reason, never dropped
+    set_aside: dict[str, dict] = {}
+    for r in (src.get("links") or {}).get("attempt_exclusions", []):
+        aid = _aid(doi_folds.get(r["doi_o"], r["doi_o"]), doi_folds.get(r["rep_key"], r["rep_key"]))
+        if aid in attempts:
+            set_aside[aid] = {**attempts.pop(aid), "set_aside_because": r["reason"], "set_aside_evidence": r["evidence"]}
+        else:
+            stale.append(f"reviewed exclusion not applied: {r['doi_o']} -> {r['rep_key']}")
+
+    # ---------------------------------------------------------------- papers read for Retested (pipeline/read_pairs.py)
+    read_notes: list[dict] = []          # readings that disagree with FORRT's coding, listed for a person to read
+    read_index: dict[str, str] = {}      # "doi_o|later" or "ref|doi_o|reference" -> what the reading found, for the ledger
+    from .read_pairs import OUTCOME as READ_OUTCOME, REPLICATION as READ_REPLICATION
+    for r in src.get("read_pairs") or []:
+        o = doi_folds.get(r["doi_o"], r["doi_o"]) if r.get("doi_o") else None
+        if not o:
+            continue
+        rk = doi_folds.get(r["rep_key"], r["rep_key"])
+        if rk == o:
+            # FORRT's list sometimes cites the original itself as its later paper: never a replication of itself
+            read_index[f"{o}|{rk}"] = "the list cites the original paper itself"
+            continue
+        aid = _aid(o, rk)
+        is_rep = r["kind"] in READ_REPLICATION and r["tests_this_finding"] == "YES" and (r.get("is_cited_paper") or "YES") == "YES"
+        what = ("a replication of this finding" if is_rep else f"read: {r['kind'].lower().replace('_', ' ')}"
+                + ("" if r["tests_this_finding"] == "YES" else ", not a test of this finding")
+                + ("" if (r.get("is_cited_paper") or "YES") == "YES" else ", not the paper FORRT's reference names"))
+        if r["kind"] == "CANNOT_TELL":
+            what = "not readable from its title, and no abstract is available"
+        read_index[f"{o}|{rk}"] = what
+        if r.get("cited_ref"):
+            read_index[f"ref|{o}|{r['cited_ref'][:200]}"] = what
+        info = {"kind": r["kind"], "result": r.get("result"), "quote": r.get("result_quote") or r.get("kind_quote"),
+                "decided_by": r["decided_by"], "read_on": r["read_on"]}
+        if aid in attempts:
+            a = attempts[aid]
+            coded = any(v != "not_coded" for k, v in a["outcomes_by_source"].items() if k != "read")
+            if is_rep:
+                a["read"] = info
+                if READ_OUTCOME.get(r.get("result")):
+                    a["outcomes_by_source"]["read"] = READ_OUTCOME[r["result"]]
+                    others = {v for k, v in a["outcomes_by_source"].items() if k != "read" and v != "not_coded"}
+                    if others and READ_OUTCOME[r["result"]] not in others and READ_OUTCOME[r["result"]] != "not_coded":
+                        # FORRT's coding stands; the reading that differs is listed for a person to read
+                        read_notes.append({"attempt": aid, **info, "tests_this_finding": r["tests_this_finding"],
+                                           "differs_from": sorted(others)})
+                if "read" not in a["sources"]:
+                    a["sources"].append("read")
+            elif r["kind"] not in READ_REPLICATION and r["kind"] != "CANNOT_TELL" and not coded:
+                set_aside[aid] = {**attempts.pop(aid), "set_aside_because": f"Read: the later paper is {r['kind'].lower().replace('_', ' ')}, not a replication",
+                                  "set_aside_evidence": f"{r['decided_by']}; {info['quote'] or ''}"}
+            elif r["kind"] != "CANNOT_TELL" or r["tests_this_finding"] == "NO":
+                read_notes.append({"attempt": aid, **info, "tests_this_finding": r["tests_this_finding"]})
+        elif is_rep and r.get("group", "").startswith("Replications & Reversals"):
+            w = (src.get("openalex_works") or {}).get(norm_doi(rk) or "") or {}
+            title, year, authors = w.get("title") or r.get("title_r"), w.get("year"), _oa_authors(w.get("authors") or [])
+            if norm_doi(rk):
+                paper(norm_doi(rk), title=title, year=year, authors=authors)
+                if w.get("is_retracted"):
+                    papers[norm_doi(rk)]["openalex"] = {**(papers[norm_doi(rk)].get("openalex") or {}), "is_retracted": True}
+            wo = (src.get("openalex_works") or {}).get(o) or {}
+            paper(o, title=wo.get("title"), year=wo.get("year"), authors=_oa_authors(wo.get("authors") or []))
+            a = attempt(o, rk, title_r=title, year_r=year, authors_r=authors, quote=info["quote"], quote_source="abstract")
+            a["sources"].append("read")
+            a["read"] = info
+            a["outcomes_by_source"]["read"] = READ_OUTCOME.get(r.get("result"), "not_coded")
+            a["listed_by"] = "FORRT's Replications & Reversals list"
+            for name in r.get("effects") or []:
+                labels[(o, a["doi_r"])].add(norm_name(name))
+
+    # a replication set aside as misfiled moves to the original reading showed it replicates
+    relinked: dict[str, str] = {}
+    for r in (src.get("links") or {}).get("attempt_relinks", []):
+        old = _aid(doi_folds.get(r["doi_o_wrong"], r["doi_o_wrong"]), doi_folds.get(r["rep_key"], r["rep_key"]))
+        if old not in set_aside:
+            stale.append(f"reviewed relink not applied (not set aside as misfiled): {r['doi_o_wrong']} -> {r['rep_key']}")
+            continue
+        was = set_aside[old]
+        w = (src.get("openalex_works") or {}).get(r["doi_o"]) or {}
+        paper(r["doi_o"], title=w.get("title"), year=w.get("year"), authors=_oa_authors(w.get("authors") or []))
+        existed = _aid(r["doi_o"], was["rep_key"]) in attempts
+        a = attempt(r["doi_o"], was["rep_key"], title_r=was.get("title_r"), year_r=was.get("year_r"),
+                    journal_r=was.get("journal_r"), authors_r=was.get("authors_r"), quote=was.get("quote"),
+                    quote_source=was.get("quote_source"))
+        a["relinked_from"] = {"doi_o": was["doi_o"], "because": was["set_aside_because"], "evidence": r["evidence"],
+                              "outcomes_there": was.get("outcomes_by_source")}
+        relinked[old] = a["id"]
+        if existed:
+            # the right pair is already on record: its own coding stands; a code given under the wrong original does not
+            continue
+        a["type"] = was.get("type", "replication")
+        a["sources"] = sorted(set(a["sources"]) | set(was["sources"]))
+        for k, v in (was.get("outcomes_by_source") or {}).items():
+            a["outcomes_by_source"].setdefault(k, v)
+
     # Compute outcomes after folding: two DOI spellings can merge an overlay
     # attempt with a FORRT attempt, and FORRT's verdict must still take priority.
     for a in attempts.values():
@@ -249,7 +490,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         obs = a["outcomes_by_source"]
         # A source-reviewed, documented adjudication can supersede a stale
         # paper-level label for this exact original/replication pair.
-        priority = ("retested", "flora", "fred", "legacy") if a.get("outcome_adjudication") else ("flora", "fred", "legacy", "retested")
+        priority = ("retested", "flora", "fred", "legacy", "read") if a.get("outcome_adjudication") else ("flora", "fred", "legacy", "retested", "read")
         a["outcome"] = next((obs[source] for source in priority
                              if obs.get(source, "not_coded") != "not_coded"), "not_coded")
         a["sources_disagree"] = len({v for v in obs.values() if v != "not_coded"}) > 1
@@ -266,13 +507,16 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         if o:
             paper(doi_o, title=o["title"], year=o["year"])
             p = papers[doi_o]
+            was_retracted = bool((p.get("openalex") or {}).get("is_retracted"))
             p["openalex"] = {k: o[k] for k in ("cited_by", "counts_by_year", "is_retracted", "topic", "subfield", "field")}
+            p["openalex"]["is_retracted"] = bool(p["openalex"]["is_retracted"]) or was_retracted
         findings[doi_o] = {"doi_o": doi_o, "slug": p.get("slug") or doi_slug(doi_o), "attempts": sorted(aids)}
 
     # This layer is deliberately attached after DOI folds and after every
     # finding exists.  It can therefore neither create a phantom finding nor
     # silently attach source-backed prose to a different original paper.
-    explanations.attach(findings, src.get("explanations") or {}, doi_folds)
+    withdrawn = {a["doi_o"]: a["set_aside_because"] for a in set_aside.values() if a["doi_o"] not in findings}
+    log.extend(explanations.attach(findings, src.get("explanations") or {}, doi_folds, withdrawn))
 
     # ---------------------------------------------------------------- effects: named phenomena
     famous_by_key = {}
@@ -349,20 +593,24 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 if same_name(a, b):
                     log.append(f"merged name '{b}' ~ '{a}' (shared original, similar name)")
                     union(a, b)
+    # a merge may name an effect as the site shows it (cleaned of the source's stray spaces and full stops)
+    by_shown = {norm_name(_shown(k)): k for k in keys}
+    chosen_name: dict[str, str] = {}
     for m in src.get("merges") or []:
-        into = norm_name(m["into"])
+        into = by_shown.get(norm_name(m["into"]), norm_name(m["into"]))
         for other in m.get("from", []):
-            o = norm_name(other)
-            if into in canon and o in canon:
-                ri, ro = find(into), find(o)
-                if ri != ro:
-                    canon[ro] = ri
-                if ri != into:          # the curated name becomes the group's canonical name
-                    canon[into] = into
-                    canon[ri] = into
-                log.append(f"merges.yaml: '{other}' -> '{m['into']}'")
-            else:
-                log.append(f"merges.yaml: unknown name '{other}' or '{m['into']}'")
+            o = by_shown.get(norm_name(other), norm_name(other))
+            if into not in canon or o not in canon:
+                # a reviewed merge that no longer matches the data is a stale input: stop, never skip it
+                raise ValueError(f"merges.yaml: unknown name {other!r} or {m['into']!r}")
+            ri, ro = find(into), find(o)
+            if ri != ro:
+                canon[ro] = ri
+            if ri != into:          # the curated name becomes the group's canonical name
+                canon[into] = into
+                canon[ri] = into
+            log.append(f"merges.yaml: '{other}' -> '{m['into']}'")
+        chosen_name[into] = _shown(m["into"])
     groups = defaultdict(set)
     for k in keys:
         groups[find(k)].add(k)
@@ -389,8 +637,9 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         rows = name_rows.get(key, [])
         fam_key = next((fk for fk, k in fam_map.items() if k == key), None)
         fam = famous_by_key.get(fam_key) if fam_key else None
-        name = Counter(r["name"] for r in rows).most_common(1)[0][0] if rows else fam["name"]
-        name = re.sub(r"\s+", " ", name).replace(". (", " (").strip().rstrip(".")  # \s also folds non-breaking spaces
+        # a reviewed merge names the effect; otherwise the name most of its source rows use
+        name = chosen_name.get(key) or (Counter(r["name"] for r in rows).most_common(1)[0][0] if rows else fam["name"])
+        name = _shown(name)
         originals = sorted({r["doi_o"] for r in rows if r["doi_o"] and r["doi_o"] in findings})
         own, shared = [], []
         for doi_o in originals:
@@ -412,6 +661,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         effects[key] = {
             "id": ledger.get(key), "key": key, "slug": slug, "name": name,
             "aliases": sorted({r["name"] for r in rows} - {name}),
+            # the name keys folded into this effect, so material filed under a folded name still finds it
+            "merged_keys": sorted(groups.get(key, {key}) - {key}),
             "name_sources": sorted(({"retested" if r["sheet"] == "retested" else "forrt" for r in rows})
                                    | ({"forrt"} if fam else set())),
             # FORRT's own sheets first: the docx parse mislabels some disciplines (e.g. 'Parapsychology')
@@ -426,7 +677,37 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for doi_o, keys_ in orig_to_effects.items():
         findings[doi_o]["effects"] = sorted(effects[k]["id"] for k in keys_)
 
-    return {"papers": papers, "attempts": attempts, "findings": findings, "effects": effects,
+    # every reviewed link must have taken effect; one that did not is reported, never dropped quietly
+    by_name = {norm_name(e["name"]): e for e in effects.values()}
+    for k, e in effects.items():
+        for a in e["aliases"]:
+            by_name.setdefault(norm_name(a), e)
+    for r in links.get("effect_originals", []):
+        e = by_name.get(norm_name(r["effect"]))
+        if not e or r["doi_o"] not in e["originals"]:
+            stale.append(f"reviewed link not applied: effect '{r['effect']}' original {r['doi_o']}")
+    for r in links.get("attempt_effects", []):
+        e = by_name.get(norm_name(r["effect"]))
+        aid = _aid(doi_folds.get(r["doi_o"], r["doi_o"]), doi_folds.get(r["doi_r"], r["doi_r"]))
+        if not e or aid not in e["attempts"]:
+            stale.append(f"reviewed link not applied: effect '{r['effect']}' attempt {r['doi_o']} -> {r['doi_r']}")
+
+    # each entry of FORRT's Replications & Reversals text -> the effect page it became (after merges)
+    famous_effect = {fk: effects[find(k)]["slug"] for fk, k in fam_map.items() if find(k) in effects}
+    for r in links.get("effect_description_exclusions", []):
+        e = by_name.get(norm_name(r["effect"]))
+        if not e or not e.get("description"):
+            stale.append(f"reviewed description exclusion not applied: effect '{r['effect']}'")
+            continue
+        e["description_set_aside"] = {"text": e["description"], "because": r["reason"]}
+        e["description"] = None
+    if stale:
+        raise ValueError("reviewed inputs that no longer match the data:\n  " + "\n  ".join(stale))
+    # effect keys in the trace follow the merges, so a row that names a folded name points at the effect it joined
+    for t in trace:
+        if t.get("effect_key"):
+            t["effect_key"] = find(t["effect_key"]) if t["effect_key"] in canon else t["effect_key"]
+    return {"papers": papers, "attempts": attempts, "findings": findings, "effects": effects, "trace": trace, "famous_effect": famous_effect, "set_aside": set_aside, "merged_into": merged_into, "relinked": relinked, "read_notes": read_notes, "read_index": read_index,
             "doi_folds": doi_folds, "log": log}
 
 
@@ -550,7 +831,9 @@ def _fold_doi_variants(papers: dict, attempts: dict, log: list) -> dict[str, str
             for b in group:
                 if a == b:
                     continue
-                if (b.startswith(a) and len(b) > len(a)) or ("//" in a and a.replace("//", "/") == b):
+                if b.startswith(a) and len(b) > len(a) and b[len(a)] in "?#":
+                    fold[b] = a     # a link's tracking tail ('?utm_campaign=…') is not part of the DOI: keep the clean one
+                elif (b.startswith(a) and len(b) > len(a)) or ("//" in a and a.replace("//", "/") == b):
                     fold[a] = b
     if not fold:
         return fold

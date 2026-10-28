@@ -33,20 +33,26 @@ GROUP_LABEL = {
 def build(extracted: list[dict], g: dict) -> list[dict]:
     """FORRT's own flora-extractor rows."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
+    known_pairs |= {(a["doi_o"], a["rep_key"]) for a in g["attempts"].values()}
     known_reps = {a["doi_r"] for a in g["attempts"].values() if a["doi_r"]}
     effect_of = _effect_of(g)
     out, seen = [], set()
     for r in extracted:
         doi_o, doi_r = norm_doi(r.get("doi_o")), norm_doi(r.get("doi_r"))
-        if not doi_r or (doi_o, doi_r) in seen:
+        # a replication FORRT found without a DOI (an OSF page, a thesis, a handle) is kept under its address, and
+        # one with neither under FORRT's own row id: nothing FORRT found is left out of the queue
+        url_r = (r.get("url_r") or "").strip() or None
+        rep_key = doi_r or url_r or r.get("pair_id")
+        if not rep_key or (doi_o, rep_key) in seen:
             continue
-        seen.add((doi_o, doi_r))
-        if (doi_o, doi_r) in known_pairs:
+        seen.add((doi_o, rep_key))
+        if (doi_o, rep_key) in known_pairs:
             continue
         eff = effect_of.get(doi_o)
         out.append({
             "id": r.get("pair_id") or f"{doi_o}|{doi_r}",
-            "doi_r": doi_r, "title_r": r.get("title_r"), "year_r": _int(r.get("year_r")), "journal_r": r.get("journal_r"),
+            "doi_r": doi_r, "landing_page": None if doi_r else url_r,
+            "title_r": r.get("title_r"), "year_r": _int(r.get("year_r")), "journal_r": r.get("journal_r"),
             "doi_o": doi_o, "title_o": r.get("title_o"), "year_o": _int(r.get("year_o")),
             "outcome": (r.get("outcome") or "").lower() or None,
             "outcome_quote": r.get("outcome_phrase"),

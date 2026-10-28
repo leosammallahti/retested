@@ -105,12 +105,16 @@ def run_finds(max_usd: float = 0.40) -> int:
     finds with a link from a band measured at 90%+ were being dropped for want of an abstract nobody had asked
     OpenAlex for.
     """
-    from . import claims as C, load, registry, score
+    from . import curated_links, flora_validation, openalex_works, read_pairs, claims as C, load, registry, score
     from .ids import EffectLedger
     from .load import ROOT
     from .queue import _link_trusted
 
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    src["links"] = curated_links.load()
+    src["flora_validation"] = flora_validation.rows()
+    src["openalex_works"] = openalex_works.load()
+    src["read_pairs"] = read_pairs.load()
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     score.score(g)
     want = sorted({c["doi_o"] for c in C._queue_candidates(g)
@@ -139,12 +143,16 @@ def run_famous(max_usd: float = 0.30) -> int:
 
     Stored under the card's own id rather than a DOI, because these entries have none.
     """
-    from . import game, load, registry, score
+    from . import curated_links, flora_validation, openalex_works, read_pairs, game, load, registry, score
     from .ids import EffectLedger
     from .load import ROOT
     import hashlib
 
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    src["links"] = curated_links.load()
+    src["flora_validation"] = flora_validation.rows()
+    src["openalex_works"] = openalex_works.load()
+    src["read_pairs"] = read_pairs.load()
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     score.score(g)
     want = {}
@@ -203,11 +211,15 @@ def run_deck(max_usd: float = 0.20) -> int:
     from the title, which is how a card ends up asserting something the study never reported. The study's own
     abstract is the material that was missing, OpenAlex serves it free, and we already hold the identifiers.
     """
-    from . import game, load, registry, score
+    from . import curated_links, flora_validation, openalex_works, read_pairs, game, load, registry, score
     from .ids import EffectLedger
     from .load import ROOT
 
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    src["links"] = curated_links.load()
+    src["flora_validation"] = flora_validation.rows()
+    src["openalex_works"] = openalex_works.load()
+    src["read_pairs"] = read_pairs.load()
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     score.score(g)
     items, _ = game.build(g, load.load_claims())
@@ -226,11 +238,15 @@ def run_deck(max_usd: float = 0.20) -> int:
 
 
 def run(max_usd: float = 0.10) -> int:
-    from . import load, queue, registry
+    from . import curated_links, flora_validation, openalex_works, read_pairs, load, queue, registry
     from .ids import EffectLedger
     from .load import ROOT
 
     src = {k: getattr(load, f"load_{k}")() for k in ("flora", "fred", "legacy", "famous", "openalex", "merges")}
+    src["links"] = curated_links.load()
+    src["flora_validation"] = flora_validation.rows()
+    src["openalex_works"] = openalex_works.load()
+    src["read_pairs"] = read_pairs.load()
     g = registry.build(src, EffectLedger(ROOT / "data" / "curated" / "registry" / "effect_ids.csv"))
     cands = queue.build_retested(load.load_triaged(),
                                  load.merged_links(), g,

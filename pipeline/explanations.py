@@ -300,18 +300,27 @@ def load_holds(accepted: Mapping[str, dict], path: Path = HOLDS_FILE) -> list[di
     return validate_holds(document, accepted)
 
 
-def attach(findings: Mapping[str, dict], explanations: Mapping[str, dict], doi_folds: Mapping[str, str] | None = None) -> None:
+def attach(findings: Mapping[str, dict], explanations: Mapping[str, dict], doi_folds: Mapping[str, str] | None = None,
+           withdrawn: Mapping[str, str] | None = None) -> list[str]:
     """Attach explanations to their built finding, failing on an orphaned DOI.
+
+    ``withdrawn`` names originals whose every attempt was set aside after reading (data/curated/
+    attempt_exclusions.csv), with the reason: their explanation is set aside too, and reported, not attached.
 
     The attached copy is intentionally limited to original-study material.  A
     future caller cannot accidentally turn provenance or a later verdict into
     pre-guess text by reusing a promoted-pair record.
     """
     folds = doi_folds or {}
+    notes: list[str] = []
     for doi_o, explanation in explanations.items():
         canonical = folds.get(doi_o, doi_o)
+        if canonical not in findings and canonical in (withdrawn or {}):
+            notes.append(f"explanation for {doi_o} set aside: its only attempts were set aside ({withdrawn[canonical]})")
+            continue
         if canonical not in findings:
             raise ExplanationValidationError(
                 f"{FILE.name} {doi_o}: no built finding exists for this original DOI"
             )
         findings[canonical]["explanation"] = copy.deepcopy(explanation)
+    return notes

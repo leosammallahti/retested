@@ -14,7 +14,7 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
-from . import load, queue, registry, score
+from . import curated_links, flora_validation, openalex_works, read_pairs, load, queue, registry, score
 from .ids import EffectLedger
 from .promoted import FILE, load as load_rows, validate
 from .__main__ import LEDGER
@@ -84,7 +84,7 @@ def main() -> int:
     src = {
         "flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
         "famous": load.load_famous(), "openalex": load.load_openalex(),
-        "merges": load.load_merges(), "promoted": load.load_promoted(),
+        "merges": load.load_merges(), "links": curated_links.load(), "flora_validation": flora_validation.rows(), "openalex_works": openalex_works.load(), "read_pairs": read_pairs.load(), "promoted": load.load_promoted(),
     }
     graph = registry.build(src, EffectLedger(LEDGER))
     score.score(graph)

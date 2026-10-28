@@ -263,7 +263,12 @@ def _semantic_review_problems(
     if declared.get("sha256") != actual_sha:
         problems.append("reconciled ledger's declared semantic-review hash does not match the input artifact")
     declared_path = declared.get("path")
-    if not declared_path or Path(str(declared_path)).resolve() != semantic_review_path.resolve():
+    # the ledger records the path in the checkout that wrote it; the same file in another checkout or worktree is
+    # the same input (its hash is checked above), so compare the part from data/ on
+    def _from_data(path) -> str:
+        parts = Path(str(path)).as_posix().split("/data/", 1)
+        return parts[1] if len(parts) == 2 else Path(str(path)).as_posix()
+    if not declared_path or _from_data(declared_path) != _from_data(semantic_review_path.resolve()):
         problems.append("reconciled ledger's declared semantic-review path does not match the input artifact")
 
     decisions = list(semantic_review.get("decisions") or [])
@@ -706,6 +711,20 @@ def build_registry(
                     else:
                         record[field] = sorted(set(record[field]))
 
+    # Reviewed corrections made after this ledger was pinned (data/curated/attempt_exclusions.csv,
+    # attempt_duplicates.csv, attempt_relinks.csv): a reconciled addition set aside after reading, merged into the
+    # record it duplicates, or moved to its right original is withdrawn from the comparison; a replication moved to
+    # an original this ledger never compared is outside it until the ledger is regenerated.
+    from .curated_links import load as load_reviewed_links
+    reviewed = load_reviewed_links()
+    set_aside = {_pair_key({"doi_o": r["doi_o"], "rep_key": r["rep_key"]})
+                 for r in reviewed["attempt_exclusions"] + reviewed["attempt_duplicates"] if r["rep_key"].startswith("10.")}
+    merged_into = {_pair_key({"doi_o": r["doi_o"], "rep_key": r["same_as"]})
+                   for r in reviewed["attempt_duplicates"] if r["same_as"].startswith("10.")}
+    relinked = {_pair_key({"doi_o": r["doi_o"], "rep_key": r["rep_key"]})
+                for r in reviewed["attempt_relinks"] if r["rep_key"].startswith("10.")}
+    relinked_new = relinked - set(reconciled_by_pair)
+
     # Map the built Retested layer to canonical expression pairs.  This is a
     # bibliographic comparison only; every effect/study axis stays unreviewed.
     built_by_pair: dict[tuple[str, str], Mapping[str, Any]] = {}
@@ -713,15 +732,20 @@ def build_registry(
         if "retested" not in (attempt.get("sources") or []):
             continue
         key = _pair_key(attempt)
+        if key in relinked_new:
+            continue
         if key in built_by_pair:
             raise ValueError(f"duplicate built Retested pair after normalization: {key}")
         built_by_pair[key] = attempt
 
+    # a reading for Retested (pipeline/read_pairs.py) adds evidence to a record; it does not change who added it
     addition_pairs = {
         key for key, attempt in built_by_pair.items()
-        if set(attempt.get("sources") or []) == {"retested"}
+        if set(attempt.get("sources") or []) - {"read"} == {"retested"}
     }
     overlay_pairs = set(built_by_pair) - addition_pairs
+    for key in set(reconciled_by_pair) & (set_aside | ((merged_into | relinked) - addition_pairs)):
+        reconciled_by_pair.pop(key)
     if set(reconciled_by_pair) != addition_pairs:
         raise ValueError(
             f"reconciled/build addition mismatch: reconciled={len(reconciled_by_pair)} additions={len(addition_pairs)}"

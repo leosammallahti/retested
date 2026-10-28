@@ -88,7 +88,9 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
             # the same fold the registry applied: a source row spelling the DOI the malformed way still has to
             # reach its attempt, or this check would report a loss every time a variant is folded correctly
             folds = g.get("doi_folds") or {}
-            if _aid(folds.get(doi_o, doi_o), folds.get(rep, rep)) not in reachable:
+            aid = _aid(folds.get(doi_o, doi_o), folds.get(rep, rep))
+            # a pair set aside after reading (data/curated/attempt_exclusions.csv) is accounted for, with its reason
+            if aid not in reachable and aid not in (g.get("set_aside") or {}) and aid not in (g.get("merged_into") or {}):
                 lost += 1
     if lost:
         problems.append(f"{lost} FLoRA pairs are not reachable from any finding")

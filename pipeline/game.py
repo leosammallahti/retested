@@ -206,7 +206,10 @@ def build(g: dict, written: dict[str, dict] | None = None,
         if not fam or fam["status"] not in ("replicated", "not_replicated", "reversed"):
             continue
         claim = _clean_claim(fam.get("description"))
-        gid = "f" + hashlib.md5(e["key"].encode()).hexdigest()[:9]
+        # the card keeps the id its post, written claim or refusal was filed under, even when its name was later
+        # folded into another (the effect's own key first)
+        ids = ["f" + hashlib.md5(k.encode()).hexdigest()[:9] for k in [e["key"], *e.get("merged_keys", [])]]
+        gid = next((i for i in ids if i in posts or i in written or i in refused), ids[0])
         post = (posts.get(gid) or {}).get("post")
         if not claim and not (written.get(gid) or {}).get("claim") and not post:
             continue

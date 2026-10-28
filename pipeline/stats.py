@@ -181,7 +181,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     for a in reps:
         # Our reviewed overlay records unknown explicitly. Do not relabel an
         # unknown registration status as "not preregistered" in the predictor.
-        if set(a["sources"]) == {"retested"}:
+        if set(a["sources"]) - {"read"} == {"retested"}:
             status = a.get("preregistration_status", "unknown")
             if status == "unknown":
                 continue
@@ -220,7 +220,9 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     def survived(e):
         code = e["lenses"]["record"]["code"]
         fam = (e.get("famous") or {}).get("status")
-        return code in ok_codes or code == "single_success" or (fam == "replicated" and code not in failed_codes | {"contested"})
+        # an effect with no replication of its own is not in the database, whatever FORRT's list says of it
+        return bool(e["attempts"]) and (code in ok_codes or code == "single_success"
+                                        or (fam == "replicated" and code not in failed_codes | {"contested"}))
 
     survivors = sorted((e for e in E.values() if survived(e)), key=lambda e: (-fame(e), e["name"]))
     contested = sorted((e for e in E.values() if e["lenses"]["record"]["code"] == "contested"),
@@ -230,19 +232,21 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     q = lambda xs, f: xs[int(f * (len(xs) - 1))] if xs else None  # noqa: E731
     return {
         "counts": {
-            "effects": len(E),
+            # an effect counts once a replication of its own is linked; the rest are named by FORRT and listed apart
+            "effects": sum(1 for e in E.values() if e["attempts"]),
             "effects_with_attempts": sum(1 for e in E.values() if e["attempts"]),
+            "effects_named_without_replication": sum(1 for e in E.values() if not e["attempts"]),
             "retested_reviewed_pairs": sum("retested" in a["sources"] for a in A.values()),
-            "retested_new_pairs": sum(set(a["sources"]) == {"retested"} for a in A.values()),
+            "retested_new_pairs": sum(set(a["sources"]) - {"read"} == {"retested"} for a in A.values()),
             "retested_named_effects": sum(bool(e["attempts"]) and "retested" in e.get("name_sources", [])
                                           for e in E.values()),
             "retested_new_effects": sum(bool(e["attempts"]) and e.get("name_sources") == ["retested"]
                                         for e in E.values()),
             "retested_findings": sum(any("retested" in A[aid]["sources"] for aid in f["attempts"])
                                       for f in F.values()),
-            "retested_new_findings": sum(all(set(A[aid]["sources"]) == {"retested"}
+            "retested_new_findings": sum(all(set(A[aid]["sources"]) - {"read"} == {"retested"}
                                              for aid in f["attempts"]) for f in F.values()),
-            "retested_prereg_unknown": sum(set(a["sources"]) == {"retested"}
+            "retested_prereg_unknown": sum(set(a["sources"]) - {"read"} == {"retested"}
                                            and a.get("preregistration_status") == "unknown"
                                            for a in A.values()),
             "famous_effects": sum(1 for e in E.values() if e.get("famous")),

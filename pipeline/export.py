@@ -141,7 +141,7 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
     )
     _dump(PUBLIC / "queue" / "candidates.json", candidates)
     search = [{"t": "effect", "s": e["slug"], "n": e["name"], "a": e["aliases"][:6], "d": e.get("discipline"),
-               "k": e["lenses"]["record"]["k"]} for e in E.values()]
+               "k": e["lenses"]["record"]["k"]} for e in E.values() if e["attempts"]]
     for f in F.values():
         p = P.get(f["doi_o"], {})
         search.append({"t": "finding", "s": f["slug"], "n": p.get("title") or f["doi_o"], "doi": f["doi_o"],

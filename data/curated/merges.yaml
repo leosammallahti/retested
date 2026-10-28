@@ -1,7 +1,654 @@
 # Curated effect merges. Applied after the automatic near-duplicate merge in pipeline/registry.py.
 # Each entry folds the "from" names into the "into" name; the ledger keeps every old id, so no URL breaks.
-# Example:
-# - into: Power Posing
-#   from: [Power pose]
-#   reason: same phenomenon (Carney, Cuddy & Yap 2010); two naming sources
-[]
+# Entries of 28 Oct 2026 were decided by reading each case: the same effect on the same original paper under
+# several names (FORRT's data sheet, its Replications & Reversals list, and Retested's reviewed pairs each named it).
+- into: 2D:4D ratio of the fingers
+  from:
+  - 2D:4D
+  - 2D:4D ratio of the fingers and its correlation with psychological traits
+  reason: one effect (finger-length ratio and masculine traits, Wilson 1983); FORRT names split by the list parse
+- into: 5-HTT Gene-by-Environment Interaction (5-HTT G x E)
+  from:
+  - 5-HTTLPR
+  - Stress and 5-HTTLPR interact in depression
+  reason: Caspi et al. 2003 gene-by-stress interaction in depression under three names
+- into: Ability emotional intelligence as a second-stratum factor
+  from:
+  - Ability EI as a factor of intelligence
+  - Ability Emotional Intelligence as a Second Stratum Factor of Intelligence
+  reason: MacCann et al. 2014 under three names
+- into: Better than average effect
+  from:
+  - Above-Average Effect
+  - Above-Average Effect (Better-Than-Average Effect)
+  reason: the better-than-average effect (Alicke 1985); FORRT gives both names
+- into: Trait controllability strengthens self-favoring desirability ratings
+  from:
+  - better-than-average effect moderated by controlability
+  reason: Alicke 1985 controllability moderation under two names
+- into: Accuracy of information
+  from:
+  - Accuracy of information (truth discernment)
+  reason: Pennycook et al. 2020 accuracy nudge under two names
+- into: Achievement Priming
+  from:
+  - Achievement priming (goal priming, high-performance goal priming)
+  - Achievement-goal priming improves performance
+  - Achievement-word priming improves cognitive task performance
+  reason: Bargh et al. 2001 achievement-goal priming under four names
+- into: Action-sentence Compatibility Effect
+  from:
+  - Action-sentence Compatibility Effect (ACE)
+  reason: Glenberg & Kaschak 2002 under two names
+- into: Self-interest is Overestimated
+  from:
+  - Actual and assumed power of self-interest
+  - Overestimated financial self-interest in blood donation willingness
+  reason: Miller & Ratner 1998 under three names
+- into: Affect heuristic
+  from:
+  - Affect Heuristic in Judging Outcome
+  - Risk information inversely shifts benefit judgments
+  - Risk and benefit perceptions(affect heuristic)
+  reason: Finucane et al. 2000 risk-benefit affect heuristic under four names
+- into: American flag priming boosts Republican support
+  from:
+  - flag priming
+  reason: Carter et al. 2011 flag priming under two names
+- into: Anthropomorphism
+  from:
+  - Anthropomorphism for inanimate objects
+  reason: Epley et al. 2008 loneliness and anthropomorphism under two names
+- into: Avoidance of dissonance-arousing situations
+  from:
+  - Avoidance of dissonance-arousing situations (Ideological asymmetry in dissonance avoidance)**
+  reason: Nam et al. 2013 under two names
+- into: Bilingual executive control effect - Non-verbal task switching
+  from:
+  - Bilingual advantages in executive control - Non-verbal task switching
+  reason: the same bilingual task-switching claim under two names
+- into: Bottomless soup bowl
+  from:
+  - Bottomless Bowls' effect
+  - Self-refilling bowls increase soup intake
+  reason: Wansink et al. 2005 under three names
+- into: Choosing versus Rejecting
+  from:
+  - Choosing versus rejecting (Framing effects, compatibility principle)
+  reason: Shafir 1993 under two names
+- into: Classical Anchoring Effect
+  from:
+  - Classical anchoring effect (anchoring and adjustment)
+  reason: Tversky & Kahneman 1974 anchoring under two names
+- into: Conjunction bias
+  from:
+  - Conjunction bias (conjunction fallacy)
+  - Conjunction effect-James
+  - Conjunction effect-Linda
+  reason: 'Mellers et al. 2001: the conjunction effect and its two problems (James, Linda) as tested together'
+- into: Default Effect
+  from:
+  - Default bias
+  - default effect (no default, opt-in)
+  - default effect (opt-out - opt-in)
+  reason: the default effect (Johnson et al. 2002; Johnson & Goldstein 2003) under four names
+- into: Depressive realism effect
+  from:
+  - Depressive Realism
+  - Depressive realism in judgments of control
+  reason: Alloy & Abramson 1979 under three names
+- into: Screen Time and Well-Being
+  from:
+  - Digital technology use and adolescent wellbeing
+  reason: Twenge et al. 2017 screen time and adolescent wellbeing under two names
+- into: Distinction bias
+  from:
+  - Disjunction Bias
+  reason: Hsee & Zhang 2004 distinction bias; 'Disjunction Bias' is FORRT's misspelling
+- into: Disjunction Effect
+  from:
+  - Disjunction effect-choice under risk
+  - Disjunction effect-pay to know
+  reason: 'Tversky & Shafir 1992: the disjunction effect and its two problems as tested together'
+- into: Dr. Fox effect
+  from:
+  - Dr
+  - The Doctor Fox lecture produces favorable ratings but illusory learning claim fails
+  reason: Naftulin et al. 1973; 'Dr' is the famous-list name cut at its full stop
+- into: Dunning-Kruger effect
+  from:
+  - Low performers overestimate their own performance
+  - Metacognitive deficits explain low-performer overconfidence
+  reason: Kruger & Dunning 1999 under three names
+- into: Easterlin paradox
+  from:
+  - Easterlin paradox (national income associated with happiness)
+  reason: Easterlin 1974 under two names
+- into: Embodiment of secrets
+  from:
+  - Embodiment of secrets (secrets-as-burdens)
+  - embodiment of secrets effect
+  - Important secrets steepen perceived hills
+  reason: Slepian et al. 2012 under four names
+- into: Exceptionality Effect
+  from:
+  - Exceptionality effect (emotional amplification, normality bias, exceptional-routine effect)
+  - Exceptionality heightens attributed regret after negative outcomes
+  reason: Kahneman & Miller 1986 exceptionality effect under three names
+- into: Facial Feedback
+  from:
+  - Facial feedback changes cartoon humor ratings
+  reason: Strack et al. 1988 under two names
+- into: Fertility on voting
+  from:
+  - Fertility on voting (Ovulation effect)
+  reason: Durante et al. 2013 under two names
+- into: Goal priming effect
+  from:
+  - Goal priming effect (goal contagion, goal inspiration, behavioural inspiration)
+  reason: Aarts et al. 2004 goal contagion under two names
+- into: Grammar influences perceived intentionality effect
+  from:
+  - Grammar influences perceived intentionality
+  - Verbal Framing
+  - Verbal framing (temporal tense)
+  reason: Hart & Albarracin 2011 verb aspect and intentionality under four names
+- into: Experiential purchases reveal more about the self than material purchases
+  from:
+  - Happiness,Experiential vs materialistic
+  reason: Carter & Gilovich 2012 under two names
+- into: Variety reduces perceived quantity
+  from:
+  - Heterogeneity reduces perceived quantity
+  reason: Redden & Hoch 2009 under two names
+- into: Threat Freezing
+  from:
+  - Human freezing behaviour (postural sway)
+  - Human freezing like behaviour (postural sway) in threat processing
+  reason: Roelofs et al. 2010 under three names
+- into: Female Hurricanes
+  from:
+  - Hurricane names
+  - Female-named hurricanes are more deadly than male-named ones
+  reason: Jung et al. 2014 under three names
+- into: Implicit bias
+  from:
+  - Implicit bias testing for racism
+  reason: Greenwald et al. 1998 implicit association test under two names
+- into: Implicit God prime increases self-reported risky behaviour
+  from:
+  - God Prime Self-Report
+  reason: Kupor et al. 2015 self-reported risk taking under two names (the behavioural-risk study stays apart)
+- into: Impostor phenomenon
+  from:
+  - Imposter phenomenon
+  reason: Clance & Imes 1978 under two spellings
+- into: Temporal action-inaction effect
+  from:
+  - inaction effect, action-inaction vs. temporal change
+  - inaction effect, long term regret
+  - inaction effect, short term regret
+  - Temporal reversal of action and inaction regret
+  reason: 'Gilovich & Medvec 1994 temporal pattern of regret: its short- and long-term parts under five names (general regret stays apart)'
+- into: Inaction Inertia effect
+  from:
+  - Inaction inertia-car
+  - Inaction inertia-fitness center
+  - Inaction inertia-frequent flyer
+  - Inaction inertia-ski
+  - Missed attractive opportunities reduce later action
+  reason: 'Tykocinski et al. 1995 inaction inertia: one effect shown in four scenarios, under six names'
+- into: Increase in narcissism
+  from:
+  - Increase in narcissism (leadership, vanity, entitlement) in young people over the last thirty years
+  - Increased narcissim
+  reason: the generational narcissism claim (Twenge 2013) under three names
+- into: Information source on attitudes effect
+  from:
+  - Information source on attitudes effect (Quote Attribution)
+  reason: Lorge & Curtiss 1936 under two names
+- into: Intelligence Priming
+  from:
+  - Intelligence priming (contemplation) (professor priming)
+  - professor priming
+  - Professor priming increases general-knowledge performance
+  reason: Dijksterhuis & van Knippenberg 1998 under four names
+- into: Isolation effect
+  from:
+  - Isolation effect (Von Restorff effect)
+  reason: the same isolation-effect entry twice
+- into: Magnitude effect
+  from:
+  - Magnitude effect (magnitude perception)
+  reason: the same magnitude-effect entry twice
+- into: Lack of a Theory of Mind is universal in autism
+  from:
+  - Lack of a Theory of Mind in autistic people
+  - Theory of Mind Austism
+  reason: Baron-Cohen et al. 1986 under three names
+- into: Less is better
+  from:
+  - A cheaper scarf can seem more generous than a costlier coat
+  reason: Hsee 1998 less-is-better under two names
+- into: Matilda effect
+  from:
+  - Matilda effect (Matthew Matilda effect)
+  reason: the Matilda effect under two names
+- into: Color match effect in sentence-picture verification
+  from:
+  - 'Mental simulation - mismatch advantage: object colour'
+  reason: Connell 2007 object colour in sentence comprehension under two names
+- into: Miles per gallon illusion
+  from:
+  - Miles per gallon illusion (MPG illusion, kilometres per litres illusion)**
+  reason: Larrick & Soll 2008 under two names
+- into: Milgram experiment
+  from:
+  - Milgram experiment was a study examining the influence of authority on the immoral behaviour
+  - Milgram Shock
+  reason: Milgram 1963 under three names
+- into: Growth Mindset
+  from:
+  - Mindsets
+  - Growth mindset predicts improving grades across a school transition
+  reason: Blackwell et al. 2007 growth mindset and grades under three names (the instruction study stays apart)
+- into: Magpie mirror mark-directed behavior
+  from:
+  - Mirror-self recognition in magpies (Pica pica)
+  reason: Prior et al. 2008 under two names
+- into: Money, Goods, Social Market
+  from:
+  - more-is-better effect
+  - Money market versus goods/social market
+  reason: Heyman & Ariely 2004 payment type and effort under three names
+- into: Mortality Salience
+  from:
+  - Mortality Salience (Death Priming/Terror Management Theory)
+  - Mortality reminders increase national in-group bias
+  - Mortality reminders increase preference for a patriotic essay author
+  - Mortality salience and pro-American author preference
+  reason: Greenberg et al. 1994 mortality salience under five names
+- into: Motivated numeracy
+  from:
+  - Numeracy amplifies partisan interpretation of policy data
+  reason: Kahan et al. 2013 under two names
+- into: Omission bias
+  from:
+  - 'Omission Bias (alternative terms: action-inaction effect)'
+  reason: Spranca et al. 1991 under two names
+- into: Other-race effect
+  from:
+  - Other-race effect (cross-race effect, own-race bias)
+  reason: the other-race effect under two names
+- into: Outcome bias
+  from:
+  - Outcome bias in evaluation of decision quality
+  reason: Baron & Hershey 1988 under two names
+- into: Temporal Value Asymmetry
+  from:
+  - Past-future asymmetry
+  - Temporal value asymmetry (TVA)
+  reason: Caruso et al. 2008 under three names
+- into: Personal cognitive dissonance - induced-compliance paradigm
+  from:
+  - induced-compliance
+  reason: the induced-compliance paradigm under two names
+- into: Preference for indirect harm
+  from:
+  - Direct versus indirect harm
+  reason: Royzman & Baron 2002 under two names
+- into: Public exposure distinguishes shame from guilt
+  from:
+  - Public exposure influences shame and guilt differently
+  reason: Smith et al. 2002 under two names
+- into: Pygmalion Effect
+  from:
+  - Pygmalion effect (Rosenthal Effect, self-fulfilling prophecy)
+  - Teacher expectancy and pupil IQ gain
+  reason: Rosenthal & Jacobson 1968 under three names
+- into: Red impairs cognitive performance
+  from:
+  - Red Impairs Cognition
+  - Red cue impairs achievement performance
+  - Red impairs cognitive performance effect
+  reason: Elliot et al. 2007 under four names
+- into: Reduced prosociality of high SES effect
+  from:
+  - Prosociality-SES
+  reason: Piff et al. 2010 under two names
+- into: Romeo and Juliet effect
+  from:
+  - Parental interference intensifies romantic love
+  reason: Driscoll et al. 1972 under two names
+- into: Scarcity - Resource Allocation
+  from:
+  - Scarcity effect - Resource allocation
+  reason: Durante et al. 2015 under two names
+- into: Sex differences in implicit math attitudes
+  from:
+  - Sex differences in implicit maths attitudes
+  reason: Nosek et al. 2002 under two spellings
+- into: Signing at the beginning rather than end makes ethics salient
+  from:
+  - Signing Ethics
+  - Signing at the top and dishonesty
+  reason: Shu et al. 2012 under three names
+- into: Asch's Conformity
+  from:
+  - Solomon Asch’s conformity
+  - Solomon Asch’s conformity study
+  - Unanimous majorities shift visual line judgments
+  - Unanimous wrong answers induce conformity
+  reason: Asch 1956 under five names
+- into: Status quo bias
+  from:
+  - Status quo effect
+  - Status-Quo
+  reason: Samuelson & Zeckhauser 1988 under three names
+- into: Stereotype threat/bonus
+  from:
+  - Stereotype threat on Asian women’s mathematical performance
+  - Asian Women Mathematics
+  reason: Shih et al. stereotype susceptibility in Asian-American women under three names
+- into: Subliminal Anchoring Effect
+  from:
+  - Subliminal anchoring effect (subliminal anchoring)
+  - Judgment and Decision Making
+  reason: Mussweiler & Englich 2005; 'Judgment and Decision Making' is a discipline name used as an effect name
+- into: Unconscious thought advantage
+  from:
+  - Superiority-of-unconscious decision-making effect (deliberation without attention effect)
+  - Superiority-of-unconscious decision-making effect
+  reason: Dijksterhuis et al. 2006 under three names
+- into: Temporal Differences in Trait Self-Ascription
+  from:
+  - Temporal distance,Actor-observer bias
+  - Temporal and social distance in trait attributions
+  reason: Pronin & Ross 2006 under three names
+- into: Theory of mind in below-4 year olds (false belief)
+  from:
+  - Theory of mind – below-4 year olds
+  - ToM under Four
+  reason: Wimmer & Perner 1983 false belief under four years, three names
+- into: Theory of mind over development (false belief)
+  from:
+  - Theory of mind – over development
+  reason: the same entry twice
+- into: Transposed word effect
+  from:
+  - Transposed word effect. Responses to transposed word sequences (e.g
+  reason: Mirault et al. 2018; the longer name is the famous-list entry cut at 'e.g.'
+- into: Unethicality darkens perception of light
+  from:
+  - Unethicality darkens perception of light (El Greco fallacy)
+  reason: Banerjee et al. 2012 under two names
+- into: Vicarious cognitive dissonance
+  from:
+  - Vicarious cognitive dissonance - induced-compliance paradigm
+  reason: Norton et al. 2003 under two names
+- into: Weapons priming effect
+  from:
+  - Weapons priming effect (weapons effect)
+  - Weapons priming
+  reason: Berkowitz & LePage 1967 under three names
+- into: honesty priming
+  from:
+  - ​​Honesty priming (goal-priming, social priming)
+  reason: Rasinski et al. 2005 under two names
+- into: “Brain drain” effect
+  from:
+  - Smartphone proximity drains cognitive capacity
+  reason: Ward et al. 2017 under two names
+- into: A Person × Nation interaction effect of interest and achievement
+  from:
+  - Economic resources strengthen interest–science achievement link
+  reason: same Tucker-Drob interest by economic resources claim, reworded (same replications; read by a helper, spot-checked)
+- into: Abstract rule learning
+  from:
+  - Infant Rule Learning (Speech)
+  reason: same Marcus 1999 infant rule learning, name only adds stimulus type (same replications; read by a helper, spot-checked)
+- into: Age of acquisition influence on lexical retrieval (auditory lexical decision task)
+  from:
+  - Age of acquisition influence on lexical retrieval (auditory lexical decision task in opaque languages)
+  reason: identical claim text; opaque-languages note only describes the task (same replications; read by a helper, spot-checked)
+- into: Anchors make related examples more accessible
+  from:
+  - Anchor-consistent exemplar accessibility in lexical decisions
+  reason: same anchoring selective accessibility claim, reworded (same replications; read by a helper, spot-checked)
+- into: Availability heuristic
+  from:
+  - Availability bias in first-letter versus third-letter frequency judgments
+  reason: same Tversky Kahneman letter frequency availability finding (same replications; read by a helper, spot-checked)
+- into: Commitment Priming
+  from:
+  - Commitment priming reduces destructive responses to betrayal
+  reason: same Study 1 priming effect on responses to betrayal (same replications; read by a helper, spot-checked)
+- into: Warmer-hearts-warmer-room effect
+  from:
+  - Communal trait descriptions raise perceived room temperature
+  reason: same Szymkow communal priming raises room temperature estimate (same replications; read by a helper, spot-checked)
+- into: Cortical Thickness and Attention
+  from:
+  - Structural brain-behaviour correlations - the association between attention and cortical thickness
+  reason: same cortical thickness and attention network claim (same replications; read by a helper, spot-checked)
+- into: Deliberate Practice
+  from:
+  - Expertise attained after 10,000 hours practice
+  reason: same claim that deliberate practice explains expert performance (same replications; read by a helper, spot-checked)
+- into: Door-in-the-face effect
+  from:
+  - door-in-the-face technique
+  reason: same Cialdini door-in-the-face compliance effect (same replications; read by a helper, spot-checked)
+- into: Unlikely future actions are segmented into fewer units
+  from:
+  - Effect of Subjective likehood on construal level
+  reason: same Wakslak likelihood and construal claim; forrt name has typo (same replications; read by a helper, spot-checked)
+- into: False memories - eyewitness testimony
+  from:
+  - Post-event collision wording changes speed estimates
+  reason: same Loftus Palmer misleading wording memory effect (same replications; read by a helper, spot-checked)
+- into: implicit Theory of Mind measured through anticipatory looking
+  from:
+  - False-belief anticipatory looking in the Southgate task
+  reason: same Southgate false-belief anticipatory looking claim (same replications; read by a helper, spot-checked)
+- into: False-belief looking in the Southgate task
+  from:
+  - Theory of Mind
+  reason: same Southgate anticipatory looking claim; Theory of Mind name too broad (same replications; read by a helper, spot-checked)
+- into: Fertility Facial Preferences
+  from:
+  - Fertility facial-preferences effect
+  reason: same Penton-Voak cycle-dependent masculine face preference (same replications; read by a helper, spot-checked)
+- into: Goal conflict and work and leisure time spent
+  from:
+  - goal conflict
+  reason: same goal conflict work and leisure claim (same replications; read by a helper, spot-checked)
+- into: Grey Matter and Distractibility
+  from:
+  - Structural brain-behaviour correlations - the association between distractibility and grey matter volume
+  reason: same Kanai distractibility and grey matter claim (same replications; read by a helper, spot-checked)
+- into: Grey Matter and Social Networks
+  from:
+  - Online social network size and regional grey matter volume
+  - Structural brain-behaviour correlations - the association between social network size and grey matter volume
+  reason: same Kanai social network size and grey matter claim (same replications; read by a helper, spot-checked)
+- into: Handedness DIfferences in Schizophrenia
+  from:
+  - Handedness differences - Schizophrenia
+  reason: same non-right-handedness in schizophrenia claim (same replications; read by a helper, spot-checked)
+- into: weight-importance effect
+  from:
+  - Holding a heavy clipboard increases judgments of importance
+  reason: same Jostmann weight embodies importance effect (same replications; read by a helper, spot-checked)
+- into: Impact of Scarcity on Attention
+  from:
+  - Scarcity reallocates attention and increases overborrowing
+  reason: same Shah 2012 scarcity and attention claim (same replications; read by a helper, spot-checked)
+- into: Impact of Scarcity on Wellbeing
+  from:
+  - Scarcity effect - Wellbeing
+  reason: same Layous time scarcity and wellbeing claim (same replications; read by a helper, spot-checked)
+- into: Product size on status signaling
+  from:
+  - Larger products signal higher status (retracted original)
+  reason: same claim that larger products signal higher status (same replications; read by a helper, spot-checked)
+- into: Mental simulation - match advantage object orientation
+  from:
+  - Sentence-implied orientation speeds matching picture recognition
+  reason: same orientation match advantage in picture verification (same replications; read by a helper, spot-checked)
+- into: Mental simulation - match advantage object shape
+  from:
+  - Sentence-implied object shape speeds recognition of matching pictures
+  reason: same shape match advantage in picture verification (same replications; read by a helper, spot-checked)
+- into: Spatial-schema priming shifts ambiguous temporal interpretation
+  from:
+  - metaphoric restructuring effect
+  reason: same Boroditsky spatial priming of time; forrt name garbled (same replications; read by a helper, spot-checked)
+- into: Modulation of 1/f noise on the weapon identification task
+  from:
+  - modulation of 1/f noise racial bias
+  reason: same Correll 1/f noise effort effect, reworded (same replications; read by a helper, spot-checked)
+- into: Motivational role of L2 vision
+  from:
+  - Vision as a driver of second-language motivation
+  reason: same L2 vision motivates language learning claim (same replications; read by a helper, spot-checked)
+- into: Social referencing effect
+  from:
+  - Offensive remarks direct gaze toward an able-to-hear target
+  reason: same Crosby gaze toward offended person who can hear (same replications; read by a helper, spot-checked)
+- into: Oxytocin on trust
+  from:
+  - Oxytocin Trust
+  reason: same Kosfeld oxytocin increases trust claim (same replications; read by a helper, spot-checked)
+- into: Personality traits and consequential life outcomes
+  from:
+  - Personalities and Outcomes
+  reason: same Big Five predicts life outcomes claim (same replications; read by a helper, spot-checked)
+- into: Power impairs perspective-taking effect
+  from:
+  - Power priming impairs perspective taking
+  reason: same Galinsky power impairs perspective taking claim (same replications; read by a helper, spot-checked)
+- into: Preferences for uniqueness and conformity
+  from:
+  - US–East Asian preference for uncommon-color pens
+  reason: same Kim Markus pen choice cultural difference (same replications; read by a helper, spot-checked)
+- into: Prosocial spending
+  from:
+  - Prosocial spending raises happiness relative to personal spending
+  reason: same Dunn spending on others raises happiness (same replications; read by a helper, spot-checked)
+- into: Risk and goal message framing
+  from:
+  - Risk-Goal Message Framing
+  reason: same Rothman gain and loss framing by behaviour type (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Brand attitudes
+  from:
+  - Scarcity - Brand Attitudes
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Competition/threat
+  from:
+  - Scarcity - Competition
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Overborrowing
+  from:
+  - Scarcity - Overborrowing
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Planning
+  from:
+  - Scarcity - Planning
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Preference for material goods
+  from:
+  - Scarcity - Prefer Material Goods
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Preference polarisation
+  from:
+  - Scarcity - Preference Polarisation
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Product use creativity
+  from:
+  - Scarcity - Product Use Creativity
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Wage rates
+  from:
+  - Scarcity - Wage Rates
+  reason: same name with different wording, same claim (same replications; read by a helper, spot-checked)
+- into: Scarcity effect - Attention
+  from:
+  - 'Wood et al (2008):'
+  reason: borrowing by rich versus poor is Shah scarcity claim; name is garbled (same replications; read by a helper, spot-checked)
+- into: Self-protective subjective temporal distance effect
+  from:
+  - Self-esteem strengthens distancing from negative past experiences
+  reason: same Ross Wilson self-esteem and temporal distance claim (same replications; read by a helper, spot-checked)
+- into: Social Comparison
+  from:
+  - Social comparison amplifies body dissatisfaction–fat talk association
+  reason: same interaction claim; retested name is garbled (same replications; read by a helper, spot-checked)
+- into: Stereotype threat on gender differences in political knowledge
+  from:
+  - Stereotype threat
+  reason: same Ihme Tausendpfund stereotype activation lowers womens political knowledge (same replications; read by a helper, spot-checked)
+- into: Stroop effect
+  from:
+  - Stroop word-color interference
+  reason: same Stroop colour-word interference effect (same replications; read by a helper, spot-checked)
+- into: Stuttering and phonological awareness impairment (vs. neurotypicals)
+  from:
+  - Stuttering and phonological awareness impairment (vs
+  reason: the famous list's entry, its name cut at '(vs.' when the list was read in
+- into: Stuttering and reading fluency impairment (vs. dyslexia)
+  from:
+  - Stuttering and reading fluency impairment (vs
+  reason: the famous list's entry, its name cut at '(vs.' when the list was read in
+- into: BDSM practitioners report higher subjective well-being than non-practitioners
+  from:
+  - Higher subjective well-being among BDSM practitioners
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Processing the word red impairs intellectual performance
+  from:
+  - color priming
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Comfort food buffers loneliness after a belongingness threat
+  from:
+  - Comfort food buffers loneliness after belongingness threat
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Preferences for uniqueness and conformity
+  from:
+  - Cultural difference in choosing uncommon pens
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Early parent reports predict 11-year language outcome
+  from:
+  - Early language questions predict later language difficulty
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Fructose or glucose ingestion improves anagram performance
+  from:
+  - Glucose and fructose boosts to anagram solving
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Iconic words are recognized faster
+  from:
+  - Iconic words yield faster lexical decisions
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Mental fatigue reduces cycling time to exhaustion
+  from:
+  - mental fatigue
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: People overlook subtractive improvements
+  from:
+  - Overlooking of subtractive change
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Tempting fate increases expected bad luck
+  from:
+  - Tempting-fate actions raise perceived chance of negative outcomes
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Superstition boosts performance effect
+  from:
+  - A lucky golf ball improves putting performance
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Automatic approach and avoidance from affective evaluation
+  from:
+  - Behavioural-consequences-of-automatic-evaluation
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
+- into: Self-control relies on glucose effect
+  from:
+  - Glucose ingestion counteracts subsequent self-control impairment
+  reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)

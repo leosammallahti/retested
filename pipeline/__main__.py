@@ -12,7 +12,7 @@ from . import (
     osf_documents, outcomes, pair_summaries, queue, reconciliation_registry, references, registry, reread, score,
     stats, triage, validate, verify,
 )
-from . import explanation_import, original_abstracts, posts, rep_abstracts, wiki
+from . import curated_links, flora_validation, openalex_works, read_pairs, forrt_ledger, rr_list, explanation_import, original_abstracts, posts, rep_abstracts, wiki
 from .ids import EffectLedger
 from .load import ROOT
 
@@ -55,7 +55,7 @@ def build(accept_baseline: bool) -> int:
     promoted_rows = load.load_promoted()
     src = {
         "flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
-        "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
+        "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(), "links": curated_links.load(), "flora_validation": flora_validation.rows(), "openalex_works": openalex_works.load(), "read_pairs": read_pairs.load(),
         "promoted": promoted_rows,
         "explanations": load.load_finding_explanations(promoted_rows),
     }
@@ -77,6 +77,14 @@ def build(accept_baseline: bool) -> int:
     queue.consequences(candidates, g)
     pending = queue.pending(candidates, g)
     st = stats.build(g, items, candidates)
+    # every row of every FORRT file must have an outcome (on the site, waiting, not yet read, left out with a reason)
+    forrt = forrt_ledger.build(g, candidates, rr_list.rows(src["legacy"]["rr"]), src["famous"], load.load_extractor())
+    st["forrt_ledger"] = forrt["summary"]
+    step(f"FORRT ledger: {len(forrt['lines'])} source rows, {forrt['summary']['missing']} without an outcome")
+    if forrt["summary"]["missing"]:
+        print("\nFORRT LEDGER FAILED: source rows with no outcome",
+              *[f"{l['file']} row {l['row']}" for l in forrt["lines"] if l["outcome"] == "MISSING"][:40], sep="\n  - ")
+        return 1
     step(f"game {len(items)} items; {finding_contexts} study contexts attached to finding pages; "
          f"queue {len(candidates)} candidates; "
          f"{sum(len(v) for v in pending['by_finding'].values())} pending on {len(pending['by_finding'])} finding pages")
@@ -86,6 +94,13 @@ def build(accept_baseline: bool) -> int:
         return 1
     ledger.save()
     sizes = export.write(g, items, reveals, candidates, pending, st, load.load_citation())
+    # readings a person must still read: they differ from FORRT's coding, or could not say whether the paper tests it
+    notes = ROOT / "data" / "build" / "read_notes.json"
+    notes.with_suffix(".json.tmp").write_text(json.dumps(g.get("read_notes") or [], ensure_ascii=False, indent=1), encoding="utf-8")
+    notes.with_suffix(".json.tmp").replace(notes)
+    out = ROOT / "data" / "build" / "forrt_ledger.json"
+    out.with_suffix(".json.tmp").write_text(json.dumps(forrt, ensure_ascii=False), encoding="utf-8")
+    out.with_suffix(".json.tmp").replace(out)
     wiki_effects, wiki_findings = wiki.write_release()
     step(f"wiki stories: {wiki_effects} effect pages and {wiki_findings} finding pages have a reviewed post")
     reconciliation_problems = build_reconciliation_artifacts(step)
@@ -102,7 +117,7 @@ def build(accept_baseline: bool) -> int:
 def run_discover(mode: str) -> int:
     promoted_rows = load.load_promoted()
     src = {"flora": load.load_flora(), "fred": load.load_fred(), "legacy": load.load_legacy(),
-           "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(),
+           "famous": load.load_famous(), "openalex": load.load_openalex(), "merges": load.load_merges(), "links": curated_links.load(), "flora_validation": flora_validation.rows(), "openalex_works": openalex_works.load(), "read_pairs": read_pairs.load(),
            "promoted": promoted_rows, "explanations": load.load_finding_explanations(promoted_rows)}
     g = registry.build(src, EffectLedger(LEDGER))
     discover.run(g, mode)
@@ -168,6 +183,8 @@ def main() -> None:
         "reconciliation-registry", add_help=False,
         help="build the evidence-first Retested/FORRT reconciliation registry",
     )
+    sub.add_parser("quality-audit", help="list every item in the built site that still needs a decision "
+                                         "(writes data/build/quality_audit.json; see pipeline/quality_audit.py)")
     sub.add_parser("outcomes", add_help=False, help="hand-read audit of whether the verdicts were read correctly "
                                                     "(its own flags: `python -m pipeline outcomes --help`)")
     cp = sub.add_parser("claims", help="write the plain-language claim each game card shows")
@@ -210,6 +227,9 @@ def main() -> None:
     if sys.argv[1:2] == ["reconciliation-registry"]:
         sys.exit(reconciliation_registry.main(sys.argv[2:]))
     a = ap.parse_args()
+    if a.cmd == "quality-audit":
+        from . import quality_audit
+        return quality_audit.main([])
     if a.cmd == "authors":
         sys.exit(authors.run_finds(a.max_usd) if a.finds
                  else authors.run_famous(a.max_usd) if a.famous

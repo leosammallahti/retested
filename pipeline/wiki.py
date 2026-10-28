@@ -265,14 +265,32 @@ def explanation_for(a: dict, explanations: dict) -> dict | None:
     return e
 
 
-def effect_lines() -> dict:
-    """One plain sentence per effect saying what the original research claimed, by effect slug, for the effect lists
-    and the top of each effect page (data/curated/effect_lines.json; written and read 2026-10-24). Only lines a
-    reader has approved are in the file; an effect without one shows none."""
+def _slug_of(eff: list[dict]) -> dict:
+    return {e["id"]: e["slug"] for e in eff}
+
+
+def effect_lines(eff: list[dict]) -> dict:
+    """One plain sentence per effect saying what the original research claimed, for the effect lists and the top of
+    each effect page (data/curated/effect_lines.json, keyed by effect id; written and read 2026-10-24). Only lines a
+    reader has approved are in the file; an effect without one shows none. Returned by slug for the site."""
     p = CURATED / "effect_lines.json"
     if not p.exists():
         return {}
-    return {slug: v["line"] for slug, v in json.loads(p.read_text(encoding="utf-8")).get("lines", {}).items() if v.get("line")}
+    slug = _slug_of(eff)
+    return {slug[i]: v["line"] for i, v in json.loads(p.read_text(encoding="utf-8")).get("lines", {}).items()
+            if v.get("line") and i in slug}
+
+
+def effect_typology(eff: list[dict]) -> dict:
+    """How each effect's original study worked (keyed by effect id in the file, returned by slug): what the study did, what was measured, who was
+    studied, the setting, and whether the body, brain, hormones or genes were measured (data/curated/
+    effect_typology.json; labelled 2026-10-27 by two models from outcome-blind text, disagreements read)."""
+    p = CURATED / "effect_typology.json"
+    if not p.exists():
+        return {}
+    slug = _slug_of(eff)
+    return {slug[i]: {d: v["value"] for d, v in dims.items() if isinstance(v, dict)}
+            for i, dims in json.loads(p.read_text(encoding="utf-8")).get("labels", {}).items() if i in slug}
 
 
 def accounts(att: dict, explanations: dict) -> dict:
@@ -535,7 +553,7 @@ def build(slugs: set[str] | None, posts_path: Path | None = None) -> dict:
     vocab = _vocab(att)
     fby = {f["slug"]: (d, f) for d, f in fnd.items()}
     out = {"schema_version": SCHEMA, "effects": {}, "findings": {}, "accounts": accounts(att, explanations),
-           "effect_lines": effect_lines()}
+           "effect_lines": effect_lines(eff), "effect_typology": effect_typology(eff)}
 
     def common(atts_raw: list[dict], lens: dict, originals: list[str]) -> dict:
         ordered = sorted(atts_raw, key=lambda a: (a.get("year_r") or 9999, a["id"]))
@@ -566,7 +584,8 @@ def build(slugs: set[str] | None, posts_path: Path | None = None) -> dict:
         own = [att[i] for i in e["attempts"]]
         s = common(own, e["lenses"], e["originals"])
         scenes, scene_from = [], None
-        pid = _fid(e["key"])
+        # a post written for the effect, or for a name later folded into it (the effect's own key first)
+        pid = next((p for p in (_fid(k) for k in [e["key"], *e.get("merged_keys", [])]) if p in posts and p not in holds), _fid(e["key"]))
         if pid in posts and pid not in holds:
             scenes, scene_from = [_scene(pid, posts, None)], "the famous effect"
         elif len(e["originals"]) == 1 and e["originals"][0] in fnd:
@@ -600,7 +619,8 @@ def released(doc: dict) -> dict:
     return {"schema_version": doc["schema_version"],
             "effects": {k: v for k, v in doc["effects"].items() if v["scenes"] or any(g["scenes"] for g in v["groups"])},
             "findings": {k: v for k, v in doc["findings"].items() if v["scenes"]},
-            "accounts": doc.get("accounts", {}), "effect_lines": doc.get("effect_lines", {})}
+            "accounts": doc.get("accounts", {}), "effect_lines": doc.get("effect_lines", {}),
+            "effect_typology": doc.get("effect_typology", {})}
 
 
 def write_release(posts_path: Path | None = None) -> tuple[int, int]:
