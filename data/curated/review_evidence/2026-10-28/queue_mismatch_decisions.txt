@@ -1,0 +1,74 @@
+q|10.1016/j.cortex.2014.02.013|10.12688/openreseurope.17749.2 | SAME | Replicates Yu et al. 2014, same year and title.
+q|10.1016/0030-5073(76)90005-2|10.1177/01461672251345021 | SAME | Study 1 of the later paper replicates Staw (1976).
+q|10.1177/0146167202286008|10.31234/osf.io/gavh9 | SAME | Replicates Pronin, Lin, Ross (2002) Study 1; Chandrashekar is another replication.
+q|10.1037/0096-1523.32.1.166|10.1167/19.10.220c | SAME | Experiment 1 directly replicates Reed et al. (2006).
+q|10.1017/s1930297500005064|10.17605/osf.io/vsbzk | SAME | Title and abstract replicate Connolly, Reb, Kausel (2013) alongside Ariely and Wallsten.
+q|10.1037/0022-3514.94.4.579|10.17605/osf.io/3rez2 | SAME | Förster et al. (2008) spelled Foerster; same study.
+q|10.1037/0021-9010.76.5.725|10.1037//0021-9010.79.4.631 | SAME | Replicates Barling, Kelloway, Bremermann (1991) union attitudes model; Bremermann misspelling in the name field.
+q|10.1037/pspi0000081|10.17605/osf.io/w2qcd | SAME | Replicates Rogers et al. (2017) Artful paltering, same DOI given.
+q|10.1016/j.jesp.2017.11.005|https://osf.io/drs8n | OTHER | Two-author 2018 paper cannot be "Carlson et al. (2020)"; different study.
+q|10.1037/a0026099|10.1037/xlm0001152 | OTHER | Replicates Trippas et al. (2016), not Morsanyi and Handley.
+q|10.2139/ssrn.3649814|https://osf.io/wkpsa | OTHER | Names Turri, Buckwalter, Blouw (2015), a three-author paper; linked is Turri alone.
+q|10.1037/0278-7393.21.4.1008|10.17605/osf.io/hba2p | SAME | Replicates Jones, Farrand, Stuart, Morris (1995) Experiment 4.
+q|10.1006/jmla.1998.2602|10.30707/etd2015.brown.j | OTHER | Thesis builds on Prior and MacWhinney (2010), not Meuter and Allport.
+q|10.1037/0022-3514.95.2.293|10.1017/s1930297500004496 | SAME | Also replicates Risen and Gilovich (2008) tempting fate experiment.
+q|10.1111/j.1745-6916.2006.00007.x|10.1017/s1930297500001765 | OTHER | Replicates Dijksterhuis, Bos, Nordgren, van Baaren (2006) experiments, not the theory paper.
+q|10.1126/science.1083968|10.1017/s0033291704002727 | SAME | Explicitly replicates Caspi et al., Science (2003).
+q|10.1519/jsc.0000000000002981|10.51224/cik.2024.60 | SAME | Close replication of Ballmann et al. (2021), the published version.
+q|10.2139/ssrn.5248179|https://osf.io/3fh8x | SAME | Replicates Li, Rossi, Yan (2025), same title.
+q|10.1111/j.1467-6486.2009.00879.x|https://research-information.bris.ac.uk/en/publications/e4b6e91a-641b-401b-a120-bd8dc0b94452 | SAME | Same paper, 2011 print year; identical Penrose organic/acquisitive growth study.
+q|10.1111/isj.12129|https://aisel.aisnet.org/cgi/viewcontent.cgi?article=4816&context=cais | SAME | Same Willison et al. paper and title, 2018 print year.
+q|10.1002/jaba.1019|10.1002/jaba.70072 | SAME | Also replicates and extends McCabe and Greer (2023) explicitly.
+q|10.1212/wnl.0000000000008463|10.1016/j.socscimed.2025.117798 | SAME | Replicates Grasset et al. CARDIA income volatility study; NLSY79 is the new data.
+q|10.1037/0021-9010.92.2.545|10.1177/01461672251345021 | SAME | Study 3 replicates Wong and Kwong (2007).
+q|10.1093/jamiaopen/ooac044|10.17705/1cais.05746 | SAME | Replicates Leroy et al. (2022), same study.
+q|10.31234/osf.io/gwavn_v1|10.31234/osf.io/mk34q_v1 | OTHER | Replicates Ozaki et al. (2024), not the linked Jia et al. replication.
+q|10.1596/1813-9450-9982|https://repositorioacademico.upc.edu.pe/bitstream/10757/684134/1/Nieto_AR.pdf | SAME | Same Gröger, León, Stillman paper, working paper then published 2024.
+q|10.1093/jamiaopen/ooac044|10.48550/arxiv.2508.15088 | SAME | Replicates Leroy et al. (2022), same study.
+q|10.1016/j.paid.2023.112401|10.17605/osf.io/3dpf7 | SAME | Replicates Li (2023) intellectual humility and ChatGPT study.
+q|10.1037/h0028777|10.17605/osf.io/vsmjf | SAME | Replicates Shaver (1970) defensive attribution; Brandt is only the recipe.
+q|10.1002/bdm.767|10.17605/osf.io/fx8qa | SAME | Olivola and Shafir martyrdom effect; 2011 online, 2013 print.
+q|10.2139/ssrn.3828328|https://www.econstor.eu/bitstream/10419/268496/1/I4R-DP016.pdf | SAME | Altindag et al. curfew paper, working paper then published 2022.
+q|10.1257/pol.20200226|https://www.econstor.eu/bitstream/10419/279961/1/I4R-DP088.pdf | SAME | Baron school spending paper, published 2022, same title.
+q|10.1177/0261927x12460666|10.15626/mp.2019.1633 | SAME | Matsumoto and Hwang language study; 2013 print year of the same paper.
+q|10.1111/j.1467-6486.2009.00879.x|10.5465/ambpp.2022.15661abstract | SAME | Same Lockett et al. Penrose growth paper, 2011 print year.
+q|10.1093/joc/jqaa010|https://osf.io/9xf5u | OTHER | Replicates Richards and Banas inoculation studies, not Clayton et al. anti-vaping paper.
+q|10.1080/00223891.2018.1491855|10.17605/osf.io/62thx | OTHER | Replicates Tse et al. (2020), a different paper than the 2018 questionnaire.
+q|10.21220/s2-tpbh-a715|10.21220/s2-9ecx-hk78 | OTHER | Replicates Maruskin, Thrash, Elliot (2012) factor structure, not Wadsworth thesis.
+q|10.1080/00223891.2018.1491855|https://osf.io/tkwba | OTHER | Replicates Tse et al. (2020), a different paper than the 2018 questionnaire.
+q|10.1016/j.jcorpfin.2013.11.005|10.1111/acfi.12707 | SAME | Levi, Li, Zhang director gender paper; 2014 print year, same title.
+q|10.1521/soco.2008.26.2.143|http://api.osf.io/v2/nodes/df5vn/ | SAME | Replicates Epley, Akalis, Waytz, Cacioppo (2008) loneliness and anthropomorphism.
+q|10.1177/0956797616668510|http://api.osf.io/v2/nodes/df5vn/ | SAME | Also replicates Bartz, Tchalova, Fenerci (2016) explicitly.
+q|10.3389/fpsyg.2014.00318|10.1167/19.10.220c | SAME | Experiment 3 directly replicates Kelly and Brockmole (2014).
+q|10.1016/j.jesp.2012.02.008|10.31234/osf.io/cj6kv | SAME | Replicates Adam and Galinsky (2012); Simonsohn is only the method.
+q|10.1016/j.cortex.2011.10.005|10.31234/osf.io/pqf8k | SAME | Shebani and Pulvermüller Cortex paper, online 2011, print 2013; same title.
+q|10.1177/0261927x12474654|10.31219/osf.io/9fgu8 | OTHER | Replicates two-author Matsumoto and Hwang language paper; linked is emotional-language paper with Frank.
+q|10.1177/0261927x12460666|10.17605/osf.io/r8qp2 | SAME | Matsumoto and Hwang language study; 2013 print year of the same paper.
+q|10.1093/jopart/mut051|https://biblio.ugent.be/publication/7186034/file/7188206 | SAME | Nielsen and Baekgaard performance information experiment, 2015 print year.
+q|10.1080/09595238600185271|10.1111/1467-9523.00071 | SAME | Extends the Cloke and Edwards 1981 index, which is the linked paper.
+q|10.1037//0021-843x.97.2.218|10.15288/jsa.1995.56.186 | SAME | Copper is a typo for Cooper, Russell, George (1988).
+q|10.2307/2095589|10.2307/2579435 | SAME | Replicates Bridges and Villemez (1986) along with Lin, Ensel, Vaughn.
+q|10.1007/s12207-021-09403-3|10.1007/s12207-026-09576-9 | OTHER | Replicates Akca et al. (2023) paradigm, not the Brazilian IOP-29 validation.
+q|10.1007/s10979-009-9208-6|10.1177/08862605261476687 | OTHER | Replicates Wrede and Ask (2015) paradigm, a later paper than Ask and Landström.
+q|10.1037/xge0000763|https://osf.io/9my8u | SAME | Muenks misspelled Meunks; Does my professor think my ability can change.
+q|10.1287/mnsc.2020.3688|10.17605/osf.io/e3fqy | SAME | Keck and Tang, Management Science 2020 print year.
+q|10.1016/0301-0511(93)90009-w|10.31234/osf.io/nyj3f | SAME | Multilab replication of Eimer (1993) Go/Nogo ERP study.
+q|10.1037/emo0000371|https://osf.io/e48f9 | OTHER | Names Troy, Ford, McRae, Zarolia, Mauss (2017), a different paper than Troy, Shallcross, Brunner.
+q|10.1080/2153599x.2011.647849|10.1016/j.cortex.2020.04.011 | OTHER | Replicates Inzlicht et al. (2009) neural study, not this 2011 review.
+q|10.3758/mc.38.1.42|10.1016/j.concog.2017.12.002 | OTHER | Replicates Mitchell (2006) 17-year priming study, not Thomson et al.
+q|10.1002/acp.1801|10.3389/fpsyg.2014.00259 | OTHER | Replicates Kornell and Bjork (2008) Experiment 2, not Kang and Pashler.
+q|10.1901/jaba.2009.42-295|https://hdl.handle.net/10289/9032 | SAME | Replicates Porritt (2007) and Porritt et al. (2009), the linked paper.
+q|10.1121/1.3654613|10.1177/1029864913493801 | OTHER | Replicates Deutsch (1974) original, not Oehler et al. extended replication.
+q|10.1017/s0272263106060190|10.1075/sic.9.3.01tho | SAME | Zyzik 2004 likely the same se study as Zyzik 2006; same topic.
+q|10.2307/349321|http://www.aijssnet.com/journals/Vol_1__No_2_December_2012/1.pdf | OTHER | Replicates Hill and Christensen (1939), not the Hudson and Henze 1969 replication.
+q|10.12794/metadc6104|10.12794/metadc9921 | UNSURE | Replicates Alai-Rosales et al. (2009); relation to Goettl thesis not stated.
+q|10.1037/0022-3514.35.9.656|https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1362590 | SAME | Web replication of Snyder, Tanke, Berscheid (1977) self-fulfilling stereotypes.
+q|10.1177/0146167299025001004|10.5334/pb-45-3-157 | SAME | Replicates Shultz, Léveillé, Lepper (1999) difficult-high choice condition.
+q|10.1006/brln.1999.2116|http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.552.8478 | OTHER | Replicates Harley and Bown (1998) tip-of-the-tongue study.
+q|10.2307/1421839|10.1080/00221309.1986.9710550 | OTHER | Replicates Sternberg (1982) nonentrenched color naming, not Johnson and Sternberg 1978.
+q|10.1002/bdm.767|10.17605/osf.io/yu25a | SAME | Olivola and Shafir martyrdom effect; 2011 online, 2013 print.
+q|10.1177/1948550615616170|https://osf.io/3ajn4 | SAME | Cichocka et al. conspiracy self-evaluation paper, 2016 print year.
+q|10.1016/j.cortex.2011.10.005|10.17605/osf.io/26fbh | SAME | Shebani and Pulvermüller Cortex paper, online 2011, print 2013; same title.
+q|10.1111/j.1467-6486.2009.00879.x|10.1177/10422587261435937 | SAME | Lockett, Wiklund, Davidsson, Girma: same paper, early online 2009 versus 2011 print.
+q|10.1300/j075v11n01_11|10.4324/9781315863894-4 | OTHER | Replicates Mawhinney, Dickinson, Taylor 1989 concurrent schedules study, not Mawhinney's 1990 critique.
+q|10.1111/j.1467-9280.2008.02157.x|https://osf.io/je5t7 | OTHER | Payne, Burkley & Stokes 2008 is an attitude-test paper, not the sleep memory study.

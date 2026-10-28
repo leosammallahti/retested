@@ -12,3 +12,13 @@ FILE = RAW / "local" / "openalex_paper_metadata.json"
 
 def load() -> dict[str, dict]:
     return json.loads(FILE.read_text(encoding="utf-8"))["works"] if FILE.exists() else {}
+
+
+LATER = RAW / "local" / "later_paper_records.json"
+
+
+def later_records() -> dict[str, dict]:
+    """Records of later papers OpenAlex does not hold, keyed by the attempt's rep_key: OSF's public API for OSF pages
+    and OSF DOIs, the DOI registry (doi.org) for other DOIs; fetched 2026-10-28 (pipeline/repair/details/
+    fetch_osf_registry.py). Used only to fill a missing title, author list or year."""
+    return {k: v for k, v in json.loads(LATER.read_text(encoding="utf-8"))["records"].items() if v} if LATER.exists() else {}

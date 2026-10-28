@@ -1,0 +1,16 @@
+at|at_1bdd05dc4f | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-effect replication; shown text never names the source attribution effect.
+at|at_5f08ea5b57 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset overall; shown text does not name this study or result.
+at|at_7334567f7e | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Twenty scarcity replications; shown text does not name scarcity polarizing preferences or its result.
+at|at_75c559bb23 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Student replication dataset overall; shown text does not name this study or result.
+at|at_7c28e73737 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Twenty scarcity replications; shown text does not name the self-expansion study or its result.
+at|at_b4a2c77149 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Twenty scarcity replications; shown text does not name the material goods study or its result.
+at|at_c5c23da196 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Twenty scarcity replications; shown text does not name the limited-quantity aggression study.
+at|at_ee0798a7d9 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Replicates other Medoff and Abraham wage papers, not the unemployment compensation study.
+at|at_f23adfd4a4 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Multi-effect replication; shown text never names the retrospective gambler's fallacy.
+rr|10.1016/s0010-0277(99)00020-7|10.3758/s13428-021-01572-y | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Celebrity face norms database; does not test age of acquisition effect on recognition.
+rr|10.3758/bf03197718|10.3758/s13428-011-0175-8 | OTHER_NEW_STUDY | NO | NOT_APPLICABLE | - | Acronym norms and naming regression; not a test of the original word naming finding.
+at|at_1e13d28651 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Pools 176 student replications; text does not show this study is among them.
+at|at_6ebdacd4b4 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates 20 scarcity studies; text does not name wage-rate study or its result.
+at|at_8bf6a3cfa8 | META_ANALYSIS | CANNOT_TELL | NOT_APPLICABLE | - | Pools 176 student replications; nothing links this 1965 hypothesis study to them.
+at|at_b67bba788d | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates 20 scarcity studies; text does not name meaning-in-life study or its result.
+at|at_fa9dc71b55 | NEW_DATA_REPLICATION | CANNOT_TELL | NO_RESULT_STATED | - | Replicates 20 scarcity studies; text does not name discounting study or its result.

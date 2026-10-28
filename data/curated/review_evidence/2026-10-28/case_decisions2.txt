@@ -1,0 +1,21 @@
+note1 | FULL_TEXT | The later paper cites Black and Barnes (2015a) on genre and transportation, but the listed original is the television and theory of mind paper; the abstract cannot confirm they match.
+note2 | FULL_TEXT | The audit replicates 20 scarcity studies and the abstract never names the overborrowing study or gives its result.
+note3 | FULL_TEXT | The text shown does not list which brain-behavior correlations were replicated, so it cannot be tied to Xu and Potenza's personality finding.
+note4 | FULL_TEXT | The audit replicates 20 scarcity studies without naming which; the abstract does not show it tested the luxury brand and fairness finding.
+note5 | RESULT NOT_FOUND | The abstract reports one preregistered replication of Forster and Denzler (2012) with an indecisive and a strong-null result: "The failure to replicate this priming effect challenges existing support for the GLOMOsys model."
+early1 | KEEP | The later paper is titled as a failure to replicate Burton et al. (2021), the earlier form of this paper, and reports a new dataset with no bias found.
+early2 | KEEP | The 2017 paper says it replicates and extends Finnigan and Vazire (2018), an earlier form of this original, and the original null result was replicated.
+early3 | KEEP | The 2010 paper replicates Bem's Experiment 8 (an earlier form of the 2011 article) and fails to replicate the recall result.
+early4 | KEEP | The 2010 working paper replicates Bem's studies 5 and 7, an earlier form of the 2011 article, and reports retrocausal effects found.
+early5 | KEEP | The 2015 paper replicates a result from the "Avoiding the Ask" field experiment, an earlier form of the 2017 paper; avoidance found but gone in cold weather.
+early6 | FULL_TEXT | Same design as the original (40 participants, twenty adaptive menus, EEG), so it may be an earlier version of the original itself; the text does not settle it.
+early7 | KEEP | The 2023 paper is a replication of Freeston, Sermin-Reed et al. (2023), the earlier form of this original; it is a plan with no result yet.
+early8 | EARLIER_EVIDENCE | The 2000 consortium replicated earlier Princeton experiments, not this 2007 paper, and was published before it.
+early9 | EARLIER_EVIDENCE | Barton et al. (1985) is earlier evidence on family therapy published long before the 2018 chapter; it does not cite or replicate it.
+early10 | FULL_TEXT | The 1977 paper replicates Kohlberg's original Chicago study, but the abstract does not say it is the work behind this reprinted 1969 paper.
+early11 | FULL_TEXT | The 1961 title says it replicates Piaget's studies, but the original is a reprint of an older book and no abstract shows which study it repeats.
+early12 | FULL_TEXT | No abstract; the title repeats the original's but the 1988 paper may be earlier work on the same effect rather than a replication of this chapter.
+early13 | FULL_TEXT | No abstract; the title fails to replicate open- and closed-class frequency sensitivity but does not name Gordon (1983) as the study replicated.
+early14 | FULL_TEXT | No abstract; the title fails to replicate unconscious perception of meaning but does not say it repeats this 1983 Marcel paper.
+early15 | KEEP | The title says it replicates Bever, and the original states it was first published in 1970, before the 1974 paper; no result stated.
+early16 | EARLIER_EVIDENCE | Jacob (1968) is a failed replication of the original experimenter bias effect, published before Barber's 1969 paper, not a replication of it.

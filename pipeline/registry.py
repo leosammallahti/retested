@@ -408,7 +408,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         aid = _aid(o, rk)
         is_rep = r["kind"] in READ_REPLICATION and r["tests_this_finding"] == "YES" and (r.get("is_cited_paper") or "YES") == "YES"
         what = ("a replication of this finding" if is_rep else f"read: {r['kind'].lower().replace('_', ' ')}"
-                + ("" if r["tests_this_finding"] == "YES" else ", not a test of this finding")
+                + ("" if r["tests_this_finding"] == "YES" else ", not a test of this finding" if r["tests_this_finding"] == "NO"
+                   else ", whether it tests this finding is unclear")
                 + ("" if (r.get("is_cited_paper") or "YES") == "YES" else ", not the paper FORRT's reference names"))
         if r["kind"] == "CANNOT_TELL":
             what = "not readable from its title, and no abstract is available"
@@ -446,7 +447,10 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 read_notes.append({"attempt": aid, **info, "tests_this_finding": r["tests_this_finding"]})
         elif is_rep and r.get("group", "").split(" by ")[0] in READ_FOUND_BY:
             w = (src.get("openalex_works") or {}).get(norm_doi(rk) or "") or {}
-            title, year, authors = w.get("title") or r.get("title_r"), w.get("year"), _oa_authors(w.get("authors") or [])
+            # the catalogue's record first; for a paper it does not hold, what the reading item gave
+            title, year = w.get("title") or r.get("title_r"), w.get("year") or r.get("year_r")
+            ra = r.get("authors_r") or ""
+            authors = _oa_authors(w.get("authors") or []) or (_oa_authors(ra.split(", ")) if ", " in ra and "et al" not in ra else ra or None)
             if norm_doi(rk):
                 paper(norm_doi(rk), title=title, year=year, authors=authors)
                 if w.get("is_retracted"):
@@ -497,6 +501,17 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         a["sources"] = sorted(set(a["sources"]) | set(was["sources"]))
         for k, v in (was.get("outcomes_by_source") or {}).items():
             a["outcomes_by_source"].setdefault(k, v)
+
+    # a later paper OpenAlex does not hold: OSF's or the DOI registry's record fills what the attempt lacks
+    from .openalex_works import later_records
+    for rk, rec in later_records().items():
+        for a in [a for a in attempts.values() if a["rep_key"] == rk]:
+            if (not a.get("title_r") or _broken_title(a["title_r"])) and rec.get("title"):
+                a["title_r"] = rec["title"]
+            if not a.get("authors_r") and rec.get("authors"):
+                a["authors_r"] = _oa_authors(rec["authors"])
+            if not a.get("year_r") and rec.get("year"):
+                a["year_r"] = rec["year"]
 
     # a later paper's details looked up by hand where no catalogue has them (data/curated/paper_details.csv)
     for r in (src.get("links") or {}).get("paper_details", []):

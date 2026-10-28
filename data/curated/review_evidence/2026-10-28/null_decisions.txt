@@ -1,0 +1,25 @@
+rr|10.3758/bf03198377|10.1080/13825585.2013.849653 | KEEP | Pure-list free recall finding tested is a positive AoA effect; the set is mostly positive.
+rr|10.1080/13506280544000093|10.1348/000712605x53515 | KEEP | Tested object-name verification matches the positive AoA findings; only falsification is null.
+rr|10.1037/h0028767|10.3389/fpsyg.2017.01067 | KEEP | Tested trait is flexibility, where the earlier finding is a monolingual advantage, not null.
+rr|10.1007/s100710000070|10.1371/journal.pone.0016888 | KEEP | Finding is gaze following in wolves, a positive ability, not a null.
+rr|10.3758/bf03198377|10.1111/1467-9817.12040 | KEEP | Findings are mostly positive AoA effects; progressive demasking AoA effect not a null.
+at|at_19dd1ce52a | KEEP | Democratic peace is a reported pattern of democracies avoiding conflict, not an effect-free finding.
+at|at_1b760cafa2 | KEEP | Findings are mostly positive AoA memory effects, with one general null among them.
+at|at_2591b3d818 | KEEP | Nuances show stable heritable variance: a positive finding.
+at|at_48d6627bc3 | NULL FOUND | Earlier null: no negative employment effect; replication reproduces results and confirms the method.
+at|at_f838ca4701 | NULL MIXED | AoA effect in recognition and mixed-list recall, but eliminated in pure-list recall.
+at|at_316b67a844 | NULL FOUND | Earlier null: inhibition differences do not affect bindings; binding not modulated by distractor type.
+at|at_a456aa2cf9 | NULL FOUND | No AoA effect on memory span, only on speech rate.
+ref|10.1080/13506280544000093|10.31234/osf.io/g8by5 | KEEP | Findings mostly positive AoA effects; tested verification and naming tasks show effects.
+q|10.1111/psyp.14160|10.31234/osf.io/9hcws | NULL NOT_FOUND | Earlier: adaptation does not scale with conflict; later: higher conflict induced stronger adaptation.
+q|10.1038/s41598-019-47897-9|10.48620/91286 | NULL FOUND | Earlier no effect of vestibular stimulation on body size; later effects absent as in original.
+q|10.1007/s00426-021-01504-7|https://escholarship.org/content/qt8zd3v64r/qt8zd3v64r.pdf | NULL FOUND | No recall or recognition differences between mindfulness and control, confirming original null.
+q|10.1162/jocn_a_01679|10.1371/journal.pone.0262718 | NULL FOUND | Earlier: no tDCS effect; later: no group effects, and the correlation also absent.
+q|10.1177/0956797615598740|10.31234/osf.io/3yfgz | NULL NOT_FOUND | Earlier: no association with conspiracist ideation; later: small positive robust relationships.
+q|10.1162/jocn_a_01679|10.1101/2021.06.16.448698 | NULL FOUND | Earlier: no tDCS effect; later: no group effects, as in original, and correlation absent.
+q|10.1073/pnas.1707471114|10.1177/0748730420901929 | NULL NOT_FOUND | Earlier: no evidence of song rhythms; later paper reports period-dependent song cycles confirmed.
+q|10.3899/jrheum.140573|10.1016/j.dmpk.2016.07.004 | NULL NOT_FOUND | Earlier: PDZK1 variant not associated with gout; later: significant association.
+q|10.1037/h0047445|10.1037/h0023400 | KEEP | Earlier title reports personality differences between users and non-users, not a null.
+q|10.3758/s13423-012-0248-4|10.1080/20445911.2020.1869752 | KEEP | Earlier finding is a salience effect, not a null.
+q|10.1111/j.1469-8749.2010.03684.x|10.1016/j.earlhumdev.2019.104943 | NULL MIXED | Earlier finding no association; later effect significant only in German males, descriptive elsewhere.
+q|10.1016/j.cognition.2013.01.009|10.17605/osf.io/3nxpg | KEEP | Earlier finding is a reduced post-error slowing effect, not a null.

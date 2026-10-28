@@ -395,8 +395,9 @@ OPENING = ROOT / "data" / "curated" / "opening.json"
 def load_card_holds() -> set[str]:
     """Cards a person has held back from the deck, with the reason written next to each id.
 
-    A hold is for a card whose pairing is wrong or whose text a stranger cannot understand. It is not a verdict
-    on the finding: lift it by deleting the entry once the card is fixed.
+    A hold is for a card whose pairing is wrong or whose text a stranger cannot understand, or, said so in its
+    reason, a card held only to keep the deck's share of 'replicated' answers inside the range validate.py enforces.
+    It is not a verdict on the finding: lift it by deleting the entry once the card is fixed or the balance allows.
     """
     if not CARD_HOLDS.exists():
         return set()

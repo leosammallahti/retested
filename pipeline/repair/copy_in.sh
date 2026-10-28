@@ -15,3 +15,22 @@ cp $S/reading_20261028/ADJUDICATION_BRIEF.md $E/reading_splits_brief.md
 for f in $S/reading_20261028/answers/*.jsonl; do gzip -c "$f" > "$E/reading_answers_$(basename "$f" .jsonl | tr '#' '_').jsonl.gz"; done
 gzip -c $S/reading_20261028/items.jsonl > $E/reading_items.jsonl.gz
 echo copied
+
+# --- the afternoon and evening of 28 Oct 2026: the review queue read, open full text read, cases decided
+mkdir -p $R/queue $R/fulltext $R/cases $R/lines
+cp $S/queue_20261028/{fetch_abstracts.py,build_items.py,run_reading.py,questions.py,consensus.py,settle_all.sh,make_batch.py,keep_running.sh,ADJUDICATION_BRIEF.md,author_check.py,mismatch_cases.py,MISMATCH_BRIEF.md,numbers.py} $R/queue/
+cp $S/fulltext_20261028/{availability.py,fetch_fulltext.py,fetch_round2.py,build_items.py,run_reading.py} $R/fulltext/
+cp $S/cases_20261028/{make_cases.py,apply.py,BRIEF.md,NULL_BRIEF.md} $R/cases/
+cp $S/lines_20261028/BRIEF.md $R/lines/BRIEF.md
+cp $S/queue_20261028/adjudicated.txt $E/queue_splits_decided.txt
+cp $S/queue_20261028/ADJUDICATION_BRIEF.md $E/queue_splits_brief.md
+cp $S/queue_20261028/mismatch_decisions.txt $E/queue_mismatch_decisions.txt
+cp $S/queue_20261028/MISMATCH_BRIEF.md $E/queue_mismatch_brief.md
+cp $S/fulltext_20261028/adjudicated.txt $E/fulltext_splits_decided.txt
+cp $S/cases_20261028/null_decisions.txt $E/null_decisions.txt
+for f in $S/queue_20261028/answers/*.jsonl; do gzip -9nc "$f" > "$E/queue_answers_$(basename "$f" .jsonl | tr '#' '_').jsonl.gz"; done
+for f in $S/fulltext_20261028/answers/*.jsonl; do gzip -9nc "$f" > "$E/fulltext_answers_$(basename "$f" .jsonl | tr '#' '_').jsonl.gz"; done
+gzip -9nc $S/queue_20261028/items.jsonl > $E/queue_items.jsonl.gz
+# the full-text items hold long excerpts of papers whose licences do not all allow republishing: they stay on the host,
+# in /root/wiki-scratch/fulltext_20261028/ (items.jsonl and text/), and are not copied into the public repository
+echo copied the queue, full-text and case records
