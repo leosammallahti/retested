@@ -1,0 +1,47 @@
+note1 | NOT_REPLICATION OTHER_NEW_STUDY | The later paper reports its own Gen Z survey cohorts and does not test the original book's finding; the original is an unrelated volume.
+note2 | RESULT MIXED | Abstract reports a partly different result from the original: "GitHub's PR model fosters more balanced discussions between test and production files than Gerrit, albeit with lower overall comment density."
+note3 | WRONG_ORIGINAL | The later paper replicates the earlier suicide study in the same Dutch catchment area ("a study executed in 1973-1988"), not the needs-for-care follow-up.
+note4 | FULL_TEXT | The later paper replicates 20 scarcity studies without naming which; the abstract cannot show it tests the Camerer finding in question.
+note5 | KEEP | Title is a reply re-evaluating Boroditsky (2001), and FORRT's quote reports six unsuccessful attempts at replicating its key finding.
+note6 | KEEP | Two replications found preference for the helper not different from chance, which fits the failed coding.
+note7 | WRONG_ORIGINAL | The later paper replicates Zigraiova and Havranek (2016), a meta-analysis of banking competition and financial stability, not the early warning system paper.
+note8 | KEEP | The later paper reports a narrow and a wide replication that successfully reproduce the main redistribution result.
+note9 | KEEP | Replication study of the INPP5D rs35349669 finding found no difference in the Han Chinese sample, fitting the failed coding.
+note10 | RESULT FOUND | Abstract states the finding was replicated: "I then replicate findings about growth and inequality in public good provision."
+note11 | KEEP | Experiment 1 is a conceptual replication of Loftus and Palmer with no wording effects found, fitting the failed coding.
+note12 | WRONG_ORIGINAL | The later paper revisits Cohen-Cole (2011) on credit card redlining and neighborhood racial composition, a different paper from the bankruptcy risk study.
+note13 | KEEP | The reply re-analyses the Cevoli et al. analysis with the original measure and largely supports its own measure; nothing plainly contradicts FORRT's successful coding.
+note14 | WRONG_ORIGINAL | The later paper comments on Fonseca et al. (2020), the effect of education on health using compulsory schooling reforms, not the sickle cell case report.
+note15 | NOT_REPLICATION REVIEW_OR_COMMENTARY | The note reclassifies their data into growth categories to argue about causal direction; it does not retest the debt overhang finding.
+note16 | KEEP | The 2010 analysis explicitly replicates and extends the 2000 homework meta-analysis with new studies and supports its conclusion.
+note17 | KEEP | The reply uses newer happiness trend data against the Easterlin paradox; FORRT's quote says average happiness has increased, fitting the failed coding.
+note18 | NOT_REPLICATION OTHER_NEW_STUDY | The later paper tests a new prediction about the domestic economy using the earlier data, not the original audience cost finding.
+note19 | WRONG_ORIGINAL | The later paper replicates Boroditsky et al. (2003), the German and Spanish grammatical gender adjective association experiment, not Clark (2003).
+note20 | KEEP | The later paper tests betatrophin effects on human beta cells and finds them completely unresponsive, fitting the failed coding.
+note21 | RESULT FOUND | Abstract states the original findings were replicated: "we compose new versions with updated attributes that fully replicate Shafir’s (1993) original findings"
+early1 | KEEP | The later paper says it is a replication of the Everyday Belief Bias Task (Deans-Browne & Singmann, 2024), which is this original in earlier form.
+early2 | EARLIER_EVIDENCE | A 2009 field experiment on goals published before the 2016 original; nothing shows it is a version of it.
+early3 | EARLIER_EVIDENCE | Vess (2012) was published before LeBel and Campbell (2013) and is the earlier warmth and attachment study, not a replication of it.
+early4 | FULL_TEXT | No abstract; the original is a reprinted classic, so the 2015 paper may replicate it, and the title cannot settle this.
+early5 | EARLIER_EVIDENCE | Juhasz and Rayner (2006) is earlier evidence on age of acquisition and fixations, published ten years before the original.
+early6 | FULL_TEXT | No abstract; the title is close to the original and may be an earlier working paper version, so the text cannot settle it.
+early7 | WRONG_ORIGINAL | The later paper replicates Boyle, Kennedy and Shea (2012) on sine wave template practice and Fitts task performance, not the 2016 template paper.
+early8 | KEEP | The later paper says it aims to replicate the young adult findings on ownership and body schema in older adults, mixed results as coded.
+early9 | EARLIER_EVIDENCE | Jones and Martens (2008) tests overall fairness mediation in its own studies before the original; it does not cite or replicate it.
+early10 | EARLIER_EVIDENCE | Meslec et al. (2020) is a different study of charisma and rewards, published before the original, with no sign it is a version of it.
+early11 | EARLIER_EVIDENCE | The 2010 cohort effects study was published before the 2013 original and is earlier evidence, not a replication of it.
+early12 | EARLIER_EVIDENCE | The 1994 reanalysis of Bieber's 1962 data was published before the 1996 original and is earlier evidence on birth order.
+review1 | KEEP | Title states it is a replication study of Poole (2013), and FORRT codes it as mixed.
+review2 | FULL_TEXT | A comment on Combs et al. (2023) with no abstract; it may or may not reanalyse data.
+review3 | FULL_TEXT | No abstract; a literature review plus a new multi-task study, and the title does not show it tests the speeded naming finding.
+review4 | FULL_TEXT | No abstract; the title mentions an unsuccessful replication but does not say of which study.
+review5 | KEEP | Title says it includes a large-scale replication attempt of the same unconscious thought advantage study.
+contra1 | FINE | The linked 2012 study is a single adolescent sample; the list relies on meta-analyses and unrelated critiques, and the meta-analysis abstract is unavailable, so both stand.
+contra2 | FINE | The list cites only blog posts; the linked preregistered replication is newer than the list, so both are honest evidence.
+contra3 | FINE | The list's Price 2020 direct replication is the linked China replication, already shown; the two differ in verdict but nothing is missing and the abstract is unavailable.
+contra4 | FINE | The list's critiques target factor structure and universality, not the political spectrum effect; the Many Labs 2 test is separate evidence.
+contra5 | FINE | The list verdict rests on the original studies and a critique; the linked multi-study project is separate evidence, and no missing replication was found.
+contra6 | FINE | The list cites the multilab replication as in preparation; the linked 2024 study is its finished version and is newer, so both are honest evidence.
+contra7 | FINE | The list cites O'Donnell et al. 2021, which is already linked; the audit shows variable replicability, so both views stand.
+contra8 | NOT_REPLICATION at_387442279f META_ANALYSIS | The student replication projects paper studies correlates of replicability across many projects and does not test the physical pain scarcity effect.
+contra8 | FINE | The linked O'Donnell audit is already the list's own cited source; its mixed result and the list verdict are both honest evidence.

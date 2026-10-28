@@ -24,6 +24,7 @@ import pandas as pd
 
 from .ids import norm_doi, norm_name
 from .load import FORRT
+from .read_pairs import forrt_record, retested_addition
 from .registry import _aid
 
 FEEDS = FORRT / "feeds"
@@ -85,6 +86,9 @@ def build(g: dict, candidates: list[dict], rr_rows: list[dict], famous: list[dic
                 return {"outcome": "left out", "why": "set aside after reading: " + g["set_aside"][aid]["set_aside_because"]}
             if aid in A:
                 return {"outcome": "on the site", "attempt": aid, "effects": owners.get(aid, [])}
+            read = (g.get("read_index") or {}).get(f"{o}|{rk}", "")
+            if read.startswith("read:"):
+                return {"outcome": "left out", "why": "read for Retested: " + read[len("read: "):]}
             if (o, rk) in queue:
                 return {"outcome": "waiting to be read", "queue": queue[(o, rk)]}
         if rk and by_rep.get(rk):
@@ -159,10 +163,13 @@ def build(g: dict, candidates: list[dict], rr_rows: list[dict], famous: list[dic
                 res = {"outcome": "left out", "why": "FORRT's validation row names no original paper"}
             add(label, i, res)
 
-    # Retested's own finds still in the queue
+    # Retested's own finds: those still in the queue, and those reading took out of it
     for c in candidates:
         if c.get("origin") == "retested_discovery":
             add("Retested finds (machine-found)", c["id"], {"outcome": "waiting to be read", "queue": c["id"]})
+    for key, cid in sorted((g.get("read_retested_finds") or {}).items()):
+        o, rk = key.split("|", 1)
+        add("Retested finds (machine-found)", cid, pair(o, rk))
 
     return {"lines": lines, "summary": summarise(lines, g)}
 
@@ -198,9 +205,8 @@ def summarise(lines: list[dict], g: dict) -> dict:
         if l.get("why"):
             why[l["file"]][f"{o}: {l['why']}"] += 1
     A, E = g["attempts"], g["effects"]
-    ours = [a for a in A.values() if set(a["sources"]) - {"read"} == {"retested"}]
-    # FORRT's: coded in its files, or a replication its Replications & Reversals list cites (read for Retested)
-    forrt_attempts = [a for a in A.values() if set(a["sources"]) & {"flora", "fred", "legacy"} or a.get("listed_by")]
+    ours = [a for a in A.values() if retested_addition(a)]
+    forrt_attempts = [a for a in A.values() if forrt_record(a)]
     return {
         "by_file": {f: dict(c) for f, c in by_file.items()},
         "reasons": {f: dict(c.most_common()) for f, c in why.items()},
@@ -212,6 +218,6 @@ def summarise(lines: list[dict], g: dict) -> dict:
             "effects_only_retested_named": sum(1 for e in E.values() if e["attempts"] and e.get("name_sources") == ["retested"]),
             "findings": len(g["findings"]),
             "findings_only_retested": sum(1 for f in g["findings"].values()
-                                          if all(set(A[x]["sources"]) - {"read"} == {"retested"} for x in f["attempts"])),
+                                          if all(retested_addition(A[x]) for x in f["attempts"])),
         },
     }

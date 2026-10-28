@@ -5,6 +5,8 @@ import math
 import statistics
 from collections import Counter, defaultdict
 
+from .read_pairs import retested_addition
+
 VERDICT = ("successful", "failed", "mixed")
 FINDING_CONTEXT_TIERS = (
     "source_reviewed_explanation",
@@ -181,7 +183,7 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
     for a in reps:
         # Our reviewed overlay records unknown explicitly. Do not relabel an
         # unknown registration status as "not preregistered" in the predictor.
-        if set(a["sources"]) - {"read"} == {"retested"}:
+        if retested_addition(a):
             status = a.get("preregistration_status", "unknown")
             if status == "unknown":
                 continue
@@ -237,16 +239,15 @@ def build(g: dict, game_items: list[dict], candidates: list[dict]) -> dict:
             "effects_with_attempts": sum(1 for e in E.values() if e["attempts"]),
             "effects_named_without_replication": sum(1 for e in E.values() if not e["attempts"]),
             "retested_reviewed_pairs": sum("retested" in a["sources"] for a in A.values()),
-            "retested_new_pairs": sum(set(a["sources"]) - {"read"} == {"retested"} for a in A.values()),
+            "retested_new_pairs": sum(retested_addition(a) for a in A.values()),
             "retested_named_effects": sum(bool(e["attempts"]) and "retested" in e.get("name_sources", [])
                                           for e in E.values()),
             "retested_new_effects": sum(bool(e["attempts"]) and e.get("name_sources") == ["retested"]
                                         for e in E.values()),
             "retested_findings": sum(any("retested" in A[aid]["sources"] for aid in f["attempts"])
                                       for f in F.values()),
-            "retested_new_findings": sum(all(set(A[aid]["sources"]) - {"read"} == {"retested"}
-                                             for aid in f["attempts"]) for f in F.values()),
-            "retested_prereg_unknown": sum(set(a["sources"]) - {"read"} == {"retested"}
+            "retested_new_findings": sum(all(retested_addition(A[aid]) for aid in f["attempts"]) for f in F.values()),
+            "retested_prereg_unknown": sum(retested_addition(a)
                                            and a.get("preregistration_status") == "unknown"
                                            for a in A.values()),
             "famous_effects": sum(1 for e in E.values() if e.get("famous")),

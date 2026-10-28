@@ -47,6 +47,8 @@ export interface Attempt {
   // read from the later paper's abstract (pipeline/read_pairs.py); how it was decided is in decided_by
   read?: { kind: string; result: string | null; quote: string | null; decided_by: string; read_on: string };
   listed_by?: string;
+  found_by?: 'forrt_list' | 'forrt_machine_search' | 'retested_machine_search';
+  result_review?: { result: string; reason: string; evidence: string; coded_before: Record<string, string> };
   relinked_from?: { doi_o: string; because: string; evidence: string };
   same_study_as?: { rep_key: string; title_r: string | null; why: string }[];
   retested_review?: { candidate_id: string; reviewed_by: string; reviewed_on: string;

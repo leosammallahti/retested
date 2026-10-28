@@ -18,6 +18,16 @@ data/curated/attempt_duplicates.csv (doi_o, rep_key, same_as, reason, evidence)
 data/curated/attempt_relinks.csv (doi_o_wrong, rep_key, doi_o, evidence)
     A replication set aside as filed under the wrong original, filed under the original it really replicates (found by
     reading). Its result and the paper's details move with it; the original-side numbers of the wrong pairing do not.
+data/curated/attempt_results.csv (doi_o, rep_key, result, reason, evidence)
+    A replication whose own abstract plainly states a different result from the one coded for it. The reviewed result
+    is shown, with FORRT's coding kept beside it and the reason.
+data/curated/attempts_checked.csv (doi_o, rep_key, question, decision, reason, evidence)
+    An attempt a reader checked because something about it looked wrong (dated before its original, titled like a
+    review or like its original, a reading that differs from the record) and kept as it is, or found that only the
+    full text can settle. It answers the quality audit's question and the reading note for that pair.
+data/curated/paper_details.csv (rep_key, title, authors, year, evidence)
+    The title, authors and year of a later paper that no catalogue supplies (a page without a DOI, a DOI OpenAlex does
+    not hold), looked up by hand. It replaces what the record held, which is kept beside it.
 data/curated/effect_original_exclusions.csv (effect, doi_o, reason, evidence)
     A source row that names an effect with the DOI of a different paper: that effect is not linked to that paper.
 
@@ -66,5 +76,8 @@ def load() -> dict[str, list[dict]]:
             "attempt_exclusions": _rows("attempt_exclusions.csv", ("doi_o", "rep_key", "reason", "evidence")),
             "attempt_duplicates": _rows("attempt_duplicates.csv", ("doi_o", "rep_key", "same_as", "reason", "evidence")),
             "attempt_relinks": _rows("attempt_relinks.csv", ("doi_o_wrong", "rep_key", "doi_o", "evidence")),
+            "attempt_results": _rows("attempt_results.csv", ("doi_o", "rep_key", "result", "reason", "evidence")),
+            "paper_details": _rows("paper_details.csv", ("rep_key", "title", "authors", "year", "evidence")),
+            "attempts_checked": _rows("attempts_checked.csv", ("doi_o", "rep_key", "question", "decision", "reason", "evidence")),
             "effect_original_exclusions": _rows("effect_original_exclusions.csv", ("effect", "doi_o", "reason", "evidence")),
             "effect_description_exclusions": _rows("effect_description_exclusions.csv", ("effect", "reason", "evidence"))}

@@ -30,6 +30,12 @@ GROUP_LABEL = {
 }
 
 
+def _read_out(g: dict, doi_o: str | None, rep_key: str | None) -> bool:
+    """A queue pair read for Retested (pipeline/read_pairs.py) and found not to be a replication of this finding: it
+    leaves the queue, and the ledger gives the reading as its reason."""
+    return bool(doi_o and rep_key and (g.get("read_index") or {}).get(f"{doi_o}|{rep_key}", "").startswith("read:"))
+
+
 def build(extracted: list[dict], g: dict) -> list[dict]:
     """FORRT's own flora-extractor rows."""
     known_pairs = {(a["doi_o"], a["doi_r"]) for a in g["attempts"].values() if a["doi_r"]}
@@ -46,7 +52,7 @@ def build(extracted: list[dict], g: dict) -> list[dict]:
         if not rep_key or (doi_o, rep_key) in seen:
             continue
         seen.add((doi_o, rep_key))
-        if (doi_o, rep_key) in known_pairs:
+        if (doi_o, rep_key) in known_pairs or _read_out(g, doi_o, rep_key):
             continue
         eff = effect_of.get(doi_o)
         out.append({
@@ -109,6 +115,10 @@ def build_retested(triaged: list[dict], links: dict, g: dict, forrt_known: set[s
         doi_o = (link or {}).get("doi_o") if source_link else (t.get("original_doi") or (link or {}).get("doi_o"))
         if doi_r and doi_o and (doi_o, doi_r) in known_pairs:
             continue                                      # FORRT already records this exact pair
+        rep_key = doi_r or (r.get("landing_page") or None)
+        if doi_o and rep_key and ((doi_o, rep_key) in {(a["doi_o"], a["rep_key"]) for a in g["attempts"].values()}
+                                  or _read_out(g, doi_o, rep_key)):
+            continue                                      # read for Retested: on the site, or not a replication
         named = t.get("original") or {}
         in_wiki = bool(doi_o and doi_o in g["findings"])
         eff = effect_of.get(doi_o)

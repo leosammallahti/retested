@@ -44,10 +44,15 @@ def run() -> dict:
     def flag(kind, item):
         out.setdefault(kind, []).append(item)
 
-    checked = set()
-    f = ROOT / "data" / "curated" / "same_title_checked.csv"
+    # pairs a reader has checked (data/curated/attempts_checked.csv): kept as they are, or only the full text can settle
+    checked: dict[tuple[str, str], str] = {}
+    f = ROOT / "data" / "curated" / "attempts_checked.csv"
     if f.exists():
-        checked = {(r["doi_o"], r["rep_key"]) for r in csv.DictReader(f.open(encoding="utf-8"))}
+        checked = {(r["doi_o"], r["rep_key"]): r["decision"] for r in csv.DictReader(f.open(encoding="utf-8"))}
+    # a reading that found the paper is a replication answers whether a review-like title is a review
+    read_rep = {(r.get("doi_o"), r.get("rep_key")) for r in
+                json.loads((ROOT / "data" / "curated" / "read_pairs.json").read_text(encoding="utf-8"))["readings"]
+                if r["kind"] in ("NEW_DATA_REPLICATION", "REANALYSIS")}
     for aid, a in A.items():
         po = P.get(a["doi_o"], {})
         rec = {"attempt": aid, "doi_o": a["doi_o"], "rep_key": a["rep_key"], "replication": _short(a.get("title_r")),
@@ -55,9 +60,14 @@ def run() -> dict:
         t_r, t_o = a.get("title_r"), po.get("title")
         if a["doi_r"] and a["doi_r"] == a["doi_o"]:
             flag("attempt: the original is listed as its own replication", rec)
-        elif t_r and t_o and fuzz.ratio(str(t_r).lower(), str(t_o).lower()) >= 95 and (a["doi_o"], a["rep_key"]) not in checked:
+        key = (a["doi_o"], a["rep_key"])
+        if checked.get(key) == "needs the full text":
+            flag("attempt: checked by a reader, only the full text can settle it", rec)
+        elif key in checked:
+            pass
+        elif t_r and t_o and fuzz.ratio(str(t_r).lower(), str(t_o).lower()) >= 95:
             flag("attempt: replication title equals the original's (check it is a later study)", rec)
-        if po.get("year") and a.get("year_r") and float(a["year_r"]) < float(po["year"]):
+        if key not in checked and po.get("year") and a.get("year_r") and float(a["year_r"]) < float(po["year"]):
             flag("attempt: replication dated before its original", rec)
         if not t_r or str(t_r).startswith("http"):
             flag("attempt: no replication title", rec)
@@ -65,7 +75,7 @@ def run() -> dict:
             flag("attempt: no replication authors", rec)
         if not a.get("year_r"):
             flag("attempt: no replication year", rec)
-        if t_r and NON_REPLICATION_TITLE.search(str(t_r)) and not a.get("read"):
+        if t_r and NON_REPLICATION_TITLE.search(str(t_r)) and not a.get("read") and key not in checked and key not in read_rep:
             flag("attempt: titled like a review, meta-analysis, commentary or reply (needs reading)", rec)
         if a["outcome"] == "not_coded":
             flag("attempt: no result coded", rec)
@@ -92,10 +102,12 @@ def run() -> dict:
         if e["attempts"] and d and (d[0] in ").,;:" or d[:1].islower() or "**" in d):
             flag("effects: description starts mid-sentence or carries stray marks", {"effect": e["slug"], "description": _short(d, 160)})
         if d and len(d) > 40:
-            desc_users[d.strip().lower()].append(n)
-    for d, names in desc_users.items():
-        if len({norm_name(x) for x in names}) > 1:
-            flag("effects: one description shared by differently named effects", {"effects": names, "description": _short(d)})
+            desc_users[d.strip().lower()].append(e)
+    for d, users in desc_users.items():
+        # parts of one paper's finding share that paper's description; effects with different originals should not
+        if len({norm_name(x["name"]) for x in users}) > 1 and len({tuple(sorted(x["originals"])) for x in users}) > 1:
+            flag("effects: one description shared by effects with different original papers",
+                 {"effects": [x["name"] for x in users], "description": _short(d)})
 
     for lst, cards in S["lists"].items():
         for c in cards:

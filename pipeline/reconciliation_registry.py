@@ -741,7 +741,7 @@ def build_registry(
     # a reading for Retested (pipeline/read_pairs.py) adds evidence to a record; it does not change who added it
     addition_pairs = {
         key for key, attempt in built_by_pair.items()
-        if set(attempt.get("sources") or []) - {"read"} == {"retested"}
+        if set(attempt.get("sources") or []) - {"read", "reviewed"} == {"retested"}
     }
     overlay_pairs = set(built_by_pair) - addition_pairs
     for key in set(reconciled_by_pair) & (set_aside | ((merged_into | relinked) - addition_pairs)):
