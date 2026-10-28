@@ -73,21 +73,21 @@ rather than skipping it.
 - **Before:** the build used the Replications & Reversals list only for names. 480 effects had no replication, and
   many of them were second copies of an effect that did have replications, under another name. Machine-found
   replications without a DOI were dropped from the queue without a note.
-- **Duplicate effect names:** 203 names were folded into the effect they belong to (145 merges in `merges.yaml`).
-  - 152 were read by Claude, 49 by a reading helper (Sonnet 5.5) and checked, and 2 cut-off names were joined to
+- **Duplicate effect names:** 206 names were folded into the effect they belong to (148 merges in `merges.yaml`).
+  - 155 were read by Claude, 49 by a reading helper (Sonnet 5.5) and checked, and 2 cut-off names were joined to
     their full names.
   - No replication lost its effect, and 32 effects that showed nothing now show their replications.
 - **One study counted twice:** 67 attempts were a second copy of a study under the same original (a preprint and its
   article, a thesis and its article, one report on two hosts). Each copy is merged into its record
   (`attempt_duplicates.csv`), so the study is counted once and its sources, numbers and result are kept. 58 of the
   copies had been counted twice in the result tallies.
-- **Set aside after reading** (`attempt_exclusions.csv`), 67 attempts:
-  - 57 filed under the wrong original paper (found in the 23 Oct reading). The reason names the paper they really
+- **Set aside after reading** (`attempt_exclusions.csv`), 66 attempts:
+  - 56 filed under the wrong original paper (found in the 23 Oct reading). The reason names the paper they really
     replicate, so they can be re-linked.
   - 8 are not replications at all: the original paper listed as its own replication, or the preprint of the same
     study.
   - 2 are copies carrying another paper's DOI.
-- **Re-linked:** 44 of the 57 replications filed under the wrong original now sit under the original they replicate
+- **Re-linked:** 44 of the 56 replications filed under the wrong original now sit under the original they replicate
   (found by reading and Crossref, checked). One old reading note was itself wrong, and that replication was restored.
 - **Wrong effect names:** 7 effect names attached to a paper about something else were removed. Examples: "Anchoring
   Effect" on a money-priming study, and "Heat Priming" on studies of loneliness and warm baths.
@@ -142,5 +142,5 @@ rather than skipping it.
 - The page `sources/` shows the ledger file by file, with the reasons.
 - `python -m pipeline quality-audit` lists every item in the built site that still needs a decision (writes
   `data/build/quality_audit.json`); an answered question becomes a reviewed input and drops off the list.
-- `/root/wiki-scratch/audit_20261028/audit.py` is the one-off check of 28 Oct that found the problems above.
-- `/root/wiki-scratch/audit_20261028/compare.py` compares a build with the one before 28 Oct.
+- `pipeline/repair/audit/audit.py` is the one-off check of 28 Oct that found the problems above.
+- `pipeline/repair/audit/compare.py` compares a build with the one before 28 Oct (its saved copy is in `/root/wiki-scratch/audit_20261028/build_before/`).
