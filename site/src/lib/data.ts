@@ -69,7 +69,8 @@ export interface FindingGameContext {
 }
 export interface Finding { doi_o: string; slug: string; attempts: string[]; effects?: string[]; lenses: Lenses; page: boolean; explanation?: FindingExplanation; game_contexts?: FindingGameContext[] }
 export interface Famous { status: string | null; status_raw: string | null; description: string | null; original_paper: string | null; original_year: number | null; critiques: string | null; original_es: string | null; replication_es: string | null; gs_citations: number | null }
-export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; name_sources?: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses }
+export interface Effect { id: string; key: string; slug: string; name: string; aliases: string[]; name_sources?: string[]; discipline: string | null; description: string | null; famous: Famous | null; originals: string[]; attempts: string[]; shared_attempts: string[]; lenses: Lenses;
+  related_papers?: { rep_key: string; doi: string | null; title: string | null; year: number | null; authors: string | null; original: string; kind: string }[] }
 export interface Share { n: number; successful: number; failed: number; mixed: number; success_share: number | null; success_ci: [number, number] | null }
 // The hand-read audit of the verdicts themselves: data/curated/outcome_audit.csv, scored by `pipeline outcomes`.
 // Per-band accuracy of the link between a find and the original it re-tests: data/curated/original_audit.csv,

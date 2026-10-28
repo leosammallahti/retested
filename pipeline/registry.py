@@ -436,7 +436,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                     a["sources"].append("read")
             elif r["kind"] not in READ_REPLICATION and r["kind"] != "CANNOT_TELL" and not coded:
                 set_aside[aid] = {**attempts.pop(aid), "set_aside_because": f"Read: the later paper is {r['kind'].lower().replace('_', ' ')}, not a replication",
-                                  "set_aside_evidence": f"{r['decided_by']}; {info['quote'] or ''}"}
+                                  "set_aside_evidence": f"{r['decided_by']}; {info['quote'] or ''}",
+                                  "read_kind": r["kind"], "read_tests_this_finding": r["tests_this_finding"]}
             elif r["kind"] in READ_REPLICATION and r["tests_this_finding"] == "CANNOT_TELL" and r.get("result") == "NO_RESULT_STATED":
                 pass        # a replication whose abstract names neither the exact finding nor a result: only the full text can say
             elif (o, rk) in checked_pairs:
@@ -467,7 +468,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         if aid in attempts:
             set_aside[aid] = {**attempts.pop(aid), "set_aside_because": r["reason"], "set_aside_evidence": r["evidence"]}
         elif aid in set_aside:
-            set_aside[aid].update(set_aside_because=r["reason"], set_aside_evidence=r["evidence"])
+            set_aside[aid].update(set_aside_because=r["reason"], set_aside_evidence=r["evidence"], read_kind=None)
         else:
             stale.append(f"reviewed exclusion not applied: {r['doi_o']} -> {r['rep_key']}")
     read_notes[:] = [n for n in read_notes if n["attempt"] in attempts]   # a set-aside pair needs no further reading
@@ -754,6 +755,18 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for t in trace:
         if t.get("effect_key"):
             t["effect_key"] = find(t["effect_key"]) if t["effect_key"] in canon else t["effect_key"]
+    # meta-analyses and reviews of an effect's original finding, which reading set aside as not replications: still
+    # evidence about the effect, so each effect lists them apart from its replications
+    for e in effects.values():
+        own = set(e["originals"])
+        e["related_papers"] = sorted(
+            ({"rep_key": x["rep_key"], "doi": x.get("doi_r"), "title": x.get("title_r"), "year": x.get("year_r"),
+              "authors": x.get("authors_r"), "original": x["doi_o"],
+              "kind": "meta-analysis" if x["read_kind"] == "META_ANALYSIS" else "review or commentary"}
+             for x in set_aside.values()
+             if x["doi_o"] in own and x.get("read_kind") in ("META_ANALYSIS", "REVIEW_OR_COMMENTARY")
+             and x.get("read_tests_this_finding") == "YES"),
+            key=lambda x: (-(x["year"] or 0), x["title"] or ""))
     return {"papers": papers, "attempts": attempts, "findings": findings, "effects": effects, "trace": trace, "famous_effect": famous_effect, "set_aside": set_aside, "merged_into": merged_into, "relinked": relinked, "read_notes": read_notes, "read_index": read_index, "read_retested_finds": read_retested_finds,
             "doi_folds": doi_folds, "log": log}
 

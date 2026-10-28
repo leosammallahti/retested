@@ -4,7 +4,7 @@ import Dossier from '../../components/Dossier.astro';
 import Pending from '../../components/Pending.astro';
 import Story from '../../components/Story.astro';
 import { effects, attempts, papers, findings, pending, storyFor, effectLine, type Effect } from '../../lib/data';
-import { u, cleanQuote, clip, int, asClaim } from '../../lib/fmt';
+import { u, cleanQuote, clip, int, asClaim, doiUrl } from '../../lib/fmt';
 import { typologyFor, STUDY_KIND, OUTCOME_KIND, WHO, SETTING } from '../../lib/typology';
 
 export function getStaticPaths() {
@@ -99,6 +99,20 @@ const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.r
       </section>
     )}
 
+    {(e.related_papers ?? []).length > 0 && (
+      <section>
+        <div class="sh"><h2>Meta-analyses and reviews of this finding</h2><span class="label">Not replications, so not counted above</span></div>
+        <div class="card">
+          <p class="muted" style="font-size:.95rem">Read for Retested from their abstracts: these pool earlier studies or discuss the finding rather than test it again with new data.</p>
+          <ul class="related">
+            {e.related_papers!.map((r) => (
+              <li><span class="label">{r.kind}</span> {r.doi ? <a href={doiUrl(r.doi)}>{r.title ?? r.doi}</a> : (r.title ?? r.rep_key)}{r.authors || r.year ? <span class="faint"> · {[r.authors, r.year ? Math.round(r.year) : null].filter(Boolean).join(', ')}</span> : ''}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
     {findingPages.length > 0 && (
       <p class="faint" style="margin-top:2rem">Per-paper views: {findingPages.map((f, i) => <>{i > 0 && ' · '}<a href={u(`finding/${f.slug}/`)}>{P[f.doi_o]?.authors ?? f.doi_o}{P[f.doi_o]?.year ? ` ${P[f.doi_o].year}` : ''}</a></>)}</p>
     )}
@@ -113,6 +127,8 @@ const desc = `${e.name}: ${e.lenses.record.label.toLowerCase()} — ${e.lenses.r
   .claimbox { border-left: 4px solid var(--claim); padding: .3rem 0 .3rem 1.2rem; margin: 1.6rem 0 .6rem; max-width: 76ch; }
   .notlinked { margin: 1.2rem 0 .4rem; padding: .7rem 1rem; border: 1px solid var(--rule); border-left: 4px solid var(--ink-2); max-width: 76ch; font-size: .95rem; }
   .notlinked a { margin-left: .4rem; }
+  .related { margin: .4rem 0 0; padding-left: 1.1rem; }
+  .related li { margin: .35rem 0; }
   .ctext { font: 400 clamp(1.15rem, 2vw, 1.4rem)/1.45 var(--f-display); margin: .3rem 0 0; }
   .vb { font-size: .92rem; margin-top: .6rem; font-style: italic; }
   .al { font-size: .9rem; }
