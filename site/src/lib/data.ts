@@ -44,6 +44,11 @@ export interface Attempt {
   rows: FredRow[]; legacy_rows: LegacyRow[]; projects: string[]; legacy_only?: boolean;
   title_r?: string; year_r?: number; journal_r?: string; authors_r?: string; url_r?: string; oa_url_r?: string;
   quote?: string; quote_source?: string; author_overlap_pct?: number; flora_source?: string;
+  // read from the later paper's abstract (pipeline/read_pairs.py); how it was decided is in decided_by
+  read?: { kind: string; result: string | null; quote: string | null; decided_by: string; read_on: string };
+  listed_by?: string;
+  relinked_from?: { doi_o: string; because: string; evidence: string };
+  same_study_as?: { rep_key: string; title_r: string | null; why: string }[];
   retested_review?: { candidate_id: string; reviewed_by: string; reviewed_on: string;
     original_source_url: string; original_claim_quote: string; original_source_type?: "empirical_study" | "meta_analysis" | "review" | "other" | null; replication_source_url: string;
     replication_target_quote: string; outcome_quote: string; outcome_quote_source: string; review_note?: string | null };
@@ -95,6 +100,13 @@ export interface Stats {
   effect_record_counts: Record<string, number>; finding_record_counts: Record<string, number>;
   finding_context_coverage: FindingContextCoverage;
   lists: { graveyard: EffectCard[]; survivors: EffectCard[]; contested: EffectCard[]; most_tested: EffectCard[] };
+  forrt_ledger?: ForrtLedger;
+}
+// Where every row of every FORRT file went (pipeline/forrt_ledger.py); the build fails if any row has no outcome.
+export interface ForrtLedger {
+  by_file: Record<string, Record<string, number>>; reasons: Record<string, Record<string, number>>; missing: number;
+  site: { attempts: number; from_forrt: number; added_by_retested: number; effects_with_replication: number;
+    effects_named_without_replication: number; effects_only_retested_named: number; findings: number; findings_only_retested: number };
 }
 
 export interface ReconciliationSummary {
@@ -153,6 +165,10 @@ export interface VerdictIfAccepted { from: string; from_label: string; to: strin
 export interface Pending { by_finding: Record<string, Candidate[]>; by_effect: Record<string, Candidate[]>; verdict_if_accepted: Record<string, VerdictIfAccepted>; effect_verdict_if_accepted: Record<string, VerdictIfAccepted> }
 
 export const effects = () => read<Effect[]>('effects.json');
+// An effect is in the database once a replication of its own is linked. The others are named in FORRT's records and
+// keep a page, but are listed apart (not-linked/) and left out of every list, count and search.
+export const linkedEffects = () => effects().filter((e) => e.attempts.length > 0);
+export const unlinkedEffects = () => effects().filter((e) => e.attempts.length === 0);
 export const findings = () => read<Record<string, Finding>>('findings.json');
 export const attempts = () => read<Record<string, Attempt>>('attempts.json');
 export const papers = () => read<Record<string, Paper>>('papers.json');
@@ -196,3 +212,7 @@ export const accountFor = (id: string): StoryAccount | null =>
 // One plain sentence saying what an effect claims (data/curated/effect_lines.json, through wiki.json); null when none.
 export const effectLine = (slug: string): string | null =>
   readOptional<{ effect_lines?: Record<string, string> }>('wiki.json')?.effect_lines?.[slug] ?? null;
+// How an effect's original study worked (data/curated/effect_typology.json, through wiki.json); null when not labelled.
+export interface EffectTypology { study_kind?: string; outcome_kind?: string; who_studied?: string; setting?: string; body_brain_genes?: string }
+export const effectTypology = (slug: string): EffectTypology | null =>
+  readOptional<{ effect_typology?: Record<string, EffectTypology> }>('wiki.json')?.effect_typology?.[slug] ?? null;

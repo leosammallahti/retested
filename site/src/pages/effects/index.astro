@@ -1,10 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { effects, papers, effectLine } from '../../lib/data';
+import { linkedEffects, unlinkedEffects, papers, effectLine } from '../../lib/data';
+import { typologyFor, STUDY_KIND, OUTCOME_KIND, WHO, SETTING, STUDY_ORDER, OUTCOME_ORDER } from '../../lib/typology';
 import { u, RECORD_TONE, fr } from '../../lib/fmt';
 
 const P = papers();
-const E = effects();
+const E = linkedEffects();
+const nUnlinked = unlinkedEffects().length;
 const fame = (e: (typeof E)[number]) => Math.max(e.famous?.gs_citations ?? 0, ...e.originals.map((d) => P[d]?.openalex?.cited_by ?? 0));
 const group = (code: string) => (['replicated', 'largely_replicated', 'single_success'].includes(code) ? 'held' : ['failed', 'largely_failed', 'reversed', 'single_failure'].includes(code) ? 'failed' : ['contested', 'single_mixed'].includes(code) ? 'contested' : 'open');
 // effects with at least one replication verdict come first; within each tier, most cited first
@@ -20,6 +22,7 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
       <div class="label">The index</div>
       <h1>{E.length} effects</h1>
       <p class="lede">Every named psychological effect in the counted record, from FORRT and Retested-reviewed papers. Filter by what happened when people tried again. Effects with at least one replication verdict come first, most cited at the top.</p>
+      <p class="faint">Only effects with at least one replication linked are listed. {nUnlinked} more are named in FORRT's records without one; they are <a href={u('not-linked/')}>listed apart</a>.</p>
     </header>
     <div class="fbar" id="fbar">
       <input type="search" id="fq" placeholder="Filter effects…" aria-label="Filter effects" />
@@ -32,6 +35,10 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
       </div>
       <button id="ours-filter" type="button" aria-pressed="false">Retested additions <span>{ourCount}</span></button>
       <select id="fd" aria-label="Discipline"><option value="">All disciplines</option>{disciplines.map((d) => <option>{d}</option>)}</select>
+      <select id="fst" aria-label="What the study did"><option value="">What the study did: any</option>{STUDY_ORDER.map((k) => <option value={k}>{STUDY_KIND[k].name}</option>)}</select>
+      <select id="fou" aria-label="What was measured"><option value="">What was measured: any</option>{OUTCOME_ORDER.map((k) => <option value={k}>{OUTCOME_KIND[k].name}</option>)}</select>
+      <select id="fwh" aria-label="Who was studied"><option value="">Who was studied: anyone</option>{Object.entries(WHO).map(([k, v]) => <option value={k}>{v}</option>)}</select>
+      <select id="fse" aria-label="Setting"><option value="">Setting: any</option>{Object.entries(SETTING).map(([k, v]) => <option value={k}>{v}</option>)}</select>
       <select id="fs" aria-label="Sort"><option value="fame">Most cited (tested first)</option><option value="k">Most replicated</option><option value="az">A–Z</option></select>
       <span class="mono faint" id="fcount"></span>
     </div>
@@ -39,8 +46,9 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
       {rows.map(({ e, fame, g }) => {
         const r = e.lenses.record;
         const line = effectLine(e.slug);
+        const ty = typologyFor(e.slug) ?? {};
         return (
-          <li data-g={g} data-source={e.name_sources?.includes('retested') ? 'retested' : 'forrt'} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ') + ' ' + (line ?? '')).toLowerCase()}>
+          <li data-g={g} data-source={e.name_sources?.includes('retested') ? 'retested' : 'forrt'} data-d={e.discipline ?? ''} data-k={r.k} data-f={fame} data-h={e.lenses.record.k > 0 ? 1 : 0} data-n={(e.name + ' ' + e.aliases.join(' ') + ' ' + (line ?? '')).toLowerCase()} data-st={ty.study_kind ?? ''} data-ou={ty.outcome_kind ?? ''} data-wh={ty.who_studied ?? ''} data-se={ty.setting ?? ''}>
             <a class="erow" href={u(`effect/${e.slug}/`)}>
               <span class="nm">{e.name}</span>
               <span class={`stamp sm t-${RECORD_TONE[r.code]}`}>{r.label}</span>
@@ -63,17 +71,20 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
   const list = document.getElementById('elist')!;
   const items = [...list.children] as HTMLElement[];
   const q = document.getElementById('fq') as HTMLInputElement, d = document.getElementById('fd') as HTMLSelectElement, s = document.getElementById('fs') as HTMLSelectElement;
+  const sel = (id: string) => document.getElementById(id) as HTMLSelectElement;
+  const ty = { st: sel('fst'), ou: sel('fou'), wh: sel('fwh'), se: sel('fse') };
   let g = '';
   const params = new URLSearchParams(location.search);
   if (params.get('g')) g = params.get('g')!;
   if (params.get('d')) d.value = params.get('d')!;
+  for (const [k, el] of Object.entries(ty)) if (params.get(k)) el.value = params.get(k)!;
   const oursButton = document.getElementById('ours-filter') as HTMLButtonElement;
   let oursOnly = params.get('source') === 'retested';
   function apply() {
     const qq = q.value.toLowerCase().trim();
     let n = 0;
     for (const li of items) {
-      const ok = (!g || li.dataset.g === g) && (!oursOnly || li.dataset.source === 'retested') && (!d.value || li.dataset.d === d.value) && (!qq || li.dataset.n!.includes(qq));
+      const ok = (!g || li.dataset.g === g) && (!oursOnly || li.dataset.source === 'retested') && (!d.value || li.dataset.d === d.value) && Object.entries(ty).every(([k, el]) => !el.value || li.dataset[k] === el.value) && (!qq || li.dataset.n!.includes(qq));
       li.hidden = !ok; if (ok) n++;
     }
     const key = s.value;
@@ -85,7 +96,7 @@ const ourCount = E.filter((e) => e.name_sources?.includes('retested') && e.attem
   }
   document.querySelectorAll<HTMLButtonElement>('.seg button').forEach((b) => b.addEventListener('click', () => { g = b.dataset.g!; apply(); }));
   oursButton.addEventListener('click', () => { oursOnly = !oursOnly; apply(); });
-  [q, d, s].forEach((el) => el.addEventListener('input', apply));
+  [q, d, s, ...Object.values(ty)].forEach((el) => el.addEventListener('input', apply));
   apply();
 </script>
 <style>

@@ -49,7 +49,7 @@ export const CRITERIA_LABELS: Record<string, string> = {
   small_telescopes: 'Replication rules out a tiny effect (small telescopes)',
 };
 
-export const DISPLAY_SOURCE: Record<string, string> = { flora: 'FLoRA', fred: 'FReD', legacy: 'FReD legacy 2.4.1', retested: 'Retested reviewed' };
+export const DISPLAY_SOURCE: Record<string, string> = { flora: 'FLoRA', fred: 'FReD', legacy: 'FReD legacy 2.4.1', retested: 'Retested reviewed', read: 'Read for Retested' };
 
 /** APA-style r: no leading zero, sign kept. */
 export const fr = (x: number | null | undefined, d = 2) =>

@@ -1,0 +1,125 @@
+---
+// What holds up: every effect placed by how its original study worked (what it did × what it measured), with how
+// often later attempts found the effect again. Labels: data/curated/effect_typology.json (see lib/typology.ts).
+import Base from '../layouts/Base.astro';
+import { linkedEffects, papers } from '../lib/data';
+import { u, int } from '../lib/fmt';
+import { typologyFor, STUDY_KIND, OUTCOME_KIND, STUDY_ORDER, OUTCOME_ORDER } from '../lib/typology';
+
+const E = linkedEffects();
+const P = papers();
+const fame = (e: (typeof E)[number]) => Math.max(e.famous?.gs_citations ?? 0, ...e.originals.map((d) => P[d]?.openalex?.cited_by ?? 0));
+type Row = { e: (typeof E)[number]; st: string; ou: string; rate: number | null; fame: number };
+const rows: Row[] = E.map((e) => {
+  const t = typologyFor(e.slug) ?? {};
+  const r = e.lenses.record;
+  const n = (r.successful ?? 0) + (r.mixed ?? 0) + (r.failed ?? 0);
+  return { e, st: t.study_kind ?? '', ou: t.outcome_kind ?? '', rate: n > 0 ? (r.successful ?? 0) / n : null, fame: fame(e) };
+}).filter((x) => x.st && x.ou);
+
+// "held up": for each effect with at least one verdict, the share of its later attempts that found it (a mixed result
+// counts as not found); a cell's figure is the average over its effects, so one heavily retested effect cannot dominate
+function summary(list: Row[]) {
+  const v = list.filter((x) => x.rate !== null);
+  const s = v.reduce((a, x) => a + x.e.lenses.record.successful, 0), m = v.reduce((a, x) => a + x.e.lenses.record.mixed, 0), f = v.reduce((a, x) => a + x.e.lenses.record.failed, 0);
+  return { all: list.length, n: v.length, rate: v.length ? v.reduce((a, x) => a + (x.rate as number), 0) / v.length : null, s, m, f };
+}
+const cell = (st: string, ou: string) => summary(rows.filter((x) => x.st === st && x.ou === ou));
+const rowSum = (st: string) => summary(rows.filter((x) => x.st === st));
+const colSum = (ou: string) => summary(rows.filter((x) => x.ou === ou));
+const total = summary(rows);
+const pct = (x: number | null) => (x === null ? '–' : `${Math.round(x * 100)}%`);
+const tone = (x: number | null, n: number) => (x === null || n < 5 ? 'thin' : x >= 0.6 ? 'hi' : x >= 0.4 ? 'mid' : 'lo');
+const examples = (st: string) => rows.filter((x) => x.st === st && x.rate !== null).sort((a, b) => b.fame - a.fame).slice(0, 4);
+const link = (q: Record<string, string>) => u('effects/') + '?' + new URLSearchParams(q).toString();
+---
+<Base title="What holds up" description="Every effect placed by how its original study worked, with how often later attempts found it again." active="map/">
+  <article class="wrap" style="padding-top:2.4rem">
+    <header class="rise">
+      <div class="label">The map</div>
+      <h1>What holds up?</h1>
+      <p class="lede">Every effect sorted by two questions about its original study: what the researchers did, and what they measured. The kind of study says a lot about whether the finding came back when other teams tried again.</p>
+    </header>
+
+    <section>
+      <div class="table-wrap">
+        <table class="grid">
+          <thead>
+            <tr><th class="corner">What the study did ↓ · What was measured →</th>{OUTCOME_ORDER.map((ou) => <th id={ou} title={OUTCOME_KIND[ou].about}>{OUTCOME_KIND[ou].name}</th>)}<th>All</th></tr>
+          </thead>
+          <tbody>
+            {STUDY_ORDER.map((st) => { const r = rowSum(st); return (
+              <tr>
+                <th id={st} scope="row"><span class="rn">{STUDY_KIND[st].name}</span><span class="ra">{STUDY_KIND[st].about}</span></th>
+                {OUTCOME_ORDER.map((ou) => { const c = cell(st, ou); return (
+                  <td class={`c ${tone(c.rate, c.n)}`}>
+                    {c.all > 0 ? (
+                      <a href={link({ st, ou })}><b>{pct(c.rate)}</b><span>{c.n} of {c.all} effects retested</span></a>
+                    ) : <span class="faint">none</span>}
+                  </td>
+                ); })}
+                <td class={`c tot ${tone(r.rate, r.n)}`}><a href={link({ st })}><b>{pct(r.rate)}</b><span>{r.n} of {r.all}</span></a></td>
+              </tr>
+            ); })}
+            <tr class="totals">
+              <th scope="row">All kinds of study</th>
+              {OUTCOME_ORDER.map((ou) => { const c = colSum(ou); return <td class={`c tot ${tone(c.rate, c.n)}`}><a href={link({ ou })}><b>{pct(c.rate)}</b><span>{c.n} of {c.all}</span></a></td>; })}
+              <td class="c tot"><b>{pct(total.rate)}</b><span>{total.n} of {total.all}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="faint note">Each figure is how often later attempts found the effect again, averaged over the effects in that box that have been retested (a mixed result counts as not found). Boxes with fewer than five retested effects are shown pale: too few to read much into. Click a box to see its effects.</p>
+    </section>
+
+    <section>
+      <div class="sh"><h2>What each kind of study looks like</h2><span class="label">the most cited retested examples</span></div>
+      {STUDY_ORDER.map((st) => { const r = rowSum(st); return (
+        <div class="kind">
+          <h3>{STUDY_KIND[st].name} <span class={`badge ${tone(r.rate, r.n)}`}>{pct(r.rate)} held up</span></h3>
+          <p class="faint">{STUDY_KIND[st].about}</p>
+          <ul class="ex">
+            {examples(st).map((x) => <li><a href={u(`effect/${x.e.slug}/`)}>{x.e.name}</a> <span class="faint mono">{x.e.lenses.record.successful} found · {x.e.lenses.record.mixed} mixed · {x.e.lenses.record.failed} not found</span></li>)}
+          </ul>
+        </div>
+      ); })}
+    </section>
+
+    <section>
+      <div class="sh"><h2>How to read this</h2></div>
+      <ul class="dl">
+        <li>This is a pattern across many findings, not a verdict on any single one: a study of a small cue can hold up, and a therapy can fail.</li>
+        <li>Findings are not retested at random. Famous and surprising claims are retested more often, which shapes these figures.</li>
+        <li>Each effect was placed from a description of its original study with the retest results removed, by two AI models working separately, checked against a blind hand-coded sample; where the models disagreed, the placement was read and decided against the written rules. {int(total.all)} of {int(E.length)} effects are placed.</li>
+      </ul>
+    </section>
+  </article>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; margin-top: 1.5rem; }
+  .grid { border-collapse: collapse; width: 100%; min-width: 46rem; }
+  .grid th, .grid td { border: 1px solid var(--rule); padding: .55rem .6rem; vertical-align: top; text-align: left; }
+  .grid thead th { font: 500 .78rem/1.3 var(--f-mono); color: var(--ink-2); }
+  .grid .corner { font-size: .7rem; }
+  .grid tbody th { width: 15rem; }
+  .rn { display: block; font: 500 1rem/1.3 var(--f-display); }
+  .ra { display: block; font-size: .8rem; color: var(--ink-2); margin-top: .2rem; }
+  .c a { display: block; text-decoration: none; color: inherit; }
+  .c b { display: block; font: 600 1.5rem/1.1 var(--f-display); }
+  .c span { display: block; font: .7rem var(--f-mono); color: var(--ink-2); margin-top: .2rem; }
+  .c.hi { background: color-mix(in srgb, var(--ok, #3b6) 16%, transparent); }
+  .c.mid { background: color-mix(in srgb, var(--mix, #c93) 16%, transparent); }
+  .c.lo { background: color-mix(in srgb, var(--bad, #c43) 16%, transparent); }
+  .c.thin { opacity: .55; }
+  .tot b { font-size: 1.15rem; }
+  .totals th { font-weight: 500; }
+  .note { margin-top: .8rem; font-size: .85rem; max-width: 70ch; }
+  .kind { margin: 1.4rem 0; }
+  .kind h3 { margin-bottom: .2rem; }
+  .badge { font: .75rem var(--f-mono); padding: .1rem .5rem; border-radius: 999px; vertical-align: middle; }
+  .badge.hi { background: color-mix(in srgb, var(--ok, #3b6) 22%, transparent); }
+  .badge.mid { background: color-mix(in srgb, var(--mix, #c93) 22%, transparent); }
+  .badge.lo { background: color-mix(in srgb, var(--bad, #c43) 22%, transparent); }
+  .ex { margin: .4rem 0 0; padding-left: 1.1rem; }
+  .ex li { margin-bottom: .25rem; }
+</style>
