@@ -8,15 +8,15 @@ readers checked. Owner: Leo Sammallahti.
 
 | What | Where |
 |---|---|
-| The code that builds everything | `pipeline/` (`python -m pipeline build`) |
+| The code that builds everything | `pipeline/` (`python -m pipeline build`); every module and command in `pipeline/README.md` |
 | FORRT's files, as downloaded (never edited) | `data/raw/forrt/`, listed with hashes in `MANIFEST.json` |
-| Every decision a reader (Leo, Claude, or two agreeing models with checked quotes) made | `data/curated/` (each file says what it decides; see `SOURCES_AND_LEDGER.md`) |
-| Evidence behind the 28 Oct 2026 decisions | `data/curated/review_evidence/2026-10-28/` |
+| Every decision a reader (Leo, Claude, or two agreeing models with checked quotes) made | `data/curated/`, each file listed with what it decides in `data/curated/README.md` |
+| Evidence behind the 28 Oct 2026 decisions (helpers' decisions, briefs, the paid readings' answer logs) | `data/curated/review_evidence/2026-10-28/` |
 | The scripts that produced those decisions | `pipeline/repair/` (README inside) |
 | What the build produces (wiped on every build) | `data/build/` |
 | The website | `site/` (Astro; reads `data/build/`) |
 | Tests | `tests/` (`python -m unittest discover -s tests`) |
-| Old notes and the full work diary | `docs/history/` |
+| Old notes, the full work diary and the 7 Sep 2026 plan | `docs/history/` |
 
 ## The four commands
 
@@ -36,9 +36,12 @@ never in the main checkout `/root/retested`, which holds another session's uncom
   FORRT file one outcome: on the site, waiting to be read, not yet read, names an effect, or left out with a reason.
   A build with an unaccounted row stops.
 - **An effect counts only once a replication of its own is linked.** The rest are listed on `not-linked/`.
-- **Results come from four sources:** FORRT's coding (FLoRA, FReD, the old FReD file), Retested's reviewed pairs, and
-  later papers read for Retested from their abstracts. A reading never overrules a result FORRT coded; the cases where
-  they differ are in `data/build/read_notes.json`, for a person to read.
+- **Results come from FORRT's coding** (FLoRA, FReD, the old FReD file), **Retested's reviewed pairs, papers read for
+  Retested** (from their abstracts or open full text), and **results a reader corrected** against the paper's own
+  text (`data/curated/attempt_results.csv`, shown with the earlier coding beside them). A machine reading never
+  overrules a result FORRT coded; where they differ, `data/build/read_notes.json` lists it for a person.
+- **Each attempt says who found it:** FORRT's files, FORRT's famous-effects list or machine search (read for Retested),
+  Retested's reviewed pairs, or Retested's machine search (read for Retested).
 
 ## Documents
 

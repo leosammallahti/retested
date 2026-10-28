@@ -23,6 +23,13 @@ evidence that matters is copied to `data/curated/review_evidence/2026-10-28/` by
 | 8. Re-links | `relinks/lookup.py`, `relinks/layout.py`, `relinks/lookup2.py` (Crossref, free) | `data/curated/attempt_relinks.csv` |
 | 9. Paper reading (paid, approved) | `reading/build_items.py`, `reading/questions.py`, `reading/run_reading.py`, `reading/keep_running.sh`, `reading/consensus.py`, `reading/ADJUDICATION_BRIEF.md` | `data/curated/read_pairs.json` |
 | 10. Proof | `audit/compare.py` | before-and-after comparison against the build of 28 Oct 06:02 UTC |
+| 11. Cases a reader settles | `cases/make_cases.py`, `cases/apply.py` (and the second round, `make_cases2.py`, `apply2.py`), `cases/BRIEF.md` | `attempt_exclusions.csv`, `attempt_relinks.csv`, `attempt_results.csv`, `attempts_checked.csv` |
+| 12. Missing paper details | `details/fetch_details.py` (OpenAlex), `details/fetch_osf_registry.py` (OSF and doi.org) | `openalex_paper_metadata.json`, `later_paper_records.json` in `data/raw/local/` |
+| 13. Plain lines for the effects that lacked one | `lines/BRIEF.md` (the rules of the earlier line writer, given to a Sonnet 5.5 helper) | `effect_lines.json` |
+| 14. The review queue read (paid, approved) | `queue/fetch_abstracts.py`, `queue/build_items.py`, `queue/run_reading.py`, `queue/keep_running.sh`, `queue/consensus.py`, `queue/make_batch.py`, `queue/ADJUDICATION_BRIEF.md`, `queue/settle_all.sh` | `read_pairs.json` (the queue's readings layered on the morning's) |
+| 15. Open full text read (paid, approved) | `fulltext/availability.py`, `fulltext/fetch_fulltext.py`, `fulltext/fetch_round2.py`, `fulltext/build_items.py`, `fulltext/run_reading.py` | `read_pairs.json` (a third layer) |
+| 16. Checks on the readings | `queue/author_check.py` with `queue/mismatch_cases.py` and `MISMATCH_BRIEF.md` (a replication linked to the wrong paper by the same author); `cases/NULL_BRIEF.md` (an original that is itself a null finding) | decisions in `queue_splits_decided.txt`; corrections in `attempt_results.csv` |
+| 17. The numbers in the documents | `queue/numbers.py` | read from the build |
 
 ## The paid reading
 
@@ -34,3 +41,22 @@ fine, $1.4 is fine"; cap $1.60). About 2,300 later papers were read from their t
 - Splits were decided by Sonnet 5.5 helpers following `reading/ADJUDICATION_BRIEF.md`, and samples were checked by
   Claude.
 - The answer logs are in the evidence folder as `reading_answers_*.jsonl.gz`.
+
+## The queue reading and the full-text reading (evening of 28 Oct)
+
+Approved by Leo: "Yes, run it (cap $4)" for the queue, and "Yeah" to reading open full text (proposed at about $1.30).
+The same two models and the same questions as the morning. The readings are layered: the morning's readings, then the
+queue's (which also re-read 282 morning papers that had gained an abstract), then the full-text readings; a later
+layer replaces an earlier reading only when it settles the paper. `queue/settle_all.sh` rebuilds `read_pairs.json`
+from all three.
+
+Two checks were added after reading samples. A 40-pair sample of agreed replications found two linked to another
+paper by the same author, so every queue replication whose title or abstract names a study with other authors or
+another year was read again (`queue/author_check.py` selects; a reader decides). And the question counts "no reliable
+effect" as not found, which is backwards when the original finding is itself a null; those readings were found and
+corrected (`cases/NULL_BRIEF.md`).
+
+The full-text reading's inputs (the downloaded papers' results and discussion sections) are not in the repository:
+not every open copy's licence allows republishing them. They stay on the host in
+`/root/wiki-scratch/fulltext_20261028/` (`items.jsonl`, `text/`); the answer logs, with their short quotes, are in
+the evidence folder.
