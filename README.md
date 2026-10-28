@@ -77,14 +77,14 @@ kept under `data/curated/forrt_snapshots/`; `pipeline fetch` verifies both compr
 
 | Path | What lives there | Edited by hand? |
 |---|---|---|
-| `pipeline/` | Python build: `load` → `registry` → `score` → `game` / `queue` / `stats` → `validate` → `export` → `wiki` | yes |
+| `pipeline/` | Python build: `load` → `registry` → `score` → `game` / `queue` / `stats` → `forrt_ledger` → `validate` → `export` → `wiki`; every module and command in `pipeline/README.md` | yes |
 | `site/` | Astro 7 static site; Preact islands for search, the game and the review queue | yes |
 | `data/raw/forrt/` | Upstream FORRT files. Only `MANIFEST.json` is committed; everything else is fetched | **never** |
-| `data/raw/local/` | Two inputs salvaged from earlier work: the parsed famous-effects list and an OpenAlex citation snapshot | never |
-| `data/curated/` | Reviewed decisions and text: `merges.yaml`, reviewed original-replication pairs, `effect_lines.json`, `wiki_explanations.json`, `wiki_accounts.json`, the append-only effect-ID ledger, the count baseline | yes, via PR |
+| `data/raw/local/` | Inputs kept with the code: the parsed famous-effects list, an OpenAlex snapshot of the originals, and OpenAlex's title, year and authors for each paper (`openalex_paper_metadata.json`, fetched 28 Oct 2026) | never |
+| `data/curated/` | Reviewed decisions and written text, each file listed with what it decides in `data/curated/README.md` | yes, with a reason and evidence per row |
 | `data/build/`, `site/public/generated/` | Generated bundle | never (gitignored) |
 | `data/discovery/` | Discovery, triage, saved abstracts and linking results; survives a build, rebuildable from cache | never (gitignored) |
-| `docs/planning/` | The research and design reports behind this build | reference |
+| `docs/history/planning-2026-09-07/` | The research and design reports the build started from (7 Sep 2026) | reference |
 | `archive/` | Earlier attempts (harvester, taxonomy experiments, old wiki). Local only, gitignored | no |
 
 ## Rules that keep it from rotting

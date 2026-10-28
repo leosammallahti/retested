@@ -21707,6 +21707,233 @@
    "edited": null,
    "checked_by": "read against its sources by a Claude Sonnet 5.5 helper; uncertain cases by Claude",
    "slug_then": "cognitive-ability-of-the-right-wing-dogmatism"
+  },
+  "fx_kdrsxeeb": {
+   "line": "How early you learned an object does not change how fast or accurately you sort it into a group.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": "shortened to the 20-word limit by Claude",
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "age-of-acquisition-influence-on-the-pre-conceptual-stages-of-lexical-r-ca30"
+  },
+  "fx_wzam6pq7": {
+   "line": "People's estimates of a number stay too close to a starting number they were given or thought of first.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "anchoring-effect"
+  },
+  "fx_5xy70srp": {
+   "line": "People pick out an object they saw earlier from beside a new one better than by guessing.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": "shortened to the 20-word limit by Claude",
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "better-than-chance-recognition-of-old-object-pairs"
+  },
+  "fx_fftc2bmv": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "correlation-between-narcissism-and-and-hypersensitive-narcissism",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_ypd96ay1": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "correlation-between-narcissism-and-self-esteem",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_r1yy0apw": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "correlation-between-self-esteem-and-hostility",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_1xa925cd": {
+   "line": "Pre-selecting an option, or wording a choice as opting in versus opting out, changes what people end up choosing.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "framing"
+  },
+  "fx_cghfxpg2": {
+   "line": "How common an object's name is does not change how quickly people write that name when shown its picture.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "frequency-influence-on-the-conceptual-stages-of-lexical-retrieval-writ"
+  },
+  "fx_61te19w7": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "frequency-influence-on-the-pre-conceptual-stages-of-lexical-retrieval-d812",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_743d6zaw": {
+   "line": "Pigs do not use the direction a person is looking to choose between objects and find a reward.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "gaze-following-in-domesticated-pigs"
+  },
+  "fx_vc5tzre8": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "gaze-following-in-goats",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_73b3mw5r": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "gaze-following-in-wolves",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_vqq2wkp9": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "handedness-differences-in-depression",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_b5d81yzg": {
+   "line": "People running a business alongside a job show a distinct pattern of well-being, shaped by who chooses that path.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "hybrid-entrepreneurship-and-psychological-well-being"
+  },
+  "fx_n77634t0": {
+   "line": "A barely seen flash of a similar-looking word changes how fast people read a word, depending on their spelling skill.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "lexical-precision-on-lexical-competition"
+  },
+  "fx_1j69y37p": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "main-effect-for-recall-activity",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_wkkb42e1": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "main-effect-for-task-eager-vs-vigilant",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_d47b2sh4": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "marc-effect",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
+  },
+  "fx_vmxd2apy": {
+   "line": "Elephants' ability to pick the larger of two amounts does not depend on how close the two amounts are.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "numerical-ratio-effects-on-quantity-discrimination-in-elephants"
+  },
+  "fx_q63dhpfx": {
+   "line": "Telling yourself positive things can fail to lift your mood or even make you feel worse.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "positive-affirmation-on-mood"
+  },
+  "fx_hxsxd2kf": {
+   "line": "Crows become warier when a stick moves with no person seen, as if reasoning that someone is hidden nearby.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "reasoning-about-hidden-causal-agents-in-new-caledonian-crows-corvus-mo"
+  },
+  "fx_dykdjp4n": {
+   "line": "Older adults read a sentence more easily when it includes the word \"either\", which helps them predict what comes next.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "syntactic-predictability-in-older-adults"
+  },
+  "fx_ar6yj0ky": {
+   "line": "People sense that past events are further away from now than future events are.",
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": "written by a Claude Sonnet 5.5 helper from the same facts and rules (effect_lines.py), read by Claude",
+   "slug_then": "temporal-doppler-effect"
+  },
+  "fx_e8n1v5mq": {
+   "line": null,
+   "written_by": "claude-sonnet-5-5",
+   "written_on": "2026-10-28",
+   "read_on": "2026-10-28",
+   "edited": null,
+   "checked_by": null,
+   "slug_then": "time-is-money-effect",
+   "no_line_because": "the facts the record holds conflict, or are too thin to say what the effect claims (Sonnet 5.5 helper, 28 Oct 2026)"
   }
  },
  "key": "effect id (the fx_ id in data/curated/registry/effect_ids.csv), never the slug: a merge or rename changes slugs",

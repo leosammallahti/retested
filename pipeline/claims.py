@@ -8,7 +8,7 @@ characters and 6% over 250. The owner's verdict on them was that they are not go
 deck, not just the finds this pipeline adds.
 
 This asks a model for two sentences per card: what the original study claimed, and how it was tested. The design
-is `docs/planning/designs/D3-game.md` §8, written before any of this existed; the rules below are its rules plus
+is `docs/history/planning-2026-09-07/designs/D3-game.md` §8, written before any of this existed; the rules below are its rules plus
 what reading the bad examples taught.
 
     python -m pipeline claims --pilot            # 24 cards spread across disciplines and decades, ~$0.01
