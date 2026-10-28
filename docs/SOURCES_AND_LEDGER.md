@@ -18,7 +18,7 @@ is downloaded under `data/raw/forrt/` and listed with its hash in `data/raw/forr
 | Replications & Reversals text (`data/raw/local/docx_parsed_entries.json`) | The list as FORRT publishes it: name, a verdict, a description and citations without DOIs | The famous-list verdict and description on effect pages |
 | FLoRA validation files (`feeds/flora-validation_*.csv`) | Pairs FORRT has validated, some not yet in FLoRA's export | A validated pair no other file carries enters as FLoRA data (38 on 28 Oct) |
 | FLoRA extractor (`feeds/flora-extractor_*.csv`) | Pairs FORRT's machine search found, and ones it has not confirmed | Machine-found pairs wait in the review queue; unconfirmed ones are recorded as such |
-| Retested reviewed pairs (`data/curated/promoted_pairs.json`) | 1,941 pairs Retested's readers checked against the papers | Attempts marked "Retested reviewed" (1,465 are new to FORRT) |
+| Retested reviewed pairs (`data/curated/promoted_pairs.json`) | 1,941 pairs Retested's readers checked against the papers | Attempts marked "Retested reviewed" (1,467 are new to FORRT) |
 | OpenAlex (`data/raw/local/openalex_paper_metadata.json`, fetched 28 Oct) | Title, year and authors for each DOI | Replaces a title the site could only parse out of a reference string, and fills a missing year or author list |
 
 ## What is counted
@@ -32,7 +32,7 @@ is downloaded under `data/raw/forrt/` and listed with its hash in `data/raw/forr
 
 ## The FORRT ledger: every row has an outcome
 
-`pipeline/forrt_ledger.py` writes `data/build/forrt_ledger.json`, one line for each row of each FORRT file (26,917 on
+`pipeline/forrt_ledger.py` writes `data/build/forrt_ledger.json`, one line for each row of each FORRT file (26,916 on
 28 Oct). Each line has exactly one outcome:
 
 - **on the site:** its pair is an attempt (the line names the attempt and its effects);
