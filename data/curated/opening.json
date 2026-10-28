@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "decided": "2026-10-21",
+ "reason": "The first cards a new reader sees, in this order: each one pictured in one breath, the result not obvious either way, the replication behind its answer independent and clear; held up and failed alternate, no two cards on one theme in a row. Changing this list changes only the order of the first cards, never which cards exist.",
+ "order": [
+  "p154f8890d",
+  "pc0ade8d90",
+  "fed1e7d99b",
+  "g5244df747",
+  "g735e3d716",
+  "g8a51cb052",
+  "g6f82cebed",
+  "pbba258e36",
+  "gd7bd1cb0b",
+  "gecd6d761d",
+  "f52e778cfb",
+  "f2e52468a2"
+ ]
+}

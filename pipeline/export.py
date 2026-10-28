@@ -8,7 +8,7 @@ from hashlib import sha256
 from pathlib import Path
 
 from .game import context_ready
-from .load import ROOT
+from .load import ROOT, load_opening
 from .stats import finding_context_tier
 
 BUILD = ROOT / "data" / "build"
@@ -132,6 +132,7 @@ def write(g: dict, items: list[dict], reveals: dict, candidates: list[dict], pen
     deck_ids = {it["id"] for it in deck}
     _dump(PUBLIC / "game" / "items.json", deck)
     _dump(PUBLIC / "game" / "daily.json", _daily_decks(deck, reveals))
+    _dump(PUBLIC / "game" / "opening.json", [i for i in load_opening() if i in deck_ids])
     for gid, rv in reveals.items():
         if gid in deck_ids:
             _dump(PUBLIC / "game" / "r" / f"{gid}.json", rv)
