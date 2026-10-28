@@ -389,6 +389,7 @@ def load_claims() -> dict[str, dict]:
 
 
 CARD_HOLDS = ROOT / "data" / "curated" / "card_holds.json"
+OPENING = ROOT / "data" / "curated" / "opening.json"
 
 
 def load_card_holds() -> set[str]:
@@ -400,6 +401,13 @@ def load_card_holds() -> set[str]:
     if not CARD_HOLDS.exists():
         return set()
     return set(json.loads(CARD_HOLDS.read_text(encoding="utf-8")).get("holds", {}))
+
+
+def load_opening() -> list[str]:
+    """The hand-chosen first cards of the feed, in order. A missing file means the feed opens in random order."""
+    if not OPENING.exists():
+        return []
+    return list(json.loads(OPENING.read_text(encoding="utf-8")).get("order", []))
 
 
 def load_refused_claims() -> set[str]:

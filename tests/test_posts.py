@@ -121,5 +121,29 @@ class CardHoldTests(unittest.TestCase):
                 self.assertEqual(load.load_card_holds(), {"g1", "f2"})
 
 
+class OpeningOrderTests(unittest.TestCase):
+    def test_the_opening_is_read_in_order_and_a_missing_file_means_none(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+
+        from pipeline import load
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "opening.json"
+            with mock.patch.object(load, "OPENING", p):
+                self.assertEqual(load.load_opening(), [])
+                p.write_text(json.dumps({"order": ["g2", "f1", "p3"]}), encoding="utf-8")
+                self.assertEqual(load.load_opening(), ["g2", "f1", "p3"])
+
+    def test_the_build_refuses_an_opening_that_names_an_undealt_or_repeated_card(self):
+        from pipeline.validate import opening_problems
+        items = [{"id": "g1", "post": "A post."}, {"id": "g2"}]
+        self.assertEqual(opening_problems(["g1"], items), [])
+        self.assertEqual(opening_problems([], items), [])
+        self.assertEqual(len(opening_problems(["g1", "g1"], items)), 1)
+        self.assertEqual(len(opening_problems(["g2", "g9"], items)), 2)
+
+
 if __name__ == "__main__":
     unittest.main()

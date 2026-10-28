@@ -79,10 +79,15 @@ function shuffle<T>(a: T[]): T[] {
   return b;
 }
 
-// Cards not yet shown first, then the rest, so the feed never runs out.
-function order(items: Item[], seen: Set<string>): Item[] {
+// The hand-chosen opening cards not yet shown come first, in their order (data/curated/opening.json). After them cards
+// not yet shown, then the rest, so the feed never runs out.
+function order(items: Item[], seen: Set<string>, opening: string[]): Item[] {
   const pool = items.filter(playable);
-  return [...shuffle(pool.filter((x) => !seen.has(x.id))), ...shuffle(pool.filter((x) => seen.has(x.id)))];
+  const byId = new Map(pool.map((x) => [x.id, x] as const));
+  const first = opening.map((id) => byId.get(id)).filter((x): x is Item => !!x && !seen.has(x.id));
+  const chosen = new Set(first.map((x) => x.id));
+  const rest = pool.filter((x) => !chosen.has(x.id));
+  return [...first, ...shuffle(rest.filter((x) => !seen.has(x.id))), ...shuffle(rest.filter((x) => seen.has(x.id)))];
 }
 
 export default function Feed({ base }: { base: string }) {
@@ -102,9 +107,12 @@ export default function Feed({ base }: { base: string }) {
     seen.current = new Set(store.current.seen);
     setTally({ n: store.current.plays.length, right: store.current.plays.filter((p) => p.said === p.y).length });
     setFirst(store.current.plays.length === 0);
-    getJson<Item[]>(base + 'generated/game/items.json').then((items) => {
+    const opening = getJson<unknown>(base + 'generated/game/opening.json')
+      .then((x) => (Array.isArray(x) ? x.filter((i): i is string => typeof i === 'string') : []))
+      .catch(() => [] as string[]);   // no list means a random opening, never a broken feed
+    Promise.all([getJson<Item[]>(base + 'generated/game/items.json'), opening]).then(([items, first]) => {
       if (!current) return;
-      const q = order(items, seen.current);
+      const q = order(items, seen.current, first);
       if (!q.length) setLoadError('There are no cards to show right now.');
       else setQueue(q);
     }).catch(() => {

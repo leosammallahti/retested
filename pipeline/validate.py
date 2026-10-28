@@ -7,7 +7,7 @@ from pathlib import Path
 
 from .game import LEAK
 from .ids import norm_doi
-from .load import ROOT
+from .load import ROOT, load_opening
 
 BASELINE = ROOT / "data" / "curated" / "baseline" / "SUMMARY.json"
 SECRET = re.compile(r"sk-or-v1-[A-Za-z0-9]{20,}|sk-proj-[A-Za-z0-9_-]{20,}|sk-ant-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{40,}")
@@ -21,6 +21,14 @@ ROOT_ALLOW = {
 
 class Failure(Exception):
     pass
+
+
+def opening_problems(opening: list[str], items: list[dict]) -> list[str]:
+    """The hand-chosen opening names cards that are dealt (they carry a post and are not held), each once."""
+    dealt = {it["id"] for it in items if it.get("post")}
+    problems = ["the opening order names a card twice"] if len(set(opening)) != len(opening) else []
+    problems += [f"the opening order names {cid}, which the deck does not deal" for cid in opening if cid not in dealt]
+    return problems
 
 
 def queue_checks(g: dict, candidates: list[dict], pending: dict) -> list[str]:
@@ -139,6 +147,7 @@ def run(g: dict, flora: list[dict], items: list[dict], reveals: dict, stats: dic
         if not 0.35 <= rate <= 0.65:
             problems.append(f"game base rate {rate:.2f} outside [0.35, 0.65]")
 
+    problems += opening_problems(load_opening(), items)
     problems += queue_checks(g, candidates, pending)
 
     # 4. no secrets anywhere outside the archive
