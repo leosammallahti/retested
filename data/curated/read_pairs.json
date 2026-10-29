@@ -74916,11 +74916,11 @@
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
    "tests_this_finding": "YES",
-   "result": "NOT_FOUND",
+   "result": "FOUND",
    "is_cited_paper": null,
-   "kind_quote": "Here, we attempted to replicate this finding.",
-   "result_quote": "we no longer found a significant negative correlation",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: The original finding is a null, so a later null means it held: Earlier: no tDCS effect; later: no group effects, and the correlation also absent."
   },
   {
    "item": "q|10.1002/acp.3287|10.1177/00332941221084901",
@@ -79396,11 +79396,11 @@
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
    "tests_this_finding": "YES",
-   "result": "NOT_FOUND",
+   "result": "FOUND",
    "is_cited_paper": null,
-   "kind_quote": "Here, we attempted to replicate this finding.",
-   "result_quote": "We found no group effects of tDCS, as in the original study, but we no longer found a significant negative correlation.",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: The original finding is a null, so a later null means it held: Earlier: no tDCS effect; later: no group effects, as in original, and correlation absent."
   },
   {
    "item": "q|10.1016/j.humov.2016.08.009|10.31236/osf.io/u897b",
@@ -80196,11 +80196,11 @@
    "effects": [],
    "kind": "REANALYSIS",
    "tests_this_finding": "YES",
-   "result": "FOUND",
+   "result": "NOT_FOUND",
    "is_cited_paper": null,
-   "kind_quote": "We first identify a simple mathematical error in Stern et al.’s cosinor implementation that invalidates their critique of the method",
-   "result_quote": "it confirms period-dependent song cycles",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: The original finding is a null, so a later null means it held: Earlier: no evidence of song rhythms; later paper reports period-dependent song cycles confirmed."
   },
   {
    "item": "q|10.1177/1534508416679410|10.1177/1534508420909527",
@@ -89356,11 +89356,11 @@
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
    "tests_this_finding": "YES",
-   "result": "FOUND",
+   "result": "NOT_FOUND",
    "is_cited_paper": null,
-   "kind_quote": "we performed a further association analysis between gout and rs12129861 in a different large-scale Japanese male population",
-   "result_quote": "we showed that rs12129861 was significantly associated with gout susceptibility (P = 0.016, odds ratio [OR] = 0.80",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: The original finding is a null, so a later null means it held: Earlier: PDZK1 variant not associated with gout; later: significant association."
   },
   {
    "item": "q|10.1080/21622965.2015.1052813|10.1080/21622965.2016.1220860",
@@ -126755,12 +126755,12 @@
    "year_r": 2000,
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
-   "tests_this_finding": "YES",
-   "result": "NO_RESULT_STATED",
+   "tests_this_finding": "NO",
+   "result": "NOT_APPLICABLE",
    "is_cited_paper": null,
-   "kind_quote": "an attempted replication of prior Princeton experiments that had demonstrated anomalous deviations of the outputs of electronic random event generators",
+   "kind_quote": "",
    "result_quote": "",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: Published before the original, so not a replication of it: The 2000 consortium replicated earlier Princeton experiments, not this 2007 paper, and was published before it."
   },
   {
    "item": "q|10.1037//0096-1523.23.3.768|10.1037//0096-1523.26.3.980",
@@ -129155,12 +129155,12 @@
    "year_r": 1985,
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
-   "tests_this_finding": "YES",
-   "result": "FOUND",
+   "tests_this_finding": "NO",
+   "result": "NOT_APPLICABLE",
    "is_cited_paper": null,
-   "kind_quote": "The current report describes three replications in which FFT has been extended to new populations",
-   "result_quote": "Taken together the replications provide important support for the generalizability of FFT across client and therapist populations.",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: Published before the original, so not a replication of it: Barton et al. (1985) is earlier evidence on family therapy published long before the 2018 chapter; it does not cite or replicate it."
   },
   {
    "item": "q|10.1097/00005053-197602000-00001|10.1111/j.1600-0447.1985.tb01276.x",
@@ -147723,12 +147723,12 @@
    "year_r": 1968,
    "effects": [],
    "kind": "NEW_DATA_REPLICATION",
-   "tests_this_finding": "YES",
-   "result": "NOT_FOUND",
+   "tests_this_finding": "NO",
+   "result": "NOT_APPLICABLE",
    "is_cited_paper": null,
-   "kind_quote": "The experimenter bias effect: A failure to replicate",
-   "result_quote": "A failure to replicate",
-   "decided_by": "two AI models agreed (DeepSeek v4.1 flash and GLM 5.3 flash), each quote checked against the abstract"
+   "kind_quote": "",
+   "result_quote": "",
+   "decided_by": "the two AI models disagreed; decided by Claude (Sonnet 5.5 reading helpers, samples checked): checked by a reader: Published before the original, so not a replication of it: Jacob (1968) is a failed replication of the original experimenter bias effect, published before Barber's 1969 paper, not a replication of it."
   },
   {
    "item": "q|10.1016/s0022-5371(65)80044-5|http://files.eric.ed.gov/fulltext/ED021225.pdf",

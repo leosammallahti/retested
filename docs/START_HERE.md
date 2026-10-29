@@ -16,7 +16,7 @@ readers checked. Owner: Leo Sammallahti.
 | What the build produces (wiped on every build) | `data/build/` |
 | The website | `site/` (Astro; reads `data/build/`) |
 | Tests | `tests/` (`python -m unittest discover -s tests`) |
-| Old notes, the full work diary and the 7 Sep 2026 plan | `docs/history/` |
+| Old notes, the full work diary, the 28 Oct 2026 repair as it happened, and the 7 Sep 2026 plan | `docs/history/` |
 
 ## The four commands
 
@@ -40,13 +40,14 @@ never in the main checkout `/root/retested`, which holds another session's uncom
   Retested** (from their abstracts or open full text), and **results a reader corrected** against the paper's own
   text (`data/curated/attempt_results.csv`, shown with the earlier coding beside them). A machine reading never
   overrules a result FORRT coded; where they differ, `data/build/read_notes.json` lists it for a person.
-- **Each attempt says who found it:** FORRT's files, FORRT's famous-effects list or machine search (read for Retested),
-  Retested's reviewed pairs, or Retested's machine search (read for Retested).
+- **An attempt is counted only when FORRT or a person linked its pair.** Pairs a machine search found wait in the
+  review queue; they are read for Retested, but a machine-found link was measured wrong too often to count unverified
+  (`SOURCES_AND_LEDGER.md`, "How a later paper is read").
 
 ## Documents
 
-- `SOURCES_AND_LEDGER.md` covers what each source is, what counts, the reviewed files, the 28 Oct repair in numbers,
-  and what is open.
+- `SOURCES_AND_LEDGER.md` covers what each source is, what counts, how later papers are read, the reviewed files, the
+  record's numbers and what is open.
 - `HANDOFF.md` covers what is in flight now, and the next steps.
 - `REPLICATION_REGISTRY.md`, `FORRT_OVERLAP_AUDIT.md`, `LINK_AUDIT_20260919.md` and `READING_RUBRIC.md` are the
   earlier designs and audits that the code still refers to.

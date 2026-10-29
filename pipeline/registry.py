@@ -395,7 +395,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                      for r in (src.get("links") or {}).get("attempts_checked", [])}
     read_index: dict[str, str] = {}      # "doi_o|later" or "ref|doi_o|reference" -> what the reading found, for the ledger
     read_retested_finds: dict[str, str] = {}   # "doi_o|later" -> queue id of a Retested find that was read, for the ledger
-    from .read_pairs import FOUND_BY as READ_FOUND_BY, OUTCOME as READ_OUTCOME, REPLICATION as READ_REPLICATION
+    from .read_pairs import ADDS_TO_RECORD as READ_ADDS, FOUND_BY as READ_FOUND_BY, OUTCOME as READ_OUTCOME, REPLICATION as READ_REPLICATION
     for r in src.get("read_pairs") or []:
         o = doi_folds.get(r["doi_o"], r["doi_o"]) if r.get("doi_o") else None
         if not o:
@@ -445,7 +445,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 pass        # a reader checked this pair against the reading (data/curated/attempts_checked.csv)
             elif r["kind"] != "CANNOT_TELL" or r["tests_this_finding"] == "NO":
                 read_notes.append({"attempt": aid, **info, "tests_this_finding": r["tests_this_finding"]})
-        elif is_rep and r.get("group", "").split(" by ")[0] in READ_FOUND_BY:
+        elif is_rep and r.get("group", "").split(" by ")[0] in READ_ADDS:
             w = (src.get("openalex_works") or {}).get(norm_doi(rk) or "") or {}
             # the catalogue's record first; for a paper it does not hold, what the reading item gave
             title, year = w.get("title") or r.get("title_r"), w.get("year") or r.get("year_r")

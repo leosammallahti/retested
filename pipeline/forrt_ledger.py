@@ -5,6 +5,8 @@ Every row of every FORRT file the project holds gets exactly one outcome:
     on the site                       its (original, replication) pair is an attempt on the site
     on the site under another original  the replication paper is on the site, linked to a different original
     waiting to be read                its pair is in the review queue (found by a machine, not yet read)
+    read, waiting to be verified      in the queue; two models read it as a replication of its original, but a
+                                      machine-found link is counted only once it is verified (pipeline/read_pairs.py)
     not yet read                      cited by FORRT's Replications & Reversals list; whether it is a replication
                                       and what it found is decided only by reading it
     names an effect                   the row carries no pair but names an effect (and says whether that effect has
@@ -90,6 +92,9 @@ def build(g: dict, candidates: list[dict], rr_rows: list[dict], famous: list[dic
             if read.startswith("read:"):
                 return {"outcome": "left out", "why": "read for Retested: " + read[len("read: "):]}
             if (o, rk) in queue:
+                if read == "a replication of this finding":
+                    return {"outcome": "read, waiting to be verified", "queue": queue[(o, rk)],
+                            "note": "two models read it as a replication of this original; its link is not yet verified"}
                 return {"outcome": "waiting to be read", "queue": queue[(o, rk)]}
         if rk and by_rep.get(rk):
             return {"outcome": "on the site under another original", "attempt": by_rep[rk][0]}
@@ -163,11 +168,19 @@ def build(g: dict, candidates: list[dict], rr_rows: list[dict], famous: list[dic
                 res = {"outcome": "left out", "why": "FORRT's validation row names no original paper"}
             add(label, i, res)
 
-    # Retested's own finds: those still in the queue, and those reading took out of it
+    # Retested's own finds: those still in the queue (read or not), and those reading took out of it
+    listed = set()
     for c in candidates:
         if c.get("origin") == "retested_discovery":
-            add("Retested finds (machine-found)", c["id"], {"outcome": "waiting to be read", "queue": c["id"]})
+            rk = c.get("doi_r") or c.get("landing_page")
+            res = pair(c.get("doi_o"), rk) if c.get("doi_o") and rk else None
+            if not res or res["outcome"] not in ("read, waiting to be verified",):
+                res = {"outcome": "waiting to be read", "queue": c["id"]}
+            add("Retested finds (machine-found)", c["id"], res)
+            listed.add(c["id"])
     for key, cid in sorted((g.get("read_retested_finds") or {}).items()):
+        if cid in listed:
+            continue
         o, rk = key.split("|", 1)
         add("Retested finds (machine-found)", cid, pair(o, rk))
 

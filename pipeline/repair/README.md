@@ -1,5 +1,9 @@
 # The 28 October 2026 repair: the scripts that made the decisions
 
+**29 Oct 2026:** the queue pairs the evening's reading confirmed are no longer counted; a blind check found 6% linked to
+the wrong original (`data/curated/review_evidence/2026-10-29/`). The account of the day is in
+`docs/history/2026-10-28_repair.md`.
+
 On 28 Oct 2026 Leo found that FORRT's Replications & Reversals list had been used only for names, and asked for
 everything to be accounted for, fixed and documented. These are the scripts that found the problems and produced the
 reviewed decisions now in `data/curated/`, as they were run. They are kept so every decision can be traced.

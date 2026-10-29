@@ -12,6 +12,7 @@ const COLS: [string, string][] = [
   ['on the site under another original', 'On the site, linked to a different original'],
   ['names an effect that has a replication', 'Names an effect that has a replication'],
   ['names an effect without a replication', 'Names an effect without a replication'],
+  ['read, waiting to be verified', 'In the queue, read as a replication, link not yet verified'],
   ['waiting to be read', 'In the queue, waiting to be read'],
   ['not yet read', 'Cited by FORRT, not yet read'],
   ['left out', 'Left out (reason below)'],
@@ -34,6 +35,7 @@ const allRows = files.reduce((a, f) => a + total(f), 0);
       <ul class="dl">
         <li><b>{int(S.attempts)}</b> replication attempts are on the site: <b>{int(S.from_forrt)}</b> from FORRT's files and <b>{int(S.added_by_retested)}</b> added by Retested, each read against its source paper.</li>
         <li><b>{int(S.effects_with_replication)}</b> effects have at least one replication; <b>{int(S.effects_named_without_replication)}</b> more are named in FORRT's records without one and are <a href={u('not-linked/')}>listed apart</a>, not counted.</li>
+        <li>Read but not counted: <b>{int(sum('read, waiting to be verified') + (L.by_file['Retested finds (machine-found)']?.['read, waiting to be verified'] ?? 0))}</b> machine-found papers that two models read as replications of their linked original. A blind check found about one in sixteen of such links wrong, so none is counted until its link is verified.</li>
         <li>Still to read: <b>{int(sum('waiting to be read') + (L.by_file['Retested finds (machine-found)']?.['waiting to be read'] ?? 0))}</b> machine-found papers in the <a href={u('queue/')}>queue</a> (from FORRT's extractor and from Retested's own search), and <b>{int(sum('not yet read'))}</b> rows of FORRT's Replications &amp; Reversals list that cite a later paper nobody has read yet: many are replications, others are reviews or commentaries.</li>
       </ul>
     </section>

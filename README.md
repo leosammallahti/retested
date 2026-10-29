@@ -2,7 +2,7 @@
 
 **Every psychology finding, tested again.** An effect-by-effect guide to psychology's replication record, built on the open data of the [FORRT Replication Hub](https://forrt.org/replication-hub/) (FReD and FLoRA) and expanded with source-reviewed replications.
 
-Across **2,252 named effects with at least one replication**, **7,494 original findings**, and **9,720 replication attempts** (~17,500 static pages; every row of FORRT's files is accounted for, see `docs/SOURCES_AND_LEDGER.md`), the site shows what the original study did and claimed, and what happened when other teams tried it again, through three lenses that are never merged into one score:
+Across **2,235 named effects with at least one replication**, **4,629 original findings**, and **5,371 replication attempts** (~11,800 static pages; every row of FORRT's files is accounted for, see `docs/SOURCES_AND_LEDGER.md`), the site shows what the original study did and claimed, and what happened when other teams tried it again, through three lenses that are never merged into one score:
 
 1. **What the replicators said.** Their own verdicts and quotes, plus a source-checked plain-English account of what each later team did and found (see `docs/SOURCES_AND_LEDGER.md` for the current counts).
 2. **What the numbers say.** Replication effect sizes pooled against the original, plus FORRT's seven success criteria side by side.
@@ -20,7 +20,7 @@ It also includes:
   - **Three Factual Filters**: *Who was studied* (`ADULTS`, `CHILDREN_AND_TEENS`, `BABIES_UNDER_3`, `MENTAL_HEALTH_PATIENTS`, `AUTISTIC_OR_DISABLED`, `ANIMALS`), *Institutional setting* (`SCHOOL`, `CLINIC_OR_HOSPITAL`, `WORKPLACE`, `COURTS_OR_PRISONS`, `NONE_OR_LAB`), and *Measured in the body, brain, hormones, or genes* (`YES` / `NO`).
   - **Blind validation (`smoke_30` + `blind_200`)**: Tested on 230 unseen effects with outcome-blind packets across two independent model families (`deepseek-v4.1-flash` and `glm-5.3-flash`), requiring a verbatim quote of at most 20 words verified in Python and checked against 100 blind human codings. Overall cross-model agreement reached **99.3%** on `smoke_30` (`149/150`) and **96.4%** on `blind_200` (`964/1,000`: `body_brain_genes` **99.0%**, `who_studied` **97.5%**, `outcome_kind` **97.5%**, `setting` **96.0%**, `study_kind` **92.0%**), with **98.4%** audited accuracy when both models agree.
 - **Did it replicate?** A black, phone-style feed. You read a real finding scene, tap whether it replicated, and see the full story and result.
-- **A review queue** of machine-found replication candidates not yet confirmed, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Each candidate whose original is identified is read for Retested; a confirmed one joins the record labelled with what found it, and the others leave the queue with the reading as their reason (`docs/SOURCES_AND_LEDGER.md`). Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review*. Individually source-checked original-and-replication pairs can be promoted into the counted record with an explicit effect claim.
+- **A review queue** of machine-found replication candidates not yet confirmed, from two labelled sources: FORRT's own extractor, and our search of OpenAlex screened by DeepSeek. Each candidate whose original is identified is read for Retested: one read as a replication waits for its link to be verified before it is counted, and the others leave the queue with the reading as their reason (`docs/SOURCES_AND_LEDGER.md`). Accepted ones export as CSV for submission back to FORRT. Where one of our finds points at an original that already has a page, that page shows it as *unverified, pending review*. Individually source-checked original-and-replication pairs can be promoted into the counted record with an explicit effect claim.
 - **The record:** base rates with denominators and intervals, and the Graveyard, Survivors and Contested lists.
 - **Coverage and overlap:** a generated, evidence-level account of which Retested pairs already occur in the frozen FORRT corpus, which are only candidates, and why unmatched is not automatically new.
 
@@ -34,7 +34,7 @@ Requirements: Python ≥ 3.12 and Node ≥ 22.
 pip install -e .
 python -m pipeline fetch          # download FORRT sources listed in data/raw/forrt/MANIFEST.json (sha256-checked)
 python -m pipeline build          # sources -> data/build/*.json + wiki.json + reconciliation registry + site/public/generated/
-cd site && npm ci && npm run build   # -> site/dist (static, ~17,500 pages plus sitemap)
+cd site && npm ci && npm run build   # -> site/dist (static, ~11,800 pages plus sitemap)
 npm run preview                   # http://localhost:4321
 ```
 
