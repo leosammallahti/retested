@@ -17,6 +17,7 @@ being skipped. Nothing here is edited to make a number come out; change a row on
 | `attempt_duplicates.csv` | One study listed twice under one original: merged and counted once | `pipeline/curated_links.py` |
 | `attempt_exclusions.csv` | An "attempt" that is not a replication of its original (wrong original, the original itself, published before it, a review): set aside with the reason | `pipeline/curated_links.py` |
 | `attempt_relinks.csv` | A replication filed under the wrong original, moved to the original it replicates | `pipeline/curated_links.py` |
+| `link_checks.csv` | Whether a machine-found pair replicates the original it is linked to, checked against both abstracts: yes joins the record, no leaves the queue, can't tell waits | `pipeline/curated_links.py` |
 | `paper_details.csv` | Title, authors and year of a later paper no catalogue supplies, looked up by hand | `pipeline/curated_links.py` |
 | `attempt_results.csv` | A result corrected against the replication's own abstract; the earlier coding is shown beside it | `pipeline/curated_links.py` |
 | `attempts_checked.csv` | An attempt that looked wrong (dated before its original, titled like a review or like its original, a reading that differs) checked and kept, or found to need the full text | `pipeline/curated_links.py`, `pipeline/quality_audit.py` |

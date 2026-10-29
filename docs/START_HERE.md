@@ -40,8 +40,8 @@ never in the main checkout `/root/retested`, which holds another session's uncom
   Retested** (from their abstracts or open full text), and **results a reader corrected** against the paper's own
   text (`data/curated/attempt_results.csv`, shown with the earlier coding beside them). A machine reading never
   overrules a result FORRT coded; where they differ, `data/build/read_notes.json` lists it for a person.
-- **An attempt is counted only when FORRT or a person linked its pair.** Pairs a machine search found wait in the
-  review queue; they are read for Retested, but a machine-found link was measured wrong too often to count unverified
+- **An attempt is counted only when its link was made or checked by FORRT's editors or a reader.** A pair a machine
+  search found is read for Retested and counts once a reading helper has confirmed its link against both abstracts
   (`SOURCES_AND_LEDGER.md`, "How a later paper is read").
 
 ## Documents

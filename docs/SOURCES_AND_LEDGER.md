@@ -18,7 +18,7 @@ is downloaded under `data/raw/forrt/` and listed with its hash in `data/raw/forr
 | Replications & Reversals list file (`osf/sub-datasets/231026_forrt_with_journals.xlsx`) | The same list, one row per effect and cited later paper, with DOIs and the later paper's abstract | As above |
 | Replications & Reversals text (`data/raw/local/docx_parsed_entries.json`) | The list as FORRT publishes it: name, a verdict, a description and citations without DOIs | The famous-list verdict and description on effect pages |
 | FLoRA validation files (`feeds/flora-validation_*.csv`) | Pairs FORRT has validated, some not yet in FLoRA's export | A validated pair no other file carries enters as FLoRA data (38 on 28 Oct) |
-| FLoRA extractor (`feeds/flora-extractor_*.csv`) | Pairs FORRT's machine search found, and ones it has not confirmed | The review queue: each pair is read for Retested (below) but counted only once its link is verified; unconfirmed links are recorded as such |
+| FLoRA extractor (`feeds/flora-extractor_*.csv`) | Pairs FORRT's machine search found, and ones it has not confirmed | The review queue: each pair is read for Retested (below) and counted once a reader has confirmed its link; unconfirmed links are recorded as such |
 | Retested reviewed pairs (`data/curated/promoted_pairs.json`) | 1,941 pairs Retested's readers checked against the papers | Attempts marked "Retested reviewed" (1,467 are new to FORRT) |
 | OpenAlex (`data/raw/local/openalex_paper_metadata.json`, fetched 28 Oct) | Title, year and authors for each DOI | Replaces a title the site could only parse out of a reference string, and fills a missing year or author list |
 | OSF and the DOI registry (`data/raw/local/later_paper_records.json`, fetched 28 Oct) | Title, year and authors of later papers OpenAlex does not hold (OSF projects, preprints) | Fills a missing title, year or author list |
@@ -28,9 +28,9 @@ is downloaded under `data/raw/forrt/` and listed with its hash in `data/raw/forr
 - **An attempt** is one pair of an original paper and a later paper that tested it again.
 - **A finding** is one original paper with all its attempts.
 - **An effect** is a named phenomenon, such as "Dunning-Kruger effect". It may span several original papers.
-- **An attempt is counted only when FORRT or a person linked its pair:** FORRT's coded files, a later paper FORRT's
-  famous-effects list cites (read for Retested), or a pair Retested's readers checked. A pair found by a machine
-  search (FORRT's or Retested's) waits in the review queue until its link is verified.
+- **An attempt is counted only when its link was made or checked by FORRT's editors or a reader:** FORRT's coded
+  files, a later paper FORRT's famous-effects list cites, a pair Retested's readers checked, or a machine-found pair
+  whose link a reading helper confirmed against both abstracts. The others wait in the review queue.
 - **An effect enters the database only when a replication of its own is linked.** The others are named in FORRT's
   records but have no replication here yet. They keep a page, marked as such and left out of search engines. They are
   listed with the reason on the page `not-linked/`, and no list, count, map or search includes them.
@@ -72,9 +72,15 @@ What a reading may do:
   editors linked the pair.
 - **Set aside an attempt FORRT never coded,** when the reading says it is a meta-analysis, review or other study. An
   effect page lists the meta-analyses and reviews of its own finding apart from its replications.
-- **Not add a machine-found pair.** A blind reading of 200 machine-found pairs that both models accepted found 12
-  (6%) that replicate a different study than the one linked, and 13 more that the text could not confirm. So a
-  machine-found pair stays in the review queue, read, until its link is verified.
+- **Not, on its own, add a machine-found pair.** A blind reading of 200 machine-found pairs that both models accepted
+  found about 6% that replicate a different study than the one linked. So a machine-found pair counts only once a
+  Sonnet 5.5 reading helper has checked its link against both full abstracts (`data/curated/link_checks.csv`): yes
+  (it joins the record, labelled "its link to this original checked by a reader"), no (it leaves the queue, the
+  ledger saying what it replicates instead) or can't tell (it stays in the queue). The helpers were tested first on
+  the 200 pairs read blind, and 60 links they accepted were then read by Claude: all 60 were right.
+
+The link checks of 29 Oct 2026: 4,349 pairs, 3,253 yes, 259 no, 837 can't tell (22 helpers, about 4.2 million
+tokens). Their briefs and answers are in `data/curated/review_evidence/2026-10-29/link_checks/`.
 
 Measured limits of the reading: the question counts "no reliable effect" as not found, which is backwards where the
 original finding is itself a null; such readings are searched for and corrected (`attempt_results.csv`).
@@ -103,26 +109,29 @@ rather than skipping it.
 | `data/curated/effect_description_exclusions.csv` | A source description that belongs to another claim, or is not a claim | same |
 | `data/curated/effect_lines.json`, `effect_typology.json` | One plain line per effect; the study typology. **Keyed by the stable effect id**, so a merge or rename cannot detach them; entries of folded effects are kept under `set_aside` | `pipeline/wiki.py` |
 
-## The record now (29 Oct 2026)
+## The record now (29 Oct 2026, afternoon)
 
-- 5,371 attempts under 4,629 original papers: 3,904 from FORRT (294 of them later papers FORRT's list cites, read for
-  Retested) and 1,467 added by Retested's readers.
-- 2,235 effects with a replication; 262 named without one (listed on `not-linked/`).
-- 26,972 ledger rows (every FORRT file and Retested's own finds), none without an outcome.
-- 5,027 attempts have a result; 48.7% found the effect. 1,023 of those results were read for Retested.
-- The review queue: 6,230 machine-found pairs. 4,347 have been read as replications of their linked original and wait
-  for verification; the rest are unread or have no identifiable original.
+- 8,624 attempts under 6,662 original papers: 6,027 from FORRT (its files; 294 later papers its list cites; 2,123
+  pairs its machine search found, link checked) and 2,597 added by Retested (1,467 checked by its readers, 1,130
+  found by its machine search, link checked).
+- 2,247 effects with a replication; 250 named without one (listed on `not-linked/`).
+- 27,113 ledger lines (every FORRT file and Retested's own finds), none without an outcome.
+- 6,910 attempts have a result; 47.6% found the effect. 1,701 replications state no result where they could be read.
+- The review queue: 2,860 machine-found pairs, of which 837 were read but could not be confirmed, and most of the rest
+  name no identifiable original.
 
 ## Still open (each counted by `python -m pipeline quality-audit` or on `sources/`)
 
-1. **Verifying the queue's 4,347 read pairs** before any is counted. A machine-found link is wrong about one time in
-   sixteen; each needs its link checked against the paper (a person or a stronger reader).
-2. **331 attempts without a result,** mostly papers whose abstract does not state one; only the full text can.
+1. **837 queue pairs whose link could not be confirmed** from the text; the full papers would settle most.
+2. **1,701 attempts without a result,** mostly papers whose abstract or title does not state one (student replication
+   projects, registrations); only the full text can.
 3. **8 attempts a reader checked that only the full text can settle** (`attempts_checked.csv`).
 4. **12 misfiled replications** whose right original has no DOI or could not be identified stay set aside, with the
    reason.
 5. **11 effects without a plain line,** recorded as too thin or contradictory.
-6. **Missing details:** 6 later papers without authors, 4 without a year, 3 without a title (pages without a DOI).
+6. **Missing details:** 538 later papers without authors (mostly OSF pages that list none), 18 without a year, 3
+   without a title.
+7. **6 replications dated before their original,** to be read (`python -m pipeline quality-audit`).
 
 ## How to check it yourself
 

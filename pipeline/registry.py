@@ -396,6 +396,10 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     read_index: dict[str, str] = {}      # "doi_o|later" or "ref|doi_o|reference" -> what the reading found, for the ledger
     read_retested_finds: dict[str, str] = {}   # "doi_o|later" -> queue id of a Retested find that was read, for the ledger
     from .read_pairs import ADDS_TO_RECORD as READ_ADDS, FOUND_BY as READ_FOUND_BY, OUTCOME as READ_OUTCOME, REPLICATION as READ_REPLICATION
+    # machine-found pairs whose link a reader checked (data/curated/link_checks.csv)
+    link_checks = {(doi_folds.get(c["doi_o"], c["doi_o"]), doi_folds.get(c["rep_key"], c["rep_key"])): c
+                   for c in (src.get("links") or {}).get("link_checks", [])}
+    link_checks_used: set = set()
     for r in src.get("read_pairs") or []:
         o = doi_folds.get(r["doi_o"], r["doi_o"]) if r.get("doi_o") else None
         if not o:
@@ -407,12 +411,20 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             continue
         aid = _aid(o, rk)
         is_rep = r["kind"] in READ_REPLICATION and r["tests_this_finding"] == "YES" and (r.get("is_cited_paper") or "YES") == "YES"
+        check = link_checks.get((o, rk)) if r.get("group", "").endswith("machine search") else None
+        if check:
+            link_checks_used.add((o, rk))
+            if is_rep and check["decision"] == "N":
+                is_rep = False
+                r = {**r, "tests_this_finding": "NO"}
         what = ("a replication of this finding" if is_rep else f"read: {r['kind'].lower().replace('_', ' ')}"
                 + ("" if r["tests_this_finding"] == "YES" else ", not a test of this finding" if r["tests_this_finding"] == "NO"
                    else ", whether it tests this finding is unclear")
                 + ("" if (r.get("is_cited_paper") or "YES") == "YES" else ", not the paper FORRT's reference names"))
         if r["kind"] == "CANNOT_TELL":
             what = "not readable from its title, and no abstract is available"
+        if check and check["decision"] == "N":
+            what = "read: a replication of another study, not of this original" + (f" ({check['note']})" if check["note"] else "")
         read_index[f"{o}|{rk}"] = what
         if r.get("group") == "Retested machine search" and r.get("candidate"):
             read_retested_finds[f"{o}|{rk}"] = r["candidate"]
@@ -445,7 +457,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
                 pass        # a reader checked this pair against the reading (data/curated/attempts_checked.csv)
             elif r["kind"] != "CANNOT_TELL" or r["tests_this_finding"] == "NO":
                 read_notes.append({"attempt": aid, **info, "tests_this_finding": r["tests_this_finding"]})
-        elif is_rep and r.get("group", "").split(" by ")[0] in READ_ADDS:
+        elif is_rep and (r.get("group", "").split(" by ")[0] in READ_ADDS or (check and check["decision"] == "Y")):
             w = (src.get("openalex_works") or {}).get(norm_doi(rk) or "") or {}
             # the catalogue's record first; for a paper it does not hold, what the reading item gave
             title, year = w.get("title") or r.get("title_r"), w.get("year") or r.get("year_r")
@@ -462,6 +474,9 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             a["read"] = info
             a["outcomes_by_source"]["read"] = READ_OUTCOME.get(r.get("result"), "not_coded")
             a["found_by"], a["listed_by"] = READ_FOUND_BY[r["group"].split(" by ")[0]]
+            if check:
+                a["link_checked"] = {"by": check["evidence"]}
+                a["listed_by"] += "; its link to this original checked by a reader"
             for name in r.get("effects") or []:
                 labels[(o, a["doi_r"])].add(norm_name(name))
 
@@ -761,6 +776,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             continue
         e["description_set_aside"] = {"text": e["description"], "because": r["reason"]}
         e["description"] = None
+    for k in set(link_checks) - link_checks_used:
+        stale.append(f"link check does not match a machine-found reading: {link_checks[k]['doi_o']} -> {link_checks[k]['rep_key']}")
     for (o, rk), r in checked_pairs.items():
         if _aid(o, rk) not in attempts and _aid(o, rk) not in set_aside:
             stale.append(f"reviewed check does not match an attempt on the site: {r['doi_o']} -> {r['rep_key']}")

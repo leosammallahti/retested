@@ -28,6 +28,10 @@ data/curated/attempts_checked.csv (doi_o, rep_key, question, decision, reason, e
 data/curated/paper_details.csv (rep_key, title, authors, year, evidence)
     The title, authors and year of a later paper that no catalogue supplies (a page without a DOI, a DOI OpenAlex does
     not hold), looked up by hand. It replaces what the record held, which is kept beside it.
+data/curated/link_checks.csv (doi_o, rep_key, decision, note, evidence)
+    A machine-found pair a reader checked against both abstracts: Y (it replicates this original; it joins the record),
+    N (it replicates a different study, named in the note, or is no replication; it leaves the queue), ? (the text
+    cannot settle it; it stays in the queue, read, waiting to be verified).
 data/curated/effect_original_exclusions.csv (effect, doi_o, reason, evidence)
     A source row that names an effect with the DOI of a different paper: that effect is not linked to that paper.
 
@@ -77,6 +81,7 @@ def load() -> dict[str, list[dict]]:
             "attempt_duplicates": _rows("attempt_duplicates.csv", ("doi_o", "rep_key", "same_as", "reason", "evidence")),
             "attempt_relinks": _rows("attempt_relinks.csv", ("doi_o_wrong", "rep_key", "doi_o", "evidence")),
             "attempt_results": _rows("attempt_results.csv", ("doi_o", "rep_key", "result", "reason", "evidence")),
+            "link_checks": _rows("link_checks.csv", ("doi_o", "rep_key", "decision", "note", "evidence")),
             "paper_details": _rows("paper_details.csv", ("rep_key", "title", "authors", "year", "evidence")),
             "attempts_checked": _rows("attempts_checked.csv", ("doi_o", "rep_key", "question", "decision", "reason", "evidence")),
             "effect_original_exclusions": _rows("effect_original_exclusions.csv", ("effect", "doi_o", "reason", "evidence")),

@@ -32,7 +32,8 @@ FOUND_BY = {
 # which readings may add a pair to the counted record. A pair FORRT's famous-effects list cites was linked by FORRT's
 # editors; a machine-found pair was linked by a machine, and two models agreeing that it is a replication of that
 # original was measured wrong too often (12 of 200 read blind by Claude on 29 Oct 2026 replicate a different study),
-# so such a pair stays in the review queue, read, until its link is verified.
+# so such a pair stays in the review queue, read, until a reader has checked its link against both abstracts
+# (data/curated/link_checks.csv, decision Y; pipeline/registry.py).
 ADDS_TO_RECORD = {"Replications & Reversals citation"}
 # sources that add evidence to a record without changing who put it there
 EVIDENCE_ONLY = {"read", "reviewed"}
