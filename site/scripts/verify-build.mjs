@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(SITE, 'dist');
 const BUILD = path.resolve(SITE, '..', 'data', 'build');
-const base = normalizeBase(process.env.BASE_PATH || '/');
+const detectedBase = !process.env.BASE_PATH && fs.existsSync(path.join(DIST, 'index.html')) && fs.readFileSync(path.join(DIST, 'index.html'), 'utf8').includes('href="/retested/') ? '/retested/' : '/';
+const base = normalizeBase(process.env.BASE_PATH || detectedBase);
 
 function fail(message) {
   throw new Error(`Static build verification failed: ${message}`);

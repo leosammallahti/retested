@@ -1,0 +1,20 @@
+C0035|N|NOT_APPLICABLE|Replicates Kira et al. (2006) on cumulative trauma vs torture; Punamaki et al. (2010) is only cited in comparison.
+C0113|Y|NO_RESULT_STATED|OSF deposit contains only the Qualtrics survey and pre-registration article analysis of Staw (1976); no replication results reported.
+C0132|Y|NOT_FOUND|Explicitly tests and fails to replicate Hong et al. (2007) NRG-1 Arg38Gln polymorphism effect on prepulse inhibition.
+C0257|N|NOT_APPLICABLE|2023 arXiv paper by the same authors is an earlier conference version replicating an exploratory study, not a replication of their 2025 paper.
+C0351|Y|NO_RESULT_STATED|OSF wiki only describes the target of replication and links to another node; no results are stated in the text.
+C0394|Y|FOUND|Successfully replicated the trait desirability effect and the interaction with controllability from Alicke (1985).
+C0408|Y|MIXED|Found mixed support for Lerner & Keltner (2001) on dispositional emotions and risk preference/optimism.
+C0436|Y|NO_RESULT_STATED|Open Science Collaboration (2015) main article reports aggregate statistics across 100 replications and does not state Anderson & Shirako (2008) individually.
+C0579|Y|NO_RESULT_STATED|Course replication project wiki describing planned hypotheses, procedures, and materials only; no results reported.
+C0674|Y|FOUND|Replicated all main effects of condition (Fixed, Growth, Control) and mediation results from Muenks et al. (2020) Study 1.
+C0699|Y|FOUND|Confirmed LMO1 rs110419 A>G association with neuroblastoma susceptibility in Southern Chinese children and meta-analysis.
+C0701|Y|NOT_FOUND|RP:CB Study 37 failed to find statistically significant olaparib sensitivity differences across Figures 4C, 4E, and 4F of Garnett et al. (2012).
+C0770|Y|NO_RESULT_STATED|OSF deposit holds a Stage 1 IPA Registered Report manuscript (no Results section) plus raw R markdown output files without a prose results write-up.
+C0790|N|NO_RESULT_STATED|Replicates De Neys, Rossi, & Houde (2013, 10.3758/s13423-013-0384-5) bat-and-ball study, not De Neys (2013, 10.1080/13546783.2013.854725).
+C0897|Y|FOUND|Replicated Hasebe et al. (2004) domain-specific linkage between personal-domain parental control and adolescent psychopathology in Tokyo.
+C0911|Y|NO_RESULT_STATED|Open Science Collaboration (2015) main article reports aggregate statistics across 100 replications and does not state Hedden et al. (2008) individually.
+C1003|Y|MIXED|Replicated Duncan et al. (2012) sequential dependency of recognition memory on prior responses, but did not replicate the ISI specificity.
+C1098|Y|MIXED|Replicated self-informant agreement on affiliation and lack of agreement on dominance from Ringwald et al. (2024), while several trait/variability associations did not replicate.
+C1099|Y|FOUND|SCORE push-button reproduction reproduced the Study 3 culture x condition interaction from Savani et al. (2010), F(1, 123) = 6.12, p = 0.0147.
+C1378|Y|MIXED|Replicated Law et al. (1995) same-color RT inhibition at 900-ms ISI in the filler condition, but found no ISI time-course interaction and no early facilitation in the no-filler condition.

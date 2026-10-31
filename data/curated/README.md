@@ -54,3 +54,4 @@ are.
 | `forrt_snapshots/2026-09-07/` | Compressed copies of FORRT files as fetched on 7 Sep, used by `python -m pipeline fetch` if a download disappears |
 | `review_evidence/2026-10-28/` | The helpers' decisions, briefs and the paid reading's answer logs behind the 28 Oct changes (see `pipeline/repair/README.md`) |
 | `review_evidence/2026-10-29/` | The blind check of 200 machine-found pairs that keeps machine-found pairs out of the count until verified |
+| `review_evidence/2026-10-30/` | Full-text readings of the fetched open papers (20-paper calibration sample plus helper batches) settling uncoded replications and queue links |

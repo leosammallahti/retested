@@ -45,7 +45,8 @@ export interface Attempt {
   title_r?: string; year_r?: number; journal_r?: string; authors_r?: string; url_r?: string; oa_url_r?: string;
   quote?: string; quote_source?: string; author_overlap_pct?: number; flora_source?: string;
   // read from the later paper's abstract (pipeline/read_pairs.py); how it was decided is in decided_by
-  read?: { kind: string; result: string | null; quote: string | null; decided_by: string; read_on: string };
+  read?: { kind: string; result: string | null; quote: string | null; decided_by: string; read_on: string; read_from?: string };
+  no_result_reason?: string | null;
   listed_by?: string;
   found_by?: 'forrt_list' | 'forrt_machine_search' | 'retested_machine_search';
   result_review?: { result: string; reason: string; evidence: string; coded_before: Record<string, string> };
@@ -190,7 +191,7 @@ export interface StoryPaper { doi: string; title: string | null; authors: string
 export interface StoryWhy { text: string; kind: string; from: string; who?: string | null }
 export interface StoryAttempt {
   id: string; type: string; authors: string | null; year: number | null; journal: string | null; title: string | null; doi: string | null;
-  open_url: string | null; open_version?: string | null; url: string | null; outcome: Outcome; sources_disagree: boolean; outcomes_by_source: Record<string, string>;
+  open_url: string | null; open_version?: string | null; url: string | null; outcome: Outcome; no_result_reason?: string | null; sources_disagree: boolean; outcomes_by_source: Record<string, string>;
   line: string | null; did: string | null; found: string | null; written_from: string | null; written_check: 'read' | 'sampled' | null; their_words: string; their_words_from: string | null; tested_study: string[]; tested_paper: string | null;
   n: number | null; r: number | null; ci: [number, number] | null; preregistered: boolean | null; independent: boolean | null;
   reviewer_sentences: string[]; why: StoryWhy[]; reviewed_on: string | null; reviewer_links: { original: string | null; replication: string | null } | null; in: string[];

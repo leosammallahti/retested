@@ -12,17 +12,17 @@ const reason = (e: ReturnType<typeof unlinkedEffects>[number]) => {
   if (unowned.length) return 'Its original paper was retested, but the records do not say which of the paper’s claims the retest covered.';
   if (e.shared_attempts.length) return 'Replications of its original paper tested other claims from that paper, not this one.';
   if (e.originals.length) return 'FORRT names its original paper, but no replication of that paper.';
-  return 'FORRT names it without any replication we could link yet.';
+  return 'FORRT names it without any replication linked in the record.';
 };
 const rows = unlinkedEffects().map((e) => ({ e, why: reason(e) })).sort((a, b) => a.why.localeCompare(b.why) || a.e.name.localeCompare(b.e.name));
 const groups = [...new Set(rows.map((r) => r.why))];
 ---
-<Base title="Named, no replication linked" description="Effects named in FORRT's records that have no replication linked yet, and why." active="effects/" noindex>
+<Base title="Named, no replication linked" description="Effects named in FORRT's records that have no replication linked, and why." active="effects/" noindex>
   <article class="wrap" style="padding-top:2.4rem">
     <header class="rise">
       <div class="label"><a href={u('effects/')}>Effects</a></div>
-      <h1>{rows.length} effects named, no replication linked yet</h1>
-      <p class="lede">These effects are named in FORRT's records (its replication database or its Replications &amp; Reversals list), but no replication of them is linked here yet. They are not counted, listed or searchable in the database until one is. Each is listed under the reason.</p>
+      <h1>{rows.length} effects named, no replication linked</h1>
+      <p class="lede">These effects are named in FORRT's records (its replication database or its Replications &amp; Reversals list), but no replication of them is linked in the record. They are not counted, listed or searchable in the database. Each is listed under the reason.</p>
     </header>
     {groups.map((g) => (
       <section>

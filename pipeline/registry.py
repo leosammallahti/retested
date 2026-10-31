@@ -25,25 +25,57 @@ def _aid(doi_o: str, rep_key: str) -> str:
     return "at_" + hashlib.md5(f"{doi_o}|{rep_key}".encode()).hexdigest()[:10]
 
 
+def _person_surname(name: str) -> str:
+    from .load import _PARTICLES, _SUFFIX_RE, clean_surname
+    n = str(name or "").replace("\u2019", "'").replace("\xa0", " ").strip()
+    n = re.sub(r"^(?:and|&)\s+", "", n, flags=re.I).strip()
+    if not n or re.match(r"^(?:and\s+)?(?:\w+\s+)?collaborators$", n, re.I):
+        return ""
+    if "consortium" in n.lower() or "laboratory" in n.lower():
+        return clean_surname(n)
+    if "," in n:
+        parts = [p.strip() for p in n.split(",") if p.strip()]
+        if parts:
+            return clean_surname(parts[0])
+    words = n.split()
+    while len(words) > 1 and (_SUFFIX_RE.match(words[-1]) or re.match(r"^[A-Z]{1,2}\.?$", words[-1])):
+        words.pop()
+    if not words:
+        return ""
+    idx = len(words) - 1
+    while idx > 0 and words[idx - 1].lower().rstrip(".") in _PARTICLES:
+        idx -= 1
+    return clean_surname(" ".join(words[idx:]))
+
+
 def _oa_authors(names: list[str]) -> str | None:
-    """OpenAlex display names -> 'Isen & Levin', 'Kruger et al.' (surname = the last word of each name)."""
-    sur = [n.split()[-1] for n in names if n and n.split()]
+    """OpenAlex display names -> 'Isen & Levin', 'Kruger et al.' (surname = the family name of each author)."""
+    sur = [s for n in (names or []) if n and (s := _person_surname(n))]
     if not sur:
         return None
     return sur[0] if len(sur) == 1 else f"{sur[0]} & {sur[1]}" if len(sur) == 2 else f"{sur[0]} et al."
 
 
+_BROKEN_EXACT = {
+    "NONE", "WITHDRAWN", "WITHDRAWN.", "PERSPECTIVES",
+    "B ET AL.", "D ET AL.", "D. ET AL.", "N. ET AL.", "C ET AL.", "H.",
+    "A & GILOVICH", "PEGADO & B", "WILLIAMS & A", "A & MARIMOUTOU",
+    "T. & LASCHER", "JR & WAGGE", "BERGMAN & III",
+}
+
+
 def _broken_authors(a) -> bool:
     """An author field that is not names: missing, 'None', raw citation data, an editor marker, stray quotes or braces,
-    a mis-decoded accent ('KÃ¶bach'), a study label, or a title ('An Experimental Study of …')."""
+    a mis-decoded accent, a study label, or a title."""
     t = str(a or "").strip()
-    if not t or t == "None":
+    if not t or t.upper() in _BROKEN_EXACT or t.upper().startswith(("WITHDRAWN", "REPLICATION TRIAL OF")):
         return True
-    if re.search(r'[{}\[\]"]|\(Ed\.?\)|Ã|^Replications\b', t) or t[:1] in "(.,;:":
+    if re.search(r'[{}\[\]"]|\(Ed\.?\)|\u00c3|^Replications\b', t) or t[:1] in "(.,;:":
+        return True
+    if re.match(r"^[A-Z]\.?(?:\s+et\s+al\.?)?$", t) or re.match(r"^[A-Z]\.?\s*&\s*\w+$", t) or re.match(r"^\w+\s*&\s*(?:[A-Z]\.?|Jr\.?|Sr\.?|II+|IV)$", t):
         return True
     words = t.rstrip(".").split()
     return t.endswith(".") and len(words) >= 3 and "&" not in t and "et al" not in t
-
 
 def _broken_title(t) -> bool:
     """A title that is really a fragment of a reference: a link, a page number, a journal name with no words of a
@@ -392,7 +424,11 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     # ---------------------------------------------------------------- papers read for Retested (pipeline/read_pairs.py)
     read_notes: list[dict] = []          # readings that disagree with FORRT's coding, listed for a person to read
     checked_pairs = {(doi_folds.get(r["doi_o"], r["doi_o"]), doi_folds.get(r["rep_key"], r["rep_key"])): r
-                     for r in (src.get("links") or {}).get("attempts_checked", [])}
+                     for r in (src.get("links") or {}).get("attempts_checked", [])
+                     if r["question"] != "no result coded"}
+    no_result_reasons = {(doi_folds.get(r["doi_o"], r["doi_o"]), doi_folds.get(r["rep_key"], r["rep_key"])): r
+                         for r in (src.get("links") or {}).get("attempts_checked", [])
+                         if r["question"] == "no result coded"}
     read_index: dict[str, str] = {}      # "doi_o|later" or "ref|doi_o|reference" -> what the reading found, for the ledger
     read_retested_finds: dict[str, str] = {}   # "doi_o|later" -> queue id of a Retested find that was read, for the ledger
     from .read_pairs import ADDS_TO_RECORD as READ_ADDS, FOUND_BY as READ_FOUND_BY, OUTCOME as READ_OUTCOME, REPLICATION as READ_REPLICATION
@@ -431,12 +467,15 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         if r.get("cited_ref"):
             read_index[f"ref|{o}|{r['cited_ref'][:200]}"] = what
         info = {"kind": r["kind"], "result": r.get("result"), "quote": r.get("result_quote") or r.get("kind_quote"),
-                "decided_by": r["decided_by"], "read_on": r["read_on"]}
+                "decided_by": r["decided_by"], "read_on": r["read_on"], "read_from": r.get("read_from") or "abstract"}
         if aid in attempts:
             a = attempts[aid]
             coded = any(v != "not_coded" for k, v in a["outcomes_by_source"].items() if k != "read")
             if is_rep:
                 a["read"] = info
+                if not a.get("quote") and info.get("quote"):
+                    a["quote"] = info["quote"]
+                    a["quote_source"] = info["read_from"]
                 if READ_OUTCOME.get(r.get("result")):
                     a["outcomes_by_source"]["read"] = READ_OUTCOME[r["result"]]
                     others = {v for k, v in a["outcomes_by_source"].items() if k != "read" and v != "not_coded"}
@@ -462,7 +501,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             # the catalogue's record first; for a paper it does not hold, what the reading item gave
             title, year = w.get("title") or r.get("title_r"), w.get("year") or r.get("year_r")
             ra = r.get("authors_r") or ""
-            authors = _oa_authors(w.get("authors") or []) or (_oa_authors(ra.split(", ")) if ", " in ra and "et al" not in ra else ra or None)
+            authors = _oa_authors(w.get("authors") or []) or _names(ra)
             if norm_doi(rk):
                 paper(norm_doi(rk), title=title, year=year, authors=authors)
                 if w.get("is_retracted"):
@@ -532,13 +571,31 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     for r in (src.get("links") or {}).get("paper_details", []):
         rk = doi_folds.get(norm_doi(r["rep_key"]) or r["rep_key"], norm_doi(r["rep_key"]) or r["rep_key"])
         hits = [a for a in attempts.values() if a["rep_key"] == rk]
-        if not hits:
+        if not hits and rk not in papers:
             stale.append(f"reviewed paper details do not match an attempt: {r['rep_key']}")
+        if rk in papers:
+            if r.get("title"):
+                papers[rk]["title"] = r["title"]
+            if r.get("authors"):
+                papers[rk]["authors"] = r["authors"]
+            if r.get("year"):
+                papers[rk]["year"] = int(r["year"])
         for a in hits:
             a["details_before"] = {k: a.get(k) for k in ("title_r", "authors_r", "year_r")}
-            a["title_r"], a["authors_r"] = r["title"], r["authors"]
-            a["year_r"] = int(r["year"]) if r["year"] else a.get("year_r")
+            if r.get("title"):
+                a["title_r"] = r["title"]
+            if r.get("authors"):
+                a["authors_r"] = r["authors"]
+            if r.get("year"):
+                a["year_r"] = int(r["year"])
             a["details_from"] = r["evidence"]
+
+    for p in papers.values():
+        if p.get("authors"):
+            p["authors"] = _names(p["authors"])
+    for a in attempts.values():
+        if a.get("authors_r"):
+            a["authors_r"] = _names(a["authors_r"])
 
     # a result reviewed against the replication's own abstract (data/curated/attempt_results.csv) is shown first,
     # with the coding it corrects kept beside it
@@ -567,6 +624,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         priority = ("reviewed", "retested", "flora", "fred", "legacy", "read") if a.get("outcome_adjudication") else ("reviewed", "flora", "fred", "legacy", "retested", "read")
         a["outcome"] = next((obs[source] for source in priority
                              if obs.get(source, "not_coded") != "not_coded"), "not_coded")
+        if a["outcome"] == "not_coded" and (a["doi_o"], a["rep_key"]) in no_result_reasons:
+            a["no_result_reason"] = no_result_reasons[(a["doi_o"], a["rep_key"])]["reason"]
         a["sources_disagree"] = len({v for v in obs.values() if v != "not_coded"}) > 1
 
     # ---------------------------------------------------------------- findings: one per original with attempts
@@ -672,6 +731,10 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     chosen_name: dict[str, str] = {}
     for m in src.get("merges") or []:
         into = by_shown.get(norm_name(m["into"]), norm_name(m["into"]))
+        if into not in canon and m.get("from"):
+            first_from = by_shown.get(norm_name(m["from"][0]), norm_name(m["from"][0]))
+            if first_from in canon:
+                into = find(first_from)
         for other in m.get("from", []):
             o = by_shown.get(norm_name(other), norm_name(other))
             if into not in canon or o not in canon:
@@ -709,7 +772,8 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     slugs: set[str] = set()
     for key in sorted(keys):
         rows = name_rows.get(key, [])
-        fam_key = next((fk for fk, k in fam_map.items() if k == key), None)
+        fam_keys = [fk for fk, k in fam_map.items() if k == key]
+        fam_key = next((fk for fk in fam_keys if (famous_by_key.get(fk) or {}).get("original_paper")), fam_keys[0] if fam_keys else None)
         fam = famous_by_key.get(fam_key) if fam_key else None
         # a reviewed merge names the effect; otherwise the name most of its source rows use
         name = chosen_name.get(key) or (Counter(r["name"] for r in rows).most_common(1)[0][0] if rows else fam["name"])
@@ -738,6 +802,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
             "aliases": sorted({r["name"] for r in rows} - {name}),
             # the name keys folded into this effect, so material filed under a folded name still finds it
             "merged_keys": sorted(groups.get(key, {key}) - {key}),
+            "merged_ids": sorted({ledger.ids[mk] for mk in groups.get(key, {key}) - {key} if mk in ledger.ids}),
             "name_sources": sorted(({"retested" if r["sheet"] == "retested" else "forrt" for r in rows})
                                    | ({"forrt"} if fam else set())),
             # FORRT's own sheets first: the docx parse mislabels some disciplines (e.g. 'Parapsychology')
@@ -755,6 +820,9 @@ def build(src: dict, ledger: EffectLedger) -> dict:
     # every reviewed link must have taken effect; one that did not is reported, never dropped quietly
     by_name = {norm_name(e["name"]): e for e in effects.values()}
     for k, e in effects.items():
+        by_name.setdefault(k, e)
+        for mk in e.get("merged_keys", []):
+            by_name.setdefault(mk, e)
         for a in e["aliases"]:
             by_name.setdefault(norm_name(a), e)
     for r in links.get("effect_originals", []):
@@ -778,7 +846,7 @@ def build(src: dict, ledger: EffectLedger) -> dict:
         e["description"] = None
     for k in set(link_checks) - link_checks_used:
         stale.append(f"link check does not match a machine-found reading: {link_checks[k]['doi_o']} -> {link_checks[k]['rep_key']}")
-    for (o, rk), r in checked_pairs.items():
+    for (o, rk), r in {**checked_pairs, **no_result_reasons}.items():
         if _aid(o, rk) not in attempts and _aid(o, rk) not in set_aside:
             stale.append(f"reviewed check does not match an attempt on the site: {r['doi_o']} -> {r['rep_key']}")
     if stale:
@@ -817,11 +885,47 @@ def _short(raw):
 
 def _names(raw):
     """A reviewed record's author field as the page shows it: a plain string stays as written; an author list in
-    CrossRef form ({"given", "family"} entries) is shortened like FLoRA's, never shown as raw data."""
+    CrossRef form ({"given", "family"} entries) or a full-name author list is shortened like FLoRA's."""
+    from .load import clean_surname
     if raw is None or is_na(raw):
         return None
-    return _short(raw) if re.search(r"['\"]family['\"]\s*:", str(raw)) else raw
-
+    s = str(raw).replace("\u2019", "'").replace("\xa0", " ").strip()
+    if re.search(r"['\"]family['\"]\s*:", s):
+        return _short(s)
+    if s == "LABORATORYOFCOMPARATIVEHUMANC":
+        return "Laboratory of Comparative Human Cognition"
+    if _broken_authors(s):
+        return None
+    s = re.sub(r"\s*&\s*al\.?$", " et al.", s, flags=re.I)
+    s = re.sub(r",\s*et\s+al\.?$", " et al.", s, flags=re.I)
+    if s.endswith(" et al."):
+        lead = s[:-7].strip().rstrip(",")
+        cleaned = _person_surname(lead) if (" " in lead and re.search(r"\b[A-Z]\.|^[A-Z][a-z]+\s+[A-Z]", lead)) else clean_surname(lead)
+        return f"{cleaned} et al." if cleaned else None
+    if ";" in s:
+        parts = [p.strip() for p in s.split(";") if p.strip()]
+        return _oa_authors(parts)
+    if re.match(r"^[A-Z][A-Za-z'\-]+,\s*[A-Z][A-Za-z'\-]+\s*&\s*[A-Z][A-Za-z'\-]+$", s):
+        return s
+    apa_fams = [clean_surname(x) for x in re.findall(r"(?:^|&|,)\s*([A-Z\u00c0-\u00d6\u00d8-\u00dea-z][A-Za-z'\u00c0-\u017f\- ]+?(?:,\s*(?:Jr\.?|Sr\.?|II+|IV))?),\s*(?:[A-Z]\.|[A-Z][a-z]+)", s)]
+    apa_fams = [f for f in apa_fams if len(f) > 1]
+    if apa_fams:
+        return apa_fams[0] if len(apa_fams) == 1 else f"{apa_fams[0]} & {apa_fams[1]}" if len(apa_fams) == 2 else f"{apa_fams[0]} et al."
+    if "," in s or " and " in s or " & " in s:
+        chunks = [c.strip() for c in re.split(r",\s*and\s+|,\s*&\s+|\s+and\s+|\s+&\s+|,\s*", s) if c.strip()]
+        chunks = [c for c in chunks if not re.match(r"^(?:and\s+)?(?:\w+\s+)?collaborators$", c, re.I)]
+        if len(chunks) == 2 and all(" " not in c and "." not in c for c in chunks):
+            c0, c1 = clean_surname(chunks[0]), clean_surname(chunks[1])
+            return f"{c0} & {c1}" if c0 and c1 else s
+        if any(" " in c or "." in c for c in chunks) or len(chunks) > 3:
+            return _oa_authors(chunks)
+    if " " in s:
+        from .load import _PARTICLES
+        words = s.split()
+        if words[0].lower().rstrip(".") in _PARTICLES:
+            return clean_surname(s)
+        return _person_surname(s) or clean_surname(s)
+    return clean_surname(s) or s
 
 def _surnames(raw):
     from .load import all_surnames
@@ -839,7 +943,7 @@ def _famous(f: dict) -> dict:
     op = f.get("original_paper") or ""
     year = re.search(r"\b(19|20)\d{2}\b", op)
     return {
-        "status": status, "status_raw": f.get("status"), "description": f.get("description"),
+        "status": status, "status_raw": f.get("status"), "description": _clean_description(f.get("description")),
         "original_paper": op or None, "original_year": int(year.group(0)) if year else None,
         "critiques": f.get("critiques"), "original_es": f.get("original_es"), "replication_es": f.get("replication_es"),
         "gs_citations": _gs(op),
@@ -856,23 +960,31 @@ _APA = re.compile(r"^\s*(?P<au>.+?)\s*\((?P<yr>(?:19|20)\d{2})[a-z]?[^)]*\)\.?\s
 
 def parse_apa(ref: str) -> tuple[str | None, int | None, str | None]:
     """'Smith, J., Jones, K., & Lee, M. (2014). Title here. Journal...' -> ('Smith et al.', 2014, 'Title here')."""
+    from .load import clean_surname
     m = _APA.match(str(ref))
     if not m:
         return None, None, None
-    au = m.group("au")
-    fams = [x.strip() for x in re.findall(r"(?:^|&|,)\s*([A-Z][A-Za-z'À-ſ\- ]+?),\s*(?:[A-Z]\.|[A-Z][a-z]+)", au)]
-    fams = [f for f in fams if len(f) > 1]
-    if not fams:
-        who = au.split(",")[0].strip() or None
-    elif len(fams) == 1:
-        who = fams[0]
-    elif len(fams) == 2:
-        who = f"{fams[0]} & {fams[1]}"
+    au = m.group("au").replace("\u2019", "'").replace("\xa0", " ").strip()
+    if _broken_authors(au):
+        fams = []
+        who = None
     else:
-        who = f"{fams[0]} et al."
+        fams = [clean_surname(x) for x in re.findall(r"(?:^|&|,)\s*([A-Z\u00c0-\u00d6\u00d8-\u00dea-z][A-Za-z'\u00c0-\u017f\-\u2013 ]+?(?:,\s*(?:Jr\.?|Sr\.?|II+|IV))?),\s*(?:[A-Z]\.|[A-Z][a-z]+)", au)]
+        fams = [f for f in fams if len(f) > 1]
+        if not fams:
+            vfams = [clean_surname(x) for x in re.findall(r"(?:^|&|,)\s*([A-Z\u00c0-\u00d6\u00d8-\u00de][A-Za-z'\u00c0-\u017f\- ]+?)\s+[A-Z]{1,3}\.?(?=\s*(?:,|&|\bet\s+al|$))", au)]
+            fams = [f for f in vfams if len(f) > 1]
+        if not fams:
+            cand = au.split(",")[0].strip()
+            who = None if _broken_authors(cand) else _names(cand)
+        elif len(fams) == 1:
+            who = fams[0]
+        elif len(fams) == 2:
+            who = f"{fams[0]} & {fams[1]}"
+        else:
+            who = f"{fams[0]} et al."
     title = m.group("ti").strip().rstrip(".") or None
     return who, int(m.group("yr")), title
-
 
 _DISC_FIX = {
     "jdm": "Judgment and Decision Making",
@@ -961,8 +1073,9 @@ def _clean_description(t: str | None) -> str | None:
     head = max(t.rfind("**.", 0, 250), t.rfind("**:", 0, 250))
     if head >= 0:                                   # "Effect name (detail)**. The claim ..." : the heading repeats the name
         t = t[head + 3:]
-    elif t[:1].islower() and ")." in t[:200] and t[:t.index(").")].count("(") == 0:
+    elif ")." in t[:300] and t[:t.index(").")].count("(") == 0:
         t = t[t.index(").") + 2:]                   # the tail of a heading cut mid-parenthesis
+    t = re.sub(r"^Right-brain Hypothesis\.\s*", "", t, flags=re.I)
     t = t.replace("**", "").replace("__", "")
     t = re.sub(r"(?<![\w])_([^_]+)_(?![\w])", r"\1", t)
     t = t.strip(" ).,;:")

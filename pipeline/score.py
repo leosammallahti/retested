@@ -9,10 +9,11 @@ from . import evidence as ev
 
 def numeric_rows(attempts: dict, aids: list[str]) -> list[dict]:
     """Rows usable for pooling: FReD rows first; legacy rows only for attempts with no FReD numbers."""
+    has_rep = any(attempts[aid]["type"] == "replication" for aid in aids)
     out = []
     for aid in aids:
         a = attempts[aid]
-        if a["type"] != "replication":
+        if has_rep and a["type"] != "replication":
             continue
         src = a["rows"] or [r for r in a["legacy_rows"] if r.get("r_r") is not None]
         for r in src:
@@ -24,6 +25,8 @@ def numeric_rows(attempts: dict, aids: list[str]) -> list[dict]:
 
 def lenses(attempts: dict, aids: list[str], curated_reversed: bool = False) -> dict:
     reps = [attempts[a] for a in aids if attempts[a]["type"] == "replication"]
+    if not reps:
+        reps = [attempts[a] for a in aids if attempts[a]["type"] == "reproduction"]
     record = ev.record_status([a["outcome"] for a in reps], curated_reversed)
     num_rows = numeric_rows(attempts, aids)
     numeric = ev.pool_replications(num_rows)

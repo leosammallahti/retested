@@ -1,27 +1,25 @@
-# Handover: what is in flight (updated 29 Oct 2026, afternoon)
+# Handover: finished and published state (31 Oct 2026)
 
-Read `START_HERE.md` first, then `SOURCES_AND_LEDGER.md` for what is counted, how papers are read and what is open.
+Read `START_HERE.md` first, then `SOURCES_AND_LEDGER.md` for what is counted and how papers were read.
 
-## State
+## Finished state
 
-- The data build, the site build (15,837 pages, sitemap and link checks) and the 137 tests pass.
-- 8,624 attempts, 6,662 original papers, 2,247 effects with a replication. The ledger gives all 27,113 lines an
-  outcome. No reading waits for a person.
-- Machine-found pairs count only with a checked link (`data/curated/link_checks.csv`); the check was measured on a
-  blind sample before and after (`data/curated/review_evidence/2026-10-29/`).
-- 11 'replicated' game cards are held for the deck's balance (`data/curated/card_holds.json`, reason given).
-- Branches: `wiki-pages` holds everything; `main` follows it; all are backed up to `/root/retested.git`.
-  Not published: Leo must first create the empty public GitHub repository `retested`.
-
-## Next
-
-1. **837 queue pairs** a reader could not confirm, and **1,701 replications without a result**: both need the full
-   papers.
-2. **6 replications dated before their original** and **538 later papers without authors** (`quality-audit`).
-3. **Publish** once Leo has created the repository and says go.
-
-## Working rules
-
-- Work in `/root/retested-wiki` (branch `wiki-pages`). Use `/root/retested/.venv/bin/python -X utf8`.
-- Before any paid call, tell Leo the model, the number of calls and the cost, and wait for his yes.
-- Measure before adding at scale: read a blind sample yourself first; a reading never overrules a result FORRT coded.
+- All four checks pass on the final commit:
+  - `python -m pipeline build`: **8,840** attempts (**8,560** replications, **280** reproductions; **7,399** replications
+    with a verdict) across **6,829** original papers and **2,125** effects with a replication (**177** named without
+    one, listed on `not-linked/`). All **27,119** ledger rows have a recorded outcome (`0` missing).
+  - `python -m pipeline quality-audit`: **0** open items across all categories (`data/build/quality_audit.json` is
+    `{"counts": {}, "items": {}}`).
+  - `cd site && SITE_URL=https://leosammallahti.github.io BASE_PATH=/retested/ npm run build && npm run verify`:
+    **15,976** static HTML pages (**8,968** indexable pages, **274,307** local references, **0** missing targets,
+    **0** missing fragments).
+  - `python -m unittest discover -s tests`: **137** tests passing.
+- All fetched open full texts (1,256 papers and 56 abstracts) have been read by calibrated Sonnet 5.5 helpers following
+  `docs/READING_RUBRIC.md`, with quotes and provenance recorded in `data/curated/review_evidence/2026-10-30/`.
+- Every attempt whose result is not stated in any freely available text is recorded in `data/curated/attempts_checked.csv`
+  and states plainly on the site that its result is not stated in any freely available text.
+- Every effect has a plain sentence in `data/curated/effect_lines.json` and a study typology in
+  `data/curated/effect_typology.json`; near-duplicate effects are merged in `data/curated/merges.yaml` with every
+  attempt preserved.
+- Branches `wiki-pages` and `main` are identical, backed up to `/root/retested.git`, pushed to
+  `https://github.com/leosammallahti/retested`, and live at `https://leosammallahti.github.io/retested/`.

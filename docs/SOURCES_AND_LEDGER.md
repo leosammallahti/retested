@@ -109,35 +109,24 @@ rather than skipping it.
 | `data/curated/effect_description_exclusions.csv` | A source description that belongs to another claim, or is not a claim | same |
 | `data/curated/effect_lines.json`, `effect_typology.json` | One plain line per effect; the study typology. **Keyed by the stable effect id**, so a merge or rename cannot detach them; entries of folded effects are kept under `set_aside` | `pipeline/wiki.py` |
 
-## The record now (29 Oct 2026, afternoon)
+## The record now (31 Oct 2026)
 
-- 8,624 attempts under 6,662 original papers: 6,027 from FORRT (its files; 294 later papers its list cites; 2,123
-  pairs its machine search found, link checked) and 2,597 added by Retested (1,467 checked by its readers, 1,130
-  found by its machine search, link checked).
-- 2,247 effects with a replication; 250 named without one (listed on `not-linked/`).
-- 27,113 ledger lines (every FORRT file and Retested's own finds), none without an outcome.
-- 6,910 attempts have a result; 47.6% found the effect. 1,701 replications state no result where they could be read.
-- The review queue: 2,860 machine-found pairs, of which 837 were read but could not be confirmed, and most of the rest
-  name no identifiable original.
-
-## Still open (each counted by `python -m pipeline quality-audit` or on `sources/`)
-
-1. **837 queue pairs whose link could not be confirmed** from the text; the full papers would settle most.
-2. **1,701 attempts without a result,** mostly papers whose abstract or title does not state one (student replication
-   projects, registrations); only the full text can.
-3. **8 attempts a reader checked that only the full text can settle** (`attempts_checked.csv`).
-4. **12 misfiled replications** whose right original has no DOI or could not be identified stay set aside, with the
-   reason.
-5. **11 effects without a plain line,** recorded as too thin or contradictory.
-6. **Missing details:** 538 later papers without authors (mostly OSF pages that list none), 18 without a year, 3
-   without a title.
-7. **6 replications dated before their original,** to be read (`python -m pipeline quality-audit`).
+- **8,840** attempts under **6,829** original papers: **6,183** from FORRT and **2,657** added by Retested.
+- **2,125** effects with a replication; **177** named without one (listed on `not-linked/`).
+- **27,119** ledger lines (every FORRT file and Retested's own finds), `0` without an outcome.
+- **7,684** attempts have a coded result (**3,628** successful, **1,822** mixed, **2,221** failed, **13** inconclusive;
+  **47.3%** of directional verdicts found the effect). **1,156** attempts state no result in any freely available text
+  (paywalled papers, open copies that refused download, OSF pages without a write-up, or multi-study/abstract-only
+  records that do not report the individual comparison), each recorded in `data/curated/attempts_checked.csv` and stated
+  plainly on the site.
+- **0** unresolved items in `data/build/quality_audit.json`.
 
 ## How to check it yourself
 
-- `python -m pipeline build`: the ledger step prints "N source rows, 0 without an outcome", or stops.
+- `python -m pipeline build`: the ledger step prints `27119 source rows, 0 without an outcome`, or stops.
 - The page `sources/` shows the ledger file by file, with the reasons.
-- `python -m pipeline quality-audit` lists every item in the built site that still needs a decision (writes
-  `data/build/quality_audit.json`); an answered question becomes a reviewed input and drops off the list.
-- `pipeline/repair/audit/audit.py` is the one-off check of 28 Oct that found the problems above.
-- `pipeline/repair/audit/compare.py` compares a build with the one before 28 Oct (its saved copy is in `/root/wiki-scratch/audit_20261028/build_before/`).
+- `python -m pipeline quality-audit` checks every item in the built site and writes `data/build/quality_audit.json`
+  (`{"counts": {}, "items": {}}`).
+- `cd site && SITE_URL=https://leosammallahti.github.io BASE_PATH=/retested/ npm run build && npm run verify` builds
+  and verifies all 15,976 static HTML pages.
+- `python -m unittest discover -s tests` runs the 137 unit tests.

@@ -67,11 +67,70 @@ def clean(x):
     return x
 
 
+_PARTICLES = {"van", "de", "von", "der", "den", "ten", "ter", "la", "le", "du", "di", "da", "del", "della", "dos", "das", "aan", "het", "klein", "op", "st."}
+_SUFFIX_RE = re.compile(r"^(?:Jr\.?|Sr\.?|II+|IV|M\.?D\.?|Ph\.?D\.?)$", re.I)
+_FAMILY_RE = re.compile(r"['\"]family['\"]\s*:\s*(['\"])((?:\\.|(?!\1).)+)\1")
+_SPECIAL_SURNAMES = {
+    "\u03a0\u03b1\u03c0\u03b1\u03b4\u03ac\u03c4\u03bf\u03c5-\u03a0\u03b1\u03c3\u03c4\u03bf\u03cd": "Papadatou-Pastou",
+    "\u039aube": "Kube",
+    "\u00ffepni": "\u00c7epni",
+    "LABORATORYOFCOMPARATIVEHUMANC": "Laboratory of Comparative Human Cognition",
+}
+
+
+def _cap_word(w: str) -> str:
+    if not w:
+        return w
+    if w in _SPECIAL_SURNAMES:
+        return _SPECIAL_SURNAMES[w]
+    w = w.replace("\u039a", "K").replace("\u00ffepni", "\u00c7epni")
+    if "-" in w:
+        return "-".join(_cap_word(p) if p.lower() not in _PARTICLES else p.lower() for p in w.split("-"))
+    if "'" in w:
+        parts = w.split("'")
+        if len(parts) == 2 and len(parts[0]) <= 2 and parts[0].isalpha():
+            return parts[0].capitalize() + "'" + _cap_word(parts[1])
+    if len(w) > 1 and w.isupper() and not _SUFFIX_RE.match(w):
+        if w.startswith("MC") and len(w) > 2:
+            return "Mc" + w[2:].capitalize()
+        return w.capitalize()
+    if w.islower() and w not in _PARTICLES:
+        return w.capitalize()
+    return w
+
+
+def clean_surname(raw: str) -> str:
+    s = str(raw or "").replace("\u2019", "'").replace("\xa0", " ").strip().strip(",.;:")
+    if not s or s.upper().startswith("WITHDRAWN") or s.upper() == "PERSPECTIVES":
+        return ""
+    if s in _SPECIAL_SURNAMES:
+        return _SPECIAL_SURNAMES[s]
+    s = re.sub(r",\s*(?:Jr\.?|Sr\.?|II+|IV)$", "", s, flags=re.I).strip()
+    s = re.sub(r"^(?:[A-Z]\.\s*)+", "", s).strip()
+    s = re.sub(r"^[A-Z]\s+(?=[A-Z][a-z])", "", s).strip()
+    words = s.split()
+    while len(words) > 1 and (_SUFFIX_RE.match(words[-1]) or re.match(r"^[A-Z]{1,2}\.?$", words[-1])):
+        words.pop()
+    if not words:
+        return ""
+    if len(words) == 1:
+        w = _cap_word(words[0])
+        return "" if re.match(r"^[A-Z]\.?$", w) or _SUFFIX_RE.match(w) else w
+    out = []
+    for i, w in enumerate(words):
+        if i < len(words) - 1 and w.lower() in _PARTICLES:
+            out.append(w.lower() if w != "La" else "La")
+        else:
+            out.append(_cap_word(w))
+    return " ".join(out)
+
+
 def short_authors(raw) -> str | None:
     """'Family', 'Family & Family', or 'Family et al.' from FLoRA's JSON-ish author field."""
     if is_na(raw):
         return None
-    fams = re.findall(r"['\"]family['\"]\s*:\s*['\"]([^'\"]+)['\"]", str(raw))
+    fams = [clean_surname(m[1]) for m in _FAMILY_RE.findall(str(raw))]
+    fams = [f for f in fams if f]
     if not fams:
         return None
     if len(fams) == 1:
@@ -82,15 +141,10 @@ def short_authors(raw) -> str | None:
 
 
 def all_surnames(raw) -> list[str]:
-    """Every family name in FLoRA's JSON-ish author field, lower-cased, for author-overlap checks.
-
-    FLoRA already carries author_overlap_pct, but only for the pairs FORRT coded (20% of findings). Our finds have
-    no such coding, and overlap is the strongest predictor in the whole dataset — 70% of replications sharing an
-    author with the original succeed against 38% of independent ones — so it is worth deriving ourselves.
-    """
+    """Every family name in FLoRA's JSON-ish author field, lower-cased, for author-overlap checks."""
     if is_na(raw):
         return []
-    fams = re.findall(r"['\"]family['\"]\s*:\s*['\"]([^'\"]+)['\"]", str(raw))
+    fams = [clean_surname(m[1]) for m in _FAMILY_RE.findall(str(raw))]
     out, seen = [], set()
     for f in fams:
         t = unicodedata.normalize("NFKD", f).encode("ascii", "ignore").decode().lower().strip()

@@ -1,0 +1,38 @@
+C0324|Y|NEW_DATA_REPLICATION|NOT_FOUND|Faretta-Stutenberg & Morgan-Short|2011|The results do not corroborate those of Williams (2005) in that no evidence of implicit learning was found.|Unaware participants did not perform above chance on generalization items, failing to replicate implicit learning.
+C0325|Y|NEW_DATA_REPLICATION|FOUND|Henry, Villegas, & Morgan-Short|2024|Results indicate advantages for the PI group during training, supporting Fernández’s (2008) conclusions.|Processing instruction group showed advantages during training, replicating Fernández (2008).
+C0326|Y|NEW_DATA_REPLICATION|FOUND|McManus & Marsden|2018|The findings support M&M’s arguments that the combination of L1 EI plus L1 practice helped establish knowledge|Replicated findings that L1 practice alone without explicit information does not produce benefits, supporting the original account.
+C0327|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|2022||Multi-site preregistration and data analysis R scripts without a prose replication results write-up.
+C0328|N|NEW_DATA_REPLICATION|NOT_APPLICABLE|Wang & Sun|2024|In this study, we approximately replicated Papi and Khajavy’s (2021) investigation into the regulatory focus in second language acquisition,|Replicates Papi & Khajavy (2021) in Language Learning, not Papi et al. (2018/2019) in SSLA.
+C0329|Y|NEW_DATA_REPLICATION|MIXED|Kim & Kochanska|2025|We are unsure why we failed to replicate the earlier findings in father-child dyads.|Replicated moderated mediation cascade for mothers and children, but failed to replicate in father-child dyads.
+C0330|N|NEW_DATA_REPLICATION|NOT_APPLICABLE|Conradi et al.|2023|In this study we have evaluated if our previously reported finding of a positive association between CAR and 5-HTT binding in prefrontal cortex [ 7 ]|Replicates Frokjaer et al. (2013) in healthy adults, not Frokjaer et al. (2014) in MDMA users.
+C0331|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Freeston et al.|2024||OSF repository contains ethics form and survey protocol without a replication results write-up.
+C0332|Y|NEW_DATA_REPLICATION|FOUND|Sobkow et al.|2021|b = -186.96, t = -2.467, p = .0156. The effect was successfully replicated.|Openness to experience significantly moderated the anchoring effect, successfully replicating McElroy & Dowd (2007).
+C1088|Y|NEW_DATA_REPLICATION|FOUND|Sobkow et al.|2021|The difference between groups was statistically significant in 10/15 cases. The effect was successfully replicated.|Anchoring effect on estimation tasks replicated across multiple problems, successfully replicating Jacowitz & Kahneman (1995).
+C0333|N|NEW_DATA_REPLICATION|NOT_APPLICABLE|Birnbaum, Johnson, & Longbottom|2008|Study 2 also replicated previous results quite closely, except for Choice 17 of Table 6.|Replicates Birnbaum (2004a, 2004b) tests of cumulative prospect theory, only citing Birnbaum (2008c) in passing.
+C0334|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Rachev|2023||OSF repository contains registered report template and raw R statistical outputs without a prose results write-up.
+C0335|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0336|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0337|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0338|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target, timeline, and links without a prose results write-up.
+C0339|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target, timeline, and links without a prose results write-up.
+C0340|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0341|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target, schedule, and links without a prose results write-up.
+C0344|Y|NEW_DATA_REPLICATION|NOT_FOUND|Milark|2018|Die vorliegende Studie konnte diese Ergebnisse nicht replizieren.|Replicated Experiment 6 of Van de Calseyde et al. (2013) but found no significant effect of insurance on punishment.
+C0345|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0346|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0347|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0348|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0349|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0350|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0352|Y|REANALYSIS|NO_RESULT_STATED|Imgrund|2018||OSF repository contains SPSS reanalysis code and output tables without a prose replication results write-up.
+C0353|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0354|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0355|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF registration contains study plan and replication criteria without a prose results write-up.
+C0356|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0357|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project wiki contains replication target and links without a prose results write-up.
+C0358|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|2016||OSF registration contains planned timeline and criteria without a prose results write-up.
+C0359|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Mondal|2021||Knitted R Markdown script and reliability outputs without a prose results write-up.
+C0360|Y|REANALYSIS|FOUND|Chopik|-|This is the final analysis performed because the push button attempt was successful.|Push-button reproduction using original STATA script and dataset verified all six reported claims.
+C0361|Y|NEW_DATA_REPLICATION|NOT_FOUND|Andreychik|2020|this replication of the claim was unsuccessful according to the SCORE criteria.|Difference between causal correction and denial was not statistically significant (p=0.208), failing to replicate Nyhan & Reifler (2015).
+C0362|Y|REANALYSIS|FOUND|McCall & Karcher|2022|The focal coefficient for the create 1000 local jobs term precisely reproduced at 0.245, with a p value of 0.000.|Push-button reproduction using author Stata code and data reproduced the focal coefficient and confidence interval.
+C0363|Y|REANALYSIS|MIXED|Burak|-|Reproduction outcome: Based on these criteria, the claim did not reproduce.|Three claims reproduced successfully, but two claims did not meet reproduction criteria.

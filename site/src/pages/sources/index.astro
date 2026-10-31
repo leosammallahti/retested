@@ -12,9 +12,9 @@ const COLS: [string, string][] = [
   ['on the site under another original', 'On the site, linked to a different original'],
   ['names an effect that has a replication', 'Names an effect that has a replication'],
   ['names an effect without a replication', 'Names an effect without a replication'],
-  ['read, waiting to be verified', 'In the queue, read as a replication, link not yet verified'],
-  ['waiting to be read', 'In the queue, waiting to be read'],
-  ['not yet read', 'Cited by FORRT, not yet read'],
+  ['read, waiting to be verified', 'In the queue, read as a replication, link unconfirmed in free text'],
+  ['waiting to be read', 'In the queue, no free text available'],
+  ['not yet read', 'Cited by FORRT, no free text or DOI'],
   ['left out', 'Left out (reason below)'],
 ];
 const files = Object.keys(L.by_file).filter((f) => !f.startsWith('Retested'));
@@ -31,12 +31,12 @@ const allRows = files.reduce((a, f) => a + total(f), 0);
     </header>
 
     <section>
-      <div class="sh"><h2>In three numbers</h2></div>
+      <div class="sh"><h2>In four numbers</h2></div>
       <ul class="dl">
         <li><b>{int(S.attempts)}</b> replication attempts are on the site: <b>{int(S.from_forrt)}</b> from FORRT's files and <b>{int(S.added_by_retested)}</b> added by Retested, each read against its source paper.</li>
         <li><b>{int(S.effects_with_replication)}</b> effects have at least one replication; <b>{int(S.effects_named_without_replication)}</b> more are named in FORRT's records without one and are <a href={u('not-linked/')}>listed apart</a>, not counted.</li>
         <li>Read but not counted: <b>{int(sum('read, waiting to be verified') + (L.by_file['Retested finds (machine-found)']?.['read, waiting to be verified'] ?? 0))}</b> machine-found papers that two models read as replications of their linked original, but whose link a reader could not confirm from the text. Machine-found pairs are counted only once a reader has checked the link against both abstracts.</li>
-        <li>Still to read: <b>{int(sum('waiting to be read') + (L.by_file['Retested finds (machine-found)']?.['waiting to be read'] ?? 0))}</b> machine-found papers in the <a href={u('queue/')}>queue</a> (from FORRT's extractor and from Retested's own search), and <b>{int(sum('not yet read'))}</b> rows of FORRT's Replications &amp; Reversals list that cite a later paper nobody has read yet: many are replications, others are reviews or commentaries.</li>
+        <li>Unverified or without free text: <b>{int(sum('waiting to be read') + (L.by_file['Retested finds (machine-found)']?.['waiting to be read'] ?? 0))}</b> machine-found papers in the <a href={u('queue/')}>queue</a> (from FORRT's extractor and from Retested's own search), and <b>{int(sum('not yet read'))}</b> rows of FORRT's Replications &amp; Reversals list that cite a later paper without a resolved DOI or freely available text: many are replications, others are reviews or commentaries.</li>
       </ul>
     </section>
 
@@ -53,7 +53,7 @@ const allRows = files.reduce((a, f) => a + total(f), 0);
     </section>
 
     <section>
-      <div class="sh"><h2>Why rows are left out or not yet read</h2></div>
+      <div class="sh"><h2>Why rows are left out or unverified</h2></div>
       {files.filter((f) => L.reasons[f]).map((f) => (
         <div class="rs"><h3>{f}</h3><ul>{Object.entries(L.reasons[f]).map(([why, n]) => <li><b>{int(n)}</b> {why}</li>)}</ul></div>
       ))}

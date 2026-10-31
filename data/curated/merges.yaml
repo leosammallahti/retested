@@ -1,7 +1,3 @@
-# Curated effect merges. Applied after the automatic near-duplicate merge in pipeline/registry.py.
-# Each entry folds the "from" names into the "into" name; the ledger keeps every old id, so no URL breaks.
-# Entries of 28 Oct 2026 were decided by reading each case: the same effect on the same original paper under
-# several names (FORRT's data sheet, its Replications & Reversals list, and Retested's reviewed pairs each named it).
 - into: 2D:4D ratio of the fingers
   from:
   - 2D:4D
@@ -21,6 +17,7 @@
   from:
   - Above-Average Effect
   - Above-Average Effect (Better-Than-Average Effect)
+  - Better-than-average driving skill and safety judgments
   reason: the better-than-average effect (Alicke 1985); FORRT gives both names
 - into: Trait controllability strengthens self-favoring desirability ratings
   from:
@@ -50,6 +47,7 @@
   - Affect Heuristic in Judging Outcome
   - Risk information inversely shifts benefit judgments
   - Risk and benefit perceptions(affect heuristic)
+  - Risk benefits negative association
   reason: Finucane et al. 2000 risk-benefit affect heuristic under four names
 - into: American flag priming boosts Republican support
   from:
@@ -189,7 +187,8 @@
   - inaction effect, long term regret
   - inaction effect, short term regret
   - Temporal reversal of action and inaction regret
-  reason: 'Gilovich & Medvec 1994 temporal pattern of regret: its short- and long-term parts under five names (general regret stays apart)'
+  reason: 'Gilovich & Medvec 1994 temporal pattern of regret: its short- and long-term parts under five names (general regret
+    stays apart)'
 - into: Inaction Inertia effect
   from:
   - Inaction inertia-car
@@ -197,6 +196,7 @@
   - Inaction inertia-frequent flyer
   - Inaction inertia-ski
   - Missed attractive opportunities reduce later action
+  - Inaction Inertia
   reason: 'Tykocinski et al. 1995 inaction inertia: one effect shown in four scenarios, under six names'
 - into: Increase in narcissism
   from:
@@ -261,13 +261,6 @@
   - more-is-better effect
   - Money market versus goods/social market
   reason: Heyman & Ariely 2004 payment type and effort under three names
-- into: Mortality Salience
-  from:
-  - Mortality Salience (Death Priming/Terror Management Theory)
-  - Mortality reminders increase national in-group bias
-  - Mortality reminders increase preference for a patriotic essay author
-  - Mortality salience and pro-American author preference
-  reason: Greenberg et al. 1994 mortality salience under five names
 - into: Motivated numeracy
   from:
   - Numeracy amplifies partisan interpretation of policy data
@@ -300,6 +293,7 @@
 - into: Public exposure distinguishes shame from guilt
   from:
   - Public exposure influences shame and guilt differently
+  - Public exposure influences shame/guilt differently
   reason: Smith et al. 2002 under two names
 - into: Pygmalion Effect
   from:
@@ -359,6 +353,7 @@
   from:
   - Superiority-of-unconscious decision-making effect (deliberation without attention effect)
   - Superiority-of-unconscious decision-making effect
+  - Unconscious thought advantage (“deliberation-without-attention”)
   reason: Dijksterhuis et al. 2006 under three names
 - into: Temporal Differences in Trait Self-Ascription
   from:
@@ -406,6 +401,8 @@
 - into: Abstract rule learning
   from:
   - Infant Rule Learning (Speech)
+  - Infant algebraic rule learning
+  - Rule learning effect in infants
   reason: same Marcus 1999 infant rule learning, name only adds stimulus type (same replications; read by a helper, spot-checked)
 - into: Age of acquisition influence on lexical retrieval (auditory lexical decision task)
   from:
@@ -422,6 +419,7 @@
 - into: Commitment Priming
   from:
   - Commitment priming reduces destructive responses to betrayal
+  - Commitment priming (recall)
   reason: same Study 1 priming effect on responses to betrayal (same replications; read by a helper, spot-checked)
 - into: Warmer-hearts-warmer-room effect
   from:
@@ -451,10 +449,6 @@
   from:
   - False-belief anticipatory looking in the Southgate task
   reason: same Southgate false-belief anticipatory looking claim (same replications; read by a helper, spot-checked)
-- into: False-belief looking in the Southgate task
-  from:
-  - Theory of Mind
-  reason: same Southgate anticipatory looking claim; Theory of Mind name too broad (same replications; read by a helper, spot-checked)
 - into: Fertility Facial Preferences
   from:
   - Fertility facial-preferences effect
@@ -483,6 +477,7 @@
 - into: Impact of Scarcity on Attention
   from:
   - Scarcity reallocates attention and increases overborrowing
+  - Scarcity effect - Attention
   reason: same Shah 2012 scarcity and attention claim (same replications; read by a helper, spot-checked)
 - into: Impact of Scarcity on Wellbeing
   from:
@@ -495,6 +490,7 @@
 - into: Mental simulation - match advantage object orientation
   from:
   - Sentence-implied orientation speeds matching picture recognition
+  - Sentence-implied object orientation speeds recognition of matching pictures
   reason: same orientation match advantage in picture verification (same replications; read by a helper, spot-checked)
 - into: Mental simulation - match advantage object shape
   from:
@@ -519,6 +515,8 @@
 - into: Oxytocin on trust
   from:
   - Oxytocin Trust
+  - Intranasal oxytocin increases investor trust-game transfers with social contact
+  - Intranasal oxytocin increases trust-game transfers
   reason: same Kosfeld oxytocin increases trust claim (same replications; read by a helper, spot-checked)
 - into: Personality traits and consequential life outcomes
   from:
@@ -535,6 +533,8 @@
 - into: Prosocial spending
   from:
   - Prosocial spending raises happiness relative to personal spending
+  - Prosocial spending increases happiness
+  - Spending money altruistically makes you happier
   reason: same Dunn spending on others raises happiness (same replications; read by a helper, spot-checked)
 - into: Risk and goal message framing
   from:
@@ -583,11 +583,13 @@
 - into: Social Comparison
   from:
   - Social comparison amplifies body dissatisfaction–fat talk association
+  - Social comparison amplifies the body concern–fat talk link
   reason: same interaction claim; retested name is garbled (same replications; read by a helper, spot-checked)
 - into: Stereotype threat on gender differences in political knowledge
   from:
   - Stereotype threat
-  reason: same Ihme Tausendpfund stereotype activation lowers womens political knowledge (same replications; read by a helper, spot-checked)
+  reason: same Ihme Tausendpfund stereotype activation lowers womens political knowledge (same replications; read by a helper,
+    spot-checked)
 - into: Stroop effect
   from:
   - Stroop word-color interference
@@ -615,6 +617,7 @@
 - into: Preferences for uniqueness and conformity
   from:
   - Cultural difference in choosing uncommon pens
+  - Cultural difference in preference for unique versus common objects
   reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
 - into: Early parent reports predict 11-year language outcome
   from:
@@ -635,6 +638,7 @@
 - into: People overlook subtractive improvements
   from:
   - Overlooking of subtractive change
+  - Overlooking subtractive changes when generating improvements
   reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
 - into: Tempting fate increases expected bad luck
   from:
@@ -647,12 +651,668 @@
 - into: Automatic approach and avoidance from affective evaluation
   from:
   - Behavioural-consequences-of-automatic-evaluation
+  - Behavioural-consequences-of automatic-evaluation (affective compatibility effect)
   reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
 - into: Self-control relies on glucose effect
   from:
   - Glucose ingestion counteracts subsequent self-control impairment
+  - Glucose drink improves later self-control
+  - Glucose drink reverses self-control impairment
+  - Sugar drink reverses impaired self-control
   reason: the same claim on the same original under two names (same replications; read 28 Oct 2026)
 - into: Handedness DIfferences in Depression
   from:
   - Handedness differences - depression
-  reason: one effect (handedness and perceptual asymmetry in depression) under two spellings; they share the same replication (read by Claude, 28 Oct 2026)
+  reason: one effect (handedness and perceptual asymmetry in depression) under two spellings; they share the same replication
+    (read by Claude, 28 Oct 2026)
+- into: Age of acquisition influence on face familiarity decision
+  from:
+  - Age of acquisition influence on familiarity decision
+  - 'Who rocked in 1986?’, Richards and Ellis 2008; experimental design, Experiment 1: n = 32'
+  reason: Continuation note and alternate name from FORRT's Replications & Reversals text.
+- into: Age of acquisition influence on lexical retrieval (spoken character naming in logographic languages)
+  from:
+  - of Japanese Kanji’, Yamazaki et al
+  reason: Continuation fragment from FORRT's Replications & Reversals text.
+- into: Left-Brain vs. Right-Brain Hypothesis
+  from:
+  - Left-brain vs
+  reason: Heading split on period in 'Left-brain vs. Right-brain Hypothesis' in FORRT's Replications & Reversals text.
+- into: Fear conditioning - Anxiety
+  from:
+  - Fear conditioning - effect of trait anxiety/neuroticism on conditioning
+  - Torrents-Rodas et al
+  - 'Sperl et al.: Habituation ηp2 =0.163'
+  - Panitz et al
+  - Sjouwerman et al
+  reason: Same effect across FLoRA and FORRT's Replications & Reversals text, plus four study sub-bullets parsed as headings.
+- into: Fear conditioning - Extraversion
+  from:
+  - Fear conditioning - effect of trait extraversion on conditioning
+  reason: Same effect across FLoRA and FORRT's Replications & Reversals text.
+- into: Priming
+  from:
+  - Thinking, Fast and Slow by Daniel Kahneman that has an Entire chapter on all kinds of priming
+  reason: Note under Priming in FORRT's Replications & Reversals text parsed as a heading.
+- into: Anchoring Effect
+  from:
+  - Anchoring-and-adjustment heuristic
+  - High versus low numerical anchors shift estimates
+  reason: Tversky & Kahneman (1974) / Jacowitz & Kahneman (1995) anchoring-and-adjustment heuristic.
+- into: Anchoring
+  from:
+  - Incidental environmental anchoring effect
+  reason: Critcher & Gilovich (2008) incidental environmental anchoring.
+- into: Age of acquisition influence on learning (procedural learning)
+  from:
+  - Age of acquisition influence on learning (procedural)
+- into: Age of acquisition influence on speeded phonological retrieval (speeded spoken word naming)
+  from:
+  - Age of acquisition influence on speeded phonological retrieval (transparent language)
+- into: Bilingual advantages in social communication - perspective taking in referential communication
+  from:
+  - Bilingual advantages - perspective taking in referential communication
+- into: Bilingual advantages in social communication - Theory of mind
+  from:
+  - Bilingual advantages - theory of mind
+- into: Bouba/kiki effect
+  from:
+  - Bouba/kiki effect (sound symbolism)
+- into: Cache protection in Eurasian jays
+  from:
+  - Cache protection in Eurasian jays (Garrulus glandarius)
+- into: Congruency sequence effect
+  from:
+  - Congruency sequence effect (conflict adaptation or Gratton effect)
+- into: Decoy effect
+  from:
+  - 'Decoy effect (alternatives: asymmetric dominance; attraction effect)'
+- into: Disfluency effect
+  from:
+  - Processing fluency
+  reason: Both cite Alter, Oppenheimer, Epley & Norwick (2007) on metacognitive disfluency activating analytic reasoning.
+- into: ERPs in lie detection - P300 and guilty knowledge
+  from:
+  - ERPs in lie detection
+- into: Error salience effects
+  from:
+  - Error salience (epistemic contextualism effects)
+- into: Fear conditioning - Late Positive Potential (LPP)
+  from:
+  - Fear conditioning - Late Positive Potential
+- into: Graphic images and cigarette use
+  from:
+  - Graphic images and cigarette use (Graphic warning labels)
+- into: Handedness differences - sex
+  from:
+  - Handedness differences - sex. Handedness differences between men and women
+- into: Handedness differences - twins
+  from:
+  - Handedness differences - twins. Handedness differences between twins and singletons
+- into: Hydrocephaly
+  from:
+  - Hydrocephaly. The effect of massive volume loss improving cognition
+- into: Incidental disgust
+  from:
+  - Incidental disgust (Amplification hypothesis)
+- into: Left-cradling bias
+  from:
+  - Left-cradling bias (Child cradling lateralization)
+  - Handedness Effects on the Left-Cradling Bias
+- into: Lunar Effect
+  from:
+  - Lunar effect (Transylvania effect)
+- into: Marshmallow experiment
+  from:
+  - Marshmallow experiment (self-imposed delay of gratification)
+- into: Men’s strength predicts opposition to egalitarianism
+  from:
+  - Men’s strength in particular predicts opposition to egalitarianism
+- into: Minimal group effect (MGE)
+  from:
+  - Minimal group effect (Minimal group paradigm)
+- into: Mirror reading and writing in dyslexia
+  from:
+  - Mirror reading and writing in dyslexia (Strephosymbolia)
+- into: Modality-switching cost
+  from:
+  - Modality-switching cost (modality switch effect)
+- into: Mood-dependent retrieval
+  from:
+  - Mood-dependent retrieval (mood-dependent memory, state dependent memory, encoding specificity)
+- into: One mind per hemisphere
+  from:
+  - One mind per hemisphere (split-brain syndrome)
+- into: Orgasm gap
+  from:
+  - Orgasm gap (Orgasm equality)
+- into: Overconfidence
+  from:
+  - Over confidence
+- into: Personality > Intelligence in Predicting Life Outcomes
+  from:
+  - Personality &gt; intelligence predicting life outcomes
+- into: Pointing following in domesticated pigs
+  from:
+  - Pointing following in pigs
+- into: Retrieval-induced forgetting
+  from:
+  - Retrieval-induced forgetting (RIF)
+- into: Right-bias in hand use in chimpanzees
+  from:
+  - Right-bias in hand use in chimpanzees (Population handedness asymmetry)
+- into: Risk preferences in chimpanzees and bonobos
+  from:
+  - Risk preferences in chimpanzees and bonobos (risky choice)
+- into: Robbers Cave Study
+  from:
+  - Robber's Cave
+- into: Rorschach Test
+  from:
+  - Rorschach Test (Rorschach inkblot test)
+- into: Scarcity effect - Selfishness
+  from:
+  - Scarcity- Selfishness
+- into: Sleep-assisted learning
+  from:
+  - Sleep-assisted learning (hypnopedia)
+- into: Social dominance-status
+  from:
+  - Social dominance-status (verticality effects)
+- into: Tactile Disadvantage
+  from:
+  - Tactile Disadvantage (conceptual tactile disadvantage)
+- into: Trolley Dilemma
+  from:
+  - Side-effect versus means framing changes moral permissibility judgments
+  reason: Both cite Hauser et al. (2007) trolley dilemma moral permissibility study.
+- into: Unrealistic optimism
+  from:
+  - Unrealistic optimism (Optimism bias)
+  - Optimism bias
+- into: Violent media content on aggression
+  from:
+  - Violent Media Aggression
+- into: Gustatory disgust on moral judgment
+  from:
+  - Disgusting and pleasant tastes influence moral judgments
+  - Gustatory disgust on moral judgement
+  - 'Gustatory Disgust: Bitter Test Group'
+  - 'Gustatory Disgust: Disgust Test Group (Conservative)'
+  - 'Gustatory Disgust: Disgust Test Group (Liberal Results )'
+  - 'Gustatory Disgust: Sweet Test Group'
+  - 'Gustatory Disgust: Sweet Test Group (Conservative)'
+  - 'Gustatory Disgust: Sweet Test Group (Liberal Results )'
+  reason: Eskine, Kacinik & Prinz (2011) taste-and-moral-judgment finding and its subgroup splits.
+- into: Risky choice framing (Asian disease problem)
+  from:
+  - Unusual Disease Problem
+  - Unusual disease problem (Asian disease problem)
+  - Gain versus loss framing changes risk choice
+  - Gain versus loss framing in life and death choices
+  - Risky Choice Framing
+  - Risky choice framing effect
+  reason: Tversky & Kahneman (1981) Asian disease risky-choice framing effect.
+- into: Reflection effect
+  from:
+  - Reference framing
+  reason: Kahneman & Tversky (1979) prospect theory reflection effect.
+- into: Retroactive facilitation of recall after post-test practice
+  from:
+  - Future word practice purportedly improves earlier recall
+  reason: Bem (2011) retroactive facilitation of recall.
+- into: Implicit Theory of Mind in anticipatory looking (Southgate task)
+  from:
+  - False-belief looking in the Southgate task
+  - implicit Theory of Mind measured through anticipatory looking
+  - implicit Theory of Mind measured via anticipatory looking paradigms
+  - False-belief action anticipation in 25-month-old children
+  - False-belief tracking guides anticipatory looking
+  - Two-year-olds anticipate action from another person’s false belief
+  - False-belief anticipatory looking in the Southgate task
+  - Theory of Mind
+  reason: Southgate, Senju & Csibra (2007) anticipatory-looking false-belief task.
+- into: Power Posing
+  from:
+  - Power posing changes hormones and risk taking
+  reason: Carney, Cuddy & Yap (2010) power posing.
+- into: Power poses increase risk tolerance
+  from:
+  - Expansive posture increases risky choice
+  reason: Carney, Cuddy & Yap (2010) risk-taking outcome.
+- into: Interview-informed synthesized contingency analysis and treatment reduces problem behavior
+  from:
+  - Interview-informed functional analysis and skill-based treatment for autism problem behavior
+  - Interview-informed functional analysis and treatment reduces severe problem behavior
+  - Interview-informed synthesized functional assessment and treatment for autism problem behavior
+  - Synthesized behavior treatment reduces severe autism-related problem behavior
+  reason: Hanley et al. (2014) interview-informed synthesized contingency analysis and treatment.
+- into: Ego Depletion
+  from:
+  - An initial self-control task depletes later self-control
+  - Initial self-control impairs later self-control performance
+  - Initial self-control reduces later task persistence
+  reason: Baumeister et al. (1998) ego depletion.
+- into: Higher social class predicts greater deception in salary negotiation
+  from:
+  - Social class predicts truth-telling in salary negotiation
+  reason: Piff et al. (2012) Study 3 social class and deception in salary negotiation.
+- into: Emotion suppression undermines later eating restraint
+  from:
+  - Emotion suppression increases later food intake
+  - Prior self-regulation impairs later restraint over food
+  - Suppressing emotion increases later ice-cream eating
+  reason: Vohs & Heatherton (2000) emotion suppression and eating restraint.
+- into: Cleanliness Priming
+  from:
+  - Moral priming (cleanliness)
+  reason: Schnall, Benton & Harvey (2008) cleanliness priming on moral judgment.
+- into: Instructive feedback elicits untrained verbal responses
+  from:
+  - Instructive feedback elicits emergent verbal responses
+  - Instructive feedback produces untrained related verbal responses
+  reason: Frampton et al. (2019) instructive feedback and emergent verbal responses.
+- into: Preference for prosocial agents
+  from:
+  - Infants prefer helpers over hinderers in box task
+  - Nine-month-old infants prefer box-opening helpers
+  - Infants prefer a helper to a hinderer
+  - Infants prefer helpers to hinderers
+  reason: Hamlin, Wynn & Bloom (2007) and Hamlin & Wynn (2011) infant preference for helpers over hinderers.
+- into: Imagined Contact
+  from:
+  - imagined contact effect
+  - Imagined Contact - _Bias_
+  reason: Crisp & Turner / Husnu & Crisp (2010) imagined intergroup contact.
+- into: Identifiable victim effect
+  from:
+  - Identifiable victims attract more donations
+  reason: Small, Loewenstein & Slovic (2007) identifiable victim effect.
+- into: Positive psychology exercises improve happiness and depression
+  from:
+  - Positive psychology exercise benefits
+  - Positive psychology exercises and wellbeing
+  reason: Seligman et al. (2005) positive psychology exercises.
+- into: Social value orientation
+  from:
+  - Secure attachment predicts prosocial social value orientation
+  reason: Van Lange et al. (1997) social value orientation and attachment.
+- into: Narcissism and ego threat in source-directed aggression
+  from:
+  - Narcissism and ego threat interaction in retaliatory aggression
+  - Narcissism plus insult increases aggression
+  reason: Bushman & Baumeister (1998) narcissism and ego threat on aggression.
+- into: Affect heuristic in valuation (scope insensitivity)
+  from:
+  - Affect heuristic (Music Book versus Cash)
+  - Affect heuristic (Saving Panda)
+  - Affect heuristic (Sentencing a Mugger)
+  reason: Hsee & Rottenstreich (2004) affect-rich vs calculation-based valuation sub-studies.
+- into: Attention control reduces subsequent working memory span
+  from:
+  - Prior self-control effort reduces subsequent working-memory span
+  reason: Schmeichel (2007) ego depletion of working memory span.
+- into: Trait loneliness hot shower effect
+  from:
+  - Loneliness increases warm bathing
+  reason: Bargh & Shalev (2012) loneliness and warm showers/baths.
+- into: Physical warmth promotes interpersonal warmth
+  from:
+  - Physical warmth increases judged interpersonal warmth
+  - Warm therapeutic packs increase prosocial gift choices
+  reason: Williams & Bargh (2008) physical warmth and interpersonal warmth.
+- into: Neonate Imitation
+  from:
+  - Neonatal facial and manual gesture imitation
+  - Neonatal imitation of facial gestures
+  reason: Meltzoff & Moore (1977) neonatal imitation.
+- into: Dynamic norms
+  from:
+  - Dynamic Norms (Control as control (Interest))
+  - Dynamic Norms (Static as control (Interest))
+  reason: Sparkman & Walton (2017) dynamic norms and meat consumption.
+- into: Standing reduces Stroop interference
+  from:
+  - Posture attention effect
+  - posture attention effect/Stroop posture effect
+  reason: Rosenbaum, Mama & Algom (2017) standing vs sitting on Stroop interference.
+- into: DRD4 7-repeat sensitivity to maternal insensitivity
+  from:
+  - DRD4 sensitivity to maternal insensitivity
+  reason: Bakermans-Kranenburg & van IJzendoorn (2006) DRD4 x maternal sensitivity.
+- into: Renewal of challenging behavior across context changes
+  from:
+  - Challenging behavior returns after a change in treatment person or setting
+  - Renewal across clinical cases and context changes
+  reason: Muething et al. (2020) renewal of challenging behavior after context change.
+- into: Three resilient, overcontrolled, and undercontrolled personality prototypes
+  from:
+  - Three personality prototypes recur across samples
+  - Resilient, overcontrolled, and undercontrolled personality prototypes
+  - Three resilient, overcontrolled, and undercontrolled child personality profiles
+  reason: Robins et al. (1996) and Asendorpf et al. (2001) ARC personality prototypes.
+- into: Valence-congruent pronunciation priming
+  from:
+  - Evaluatively congruent primes speed word pronunciation
+  reason: Bargh et al. (1996) automatic evaluation pronunciation priming.
+- into: Stereotype threat on girls’ mathematical performance
+  from:
+  - Sterotype Girl's Mathematics
+  - Stereotype threat lowers women’s difficult math performance
+  reason: Spencer, Steele & Quinn (1999) and Johns, Schmader & Martens (2005) stereotype threat on women's math performance.
+- into: Anxiety and sadness shift perceived risk in opposite directions
+  from:
+  - Sadness and anxiety shift risky choice in opposite directions
+  reason: Raghunathan & Pham (1999) sadness vs anxiety on risky choice.
+- into: Working memory moderates perceptual disfluency benefit
+  from:
+  - Working Memory × Disfluency Interaction on Learning
+  reason: Lehmann et al. (2016) working memory moderation of disfluency.
+- into: Emotion naming weakens subsequent cognitive reappraisal
+  from:
+  - Naming emotions specifically impedes subsequent reappraisal or acceptance
+  reason: Nook et al. (2021) emotion naming and cognitive reappraisal.
+- into: Four latent classes of negative emotional eating
+  from:
+  - Four patterns of negative emotional eating
+  reason: Gu et al. (2020) latent classes of negative emotional eating.
+- into: Tripartite influence model fit for body dissatisfaction and eating disturbance
+  from:
+  - Tripartite social influence model of adolescent girls’ body dissatisfaction
+  reason: Keery et al. (2004) tripartite influence model.
+- into: Turning-point memory detail predicts adolescent depression
+  from:
+  - Detailed turning-point narratives correlate with more depressive symptoms
+  reason: Salmon et al. (2021) turning-point narrative detail and adolescent depressive symptoms.
+- into: Cross-situational word learning
+  from:
+  - Infants learn word-object mappings across ambiguous scenes
+  reason: Smith & Yu (2008) infant cross-situational word learning.
+- into: Good Behavior Game in the school cafeteria reduces disruptive behavior
+  from:
+  - Cafeteria behavior game reduces disruption
+  - Lunchroom Behavior Game reduces cafeteria disruption
+  reason: McCurdy et al. (2009) Good Behavior Game in school cafeterias.
+- into: Sex differences in mate preferences
+  from:
+  - Women place greater mate-preference weight on financial prospects
+  reason: Buss (1989) sex differences in human mate preferences.
+- into: Belief that an observed hand is human strengthens motor priming
+  from:
+  - Belief that an observed hand is human increases motor priming
+  reason: Liepelt & Brass (2010) animacy belief and motor priming.
+- into: MBCT reduces depressive relapse in recurrent depression
+  from:
+  - MBCT prevents depressive relapse after three or more prior episodes
+  reason: Teasdale et al. (2000) mindfulness-based cognitive therapy for recurrent depression.
+- into: Good-enough level pattern in psychotherapy dose and improvement
+  from:
+  - Psychotherapy improvement by number of sessions
+  reason: Barkham et al. (2006) good-enough level model in psychotherapy.
+- into: Learner-paced multimedia presentation improves transfer
+  from:
+  - Learner control improves multimedia transfer
+  reason: Mayer & Chandler (2001) learner-paced multimedia segments.
+- into: Color red on attractiveness
+  from:
+  - Colour red and attractiveness
+  - Red increases perceived male attractiveness
+  reason: Elliot & Niesta (2008) and Elliot et al. (2010) red-attractiveness effect.
+- into: Hindsight bias-retrospective
+  from:
+  - Hindsight knowledge inflates past-outcome judgments
+  reason: Fischhoff (1975) retrospective hindsight bias.
+- into: Hindsight bias-prospective
+  from:
+  - Hindsight Bias
+  reason: Slovic & Fischhoff (1977) hindsight bias.
+- into: Attentional blink in rapid serial visual presentation
+  from:
+  - Attentional blink after first visual target
+  - Attentional blink
+  reason: Raymond, Shapiro & Arnell (1992) attentional blink.
+- into: Action priming improves cognitive problem solving
+  from:
+  - Unsatisfied action and inaction goal primes change cognitive responding
+  reason: Albarracin et al. (2008) action and inaction goal priming.
+- into: Childhood resources moderate the effect of mortality cues on delay discounting
+  from:
+  - Childhood poverty changes the effect of mortality cues on financial risk and delay
+  reason: Griskevicius et al. (2011) childhood socioeconomic status and mortality cues.
+- into: Waving cat induces individual go/no-go Simon effect
+  from:
+  - A nonsocial Japanese waving cat elicits joint spatial compatibility in an auditory Simon task
+  reason: Dolk et al. (2013) Japanese waving cat joint Simon effect.
+- into: Mere Exposure Effect
+  from:
+  - Mere exposure increases liking
+  reason: Zajonc (1968) mere exposure effect.
+- into: Semantic Priming
+  from:
+  - Associative Priming
+  reason: Meyer & Schvaneveldt (1971) semantic/associative priming in lexical decision.
+- into: Communal narcissism and Machiavellianism predict virtuous victim signaling
+  from:
+  - Virtuous victim signalling and dark personality traits
+  reason: Ok et al. (2021) virtuous victim signaling.
+- into: Infant expectations about simple arithmetic
+  from:
+  - Five-month-old infants respond to simple addition and subtraction outcomes
+  reason: Wynn (1992) addition and subtraction by human infants.
+- into: Working memory training improves fluid intelligence
+  from:
+  - Brain training on intelligence - far transfer from daily computer training games to fluid intelligence
+  reason: Jaeggi et al. (2008) working-memory training and fluid intelligence.
+- into: Young infants recognize familiar spoken nouns
+  from:
+  - Common noun comprehension by six to nine months
+  reason: Bergelson & Swingley (2012) infant comprehension of common nouns.
+- into: Facial redness increases perceived anger
+  from:
+  - Facial Colors and perceived emotions
+  reason: Young et al. (2017) facial redness and anger perception.
+- into: Rumination worsens depressed mood while distraction improves it
+  from:
+  - Rumination prolongs negative mood relative to distraction
+  reason: Morrow & Nolen-Hoeksema (1990) rumination vs distraction on depressed mood.
+- into: Cocktail Party Effect
+  from:
+  - Own name breaks through selective listening
+  reason: Moray (1959) attention in dichotic listening.
+- into: Congruent motor actions enhance action-word memory
+  from:
+  - Poststudy action congruency and object-word memory
+  reason: Pecher / motor action congruency on object-word memory.
+- into: Infant learning of nonadjacent dependencies with variable middle elements
+  from:
+  - Eighteen-month-olds detect nonadjacent dependencies with high intervening variability
+  reason: Gomez (2002) infant learning of nonadjacent dependencies.
+- into: Implicit religious priming
+  from:
+  - Religious Priming
+  reason: Shariff & Norenzayan (2007) religious priming and prosocial behavior.
+- into: Infants expect agents to act on false beliefs
+  from:
+  - Infants predict an agent's action from its false belief
+  reason: Onishi & Baillargeon (2005) infant false-belief expectation.
+- into: VRAG discrimination of violent recidivism
+  from:
+  - Actuarial prediction of violent reoffending
+  reason: Harris, Rice & Quinsey (1993) Violence Risk Appraisal Guide.
+- into: Bias Blind Spot
+  from:
+  - Self-other bias blind spot and personal-shortcoming comparison
+  reason: Pronin, Lin & Ross (2002) bias blind spot.
+- into: Suicide-IAT predicts future attempts
+  from:
+  - Suicide attempts and implicit death-self association
+  reason: Nock et al. (2010) implicit death-self association and suicide attempts.
+- into: Sexualized female bodies show a smaller recognition inversion effect than male bodies
+  from:
+  - Sexualized body inversion differs by target gender
+  reason: Bernard et al. (2012) sexualized body inversion hypothesis.
+- into: Attachment-warmth embodiment effect
+  from:
+  - Anxious attachment × romantic-breakup reflection on warm-food desirability
+  reason: Vess (2012) attachment anxiety and warm refreshment preference.
+- into: Longhand note taking improves conceptual learning
+  from:
+  - Pen mightier than the screen
+  reason: Mueller & Oppenheimer (2014) longhand vs laptop note taking.
+- into: Moral Priming
+  from:
+  - Moral priming (contemplation)
+  reason: Mazar, Amir & Ariely (2008) Ten Commandments / moral reminder priming.
+- into: Preferred activities increase happiness indices
+  from:
+  - Preferred activity presentation increases observed happiness
+  reason: Green & Reid (1996) happiness indices in profound multiple disabilities.
+- into: Ninety-eight percent lexical coverage is needed for comfortable L2 reading
+  from:
+  - About 98 percent familiar vocabulary enables adequate L2 reading comprehension
+  reason: Hu & Nation (2000) vocabulary coverage and L2 reading comprehension.
+- into: Changing-state left-ear disadvantage during serial recall
+  from:
+  - Left-ear irrelevant-sound disadvantage in serial recall
+  reason: Hadlington, Bridges & Beaman (2004) left-ear disadvantage in irrelevant-sound serial recall.
+- into: Stereotype susceptibility effects
+  from:
+  - Stereotype threat/bonus
+  reason: Shih, Pittinsky & Ambady (1999) stereotype susceptibility.
+- into: Effects of smiling emoticons on virtual first impressions
+  from:
+  - Effects of Smiling Emoticons on Virtual First Impressions (Smileys*Formality → Appropriateness)
+  - Effects of Smiling Emoticons on Virtual First Impressions (Smileys*Formality → Competence via Appropriateness)
+  - Effects of Smiling Emoticons on Virtual First Impressions (Smileys*Formality → Competence)
+  - Effects of Smiling Emoticons on Virtual First Impressions (Smileys*Formality → Warmth via Appropriateness)
+  - Effects of Smiling Emoticons on Virtual First Impressions (Smileys*Formality → Warmth)
+  reason: Glikson, Cheshin & van Kleef (2018) smiling emoticons in work emails.
+- into: Age of acquisition effects on episodic memory
+  from:
+  - Age of Aquisition
+  reason: Fix typo in effect name (Dewhurst, Hitch & Barry 1998).
+- into: Bilingual deficit in lexical retrieval
+  from:
+  - Bilingual Defecit in Lexical Retrieval
+  reason: Fix typo in effect name.
+- into: Correlation between grandiose and vulnerable narcissism
+  from:
+  - Correlation between narcissism and and hypersensitive narcissism
+  reason: Fix duplicated word 'and and' in effect name.
+- into: Desire-state attribution in Eurasian jays
+  from:
+  - Desire-state attribution may govern food sharing in Eurasian jays (_Garrulus glandarius_)
+  reason: Remove markdown italics and paper-title phrasing.
+- into: Children learn new words through overhearing
+  from:
+  - Do children overhear to learn new words?
+  reason: Use plain statement instead of paper title question.
+- into: Endowment effect moderated by goal relevance
+  from:
+  - Endowment effect moderated by goral-relevant or irrelevant
+  reason: Fix typo 'goral-relevant' in effect name.
+- into: Endowment effect moderated by transaction demand
+  from:
+  - Endowment effect moderated by transation demand
+  reason: Fix typo 'transation' in effect name.
+- into: Imagined Contact - Intentions
+  from:
+  - Imagined Contact - _Intentions_
+  reason: Remove markdown italics from effect name.
+- into: Reasoning about hidden causal agents in New Caledonian crows
+  from:
+  - Reasoning about hidden causal agents in New Caledonian Crows (_Corvus moneduloides_)
+  reason: Remove markdown italics from effect name.
+- into: Domestic horses prefer to approach an attentive person
+  from:
+  - tested the ability of 36 domestic horses to discriminate between an attentive and inattentive person in determining whom
+    to approach for food
+  reason: Replace raw abstract fragment with plain effect name.
+- into: Handedness differences in depression
+  from:
+  - Handedness DIfferences in Depression
+  reason: Fix capitalization typo 'DIfferences'.
+- into: Handedness differences in schizophrenia
+  from:
+  - Handedness DIfferences in Schizophrenia
+  reason: Fix capitalization typo 'DIfferences'.
+- into: Spatial priming
+  from:
+  - Spatial PrIming
+  reason: Fix capitalization typo 'PrIming'.
+- into: Affective expectations
+  from:
+  - affective expectations
+  reason: Capitalize effect name.
+- into: Anti-White bias
+  from:
+  - anti-White bias
+  reason: Capitalize effect name.
+- into: Drunk utilitarian
+  from:
+  - drunk utilitarian
+  reason: Capitalize effect name.
+- into: Elicited imitation test
+  from:
+  - elicited imitation test
+  reason: Capitalize effect name.
+- into: Gender inclusive language effect
+  from:
+  - gender inclusive language effect
+  reason: Capitalize effect name.
+- into: Honesty priming
+  from:
+  - honesty priming
+  reason: Capitalize effect name.
+- into: Hostility priming
+  from:
+  - hostility priming
+  reason: Capitalize effect name.
+- into: Illusion of consensus
+  from:
+  - illusion of consensus
+  reason: Capitalize effect name.
+- into: Implicit attitude
+  from:
+  - implicit attitude
+  reason: Capitalize effect name.
+- into: Impression formation
+  from:
+  - impression formation
+  reason: Capitalize effect name.
+- into: Inaction effect, general regret
+  from:
+  - inaction effect, general regret
+  reason: Capitalize effect name.
+- into: Influence of one-sided online comments on opinion
+  from:
+  - influence of one-sided online comments on opinion
+  reason: Capitalize effect name.
+- into: One-sided YouTube-comments on intention
+  from:
+  - one-sided YouTube-comments on intention
+  reason: Capitalize effect name.
+- into: Retroactive gambler's fallacy effect
+  from:
+  - retroactive gambler's fallacy effect
+  reason: Capitalize effect name.
+- into: Verbal overshadowing effect
+  from:
+  - verbal overshadowing effect
+  reason: Capitalize effect name.
+- into: Weight-importance effect
+  from:
+  - weight-importance effect
+  reason: Capitalize effect name.
+- into: Mortality Salience Effect
+  from:
+  - Mortality Salience
+  - Mortality Salience (Death Priming/Terror Management Theory)
+  - Mortality reminders increase national in-group bias
+  - Mortality reminders increase preference for a patriotic essay author
+  - Mortality salience and pro-American author preference
+- into: Own-age bias
+  from:
+  - own-age bias (correlation)
+  - own-age bias (group difference)
+  reason: Same finding from Nicholls, Churches & Loetscher (2018) analysed by correlation and by age-group split.

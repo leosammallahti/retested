@@ -46,9 +46,14 @@ def run() -> dict:
 
     # pairs a reader has checked (data/curated/attempts_checked.csv): kept as they are, or only the full text can settle
     checked: dict[tuple[str, str], str] = {}
+    no_result_checked: set[tuple[str, str]] = set()
     f = ROOT / "data" / "curated" / "attempts_checked.csv"
     if f.exists():
-        checked = {(r["doi_o"], r["rep_key"]): r["decision"] for r in csv.DictReader(f.open(encoding="utf-8"))}
+        for r in csv.DictReader(f.open(encoding="utf-8")):
+            if r["question"] == "no result coded":
+                no_result_checked.add((r["doi_o"], r["rep_key"]))
+            else:
+                checked[(r["doi_o"], r["rep_key"])] = r["decision"]
     # a reading that found the paper is a replication answers whether a review-like title is a review
     read_rep = {(r.get("doi_o"), r.get("rep_key")) for r in
                 json.loads((ROOT / "data" / "curated" / "read_pairs.json").read_text(encoding="utf-8"))["readings"]
@@ -77,7 +82,7 @@ def run() -> dict:
             flag("attempt: no replication year", rec)
         if t_r and NON_REPLICATION_TITLE.search(str(t_r)) and not a.get("read") and key not in checked and key not in read_rep:
             flag("attempt: titled like a review, meta-analysis, commentary or reply (needs reading)", rec)
-        if a["outcome"] == "not_coded":
+        if a["outcome"] == "not_coded" and key not in no_result_checked:
             flag("attempt: no result coded", rec)
 
     apart = set()

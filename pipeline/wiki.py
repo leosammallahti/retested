@@ -259,6 +259,8 @@ def explanation_for(a: dict, explanations: dict) -> dict | None:
 
     Each entry records the later paper's DOI it was written from; if the attempt has since been matched to another
     paper the entry no longer applies and is not shown."""
+    if a.get("outcome") == "not_coded":
+        return None
     e = explanations.get(a["id"])
     if not e or (e.get("doi_r") or None) != (a.get("doi_r") or None) or not (e.get("did") and e.get("found")):
         return None
@@ -276,9 +278,14 @@ def effect_lines(eff: list[dict]) -> dict:
     p = CURATED / "effect_lines.json"
     if not p.exists():
         return {}
-    slug = _slug_of(eff)
-    return {slug[i]: v["line"] for i, v in json.loads(p.read_text(encoding="utf-8")).get("lines", {}).items()
-            if v.get("line") and i in slug}
+    lines = json.loads(p.read_text(encoding="utf-8")).get("lines", {})
+    out = {}
+    for e in eff:
+        for i in [e["id"], *e.get("merged_ids", [])]:
+            if (lines.get(i) or {}).get("line"):
+                out[e["slug"]] = lines[i]["line"]
+                break
+    return out
 
 
 def effect_typology(eff: list[dict]) -> dict:
@@ -288,9 +295,15 @@ def effect_typology(eff: list[dict]) -> dict:
     p = CURATED / "effect_typology.json"
     if not p.exists():
         return {}
-    slug = _slug_of(eff)
-    return {slug[i]: {d: v["value"] for d, v in dims.items() if isinstance(v, dict)}
-            for i, dims in json.loads(p.read_text(encoding="utf-8")).get("labels", {}).items() if i in slug}
+    labels = json.loads(p.read_text(encoding="utf-8")).get("labels", {})
+    out = {}
+    for e in eff:
+        for i in [e["id"], *e.get("merged_ids", [])]:
+            dims = labels.get(i)
+            if dims:
+                out[e["slug"]] = {d: v["value"] for d, v in dims.items() if isinstance(v, dict)}
+                break
+    return out
 
 
 def accounts(att: dict, explanations: dict) -> dict:
@@ -324,7 +337,8 @@ def attempt_story(a: dict, vocab: Counter, lines: dict, orig: dict | None, expla
         "id": a["id"], "type": a["type"], "authors": short_authors(a.get("authors_r")), "year": int(a["year_r"]) if a.get("year_r") else None,
         "journal": a.get("journal_r"), "title": _title(a.get("title_r")), "doi": a.get("doi_r"),
         "open_url": links_for(a)[1], "open_version": links_for(a)[2], "url": links_for(a)[0],
-        "outcome": a["outcome"], "sources_disagree": bool(a.get("sources_disagree")),
+        "outcome": a["outcome"], "no_result_reason": a.get("no_result_reason"),
+        "sources_disagree": bool(a.get("sources_disagree")),
         "outcomes_by_source": a.get("outcomes_by_source") or {},
         "line": line,
         "did": ex["did"] if ex else None,

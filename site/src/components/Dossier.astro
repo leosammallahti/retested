@@ -15,8 +15,12 @@ const { attempts, lenses: L, originals, shared = [], subject, withAccounts = tru
 const many = (from: string) => /,| and /.test(from);
 const P = papers();
 const forrtOriginals = new Set([...attempts, ...shared].filter((a) => a.sources.some((s) => ['flora', 'fred', 'legacy'].includes(s))).map((a) => a.doi_o));
-const reps = attempts.filter((a) => a.type === 'replication').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
-const repros = attempts.filter((a) => a.type === 'reproduction');
+const rawReps = attempts.filter((a) => a.type === 'replication').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
+const rawRepros = attempts.filter((a) => a.type === 'reproduction').sort((a, b) => (a.year_r ?? 9999) - (b.year_r ?? 9999));
+const reproOnly = rawReps.length === 0 && rawRepros.length > 0;
+const reps = reproOnly ? rawRepros : rawReps;
+const repros = reproOnly ? [] : rawRepros;
+const repWord = reproOnly ? 'reproduction' : 'replication';
 const rec = L.record;
 const num = L.numeric;
 const est = reps.filter((a) => (a as any).est);
@@ -53,7 +57,7 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
     <div class="vmeta">
       <Tally outcomes={reps.map((a) => a.outcome)} />
       <span class="mono faint">
-        {reps.length} replication{reps.length === 1 ? '' : 's'}
+        {reps.length} {repWord}{reps.length === 1 ? '' : 's'}
         {rec.k > 0 && <> · {rec.successful} replicated · {rec.mixed} mixed · {rec.failed} not</>}
         {L.first_replication_year && <> · {L.first_replication_year}{L.last_replication_year !== L.first_replication_year ? `–${L.last_replication_year}` : ''}</>}
         {L.total_replication_n && <> · {int(L.total_replication_n)} participants</>}
@@ -152,7 +156,8 @@ const whoLabel = (a: Attempt) => [a.authors_r, a.year_r].filter(Boolean).join(',
           {a.quote && <blockquote class="q">“{clip(cleanQuote(a.quote), 420)}”</blockquote>}
           {a.retested_review?.review_note && <p class="muted" style="font-size:.88rem">{a.retested_review.review_note}</p>}
           {a.retested_review?.original_source_type && a.retested_review.original_source_type !== "empirical_study" && <span class="chip warn">{a.retested_review.original_source_type === "meta_analysis" ? "Earlier source: meta-analysis" : a.retested_review.original_source_type === "review" ? "Earlier source: review" : "Earlier source: other"}</span>}
-          {a.read && <p class="faint" style="font-size:.8rem">Result read for Retested from the later paper's abstract ({a.read.decided_by}, {a.read.read_on}){a.listed_by ? `; the paper was ${a.listed_by}` : ''}.</p>}
+          {a.outcome === 'not_coded' && <p class="faint" style="font-size:.84rem">Its result is not stated in any freely available text{a.no_result_reason ? ` (${a.no_result_reason})` : ''}.</p>}
+          {a.read && <p class="faint" style="font-size:.8rem">Result read for Retested from the later paper's {a.read.read_from ?? 'abstract'} ({a.read.decided_by}, {a.read.read_on}){a.listed_by ? `; the paper was ${a.listed_by}` : ''}.</p>}
           {a.result_review && <p class="faint" style="font-size:.8rem">Result checked for Retested against the later paper's abstract: {a.result_review.reason} It was coded before as {Object.entries(a.result_review.coded_before).map(([k, v]) => `${(OUTCOME[v]?.label ?? v).toLowerCase()} (${DISPLAY_SOURCE[k] ?? k})`).join(', ') || 'no result'}.</p>}
           {a.relinked_from && <p class="faint" style="font-size:.8rem">FORRT's records filed this replication under another original; reading showed it replicates this one.</p>}
           {a.same_study_as && a.same_study_as.length > 0 && <p class="faint" style="font-size:.8rem">Also listed as {a.same_study_as.map((s) => s.rep_key).join(', ')}: the same study, counted once.</p>}

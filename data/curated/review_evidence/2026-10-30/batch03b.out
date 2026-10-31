@@ -1,0 +1,38 @@
+C0179|Y|NEW_DATA_REPLICATION|FOUND|Akselberg et al.|2024|To preview our findings, we successfully replicated the original study, demonstrating repulsive response trajectories that ended with an attractive bias|Successfully replicated repulsive response trajectories and condition-dependent serial bias.
+C0180|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Voormann, Rothe-Wulf, Starns, & Klauer|-||Preregistered report without results write-up.
+C0181|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Hashizume et al.|-||Preregistration of replication studies without results.
+C0182|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Hashizume et al.|-||Preregistration of replication studies without results.
+C0183|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project description and README without results write-up.
+C0184|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Montero-Melis, van Paridon, Ostarek, & Bylund|-||Stage 1 registered report without results.
+C0185|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Montero-Melis, van Paridon, Ostarek, & Bylund|-||Stage 1 registered report preprint without results.
+C0186|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF project description and design plan without results.
+C0187|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Boyce, Mathur, & Frank|2023||Large multi-study paper reporting aggregate statistics without individual result.
+C1127|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Boyce, Mathur, & Frank|2023||Large multi-study paper reporting aggregate statistics without individual result.
+C1193|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Boyce, Mathur, & Frank|2023||Large multi-study paper reporting aggregate statistics without individual result.
+C1216|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Boyce, Mathur, & Frank|2023||Large multi-study paper reporting aggregate statistics without individual result.
+C0188|Y|NEW_DATA_REPLICATION|MIXED|Nolte, Sterck, & van Leeuwen|2023|bonobos and chimpanzees co-fed to a similar degree, indicating a similar level of tolerance. However, bonobos cooperated more than chimpanzees|Bonobos did not show higher co-feeding tolerance, but replicated higher cooperation on monopolizable food.
+C0189|Y|NEW_DATA_REPLICATION|MIXED|Petropoulos Petalas, Schumacher, & Scholte|2024|We partially replicate the amygdala hypothesis, but fail to find consistent evidence in support of the ideology-ACC volume link.|Replicated amygdala correlation with conservatism but failed to replicate the anterior cingulate cortex link.
+C0190|Y|NEW_DATA_REPLICATION|NOT_FOUND|Simeonov & Das|2025|The current study failed to replicate previous findings demonstrating improved recall for stimuli synchronously modulated at theta frequency in a multi-sensory associative learning task.|Failed to replicate improved recall for stimuli synchronously modulated at theta frequency.
+C0191|Y|REANALYSIS|FOUND|Wagner|2017|It turns out that the big picture that emerges from using both productivity measures tends to be very similar.|Re-estimated models on public EFIGE data and found very similar productivity premia results.
+C0192|N|NEW_DATA_REPLICATION|NOT_APPLICABLE|Gerlicher, Ilhan-Bayrakcı, Tüscher, & Kalisch|2020|we replicated a previous MRI paradigm (Gerlicher et al. 2018) as closely as possible outside MRI.|Replicates Gerlicher et al. (2018) outside MRI, citing Haaker et al. (2015) only as background.
+C0193|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Bovet|2025||OSF registration and effect size calculation document without replication results.
+C0194|Y|NEW_DATA_REPLICATION|NOT_FOUND|Rotella, Sparks, Mishra, & Barclay|2021|we failed to replicate the eyes effect and observation effect.|Failed to replicate the watching eyes effect on dictator game generosity.
+C1091|Y|NEW_DATA_REPLICATION|NOT_FOUND|Rotella, Sparks, Mishra, & Barclay|2021|Again, we did not find an interaction between condition and SVO|Failed to replicate the interaction between social value orientation and observation on prosocial behavior.
+C0195|Y|REANALYSIS|FOUND|Martončik|2022|Based on these criteria, the claim did reproduce.|Author data reproduction successfully reproduced the original claim.
+C0196|Y|REANALYSIS|FOUND|Röer, Ostermann, & Michalak|-|Thus, this reproduction of the claim was successful according to the SCORE criteria.|Data reproduction successfully reproduced the correlation between life history and psychopathology.
+C0197|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||Study protocol and hypothesis description without results.
+C0198|N|OTHER_NEW_STUDY|NOT_APPLICABLE|Lettinga, Mell, Algan, Jacquet, & Chevallier|2021|The second goal of our study is to replicate the mediation effect of life-history strategy between childhood environmental adversity and adults|Replicates Lettinga et al. (2020), citing Wu et al. (2017) only as background.
+C0199|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|2026||Preregistration of replication study without results.
+C0200|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Mizutori|2024||Preregistration for replication pretest without results.
+C0245|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Mizutori|2024||Preregistration for replication pretest without results.
+C1077|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Mizutori|2024||Preregistration for replication pretest without results.
+C0201|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Williams & Jaftha|-||OSF repository contains only supporting information tables without full results write-up.
+C0202|Y|NEW_DATA_REPLICATION|NOT_FOUND|Dasser, Kolloch, & Rathschlag|2022|Es zeigten sich keine Effekte von Intelligenz auf die Bewertung.|Failed to replicate the effect of cognitive ability on updating impressions after correcting false information.
+C0203|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF preregistration document without results.
+C0204|Y|NEW_DATA_REPLICATION|MIXED|Krings, Wagener, & Blairy|2019|This part of our study is only a partial replication of the original study of Wagener et al. 2016.|Partially replicated symptom differences by gender, but gender interactions with activation/avoidance were inconsistent.
+C0205|Y|NEW_DATA_REPLICATION|FOUND|Carleton, Gosselin, & Asmundson|2010|Regression results suggested Parts A and B each provide incremental validity in measures of worry, generalized anxiety disorder symptoms, negative problem orientation, and depression.|Replicated the factor structure and incremental validity of the Intolerance of Uncertainty Index in English.
+C0206|N|REANALYSIS|NOT_APPLICABLE|Wessel, Albers, Zandstra, & Heininga|2020|In 2001, Anderson and Green (2001) showed memory suppression using a novel Think/No-think (TNT) task.|Replicates Anderson & Green (2001), re-analysing data from an earlier paper by the first author.
+C0207|Y|NEW_DATA_REPLICATION|NOT_FOUND|Bellet et al.|-|We found strong evidence that none of the previously significant effects replicated.|Failed to replicate the significant effects of trigger warnings on vulnerability beliefs or anxiety.
+C0208|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|Harper|-||StudySwap project advertisement seeking collaborators for planned replication without results.
+C0209|Y|REANALYSIS|FOUND|Chang et al.|2024|In summary, the key findings of the paper were replicated successfully|Successfully reproduced key findings and figures from original paper's open data.
+C0210|Y|NEW_DATA_REPLICATION|NO_RESULT_STATED|-|-||OSF preregistration description without results.

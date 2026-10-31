@@ -105,6 +105,7 @@ const studyText = (a: { tested_study: string[] }) => {
                 {!a.did && a.line && <p class="aline">{a.line}</p>}
                 {!a.did && !a.line && a.title && <p class="atitle">{a.title}</p>}
                 {a.their_words && <blockquote class="q">“{a.their_words}”</blockquote>}
+                {a.outcome === 'not_coded' && <p class="rnote">Its result is not stated in any freely available text{a.no_result_reason ? ` (${a.no_result_reason})` : ''}.</p>}
                 {a.reviewer_sentences.length > 0 && <p class="rnote">{a.reviewer_sentences.join(' ')} <span class="faint">— reviewer’s note{a.reviewed_on ? `, ${a.reviewed_on}` : ''}</span></p>}
                 <div class="afacts mono">
                   {a.n && <span>{a.n.toLocaleString('en-US')} people</span>}
